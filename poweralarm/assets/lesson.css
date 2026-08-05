@@ -1,0 +1,211 @@
+/* Shared stylesheet for all PowerAlarm lessons and reference docs.
+   Tufte-inspired: generous margins, serif body, sidenotes, print-first.
+   Every lesson links this — do not fork it, extend it. */
+
+:root {
+  --ink: #111008;
+  --ink-soft: #4a4738;
+  --paper: #fffff8;
+  --rule: #d5d2c2;
+  --accent: #a00000;
+  --accent-soft: #f3e6e6;
+  --ok: #1d6a3a;
+  --ok-soft: #e5f1e9;
+  --warn: #8a5a00;
+  --warn-soft: #f7eeda;
+  --code-bg: #f2f1e6;
+  --measure: 38rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e6da;
+    --ink-soft: #a5a293;
+    --paper: #14140f;
+    --rule: #35342b;
+    --accent: #ff8a80;
+    --accent-soft: #2a1b1a;
+    --ok: #7fd1a0;
+    --ok-soft: #16241c;
+    --warn: #e0b45f;
+    --warn-soft: #2a2214;
+    --code-bg: #1e1e18;
+  }
+}
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: et-book, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  max-width: 58rem;
+  hyphens: auto;
+}
+
+/* ---- Typography ---- */
+
+h1, h2, h3 { font-weight: 400; line-height: 1.2; margin: 0 0 0.4em; }
+h1 { font-size: 2.4rem; font-style: italic; max-width: var(--measure); }
+h2 {
+  font-size: 1.6rem;
+  font-style: italic;
+  margin-top: 2.6em;
+  padding-top: 0.5em;
+  border-top: 1px solid var(--rule);
+  max-width: var(--measure);
+}
+h3 { font-size: 1.2rem; font-weight: 600; margin-top: 2em; max-width: var(--measure); }
+
+p, ul, ol, blockquote, .note, .callout, table, .quiz, figure {
+  max-width: var(--measure);
+}
+p { margin: 0 0 1em; }
+li { margin-bottom: 0.4em; }
+
+.subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  max-width: var(--measure);
+}
+
+.meta {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, system-ui, sans-serif;
+  margin-bottom: 0.6rem;
+}
+
+a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+a:hover { background: var(--accent-soft); }
+
+code, kbd, pre, .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.86em;
+}
+code { background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+pre {
+  background: var(--code-bg);
+  padding: 1rem 1.1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--rule);
+  overflow-x: auto;
+  max-width: 46rem;
+  line-height: 1.45;
+}
+pre code { background: none; padding: 0; }
+
+kbd {
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 0.05em 0.35em;
+  background: var(--code-bg);
+}
+
+/* ---- Callouts ---- */
+
+.callout {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  padding: 0.9rem 1.1rem;
+  margin: 1.6em 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout.ok    { border-color: var(--ok);   background: var(--ok-soft); }
+.callout.warn  { border-color: var(--warn); background: var(--warn-soft); }
+.callout > :last-child { margin-bottom: 0; }
+.callout .label {
+  display: block;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 0.35em;
+  color: var(--ink-soft);
+}
+
+/* ---- Tables ---- */
+
+.table-wrap { overflow-x: auto; max-width: 100%; margin: 1.6em 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+.table-wrap table { max-width: none; min-width: 30rem; }
+th, td {
+  text-align: left;
+  padding: 0.5em 0.9em 0.5em 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  border-bottom-width: 2px;
+}
+td.yes { color: var(--ok); }
+td.no  { color: var(--accent); }
+
+/* ---- Steps ---- */
+
+ol.steps { list-style: none; counter-reset: step; padding-left: 0; }
+ol.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.6rem;
+  margin-bottom: 1.2em;
+}
+ol.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, system-ui, sans-serif;
+  font-size: 0.85rem;
+  display: grid;
+  place-items: center;
+}
+
+/* ---- Footer / nav ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+.citations { font-size: 0.9rem; }
+.citations li { margin-bottom: 0.5em; }
+
+/* ---- Print ---- */
+
+@media print {
+  :root {
+    --ink: #000; --ink-soft: #444; --paper: #fff; --rule: #bbb;
+    --accent: #000; --accent-soft: #f2f2f2;
+    --ok: #000; --ok-soft: #f2f2f2; --warn: #000; --warn-soft: #f2f2f2;
+    --code-bg: #f4f4f4;
+  }
+  body { font-size: 10.5pt; padding: 0; max-width: none; }
+  h2 { page-break-after: avoid; }
+  pre, table, .callout, .quiz { page-break-inside: avoid; }
+  a { border-bottom: none; text-decoration: underline; }
+  .no-print { display: none !important; }
+}
