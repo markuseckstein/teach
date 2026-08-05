@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 16 — Kreuzen mit dem Plotter: Laylines, VMG &amp; Wegpunkte</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0015-plotter-und-instrumente.html">← Lektion 15</a>
+    <a href="../reference/plotter.html">📄 Plotter-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0017-toernplanung.html">Nächste Lektion: Törnplanung →</a>
+  </nav>
+
+  <h1>Kreuzen mit dem Plotter: Laylines, VMG &amp; Wegpunkte</h1>
+  <p class="lesson-meta">Lektion 16 · Modul E — Navigation &amp; Törnplanung · ca. 20 Minuten · baut auf Lektion 3 und 15 auf</p>
+
+  <p>In <a href="0003-kreuzen.html">Lektion 3</a> hast du das Kreuzen mit dem Bild im
+  Kopf aufgefrischt: Schläge, Laylines, „langer Schlag zuerst". Jetzt kommt das Werkzeug
+  dazu: Mit Wegpunkt, COG und Peilung macht der Plotter aus dem Gefühl eine überprüfbare
+  Entscheidung — <em>wann genau wende ich?</em> Und der VMG-Blick beantwortet die ewige
+  Frage, ob höher anliegen wirklich schneller ans Ziel führt.</p>
+
+  <h2>1 · VMG — die ehrliche Geschwindigkeit Richtung Ziel</h2>
+
+  <p><strong>VMG</strong> (Velocity Made Good) ist der Anteil deiner Fahrt, der wirklich
+  in Richtung Wind (bzw. Ziel) geht. Beim Kreuzen gilt: Wer <em>kneift</em> (zu hoch
+  anliegt), zeigt zwar näher am Ziel, wird aber langsam — wer zu tief fährt, ist schnell,
+  aber in die falsche Richtung. Dazwischen liegt das Optimum:</p>
+
+  <table>
+    <thead>
+      <tr><th>Fahrweise</th><th>Was passiert</th><th>VMG</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Gekniffen</strong> (zu hoch)</td><td>Segel killen fast, Fahrt bricht ein, Abdrift wächst</td><td>schlecht — fühlt sich nur gut an</td></tr>
+      <tr><td><strong>Voll und bei</strong> (~45° TWA)</td><td>Boot läuft, Ruderdruck moderat</td><td><strong>Optimum</strong> auf der Fahrtenyacht</td></tr>
+      <tr><td><strong>Zu tief</strong></td><td>Schnell, aber kaum Höhe</td><td>schlecht — Umweg frisst den Speed</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout merke">
+    <span class="label">Praxis statt Zahlenfriedhof</span>
+    <p>Auf der Charteryacht brauchst du keine Polardiagramme: <strong>Voll und bei
+    steuern, Fahrt im Auge behalten</strong> — bricht die SOG beim Anluven um mehr als
+    ein halbes Knoten ein, war es Kneifen. In kurzer Ägäis-Welle gilt erst recht:
+    <strong>Fahrt vor Höhe</strong>, sonst stoppt jede Welle den Bug.</p>
+  </div>
+
+  <div class="callout achtung">
+    <span class="label">Plotter-Falle „VMG zum Wegpunkt"</span>
+    <p>Viele Plotter zeigen <em>VMG-to-Waypoint</em>. Direkt auf der Kreuz ist die Zahl
+    mit Vorsicht zu genießen: Kurz vor der Wende auf der Layline steht sie am
+    schlechtesten, obwohl du alles richtig machst. Nutze VMG als <strong>Trimm-Feedback
+    auf dem Schlag</strong>, nicht als Wendesignal — für die Wende gibt es die
+    Layline-Methode unten.</p>
+  </div>
+
+  <h2>2 · Der reale Wendewinkel — über Grund gemessen</h2>
+
+  <p>Theoretisch wendet eine Yacht durch ~90°. Real kommen Abdrift und Welle dazu:
+  <strong>Miss deinen Wendewinkel über Grund</strong> — COG auf Backbordbug ablesen,
+  wenden, COG auf Steuerbordbug ablesen. Die Differenz liegt auf einer Charteryacht
+  in Ägäis-Welle typisch bei <strong>100–110°</strong>. Diese Zahl ist die Grundlage
+  für alles Weitere — einmal pro Törn messen reicht.</p>
+
+  <h2>3 · Die Layline-Methode: wenden nach Peilung</h2>
+
+  <p>So machst du aus dem Plotter ein Kreuz-Werkzeug — ganz ohne Spezialfunktionen:</p>
+
+  <ol>
+    <li><strong>Wegpunkt aufs Luv-Ziel</strong> setzen (Hafeneinfahrt, Tonne, Kap — mit Abstand zu Untiefen). Der Plotter zeigt jetzt ständig <strong>BRG</strong> (Peilung zum Ziel) und <strong>DST</strong>.</li>
+    <li><strong>COG des aktuellen Schlags ablesen</strong> — z. B. 010°.</li>
+    <li><strong>COG des anderen Bugs ausrechnen:</strong> aktueller COG ± Wendewinkel. Mit 105°: nach der Wende wirst du ≈ <strong>115°</strong> über Grund laufen (010° + 105°).</li>
+    <li><strong>Wenden, wenn BRG = erwarteter COG des anderen Bugs.</strong> Zeigt die Peilung zum Ziel 115°, liegst du nach der Wende genau an — du stehst auf der Layline.</li>
+    <li><strong>Reserve einplanen:</strong> 5–10° früher wenden lohnt selten, später nie — überstehen ist geschenkte Strecke (Lektion 3). Bei böigem Wind oder Fallböen unter Land (Hydra!): eher etwas Reserve.</li>
+  </ol>
+
+  <figure>
+    <svg viewBox="0 0 640 560" role="img" aria-label="Layline-Methode mit Wegpunkt, COG und Peilung">
+      <defs>
+        <marker id="lw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="lc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#13315c"/>
+        </marker>
+      </defs>
+      <!-- Wind -->
+      <line x1="290" y1="30" x2="290" y2="85" stroke="#1d6f8f" stroke-width="3" marker-end="url(#lw)"/>
+      <line x1="330" y1="30" x2="330" y2="85" stroke="#1d6f8f" stroke-width="3" marker-end="url(#lw)"/>
+      <text x="355" y="65" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#1d6f8f" font-weight="bold">Wind</text>
+      <!-- Ziel-Wegpunkt -->
+      <circle cx="310" cy="140" r="10" fill="none" stroke="#b3541e" stroke-width="3"/>
+      <circle cx="310" cy="140" r="3" fill="#b3541e"/>
+      <text x="330" y="146" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#b3541e" font-weight="bold">WPT (Luv-Ziel)</text>
+      <!-- Laylines -->
+      <line x1="310" y1="140" x2="100" y2="390" stroke="#c62828" stroke-width="2" stroke-dasharray="8 6"/>
+      <line x1="310" y1="140" x2="520" y2="390" stroke="#c62828" stroke-width="2" stroke-dasharray="8 6"/>
+      <text x="88" y="415" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#c62828">Layline</text>
+      <text x="490" y="415" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#c62828">Layline</text>
+      <!-- Kreuzweg -->
+      <path d="M 310,520 L 170,330" fill="none" stroke="#13315c" stroke-width="3" marker-end="url(#lc)"/>
+      <path d="M 170,330 L 310,140" fill="none" stroke="#5c6b78" stroke-width="2.5" stroke-dasharray="4 5"/>
+      <!-- Boot am Wendepunkt -->
+      <g transform="translate(170,330) rotate(-35) scale(1.5)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c" opacity="0.9"/>
+      </g>
+      <text x="60" y="300" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#13315c" font-weight="bold">Hier wenden:</text>
+      <text x="46" y="318" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#13315c">BRG zum WPT = COG</text>
+      <text x="52" y="336" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#13315c">des anderen Bugs</text>
+      <!-- Beschriftung Schlag -->
+      <text x="255" y="450" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78" transform="rotate(-53 255 450)">Schlag, COG 010°</text>
+      <text x="225" y="225" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78" transform="rotate(53 225 225)">nach der Wende: COG ≈ 115°</text>
+    </svg>
+    <figcaption><strong>Die Layline-Methode:</strong> Auf dem Schlag beobachtest du die
+    Peilung (BRG) zum Wegpunkt. Sobald sie den erwarteten Kurs über Grund des anderen
+    Bugs erreicht (aktueller COG + realer Wendewinkel), stehst du auf der Layline —
+    wenden, anliegen, ankommen. Alles dahinter wäre Überstehen.</figcaption>
+  </figure>
+
+  <h2>4 · Winddreher am Display erkennen</h2>
+
+  <p>Auch das Erkennen von Drehern (Lektion 3: „im Drücker wenden") wird mit
+  Instrumenten präziser:</p>
+
+  <ul>
+    <li><strong>Referenz merken:</strong> Notiere den mittleren COG je Bug (z. B. Pinnwand/Handy). Läufst du plötzlich <strong>höher</strong> als die Referenz → Lift (Aufdreher), weiterfahren und profitieren. <strong>Tiefer</strong> → Header (Abdreher) → auf dem anderen Bug ist es jetzt ein Lift: <strong>wenden</strong>.</li>
+    <li><strong>Nicht auf jede Böe reagieren:</strong> erst wenden, wenn der Dreher ein paar Minuten steht — in Fallböen-Revieren (unter Hydras Steilküste) dreht der Wind im Minutentakt hin und zurück.</li>
+    <li><strong>Revierwissen einpreisen:</strong> Der Meltemi ist richtungsstabil — Dreher sind klein, Kreuzen ist „ehrliche Arbeit". An Thermiktagen dreht der Seewind mit der Tageszeit; der Schlag, der nachmittags Richtung Land führt, wird oft belohnt (Lektion 14).</li>
+  </ul>
+
+  <h2>5 · Der Kreuz-Workflow komplett</h2>
+
+  <ol>
+    <li>Wegpunkt aufs Luv-Ziel, Datenfelder: <strong>COG · SOG · BRG · DST · TWA</strong>.</li>
+    <li>Wendewinkel über Grund messen (einmalig): COG vor/nach einer Wende.</li>
+    <li>Langen Schlag zuerst (Lektion 3), voll und bei steuern, SOG halten.</li>
+    <li>COG gegen Referenz beobachten → Dreher erkennen, im Header wenden.</li>
+    <li>BRG beobachten → auf der Layline (± Reserve) der letzte Schlag ans Ziel.</li>
+    <li>Vor Untiefen/Verkehr: ranzoomen, Ausguck, KVR — der Plotter plant, du entscheidest.</li>
+  </ol>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Wendewinkel über Grund messen (~100–110°) — Wegpunkt setzen — wenden,
+    wenn BRG dem COG des anderen Bugs entspricht.</strong> VMG ist Trimm-Feedback, kein
+    Wendesignal. Höher COG als gewohnt = Lift = weiterfahren; tiefer = Header = wenden.
+    In kurzer Welle: Fahrt vor Höhe.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Grundlage:</strong> <a href="0003-kreuzen.html">Lektion 3 — Kreuzen</a> (Taktik, Wegerecht) und <a href="0015-plotter-und-instrumente.html">Lektion 15</a> (COG/BRG-Begriffe).</li>
+      <li><strong>Übung vor dem Törn:</strong> In einer Karten-App (z. B. der Plotter-App des Charter-Herstellers) einen Wegpunkt vor Ägina setzen und die Layline-Peilungen für N-Wind 5 Bft durchspielen.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/plotter.html">Plotter-Referenzkarte</a> (dort der Kreuz-Workflow kompakt).</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Rechne ein Layline-Beispiel mit echten Zahlen
+    durch" oder „Wie kreuze ich im Kanal von Poros mit Fährverkehr?"</p>
+    <p><a href="0015-plotter-und-instrumente.html">← Lektion 15</a> · <a href="../index.html">Kursübersicht</a> · <a href="0017-toernplanung.html">Lektion 17 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Du luvst an, das Boot zeigt näher ans Ziel, aber die SOG fällt von 6,2 auf 5,4 kn. Was ist passiert?',
+    options: ['Ein Header — sofort wenden', 'Du kneifst — wieder etwas abfallen, Fahrt zurückholen', 'Normale Böenschwankung — Kurs halten'],
+    correct: 1,
+    why: 'Höher zeigen fühlt sich gut an, aber der Fahrtverlust (und die wachsende Abdrift) ruiniert das VMG. Voll und bei mit Fahrt schlägt gekniffen und langsam — besonders in kurzer Welle.'
+  },
+  {
+    q: 'Wie bestimmst du den realen Wendewinkel deiner Charteryacht?',
+    options: ['COG vor und nach einer Wende ablesen und die Differenz nehmen', 'Den Standardwert 90° aus der Theorie verwenden', 'AWA auf beiden Bugs addieren und halbieren'],
+    correct: 0,
+    why: 'Über Grund kommen Abdrift und Welle dazu: real meist 100–110° statt 90°. Einmal messen — die Zahl ist die Basis der Layline-Methode.'
+  },
+  {
+    q: 'Du läufst COG 350°, Wendewinkel 105°, Wegpunkt in Luv. Wann stehst du auf der Layline?',
+    options: ['Wenn die Peilung zum Wegpunkt etwa 095° erreicht', 'Wenn die Distanz zum Wegpunkt unter eine Meile fällt', 'Wenn TWA auf dem aktuellen Bug genau 45° zeigt'],
+    correct: 0,
+    why: 'Nach der Wende wirst du ≈ 350° + 105° = 095° über Grund laufen. Zeigt die Peilung (BRG) zum Ziel diesen Wert, liegst du nach der Wende genau an — mit 5–10° Reserve wenden.'
+  },
+  {
+    q: 'Dein mittlerer COG auf Steuerbordbug war 010°, plötzlich läufst du stabil 000° — tiefer als vorher. Was tust du?',
+    options: ['Weiterfahren — tiefer laufen bedeutet mehr Fahrt', 'Wenden — der Header hier ist ein Lift auf dem anderen Bug', 'Anluven, bis wieder 010° anliegt'],
+    correct: 1,
+    why: 'Tiefer als die Referenz = Abdreher (Header). Auf dem anderen Bug wirkt derselbe Dreher als Aufdreher. Erst prüfen, ob er ein paar Minuten steht — dann wenden.'
+  },
+  {
+    q: 'Warum taugt die Plotter-Anzeige „VMG zum Wegpunkt" nicht als Wendesignal auf der Kreuz?',
+    options: ['Sie wird nur einmal pro Minute aktualisiert', 'Sie ist auf der Layline am schlechtesten, obwohl du dort richtig fährst', 'Sie funktioniert nur mit eingelegter Route, nicht mit Einzelwegpunkt'],
+    correct: 1,
+    why: 'Kurz vor der Layline fährst du fast quer zur Ziellinie — VMG-to-Waypoint sinkt, obwohl der Schlag korrekt ist. VMG ist Trimm-Feedback; gewendet wird nach der BRG/COG-Methode.'
+  }
+]);
+</script>
+</body>
+</html>

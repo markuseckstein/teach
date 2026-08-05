@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 2 — Wende, Halse, Q-Wende &amp; Beidrehen</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0001-kurse-zum-wind-und-segelstellung.html">← Lektion 1</a>
+    <a href="../reference/manoever-kommandos.html">📄 Kommando-Referenz</a>
+    <span class="spacer"></span>
+    <a href="0003-kreuzen.html">Nächste Lektion: Kreuzen →</a>
+  </nav>
+
+  <h1>Wende, Halse, Q-Wende &amp; Beidrehen</h1>
+  <p class="lesson-meta">Lektion 2 · Modul A — Grundlagen &amp; Manöver · ca. 25 Minuten</p>
+
+  <p>Die vier Standardmanöver, die du als Skipper <em>ansagen</em> können musst — denn auf
+  der Charteryacht bist du der, der die Kommandos gibt und die Crew einteilt. Voraussetzung
+  ist die Kursrose aus <a href="0001-kurse-zum-wind-und-segelstellung.html">Lektion 1</a>:
+  Wende und Halse sind nichts anderes als der Wechsel von einem Bug auf den anderen —
+  einmal mit dem <strong>Bug</strong> durch den Wind (Wende), einmal mit dem
+  <strong>Heck</strong> (Halse).</p>
+
+  <h2>1 · Die Wende</h2>
+
+  <p>Ausgangs- und Zielkurs: <strong>hoch am Wind</strong>. Das Boot dreht mit dem Bug durch
+  den Wind — dabei killen die Segel kurz, das Boot verliert Fahrt. Deshalb gilt:
+  <strong>vor der Wende Fahrt aufnehmen</strong> (notfalls kurz leicht abfallen).</p>
+
+  <figure>
+    <svg viewBox="0 0 640 480" role="img" aria-label="Ablauf der Wende">
+      <defs>
+        <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#5c6b78"/>
+        </marker>
+      </defs>
+
+      <!-- Wind -->
+      <line x1="90" y1="30" x2="90" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="130" y1="30" x2="130" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="70" y="115" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Kurslinie: Amwind Bb-Bug, Drehung durch den Wind, Amwind Stb-Bug -->
+      <path d="M200,430 L340,290 C395,235 400,150 335,115 L245,65"
+            fill="none" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#ap)"/>
+
+      <!-- Pos 1: Amwind Backbordbug -->
+      <g transform="translate(250,380) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="300" y="390" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545"><tspan font-weight="bold">① „Klar zur Wende?"</tspan> – „Ist klar!"</text>
+      <text x="300" y="410" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Amwindkurs, volle Fahrt</text>
+
+      <!-- Pos 2: im Wind -->
+      <g transform="translate(388,185)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <path d="M0,-4 Q4,4 0,10 Q-4,16 0,22" fill="none" stroke="#b3541e" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <text x="425" y="180" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545"><tspan font-weight="bold">② „Ree!"</tspan> — Ruder in Lee,</text>
+      <text x="425" y="200" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Bug dreht durch den Wind,</text>
+      <text x="425" y="218" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Segel killen, Alte Fockschot los</text>
+
+      <!-- Pos 3: Amwind Steuerbordbug -->
+      <g transform="translate(290,90) rotate(-45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="330" y="55" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545"><tspan font-weight="bold">③ „Über die Fock!"</tspan> — neue Schot dicht,</text>
+      <text x="330" y="75" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">auf neuem Amwindkurs stützen</text>
+    </svg>
+    <figcaption><strong>Die Wende</strong> — mit dem Bug durch den Wind, Kursänderung
+    ≈ 90°. Das Großsegel kommt von allein über; Arbeit gibt es nur an den Fockschoten.</figcaption>
+  </figure>
+
+  <p>Ablauf als Skipper-Checkliste:</p>
+  <ol>
+    <li><strong>„Klar zur Wende?"</strong> — Crew geht an die Fockschoten (alte Schot klar zum Loswerfen, neue auf die Winsch), Cockpit aufgeräumt? Antwort abwarten: <strong>„Ist klar!"</strong></li>
+    <li><strong>„Ree!"</strong> — Ruder zügig (nicht ruckartig) nach Lee legen. Boot luvt an, schießt in den Wind.</li>
+    <li>Sobald die Fock killt: <strong>alte Fockschot los</strong>. Der Bug dreht weiter durch den Wind.</li>
+    <li><strong>„Über die Fock!"</strong> — sobald die Fock auf die neue Seite überschlägt: neue Schot dichtholen. Auf dem neuen Amwindkurs abstützen, Groß nachtrimmen.</li>
+  </ol>
+
+  <div class="callout achtung">
+    <span class="label">Typischer Fehler</span>
+    <p><strong>Zu wenig Fahrt oder zu zögerlich gedreht → das Boot bleibt im Wind stecken</strong>
+    („steckt in der Wende"). Rettung: Fock auf der alten Seite <em>back</em> halten — der Wind
+    drückt den Bug auf den neuen Bug herum. Notfalls zurück auf den alten Bug abfallen, Fahrt
+    holen, neu ansetzen. Kein Drama, passiert jeder Crew.</p>
+  </div>
+
+  <h2>2 · Die Halse</h2>
+
+  <p>Ausgangs- und Zielkurs: <strong>Raumschots</strong>. Das Heck dreht durch den Wind. Der
+  kritische Moment: Das Großsegel wechselt die Seite — und zwar mit voller Windkraft dahinter.
+  Deshalb wird das Groß <strong>vor dem Durchdrehen mittschiffs dichtgeholt</strong>, damit
+  der Baum nur einen kurzen, kontrollierten Weg hat.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 520" role="img" aria-label="Ablauf der Halse">
+      <!-- Wind -->
+      <line x1="90" y1="30" x2="90" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="130" y1="30" x2="130" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="70" y="115" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Kurslinie -->
+      <path d="M240,110 L340,210 C390,260 395,330 340,380 L250,455"
+            fill="none" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#ap)"/>
+
+      <!-- Pos 1: Raumschots Backbordbug -->
+      <g transform="translate(285,155) rotate(135)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="23.6" y2="3" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="340" y="130" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545"><tspan font-weight="bold">① „Klar zur Halse?"</tspan> – „Ist klar!"</text>
+      <text x="340" y="150" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Raumschots · Crew duckt sich, Großschot klar</text>
+
+      <!-- Pos 2: vor dem Wind, Groß mittschiffs -->
+      <g transform="translate(380,295) rotate(180)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="6" y2="20" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="420" y="280" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545"><tspan font-weight="bold">② „Rund achtern!"</tspan></text>
+      <text x="420" y="300" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Vor dem Wind: Großschot mittschiffs</text>
+      <text x="420" y="318" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">dichtholen, Heck dreht durch den Wind,</text>
+      <text x="420" y="336" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Baum kommt kontrolliert über</text>
+
+      <!-- Pos 3: Raumschots Steuerbordbug -->
+      <g transform="translate(295,420) rotate(225)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-23.6" y2="3" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="345" y="430" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545"><tspan font-weight="bold">③</tspan> Großschot zügig fieren,</text>
+      <text x="345" y="450" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Fock übernehmen, neuen Kurs stützen</text>
+    </svg>
+    <figcaption><strong>Die Halse</strong> — mit dem Heck durch den Wind. Der gefährliche
+    Moment ist ②: Wer das Groß nicht dichtholt, riskiert einen unkontrollierten
+    Baumschlag über das Cockpit.</figcaption>
+  </figure>
+
+  <ol>
+    <li><strong>„Klar zur Halse?"</strong> — Crew aus dem Baumbereich, Großschot klar. <strong>„Ist klar!"</strong></li>
+    <li>Langsam anluven auf genau vor den Wind, dabei <strong>Großschot mittschiffs dichtholen</strong>.</li>
+    <li><strong>„Rund achtern!"</strong> — Heck dreht durch den Wind, der Baum kommt auf die neue Seite über.</li>
+    <li>Sofort <strong>Großschot zügig fieren</strong> (sonst luvt das Boot ungewollt an — „sonnt sich"), Fock auf die neue Seite, Kurs stützen.</li>
+  </ol>
+
+  <div class="callout achtung">
+    <span class="label">Patenthalse</span>
+    <p>Die <strong>ungewollte</strong> Halse: Auf Vorwindkurs läuft der Wind unbemerkt hinter
+    das Großsegel, der Baum schlägt ungebremst über — Lebensgefahr für Köpfe im Cockpit und
+    Materialbruch. Vorbeugen: nicht platt vor dem Wind fahren (lieber Raumschots-Schläge),
+    aufmerksam auf Windfäden/Verklicker achten, bei Welle und Schiebewind einen
+    <strong>Bullenstander</strong> (Leine, die den Baum nach vorn sichert) setzen.</p>
+  </div>
+
+  <h2>3 · Die Q-Wende — die Charter-Halse</h2>
+
+  <p>Bei viel Wind, eingespielter Kleincrew oder unsicherem Gefühl ersetzt du die Halse
+  komplett: <strong>anluven, normale Wende fahren, auf den neuen Raumschotskurs abfallen</strong>.
+  Kursänderung 270° statt 90° — dauert länger, braucht Platz, aber der Baum kommt nur bei
+  killenden Segeln über. Schon in der SKS-Prüfung darf die Halse durch eine Q-Wende ersetzt
+  werden; in der Praxis fahren sie viele Skipper bei Starkwind grundsätzlich.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 520" role="img" aria-label="Ablauf der Q-Wende">
+      <!-- Wind -->
+      <line x1="300" y1="25" x2="300" y2="75" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="340" y1="25" x2="340" y2="75" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="365" y="55" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- 270°-Bogen: Einfahrt unten links (Kurs SO), gegen den Uhrzeigersinn -->
+      <path d="M214,376 A150,150 0 1 0 214,164"
+            fill="none" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#ap)"/>
+
+      <!-- ① Raumschots Bb-Bug (Einfahrt) -->
+      <g transform="translate(214,376) rotate(135)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="23.6" y2="3" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="60" y="430" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545" font-weight="bold">① Raumschots,</text>
+      <text x="60" y="450" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">anluven statt halsen,</text>
+      <text x="60" y="468" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Schoten dichtholen</text>
+
+      <!-- ② Amwind Bb-Bug -->
+      <g transform="translate(426,376) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="470" y="420" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545" font-weight="bold">② Hoch am Wind</text>
+      <text x="470" y="440" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Fahrt aufnehmen</text>
+
+      <!-- ③ Wende (im Wind) -->
+      <g transform="translate(470,270)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <path d="M0,-4 Q4,4 0,10 Q-4,16 0,22" fill="none" stroke="#b3541e" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <text x="500" y="255" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#c62828" font-weight="bold">③ „Ree!"</text>
+      <text x="500" y="275" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">normale Wende</text>
+
+      <!-- ④ Amwind Stb-Bug -->
+      <g transform="translate(426,164) rotate(-45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="470" y="120" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545" font-weight="bold">④ Neuer Bug,</text>
+      <text x="470" y="140" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">weiter abfallen</text>
+
+      <!-- ⑤ Raumschots Stb-Bug (Ausfahrt) -->
+      <g transform="translate(214,164) rotate(225)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-23.6" y2="3" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="55" y="120" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#0b2545" font-weight="bold">⑤ Raumschots auf</text>
+      <text x="55" y="140" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">neuem Bug — Schoten</text>
+      <text x="55" y="158" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">wieder fieren — fertig</text>
+    </svg>
+    <figcaption><strong>Die Q-Wende</strong> ersetzt die Halse durch eine 270°-Drehung mit
+    normaler Wende in der Mitte. Braucht Platz und Zeit — dafür kommt der Baum nie mit
+    Druck über.</figcaption>
+  </figure>
+
+  <h2>4 · Beidrehen — die Pausentaste</h2>
+
+  <p>Beidrehen bringt das Boot ohne Ankern und ohne Segelbergen fast zum Stillstand —
+  perfekt zum Reffen, für eine Pause, zum Warten vor der Hafeneinfahrt oder um bei einem
+  Problem in Ruhe nachzudenken. Der Trick: Fock und Ruder arbeiten gegeneinander.</p>
+
+  <figure>
+    <svg viewBox="0 0 560 340" role="img" aria-label="Beidrehen: Segel- und Ruderstellung">
+      <!-- Wind -->
+      <line x1="90" y1="25" x2="90" y2="80" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="130" y1="25" x2="130" y2="80" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="70" y="105" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Boot beigedreht, Bug ca. 50° zum Wind, Wind über Steuerbord -->
+      <g transform="translate(300,180) rotate(-50) scale(1.7)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <!-- Fock back: nach Luv (Steuerbord, +x) -->
+        <line x1="0" y1="-14" x2="10" y2="-2" stroke="#b3541e" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Groß gefiert nach Lee (-x) -->
+        <line x1="0" y1="-2" x2="-13" y2="12" stroke="#b3541e" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Ruder nach Luv gelegt -->
+        <line x1="0" y1="24" x2="6" y2="32" stroke="#c62828" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <text x="392" y="105" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545" font-weight="bold">Fock back</text>
+      <text x="392" y="124" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">(drückt Bug nach Lee)</text>
+      <text x="392" y="165" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545" font-weight="bold">Groß gefiert</text>
+      <text x="392" y="184" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">(killt teilweise)</text>
+      <text x="392" y="225" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#c62828" font-weight="bold">Ruder in Luv, festgelegt</text>
+      <text x="392" y="244" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">(will Bug nach Luv drehen)</text>
+
+      <!-- Driftpfeil -->
+      <line x1="255" y1="255" x2="205" y2="300" stroke="#5c6b78" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#ap)"/>
+      <text x="60" y="315" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Boot driftet langsam nach Lee —</text>
+      <text x="60" y="333" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Lee-Raum einplanen!</text>
+    </svg>
+    <figcaption><strong>Beigedreht:</strong> Die backstehende Fock drückt den Bug nach Lee,
+    das luvwärts festgelegte Ruder will ihn nach Luv drehen — das Boot pendelt sich bei
+    ≈ 50–60° zum Wind ein und driftet nur noch langsam.</figcaption>
+  </figure>
+
+  <p>So kommst du hinein (einfachste Methode aus dem Amwindkurs):</p>
+  <ol>
+    <li>Wende einleiten wie gewohnt — aber die <strong>Fockschot nicht loswerfen</strong>: Die Fock bleibt auf der alten Seite dicht und steht nach der Drehung <em>back</em>.</li>
+    <li>Wenn der Bug auf dem neuen Bug bei ≈ 50–60° zum Wind ist: <strong>Ruder ganz nach Luv legen und festhalten/festlegen</strong>.</li>
+    <li><strong>Großschot auffieren</strong>, bis das Boot ruhig liegt. Fertig — es „beiliegt".</li>
+    <li>Auflösen: Ruder mittschiffs, Fock auf die richtige Seite holen, abfallen, Fahrt aufnehmen.</li>
+  </ol>
+
+  <div class="callout revier">
+    <span class="label">Praxis-Tipp für den Törn</span>
+    <p>Beidrehen ist dein bester Freund beim <strong>Reffen auf See</strong> — im Saronischen
+    Golf frischt der Nachmittagswind gern schnell auf. Beigedreht reffst du in Ruhe, statt
+    im killenden Chaos. Übe es am ersten Segeltag einmal mit der Crew.</p>
+  </div>
+
+  <h2>5 · Alle Kommandos im Überblick</h2>
+
+  <table>
+    <thead>
+      <tr><th>Manöver</th><th>Kommandofolge</th><th>Durch den Wind</th><th>Kursänderung</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Wende</strong></td><td>„Klar zur Wende?" → „Ist klar!" → „Ree!" → „Über die Fock!"</td><td>Bug</td><td>≈ 90°</td></tr>
+      <tr><td><strong>Halse</strong></td><td>„Klar zur Halse?" → „Ist klar!" → (Groß dichtholen) → „Rund achtern!" → (Groß fieren)</td><td>Heck</td><td>≈ 90°</td></tr>
+      <tr><td><strong>Q-Wende</strong></td><td>Ankündigen → anluven &amp; dichtholen → normale Wende → abfallen &amp; fieren</td><td>Bug</td><td>270°</td></tr>
+      <tr><td><strong>Beidrehen</strong></td><td>Wende ohne Fockbedienung → Ruder in Luv fest → Groß fieren</td><td>Bug</td><td>— (liegt bei)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Wende: Bug durch den Wind, harmlos. Halse: Heck durch den Wind, kraftvoll.</strong>
+    Im Zweifel — viel Wind, müde Crew — ersetzt die Q-Wende jede Halse. Und ein sauberes
+    „Klar zum Manöver?" mit echter Antwort ist keine Förmlichkeit, sondern deine
+    Unfallverhütung als Skipper.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle (Video):</strong> <a href="https://www.youtube.com/watch?v=gde4Z3hi8_I">„Alle SKS Manöver für die Prüfung"</a> — sieh dir Wende und Halse einmal in Bewegung an; das Video erklärt auch, wann die Q-Wende die bessere Halse ist.</li>
+      <li><strong>Nachlesen:</strong> <a href="https://de.wikibooks.org/wiki/Segeln/_Man%C3%B6ver">Wikibooks: Segeln — Manöver</a> (Kommandos) · <a href="https://www.segeln360.de/seemannschaft/segelmanoever.html">segeln360: Segelmanöver</a></li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/manoever-kommandos.html">Kommando-Referenzkarte</a> — ausdrucken, an Bord mitnehmen.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Wie briefe ich eine Charter-Crew, die noch nie
+    gesegelt ist?" oder „Wann reffe ich besser, statt beizudrehen?"</p>
+    <p><a href="0001-kurse-zum-wind-und-segelstellung.html">← Lektion 1</a> · <a href="../index.html">Kursübersicht</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Was ist der grundlegende Unterschied zwischen Wende und Halse?',
+    options: ['Bei der Wende dreht der Bug durch den Wind, bei der Halse das Heck', 'Bei der Wende dreht das Heck durch den Wind, bei der Halse der Bug', 'Die Wende fährt man bei Starkwind, die Halse nur bei Leichtwind'],
+    correct: 0,
+    why: 'Wende = Bug durch den Wind (aus dem Amwindkurs), Halse = Heck durch den Wind (aus dem Raumschotskurs).'
+  },
+  {
+    q: 'Welches Kommando leitet die Drehung bei der Wende ein?',
+    options: ['„Rund achtern!"', '„Ree!"', '„Über die Fock!"'],
+    correct: 1,
+    why: '„Ree!" — das Ruder wird nach Lee gelegt, das Boot luvt an und dreht durch den Wind. „Rund achtern!" gehört zur Halse.'
+  },
+  {
+    q: 'Warum wird das Großsegel vor dem „Rund achtern" mittschiffs dichtgeholt?',
+    options: ['Damit das Boot vor dem Manöver möglichst viel Fahrt aufnehmen kann', 'Damit die Fock beim Manöver leichter auf die neue Seite kommt', 'Damit der Baum nur einen kurzen, kontrollierten Weg zur neuen Seite hat'],
+    correct: 2,
+    why: 'Dichtgeholt kann der Baum beim Seitenwechsel nicht mit Schwung übers Cockpit schlagen — das ist der ganze Sicherheitskern der Halse.'
+  },
+  {
+    q: 'Das Boot bleibt bei der Wende im Wind stecken. Was hilft sofort?',
+    options: ['Die Fock auf der alten Seite back halten, sie drückt den Bug herum', 'Das Großsegel sofort komplett fieren und den Motor starten', 'Das Ruder hart mittschiffs nehmen und einfach kurz abwarten'],
+    correct: 0,
+    why: 'Die backgehaltene Fock wirkt wie ein Hebel und drückt den Bug auf den neuen Bug — Standardrettung, kein Motor nötig.'
+  },
+  {
+    q: 'Wann ersetzt du eine Halse sinnvollerweise durch eine Q-Wende?',
+    options: ['Bei viel Wind oder unsicherer Crew, wenn Platz und Zeit vorhanden sind', 'Bei sehr wenig Wind, weil die Halse dann nicht mehr funktionieren kann', 'In engen Hafenbecken, weil die Q-Wende deutlich weniger Raum braucht'],
+    correct: 0,
+    why: 'Die Q-Wende braucht MEHR Platz und Zeit, ist aber sicherer: Der Baum kommt nur bei killenden Segeln über — ideal bei Starkwind.'
+  },
+  {
+    q: 'Wie stehen Fock und Ruder beim Beidrehen?',
+    options: ['Fock back nach Luv, Ruder nach Luv gelegt und dort festgehalten', 'Fock normal nach Lee, Ruder mittschiffs mit dem Autopiloten fixiert', 'Fock geborgen auf dem Vorschiff, Ruder hart nach Lee festgebunden'],
+    correct: 0,
+    why: 'Backstehende Fock (drückt nach Lee) gegen luvwärts gelegtes Ruder (drückt nach Luv) — dieses Gleichgewicht hält das Boot ruhig bei ≈ 50–60° zum Wind.'
+  }
+]);
+</script>
+</body>
+</html>

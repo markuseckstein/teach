@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 9 — Routinefunk &amp; Marina-Anmeldung</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0008-knoten-und-leinenarbeit.html">← Lektion 8</a>
+    <a href="../reference/seefunk.html">📄 Funk-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0010-notfunk.html">Nächste Lektion: Notfunk →</a>
+  </nav>
+
+  <h1>Routinefunk &amp; Marina-Anmeldung</h1>
+  <p class="lesson-meta">Lektion 9 · Modul C — Seefunk (SRC-Refresh) · ca. 20 Minuten</p>
+
+  <p>Dein SRC-Wissen ist da — es braucht nur Staubwischen. Diese Lektion bringt die
+  Kanalordnung und den Routineanruf zurück, mit dem du dich unterwegs bei Marinas und
+  anderen Stationen meldest. Die Not- und Dringlichkeitsverfahren kommen in
+  <a href="0010-notfunk.html">Lektion 10</a>, die Griechenland-Praxis in
+  <a href="0011-funk-griechenland.html">Lektion 11</a>.</p>
+
+  <h2>1 · Kanalordnung — das Gerüst</h2>
+
+  <table>
+    <thead>
+      <tr><th>Kanal</th><th>Zweck</th><th>Merken</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>16</strong></td>
+        <td>Not, Dringlichkeit, Sicherheit — und <em>Anruf</em>, wenn kein Arbeitskanal bekannt ist</td>
+        <td>Hörwache fahren! Nach dem Anruf sofort auf einen Arbeitskanal wechseln</td>
+      </tr>
+      <tr>
+        <td><strong>70</strong></td>
+        <td>Ausschließlich DSC (digitale Anrufe)</td>
+        <td><strong>Niemals Sprechfunk</strong> auf 70 — das Gerät nutzt ihn selbst</td>
+      </tr>
+      <tr>
+        <td><strong>06, 08, 72, 77</strong></td>
+        <td>Schiff–Schiff (Intership)</td>
+        <td>72/77 sind die üblichen „Plauderkanäle" zwischen Yachten/Flottillen</td>
+      </tr>
+      <tr>
+        <td><strong>Hafen-/Marinakanäle</strong></td>
+        <td>Je Hafen verschieden — steht im Revierführer/Hafenhandbuch</td>
+        <td>Beispiel: <strong>Alimos Marina (Athen) = Kanal 71</strong>; Port Police in griechischen Stadthäfen häufig Kanal 12</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Dazu die Grundbegriffe: Dein Boot ist eine <strong>Seefunkstelle</strong> mit
+  <strong>Rufzeichen</strong> und <strong>MMSI</strong> (neunstellige Nummer, im
+  DSC-Controller programmiert — bei der Charterübernahme kurz checken, wo Rufzeichen und
+  MMSI im Gerät/an der Navi-Ecke stehen). Land-Gegenstellen sind
+  <strong>Küstenfunkstellen</strong> (z. B. Olympia Radio).</p>
+
+  <h2>2 · Funkdisziplin — die fünf Gewohnheiten</h2>
+
+  <ol>
+    <li><strong>Erst hören, dann senden</strong> — mindestens ein paar Sekunden Reinhören, ob der Kanal frei ist.</li>
+    <li><strong>Denken, drücken, schlucken, sprechen:</strong> Sprechtaste drücken, kurz warten, dann reden — sonst fehlt die erste Silbe.</li>
+    <li><strong>Kurz und sachlich.</strong> Namen beim Anruf maximal dreimal, danach reicht einmal.</li>
+    <li><strong>„Over"</strong> = ich erwarte Antwort. <strong>„Out"</strong> = Gespräch beendet. Nie beides zusammen.</li>
+    <li>Unklare Namen <strong>buchstabieren</strong> — NATO-Alphabet (Alfa, Bravo, Charlie … Tabelle auf der <a href="../reference/seefunk.html">Referenzkarte</a>).</li>
+  </ol>
+
+  <h2>3 · Der Routineanruf — Schema und Beispiel</h2>
+
+  <p>Schema: <em>Gegenstelle (bis 3×) — „this is" — eigener Name (bis 3×) — Anliegen — „over"</em>.
+  Kennst du den Arbeitskanal der Marina (Revierführer!), rufst du <strong>direkt dort</strong>
+  an — Kanal 16 bleibt frei. So klingt die Anmeldung in Alimos:</p>
+
+  <div class="funkspruch">DU (Kanal 71):
+Alimos Marina, Alimos Marina —
+this is sailing yacht IKAROS, IKAROS — over.
+
+MARINA:
+Sailing yacht Ikaros — Alimos Marina —
+go ahead — over.
+
+DU:
+Alimos Marina — Ikaros —
+we are a 46 foot sailing yacht, arriving from Poros,
+ETA one five three zero local time,
+requesting a berth for two nights — over.
+
+MARINA:
+Ikaros — Alimos Marina —
+proceed to pier three, berth number one two,
+a marinero will assist you — over.
+
+DU:
+Alimos Marina — Ikaros —
+understood, pier three, berth one two — thank you, out.</div>
+
+  <p>Was du vor dem Anruf bereitlegst: <strong>Bootsname, Länge (ggf. in Fuß), Tiefgang,
+  ETA, Anzahl Nächte</strong>. Zahlen einzeln sprechen („one five three zero"), Antworten
+  <strong>zurücklesen</strong> („understood, pier three …") — das ist keine Höflichkeit,
+  sondern Fehlerkontrolle.</p>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Wer? — Ich. — Was?</strong> Jeder Routineanruf ist dasselbe Dreieck:
+    Gegenstelle, eigener Name, Anliegen, „over". Wenn niemand antwortet: 2 Minuten warten,
+    noch zweimal versuchen — dann Plan B (Telefon, einfach einlaufen und im Hafenbüro
+    melden; in Griechenland völlig normal, → Lektion 11).</p>
+  </div>
+
+  <div class="callout revier">
+    <span class="label">Charter-Praxis</span>
+    <p>Beim Check-in nachfragen: Auf welchem Kanal ist die <strong>Charterbasis</strong>
+    erreichbar (oft 72 oder 77), und welche Telefonnummer gilt für Technik-Notfälle?
+    Ein klemmendes Bordklo ist ein Fall fürs Basistelefon — nicht für Kanal 16.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://blog.scansail.com/de/seefunk-in-der-charterpraxis/">Scansail: Seefunk in der Charterpraxis</a> — genau der Alltag, den du fahren wirst; zum Pauken der Kanäle: <a href="https://www.bootspruefung.de/theorie/src/ukwkanaele">bootspruefung.de: UKW-Kanäle (SRC)</a>.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/seefunk.html">Funk-Referenzkarte</a> — Kanaltabelle, Schemata, Buchstabiertafel.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Wie melde ich mich, wenn ich den Marina-Kanal
+    nicht kenne?" oder „Übe einen Beispieldialog mit mir — du bist die Marina."</p>
+    <p><a href="0008-knoten-und-leinenarbeit.html">← Lektion 8</a> · <a href="../index.html">Kursübersicht</a> · <a href="0010-notfunk.html">Lektion 10 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Wofür ist Kanal 70 reserviert?',
+    options: ['Ausschließlich für DSC-Anrufe — niemals für Sprechfunk', 'Für Routinegespräche, wenn Kanal 16 gerade belegt ist', 'Für den Hafenfunk aller Marinas im Mittelmeerraum'],
+    correct: 0,
+    why: 'Kanal 70 gehört dem DSC-Controller. Sprechfunk dort stört die digitalen Anrufe aller anderen — inklusive Notalarme.'
+  },
+  {
+    q: 'Du kennst den Arbeitskanal der Marina (z. B. Alimos: 71). Wo rufst du an?',
+    options: ['Direkt auf dem Arbeitskanal — Kanal 16 bleibt frei', 'Immer zuerst auf Kanal 16, dann wechselt man gemeinsam', 'Auf Kanal 72, dem üblichen Anrufkanal für alle Yachten'],
+    correct: 0,
+    why: 'Bekannter Arbeitskanal = direkt dort anrufen. Kanal 16 nutzt du für den Anruf nur, wenn du keinen Arbeitskanal kennst — und wechselst dann sofort weg.'
+  },
+  {
+    q: 'Wie lautet das Schema eines Routineanrufs?',
+    options: ['Gegenstelle (bis 3×) — „this is" — eigener Name — Anliegen — „over"', 'Eigener Name (bis 3×) — „calling" — Gegenstelle — Anliegen — „out"', 'Anliegen zuerst — dann Gegenstelle und eigener Name — „over and out"'],
+    correct: 0,
+    why: 'Erst wen du rufst, dann wer du bist, dann was du willst. Und „over and out" gibt es nur im Kino.'
+  },
+  {
+    q: 'Was bedeutet „over" am Ende deiner Sendung?',
+    options: ['Ich erwarte jetzt eine Antwort der Gegenstelle', 'Das Gespräch ist beendet, der Kanal ist wieder frei', 'Ich wiederhole die Nachricht gleich noch einmal'],
+    correct: 0,
+    why: '„Over" = Antwort erwartet, „out" = Ende. Deshalb schließt der letzte Spruch des Dialogs mit „out".'
+  },
+  {
+    q: 'Warum liest du die Anweisung der Marina zurück („understood, pier three …")?',
+    options: ['Als Fehlerkontrolle — Missverständnisse fallen sofort auf', 'Aus Höflichkeit — das gehört zum guten Ton im Seefunk', 'Zur Dokumentation — der Mitschnitt dient später als Beleg'],
+    correct: 0,
+    why: 'Readback ist Fehlerkontrolle: Hast du „pier three" verstanden, die Marina aber „pier two" gesagt, korrigiert sie dich sofort.'
+  },
+  {
+    q: 'Die Marina antwortet nach drei Versuchen nicht. Was tust du?',
+    options: ['Plan B: anrufen oder einlaufen und im Hafenbüro melden', 'Auf Kanal 16 einen allgemeinen Anruf an alle Stationen senden', 'Vor der Einfahrt ankern und auf den nächsten Funkkontakt warten'],
+    correct: 0,
+    why: 'Gerade kleine griechische Häfen funken oft nicht — Telefon oder einfach anlegen und melden ist dort der normale Weg.'
+  }
+]);
+</script>
+</body>
+</html>

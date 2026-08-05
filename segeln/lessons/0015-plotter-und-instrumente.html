@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 15 — Plotter &amp; Instrumente: SOG/COG, Wind, Tiefe, AIS</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0014-aegaeis-wetter.html">← Lektion 14</a>
+    <a href="../reference/plotter.html">📄 Plotter-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0016-kreuzen-mit-dem-plotter.html">Nächste Lektion: Kreuzen mit dem Plotter →</a>
+  </nav>
+
+  <h1>Plotter &amp; Instrumente: SOG/COG, Wind, Tiefe, AIS</h1>
+  <p class="lesson-meta">Lektion 15 · Modul E — Navigation &amp; Törnplanung · ca. 25 Minuten · SKS-Refresh</p>
+
+  <p>Auf der Charteryacht triffst du einen Plotter, den du nicht kennst — Raymarine,
+  Garmin oder B&amp;G, jeder mit eigener Menülogik. Was sich <em>nicht</em> ändert, sind
+  die Daten dahinter. Wer die Abkürzungen sicher liest und weiß, <strong>welche Zahl
+  für welche Entscheidung</strong> zuständig ist, findet sich auf jedem Gerät in zehn
+  Minuten zurecht. Genau das frischen wir hier auf.</p>
+
+  <h2>1 · Fahrt und Kurs: zwei Welten, vier Zahlen</h2>
+
+  <p>Der Klassiker unter den Verwechslungen: Kompass und Logge messen das Boot
+  <strong>durchs Wasser</strong>, das GPS misst es <strong>über Grund</strong>. Dazwischen
+  liegen Abdrift (Wind schiebt seitlich) und Strom (im Saronischen Golf praktisch null —
+  ein Luxus gegenüber der Ostsee).</p>
+
+  <table>
+    <thead>
+      <tr><th>Anzeige</th><th>Heißt</th><th>Misst</th><th>Wofür du sie brauchst</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>HDG</strong></td><td>Heading</td><td>Wohin der <em>Bug</em> zeigt (Kompass)</td><td>Steuern, Kurs halten</td></tr>
+      <tr><td><strong>STW</strong> / LOG</td><td>Speed through water</td><td>Fahrt <em>durchs Wasser</em> (Paddelrad)</td><td>Trimmvergleich; oft ungenau (bewachsenes Rädchen!)</td></tr>
+      <tr><td><strong>COG</strong></td><td>Course over ground</td><td>Wohin sich das Boot <em>tatsächlich</em> bewegt (GPS)</td><td><strong>Navigation</strong> — komme ich am Ziel/an der Untiefe vorbei?</td></tr>
+      <tr><td><strong>SOG</strong></td><td>Speed over ground</td><td>Tatsächliche Geschwindigkeit (GPS)</td><td><strong>Ankunftszeit</strong> — Distanz ÷ SOG = Stunden</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <svg viewBox="0 0 640 340" role="img" aria-label="Unterschied zwischen Heading und Kurs über Grund durch Abdrift">
+      <defs>
+        <marker id="pv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#13315c"/>
+        </marker>
+        <marker id="pw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#b3541e"/>
+        </marker>
+      </defs>
+      <!-- Wind von oben -->
+      <line x1="320" y1="30" x2="320" y2="80" stroke="#1d6f8f" stroke-width="3" marker-end="url(#pw)"/>
+      <line x1="360" y1="30" x2="360" y2="80" stroke="#1d6f8f" stroke-width="3" marker-end="url(#pw)"/>
+      <text x="385" y="60" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#1d6f8f" font-weight="bold">Wind</text>
+      <!-- Boot -->
+      <g transform="translate(160,230) rotate(55) scale(2.0)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c" opacity="0.9"/>
+      </g>
+      <!-- HDG Vektor -->
+      <line x1="200" y1="200" x2="440" y2="95" stroke="#13315c" stroke-width="3.5" marker-end="url(#pv)"/>
+      <text x="415" y="80" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#13315c" font-weight="bold">HDG — dahin zeigt der Bug</text>
+      <!-- COG Vektor -->
+      <line x1="200" y1="200" x2="480" y2="145" stroke="#b3541e" stroke-width="3.5" stroke-dasharray="9 5" marker-end="url(#pr)"/>
+      <text x="440" y="180" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#b3541e" font-weight="bold">COG — dahin fährst du wirklich</text>
+      <!-- Abdrift-Winkel -->
+      <path d="M 300,157 A 110,110 0 0 1 308,180" fill="none" stroke="#5c6b78" stroke-width="2"/>
+      <text x="330" y="132" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Abdrift ≈ 3–6° am Wind</text>
+    </svg>
+    <figcaption><strong>Abdrift sichtbar gemacht:</strong> Am Wind schiebt der Winddruck
+    das Boot ein paar Grad nach Lee — der Bug zeigt höher (HDG), als das Boot fährt
+    (COG). Fürs <em>Steuern</em> nimmst du den Kompass, für die Frage <em>„komme ich da
+    vorbei / liege ich das Ziel an?"</em> zählt <strong>immer COG</strong>. Das wird beim
+    Kreuzen in <a href="0016-kreuzen-mit-dem-plotter.html">Lektion 16</a> zum zentralen Werkzeug.</figcaption>
+  </figure>
+
+  <div class="callout merke">
+    <span class="label">Faustregel Ankunftszeit</span>
+    <p><strong>Distanz ÷ SOG = Stunden.</strong> 15 nm bei 5 kn SOG = 3 h. Für die
+    Törnplanung rechnest du konservativ mit <strong>5 kn Schnitt</strong> — Kreuzstrecken
+    zählen anderthalbfach (die Meilen durchs Wasser sind länger als die Luftlinie).</p>
+  </div>
+
+  <h2>2 · Wind: AWA/AWS gegen TWA/TWS</h2>
+
+  <p>Aus <a href="0001-kurse-zum-wind-und-segelstellung.html">Lektion 1</a> kennst du das
+  Prinzip: Das Masttop misst den <strong>scheinbaren</strong> Wind (AWA/AWS), der Rechner
+  zieht die Bootsbewegung ab und zeigt den <strong>wahren</strong> (TWA/TWS). Die
+  Arbeitsteilung an Bord:</p>
+
+  <ul>
+    <li><strong>Trimmen und Steuern nach AWA</strong> — die Segel stehen im scheinbaren Wind. Am Wind heißt „AWA konstant halten" sauber steuern.</li>
+    <li><strong>Entscheiden nach TWS/TWA</strong> — Reffen, Kurswahl und der Abgleich mit der Vorhersage laufen über den wahren Wind. Die Vorhersage (Poseidon, EMY) spricht immer in wahrem Wind!</li>
+    <li><strong>Vorsicht raumschots:</strong> AWS ist dann deutlich <em>kleiner</em> als TWS — 20 kn wahr fühlen sich platt vorm Laken wie 14 an. Wer erst beim Anluven merkt, was wirklich weht, refft zu spät. Vor dem Kurswechsel auf TWS schauen.</li>
+  </ul>
+
+  <h2>3 · Tiefe: die wichtigste Zahl im Hafen</h2>
+
+  <ul>
+    <li><strong>Kläre beim Check-in, wovon der Geber misst:</strong> ab Wasserlinie, ab Geber oder ab Kielunterkante („Offset"). Der Unterschied ist genau der Meter, der beim RK-Anlegen zählt. Im Zweifel: Anzeige minus Tiefgang (typisch 1,9–2,2 m bei 40 Fuß) = Wasser unterm Kiel.</li>
+    <li><strong>Flachwasseralarm setzen</strong> (z. B. 3 m) — der Plotter passt auf, wenn alle nach dem Muringnachbarn schauen.</li>
+    <li>Beim <strong>Ankern</strong> (Lektion 7): Tiefe ansagen lassen — daraus Kettenlänge (3–5 ×). Beim <strong>RK-Anlegen</strong> (Lektion 6): Tiefe an der Pier prüfen, bevor das Heck hineinschwenkt.</li>
+    <li>Gute Nachricht fürs Revier: Untiefen im Saronischen Golf sind <strong>gut kartiert</strong>, Gezeiten gibt es praktisch keine — was die Karte sagt, stimmt.</li>
+  </ul>
+
+  <h2>4 · AIS: sehen und gesehen werden</h2>
+
+  <p>AIS funkt Position, Kurs und Geschwindigkeit von Schiffen — der Plotter rechnet
+  daraus die Begegnung aus:</p>
+
+  <table>
+    <thead>
+      <tr><th>Anzeige</th><th>Bedeutung</th><th>Praxis</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>CPA</strong></td><td>Closest Point of Approach — engster Passierabstand</td><td>Unter ~0,5 nm: Lage klären, ggf. ausweichen</td></tr>
+      <tr><td><strong>TCPA</strong></td><td>Zeit bis zum CPA</td><td>Sagt dir, <em>wann</em> du handeln musst</td></tr>
+      <tr><td><strong>Klasse A</strong></td><td>Berufsschifffahrt (Pflicht)</td><td>Fähren, Frachter — im Golf allgegenwärtig</td></tr>
+      <tr><td><strong>Klasse B</strong></td><td>Sportboote (freiwillig)</td><td>Nicht jede Yacht sendet — <strong>Ausguck bleibt Pflicht</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout achtung">
+    <span class="label">AIS ersetzt keinen Ausguck</span>
+    <p>Fischerboote, viele Yachten und alle Badegäste senden kein AIS. Und: CPA basiert
+    auf dem <em>aktuellen</em> Kurs — eine Fähre, die gleich abbiegt, rechnet der Plotter
+    falsch. AIS ist ein Werkzeug fürs <strong>Frühwarnen und Identifizieren</strong>
+    (Name des Schiffs für den Funkanruf!), die Ausweichentscheidung fällt nach
+    KVR und Augen (<a href="0003-kreuzen.html">Lektion 3</a>). Die Schnellfähren
+    („Flying Dolphins") Richtung Ägina/Poros/Hydra laufen über 30 kn — die sind
+    schneller da, als der Blick aufs Display alt ist.</p>
+  </div>
+
+  <h2>5 · Wegpunkte, Routen, XTE — und gesundes Misstrauen</h2>
+
+  <ul>
+    <li><strong>Wegpunkt (WPT):</strong> ein Zielpunkt; der Plotter zeigt Peilung (<strong>BRG</strong>) und Distanz (<strong>DST</strong>) dorthin.</li>
+    <li><strong>Route:</strong> Kette von Wegpunkten. Für den Golf reicht meist eine Handvoll Punkte je Etappe — Wegpunkte <strong>vor</strong> dem Ablegen setzen, nicht unterwegs im Geschaukel.</li>
+    <li><strong>XTE</strong> (Cross Track Error): seitliche Ablage von der geplanten Linie — nützlich bei Engstellen, beim Kreuzen bedeutungslos (da planst du mit Laylines, Lektion 16).</li>
+    <li><strong>Zoom-Disziplin:</strong> Elektronische Karten verschlucken Details in kleinen Maßstäben — Felsen erscheinen erst beim Hineinzoomen. Vor jeder Hafeneinfahrt und Ankerbucht: <strong>ranzoomen.</strong></li>
+    <li><strong>Backup:</strong> Papierkarte (an Bord: Imray G14) und Handy-App mit Offline-Karten — der Plotter kann ausfallen, die Konsequenz aus SKS-Zeiten gilt weiter.</li>
+  </ul>
+
+  <h2>6 · Dein Setup in den ersten 10 Minuten an Bord</h2>
+
+  <ol>
+    <li><strong>Datenseite einrichten:</strong> SOG · COG · TWS · TWA · Tiefe — mehr braucht der Rudergänger nicht.</li>
+    <li><strong>Tiefen-Offset</strong> erfragen/prüfen, Flachwasseralarm setzen.</li>
+    <li><strong>AIS-Alarm</strong> auf CPA &lt; 0,5 nm / TCPA &lt; 10 min stellen (und Filter für vertäute Schiffe an, sonst piept der halbe Hafen).</li>
+    <li><strong>Ankeralarm</strong> finden und einmal testen — nachts in der Bucht willst du ihn nicht erst suchen (Lektion 7).</li>
+    <li><strong>Einheiten prüfen:</strong> Knoten, Meter, Grad — nicht km/h und Fuß.</li>
+  </ol>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Steuern nach Kompass (HDG), navigieren nach COG, planen nach SOG.
+    Trimmen nach AWA, entscheiden nach TWS. Tiefe: Offset klären, Alarm setzen.
+    AIS warnt und identifiziert — ausgewichen wird nach KVR und Augen.</strong></p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Vorbereitung:</strong> Handbuch/Simulator des Plotter-Herstellers der Charteryacht (steht meist in den Bootsdaten der Buchung) — die Menülogik vorab einmal durchklicken spart die ersten Bordstunden.</li>
+      <li><strong>Verknüpfung:</strong> <a href="0001-kurse-zum-wind-und-segelstellung.html">Lektion 1</a> (wahrer/scheinbarer Wind), <a href="0007-ankern.html">Lektion 7</a> (Ankeralarm), <a href="0003-kreuzen.html">Lektion 3</a> (Wegerecht).</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/plotter.html">Plotter-Referenzkarte</a>.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Wie unterscheiden sich Raymarine- und
+    Garmin-Menüs praktisch?" oder „Rechne ein CPA-Beispiel mit mir durch."</p>
+    <p><a href="0014-aegaeis-wetter.html">← Lektion 14</a> · <a href="../index.html">Kursübersicht</a> · <a href="0016-kreuzen-mit-dem-plotter.html">Lektion 16 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Du willst wissen, ob du an der Untiefe vor der Hafeneinfahrt vorbeikommst. Welche Anzeige beantwortet das?',
+    options: ['HDG — der Kompasskurs zeigt, wohin das Boot fährt', 'COG — der Kurs über Grund zeigt die tatsächliche Bewegung', 'STW — die Fahrt durchs Wasser ist die ehrlichste Zahl'],
+    correct: 1,
+    why: 'Der Bug (HDG) zeigt wegen Abdrift höher, als das Boot wirklich läuft. Ob du irgendwo vorbeikommst, entscheidet immer der Kurs über Grund.'
+  },
+  {
+    q: 'Platt vorm Laken zeigt das Display AWS 13 kn. Die Vorhersage sagte 20 kn. Wer hat recht?',
+    options: ['Beide — raumschots ist der scheinbare Wind um die Bootsfahrt kleiner als der wahre', 'Das Display — Vorhersagen übertreiben in der Ägäis systematisch', 'Die Vorhersage misst in Böen, das Display im Mittel — daher die Differenz'],
+    correct: 0,
+    why: 'Vor dem Wind zieht die Bootsgeschwindigkeit vom Wind ab: 20 kn wahr minus ~6–7 kn Fahrt ≈ 13 kn scheinbar. Vor dem Anluven (oder Reffen-Entscheid) auf TWS schauen!'
+  },
+  {
+    q: 'Was musst du beim Echolot der Charteryacht als Erstes klären?',
+    options: ['Ob es in Fuß oder Metern anzeigt', 'Von wo es misst — Wasserlinie, Geber oder Kielunterkante', 'Ob der Flachwasseralarm lauter ist als der Motor'],
+    correct: 1,
+    why: 'Der Offset macht bis zu ~2 m Unterschied — genau die Spanne zwischen „liegt gut" und „sitzt fest" beim RK-Anlegen. (Einheiten prüfen schadet trotzdem nicht.)'
+  },
+  {
+    q: 'Der AIS-Alarm zeigt CPA 0,2 nm / TCPA 8 min für eine Fähre. Was ist die richtige Reaktion?',
+    options: ['Lage mit Augen und KVR klären und früh, deutlich reagieren', 'Nichts — unter 0,5 nm Abstand warnt der Plotter erneut', 'Sofort MAYDAY vorbereiten und die Küstenwache informieren'],
+    correct: 0,
+    why: 'CPA/TCPA sind die Frühwarnung: jetzt hinschauen, Lage nach KVR beurteilen, ausweichen oder Kontakt aufnehmen (der AIS-Name macht den Funkanruf leicht). Der Plotter weicht nicht für dich aus.'
+  },
+  {
+    q: 'Warum zoomst du vor jeder Ankerbucht in die elektronische Karte hinein?',
+    options: ['Weil der Akku im kleinen Maßstab schneller leer wird', 'Weil kleine Maßstäbe Felsen und Untiefen ausblenden können', 'Weil der Ankeralarm nur im größten Maßstab funktioniert'],
+    correct: 1,
+    why: 'Elektronische Karten generalisieren: Details erscheinen erst beim Hineinzoomen. Der klassische Charterunfall ist der „nicht angezeigte" (nie angeschaute) Felsen.'
+  }
+]);
+</script>
+</body>
+</html>

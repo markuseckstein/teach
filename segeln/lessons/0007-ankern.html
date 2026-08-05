@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 7 — Ankern in Buchten</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0006-anlegen-roemisch-katholisch.html">← Lektion 6</a>
+    <a href="../reference/hafen-und-anker.html">📄 Hafen-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0008-knoten-und-leinenarbeit.html">Nächste Lektion: Knoten →</a>
+  </nav>
+
+  <h1>Ankern in Buchten</h1>
+  <p class="lesson-meta">Lektion 7 · Modul B — Hafenpraxis · ca. 20 Minuten</p>
+
+  <p>Die schönsten Nächte des Törns verbringst du vor Anker — im Saronischen Golf etwa
+  vor Moni bei Ägina oder in den Buchten rund um Poros. Damit sie ruhig bleiben, braucht
+  es drei Dinge: den <strong>richtigen Platz</strong>, <strong>genug Kette</strong> und
+  einen <strong>eingefahrenen Anker</strong>.</p>
+
+  <h2>1 · Platzwahl: Schutz, Grund, Schwoiraum</h2>
+
+  <ul>
+    <li><strong>Schutz:</strong> Die Bucht muss gegen die <em>erwartete</em> Windrichtung decken — also Vorhersage lesen (→ Modul D), nicht nur den Ist-Zustand. Auch an <strong>Schwell</strong> denken, der um Kaps herumläuft.</li>
+    <li><strong>Ankergrund:</strong> <strong>Sand hält am besten</strong> (türkis leuchtende Flecken). Seegras hält schlecht — und das dunkle <strong>Posidonia-Neptungras</strong> ist im Mittelmeer geschützt: nicht hineinankern, Sandflecken ansteuern.</li>
+    <li><strong>Schwoiraum:</strong> Das Boot schwojt bei Winddrehung im Kreis um den Anker — Radius ≈ Kettenlänge + Bootslänge. Passt der Kreis zwischen Nachbarn, Felsen und Flachs? Boote an Landleinen schwojen <em>nicht</em> — nicht direkt daneben frei ankern.</li>
+  </ul>
+
+  <h2>2 · Das Ankermanöver</h2>
+
+  <figure>
+    <svg viewBox="0 0 640 420" role="img" aria-label="Ankern: Kettenlänge und Zugwinkel, Seitenansicht">
+      <defs>
+        <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#5c6b78"/>
+        </marker>
+      </defs>
+
+      <!-- Wind -->
+      <line x1="560" y1="55" x2="500" y2="55" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="560" y1="85" x2="500" y2="85" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="500" y="35" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Wasseroberfläche -->
+      <path d="M40,150 Q60,145 80,150 T120,150 T160,150 T200,150 T240,150 T280,150 T320,150 T360,150 T400,150 T440,150 T480,150 T520,150 T560,150 T600,150"
+            fill="none" stroke="#1d6f8f" stroke-width="2" opacity="0.6"/>
+
+      <!-- Meeresgrund -->
+      <path d="M40,370 C160,360 400,375 600,365 L600,420 L40,420 Z" fill="#d8d2c4" opacity="0.8"/>
+
+      <!-- Boot (Seitenprofil) -->
+      <path d="M370,140 L490,140 L470,165 L390,163 Z" fill="#13315c"/>
+      <line x1="430" y1="140" x2="430" y2="80" stroke="#13315c" stroke-width="3"/>
+
+      <!-- Kette: liegt flach am Grund, steigt als Kettenbogen zum Bug -->
+      <path d="M120,368 L250,368 C320,368 350,240 383,152" fill="none" stroke="#b3541e" stroke-width="2.5"/>
+      <text x="105" y="352" font-family="Gill Sans, Segoe UI, sans-serif" font-size="22" fill="#b3541e">⚓</text>
+      <text x="150" y="398" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#0b2545" font-weight="bold">Kettenvorlauf liegt am Grund → Zug am Anker bleibt flach → Anker gräbt sich ein</text>
+
+      <!-- Tiefe -->
+      <line x1="570" y1="152" x2="570" y2="363" stroke="#5c6b78" stroke-width="1.5" marker-start="url(#am)" marker-end="url(#am)"/>
+      <text x="582" y="265" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">t</text>
+
+      <text x="290" y="215" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545" font-weight="bold">Kettenlänge = 3–5 × Wassertiefe</text>
+      <text x="290" y="234" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">(5× und mehr bei Starkwind/Meltemi;</text>
+      <text x="290" y="252" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Tiefe ab Wasserlinie, Bughöhe einrechnen)</text>
+    </svg>
+    <figcaption><strong>Warum viel Kette hält:</strong> Nicht der Anker allein, sondern der
+    <em>flache Zugwinkel</em> hält das Boot — je mehr Kette, desto mehr liegt am Grund und
+    desto flacher zieht das Boot am Anker. Steiler Zug (zu wenig Kette) reißt jeden Anker
+    aus.</figcaption>
+  </figure>
+
+  <ol>
+    <li><strong>Anfahrt gegen den Wind</strong>, am gewählten Sandfleck aufstoppen, bis das Boot steht.</li>
+    <li><strong>Anker fallen lassen</strong>, bis er den Grund erreicht — dann treibt das Boot rückwärts (Wind) oder du fährst <em>ganz langsam</em> achteraus, während die Kette <strong>parallel zum Zurücktreiben</strong> gesteckt wird. Nie den ganzen Vorrat auf einen Haufen werfen.</li>
+    <li>Bei 3–5-facher Wassertiefe: Kette stoppen, <strong>Ruckdämpfer/Kettenkralle</strong> einhängen (entlastet die Winsch).</li>
+    <li><strong>Einfahren:</strong> Rückwärtsgang, langsam steigern (bis ≈ halbe Kraft), 20–30 Sekunden halten. Die Kette muss straff stehen und <em>straff bleiben</em> — ruckt sie pendelnd, rutscht der Anker: aufholen, neuer Versuch.</li>
+    <li><strong>Kontrolle:</strong> Zwei feste Landpeilungen quer zueinander merken (oder Ankeralarm im Plotter, → Modul E). Schnorchelbrille: In griechischem Wasser <em>siehst</em> du den Anker — nutz das!</li>
+  </ol>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Viel Kette ist der beste Anker.</strong> 3–5 × Wassertiefe ist die Basis —
+    frischt es auf (Meltemi-Ausläufer!), gib nach, solange der Schwoiraum reicht. Und ein
+    Anker, der nicht mit Rückwärtsgang eingefahren wurde, ist kein Anker, sondern
+    Dekoration.</p>
+  </div>
+
+  <h2>3 · Mit Landleinen — die griechische Spezialität</h2>
+
+  <p>In engen oder tiefen Buchten (und wenn abends viele Boote kommen) ankerst du
+  <strong>mit Heckleine zum Ufer</strong>: Anker voraus wie gehabt, dann rückwärts Richtung
+  Fels, eine lange Leine (Schwimmleine oder Festmacher, gern 30+ m) mit dem Dinghi oder
+  schwimmend um einen Felsen/Baum legen — am besten <strong>auf Slip</strong>, dann kommst
+  du morgens ohne Landgang weg. Das Boot schwojt nicht mehr; bei Seitenwind eine zweite
+  Leine oder Bugspring erwägen, um die Querlast zu reduzieren.</p>
+
+  <h2>4 · Anker auf</h2>
+
+  <ol>
+    <li>Motor an, langsam <strong>über die Kette vorausfahren</strong>, Winsch holt ein — die Winsch zieht nicht das Boot, das Boot fährt zur Kette.</li>
+    <li>Kette steil unter dem Bug: kurz warten, der Anker <strong>bricht aus</strong>. Klemmt er (Fels), mit der Kette senkrecht darüber leicht einholen und das Boot arbeiten lassen.</li>
+    <li>Anker sichten („Anker ist auf — Anker ist frei!"), säubern (Schlamm), verstauen und sichern — erst dann Fahrt aufnehmen.</li>
+  </ol>
+
+  <div class="callout achtung">
+    <span class="label">Ankerwache</span>
+    <p>Die meisten Anker „gehen spazieren", wenn nachts der Wind <em>dreht</em> — der
+    eingegrabene Anker wird aus neuer Richtung belastet. Bei unsicherer Lage: Ankeralarm
+    stellen, bei Starkwindwarnung echte Wachen einteilen. Dreht der Wind auflandig und die
+    Bucht wird zur Legerwall-Falle: <strong>raus, solange es einfach ist.</strong></p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://korfu-segeln.de/mitsegeln/skippertraining/ankern-in-griechenland-aber-richtig/">korfu-segeln.de: Ankern in Griechenland — aber richtig!</a>; dazu <a href="https://www.scansail.de/blog/artikel/manoevertipps-fuer-segler-ankern-teil-3/">Scansail: Manövertipps Ankern</a>.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/hafen-und-anker.html">Referenzkarte Hafen &amp; Anker</a>.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Wie funktioniert der Ankeralarm im Plotter?"
+    (kommt in Modul E) oder „Was tun, wenn nachts der Nachbar auf mich zutreibt?"</p>
+    <p><a href="0006-anlegen-roemisch-katholisch.html">← Lektion 6</a> · <a href="../index.html">Kursübersicht</a> · <a href="0008-knoten-und-leinenarbeit.html">Lektion 8 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Wie viel Kette steckst du als Basis bei normalem Wetter?',
+    options: ['Etwa die 3- bis 5-fache Wassertiefe, bei Starkwind mehr', 'Etwa die 1,5-fache Wassertiefe, mehr scheuert am Grund', 'Immer die komplette Kette, unabhängig von der Wassertiefe'],
+    correct: 0,
+    why: '3–5 × Wassertiefe ist die Faustregel — es geht um den flachen Zugwinkel am Anker. Bei Meltemi-Lagen großzügig mehr, solange der Schwoiraum reicht.'
+  },
+  {
+    q: 'Warum hält viel Kette besser — was ist der physikalische Grund?',
+    options: ['Der Zug am Anker bleibt flach, sodass er sich eingraben kann', 'Das hohe Gewicht der Kette allein hält das Boot am Platz fest', 'Die lange Kette wirkt als Feder und schluckt jede Windböe weg'],
+    correct: 0,
+    why: 'Der am Grund liegende Kettenvorlauf sorgt für flachen, horizontalen Zug — steiler Zug reißt jeden noch so guten Anker aus. (Gewicht und Federwirkung helfen, sind aber nicht der Kern.)'
+  },
+  {
+    q: 'Welchen Ankergrund suchst du dir in Griechenland?',
+    options: ['Helle Sandflecken — das geschützte dunkle Neptungras meiden', 'Dunkle Seegraswiesen — dort verhakt sich der Anker besonders gut', 'Felsigen Grund — dort kann der Anker sich nirgends durchziehen'],
+    correct: 0,
+    why: 'Sand hält am besten und ist gut sichtbar (türkis). Posidonia-Seegras hält schlecht und ist geschützt — nicht hineinankern.'
+  },
+  {
+    q: 'Woran erkennst du beim Einfahren mit Rückwärtsgang, dass der Anker hält?',
+    options: ['Die Kette wird straff und bleibt es, ohne pendelnd zu rucken', 'Die Kette hängt locker durch, weil der Anker fest liegen bleibt', 'Das Heck dreht sich langsam quer zur Richtung des Windes ein'],
+    correct: 0,
+    why: 'Straff und ruhig = eingegraben. Ruckt die Kette pendelnd, pflügt der Anker durch den Grund: aufholen und neu ansetzen.'
+  },
+  {
+    q: 'Wann gehen die meisten Anker „spazieren"?',
+    options: ['Wenn nachts der Wind dreht und den Anker aus neuer Richtung belastet', 'Wenn die Strömung bei ablaufendem Wasser unter dem Rumpf zunimmt', 'Wenn andere Boote zu dicht vorbeifahren und Schraubenwasser machen'],
+    correct: 0,
+    why: 'Bei Winddrehung wird der eingegrabene Anker seitlich oder rückwärts belastet und muss sich neu eingraben — deshalb: Peilungen, Ankeralarm, bei Warnlagen Wache.'
+  },
+  {
+    q: 'Beim Ankeraufgehen: Wer bewegt das Boot zur Kette?',
+    options: ['Der Motor — die Winsch holt nur die locker werdende Kette ein', 'Die Ankerwinsch — sie ist genau für diese Zugarbeit ausgelegt', 'Der Wind — man wartet, bis das Boot über den Anker getrieben ist'],
+    correct: 0,
+    why: 'Langsam über die Kette vorausfahren; die Winsch nur einholen lassen. Wer das Boot mit der Winsch zieht, ruiniert sie — der Charterbasis-Klassiker.'
+  }
+]);
+</script>
+</body>
+</html>

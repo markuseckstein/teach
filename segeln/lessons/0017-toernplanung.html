@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 17 — Törnplanung: Athen → Saronischer Golf und zurück</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0016-kreuzen-mit-dem-plotter.html">← Lektion 16</a>
+    <a href="../reference/toernplan.html">📄 Törnplan-Referenzkarte</a>
+    <span class="spacer"></span>
+    <span class="nav-disabled">🎓 Letzte Lektion — der Kurs ist komplett</span>
+  </nav>
+
+  <h1>Törnplanung: Athen → Saronischer Golf und zurück</h1>
+  <p class="lesson-meta">Lektion 17 · Modul E — Navigation &amp; Törnplanung · ca. 30 Minuten · die Abschlusslektion</p>
+
+  <p>Hier läuft alles zusammen: Manöver (Modul A), Hafenpraxis (B), Funk (C), Wetter (D)
+  und Navigation (E) werden zu einem konkreten Wochenplan für <strong>dein</strong>
+  Revier. Die Zahlen stammen aus den Revierquellen — vor dem Törn misst du die Etappen
+  trotzdem einmal selbst auf der Karte nach (Imray G14 bzw. Plotter), Häfen ändern sich,
+  Distanzen nicht.</p>
+
+  <h2>1 · Das Revier auf einen Blick</h2>
+
+  <figure>
+    <svg viewBox="0 0 640 560" role="img" aria-label="Schemakarte des Saronischen Golfs mit Häfen und Distanzen">
+      <defs>
+        <marker id="tp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+      </defs>
+      <!-- Meer -->
+      <rect x="0" y="0" width="640" height="560" fill="#e8f0f4"/>
+      <!-- Attika (NE) -->
+      <path d="M300,0 L640,0 L640,180 C560,170 520,120 470,110 C420,100 380,60 360,30 C340,10 320,5 300,0 Z" fill="#d8d2c4"/>
+      <!-- Peloponnes / Methana-Halbinsel (W) -->
+      <path d="M0,0 L120,0 C140,80 100,140 110,200 C118,250 170,280 175,330 C180,370 150,400 155,440 C160,490 120,530 80,560 L0,560 Z" fill="#d8d2c4"/>
+      <path d="M175,330 C210,320 235,340 235,370 C235,400 205,415 180,405 C160,397 158,360 175,330 Z" fill="#d8d2c4"/>
+      <!-- Poros Insel -->
+      <ellipse cx="270" cy="425" rx="38" ry="20" fill="#d8d2c4" stroke="#b9b19f"/>
+      <!-- Ägina -->
+      <path d="M300,205 C340,195 370,215 365,250 C360,285 320,295 290,280 C265,266 268,220 300,205 Z" fill="#d8d2c4" stroke="#b9b19f"/>
+      <!-- Agistri -->
+      <ellipse cx="240" cy="255" rx="22" ry="14" fill="#d8d2c4" stroke="#b9b19f"/>
+      <!-- Hydra -->
+      <path d="M240,505 C300,492 360,498 400,512 C360,528 290,532 240,520 Z" fill="#d8d2c4" stroke="#b9b19f"/>
+      <!-- Häfen -->
+      <circle cx="450" cy="115" r="6" fill="#b3541e"/>
+      <text x="462" y="110" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" font-weight="bold" fill="#22303c">Athen / Alimos (K71)</text>
+      <circle cx="308" cy="228" r="6" fill="#b3541e"/>
+      <text x="322" y="222" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#22303c">Ägina</text>
+      <circle cx="310" cy="282" r="5" fill="#b3541e"/>
+      <text x="324" y="296" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#22303c">Perdika</text>
+      <circle cx="240" cy="255" r="4" fill="#b3541e"/>
+      <text x="176" y="240" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#22303c">Agistri</text>
+      <circle cx="212" cy="368" r="5" fill="#b3541e"/>
+      <text x="130" y="360" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#22303c">Methana</text>
+      <circle cx="272" cy="412" r="6" fill="#b3541e"/>
+      <text x="288" y="408" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#22303c">Poros</text>
+      <circle cx="132" cy="128" r="5" fill="#b3541e"/>
+      <text x="146" y="124" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#22303c">Epidavros</text>
+      <circle cx="318" cy="508" r="6" fill="#b3541e"/>
+      <text x="332" y="502" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#22303c">Hydra</text>
+      <!-- Routen -->
+      <path d="M 445,125 C 400,160 360,190 322,215" fill="none" stroke="#1d6f8f" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#tp)"/>
+      <text x="395" y="185" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#1d6f8f" font-weight="bold">~15 nm</text>
+      <path d="M 305,292 C 295,330 285,370 276,400" fill="none" stroke="#1d6f8f" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#tp)"/>
+      <text x="300" y="352" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#1d6f8f" font-weight="bold">~15 nm</text>
+      <path d="M 285,440 C 295,462 305,480 315,496" fill="none" stroke="#1d6f8f" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#tp)"/>
+      <text x="310" y="470" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#1d6f8f" font-weight="bold">~15 nm</text>
+      <!-- Meltemi-Hinweis -->
+      <line x1="560" y1="230" x2="560" y2="290" stroke="#1d6f8f" stroke-width="4" marker-end="url(#tp)"/>
+      <text x="576" y="264" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#1d6f8f" font-weight="bold">N-Wind</text>
+      <!-- Fähren-Hinweis -->
+      <text x="420" y="330" font-family="Gill Sans, Segoe UI, sans-serif" font-size="12.5" fill="#c62828">⚠ Fährrouten Piräus ↔ Inseln</text>
+    </svg>
+    <figcaption><strong>Schemakarte (nicht zur Navigation!):</strong> Die klassische
+    Runde Alimos → Ägina → Poros → Hydra läuft in bequemen ~15-nm-Etappen nach Süden —
+    bei Meltemi-Nordwind also raum hin und <strong>gegenan zurück</strong>. Der Rückweg
+    ist der Teil, den du bei der Wetterplanung zuerst denkst.</figcaption>
+  </figure>
+
+  <h2>2 · Planungsprinzipien für den Urlaubstörn</h2>
+
+  <ul>
+    <li><strong>Etappen 15–25 nm</strong> = 3–5 Stunden bei 5 kn Schnitt (Lektion 15). Halber Tag Segeln, halber Tag Hafen/Bucht — das ist Urlaub, keine Überführung.</li>
+    <li><strong>Früh ablegen:</strong> schwächerer Wind (Lektion 14), freie Liegeplätze am Ziel. In <strong>Hydra</strong> im Hochsommer heißt das: <strong>vor 8–10 Uhr ankommen</strong> — Profis liegen um acht fest.</li>
+    <li><strong>Rückweg zuerst planen:</strong> Der Heimweg nach Alimos geht nach Norden — bei Meltemi gegenan. Deshalb: <strong>Puffertag einbauen</strong> und die letzte Nacht nicht weiter als einen Tagesschlag von Alimos verbringen (Ägina passt perfekt).</li>
+    <li><strong>Jede Etappe mit Plan B:</strong> Ziel + Alternativziel + „Notausgang" (geschützte Bucht auf dem Weg). Im Saronischen Golf ist der nächste Schutz nie weit — der Luxus dieses Reviers.</li>
+    <li><strong>Crew-Rhythmus:</strong> Mittags-Badestopp in einer Bucht einplanen (Ankern, Lektion 7) — zerlegt die Etappe und hält die Stimmung.</li>
+    <li><strong>Ein Woche = eine Runde, nicht zwei:</strong> Mit einer Woche endet die Route sinnvoll bei Hydra (ggf. Ermioni); Spetses und der Argolische Golf brauchen zwei. Nicht mit den Kykladen kombinieren — dazwischen liegen 40+ nm offene Ägäis.</li>
+  </ul>
+
+  <h2>3 · Die Wochenrunde (Vorschlag, Samstag–Samstag)</h2>
+
+  <table>
+    <thead>
+      <tr><th>Tag</th><th>Etappe</th><th>~nm</th><th>Worauf es ankommt</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Sa</strong></td><td>Check-in Alimos, ggf. Kurzschlag in die Bucht</td><td>—</td><td>Übernahme gründlich (Plotter-Setup! Lektion 15), Sicherheitsbriefing, früh schlafen</td></tr>
+      <tr><td><strong>So</strong></td><td>Alimos → <strong>Ägina</strong> (oder Perdika)</td><td>15</td><td>Fähren-/Schiffsverkehr vor Piräus queren: Ausguck, AIS, zügig quer zur Route</td></tr>
+      <tr><td><strong>Mo</strong></td><td>Ägina → Badebucht Agistri → <strong>Poros</strong></td><td>15–18</td><td>Mittagsanker; Poros-Kanal: Enge + Fähren + Düse, Motor bereit</td></tr>
+      <tr><td><strong>Di</strong></td><td>Poros → <strong>Hydra</strong> — früh los!</td><td>15</td><td>Vor 10 Uhr (besser 8) anlegen; voll? → Mandraki-Bucht oder weiter Ermioni</td></tr>
+      <tr><td><strong>Mi</strong></td><td>Hydra → <strong>Methana</strong> oder Poros-Südbuchten</td><td>15–18</td><td>Beginn Rückweg; bei Nordwind: Kreuzen üben (Lektion 16) oder Motorstunde früh</td></tr>
+      <tr><td><strong>Do</strong></td><td>Methana → <strong>Epidavros</strong></td><td>12–15</td><td>Ruhiger Hafen; Ausflug zum antiken Theater als Landtag</td></tr>
+      <tr><td><strong>Fr</strong></td><td>Epidavros → <strong>Ägina</strong></td><td>15</td><td>Position für den kurzen Heimschlag; Abschiedsessen</td></tr>
+      <tr><td><strong>Sa</strong></td><td>Ägina → <strong>Alimos</strong>, Rückgabe</td><td>15</td><td>Früh los (Rückgabezeit + evtl. Gegenwind); vorher Tanken einplanen</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout revier">
+    <span class="label">Hafen-Steckbriefe</span>
+    <p><strong>Alimos:</strong> einzige echte Marina, Anmeldung K71 (Lektion 9), chronisch
+    voll — Anweisungen des Marinero folgen. <strong>Ägina:</strong> lebhafter Stadthafen,
+    Fähren mitten durch; Alternative: das ruhigere <strong>Perdika</strong> im Süden.
+    <strong>Agistri:</strong> vor allem Badebuchten (Ankerstopp). <strong>Poros:</strong>
+    langer Stadtkai, gut geschützt, viel Platz — entspanntester Hafen der Runde.
+    <strong>Hydra:</strong> winzig, autofrei, spektakulär — Päckchen liegen üblich,
+    Fallböen (Lektion 14), Schwell am Abend; Ausweich: Mandraki oder Ermioni.
+    <strong>Methana:</strong> ruhig, Schwefelgeruch der Thermalquellen gehört dazu.
+    <strong>Epidavros:</strong> freundlicher Hafen + Antike. Überall gilt:
+    <strong>römisch-katholisch mit Buganker</strong> (Lektion 6), Hafengebühren niedrig,
+    Wasser/Strom gegen Gebühr, Anmeldung oft erst nach dem Festmachen (Lektion 11).</p>
+  </div>
+
+  <h2>4 · Verkehr &amp; Gefahren — die Kurzliste</h2>
+
+  <ul>
+    <li><strong>Schnellfähren</strong> (Piräus ↔ Ägina/Poros/Hydra): 30+ kn, tauchen schnell auf — AIS-Frühwarnung (Lektion 15) + Ausguck; als Segler nicht auf Vorfahrt pochen, früh und deutlich klar halten.</li>
+    <li><strong>Großschifffahrt</strong> in der Piräus-Ansteuerung: die Querung am Sonntag zügig und rechtwinklig anlegen.</li>
+    <li><strong>Poros-Kanal:</strong> eng, Fähren, Düseneffekt — unter Motor, Ausguck nach achtern.</li>
+    <li><strong>Fischfarmen und Netze</strong> in manchen Buchten — beim Ansteuern ranzoomen und Ausguck.</li>
+    <li><strong>Untiefen:</strong> gut kartiert und betonnt — Zoom-Disziplin genügt. Keine Gezeiten, kein nennenswerter Strom.</li>
+    <li><strong>Abends Schwell</strong> in offenen Häfen (Hydra!): Kette stramm, Fender doppelt, Ruderanlage fest.</li>
+  </ul>
+
+  <h2>5 · Das tägliche Skipper-Ritual</h2>
+
+  <ol>
+    <li><strong>Abends:</strong> Wetterroutine (Lektion 14: Poseidon → EMY → Modellvergleich) → Etappe + Plan B festlegen → Crew informieren.</li>
+    <li><strong>Morgens:</strong> Wetter bestätigen, Maschine/Öl/Bilge-Check, Ablegemanöver briefen (Lektion 5), Funk-Hörwache K16 an (Lektion 9).</li>
+    <li><strong>Unterwegs:</strong> Logbuch schlank führen (Zeit, Position, Wind, Segel), Wind gegen Vorhersage prüfen, Crew rotieren lassen.</li>
+    <li><strong>Vor dem Hafen:</strong> Anlegemanöver planen und briefen (Lektion 6), Funkanmeldung wo üblich (Lektion 11), Fender + Leinen klar, Tiefenalarm im Blick.</li>
+    <li><strong>Fest:</strong> Kette über Winsch stramm, Landstrom/Wasser, Hafenmeister/Port Police, Papiere griffbereit (DEKPA/TEPAI, Lektion 11).</li>
+  </ol>
+
+  <h2>6 · Checkliste vor dem Törn</h2>
+
+  <ul>
+    <li>☐ Etappen auf Karte/Plotter nachgemessen, Wegpunkte gesetzt (Lektion 15/16)</li>
+    <li>☐ Revierführer an Bord („Ostpeloponnes"), Imray G14, Offline-Karten-App geladen</li>
+    <li>☐ Funk-Referenzkarte ausgefüllt (Bootsname, Rufzeichen, MMSI — Lektion 9/10)</li>
+    <li>☐ Wetterquellen als Lesezeichen: Poseidon, EMY, Windy; Olympia-Radio-Zeiten notiert</li>
+    <li>☐ Crew-Briefing vorbereitet: Sicherheit, MOB (Lektion 4), Rollen beim An-/Ablegen</li>
+    <li>☐ Referenzkarten dieses Kurses gedruckt und in die Bordtasche</li>
+    <li>☐ Knoten sitzen wieder (Lektion 8 — Webeleinstek für die Fender!)</li>
+  </ul>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>15-nm-Etappen, früh los, Rückweg (Nord = gegenan bei Meltemi) zuerst
+    denken, Hydra vor 8–10 Uhr, jede Etappe mit Plan B.</strong> Das Revier verzeiht
+    viel: kurzer Weg zum Schutz, keine Gezeiten, gute Karten — ideale Bedingungen, um
+    als Skipper wieder in den Rhythmus zu kommen.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>🎓 Kurs abgeschlossen — und jetzt?</h2>
+    <ul>
+      <li><strong>Primärquellen dieser Lektion:</strong> <a href="https://www.blauwasser.de/reviere/segeln-saronischer-golf-griechenland-revierinformation">blauwasser.de: Revierinfo Saronischer Golf</a> (Distanzen, Häfen dort verifiziert), <a href="https://skipper.adac.de/revier/revier-saronischer-golf">ADAC Skipper</a>, <a href="https://www.esys.org/rev_info/Griechenland/saronischergolf.html">esys.org</a>.</li>
+      <li><strong>Kurz vor dem Törn:</strong> aktuelle Hafendetails prüfen (SkipperGuide, Revierführer) — Liegeplatz-Praxis ändert sich; Referenzkarten drucken.</li>
+      <li><strong>Muskelgedächtnis:</strong> Die Manöver aus Modul A/B leben vom Tun — wenn möglich, ein eintägiges Hafenmanöver-Training vor dem Törn.</li>
+      <li><strong>Wiederholung:</strong> Alle Selbsttests, die nicht auf voller Punktzahl waren, in einer Woche nochmal — und jederzeit Fragen an deinen Lehrer.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/toernplan.html">Törnplan-Referenzkarte</a>.</li>
+    </ul>
+    <p>Καλό ταξίδι — gute Reise und immer eine Handbreit Wasser unterm Kiel! ⛵</p>
+    <p><a href="0016-kreuzen-mit-dem-plotter.html">← Lektion 16</a> · <a href="../index.html">Kursübersicht</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Warum planst du den Rückweg nach Alimos zuerst?',
+    options: ['Weil die Marina Rückgabetermine nur vormittags anbietet', 'Weil der Heimweg nach Norden bei Meltemi gegenan geht', 'Weil die Häfen im Süden keine Reservierung erlauben'],
+    correct: 1,
+    why: 'Die Runde läuft raum nach Süden und gegenan zurück. Deshalb Puffertag einplanen und die letzte Nacht nur einen Tagesschlag (z. B. Ägina, ~15 nm) von Alimos entfernt verbringen.'
+  },
+  {
+    q: 'Du willst im Juli nach Hydra. Was ist der wichtigste Planungspunkt?',
+    options: ['Sehr früh ankommen — vor 8 bis 10 Uhr — und Ausweichziele bereithalten', 'Vorab per Funk einen Liegeplatz auf Kanal 12 reservieren', 'Erst nach 18 Uhr einlaufen, wenn die Tagesausflügler weg sind'],
+    correct: 0,
+    why: 'Hydras Hafen ist winzig und chronisch voll; reserviert wird nicht. Früh da sein — sonst Mandraki-Bucht oder Ermioni als Plan B. Dazu: Fallböen und Abendschwell einkalkulieren.'
+  },
+  {
+    q: 'Wie lang ist eine gute Tagesetappe für den Urlaubstörn — und warum?',
+    options: ['15–25 nm: 3–5 h Segeln, Rest des Tages für Hafen, Bucht und Crew', '35–45 nm: die Woche ist kurz, das Revier will gesehen werden', '5–8 nm: mehr ist mit unerfahrener Crew nicht verantwortbar'],
+    correct: 0,
+    why: 'Bei 5 kn Schnitt sind 15–25 nm ein entspannter halber Tag — mit Badestopp, früher Ankunft und Energie für das Anlegemanöver. Die klassischen Etappen der Runde liegen alle bei ~15 nm.'
+  },
+  {
+    q: 'Was gilt für die Querung der Piräus-Ansteuerung am ersten Segeltag?',
+    options: ['Zügig und möglichst rechtwinklig queren, Ausguck und AIS nutzen', 'Die Ansteuerung ist für Sportboote gesperrt — außen herumfahren', 'Vorher die Verkehrszentrale um Erlaubnis auf Kanal 16 bitten'],
+    correct: 0,
+    why: 'Zwischen Alimos und Ägina kreuzen Fähren (30+ kn!) und Großschifffahrt deinen Weg. Kurz und rechtwinklig queren, früh und deutlich klar halten — nicht auf Segler-Vorfahrt pochen.'
+  },
+  {
+    q: 'Welche Kombination macht den Saronischen Golf zum idealen Wiedereinstiegs-Revier?',
+    options: ['Starke Gezeitenströme trainieren die Navigation realistisch', 'Kurze Schutzwege, keine Gezeiten, gut kartierte Gewässer', 'Große Marinas mit Marineros in jedem Hafen der Runde'],
+    correct: 1,
+    why: 'Der nächste geschützte Hafen ist nie weit, Strom und Tide entfallen, die Karten stimmen. Anspruch bleibt trotzdem: RK-Anlegen, Fähren, Meltemi-Tage — genau das hast du in diesem Kurs aufgefrischt.'
+  }
+]);
+</script>
+</body>
+</html>

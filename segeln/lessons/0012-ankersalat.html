@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 12 — Ankersalat auflösen</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0007-ankern.html">← Lektion 7 (Ankern)</a>
+    <a href="../reference/hafen-und-anker.html">📄 Hafen-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0013-wetter-refresh.html">Nächste Lektion: Wetter-Refresh →</a>
+  </nav>
+
+  <h1>Ankersalat auflösen</h1>
+  <p class="lesson-meta">Lektion 12 · Modul B — Hafenpraxis (Ergänzung zu Lektion 6 &amp; 7) · ca. 15 Minuten</p>
+
+  <p>Irgendwann passiert es jedem: Du holst morgens den Anker auf — und mit ihm kommt die
+  <strong>Kette des Nachbarn</strong> hoch. In vollen griechischen Stadthäfen, wo dreißig
+  Ketten fächerförmig vor der Kaimauer liegen, ist „Ankersalat" kein Unfall, sondern
+  Statistik. Gute Nachricht: Mit einer Leine und zwei Minuten Ruhe ist er fast immer
+  gelöst.</p>
+
+  <h2>1 · Erkennen, bevor es teuer wird</h2>
+
+  <ul>
+    <li>Die Winsch zieht plötzlich <strong>schwer und ruckartig</strong>, obwohl die Kette senkrecht steht.</li>
+    <li>Der Bug wird beim Einholen <strong>seitlich versetzt</strong> — du ziehst dich an etwas Fremdem entlang.</li>
+    <li>Am Ende hängt der eigene Anker mit einer <strong>fremden Kette (oder Muring) im Arm</strong> unter dem Bug.</li>
+  </ul>
+
+  <p>Ab jetzt gilt: <strong>Nicht weiterkurbeln, nicht Gas geben.</strong> Jede Gewalt
+  zieht den fremden Anker aus dem Grund — dann treibt gleich <em>der Nachbar</em>.
+  Und: <strong>Nachbarn informieren</strong> (Zuruf reicht), bevor du an seinem Geschirr
+  arbeitest.</p>
+
+  <h2>2 · Das Standardverfahren: Leine drunter, absenken, frei</h2>
+
+  <figure>
+    <svg viewBox="0 0 640 440" role="img" aria-label="Ankersalat lösen mit Hilfsleine auf Slip">
+      <defs>
+        <marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#5c6b78"/>
+        </marker>
+      </defs>
+
+      <!-- Wasserlinie -->
+      <path d="M40,120 Q60,115 80,120 T120,120 T160,120 T200,120 T240,120 T280,120 T320,120 T360,120 T400,120 T440,120 T480,120 T520,120 T560,120 T600,120"
+            fill="none" stroke="#1d6f8f" stroke-width="2" opacity="0.6"/>
+
+      <!-- Bug (Seitenansicht, rechts) -->
+      <path d="M420,95 L560,95 L560,120 L455,132 Z" fill="#13315c"/>
+      <text x="490" y="85" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">Bug</text>
+
+      <!-- eigene Kette senkrecht zum angehobenen Anker -->
+      <line x1="452" y1="128" x2="440" y2="255" stroke="#b3541e" stroke-width="2.5"/>
+      <!-- eigener Anker -->
+      <text x="425" y="285" font-family="Gill Sans, Segoe UI, sans-serif" font-size="26" fill="#b3541e">⚓</text>
+      <text x="470" y="270" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#b3541e" font-weight="bold">eigener Anker,</text>
+      <text x="470" y="288" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#b3541e" font-weight="bold">knapp angehoben</text>
+
+      <!-- fremde Kette quer, hängt im Anker -->
+      <path d="M80,330 C240,300 380,255 445,262 C500,268 560,300 600,320" fill="none" stroke="#5c6b78" stroke-width="3"/>
+      <text x="70" y="360" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">fremde Kette hängt im eigenen Anker</text>
+
+      <!-- Hilfsleine auf Slip unter der fremden Kette -->
+      <path d="M475,100 C430,180 420,230 443,258" fill="none" stroke="#2e7d32" stroke-width="2.5"/>
+      <path d="M443,258 C465,285 495,200 500,102" fill="none" stroke="#2e7d32" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <text x="290" y="160" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#2e7d32" font-weight="bold">Hilfsleine auf Slip unter</text>
+      <text x="290" y="178" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#2e7d32" font-weight="bold">der fremden Kette durch,</text>
+      <text x="290" y="196" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#2e7d32" font-weight="bold">beide Enden an Bord belegt</text>
+
+      <!-- Pfeil: Anker absenken -->
+      <line x1="530" y1="150" x2="530" y2="215" stroke="#5c6b78" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ap)"/>
+      <text x="543" y="185" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">dann: eigenen Anker</text>
+      <text x="543" y="203" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">wieder absenken → frei</text>
+    </svg>
+    <figcaption><strong>Das Prinzip:</strong> Die fremde Kette wird von einer Hilfsleine
+    (auf Slip, beide Enden an Bord) getragen — dann kann der eigene Anker unter ihr
+    <em>abgesenkt und weggedreht</em> werden. Zum Schluss ein Ende der Hilfsleine
+    loswerfen, die fremde Kette rutscht zurück ins Wasser.</figcaption>
+  </figure>
+
+  <ol>
+    <li><strong>Eigenen Anker nur so weit hochkurbeln</strong>, bis die fremde Kette gut erreichbar unterm Bug hängt — nicht höher, das Gewicht wächst mit jedem Zentimeter.</li>
+    <li>Eine <strong>kräftige Hilfsleine auf Slip unter der fremden Kette</strong> durchführen (mit Bootshaken angeln) und <strong>beide Enden an Bordklampen belegen</strong>. Jetzt trägt die Leine die fremde Kette.</li>
+    <li><strong>Eigene Kette fieren:</strong> Der eigene Anker sinkt unter der aufgehängten fremden Kette weg — meist fällt er schon jetzt frei. Wenn nicht: mit dem Bootshaken nachhelfen oder den Bug mit kurzem Ruderimpuls leicht verdrehen.</li>
+    <li>Eigenen Anker <strong>seitlich versetzt wieder aufholen</strong> — er kommt jetzt sauber hoch.</li>
+    <li><strong>Ein Ende der Hilfsleine loswerfen</strong> und durchrauschen lassen: Die fremde Kette fällt zurück auf den Grund. Kurzer Blick zum Nachbarn: Steht seine Kette wieder normal?</li>
+  </ol>
+
+  <div class="callout achtung">
+    <span class="label">Was du nie tust</span>
+    <ul>
+      <li>Die fremde Kette <strong>auf der eigenen Ankerwinsch</strong> hochziehen — Überlast, und beim Abrutschen fliegt sie unkontrolliert.</li>
+      <li>Mit dem Boot <strong>an der verhakten Kette ziehen</strong> — du reißt den Anker des Nachbarn aus.</li>
+      <li>Fremde Muringleinen <strong>kappen</strong>. Wirklich nicht — auch wenn es 35 °C sind und drei Boote hupen.</li>
+      <li>Hektik. Ein Ankersalat bei Flaute ist ein 10-Minuten-Problem. Bei auffrischendem Seitenwind zuerst überlegen, wer das Boot währenddessen <em>fährt</em>.</li>
+    </ul>
+  </div>
+
+  <h2>3 · Sonderfälle</h2>
+
+  <ul>
+    <li><strong>Nachbar liegt auf deiner Kette</strong> (du willst weg, kommst aber nicht frei): Nachbarn wecken/informieren — meist reicht es, wenn <em>er</em> ein paar Meter Kette fiert, während du deinen Anker unter seiner durchziehst. Notfalls sein Verfahren von oben: seine Kette per Hilfsleine anheben lassen.</li>
+    <li><strong>Anker unter Felsen/Kette verkeilt</strong> (nicht verhakt, sondern fest): senkrecht darüber fahren und aus <em>verschiedenen Richtungen</em> mit der Kette arbeiten; hilft das nicht — Maske aufsetzen und nachsehen (im Saronischen Golf siehst du auf 5–8 m fast immer den Grund). Letzte Eskalation: Kette an einer Boje abschlagen und markieren, Charterbasis anrufen.</li>
+    <li><strong>Prävention</strong> (aus <a href="0006-anlegen-roemisch-katholisch.html">Lektion 6</a>): in der Flucht der Lücke ankern, parallel zu den Nachbarketten, nicht zu flach über fremde Ketten fahren — und beim Einlaufen kurz merken, <em>wessen</em> Kette wo liegt.</li>
+  </ul>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Salat löst man mit einer Leine, nicht mit der Winsch.</strong> Hilfsleine auf
+    Slip unter die fremde Kette, belegen, eigenen Anker absenken, frei — Leine slippen,
+    fertig. Nachbarn informieren, Ruhe ausstrahlen, und das Publikum am Kai applaudiert
+    statt zu filmen.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://www.esys.org/esys/rk-anlegen.html">esys.org: Anlegen mit Buganker</a> (Abschnitt Ablegen/Kettenkontakt) und <a href="https://www.scansail.de/blog/artikel/manoevertipps-fuer-segler-ankern-teil-3/">Scansail: Manövertipps Ankern</a>.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/hafen-und-anker.html">Referenzkarte Hafen &amp; Anker</a> (dort jetzt mit Ankersalat-Kurzrezept).</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Was, wenn zwei fremde Ketten gleichzeitig im
+    Anker hängen?" oder „Wie hebe ich eine schwere Kette an, wenn die Hilfsleine rutscht?"</p>
+    <p><a href="0007-ankern.html">← Lektion 7</a> · <a href="../index.html">Kursübersicht</a> · <a href="0013-wetter-refresh.html">Lektion 13 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Beim Ankeraufholen hängt plötzlich eine fremde Kette im eigenen Anker. Erste Reaktion?',
+    options: ['Stoppen, nicht weiterkurbeln, Nachbarn informieren', 'Mit mehr Winschkraft zügig weiterholen, bis alles oben ist', 'Kurz kräftig rückwärts eindampfen, um den Anker freizureißen'],
+    correct: 0,
+    why: 'Gewalt zieht den fremden Anker aus dem Grund — dann treibt der Nachbar. Erst Ruhe, dann Hilfsleine.'
+  },
+  {
+    q: 'Wie wird die fremde Kette gehalten, während du deinen Anker freimachst?',
+    options: ['Mit einer Hilfsleine auf Slip, beide Enden an Bordklampen belegt', 'Mit der eigenen Ankerwinsch, die dafür genug Reserven besitzt', 'Mit dem Bootshaken, den ein Crewmitglied kräftig festhält'],
+    correct: 0,
+    why: 'Die Leine auf Slip trägt die Last an zwei Klampen — und lässt sich am Ende durch Loswerfen eines Endes kontrolliert slippen. Winsch und Arme sind dafür nicht gebaut.'
+  },
+  {
+    q: 'Die Hilfsleine trägt die fremde Kette. Wie kommt dein Anker jetzt frei?',
+    options: ['Eigene Kette fieren — der Anker sinkt unter der fremden Kette weg', 'Vollgas voraus — der Anker zieht sich unter der Kette hindurch', 'Die fremde Kette anheben, bis dein Anker oben herausrutscht'],
+    correct: 0,
+    why: 'Absenken statt anheben: Der eigene Anker taucht unter der aufgehängten Kette weg und kommt seitlich versetzt sauber hoch.'
+  },
+  {
+    q: 'Wie wird die fremde Kette am Ende wieder zu Wasser gelassen?',
+    options: ['Ein Ende der Slip-Leine loswerfen und durchrauschen lassen', 'Beide Enden gleichzeitig mit Schwung über Bord werfen', 'Die Kette mit dem Bootshaken langsam Stück für Stück ablassen'],
+    correct: 0,
+    why: 'Genau dafür lag die Leine auf Slip: ein Ende los, sie rauscht unter der Kette durch, die Kette fällt zurück auf den Grund.'
+  },
+  {
+    q: 'Der eigene Anker ist am Grund verkeilt (Fels), nicht verhakt. Was probierst du zuerst?',
+    options: ['Senkrecht darüber stehen und aus wechselnden Richtungen ziehen', 'Mit halber Maschinenkraft rückwärts konstant daran ziehen', 'Sofort die Kette abschlagen und mit einer Boje markieren'],
+    correct: 0,
+    why: 'Senkrecht drüber + Richtungswechsel löst die meisten Verkeilungen. Danach: Maske und nachsehen. Kette abbojen ist die letzte Eskalation — mit Anruf bei der Basis.'
+  }
+]);
+</script>
+</body>
+</html>

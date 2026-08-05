@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 14 — Ägäis-Wetter: Meltemi, Thermik &amp; die tägliche Wetterentscheidung</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0013-wetter-refresh.html">← Lektion 13</a>
+    <a href="../reference/wetter.html">📄 Wetter-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0015-plotter-und-instrumente.html">Nächste Lektion: Plotter &amp; Instrumente →</a>
+  </nav>
+
+  <h1>Ägäis-Wetter: Meltemi, Thermik &amp; die tägliche Wetterentscheidung</h1>
+  <p class="lesson-meta">Lektion 14 · Modul D — Wetter · ca. 25 Minuten · revierspezifisch</p>
+
+  <p>Ostsee und Kroatien kennst du — die Ägäis tickt anders: Im Sommer machen nicht
+  durchziehende Tiefs das Wetter, sondern <strong>ein einziger großräumiger Wind</strong>
+  (der Meltemi) und die <strong>lokale Thermik</strong>. Die gute Nachricht für deinen
+  Törn: Der Saronische Golf ist die geschützte Ecke der Ägäis. Diese Lektion erklärt
+  das System, die Revier-Besonderheiten und baut daraus deine tägliche Wetterroutine.</p>
+
+  <h2>1 · Der Meltemi — das Sommerwindsystem der Ägäis</h2>
+
+  <p>Der Meltemi (auch: Etesien) entsteht aus einer im Sommer fast stationären
+  Druckverteilung: einem <strong>Hoch über dem Balkan</strong> (&gt; 1025 hPa) und einem
+  <strong>Hitzetief über der Türkei/Anatolien</strong> (&lt; 1010 hPa). Dazwischen wird
+  die Luft wie in einer Rinne nach Süden durch die Ägäis gedrückt — als beständiger
+  Nordwind bei strahlend blauem Himmel.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 460" role="img" aria-label="Schemakarte der Ägäis mit Meltemi-Entstehung">
+      <defs>
+        <marker id="mw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+      </defs>
+      <!-- Meer -->
+      <rect x="0" y="0" width="640" height="460" fill="#e8f0f4"/>
+      <!-- Landmassen (schematisch): Balkan/Griechenland links, Türkei rechts -->
+      <path d="M0,0 L640,0 L640,60 C560,70 520,55 470,80 L470,0 Z" fill="#d8d2c4"/>
+      <path d="M0,0 L300,0 C290,60 260,90 250,140 C240,190 200,220 210,270 C215,300 190,330 150,340 L120,360 C80,370 40,350 0,360 Z" fill="#d8d2c4"/>
+      <path d="M640,60 C560,70 540,100 545,160 C550,220 520,280 540,340 L640,340 Z" fill="#d8d2c4"/>
+      <!-- Peloponnes andeutet -->
+      <path d="M0,360 C50,355 90,380 110,410 C120,430 100,450 70,460 L0,460 Z" fill="#d8d2c4"/>
+      <!-- Kreta -->
+      <rect x="230" y="430" width="180" height="18" rx="9" fill="#d8d2c4"/>
+      <text x="320" y="444" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="12" fill="#5c6b78">Kreta</text>
+      <!-- Kykladen -->
+      <circle cx="340" cy="300" r="7" fill="#d8d2c4" stroke="#b9b19f"/>
+      <circle cx="375" cy="325" r="6" fill="#d8d2c4" stroke="#b9b19f"/>
+      <circle cx="405" cy="295" r="6" fill="#d8d2c4" stroke="#b9b19f"/>
+      <circle cx="360" cy="350" r="5" fill="#d8d2c4" stroke="#b9b19f"/>
+      <text x="392" y="352" font-family="Gill Sans, Segoe UI, sans-serif" font-size="12.5" fill="#5c6b78">Kykladen</text>
+      <!-- Hoch Balkan -->
+      <text x="120" y="70" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="36" font-weight="bold" fill="#b3541e">H</text>
+      <text x="120" y="92" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#b3541e">Balkan-Hoch &gt; 1025 hPa</text>
+      <!-- Tief Türkei -->
+      <text x="580" y="200" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="36" font-weight="bold" fill="#13315c">T</text>
+      <text x="576" y="222" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#13315c">Hitzetief Anatolien</text>
+      <!-- Meltemi-Pfeile -->
+      <path d="M 330,100 C 335,160 330,200 325,255" fill="none" stroke="#1d6f8f" stroke-width="5" marker-end="url(#mw)"/>
+      <path d="M 395,105 C 405,160 415,210 420,260" fill="none" stroke="#1d6f8f" stroke-width="5" marker-end="url(#mw)"/>
+      <path d="M 360,300 C 370,340 385,375 400,405" fill="none" stroke="#1d6f8f" stroke-width="5" marker-end="url(#mw)"/>
+      <path d="M 450,290 C 470,330 485,365 495,400" fill="none" stroke="#1d6f8f" stroke-width="5" marker-end="url(#mw)"/>
+      <text x="452" y="180" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#1d6f8f">Meltemi (N, 5–7 Bft)</text>
+      <!-- Saronischer Golf -->
+      <circle cx="205" cy="330" r="46" fill="none" stroke="#2e7d32" stroke-width="3" stroke-dasharray="7 5"/>
+      <text x="205" y="398" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">Saronischer Golf</text>
+      <text x="205" y="416" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="12.5" fill="#2e7d32">geschützt: 1–2 Bft weniger</text>
+      <!-- Athen Marker -->
+      <circle cx="228" cy="292" r="4" fill="#b3541e"/>
+      <text x="238" y="288" font-family="Gill Sans, Segoe UI, sans-serif" font-size="12.5" fill="#5c6b78">Athen</text>
+    </svg>
+    <figcaption><strong>Die Meltemi-Lage:</strong> Zwischen Balkan-Hoch und anatolischem
+    Hitzetief strömt Luft als Nordwind durch die Ägäis — am stärksten im offenen
+    Zentrum und zwischen den Kykladen. Der Saronische Golf (grün) liegt im Schutz von
+    Attika und Peloponnes und bekommt typischerweise <strong>ein bis zwei Bft
+    weniger</strong> ab.</figcaption>
+  </figure>
+
+  <p>Die Eckdaten, die du im Kopf haben solltest:</p>
+
+  <table>
+    <thead>
+      <tr><th></th><th>Meltemi-Steckbrief</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Saison</strong></td><td>Juni bis September (~70 % der Fälle), Höhepunkt <strong>Juli/August</strong>; auch im Mai und Oktober möglich</td></tr>
+      <tr><td><strong>Richtung</strong></td><td>Nord (regional NE bis NW, durch Inseln und Kaps kanalisiert)</td></tr>
+      <tr><td><strong>Stärke</strong></td><td>Offene Ägäis typisch <strong>5–7 Bft</strong>, Kykladen in Spitzen 8; Saronischer Golf meist <strong>4–6 Bft</strong></td></tr>
+      <tr><td><strong>Dauer</strong></td><td>Episoden von <strong>3–6 Tagen</strong>, ausnahmsweise bis zu zehn — er „zieht nicht durch" wie ein Tief, er <em>steht</em></td></tr>
+      <tr><td><strong>Tagesgang</strong></td><td>Legt am frühen Nachmittag zu, flaut abends oft ab — <strong>starke Lagen wehen aber durch die Nacht</strong></td></tr>
+      <tr><td><strong>Wetterbild</strong></td><td>Wolkenlos, trocken, brillante Sicht — „Schönwetter-Starkwind", die Sonne warnt dich nicht</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout achtung">
+    <span class="label">Die Meltemi-Falle</span>
+    <p>Der Meltemi sieht harmlos aus: blauer Himmel, kein Wolkenband, keine Front.
+    Wer nur zum Himmel schaut statt in die Vorhersage, segelt in 7 Bft und 3 m kurze
+    See — <strong>bei 30 kn Wind steht die Welle nach sechs Stunden über 3 m</strong>.
+    Meltemi-Entscheidungen trifft man am Vorabend anhand der Modelle, nicht morgens
+    per Blick aus dem Niedergang.</p>
+  </div>
+
+  <h2>2 · Was davon kommt im Saronischen Golf an?</h2>
+
+  <ul>
+    <li><strong>Nördlicher Teil (Athen, Ägina, östlich von Poros):</strong> Bei Meltemi-Lagen dominiert Nordwind — durch die Abdeckung von Attika aber meist <strong>4–6 Bft</strong> statt der 6–8 draußen. Gutes, sportliches Segeln, wenn draußen Hafentag wäre.</li>
+    <li><strong>Südlich von Hydra / Richtung Spetses:</strong> Der Meltemi-Einfluss lässt nach; an sonnigen Tagen übernimmt <strong>thermischer Wind aus Südost bis etwa 4 Bft</strong>.</li>
+    <li><strong>Fallböen an Steilküsten:</strong> Hinter hohen Inseln (besonders <strong>Hydra</strong>) fällt der Wind böig und mit wechselnder Richtung von den Hängen — im vermeintlichen Windschatten mit deutlich mehr Druck rechnen. Beim Ankern unter Steilufern Böen aus „falscher" Richtung einplanen.</li>
+    <li><strong>Kap- und Düseneffekte:</strong> An Kaps und in Engstellen (z. B. der Kanal zwischen Poros und dem Festland) beschleunigt der Wind um 1–2 Bft und folgt der Geländeführung statt der großräumigen Richtung.</li>
+    <li><strong>Meltemi-freie Schönwettertage:</strong> Morgens Flaute, ab Mittag setzt <strong>Seewind</strong> ein (im Golf meist aus südlichen Richtungen, 3–4 Bft), der abends wieder einschläft — das klassische „Motoren am Vormittag, Segeln am Nachmittag".</li>
+  </ul>
+
+  <figure>
+    <svg viewBox="0 0 640 300" role="img" aria-label="Tagesgang des thermischen Windes">
+      <defs>
+        <marker id="tw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+      </defs>
+      <!-- Achsen -->
+      <line x1="60" y1="240" x2="600" y2="240" stroke="#5c6b78" stroke-width="2"/>
+      <line x1="60" y1="240" x2="60" y2="40" stroke="#5c6b78" stroke-width="2"/>
+      <text x="30" y="145" transform="rotate(-90 30 145)" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">Wind (Bft)</text>
+      <!-- x-Beschriftung -->
+      <text x="60" y="262" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">06</text>
+      <text x="195" y="262" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">10</text>
+      <text x="330" y="262" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">14</text>
+      <text x="465" y="262" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">18</text>
+      <text x="600" y="262" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">22 Uhr</text>
+      <!-- y-Gitter -->
+      <text x="48" y="245" text-anchor="end" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">0</text>
+      <text x="48" y="175" text-anchor="end" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">2</text>
+      <line x1="60" y1="170" x2="600" y2="170" stroke="#d8d2c4" stroke-width="1"/>
+      <text x="48" y="105" text-anchor="end" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">4</text>
+      <line x1="60" y1="100" x2="600" y2="100" stroke="#d8d2c4" stroke-width="1"/>
+      <text x="48" y="55" text-anchor="end" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">6</text>
+      <line x1="60" y1="50" x2="600" y2="50" stroke="#d8d2c4" stroke-width="1"/>
+      <!-- Thermik-Kurve -->
+      <path d="M 60,236 C 160,236 200,225 250,170 C 300,115 360,100 400,105 C 460,113 520,200 580,232" fill="none" stroke="#1d6f8f" stroke-width="3.5"/>
+      <text x="330" y="88" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#1d6f8f">Thermiktag: mittags Seewind 3–4 Bft</text>
+      <!-- Meltemi-Kurve -->
+      <path d="M 60,110 C 150,108 220,95 320,72 C 400,55 470,70 580,95" fill="none" stroke="#b3541e" stroke-width="3.5" stroke-dasharray="8 5"/>
+      <text x="330" y="42" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#b3541e">Starke Meltemi-Lage: weht durch, nachmittags Spitze</text>
+    </svg>
+    <figcaption><strong>Zwei Tagesgänge:</strong> An thermischen Tagen (blau) ist der
+    Vormittag flau und der Nachmittag segelbar; abends schläft der Wind ein. Eine starke
+    Meltemi-Lage (rostrot, gestrichelt) bringt schon morgens Wind, legt nachmittags zu
+    und weht durch die Nacht — daher gilt bei Meltemi: <em>früh ablegen, mittags fest.</em></figcaption>
+  </figure>
+
+  <h2>3 · Deine Quellen — der Wetter-Stack für Griechenland</h2>
+
+  <table>
+    <thead>
+      <tr><th>Quelle</th><th>Was sie liefert</th><th>Wann du sie nutzt</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Poseidon (HCMR)</strong><br><a href="https://poseidon.hcmr.gr/services/forecast">poseidon.hcmr.gr</a></td>
+        <td>Hochaufgelöstes griechisches Vorhersagemodell: Wind-, Böen- und <strong>Wellenkarten</strong></td>
+        <td>Hauptquelle: abends Törnplanung, morgens Kontrolle</td>
+      </tr>
+      <tr>
+        <td><strong>EMY</strong> (griech. Wetterdienst)<br><a href="https://www.emy.gr/en/marine?area=metarea">emy.gr/en/marine</a></td>
+        <td>Amtlicher Seewetterbericht und <strong>Warnungen</strong> je Seegebiet („Saronikos")</td>
+        <td>Der offizielle Warnstatus — bei Differenzen zu Apps gilt die Warnung</td>
+      </tr>
+      <tr>
+        <td><strong>Windy / vergleichbare Apps</strong></td>
+        <td>Mehrere Modelle (ECMWF, GFS …) übereinandergelegt</td>
+        <td>Modellvergleich: Sind sich die Modelle einig, ist die Lage verlässlich; weichen sie ab, konservativ planen</td>
+      </tr>
+      <tr>
+        <td><strong>DWD Seewetter Mittelmeer</strong></td>
+        <td>Deutschsprachiger Überblick über die Großwetterlage</td>
+        <td>Fürs Verständnis der Lage (Hoch/Tief), Vokabeln aus <a href="0013-wetter-refresh.html">Lektion 13</a></td>
+      </tr>
+      <tr>
+        <td><strong>Olympia Radio</strong> (UKW)</td>
+        <td>Seewetterbericht 0600/1000/1600/2000 UTC, Ansage auf K16 (<a href="0011-funk-griechenland.html">Lektion 11</a>)</td>
+        <td><strong>Rückfallebene ohne Internet</strong> — und Starkwindwarnungen unterwegs</td>
+      </tr>
+      <tr>
+        <td><strong>NAVTEX</strong> (518 kHz, englisch)</td>
+        <td>Warnungen und Berichte als Text</td>
+        <td>Falls an Bord vorhanden: läuft passiv mit</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout revier">
+    <span class="label">Charterpraxis</span>
+    <p>Mobilfunk-Datennetz ist im Saronischen Golf fast flächendeckend gut — die
+    Internet-Quellen sind daher alltagstauglich. Trotzdem: <strong>Hörwache auf
+    Kanal 16</strong> hält dich über Starkwindwarnungen auf dem Laufenden, und die
+    Olympia-Radio-Zeiten gehören ins Bordritual, falls das Netz doch mal fehlt.
+    Beim Check-in die Charterbasis nach ihrer Wettereinschätzung fragen — die kennen
+    die lokalen Effekte.</p>
+  </div>
+
+  <h2>4 · Die tägliche Wetterroutine</h2>
+
+  <ol>
+    <li><strong>Abends (Törnplanung):</strong> Poseidon-Wind- und Wellenkarte für morgen ansehen, EMY-Warnlage prüfen, Modellvergleich in der App. Daraus: Ziel, Alternativziel, Ablegezeit.</li>
+    <li><strong>Morgens (Bestätigung):</strong> Kurzer Blick: Hat sich das Bild über Nacht geändert? Bei Meltemi-Lagen: <strong>früh ablegen</strong> — die Meilen vor dem Nachmittagsmaximum sind die angenehmsten.</li>
+    <li><strong>Unterwegs:</strong> Hörwache K16 (Warnungen), Blick auf Wind gegen Vorhersage: Kommt mehr als gemeldet, früher reffen und Plan B aktivieren.</li>
+    <li><strong>Go/No-Go-Kriterien</strong> (aus <a href="0013-wetter-refresh.html">Lektion 13</a>): Böen statt Mittelwind bewerten, Kurs zum Wind, Wellenkarte, Crew-Zustand. Ab 6–7 Bft in Böen auf der Strecke: Hafentag oder geschützte Alternativroute.</li>
+    <li><strong>Plan B konkret haben:</strong> Im Saronischen Golf ist fast immer ein Schutzhafen in Reichweite (Ägina, Poros, Methana, Epidavros) — der Vorteil dieses Reviers. „Weiterfahren geht immer noch" ist die bessere Grundhaltung als „umkehren geht immer noch".</li>
+  </ol>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Meltemi = Balkan-Hoch + Anatolien-Tief → Nordwind, wolkenlos, tagelang;
+    Juli/August am stärksten. Saronischer Golf: 1–2 Bft weniger als draußen, aber
+    Fallböen an Steilküsten (Hydra!) und Düsen an Kaps. Entscheidung am Vorabend
+    per Poseidon + EMY, morgens bestätigen, bei Meltemi früh los.</strong></p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquellen:</strong> <a href="https://sailingissues.com/meltemi.html">sailingissues.com: The Meltemi</a> (Entstehung, Zahlen) und <a href="https://www.blauwasser.de/reviere/segeln-saronischer-golf-griechenland-revierinformation">blauwasser.de: Revierinfo Saronischer Golf</a> (Windverhältnisse im Revier).</li>
+      <li><strong>Gleich ausprobieren:</strong> <a href="https://poseidon.hcmr.gr/services/forecast">Poseidon-Vorhersage</a> öffnen und die Wind-/Wellenkarte für den Saronischen Golf lesen üben — am besten jetzt, dann ist die Bedienung beim Törn vertraut.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/wetter.html">Wetter-Referenzkarte</a> — Quellen-Routine und Meltemi-Steckbrief kompakt.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Simulier eine Wetterentscheidung: Poseidon sagt
+    N 22 kn, Böen 30, Ziel Hydra — was tun?" oder „Wie unterscheidet sich der Meltemi
+    von der Bora in Kroatien?"</p>
+    <p><a href="0013-wetter-refresh.html">← Lektion 13</a> · <a href="../index.html">Kursübersicht</a> · <a href="0015-plotter-und-instrumente.html">Lektion 15 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Welche Druckverteilung erzeugt den Meltemi?',
+    options: ['Hoch über dem Balkan und Hitzetief über Anatolien', 'Tief über dem Balkan und Hoch über Anatolien', 'Azorenhoch direkt über der Ägäis ohne Gegenspieler'],
+    correct: 0,
+    why: 'Zwischen Balkan-Hoch (> 1025 hPa) und anatolischem Hitzetief (< 1010 hPa) strömt die Luft als beständiger Nordwind durch die Ägäis.'
+  },
+  {
+    q: 'Woran erkennst du eine Meltemi-Lage NICHT?',
+    options: ['An einer aufziehenden Wolkenfront am Himmel', 'An der Druckverteilung in der Wetterkarte', 'An der Vorhersage von tagelangem Nordwind bei klarem Himmel'],
+    correct: 0,
+    why: 'Genau das ist die Falle: Der Meltemi kommt bei wolkenlosem Himmel, ohne Front. Ihn sieht man in der Vorhersage, nicht am Himmel.'
+  },
+  {
+    q: 'Draußen in der Ägäis stehen 7 Bft Meltemi. Was erwartet dich typischerweise im Saronischen Golf?',
+    options: ['Etwa 5–6 Bft aus Nord — plus Fallböen hinter hohen Inseln', 'Spiegelglatte See — der Golf ist komplett windgeschützt', 'Dieselben 7 Bft, aber aus Süd wegen der Landabdeckung'],
+    correct: 0,
+    why: 'Der Golf liegt im Schutz von Attika/Peloponnes: meist 1–2 Bft weniger. Aber Vorsicht vor Fallböen an Steilküsten (Hydra) und Düseneffekten an Kaps und Engstellen.'
+  },
+  {
+    q: 'Warum legst du bei einer Meltemi-Lage möglichst früh am Morgen ab?',
+    options: ['Weil der Wind am frühen Nachmittag sein Maximum erreicht', 'Weil Olympia Radio nur vormittags Wetterberichte sendet', 'Weil die Häfen mittags für neue Boote geschlossen werden'],
+    correct: 0,
+    why: 'Der Meltemi legt nachmittags zu (und starke Lagen wehen durch die Nacht). Die Meilen vor dem Mittagsmaximum sind die entspanntesten — mittags liegst du idealerweise schon fest.'
+  },
+  {
+    q: 'Poseidon zeigt 25 kn, Windy (ECMWF) 14 kn für dieselbe Strecke. Wie gehst du damit um?',
+    options: ['Konservativ planen und die amtliche EMY-Warnlage prüfen', 'Den Mittelwert von etwa 20 kn als Planungsgrundlage nehmen', 'Der App mit dem niedrigeren Wert glauben — Modelle übertreiben'],
+    correct: 0,
+    why: 'Uneinige Modelle = unsichere Lage. Dann konservativ planen, den amtlichen Warnstatus (EMY) checken und unterwegs Plan B bereithalten. Einig sind sich die Modelle meist bei stabilen Lagen — genau dann sind sie verlässlich.'
+  }
+]);
+</script>
+</body>
+</html>

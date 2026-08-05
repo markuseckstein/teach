@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 3 — Kreuzen: gegen den Wind ans Ziel</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0002-wende-halse-q-wende-beidrehen.html">← Lektion 2</a>
+    <a href="../reference/kreuzen-und-ausweichregeln.html">📄 Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0004-boje-ueber-bord.html">Nächste Lektion: Boje über Bord →</a>
+  </nav>
+
+  <h1>Kreuzen: gegen den Wind ans Ziel</h1>
+  <p class="lesson-meta">Lektion 3 · Modul A — Grundlagen &amp; Manöver · ca. 20 Minuten</p>
+
+  <p>Aus <a href="0001-kurse-zum-wind-und-segelstellung.html">Lektion 1</a> weißt du: Der
+  Sektor ±45° um den Wind ist gesperrt. Liegt dein Ziel genau dort — auf dem Törn ist das
+  garantiert irgendwann der Heimathafen — hilfst du dir mit <strong>Schlägen</strong>:
+  Amwindkurse im Zickzack, verbunden durch die Wenden aus
+  <a href="0002-wende-halse-q-wende-beidrehen.html">Lektion 2</a>. Das ist das Kreuzen.
+  Segeln kannst du es schon; hier geht es um das, was man vergisst: <strong>die Taktik</strong>.</p>
+
+  <h2>1 · Das Bild im Kopf: Schläge und Laylines</h2>
+
+  <figure>
+    <svg viewBox="0 0 640 600" role="img" aria-label="Aufkreuzen mit Schlägen und Laylines">
+      <defs>
+        <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#5c6b78"/>
+        </marker>
+        <marker id="ag2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#2e7d32"/>
+        </marker>
+      </defs>
+
+      <!-- Wind -->
+      <line x1="520" y1="30" x2="520" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="560" y1="30" x2="560" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="500" y="115" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Ziel -->
+      <circle cx="320" cy="90" r="11" fill="#b3541e"/>
+      <text x="320" y="65" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#b3541e" font-weight="bold">Ziel in Luv</text>
+
+      <!-- Laylines -->
+      <line x1="320" y1="90" x2="110" y2="300" stroke="#c62828" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.7"/>
+      <line x1="320" y1="90" x2="530" y2="300" stroke="#c62828" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.7"/>
+      <text x="105" y="325" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#c62828">Layline (Backbordbug)</text>
+      <text x="415" y="325" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#c62828">Layline (Steuerbordbug)</text>
+
+      <!-- Kreuzweg -->
+      <path d="M250,530 L390,390 L205,205 L320,90"
+            fill="none" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6"/>
+
+      <!-- Wendepunkte -->
+      <circle cx="390" cy="390" r="6" fill="none" stroke="#c62828" stroke-width="2.5"/>
+      <text x="405" y="395" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#c62828">Wende · Wendewinkel ≈ 90°</text>
+      <circle cx="205" cy="205" r="6" fill="none" stroke="#c62828" stroke-width="2.5"/>
+      <text x="60" y="185" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#c62828">Wende auf der Layline</text>
+
+      <!-- Boote -->
+      <g transform="translate(320,460) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="355" y="475" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Schlag 1 (Backbordbug)</text>
+
+      <g transform="translate(300,300) rotate(-45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="320" y="285" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Schlag 2 (Steuerbordbug)</text>
+
+      <g transform="translate(262,148) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="130" y="130" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">letzter Schlag direkt zum Ziel</text>
+    </svg>
+    <figcaption><strong>Aufkreuzen.</strong> Zwei bis drei lange Schläge statt vieler
+    kurzer — jede Wende kostet Fahrt. Die <strong>Laylines</strong> (rot gestrichelt)
+    sind die gedachten Amwind-Anliegelinien zum Ziel: Wer auf der Layline wendet, erreicht
+    das Ziel mit dem letzten Schlag genau. Wer <em>hinter</em> ihr weiterfährt, „übersteht"
+    und verschenkt Strecke.</figcaption>
+  </figure>
+
+  <ul>
+    <li><strong>Wendewinkel:</strong> Eine Fahrtenyacht wendet durch ≈ 90° (zwischen den Kompasskursen beider Bugs); mit Abdrift und Welle eher 100°. Praktisch: <em>Neuer Kurs ≈ alter Kurs ± 90°</em> — so peilst du vor der Wende, wohin der neue Schlag führt.</li>
+    <li><strong>Höhe vs. Fahrt:</strong> „Kneifen" (zu hoch anluven) fühlt sich fleißig an, aber das Boot wird langsam und driftet mehr ab — netto verlierst du Höhe. Lieber eine Handbreit tiefer mit Speed. Windfäden parallel = richtig.</li>
+    <li><strong>Jede Wende kostet</strong> (Fahrtverlust + Crew-Arbeit): Auf freier Strecke lieber wenige lange Schläge; kurze Schläge nur, wenn Land, Verkehr oder Winddreher es verlangen.</li>
+  </ul>
+
+  <h2>2 · Die drei Taktikregeln, die 90 % ausmachen</h2>
+
+  <ol>
+    <li><strong>Den langen Schlag zuerst.</strong> Liegt das Ziel nicht genau im Wind, zeigt ein Bug deutlich näher zum Ziel — diesen „langen" Schlag fährst du zuerst. So bleibst du flexibel, falls der Wind dreht.</li>
+    <li><strong>Nicht überstehen.</strong> Wende spätestens auf der Layline — mit etwas Reserve (Abdrift, Winddreher), aber nicht mehr. Alles hinter der Layline ist geschenkte Strecke.</li>
+    <li><strong>Auf Dreher reagieren:</strong> Zwingt dich eine Winddrehung zum Abfallen (du wirst „gedrückt"), ist das auf dem anderen Bug ein Geschenk — <strong>im Drücker wenden</strong>. Hebt dich der Wind an (du kannst höher anliegen), bleib auf dem Bug.</li>
+  </ol>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Langer Schlag zuerst — auf der Layline wenden — im Drücker wenden.</strong>
+    Mehr Regatta-Taktik braucht ein Fahrtensegler nicht. Im Zweifel zählt auf dem Törn
+    ohnehin: früh genug den Motor ehrlich mit einplanen, statt sich bei Gegenwind
+    festzukreuzen — die Crew will abends ankommen.</p>
+  </div>
+
+  <h2>3 · Wegerecht: Wer weicht wem aus?</h2>
+
+  <p>Beim Kreuzen begegnest du zwangsläufig anderen Seglern auf Gegenkursen. Die
+  Ausweichregeln unter Segelbooten (KVR Regel 12) — genau die Reihenfolge, die man nach
+  Jahren vergisst:</p>
+
+  <figure>
+    <svg viewBox="0 0 640 430" role="img" aria-label="Ausweichregel: Backbordbug weicht Steuerbordbug">
+      <!-- Wind -->
+      <line x1="300" y1="25" x2="300" y2="80" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="340" y1="25" x2="340" y2="80" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="365" y="55" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Kurspfeile -->
+      <line x1="215" y1="285" x2="320" y2="180" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#ap)"/>
+      <line x1="425" y1="285" x2="330" y2="190" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#ap)"/>
+
+      <!-- Ausweichkurs von A: hinter dem Heck von B durch -->
+      <path d="M215,285 C265,260 330,270 400,300" fill="none" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ag2)"/>
+
+      <!-- Boot A: Backbordbug, Kurs NE -->
+      <g transform="translate(180,320) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="60" y="365" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#c62828" font-weight="bold">A: Backbordbug</text>
+      <text x="60" y="385" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">muss ausweichen — am besten</text>
+      <text x="60" y="403" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">deutlich abfallen, hinterm Heck durch (grün)</text>
+
+      <!-- Boot B: Steuerbordbug, Kurs NW -->
+      <g transform="translate(460,320) rotate(-45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="440" y="365" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#2e7d32" font-weight="bold">B: Steuerbordbug</text>
+      <text x="440" y="385" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Kurshalter — hält Kurs</text>
+      <text x="440" y="403" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">und Fahrt bei</text>
+    </svg>
+    <figcaption><strong>Verschiedene Bugs:</strong> Wind über Backbord (A) weicht Wind über
+    Steuerbord (B). Ausweichen heißt: <em>früh, deutlich und erkennbar</em> — ideal mit
+    einem klaren Abfallen hinter das Heck des Kurshalters.</figcaption>
+  </figure>
+
+  <ol>
+    <li><strong>Verschiedene Bugs:</strong> Backbordbug weicht Steuerbordbug. (Eselsbrücke: Wer den Wind von Backbord hat, hat „Bringschuld".)</li>
+    <li><strong>Gleicher Bug:</strong> das <strong>Luv</strong>-Boot weicht dem <strong>Lee</strong>-Boot.</li>
+    <li><strong>Überholer</strong> hält sich frei — immer, auch unter Segeln gegenüber Motorbooten.</li>
+    <li>Als Kurshalter: Kurs und Fahrt <em>halten</em> — hektisches „Höflichkeitsausweichen" beider Boote ist gefährlicher als die Begegnung selbst. Erst wenn der Ausweichpflichtige erkennbar nicht handelt, selbst manövrieren.</li>
+  </ol>
+
+  <div class="callout revier">
+    <span class="label">Revier-Tipp Saronischer Golf</span>
+    <p>Zwischen Piräus, Ägina und Poros ist <strong>dichter Fährverkehr</strong>, inklusive
+    schneller „Flying Dolphins" (Tragflügelboote mit 30+ kn). Formal gilt oft „Segel vor
+    Motor" — praktisch gilt: Berufsverkehr in Fahrwassern und Hafeneinfahrten (KVR Regel 9)
+    <strong>nicht behindern</strong>, früh und großzügig klar bleiben, und den Blick alle
+    paar Minuten einmal rundum. Kreuzschläge so planen, dass sie Fährrouten zügig und
+    möglichst rechtwinklig queren.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://de.wikibooks.org/wiki/Segeln/_Man%C3%B6ver">Wikibooks: Segeln — Manöver</a> (Abschnitt Kreuzen) und <a href="https://www.segeln360.de/seemannschaft/segelmanoever.html">segeln360: Segelmanöver</a>.</li>
+      <li><strong>Ausblick:</strong> Wie dir der Plotter Laylines und den besten Wendezeitpunkt anzeigt → Modul E, Lektion „Kreuzen mit dem Plotter".</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/kreuzen-und-ausweichregeln.html">Referenzkarte „Kreuzen &amp; Ausweichregeln"</a>.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Wie viel Reserve lasse ich zur Layline?" oder
+    „Gilt Segel-vor-Motor auch gegenüber einer Fähre?"</p>
+    <p><a href="0002-wende-halse-q-wende-beidrehen.html">← Lektion 2</a> · <a href="../index.html">Kursübersicht</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Durch wie viel Grad dreht eine Fahrtenyacht bei einer Wende ungefähr?',
+    options: ['Durch etwa 45 Grad', 'Durch etwa 90 Grad', 'Durch etwa 180 Grad'],
+    correct: 1,
+    why: 'Amwindkurs zu Amwindkurs: ≈ 90° zwischen den Bugs, mit Abdrift und Welle eher 100°. Praktische Peilhilfe: neuer Kurs = alter Kurs ± 90°.'
+  },
+  {
+    q: 'Was ist eine Layline?',
+    options: ['Die Linie, auf der man das Ziel gerade noch am Wind anliegen kann', 'Die Linie, die den gesperrten Sektor von ±45° zum Wind begrenzt', 'Die Kurslinie, die der Plotter zwischen zwei Wegpunkten zeichnet'],
+    correct: 0,
+    why: 'Von der Layline aus erreichst du das Ziel mit einem Amwind-Schlag genau. Dahinter weiterfahren = überstehen = verschenkte Strecke.'
+  },
+  {
+    q: 'Das Ziel liegt schräg in Luv, ein Bug zeigt deutlich näher zum Ziel. Was fährst du zuerst?',
+    options: ['Den kurzen Schlag, damit die erste Wende möglichst früh kommt', 'Den langen Schlag, der näher in Richtung des Zieles zeigt', 'Immer den Steuerbordbug, weil du dort Wegerecht behältst'],
+    correct: 1,
+    why: 'Langer Schlag zuerst: Du machst am meisten Strecke zum Ziel gut und bleibst flexibel, wenn der Wind dreht.'
+  },
+  {
+    q: 'Der Wind dreht so, dass du auf deinem Schlag abfallen musst („Drücker"). Was tust du?',
+    options: ['Wenden — auf dem anderen Bug ist derselbe Dreher ein Gewinn', 'Weiterfahren — Kurstreue ist beim Kreuzen immer am wichtigsten', 'Anluven und kneifen, um die verlorene Höhe zurückzuholen'],
+    correct: 0,
+    why: 'Im Drücker wenden: Was dich auf diesem Bug tiefer drückt, lässt dich auf dem anderen höher anliegen.'
+  },
+  {
+    q: 'Zwei Segelboote nähern sich auf kreuzenden Kursen, verschiedene Bugs. Wer weicht aus?',
+    options: ['Das Boot mit Wind über Steuerbord weicht dem anderen aus', 'Das Boot mit Wind über Backbord weicht dem anderen aus', 'Das schnellere der beiden Boote weicht dem langsameren aus'],
+    correct: 1,
+    why: 'Backbordbug weicht Steuerbordbug (KVR Regel 12). Am besten früh und deutlich hinter dem Heck des Kurshalters durchgehen.'
+  },
+  {
+    q: 'Zwei Segelboote auf demselben Bug, eines luvwärts vom anderen. Wer weicht aus?',
+    options: ['Das Lee-Boot weicht, weil es den anderen unter sich hat', 'Das Luv-Boot weicht, denn Lee hat hier das Wegerecht', 'Das achterlichere Boot weicht, unabhängig von seiner Lage'],
+    correct: 1,
+    why: 'Gleicher Bug: Luv weicht Lee. Das Lee-Boot ist Kurshalter und hält Kurs und Fahrt bei.'
+  }
+]);
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 10 — MAYDAY, PAN PAN, SÉCURITÉ &amp; DSC</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0009-routinefunk.html">← Lektion 9</a>
+    <a href="../reference/seefunk.html">📄 Funk-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0011-funk-griechenland.html">Nächste Lektion: Funk in Griechenland →</a>
+  </nav>
+
+  <h1>MAYDAY, PAN PAN, SÉCURITÉ &amp; DSC</h1>
+  <p class="lesson-meta">Lektion 10 · Modul C — Seefunk (SRC-Refresh) · ca. 25 Minuten · <strong>Sicherheitskern des Kurses</strong></p>
+
+  <p>Drei Meldungsarten, streng nach Rang: <strong>Not</strong> geht vor
+  <strong>Dringlichkeit</strong>, Dringlichkeit vor <strong>Sicherheit</strong>, alles vor
+  Routine. Die Schemata musst du nicht schön finden, nur auswendig können — im Ernstfall
+  liest du sie von der <a href="../reference/seefunk.html">Referenzkarte</a> neben dem
+  Funkgerät ab.</p>
+
+  <h2>1 · Wann ist was? Die Entscheidungstabelle</h2>
+
+  <table>
+    <thead>
+      <tr><th>Meldung</th><th>Voraussetzung</th><th>Beispiele</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>MAYDAY</strong> (Notmeldung)</td>
+        <td>Schiff oder Mensch in <strong>unmittelbarer, schwerer Gefahr</strong> — sofortige Hilfe nötig</td>
+        <td>Wassereinbruch, Feuer, Person über Bord nicht auffindbar, Herzinfarkt, Strandung auf Legerwall</td>
+      </tr>
+      <tr>
+        <td><strong>PAN PAN</strong> (Dringlichkeit)</td>
+        <td>Sicherheit von Schiff oder Person <strong>bedroht, aber keine unmittelbare Lebensgefahr</strong></td>
+        <td>Motorausfall und Abdrift auf Land (noch mit Zeit), Ruderbruch, ernster medizinischer Fall mit Beratungsbedarf</td>
+      </tr>
+      <tr>
+        <td><strong>SÉCURITÉ</strong> (Sicherheit)</td>
+        <td>Wichtige <strong>Warnung für andere</strong></td>
+        <td>Treibender Container/Baumstamm, ausgefallenes Leuchtfeuer; Küstenfunkstellen: Starkwindwarnungen</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p>Die ehrliche Skipperfrage: <em>„Brauche ich sofort Hilfe, sonst passiert
+    Schlimmes?"</em> → MAYDAY. <em>„Ich habe ein ernstes Problem, aber noch Zeit?"</em>
+    → PAN PAN. <em>„Andere müssen das wissen?"</em> → SÉCURITÉ. Im Zweifel zwischen
+    PAN PAN und MAYDAY: <strong>lieber eine Stufe höher</strong> — herabstufen kann die
+    Rettungsleitstelle immer.</p>
+  </div>
+
+  <h2>2 · Der DSC-Notalarm — erst der Knopf, dann die Stimme</h2>
+
+  <ol>
+    <li><strong>Roter DISTRESS-Knopf</strong> (unter der Klappe) <strong>5 Sekunden gedrückt halten</strong> — das Gerät zählt hörbar mit. Der Alarm sendet auf Kanal 70 automatisch deine <strong>MMSI und GPS-Position</strong> an alle Schiffe und Küstenfunkstellen in Reichweite und wiederholt sich, bis er quittiert wird.</li>
+    <li>Wenn Zeit ist: vorher im DSC-Menü die <strong>Notfallart</strong> wählen („designated distress": Fire, Flooding, MOB …) — wenn nicht, reicht der Knopf („undesignated").</li>
+    <li>Das Gerät schaltet selbst auf <strong>Kanal 16</strong> — dort folgt jetzt dein <strong>Sprech-MAYDAY</strong> (Schema unten).</li>
+    <li>Fehlauslösung? Sofort per Sprechfunk auf 16 an „All Stations" widerrufen (Name, MMSI, „cancel my distress alert") — peinlich ist besser als eine unnötige SAR-Aktion.</li>
+  </ol>
+
+  <h2>3 · Das MAYDAY-Schema</h2>
+
+  <div class="funkspruch">MAYDAY — MAYDAY — MAYDAY
+THIS IS sailing yacht IKAROS, IKAROS, IKAROS —
+call sign SVA1234 — MMSI 237123456
+
+MAYDAY — sailing yacht IKAROS —
+MY POSITION IS 37 degrees 41 minutes north,
+023 degrees 26 minutes east
+(two miles south of Aegina harbour) —
+
+WE ARE TAKING WATER AND SINKING —
+I REQUIRE IMMEDIATE ASSISTANCE —
+FIVE PERSONS ON BOARD —
+we are launching the life raft, activating EPIRB —
+OVER</div>
+
+  <p>Als Merkfolge: <strong>3× MAYDAY — 3× wer — MAYDAY + Name — Position — Art der Not —
+  „erbitte sofortige Hilfe" — Personen an Bord — Zusatzinfos — over.</strong> Die Position
+  ist die wichtigste Zeile: aus dem Plotter ablesen (→ Modul E) und zusätzlich als
+  Landmarke beschreiben, wenn möglich.</p>
+
+  <h2>4 · PAN PAN und SÉCURITÉ — gleiche Struktur, andere Stufe</h2>
+
+  <div class="funkspruch">PAN PAN — PAN PAN — PAN PAN
+ALL STATIONS, ALL STATIONS, ALL STATIONS —
+(oder gezielt: HELLENIC COAST GUARD)
+THIS IS sailing yacht IKAROS, IKAROS, IKAROS —
+MMSI 237123456 —
+MY POSITION IS ... —
+engine failure, drifting towards the coast,
+anchor ready — I REQUIRE A TOW —
+five persons on board — OVER</div>
+
+  <p><strong>SÉCURITÉ</strong> analog (3× SÉCURITÉ, an alle, wer, Warnung) — Ankündigung
+  auf 16, die eigentliche Meldung dann meist auf einem Arbeitskanal. Auch DSC kennt die
+  Stufen: „Urgency"- und „Safety"-Anrufe im Menü des Controllers.</p>
+
+  <h2>5 · Wenn du ein MAYDAY <em>hörst</em></h2>
+
+  <ul>
+    <li><strong>Funkstille halten</strong>, mitschreiben (Name, Position, Art der Not). Die Abwicklung gehört der Küstenfunkstelle — sie kann <em>„SEELONCE MAYDAY"</em> (Funkstille!) durchsetzen und hebt sie mit <em>„SEELONCE FEENEE"</em> wieder auf.</li>
+    <li>Antwortet <strong>keine</strong> Küstenfunkstelle und du kannst helfen: Empfang bestätigen („MAYDAY Ikaros — this is …  — RECEIVED MAYDAY") und hinfahren.</li>
+    <li>Kannst du nicht helfen und niemand quittiert: <strong>MAYDAY RELAY</strong> (3× „MAYDAY RELAY", dann wer du bist, dann die fremde Notmeldung weitergeben).</li>
+  </ul>
+
+  <div class="callout achtung">
+    <span class="label">Nicht vergessen</span>
+    <p>Funk ist Weg Nr. 1, aber nicht der einzige: <strong>EPIRB</strong> (falls an Bord),
+    <strong>Telefon 112</strong> (EU-Notruf, funktioniert auch in Griechenland — Küstenwache
+    direkt: <strong>108</strong>) und die klassischen Signalmittel. Handy-Empfang ist im
+    Saronischen Golf fast überall vorhanden — als Redundanz, nicht als Ersatz für den Funk:
+    Das MAYDAY auf 16 hören auch die Schiffe <em>um dich herum</em>.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://www.skipperguide.de/wiki/Hilfe_im_Seenotfall">SkipperGuide: Hilfe im Seenotfall</a>; zum Schema-Pauken die SRC-Lehrmittel auf <a href="https://www.bootspruefung.de/theorie/src/ukwkanaele">bootspruefung.de</a>.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/seefunk.html">Funk-Referenzkarte</a> — MAYDAY-/PAN-PAN-Vorlage zum Ausfüllen mit Bootsdaten, an die Navi-Ecke kleben!</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Spiel ein MAYDAY-Szenario mit mir durch" oder
+    „Wann ist ein medizinischer Fall MAYDAY statt PAN PAN?"</p>
+    <p><a href="0009-routinefunk.html">← Lektion 9</a> · <a href="../index.html">Kursübersicht</a> · <a href="0011-funk-griechenland.html">Lektion 11 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Motorausfall, ihr treibt langsam Richtung Küste — der Anker ist klar, noch keine akute Gefahr. Welche Meldung?',
+    options: ['PAN PAN — die Sicherheit ist bedroht, aber nicht unmittelbar', 'MAYDAY — jeder Motorausfall auf See ist ein klarer Seenotfall', 'SÉCURITÉ — andere Schiffe müssen vor dem Treiber gewarnt sein'],
+    correct: 0,
+    why: 'Ernstes Problem, aber Zeit und Optionen (Anker!) — das ist die klassische Dringlichkeit. Wird die Strandung unmittelbar, stufst du auf MAYDAY hoch.'
+  },
+  {
+    q: 'Wie löst du den DSC-Notalarm aus?',
+    options: ['Roten DISTRESS-Knopf unter der Klappe 5 Sekunden gedrückt halten', 'Auf Kanal 70 dreimal deutlich „MAYDAY" und die Position sprechen', 'Den Kanalwahlschalter schnell dreimal auf 16 hin- und herdrehen'],
+    correct: 0,
+    why: '5 Sekunden halten — das Gerät sendet MMSI + GPS-Position automatisch auf Kanal 70 und wiederholt den Alarm. Danach: Sprech-MAYDAY auf 16.'
+  },
+  {
+    q: 'Was folgt unmittelbar nach dem DSC-Notalarm?',
+    options: ['Das Sprech-MAYDAY nach Schema auf Kanal 16', 'Ein Anruf bei der Charterbasis über deren Arbeitskanal', 'Nichts — der digitale Alarm ersetzt den Sprechfunk komplett'],
+    correct: 0,
+    why: 'Der DSC-Alarm ist die Klingel, das MAYDAY auf 16 die Nachricht: Art der Not, Personen, was du brauchst — das kann DSC nicht transportieren.'
+  },
+  {
+    q: 'Welche Angabe ist die wichtigste Zeile im MAYDAY?',
+    options: ['Die Position — ohne sie kann dich niemand finden', 'Das Rufzeichen — sonst ist der Funkspruch ungültig', 'Die Bootslänge — sie bestimmt die Rettungsmittel'],
+    correct: 0,
+    why: 'Position zuerst sichern (Plotter ablesen, Landmarke dazu). Ein MAYDAY mit Position und sonst nichts ist besser als ein perfektes Schema ohne Position.'
+  },
+  {
+    q: 'Du hörst ein MAYDAY, eine Küstenfunkstelle übernimmt sofort. Was tust du?',
+    options: ['Funkstille halten und mitschreiben — die Leitstelle wickelt ab', 'Den Empfang ebenfalls bestätigen, damit alle Bescheid wissen', 'Auf einen Arbeitskanal wechseln und dort weiter Wache hören'],
+    correct: 0,
+    why: 'Sobald eine Küstenfunkstelle führt, gilt: Klappe halten, notieren, bereithalten. „SEELONCE MAYDAY" erzwingt die Funkstille notfalls ausdrücklich.'
+  },
+  {
+    q: 'Was bedeutet „MAYDAY RELAY"?',
+    options: ['Du gibst die Notmeldung eines anderen Schiffes weiter', 'Du wiederholst dein eigenes MAYDAY zum zweiten Male', 'Die Rettungsleitstelle beendet offiziell den Seenotfall'],
+    correct: 0,
+    why: 'MAYDAY RELAY = Weitergabe fremder Not, z. B. wenn niemand das schwache Signal des Havaristen quittiert hat. Das Ende der Funkstille heißt „SEELONCE FEENEE".'
+  }
+]);
+</script>
+</body>
+</html>

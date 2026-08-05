@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 1 — Kurse zum Wind &amp; Segelstellung</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="../reference/kurse-zum-wind.html">📄 Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0002-wende-halse-q-wende-beidrehen.html">Nächste Lektion: Wende &amp; Halse →</a>
+  </nav>
+
+  <h1>Kurse zum Wind &amp; Segelstellung</h1>
+  <p class="lesson-meta">Lektion 1 · Modul A — Grundlagen &amp; Manöver · ca. 20 Minuten</p>
+
+  <p>Alles, was in den nächsten Lektionen kommt — Wende, Halse, Kreuzen, sogar die
+  Plotter-Anzeigen <code>AWA</code>/<code>TWA</code> — hängt an einem einzigen Bild:
+  <strong>der Kursrose zum Wind</strong>. Das hattest du im SKS alles schon; hier holen
+  wir es zurück und hängen gleich die Trimm-Faustregeln und den scheinbaren Wind dran.</p>
+
+  <h2>1 · Orientierung: Luv, Lee und die beiden Böge</h2>
+
+  <p>Erst das Vokabular, denn jedes Manöverkommando baut darauf auf:</p>
+
+  <ul>
+    <li><strong>Luv</strong> ist die Seite, <em>aus der</em> der Wind kommt — <strong>Lee</strong> die windabgewandte Seite. („Wo der Wind zieht, ist Luv; wo er hinflieht, ist Lee.")</li>
+    <li><strong>Anluven</strong> = den Bug <em>zum Wind hin</em> drehen. <strong>Abfallen</strong> = den Bug <em>vom Wind weg</em> drehen.</li>
+    <li>Kommt der Wind über die <strong>Backbordseite</strong> ein, segelst du auf dem <strong>Backbordbug</strong> — über Steuerbord entsprechend <strong>Steuerbordbug</strong>. Das entscheidet später über Wegerecht (Steuerbordbug hat Vorfahrt) und darüber, ob ein Kurswechsel eine Wende oder Halse ist.</li>
+  </ul>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p>Der <em>Kurs zum Wind</em> ist der Winkel zwischen Bootsrichtung und wahrem Wind —
+    nicht der Kompasskurs. Dreht der Wind, ändert sich dein Kurs zum Wind, ohne dass du
+    das Ruder anfasst.</p>
+  </div>
+
+  <h2>2 · Die Kursrose</h2>
+
+  <figure>
+    <svg viewBox="0 0 640 620" role="img" aria-label="Kursrose: Kurse zum Wind mit Segelstellung">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+      </defs>
+
+      <!-- Windpfeile von oben -->
+      <line x1="280" y1="25" x2="280" y2="85" stroke="#1d6f8f" stroke-width="3" marker-end="url(#arrow)"/>
+      <line x1="320" y1="25" x2="320" y2="85" stroke="#1d6f8f" stroke-width="3" marker-end="url(#arrow)"/>
+      <line x1="360" y1="25" x2="360" y2="85" stroke="#1d6f8f" stroke-width="3" marker-end="url(#arrow)"/>
+      <text x="410" y="60" font-family="Gill Sans, Segoe UI, sans-serif" font-size="17" fill="#1d6f8f" font-weight="bold">Wahrer Wind</text>
+
+      <!-- Kreis -->
+      <circle cx="320" cy="310" r="185" fill="none" stroke="#d8d2c4" stroke-width="2"/>
+
+      <!-- Sperrzone ±45° -->
+      <path d="M320,310 L189.2,179.2 A185,185 0 0 1 450.8,179.2 Z" fill="#c62828" opacity="0.10"/>
+      <line x1="320" y1="310" x2="189.2" y2="179.2" stroke="#c62828" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.6"/>
+      <line x1="320" y1="310" x2="450.8" y2="179.2" stroke="#c62828" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.6"/>
+      <text x="320" y="190" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#c62828">Im Wind (±45°)</text>
+      <text x="320" y="212" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#c62828">Segel killen — kein Vortrieb</text>
+
+      <!-- Boote Backbordbug (rechte Seite): Rumpf zeigt in Fahrtrichtung, Linie = Großbaum -->
+      <!-- Hoch am Wind, 45° -->
+      <g transform="translate(450.8,179.2) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="478" y="158" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#0b2545" font-weight="bold">Hoch am Wind</text>
+      <text x="478" y="177" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">≈ 45° · Schot dicht</text>
+
+      <!-- Halbwind, 90° -->
+      <g transform="translate(505,310) rotate(90)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="16.7" y2="11.9" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="512" y="352" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#0b2545" font-weight="bold">Halbwind</text>
+      <text x="512" y="371" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">90° · halb gefiert</text>
+
+      <!-- Raumschots, 135° -->
+      <g transform="translate(450.8,440.8) rotate(135)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="23.6" y2="3" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="480" y="480" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#0b2545" font-weight="bold">Raumschots</text>
+      <text x="480" y="499" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">≈ 135° · weit gefiert</text>
+
+      <!-- Vor dem Wind, 180° -->
+      <g transform="translate(320,495) rotate(180)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="25.9" y2="-1.7" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="320" y="555" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#0b2545" font-weight="bold">Vor dem Wind</text>
+      <text x="320" y="574" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">180° · Baum ganz außen</text>
+
+      <!-- Boote Steuerbordbug (linke Seite, gespiegelt, blass) -->
+      <g transform="translate(189.2,179.2) rotate(-45)" opacity="0.35">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(189.2,440.8) rotate(-135)" opacity="0.35">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="-23.6" y2="3" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <text x="150" y="140" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">Steuerbordbug</text>
+      <text x="150" y="158" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#5c6b78">(spiegelbildlich)</text>
+    </svg>
+    <figcaption><strong>Die Kursrose.</strong> Wind von oben; die orange Linie an jedem Boot
+    ist der Großbaum. Rechte Hälfte: Backbordbug (Wind kommt über Backbord ein). Je raumer
+    der Kurs, desto weiter kommt der Baum heraus. Der Bereich ±45° um die Windrichtung ist
+    gesperrt — dorthin kommst du nur durch <em>Kreuzen</em> (eigene Lektion).</figcaption>
+  </figure>
+
+  <p>Die fünf Kurse, die du ansagen können musst:</p>
+
+  <table>
+    <thead>
+      <tr><th>Kurs</th><th>Winkel zum wahren Wind</th><th>Segelstellung</th><th>Gefühl an Bord</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Im Wind</strong></td><td>0° bis ±45°</td><td>Segel killen, egal wie geholt</td><td>Boot verhungert, Ruder wird weich</td></tr>
+      <tr><td><strong>Hoch am Wind</strong></td><td>≈ 45°</td><td>Schoten dicht, Baum fast mittschiffs</td><td>Max. Krängung, viel scheinbarer Wind</td></tr>
+      <tr><td><strong>Halbwind</strong></td><td>≈ 90°</td><td>Schoten etwa halb gefiert</td><td>Schnellster, entspannter Kurs</td></tr>
+      <tr><td><strong>Raumschots</strong></td><td>≈ 135°</td><td>Schoten weit gefiert</td><td>Ruhig, wenig scheinbarer Wind</td></tr>
+      <tr><td><strong>Vor dem Wind</strong></td><td>≈ 180°</td><td>Baum ganz außen, Vorsegel ggf. ausgebaumt</td><td>Rollig — Achtung Patenthalse!</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout achtung">
+    <span class="label">Achtung</span>
+    <p>Vor dem Wind ist der heikelste Kurs: Läuft der Wind unbemerkt auf die Leeseite des
+    Großsegels, schlägt der Baum ungebremst über — die <strong>Patenthalse</strong>.
+    Deshalb fährt man in der Praxis lieber Raumschots-Schläge und plant eine kontrollierte
+    Halse. Wie die geht: Lektion 2.</p>
+  </div>
+
+  <h2>3 · Segelstellung: die eine Faustregel, die du brauchst</h2>
+
+  <p>Du musst keine Winkeltabellen auswendig können. An Bord gilt immer dieselbe Schleife:</p>
+
+  <ol>
+    <li><strong>Fieren</strong>, bis das Segel am <strong>Vorliek</strong> (Vorderkante) anfängt einzufallen / zu killen …</li>
+    <li>… dann <strong>etwas dichtholen</strong>, bis es gerade wieder ruhig steht. Fertig.</li>
+    <li>Nach jeder Kursänderung oder Winddrehung: wiederholen. <em>Erst das Vorsegel, dann das Groß.</em></li>
+  </ol>
+
+  <p>Feiner geht es mit den <strong>Windfäden</strong> im Vorsegel: Beide Seiten sollen
+  glatt nach achtern strömen. Flattert der <em>luvseitige</em> Faden → du bist zu hoch
+  oder zu weit gefiert (abfallen oder dichtholen). Flattert der <em>leeseitige</em> Faden
+  → zu dicht geholt (fieren).</p>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p>„<strong>Wenn's kills, hol dicht — wenn du zweifelst, fier.</strong>" Ein zu dicht
+    geholtes Segel sieht gut aus und bremst; ein killendes Segel ist wenigstens ehrlich.
+    Zu dichtes Segeln ist der häufigste Trimmfehler auf Charteryachten.</p>
+  </div>
+
+  <h2>4 · Wahrer und scheinbarer Wind</h2>
+
+  <p>Der Wind, den du an Deck spürst — und den die Windanzeige am Masttop misst — ist
+  nicht der wahre Wind. Er ist die Summe aus wahrem Wind und Fahrtwind:</p>
+
+  <figure>
+    <svg viewBox="0 0 560 310" role="img" aria-label="Vektordiagramm scheinbarer Wind">
+      <defs>
+        <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#13315c"/>
+        </marker>
+        <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#2e7d32"/>
+        </marker>
+        <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#c62828"/>
+        </marker>
+      </defs>
+
+      <!-- Parallelogramm -->
+      <line x1="160" y1="108" x2="160" y2="180" stroke="#5c6b78" stroke-width="1" stroke-dasharray="4 4"/>
+      <line x1="160" y1="108" x2="280" y2="108" stroke="#5c6b78" stroke-width="1" stroke-dasharray="4 4"/>
+
+      <!-- Fahrtwind: von vorn, zeigt nach achtern -->
+      <line x1="280" y1="108" x2="280" y2="176" stroke="#13315c" stroke-width="3" marker-end="url(#ab)"/>
+      <text x="292" y="130" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#13315c" font-weight="bold">Fahrtwind 6 kn</text>
+      <text x="292" y="149" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">(immer genau von vorn)</text>
+
+      <!-- Wahrer Wind: von Backbord querab -->
+      <line x1="160" y1="180" x2="276" y2="180" stroke="#2e7d32" stroke-width="3" marker-end="url(#ag)"/>
+      <text x="40" y="168" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#2e7d32" font-weight="bold">Wahrer Wind</text>
+      <text x="40" y="187" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">10 kn · TWA 90°</text>
+
+      <!-- Scheinbarer Wind: Resultierende -->
+      <line x1="160" y1="108" x2="274" y2="176" stroke="#c62828" stroke-width="4" marker-end="url(#ar)"/>
+      <text x="40" y="66" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#c62828" font-weight="bold">Scheinbarer Wind ≈ 12 kn</text>
+      <text x="40" y="85" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">AWA ≈ 60° → vorlicher und stärker</text>
+
+      <!-- Boot -->
+      <g transform="translate(280,214)">
+        <path d="M0,-30 C14,-14 14,20 8,28 L-8,28 C-14,20 -14,-14 0,-30 Z" fill="#13315c" opacity="0.9"/>
+      </g>
+      <text x="300" y="230" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13" fill="#5c6b78">Boot macht 6 kn Fahrt voraus</text>
+    </svg>
+    <figcaption><strong>Scheinbarer Wind = wahrer Wind + Fahrtwind.</strong> Das Boot
+    segelt Halbwind (wahrer Wind genau querab, TWA 90°) — aber am Masttop kommt der Wind
+    mit ≈ 60° deutlich vorlicher und stärker an. Genau diese zwei Zahlenpaare zeigt später
+    dein Plotter: <code>TWS/TWA</code> (wahr) und <code>AWS/AWA</code> (scheinbar).</figcaption>
+  </figure>
+
+  <p>Die praktischen Konsequenzen, die man gern vergisst:</p>
+
+  <ul>
+    <li><strong>Am Wind</strong> ist der scheinbare Wind <em>stärker</em> als der wahre — es fühlt sich nach mehr an, als gemeldet war.</li>
+    <li><strong>Vor dem Wind</strong> ist er <em>schwächer</em> (Fahrtwind zieht ab) — die klassische Falle: Auf dem Rückweg gegenan ist aus „gemütlichen 4 Bft" plötzlich nasses Amwind-Gebolze geworden. Fürs Reffen zählt der wahre Wind!</li>
+    <li>Beschleunigt das Boot (Böe, Welle), wandert der scheinbare Wind <em>nach vorn</em> → du musst dichter holen oder abfallen.</li>
+  </ul>
+
+  <div class="callout revier">
+    <span class="label">Revier-Tipp Saronischer Golf</span>
+    <p>Im Sommer weht dort oft erst mittags ein thermischer Wind, der nachmittags auf
+    4–5 Bft auffrischen kann — morgens Motor, nachmittags Segeln ist ein normaler Tag.
+    Plane Amwind-Etappen für vormittags, dann ist der scheinbare Wind noch zivil.
+    Mehr dazu in Modul D (Meltemi &amp; Ägäis-Wetter).</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://de.wikibooks.org/wiki/Segeln/_Man%C3%B6ver">Wikibooks: Segeln — Manöver</a> — freies Lehrbuch; lies den Abschnitt zu Kursen und Grundmanövern quer.</li>
+      <li><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=gde4Z3hi8_I">„Alle SKS Manöver für die Prüfung"</a> — guter visueller Refresh; die Manöver selbst vertiefen wir in <a href="0002-wende-halse-q-wende-beidrehen.html">Lektion 2</a>.</li>
+      <li><strong>Nachschlagen:</strong> <a href="https://www.segeln360.de/seemannschaft/segelmanoever.html">segeln360: Segelmanöver auf einen Blick</a></li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/kurse-zum-wind.html">Referenzkarte „Kurse zum Wind"</a> — ausdrucken, an Bord mitnehmen.</li>
+    </ul>
+    <p>❓ Unklarheiten? Frag deinen Lehrer (den Agenten) — z. B. „Warum ist Halbwind der
+    schnellste Kurs?" oder „Erklär mir die Windfäden nochmal genauer."</p>
+    <p><a href="../index.html">← Zurück zur Kursübersicht</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Du segelst hoch am Wind und willst Höhe gewinnen, also anluven. Wohin dreht der Bug?',
+    options: ['Vom Wind weg, Richtung Lee', 'Zum Wind hin, Richtung Luv', 'Quer zur Windrichtung, auf 90°'],
+    correct: 1,
+    why: 'Anluven heißt immer: Bug zum Wind hin drehen. Abfallen ist die Drehung vom Wind weg nach Lee.'
+  },
+  {
+    q: 'Wie trimmst du ein Segel nach der Faustregel richtig?',
+    options: ['Dichtholen, bis das Achterliek anfängt zu flattern, dann wieder fieren', 'Fieren, bis der Baum genau quer zum Boot steht, dann Schot belegen', 'Fieren, bis das Vorliek anfängt zu killen, dann etwas dichtholen'],
+    correct: 2,
+    why: 'Fieren bis zum Killen des Vorlieks, dann gerade eben dichtholen — das ergibt auf jedem Kurs die richtige Stellung.'
+  },
+  {
+    q: 'Welchen Winkel zum wahren Wind fährst du auf Halbwindkurs?',
+    options: ['Ungefähr 90 Grad', 'Ungefähr 45 Grad', 'Ungefähr 135 Grad'],
+    correct: 0,
+    why: 'Halbwind = Wind genau querab, also rund 90°. 45° ist hoch am Wind, 135° ist Raumschots.'
+  },
+  {
+    q: 'Wie verhält sich der scheinbare Wind auf einem Amwindkurs im Vergleich zum wahren Wind?',
+    options: ['Er ist schwächer und kommt achterlicher ein', 'Er ist stärker und kommt vorlicher ein', 'Er ist gleich stark, nur leicht gedreht'],
+    correct: 1,
+    why: 'Am Wind addiert sich der Fahrtwind: Der scheinbare Wind wird stärker und wandert nach vorn.'
+  },
+  {
+    q: 'Der Wind kommt über die Backbordseite ein. Auf welchem Bug segelst du?',
+    options: ['Auf dem Backbordbug, denn der Wind kommt von Backbord', 'Auf dem Steuerbordbug, denn die Segel stehen über Steuerbord', 'Das lässt sich nur zusammen mit dem Kurs zum Wind sagen'],
+    correct: 0,
+    why: 'Der Bug ist nach der Windseite benannt: Wind von Backbord = Backbordbug. Die Segel stehen dann zwar über Steuerbord, benannt wird aber nach der Luvseite.'
+  },
+  {
+    q: 'Warum ist der Sektor von etwa ±45° zur Windrichtung nicht segelbar?',
+    options: ['Weil das Ruder dort keine ausreichende Wirkung mehr hat', 'Weil die Krängung dort zu groß für den Mast würde', 'Weil die Segel dort nur noch killen und keinen Vortrieb liefern'],
+    correct: 2,
+    why: 'So dicht am Wind können die Segel nicht mehr angeströmt werden — sie flattern (killen), das Boot verliert Fahrt. Ziele in Luv erreichst du nur durch Kreuzen.'
+  }
+]);
+</script>
+</body>
+</html>
