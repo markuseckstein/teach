@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7 · Skills: Können zum Weitergeben</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="lesson" data-n="7">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 7 · Teil III — Die Werkzeuge</p>
+    <h1>Skills: Können zum Weitergeben</h1>
+    <p class="standfirst">
+      Ein guter Prompt ist ein guter Einfall. Ein Skill ist ein Verfahren — man
+      kann es aufheben, verbessern und einer Kollegin geben. Das ist ein größerer
+      Unterschied, als es klingt.
+    </p>
+    <div class="meta">
+      <span>10 Minuten</span>
+      <span>Ziel: verstehen, was ein Skill leistet</span>
+      <span>Setzt <a href="0006-vom-chatbot-zum-agenten.html">Lektion 6</a> voraus</span>
+    </div>
+  </header>
+
+  <p>
+    Sie haben irgendwann einen richtig guten Chat gehabt. Sie haben eine halbe
+    Stunde gebraucht, um dem Modell zu erklären, wie ein Elternbrief an Ihrer
+    Schule klingen muss — Anrede, Länge, Tonfall, was nie hineingehört. Am Ende
+    kam etwas heraus, das Sie ohne Änderung verschicken konnten.
+  </p>
+
+  <p>
+    Vier Wochen später schreiben Sie den nächsten Elternbrief. Der Chat von damals
+    ist irgendwo in der Liste, Sie finden ihn nicht, und selbst wenn — er ist
+    vollgestellt mit dem alten Thema
+    (<a href="0003-das-kontextfenster.html">Lektion 3</a>). Sie fangen wieder bei
+    null an.
+  </p>
+
+  <div class="takeaway">
+    Das eigentliche Problem beim Arbeiten mit Chatbots ist nicht die Qualität der
+    Antworten. Es ist, dass nichts davon bleibt.
+  </div>
+
+  <h2>Ein Skill ist ein Ordner mit einer Textdatei</h2>
+
+  <p class="sidenote">
+    <span class="sn-label">Wichtig</span>
+    Ein Skill ist <b>kein Programm</b>. Es ist eine Textdatei mit Anweisungen in
+    normaler Sprache. Wenn Sie eine Vertretungsanweisung für eine Kollegin
+    schreiben können, können Sie einen Skill schreiben.
+  </p>
+
+  <p>
+    Genau dafür wurden Skills erfunden. Die Definition des offenen Standards ist
+    knapp:
+  </p>
+
+  <blockquote>
+    „Im Kern ist ein Skill ein Ordner, der eine Datei <code>SKILL.md</code>
+    enthält. Diese Datei enthält Metadaten (mindestens <code>name</code> und
+    <code>description</code>) und Anweisungen, die einem Agenten sagen, wie er
+    eine bestimmte Aufgabe erledigt.“
+    <cite><a href="https://agentskills.io/home">agentskills.io</a> — der Standard wurde
+    von Anthropic entwickelt und im Dezember 2025 als offener Standard
+    veröffentlicht</cite>
+  </blockquote>
+
+  <p>
+    Optional liegen im selben Ordner noch Vorlagen, Beispieldateien oder kleine
+    Hilfsprogramme. Für Ihre Zwecke reicht aber fast immer die eine Textdatei.
+    So könnte die für Ihren Elternbrief aussehen:
+  </p>
+
+  <pre><code>---
+name: elternbrief
+description: Schreibt einen Elternbrief im Stil unserer Schule.
+---
+
+Frag mich zuerst nach Anlass, Adressatenkreis und Termin,
+falls ich das nicht schon gesagt habe.
+
+Regeln für jeden Brief:
+- Anrede: "Liebe Eltern und Erziehungsberechtigte,"
+- höchstens eine halbe Seite
+- keine Behördensprache, keine Substantivketten
+- das Datum und die Uhrzeit immer fett und in einer eigenen Zeile
+- kein Konjunktiv bei Aufforderungen
+- Schlussformel: "Mit freundlichen Grüßen"
+
+Schreib mir am Ende zusätzlich einen Zweizeiler für die
+Klassenchat-Gruppe, mit derselben Information.
+
+Zeig mir zwei Varianten: eine sachliche und eine wärmere.</code></pre>
+
+  <p>
+    Das ist alles. Kein Code, keine geschweiften Klammern, nichts zu installieren.
+    Und ab jetzt sagen Sie nur noch <em>„schreib einen Elternbrief zum Wandertag
+    am 12. Mai“</em> — den Rest weiß der Agent.
+  </p>
+
+  <h2>Prompt oder Skill — der Unterschied</h2>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 254" role="img"
+         aria-label="Links: ein Prompt, der nach der Sitzung verschwindet. Rechts: ein Skill als Datei, die bleibt, verbessert und weitergegeben werden kann.">
+      <rect x="16" y="16" width="326" height="200" rx="10" class="d-stroke d-dash"/>
+      <text x="36" y="42" class="d-t-xs">Der gute Prompt</text>
+
+      <rect x="40" y="58" width="278" height="34" rx="6" class="d-fill"/>
+      <rect x="40" y="58" width="278" height="34" rx="6" class="d-stroke"/>
+      <text x="179" y="80" class="d-t-sm d-mid">lebt in einem Chat</text>
+
+      <rect x="40" y="102" width="278" height="34" rx="6" class="d-fill" style="opacity:.6"/>
+      <rect x="40" y="102" width="278" height="34" rx="6" class="d-stroke d-dash-fine"/>
+      <text x="179" y="124" class="d-t-sm d-mid d-muted">Sie finden ihn nicht wieder</text>
+
+      <rect x="40" y="146" width="278" height="34" rx="6" class="d-fill" style="opacity:.3"/>
+      <text x="179" y="168" class="d-t-sm d-mid d-muted">und niemand sonst hat ihn</text>
+
+      <text x="179" y="202" class="d-t-sm d-mid d-t-warn">Aufwand jedes Mal neu</text>
+
+      <rect x="378" y="16" width="326" height="200" rx="10" class="d-stroke-accent"/>
+      <text x="398" y="42" class="d-t-xs d-t-accent">Der Skill</text>
+
+      <rect x="402" y="58" width="278" height="34" rx="6" class="d-fill"/>
+      <rect x="402" y="58" width="278" height="34" rx="6" class="d-stroke-accent"/>
+      <text x="541" y="80" class="d-t-sm d-mid">liegt als Datei auf der Platte</text>
+
+      <rect x="402" y="102" width="278" height="34" rx="6" class="d-fill"/>
+      <rect x="402" y="102" width="278" height="34" rx="6" class="d-stroke-accent"/>
+      <text x="541" y="124" class="d-t-sm d-mid">wird besser, wenn Sie ihn ändern</text>
+
+      <rect x="402" y="146" width="278" height="34" rx="6" class="d-fill"/>
+      <rect x="402" y="146" width="278" height="34" rx="6" class="d-stroke-accent"/>
+      <text x="541" y="168" class="d-t-sm d-mid">die Kollegin kopiert ihn sich</text>
+
+      <text x="541" y="202" class="d-t-sm d-mid d-t-ok">Aufwand einmal</text>
+
+      <line x1="16" y1="230" x2="704" y2="230" class="d-line-faint"/>
+      <text x="16" y="248" class="d-t-xs">Derselbe Text — der Unterschied ist nur, wo er liegt</text>
+    </svg>
+    <figcaption>
+      <b>Der Inhalt ist identisch.</b> Was den Unterschied macht, ist ausschließlich,
+      dass der Text an einem Ort steht, an dem der Agent ihn wiederfindet — und ein
+      anderer Mensch ihn kopieren kann.
+    </figcaption>
+  </figure>
+
+  <h2>Warum man viele Skills haben kann, ohne den Schreibtisch zu verstopfen</h2>
+
+  <p>
+    Hier schließt sich der Kreis zu <a href="0003-das-kontextfenster.html">Lektion 3</a>.
+    Wenn Sie dreißig Skills haben und alle dreißig ständig auf dem Schreibtisch
+    lägen, wäre der voll, bevor Sie ein Wort getippt haben. Deshalb funktionieren
+    Skills in drei Stufen — der Standard nennt es <em>progressive disclosure</em>,
+    „schrittweises Aufdecken“:
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 236" role="img"
+         aria-label="Drei Stufen: Beim Start kennt der Agent nur Namen und Beschreibung. Passt eine Aufgabe, lädt er die vollen Anweisungen. Erst dann öffnet er weitere Dateien.">
+      <defs>
+        <marker id="l7-a" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead-accent"/>
+        </marker>
+      </defs>
+
+      <rect x="16" y="30" width="200" height="110" rx="8" class="d-fill"/>
+      <rect x="16" y="30" width="200" height="110" rx="8" class="d-stroke"/>
+      <text x="116" y="16" class="d-t-xs d-mid">1 · beim Start</text>
+      <text x="116" y="58" class="d-t d-mid">Nur Name und</text>
+      <text x="116" y="76" class="d-t d-mid">Beschreibung</text>
+      <text x="116" y="102" class="d-t-sm d-mid">von allen Skills, je zwei Zeilen —</text>
+      <text x="116" y="118" class="d-t-sm d-mid">gerade genug, um zu erkennen,</text>
+      <text x="116" y="134" class="d-t-sm d-mid">wann einer passen könnte</text>
+
+      <line x1="222" y1="85" x2="254" y2="85" class="d-line-accent" marker-end="url(#l7-a)"/>
+
+      <rect x="258" y="30" width="200" height="110" rx="8" class="d-fill"/>
+      <rect x="258" y="30" width="200" height="110" rx="8" class="d-stroke-accent"/>
+      <text x="358" y="16" class="d-t-xs d-mid d-t-accent">2 · wenn es passt</text>
+      <text x="358" y="58" class="d-t d-mid">Die ganze</text>
+      <text x="358" y="76" class="d-t d-mid">SKILL.md</text>
+      <text x="358" y="102" class="d-t-sm d-mid">wird geladen — aber nur diese</text>
+      <text x="358" y="118" class="d-t-sm d-mid">eine, und nur jetzt</text>
+
+      <line x1="464" y1="85" x2="496" y2="85" class="d-line-accent" marker-end="url(#l7-a)"/>
+
+      <rect x="500" y="30" width="204" height="110" rx="8" class="d-fill"/>
+      <rect x="500" y="30" width="204" height="110" rx="8" class="d-stroke"/>
+      <text x="602" y="16" class="d-t-xs d-mid">3 · bei Bedarf</text>
+      <text x="602" y="58" class="d-t d-mid">Vorlagen, Beispiele,</text>
+      <text x="602" y="76" class="d-t d-mid">Hilfsprogramme</text>
+      <text x="602" y="102" class="d-t-sm d-mid">erst dann, wenn die Anweisung</text>
+      <text x="602" y="118" class="d-t-sm d-mid">tatsächlich darauf verweist</text>
+
+      <line x1="16" y1="168" x2="704" y2="168" class="d-line-faint"/>
+      <text x="16" y="188" class="d-t-sm">Ergebnis: Sie können dreißig Fähigkeiten bereithalten, und der Schreibtisch bleibt fast leer.</text>
+      <text x="16" y="212" class="d-t-sm">Ohne diesen Kniff müsste man sich zwischen „viele Fähigkeiten“ und „Platz zum Arbeiten“ entscheiden.</text>
+      <text x="16" y="230" class="d-t-xs">Quelle: agentskills.io</text>
+    </svg>
+    <figcaption>
+      <b>Genau wie ein gutes Handbuch.</b> Sie lesen nicht dreihundert Seiten
+      Dienstordnung, bevor Sie eine Klassenfahrt planen. Sie schauen ins
+      Inhaltsverzeichnis, schlagen das eine Kapitel auf, und nur wenn dort auf ein
+      Formular verwiesen wird, holen Sie das Formular.
+    </figcaption>
+  </figure>
+
+  <h2>Zwei Skills zum Anschauen</h2>
+
+  <p>
+    Der Entwickler Matt Pocock veröffentlicht eine Sammlung von Skills, die einen
+    guten Eindruck davon gibt, was jenseits von Textbausteinen möglich ist.
+    Zwei davon sind auch für Nicht-Programmierer unmittelbar nützlich.
+  </p>
+
+  <h3><code>teach</code> — mehrere Sitzungen, ein Lernstand</h3>
+
+  <p>
+    Beschreibung im Original: <em>„Teach the user a new skill or concept over
+    multiple sessions, using the current directory as a stateful teaching
+    workspace.“</em>
+  </p>
+
+  <p>
+    Der Skill legt in einem Ordner an, was ein Chat nicht behalten kann: warum Sie
+    das Thema lernen wollen, was Sie schon verstanden haben, welche Quellen
+    vertrauenswürdig sind, und die fertigen Lektionen. Beim nächsten Mal liest der
+    Agent diesen Ordner und weiß, wo Sie stehen — obwohl das Modell selbst nach wie
+    vor zustandslos ist.
+  </p>
+
+  <div class="box key">
+    <p class="box-title">Sie halten das Ergebnis gerade in der Hand</p>
+    <p style="margin-bottom:0">
+      Dieser Kurs — die Lektionen, die Diagramme, das Glossar, die Datei mit dem
+      Lernstand — ist mit genau diesem Skill entstanden. Schauen Sie sich ruhig den
+      Ordner an, in dem er liegt. Das ist kein Kunststück eines besonders klugen
+      Modells, sondern das Ergebnis eines Verfahrens, das jemand einmal
+      aufgeschrieben hat.
+    </p>
+  </div>
+
+  <h3><code>grill-me</code> — sich das eigene Vorhaben zerpflücken lassen</h3>
+
+  <p>
+    Beschreibung im Original: <em>„Get relentlessly interviewed about a plan or
+    design until every branch of the design tree is resolved.“</em> — sinngemäß:
+    unerbittlich zu einem Plan befragt werden, bis jeder offene Punkt geklärt ist.
+  </p>
+
+  <p>
+    Der Skill dreht die übliche Richtung um. Sie fragen nicht, Sie werden gefragt.
+    Und zwar so lange, bis jede Lücke in Ihrem Plan sichtbar ist. Für eine Lehrkraft
+    ist das erstaunlich brauchbar:
+  </p>
+
+  <ul>
+    <li>„Ich plane eine Projektwoche zum Thema Wasser“ — und Sie werden dreißig
+      Minuten lang zu Aufsicht, Budget, Schlechtwettervariante, Differenzierung
+      und Elterninformation befragt, bis der Plan steht.</li>
+    <li>„Ich will die Leistungsbewertung in meinem Fach umstellen“ — und jemand
+      sucht systematisch nach den Fällen, in denen Ihr neues System unfair wird.</li>
+    <li>„Ich habe morgen ein schwieriges Elterngespräch“ — und Sie üben es gegen
+      jemanden, der wirklich nachbohrt.</li>
+  </ul>
+
+  <p>
+    Der Nutzen entsteht nicht daraus, dass der Agent etwas weiß, das Sie nicht
+    wissen. Er entsteht daraus, dass er unbequem und ausdauernd ist, ohne Ihnen
+    gegenüber Rücksicht nehmen zu müssen. Das kann sonst niemand in Ihrem Kollegium
+    leisten — nicht aus Unwillen, sondern aus Zeitmangel und Höflichkeit.
+  </p>
+
+  <details class="reveal">
+    <summary>Wie man diese Skills bekommt</summary>
+    <p>
+      Sie brauchen ein Werkzeug, das Skills unterstützt — Claude Code oder Cowork
+      etwa, aber auch viele andere
+      (<a href="0008-der-werkzeugkasten.html">Lektion 8</a>). In Claude Code
+      installiert man die Sammlung mit einem Befehl:
+    </p>
+    <pre><code>claude plugins install mattpocock-skills</code></pre>
+    <p>
+      Danach ruft man einen Skill mit einem Schrägstrich auf, etwa
+      <code>/grill-me</code>. Eigene Skills legt man an, indem man einen Ordner mit
+      einer <code>SKILL.md</code> anlegt — mehr passiert dabei wirklich nicht.
+    </p>
+  </details>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Sie haben dreißig Skills installiert. Was liegt beim Start eines Gesprächs
+      davon im Kontextfenster?
+    </p>
+    <ul class="quiz-opts">
+      <li>Alle dreißig vollständig, damit der Agent sofort zugreifen kann.</li>
+      <li data-correct>Von jedem nur Name und Beschreibung, sonst nichts.</li>
+      <li>Gar nichts — Skills werden erst beim Aufruf überhaupt bemerkt.</li>
+      <li>Die fünf zuletzt benutzten vollständig, die übrigen gar nicht.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Das ist die erste Stufe des schrittweisen Aufdeckens. Der Agent hat quasi
+        das Inhaltsverzeichnis vor sich — genug, um zu erkennen, wann ein Skill
+        einschlägig ist, und wenig genug, dass dreißig Stück kaum Platz kosten.
+        Erst wenn Ihre Aufgabe zu einer Beschreibung passt, wird die vollständige
+        Anweisung nachgeladen.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Was ist der entscheidende Vorteil eines Skills gegenüber einem gespeicherten
+      Prompt in einer Notizdatei?
+    </p>
+    <ul class="quiz-opts">
+      <li>Der Skill formuliert seine Anweisungen für das Modell wirksamer.</li>
+      <li>Der Skill funktioniert auch dann, wenn das Modell gewechselt wird.</li>
+      <li data-correct>Der Agent findet und benutzt ihn von selbst, im richtigen Moment.</li>
+      <li>Der Skill braucht deutlich weniger Platz im Kontextfenster als Text.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Ein Prompt in einer Notizdatei erfordert, dass <em>Sie</em> daran denken,
+        ihn heraussuchen und einfügen. Genau daran scheitert es im Alltag. Ein Skill
+        wird vom Agenten selbst erkannt und geladen, sobald die Aufgabe dazu passt.
+        Die Arbeit, an das Verfahren zu denken, wandert von Ihnen zum Werkzeug —
+        und das ist der ganze Gewinn.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Denken Sie an eine Aufgabe, die Sie in diesem Schuljahr mindestens fünfmal
+      machen werden und die jedes Mal gleich abläuft. Schreiben Sie in fünf
+      Stichpunkten auf, was dabei die Regeln sind. Das ist bereits ein Skill —
+      es fehlt nur noch der Dateiname.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      <a href="https://agentskills.io/home">agentskills.io</a> — die Spezifikation
+      des offenen Standards. Ungewöhnlich gut lesbar für ein Normdokument; die
+      Startseite allein beantwortet die meisten Fragen. Wer die Beispiele sehen
+      will: <a href="https://github.com/mattpocock/skills">Matt Pococks Sammlung</a>
+      liegt offen auf GitHub, und man kann jeden Skill als schlichten Text lesen.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Die beste Frage hier ist praktisch: „Ich mache
+    regelmäßig Folgendes … — schreib mir daraus einen Skill.“ Das dauert fünf
+    Minuten und Sie haben etwas, das Sie behalten.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

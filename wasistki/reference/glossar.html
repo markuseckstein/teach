@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossar — Was ist eigentlich „KI“?</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="reference" data-file="glossar.html">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Referenz · zum Ausdrucken</p>
+    <h1>Glossar</h1>
+    <p class="standfirst">
+      Alle Begriffe des Kurses in je ein bis zwei Sätzen. Die kursiv gesetzten
+      Wörter unter jedem Eintrag sind gebräuchliche Alternativen, die Sie besser
+      vermeiden — sie führen in die Irre.
+    </p>
+  </header>
+
+  <h2>Die vier Ebenen</h2>
+
+  <dl class="term">
+    <dt>LLM · Sprachmodell</dt>
+    <dd>Eine Rechenmaschine, die aus Text neuen Text erzeugt. Zustandslos und
+      austauschbar. Im Kurs: <em>der Motor</em>.</dd>
+    <dd class="avoid"><b>Statt:</b> „die KI“, „der Algorithmus“, „das neuronale Netz“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Chatbot</dt>
+    <dd>Ein Produkt, das ein Sprachmodell mit einem Gesprächsverlauf verbindet und
+      diesen bei jeder Anfrage vollständig mitschickt. Im Kurs: <em>das Auto, in
+      dem Sie am Steuer sitzen</em>.</dd>
+    <dd class="avoid"><b>Statt:</b> „KI-Assistent“, „Sprachassistent“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Agent</dt>
+    <dd>Ein Chatbot, dem eine Werkstatt Werkzeuge gibt und der in einer Schleife
+      läuft, bis eine Aufgabe erledigt ist. Im Kurs: <em>der Werkstattwagen</em>.</dd>
+    <dd class="avoid"><b>Statt:</b> „KI-Assistent“, „Bot“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Autonomer Agent</dt>
+    <dd>Ein Agent, der handeln darf, ohne vorher nachzufragen — bis hin zum
+      Weiterlaufen, während niemand zusieht. Autonomie ist eine <em>Erlaubnis</em>,
+      keine Fähigkeit. Im Kurs: <em>der Chauffeur</em>.</dd>
+    <dd class="avoid"><b>Statt:</b> „selbstständige KI“, „starke KI“</dd>
+  </dl>
+
+  <h2>Bausteine</h2>
+
+  <dl class="term">
+    <dt>Werkstatt · <span style="font-weight:400">engl. agent harness</span></dt>
+    <dd>Das Programm um das Modell herum, das dessen Vorschläge ausführt und die
+      Rechte kontrolliert. Merksatz: <strong>Das Modell schlägt vor, die Werkstatt
+      tut.</strong></dd>
+    <dd class="avoid"><b>Statt:</b> „Framework“, „Runtime“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Kontextfenster</dt>
+    <dd>Die maximale Textmenge, die in eine einzelne Anfrage passt — der
+      Schreibtisch. Was nicht darauf liegt, existiert für das Modell nicht.</dd>
+    <dd class="avoid"><b>Statt:</b> „Speicher“, „Gedächtnis“, „Arbeitsspeicher“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Zustandslos · <span style="font-weight:400">engl. stateless</span></dt>
+    <dd>Zwischen zwei Aufrufen bleibt nichts erhalten. Jede Anfrage trifft auf ein
+      Modell, für das sie die erste ist.</dd>
+    <dd class="avoid"><b>Statt:</b> „vergesslich“, „hat kein Langzeitgedächtnis“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Werkzeug</dt>
+    <dd>Eine Fähigkeit, die die Werkstatt anbietet: Dateien lesen, suchen, ein
+      Programm ausführen. Das Modell <em>benennt</em> das Werkzeug — benutzen kann
+      es nur die Werkstatt.</dd>
+    <dd class="avoid"><b>Statt:</b> „Funktion“, „Plugin“, „Skill“ (das ist etwas anderes)</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Skill</dt>
+    <dd>Ein Ordner mit einer Datei <code>SKILL.md</code>, die in normaler Sprache
+      beschreibt, wie eine wiederkehrende Aufgabe zu erledigen ist. Ein Verfahren
+      zum Aufheben und Weitergeben — kein Programm.</dd>
+    <dd class="avoid"><b>Statt:</b> „Prompt-Vorlage“, „Makro“, „Plugin“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Schrittweises Aufdecken · <span style="font-weight:400">engl. progressive disclosure</span></dt>
+    <dd>Wie ein Agent viele Skills bereithält, ohne den Schreibtisch zu füllen:
+      erst nur Name und Beschreibung, dann bei Bedarf die volle Anweisung, dann bei
+      Bedarf die zugehörigen Dateien.</dd>
+  </dl>
+
+  <h2>Erscheinungen</h2>
+
+  <dl class="term">
+    <dt>Context Rot · Kontextfäule</dt>
+    <dd>Der gemessene Effekt, dass die Zuverlässigkeit sinkt, je länger die Eingabe
+      wird — auch bei einfachen Aufgaben und lange vor der Kapazitätsgrenze.</dd>
+    <dd class="avoid"><b>Statt:</b> „das Modell wird müde“, „Überlastung“</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Themenverschleppung</dt>
+    <dd>Ein früheres Thema färbt die Antwort auf ein neues ein, weil beides
+      gleichzeitig auf dem Schreibtisch liegt. Gegenmittel: neuer Chat.</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Erfinden · <span style="font-weight:400">engl. hallucination</span></dt>
+    <dd>Plausibel klingende, aber falsche Angaben. Kein Fehlerzustand, sondern die
+      normale Funktionsweise, angewandt auf eine Wissenslücke.</dd>
+    <dd class="avoid"><b>Statt:</b> „Halluzination“ (klingt krankhaft), „Lüge“ (unterstellt Absicht)</dd>
+  </dl>
+
+  <dl class="term">
+    <dt>Offenes Modell · <span style="font-weight:400">engl. open weights</span></dt>
+    <dd>Ein Modell, dessen trainierte Datei zum Herunterladen bereitsteht und das
+      man auf eigener Hardware betreiben kann. <em>Nicht</em> dasselbe wie Open
+      Source: Wie es trainiert wurde, bleibt meist Betriebsgeheimnis.</dd>
+    <dd class="avoid"><b>Statt:</b> „Open-Source-KI“, „freie KI“</dd>
+  </dl>
+
+  <div class="box key">
+    <p class="box-title">Zwei Begriffe sind hier selbst geprägt</p>
+    <p style="margin-bottom:0">
+      „Werkstatt“ und „Themenverschleppung“ finden Sie draußen so nicht — im
+      Deutschen gibt es dafür keine etablierten Wörter. Wenn Sie mit anderen
+      darüber sprechen, nennen Sie einmal den englischen Begriff dazu
+      (<em>agent harness</em>), sonst suchen Ihre Zuhörer vergeblich.
+    </p>
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

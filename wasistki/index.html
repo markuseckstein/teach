@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was ist eigentlich „KI“? — Kursübersicht</title>
+<link rel="stylesheet" href="assets/lesson.css">
+<link rel="stylesheet" href="assets/diagram.css">
+</head>
+<body data-page="index">
+<main>
+
+  <header class="hero">
+    <p class="eyebrow">Ein Kurs in zehn Lektionen</p>
+    <h1>Was ist eigentlich „KI“?</h1>
+    <p class="standfirst">
+      Fast alles, was heute „KI“ genannt wird, sind drei oder vier sehr
+      unterschiedliche Dinge, die zufällig denselben Namen tragen. Dieser Kurs
+      trennt sie auseinander — ohne Formeln, ohne Code, mit Bildern.
+    </p>
+    <p>
+      Gedacht für Menschen, die diese Werkzeuge <em>benutzen</em> statt bauen wollen.
+      Die Beispiele kommen aus dem Schulalltag, das Prinzip gilt überall.
+    </p>
+  </header>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 236" role="img"
+         aria-label="Vier ineinander liegende Schichten: das LLM im Kern, darum der Chatbot, darum der Agent, ganz außen der autonome Agent.">
+      <defs>
+        <marker id="ix-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead-accent"/>
+        </marker>
+      </defs>
+
+      <!-- Schichten von außen nach innen -->
+      <rect x="14"  y="20" width="470" height="176" rx="12" class="d-stroke d-dash"/>
+      <rect x="46"  y="42" width="406" height="132" rx="10" class="d-stroke"/>
+      <rect x="80"  y="64" width="338" height="88"  rx="9"  class="d-stroke"/>
+      <rect x="176" y="86" width="146" height="44"  rx="8"  class="d-fill-accent"/>
+
+      <text x="249" y="113" class="d-t-lead d-t-invert d-mid">LLM</text>
+
+      <text x="249" y="80"  class="d-t-xs d-mid d-t-accent">Chatbot</text>
+      <text x="249" y="58"  class="d-t-xs d-mid d-t-muted">Agent</text>
+      <text x="249" y="36"  class="d-t-xs d-mid d-t-muted">autonomer Agent</text>
+
+      <!-- Beschriftungen rechts — von außen nach innen, in derselben
+           Reihenfolge wie die Ringe -->
+      <line x1="484" y1="32" x2="536" y2="32" class="d-line-faint"/>
+      <text x="546" y="36" class="d-t-sm">+ läuft ohne Sie weiter</text>
+
+      <line x1="452" y1="54" x2="536" y2="54" class="d-line-faint"/>
+      <text x="546" y="58" class="d-t-sm">+ Werkzeuge</text>
+
+      <line x1="418" y1="76" x2="536" y2="76" class="d-line-faint"/>
+      <text x="546" y="80" class="d-t-sm">+ Gesprächsverlauf</text>
+
+      <line x1="322" y1="108" x2="536" y2="108" class="d-line-accent" marker-end="url(#ix-arrow)"/>
+      <text x="546" y="112" class="d-t">Der Motor.</text>
+      <text x="546" y="130" class="d-t-sm">Rechnet, erinnert sich an nichts.</text>
+
+      <text x="14" y="220" class="d-t-xs">Jede Schicht fügt genau eine Sache hinzu — mehr nicht</text>
+    </svg>
+    <figcaption>
+      <b>Die Landkarte des ganzen Kurses.</b> Wenn Sie am Ende ein neues Produkt in
+      der Zeitung sehen, sollen Sie sagen können, in welchem dieser vier Ringe es
+      sitzt. Das ist das eigentliche Lernziel — nicht, sich Produktnamen zu merken.
+    </figcaption>
+  </figure>
+
+  <div class="box key">
+    <p class="box-title">So arbeiten Sie damit</p>
+    <p>
+      Die Lektionen bauen aufeinander auf; Teil I lohnt sich der Reihe nach.
+      Jede dauert acht bis zwölf Minuten und endet mit einer Frage, die Sie aus
+      dem Kopf beantworten sollen — nicht zur Prüfung, sondern weil <em>Abrufen</em>
+      hängen bleibt und <em>Nochmal-Lesen</em> nicht.
+    </p>
+    <p style="margin-bottom:0">
+      Die Referenzdokumente ganz unten sind zum Ausdrucken gedacht. Sie sind die
+      eingedampfte Fassung — das, was übrig bleibt, wenn man die Erklärungen weglässt.
+    </p>
+  </div>
+
+  <nav class="toc" id="toc" aria-label="Lektionen"></nav>
+
+  <h2 class="toc-part" style="margin-top:3rem">Zum Nachschlagen</h2>
+  <nav class="toc" id="ref-toc" aria-label="Referenzdokumente" style="margin-top:0"></nav>
+
+  <div class="ask">
+    <strong>Etwas unklar?</strong> Dieser Kurs hat einen Lehrer — den Agenten, der
+    ihn geschrieben hat. Fragen Sie in der Sitzung nach: nach einem anderen Bild,
+    nach einem Beispiel aus Ihrem Fach, nach mehr Tiefe an einer Stelle. Der Kurs
+    ist kein fertiges Buch, sondern kann sich ändern.
+  </div>
+
+</main>
+<script src="assets/course.js"></script>
+<script src="assets/lesson.js"></script>
+</body>
+</html>

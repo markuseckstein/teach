@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 · Das LLM hat kein Gedächtnis</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="lesson" data-n="2">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 2 · Teil I — Die Bausteine</p>
+    <h1>Das LLM hat kein Gedächtnis</h1>
+    <p class="standfirst">
+      Das Sprachmodell erinnert sich an nichts. Nicht an Sie, nicht an gestern,
+      nicht an den vorigen Satz. Diese eine Eigenschaft erklärt fast alles
+      Merkwürdige, das Ihnen im Umgang damit begegnet.
+    </p>
+    <div class="meta">
+      <span>9 Minuten</span>
+      <span>Ziel: „zustandslos“ und „austauschbar“ erklären können</span>
+      <span>Setzt <a href="0001-ki-ist-kein-ding.html">Lektion 1</a> voraus</span>
+    </div>
+  </header>
+
+  <p>
+    In <a href="0001-ki-ist-kein-ding.html">Lektion 1</a> haben wir den Motor
+    freigelegt: das Sprachmodell, englisch <em>Large Language Model</em>, kurz
+    <strong>LLM</strong>. Jetzt schauen wir, was dieser Motor tut. Es ist
+    verblüffend wenig.
+  </p>
+
+  <h2>Ein LLM ist eine Rechenmaschine für Text</h2>
+
+  <p>
+    Sie schieben oben Text hinein. Unten kommt Text heraus. Das ist alles.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 214" role="img"
+         aria-label="Text geht in einen Kasten namens Sprachmodell hinein und kommt als Text heraus. Drei durchgestrichene Symbole daneben zeigen: kein Speicher, kein Internetzugang, kein Ich.">
+      <defs>
+        <marker id="l2-a" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead-accent"/>
+        </marker>
+      </defs>
+
+      <rect x="16" y="58" width="150" height="58" rx="7" class="d-fill"/>
+      <rect x="16" y="58" width="150" height="58" rx="7" class="d-stroke"/>
+      <text x="91" y="82"  class="d-t d-mid">Text</text>
+      <text x="91" y="100" class="d-t-sm d-mid">alles, was es wissen soll</text>
+
+      <line x1="172" y1="87" x2="242" y2="87" class="d-line-accent" marker-end="url(#l2-a)"/>
+
+      <rect x="250" y="46" width="180" height="82" rx="9" class="d-fill-accent"/>
+      <text x="340" y="80"  class="d-t-lead d-t-invert d-mid">Sprachmodell</text>
+      <text x="340" y="100" class="d-t-sm d-mid d-t-invert" style="opacity:.85">rechnet — mehr nicht</text>
+
+      <line x1="436" y1="87" x2="506" y2="87" class="d-line-accent" marker-end="url(#l2-a)"/>
+
+      <rect x="514" y="58" width="150" height="58" rx="7" class="d-fill"/>
+      <rect x="514" y="58" width="150" height="58" rx="7" class="d-stroke"/>
+      <text x="589" y="82"  class="d-t d-mid">Text</text>
+      <text x="589" y="100" class="d-t-sm d-mid">die Antwort</text>
+
+      <text x="16" y="26" class="d-t-xs">Was hineingeht</text>
+      <text x="664" y="26" class="d-t-xs d-end">Was herauskommt</text>
+
+      <line x1="60" y1="158" x2="660" y2="158" class="d-line-faint"/>
+      <text x="60"  y="180" class="d-t-sm d-t-warn">✕ kein Speicher</text>
+      <text x="250" y="180" class="d-t-sm d-t-warn">✕ kein Internetzugang</text>
+      <text x="480" y="180" class="d-t-sm d-t-warn">✕ kein „Ich“, das wartet</text>
+      <text x="60"  y="200" class="d-t-xs">Was es von sich aus nicht hat</text>
+    </svg>
+    <figcaption>
+      <b>Text hinein, Text hinaus.</b> Zwischen zwei Anfragen existiert nichts.
+      Das Modell wartet nicht, denkt nicht nach und macht nach Feierabend nicht
+      weiter. Es wird angeworfen, rechnet ein paar Sekunden, und ist danach wieder
+      genau so, wie es vorher war.
+    </figcaption>
+  </figure>
+
+  <p class="sidenote">
+    <span class="sn-label">Fachwort</span>
+    <b>Zustandslos</b> (englisch <em>stateless</em>) heißt: Das Ding merkt sich
+    zwischen zwei Aufrufen nichts. Ein Taschenrechner ist zustandslos. Ein
+    Notizbuch nicht.
+  </p>
+
+  <p>
+    Das Fachwort dafür ist <strong>zustandslos</strong>. Und es ist wörtlich
+    gemeint: Wenn Sie einem Chatbot zwei Nachrichten hintereinander schicken,
+    trifft die zweite auf ein Modell, das von der ersten nichts weiß. Kein
+    „ach ja, wir sprachen ja gerade über die 7b“. Nichts.
+  </p>
+
+  <div class="takeaway">
+    Jede einzelne Anfrage trifft auf ein Modell, für das es die allererste ist.
+  </div>
+
+  <p>
+    Das wirft sofort eine Frage auf, und es ist die richtige: <em>Wieso weiß der
+    Chat dann trotzdem, worüber wir gerade reden?</em> Die Antwort ist ein kleiner
+    Trick, und sie ist so wichtig, dass sie
+    <a href="0003-das-kontextfenster.html">Lektion 3</a> ganz für sich bekommt.
+  </p>
+
+  <h2>Was im Modell drin ist</h2>
+
+  <p>
+    Ein LLM ist im Kern eine sehr große Datei mit Zahlen. Diese Zahlen sind das
+    Ergebnis des <strong>Trainings</strong>: Man hat den Computer über Monate
+    hinweg riesige Textmengen lesen lassen und ihn dabei immer wieder dasselbe
+    üben lassen — <em>rate das nächste Wort</em>. Millionenfach. Was dabei
+    entsteht, ist keine Datenbank mit Fakten, sondern etwas wie ein extrem fein
+    justiertes Sprachgefühl.
+  </p>
+
+  <p>
+    Daraus folgen drei Dinge, die im Alltag ständig relevant werden:
+  </p>
+
+  <h3>Das Wissen ist eingefroren</h3>
+  <p>
+    Alles, was das Modell „weiß“, stammt aus der Trainingszeit. Es kennt keine
+    Nachricht von heute Morgen, es sei denn, jemand hat ihm ein
+    <a href="0006-vom-chatbot-zum-agenten.html">Werkzeug</a> gegeben, mit dem es
+    nachschauen kann. Fragen Sie es nach dem aktuellen Vertretungsplan, bekommen
+    Sie eine schöne Erfindung.
+  </p>
+
+  <h3>Es rät — und das ist kein Fehler, sondern die Funktionsweise</h3>
+  <p>
+    Weil das Modell darauf trainiert wurde, plausibel weiterzuschreiben, schreibt
+    es auch dann plausibel weiter, wenn es nichts weiß. Es gibt in ihm keine
+    Stelle, an der ein Lämpchen angeht mit „Achtung, geraten“. Deshalb klingt eine
+    erfundene Quellenangabe exakt so überzeugend wie eine echte. Das ist der
+    Grund, warum Sie alles Überprüfbare überprüfen müssen — nicht Bosheit,
+    sondern Bauart.
+  </p>
+
+  <h3>Es hat keine Absicht</h3>
+  <p>
+    Kein Wollen, kein Warten, keine Kränkung, wenn Sie den Chat schließen. Das
+    ist nicht Prüderie, sondern praktisch: Sie müssen nicht höflich sein, Sie
+    dürfen mitten im Satz abbrechen, und Sie dürfen dieselbe Frage zwanzigmal
+    anders stellen. Es kostet Sie nichts.
+  </p>
+
+  <h2>Und der Motor ist austauschbar</h2>
+
+  <p>
+    Jetzt kommt die zweite große Eigenschaft. Weil ein LLM nichts weiter tut als
+    „Text hinein, Text hinaus“, und weil es sich nichts merkt, ist es
+    <strong>austauschbar</strong>. Alles, was ein Chatbot oder ein Agent an einen
+    Motor schickt, könnte er genauso gut an einen anderen schicken.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 244" role="img"
+         aria-label="Ein Kasten Werkzeug oben ist über eine Steckverbindung mit vier austauschbaren Modellen unten verbunden: Claude, GPT, Gemini und einem lokalen Modell.">
+      <defs>
+        <marker id="l2-b" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead"/>
+        </marker>
+      </defs>
+
+      <rect x="200" y="14" width="320" height="52" rx="9" class="d-fill"/>
+      <rect x="200" y="14" width="320" height="52" rx="9" class="d-stroke-accent"/>
+      <text x="360" y="38" class="d-t d-mid d-t-accent">Ihr Werkzeug</text>
+      <text x="360" y="55" class="d-t-sm d-mid">Chatbot, Agent, App — bleibt gleich</text>
+
+      <line x1="360" y1="66" x2="360" y2="96" class="d-line"/>
+      <rect x="298" y="96" width="124" height="26" rx="5" class="d-fill-plain"/>
+      <rect x="298" y="96" width="124" height="26" rx="5" class="d-stroke d-dash"/>
+      <text x="360" y="114" class="d-t-sm d-mid">immer dieselbe Steckdose</text>
+
+      <line x1="360" y1="122" x2="360" y2="140" class="d-line"/>
+      <line x1="96"  y1="140" x2="624" y2="140" class="d-line"/>
+      <line x1="96"  y1="140" x2="96"  y2="168" class="d-line" marker-end="url(#l2-b)"/>
+      <line x1="272" y1="140" x2="272" y2="168" class="d-line" marker-end="url(#l2-b)"/>
+      <line x1="448" y1="140" x2="448" y2="168" class="d-line" marker-end="url(#l2-b)"/>
+      <line x1="624" y1="140" x2="624" y2="168" class="d-line" marker-end="url(#l2-b)"/>
+
+      <rect x="26"  y="172" width="140" height="46" rx="7" class="d-fill"/>
+      <rect x="26"  y="172" width="140" height="46" rx="7" class="d-stroke"/>
+      <text x="96" y="192" class="d-t d-mid">Claude</text>
+      <text x="96" y="208" class="d-t-sm d-mid">Anthropic</text>
+
+      <rect x="202" y="172" width="140" height="46" rx="7" class="d-fill"/>
+      <rect x="202" y="172" width="140" height="46" rx="7" class="d-stroke"/>
+      <text x="272" y="192" class="d-t d-mid">GPT</text>
+      <text x="272" y="208" class="d-t-sm d-mid">OpenAI</text>
+
+      <rect x="378" y="172" width="140" height="46" rx="7" class="d-fill"/>
+      <rect x="378" y="172" width="140" height="46" rx="7" class="d-stroke"/>
+      <text x="448" y="192" class="d-t d-mid">Gemini</text>
+      <text x="448" y="208" class="d-t-sm d-mid">Google</text>
+
+      <rect x="554" y="172" width="140" height="46" rx="7" class="d-fill"/>
+      <rect x="554" y="172" width="140" height="46" rx="7" class="d-stroke d-dash"/>
+      <text x="624" y="192" class="d-t d-mid">offenes Modell</text>
+      <text x="624" y="208" class="d-t-sm d-mid">auf eigenem Rechner</text>
+
+      <text x="26" y="238" class="d-t-xs">Motoren — jeder passt in dieselbe Steckdose</text>
+    </svg>
+    <figcaption>
+      <b>Der Motorwechsel.</b> Werkzeuge wie Claude Code oder OpenClaw machen genau
+      davon Gebrauch: Sie können ihnen sagen, welches Modell sie benutzen sollen.
+      Das Werkzeug bleibt, der Motor wird gewechselt — je nach Aufgabe, Preis oder
+      Datenschutzanforderung.
+    </figcaption>
+  </figure>
+
+  <div class="box key">
+    <p class="box-title">Warum das für Sie praktisch ist</p>
+    <p style="margin-bottom:0">
+      Sie binden sich nicht an eine Firma, sondern an eine Arbeitsweise. Wer
+      gelernt hat, mit einem Chatbot vernünftig zu arbeiten, kann das am nächsten
+      Tag mit einem anderen. Die Oberflächen unterscheiden sich, das Prinzip nicht.
+      <strong>Lernen Sie das Prinzip, nicht das Produkt.</strong>
+    </p>
+  </div>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Sie haben einem Chatbot gestern erzählt, dass Sie Deutsch in Klasse 8
+      unterrichten. Heute öffnen Sie einen neuen Chat. Warum weiß er es
+      möglicherweise trotzdem?
+    </p>
+    <ul class="quiz-opts">
+      <li>Weil das Modell die Angabe beim Antworten dauerhaft mitgelernt hat.</li>
+      <li data-correct>Weil das Produkt es notiert und wieder mitgeschickt hat.</li>
+      <li>Weil neuere Modelle inzwischen ein echtes Langzeitgedächtnis besitzen.</li>
+      <li>Weil der Anbieter Ihr Nutzerkonto direkt mit dem Modell verbunden hat.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p>
+        Manche Produkte haben eine Funktion, die oft „Erinnerungen“ oder „Memory“
+        heißt. Die schreibt solche Angaben in eine Datei — <em>außerhalb</em> des
+        Modells. Beim nächsten Chat klebt das Produkt diese Notiz oben an Ihre
+        Nachricht, bevor es beides an den Motor schickt.
+      </p>
+      <p style="margin-bottom:0">
+        Das Modell selbst ist unverändert zustandslos. Was sich „erinnert“, ist
+        immer das Produkt drumherum — nie der Motor.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Das Modell erfindet eine Buchquelle, die es nicht gibt. Was ist passiert?
+    </p>
+    <ul class="quiz-opts">
+      <li>Es hat in seinen Trainingsdaten eine falsche Quelle nachgeschlagen.</li>
+      <li>Es wollte hilfreich wirken und hat die Lücke bewusst überspielt.</li>
+      <li data-correct>Es hat plausibel weitergeschrieben, wie immer.</li>
+      <li>Es war überlastet und hat deshalb einen Rechenfehler gemacht.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Eine Literaturangabe hat ein sehr regelmäßiges Muster: Nachname, Vorname,
+        Titel, Verlag, Jahr. Das Modell füllt dieses Muster mit dem, was dazu
+        passt — genau so, wie es jeden anderen Satz auch vervollständigt. Es gibt
+        in ihm keinen Unterschied zwischen „abrufen“ und „erfinden“. Beides ist
+        derselbe Vorgang.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Erklären Sie einer Person, die diese Lektion nicht gelesen hat, in zwei
+      Sätzen, warum ein Sprachmodell „zustandslos“ ist — und warum das trotzdem
+      nicht heißt, dass ein Chat vergesslich wirkt. Wenn Ihnen der zweite Satz
+      schwerfällt, ist das genau die Lücke, die die nächste Lektion füllt.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">3Blue1Brown — „But what is a
+      GPT?“</a> (Video, ca. 27 Minuten). Die beste bebilderte Erklärung dessen, was
+      beim „nächsten Wort raten“ tatsächlich passiert. Es kommt Mathematik vor,
+      aber Sie können sie ignorieren und trotzdem alles verstehen — die
+      Animationen tragen die Erklärung.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Besonders lohnend an dieser Stelle: „Wenn es
+    nur rät — warum stimmt dann so vieles?“ Das ist die klügste Frage zu dieser
+    Lektion und sie hat eine gute Antwort. Stellen Sie sie.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

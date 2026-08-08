@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 · „KI“ ist kein Ding</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="lesson" data-n="1">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 1 · Teil I — Die Bausteine</p>
+    <h1>„KI“ ist kein Ding</h1>
+    <p class="standfirst">
+      Der Satz „ChatGPT ist eine KI“ ist ungefähr so präzise wie „mein Golf ist
+      eine Verbrennungstechnologie“. Beides ist nicht ganz falsch — und beides
+      hilft Ihnen kein bisschen weiter.
+    </p>
+    <div class="meta">
+      <span>8 Minuten</span>
+      <span>Ziel: die vier Ebenen benennen können</span>
+      <span>Keine Vorkenntnisse</span>
+    </div>
+  </header>
+
+  <p>
+    Wenn heute jemand sagt „wir setzen jetzt KI ein“, haben Sie null Information
+    bekommen. Meint die Person einen Chatbot? Eine Software, die Klassenarbeiten
+    korrigiert? Ein Programm, das den Vertretungsplan optimiert? Alle drei fallen
+    unter „KI“ — und sie haben fast nichts miteinander zu tun.
+  </p>
+
+  <p>
+    Das liegt daran, dass „KI“ kein Produkt ist und keine Technologie, sondern
+    der Name eines <strong>Forschungsfeldes</strong>. Der Begriff wurde 1956 auf
+    einer Konferenz in Dartmouth geprägt, als es weder Chatbots noch das Internet
+    gab. Seitdem ist alles darunter versammelt worden, was Computer tun, das
+    früher Menschen vorbehalten schien.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 212" role="img"
+         aria-label="Ein breiter Balken mit der Aufschrift KI, darunter sechs Kästen: Schachcomputer, Spamfilter, Texterkennung, Routenplaner, Bilderkennung und Sprachmodell. Nur das Sprachmodell ist hervorgehoben.">
+      <defs>
+        <marker id="l1-up" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead-accent"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="14" width="680" height="36" rx="8" class="d-fill"/>
+      <rect x="20" y="14" width="680" height="36" rx="8" class="d-stroke"/>
+      <text x="360" y="37" class="d-t-lead d-mid">„Künstliche Intelligenz“ — ein Forschungsfeld seit 1956</text>
+
+      <line x1="70"  y1="50" x2="70"  y2="96" class="d-line-faint"/>
+      <line x1="186" y1="50" x2="186" y2="96" class="d-line-faint"/>
+      <line x1="302" y1="50" x2="302" y2="96" class="d-line-faint"/>
+      <line x1="418" y1="50" x2="418" y2="96" class="d-line-faint"/>
+      <line x1="534" y1="50" x2="534" y2="96" class="d-line-faint"/>
+      <line x1="650" y1="50" x2="650" y2="96" class="d-line-accent"/>
+
+      <rect x="20"  y="96" width="100" height="48" rx="7" class="d-fill-plain"/>
+      <rect x="20"  y="96" width="100" height="48" rx="7" class="d-stroke"/>
+      <text x="70" y="118" class="d-t-sm d-mid">Schach-</text>
+      <text x="70" y="132" class="d-t-sm d-mid">computer</text>
+
+      <rect x="136" y="96" width="100" height="48" rx="7" class="d-fill-plain"/>
+      <rect x="136" y="96" width="100" height="48" rx="7" class="d-stroke"/>
+      <text x="186" y="118" class="d-t-sm d-mid">Spam-</text>
+      <text x="186" y="132" class="d-t-sm d-mid">filter</text>
+
+      <rect x="252" y="96" width="100" height="48" rx="7" class="d-fill-plain"/>
+      <rect x="252" y="96" width="100" height="48" rx="7" class="d-stroke"/>
+      <text x="302" y="118" class="d-t-sm d-mid">Text-</text>
+      <text x="302" y="132" class="d-t-sm d-mid">erkennung</text>
+
+      <rect x="368" y="96" width="100" height="48" rx="7" class="d-fill-plain"/>
+      <rect x="368" y="96" width="100" height="48" rx="7" class="d-stroke"/>
+      <text x="418" y="118" class="d-t-sm d-mid">Routen-</text>
+      <text x="418" y="132" class="d-t-sm d-mid">planer</text>
+
+      <rect x="484" y="96" width="100" height="48" rx="7" class="d-fill-plain"/>
+      <rect x="484" y="96" width="100" height="48" rx="7" class="d-stroke"/>
+      <text x="534" y="118" class="d-t-sm d-mid">Bild-</text>
+      <text x="534" y="132" class="d-t-sm d-mid">erkennung</text>
+
+      <rect x="600" y="96" width="100" height="48" rx="7" class="d-fill"/>
+      <rect x="600" y="96" width="100" height="48" rx="7" class="d-stroke-accent"/>
+      <text x="650" y="118" class="d-t d-mid d-t-accent">Sprach-</text>
+      <text x="650" y="132" class="d-t d-mid d-t-accent">modell</text>
+
+      <line x1="650" y1="180" x2="650" y2="150" class="d-line-accent" marker-end="url(#l1-up)"/>
+      <text x="700" y="198" class="d-t-sm d-end">Nur hiervon handelt dieser Kurs.</text>
+
+      <text x="20" y="176" class="d-t-xs">Alles darunter heißt „KI“ — und meint völlig Verschiedenes</text>
+    </svg>
+    <figcaption>
+      <b>„KI“ ist ein Regenschirm, kein Gerät.</b> Ihr Spamfilter ist seit
+      zwanzig Jahren KI. Das Wort sagt Ihnen nichts darüber, was ein Ding
+      tatsächlich kann — genauso wenig wie „Fahrzeug“ Ihnen sagt, ob damit ein
+      Bobbycar oder ein Sattelschlepper gemeint ist.
+    </figcaption>
+  </figure>
+
+  <div class="takeaway">
+    „KI“ beschreibt keine Fähigkeit. Wer wissen will, was ein Werkzeug kann,
+    muss fragen: Was steckt drin — und was darf es tun?
+  </div>
+
+  <h2>ChatGPT aufgeschraubt</h2>
+
+  <p>
+    Nehmen wir also das Ding auseinander, das die meisten meinen, wenn sie „KI“
+    sagen. <strong>ChatGPT ist ein Produkt</strong> der Firma OpenAI — eine
+    Website, eine App, ein Abo. Genau wie <em>Claude</em> ein Produkt von
+    Anthropic ist und <em>Gemini</em> eines von Google.
+  </p>
+
+  <p class="sidenote">
+    <span class="sn-label">Merkhilfe</span>
+    Produkte haben Logos und Preise. Modelle haben Versionsnummern und stehen in
+    Preislisten für Entwickler. Wenn ein Name klingt wie ein Getränk, ist es meist
+    ein Produkt; wenn er klingt wie ein Nummernschild, ein Modell.
+  </p>
+
+  <p>
+    In diesem Produkt stecken mehrere Teile. Nur <em>einer</em> davon ist das,
+    was man mit gutem Gewissen „die KI“ nennen könnte:
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 262" role="img"
+         aria-label="Der Produktkasten ChatGPT enthält vier gestapelte Schichten: Oberfläche, Gesprächsverlauf, Werkzeuge und ganz unten das Sprachmodell, das farblich hervorgehoben ist.">
+      <rect x="20" y="18" width="440" height="230" rx="12" class="d-stroke-accent d-dash"/>
+      <text x="36" y="42" class="d-t-xs d-t-accent">Produkt „ChatGPT“ — gebaut und betrieben von OpenAI</text>
+
+      <rect x="42" y="56" width="396" height="40" rx="7" class="d-fill"/>
+      <rect x="42" y="56" width="396" height="40" rx="7" class="d-stroke"/>
+      <text x="240" y="81" class="d-t d-mid">Oberfläche — Website, App, Sprachmodus</text>
+
+      <rect x="42" y="104" width="396" height="40" rx="7" class="d-fill"/>
+      <rect x="42" y="104" width="396" height="40" rx="7" class="d-stroke"/>
+      <text x="240" y="129" class="d-t d-mid">Gesprächsverlauf — der Speicher des Chats</text>
+
+      <rect x="42" y="152" width="396" height="40" rx="7" class="d-fill"/>
+      <rect x="42" y="152" width="396" height="40" rx="7" class="d-stroke"/>
+      <text x="240" y="177" class="d-t d-mid">Werkzeuge — Websuche, Dateien, Bilder</text>
+
+      <rect x="42" y="200" width="396" height="40" rx="7" class="d-fill-accent"/>
+      <text x="240" y="225" class="d-t-lead d-t-invert d-mid">Sprachmodell (LLM) — der Motor</text>
+
+      <line x1="438" y1="76" x2="486" y2="76" class="d-line-faint"/>
+      <text x="496" y="66"  class="d-t">Das ist alles Produkt.</text>
+      <text x="496" y="84"  class="d-t-sm">Von Menschen programmiert,</text>
+      <text x="496" y="100" class="d-t-sm">jederzeit änderbar, mit Logo.</text>
+
+      <line x1="438" y1="220" x2="486" y2="220" class="d-line-accent"/>
+      <text x="496" y="196" class="d-t d-t-accent">Nur das hier ist das Modell.</text>
+      <text x="496" y="214" class="d-t-sm">Es rechnet Sprache — und sonst nichts.</text>
+      <text x="496" y="230" class="d-t-sm">Man könnte es gegen ein anderes</text>
+      <text x="496" y="246" class="d-t-sm">austauschen, ohne dass Sie es merken.</text>
+    </svg>
+    <figcaption>
+      <b>Produkt und Motor sind zwei verschiedene Dinge.</b> Der letzte Punkt ist der
+      wichtigste des ganzen Kurses: Der Motor ist austauschbar. Warum das so ist
+      und was daraus folgt, steht in
+      <a href="0002-das-llm-hat-kein-gedaechtnis.html">Lektion 2</a>.
+    </figcaption>
+  </figure>
+
+  <h2>Die vier Ebenen — Motor, Auto, Werkstattwagen, Chauffeur</h2>
+
+  <p>
+    Dieses Bild zieht sich durch den ganzen Kurs, deshalb lohnt es sich, es einmal
+    richtig zu verstehen. Alles, was Sie an KI-Werkzeugen sehen werden, sitzt auf
+    einer von vier Ebenen — und jede Ebene fügt <em>genau eine</em> Sache hinzu.
+  </p>
+
+  <div class="scroll-x">
+  <table class="wide">
+    <thead>
+      <tr>
+        <th style="width:22%">Ebene</th>
+        <th style="width:24%">Das Bild</th>
+        <th style="width:30%">Was neu dazukommt</th>
+        <th style="width:24%">Beispiel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>LLM</strong><br><span style="color:var(--ink-faint)">Sprachmodell</span></td>
+        <td>Der Motor</td>
+        <td>Rechnet aus Text neuen Text. Erinnert sich an nichts.</td>
+        <td>GPT, Claude, Gemini, Llama</td>
+      </tr>
+      <tr>
+        <td><strong>Chatbot</strong></td>
+        <td>Das Auto — Sie sitzen am Steuer</td>
+        <td>Ein Gesprächsverlauf, der jedes Mal mitgeschickt wird</td>
+        <td>ChatGPT, Claude.ai, Gemini</td>
+      </tr>
+      <tr>
+        <td><strong>Agent</strong></td>
+        <td>Werkstattwagen mit Werkzeug an Bord</td>
+        <td>Werkzeuge: darf Dateien lesen, suchen, etwas ausführen</td>
+        <td>Claude Code, Cowork</td>
+      </tr>
+      <tr>
+        <td><strong>autonomer&nbsp;Agent</strong></td>
+        <td>Der Chauffeur — Sie steigen aus</td>
+        <td>Läuft ohne Rückfragen weiter, auch wenn Sie weg sind</td>
+        <td>OpenClaw, geplante Aufträge</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>
+    Sie merken vielleicht: Die Ebenen sind nicht „besser“ oder „schlauer“. In allen
+    vier steckt derselbe Motor. Was sich ändert, ist ausschließlich, <strong>wie
+    viel Leine man ihm lässt</strong>. Ein autonomer Agent ist nicht intelligenter
+    als ein Chatbot — er darf nur mehr.
+  </p>
+
+  <div class="box warn">
+    <p class="box-title">Das ist der Punkt, an dem die meisten sich vertun</p>
+    <p style="margin-bottom:0">
+      Wenn eine Zeitung schreibt „die neue KI kann jetzt selbstständig einkaufen“,
+      dann ist in aller Regel <em>nicht</em> das Modell besser geworden. Jemand hat
+      ihm bloß erlaubt, auf einen Bezahl-Knopf zu drücken. Das ist eine
+      Produktentscheidung, keine Erfindung — und sie ist genau deshalb auch
+      genau so riskant, wie sie klingt.
+    </p>
+  </div>
+
+  <h2>Warum diese Unterscheidung im Alltag zählt</h2>
+
+  <p>
+    Weil sie Ihre drei wichtigsten Fragen beantwortet, und zwar sofort:
+  </p>
+
+  <ul>
+    <li><strong>Kann das Ding etwas kaputt machen?</strong> Nur ab Ebene 3. Ein
+      Chatbot kann Unsinn erzählen, aber er kann keine Datei löschen — er hat
+      schlicht keine Hände.</li>
+    <li><strong>Wohin gehen meine Daten?</strong> Das entscheidet die Ebene 1, der
+      Motor — genauer: wer ihn betreibt. Dazu
+      <a href="0005-was-passiert-mit-meinen-daten.html">Lektion 5</a>.</li>
+    <li><strong>Warum wird mein Chat mit der Zeit schlechter?</strong> Das
+      entscheidet Ebene 2, der Gesprächsverlauf. Dazu
+      <a href="0003-das-kontextfenster.html">Lektion 3</a>.</li>
+  </ul>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Eine Kollegin sagt: „Ich habe gestern eine neue KI ausprobiert, die kann
+      selbst im Internet nachschauen.“ Was hat sich technisch geändert?
+    </p>
+    <ul class="quiz-opts">
+      <li>Das Modell wurde mit deutlich mehr Wissen neu trainiert.</li>
+      <li data-correct>Das Produkt hat dem Modell ein Werkzeug gegeben.</li>
+      <li>Das Modell hat jetzt ein dauerhaftes eigenes Gedächtnis.</li>
+      <li>Das Modell denkt seit dem Update auch selbstständig nach.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p>
+        Der Motor ist unverändert. Dazugekommen ist ein <em>Werkzeug</em> — die
+        Websuche. Das Produkt ruft die Suche auf, klebt das Ergebnis in den Text,
+        den es dem Modell schickt, und das Modell formuliert daraus eine Antwort.
+      </p>
+      <p style="margin-bottom:0">
+        Das ist der Sprung von Ebene 2 auf Ebene 3. Für Sie praktisch bedeutsam:
+        Ab hier <em>tut</em> das Werkzeug etwas in der Welt — und ab hier lohnt es
+        sich zu fragen, was es sonst noch darf.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Warum ist der Satz „ChatGPT ist eine KI“ irreführend?
+    </p>
+    <ul class="quiz-opts">
+      <li>Weil ChatGPT für echte KI technisch noch zu einfach gebaut ist.</li>
+      <li>Weil ChatGPT nur Text kann, KI aber alles können müsste.</li>
+      <li data-correct>Weil ChatGPT ein Produkt ist und „KI“ ein Sammelbegriff.</li>
+      <li>Weil ChatGPT gar kein Sprachmodell benutzt, sondern eine Suche.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Es sind zwei Begriffe von völlig verschiedener Größe. „KI“ ist ein
+        Forschungsfeld, unter das auch Ihr Spamfilter fällt. ChatGPT ist ein
+        konkretes Produkt einer konkreten Firma, in dem ein Sprachmodell steckt.
+        Der Satz ist ungefähr so hilfreich wie „mein Golf ist ein Verkehrsmittel“.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Nennen Sie die vier Ebenen in der richtigen Reihenfolge und sagen Sie zu
+      jeder in <em>einem</em> Satz, was sie gegenüber der Ebene darunter neu
+      hinzufügt. Wenn Ihnen die dritte fehlt: Das ist normal, sie kommt erst in
+      <a href="0006-vom-chatbot-zum-agenten.html">Lektion 6</a> ausführlich.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g">Andrej Karpathy — „Intro to
+      Large Language Models“</a> (Video, ca. 60 Minuten). Karpathy hat bei Tesla und
+      OpenAI gearbeitet und erklärt in der ersten Viertelstunde besser als jeder
+      Text, was ein Sprachmodell eigentlich <em>ist</em>. Sie brauchen nur den
+      Anfang — der Rest wird technischer.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Wenn eine der vier Ebenen unscharf geblieben
+    ist, verlangen Sie ein anderes Bild — Motoren und Chauffeure sind nicht für
+    jeden die passende Analogie. Sagen Sie einfach, aus welchem Bereich ein
+    Vergleich für Sie besser funktionieren würde.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

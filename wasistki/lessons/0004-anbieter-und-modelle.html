@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4 · Wer baut die Motoren?</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="lesson" data-n="4">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 4 · Teil II — Die Landschaft</p>
+    <h1>Wer baut die Motoren?</h1>
+    <p class="standfirst">
+      Eine Handvoll Firmen baut die Sprachmodelle, die in fast allen Produkten
+      stecken. Sie müssen sich keinen einzigen Modellnamen merken — aber drei
+      Fragen sollten Sie stellen können.
+    </p>
+    <div class="meta">
+      <span>8 Minuten</span>
+      <span>Ziel: ein Modell begründet auswählen</span>
+      <span>Setzt <a href="0002-das-llm-hat-kein-gedaechtnis.html">Lektion 2</a> voraus</span>
+    </div>
+  </header>
+
+  <p>
+    In <a href="0002-das-llm-hat-kein-gedaechtnis.html">Lektion 2</a> haben Sie
+    gesehen, dass der Motor austauschbar ist. Bleibt die Frage: Welchen nimmt man?
+    Und da beginnt das Problem — denn die Antwort ändert sich alle paar Monate.
+  </p>
+
+  <p>
+    Deshalb ist diese Lektion anders gebaut als die anderen. Sie lernen hier
+    <em>keine</em> Modellnamen. Sie lernen die drei Achsen, an denen sich die
+    Landschaft sortiert. Die Achsen bleiben stabil, während die Namen wechseln.
+  </p>
+
+  <h2>Achse 1: die Größenklasse</h2>
+
+  <p class="sidenote">
+    <span class="sn-label">Beobachtung</span>
+    Fast jeder Anbieter baut inzwischen genau diese drei Klassen und gibt ihnen
+    eigene Namen. Wenn Sie die Namen eines Anbieters sehen, können Sie sie meist
+    ohne Vorkenntnisse dieser Leiter zuordnen.
+  </p>
+
+  <p>
+    Jeder Anbieter hat mehrere Modelle im Angebot — nicht als Verkaufstrick,
+    sondern weil sie einen echten Zielkonflikt bedienen. Groß heißt klug, aber
+    langsam und teuer. Klein heißt schnell und billig, aber begrenzt.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 250" role="img"
+         aria-label="Drei Größenklassen nebeneinander: klein und schnell, mittel als Standard, groß und stark. Darunter Balken für Tempo, Preis und Denkleistung.">
+      <rect x="20"  y="16" width="210" height="86" rx="9" class="d-fill"/>
+      <rect x="20"  y="16" width="210" height="86" rx="9" class="d-stroke"/>
+      <text x="125" y="44" class="d-t-lead d-mid">klein</text>
+      <text x="125" y="64" class="d-t-sm d-mid">sortieren, umformulieren,</text>
+      <text x="125" y="80" class="d-t-sm d-mid">Stichworte, Standardtexte</text>
+      <text x="125" y="96" class="d-t-xs d-mid">sekundenschnell, sehr billig</text>
+
+      <rect x="255" y="16" width="210" height="86" rx="9" class="d-fill"/>
+      <rect x="255" y="16" width="210" height="86" rx="9" class="d-stroke-accent"/>
+      <text x="360" y="44" class="d-t-lead d-mid d-t-accent">mittel</text>
+      <text x="360" y="64" class="d-t-sm d-mid">der Alltagsmotor —</text>
+      <text x="360" y="80" class="d-t-sm d-mid">deckt fast alles ab</text>
+      <text x="360" y="96" class="d-t-xs d-mid">hier landen Sie zu 90 Prozent</text>
+
+      <rect x="490" y="16" width="210" height="86" rx="9" class="d-fill"/>
+      <rect x="490" y="16" width="210" height="86" rx="9" class="d-stroke"/>
+      <text x="595" y="44" class="d-t-lead d-mid">groß</text>
+      <text x="595" y="64" class="d-t-sm d-mid">knifflige Analysen,</text>
+      <text x="595" y="80" class="d-t-sm d-mid">lange Dokumente, Planung</text>
+      <text x="595" y="96" class="d-t-xs d-mid">langsam, teuer, gründlich</text>
+
+      <text x="20" y="140" class="d-t-xs">Tempo</text>
+      <rect x="120" y="130" width="170" height="10" rx="5" class="d-fill-ok"/>
+      <rect x="355" y="130" width="105" height="10" rx="5" class="d-fill-ok" style="opacity:.65"/>
+      <rect x="590" y="130" width="45"  height="10" rx="5" class="d-fill-ok" style="opacity:.35"/>
+
+      <text x="20" y="172" class="d-t-xs">Kosten</text>
+      <rect x="120" y="162" width="35"  height="10" rx="5" class="d-fill-warn" style="opacity:.35"/>
+      <rect x="355" y="162" width="95"  height="10" rx="5" class="d-fill-warn" style="opacity:.6"/>
+      <rect x="590" y="162" width="110" height="10" rx="5" class="d-fill-warn"/>
+
+      <text x="20" y="204" class="d-t-xs">Denkleistung</text>
+      <rect x="120" y="194" width="55"  height="10" rx="5" class="d-fill-accent" style="opacity:.4"/>
+      <rect x="355" y="194" width="100" height="10" rx="5" class="d-fill-accent" style="opacity:.75"/>
+      <rect x="590" y="194" width="110" height="10" rx="5" class="d-fill-accent"/>
+
+      <line x1="20" y1="222" x2="700" y2="222" class="d-line-faint"/>
+      <text x="20" y="240" class="d-t-xs">Dieselbe Leiter bei jedem Anbieter — nur die Namen sind andere</text>
+    </svg>
+    <figcaption>
+      <b>Nehmen Sie im Zweifel die Mitte.</b> Der häufigste Anfängerfehler ist,
+      für jede Kleinigkeit das größte Modell zu nehmen — man wartet länger, das
+      Nutzungslimit ist schneller weg, und die Antwort auf „formuliere das
+      höflicher“ wird davon kein bisschen besser.
+    </figcaption>
+  </figure>
+
+  <h2>Achse 2: gehostet oder offen</h2>
+
+  <p>
+    Der zweite Unterschied ist der folgenreichste, weil an ihm der Datenschutz hängt.
+  </p>
+
+  <ul>
+    <li><strong>Gehostete Modelle</strong> laufen auf den Rechnern des Anbieters.
+      Sie schicken Ihren Text hin, die Antwort kommt zurück. Das sind praktisch
+      alle bekannten Namen. Bequem, stark — und Ihre Daten sind weg von Ihrem
+      Rechner.</li>
+    <li><strong>Offene Modelle</strong> („open weights“) kann man herunterladen und
+      auf dem eigenen Gerät laufen lassen. Sie sind meist eine Stufe schwächer und
+      brauchen einen kräftigen Rechner. Dafür verlässt kein einziges Wort Ihr Haus.</li>
+  </ul>
+
+  <p>
+    Für Lehrkräfte ist das kein technisches Detail, sondern der Kern der Sache.
+    <a href="0005-was-passiert-mit-meinen-daten.html">Lektion 5</a> geht dem nach.
+  </p>
+
+  <h2>Achse 3: der Anbieter</h2>
+
+  <p>
+    Und erst jetzt kommen die Firmennamen. Die Unterschiede zwischen den großen
+    Anbietern sind für Ihre Zwecke <em>kleiner, als das Marketing suggeriert</em>.
+    Alle können Texte schreiben, zusammenfassen, erklären und übersetzen. Die
+    Feinheiten:
+  </p>
+
+  <div class="scroll-x">
+  <table class="wide">
+    <thead>
+      <tr>
+        <th style="width:20%">Anbieter</th>
+        <th style="width:18%">Produkt</th>
+        <th style="width:62%">Wofür man ihn typischerweise nimmt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Anthropic</strong></td>
+        <td>Claude</td>
+        <td>Längere Texte, sorgfältiges Schreiben, Arbeit mit Dokumenten — und
+            derzeit das reichste Angebot an Agenten-Werkzeugen (siehe
+            <a href="0008-der-werkzeugkasten.html">Lektion 8</a>).</td>
+      </tr>
+      <tr>
+        <td><strong>OpenAI</strong></td>
+        <td>ChatGPT</td>
+        <td>Die breiteste Palette an Zusatzfunktionen: Bildgenerierung, Sprache,
+            Datenanalyse. Der beste Allrounder, wenn man <em>ein</em> Abo will.</td>
+      </tr>
+      <tr>
+        <td><strong>Google</strong></td>
+        <td>Gemini</td>
+        <td>Stark bei sehr langen Dokumenten und bei Bild-, Ton- und Videoinhalten.
+            Naheliegend, wenn die Schule ohnehin mit Google Workspace arbeitet.</td>
+      </tr>
+      <tr>
+        <td><strong>Meta</strong></td>
+        <td>Llama <span style="color:var(--ink-faint)">(offen)</span></td>
+        <td>Zum Herunterladen und selbst betreiben. Relevant, sobald „darf den
+            Rechner nicht verlassen“ die harte Anforderung ist.</td>
+      </tr>
+      <tr>
+        <td><strong>Mistral</strong></td>
+        <td>Le Chat <span style="color:var(--ink-faint)">(teils offen)</span></td>
+        <td>Französisch, Server in Europa, viele Modelle offen. Das übliche Argument,
+            wenn die Datenverarbeitung in der EU bleiben soll.</td>
+      </tr>
+      <tr>
+        <td><strong>DeepSeek</strong></td>
+        <td>DeepSeek <span style="color:var(--ink-faint)">(offen)</span></td>
+        <td>Sehr viel Leistung pro Euro. Betrieben wird der Dienst in China — für
+            personenbezogene Daten aus einer Schule damit tabu.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <p class="box-title">Diese Tabelle altert</p>
+    <p style="margin-bottom:0">
+      Modellnamen und Ranglisten wechseln im Monatsrhythmus. Deshalb steht die
+      konkrete, mit Datum versehene Momentaufnahme bewusst nicht hier, sondern in
+      einem eigenen Dokument, das man wegwerfen und ersetzen kann:
+      <a href="../reference/anbieter-und-modelle.html">Anbieter &amp; Modelle</a>.
+      Was Sie gerade gelesen haben — die drei Achsen — bleibt.
+    </p>
+  </div>
+
+  <h2>Die drei Fragen, die die Auswahl entscheiden</h2>
+
+  <p>
+    Statt Ranglisten zu verfolgen, stellen Sie sich diese drei Fragen. Sie führen
+    fast immer zur richtigen Wahl:
+  </p>
+
+  <figure>
+    <svg class="diagram" viewBox="0 0 520 232" role="img"
+         aria-label="Ein Entscheidungsbaum mit drei Fragen: Dürfen die Daten raus? Wie schwierig ist die Aufgabe? Wie viel Text ist es?">
+      <defs>
+        <marker id="l4-a" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="14" width="480" height="42" rx="7" class="d-fill"/>
+      <rect x="20" y="14" width="480" height="42" rx="7" class="d-stroke-warn"/>
+      <text x="36" y="34" class="d-t d-t-warn">1 · Dürfen diese Daten das Haus verlassen?</text>
+      <text x="36" y="49" class="d-t-sm">Nein → offenes Modell auf eigenem Gerät. Die Frage kommt zuerst.</text>
+
+      <line x1="260" y1="56" x2="260" y2="76" class="d-line" marker-end="url(#l4-a)"/>
+
+      <rect x="20" y="80" width="480" height="42" rx="7" class="d-fill"/>
+      <rect x="20" y="80" width="480" height="42" rx="7" class="d-stroke"/>
+      <text x="36" y="100" class="d-t">2 · Ist die Aufgabe knifflig oder Routine?</text>
+      <text x="36" y="115" class="d-t-sm">Routine → kleines Modell. Knifflig → großes. Sonst: mittel.</text>
+
+      <line x1="260" y1="122" x2="260" y2="142" class="d-line" marker-end="url(#l4-a)"/>
+
+      <rect x="20" y="146" width="480" height="42" rx="7" class="d-fill"/>
+      <rect x="20" y="146" width="480" height="42" rx="7" class="d-stroke"/>
+      <text x="36" y="166" class="d-t">3 · Wie viel Text muss auf einmal hinein?</text>
+      <text x="36" y="181" class="d-t-sm">Ganze Bücher → auf ein großes Kontextfenster achten.</text>
+
+      <text x="20" y="214" class="d-t-xs">Frage 1 ist keine Vorstufe, sondern ein K.-o.-Kriterium</text>
+    </svg>
+    <figcaption>
+      <b>Die Reihenfolge ist Absicht.</b> Wenn Frage 1 mit Nein beantwortet wird,
+      erübrigen sich die anderen beiden — dann zählt nicht mehr, welches Modell
+      das beste wäre, sondern nur noch, welches Sie überhaupt benutzen dürfen.
+    </figcaption>
+  </figure>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Sie wollen 120 Aufsatztitel nach Themengebieten sortieren. Welche
+      Größenklasse ist richtig?
+    </p>
+    <ul class="quiz-opts">
+      <li data-correct>Klein — die Aufgabe ist Fleiß, nicht Scharfsinn.</li>
+      <li>Groß — bei so vielen Einzeltiteln braucht es Übersicht.</li>
+      <li>Mittel — bei Schülertexten immer die sichere Mitte nehmen.</li>
+      <li>Groß — Sortieren gilt generell als anspruchsvolle Aufgabe.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Sortieren nach Thema ist genau das, wofür kleine Modelle gebaut sind:
+        viel Material, einfache Entscheidung pro Element. Ein großes Modell macht
+        es nicht besser, nur langsamer und teurer. Anders sähe es aus, wenn Sie
+        <em>bewerten</em> wollten, welcher Aufsatz die beste Argumentation hat.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Was bedeutet es, dass ein Modell „offen“ ist?
+    </p>
+    <ul class="quiz-opts">
+      <li>Dass jeder ohne Anmeldung und ohne Kosten damit arbeiten darf.</li>
+      <li data-correct>Dass man es herunterladen und selbst betreiben kann.</li>
+      <li>Dass sein Quellcode einsehbar und frei veränderbar ist.</li>
+      <li>Dass es seine Antworten ohne inhaltliche Filter formuliert.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Offen heißt hier: Die trainierte Datei — die „Gewichte“ — steht zum
+        Herunterladen bereit. Damit können Sie das Modell auf Ihrem eigenen
+        Rechner laufen lassen, und Ihre Texte gehen nirgendwohin. Mit
+        „Open Source“ im klassischen Sinn hat das nur teilweise zu tun: Wie das
+        Modell trainiert wurde, bleibt meist Betriebsgeheimnis.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Nennen Sie die drei Fragen in der richtigen Reihenfolge — und begründen Sie,
+      warum ausgerechnet die erste zuerst kommt.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      <a href="https://llm-stats.com/">LLM Stats — Leaderboard</a>. Statt sich
+      Namen zu merken: einmal im Halbjahr hier hineinschauen. Die Seite vergleicht
+      Modelle nach Leistung, Tempo und Preis und macht auf einen Blick sichtbar,
+      dass die Spitze ständig wechselt — und wie klein die Abstände oben tatsächlich
+      sind.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Nützlich hier: „Ich habe folgendes Abo und
+    folgende Aufgabe — reicht das?“ Auf eine konkrete Aufgabe lässt sich eine
+    klare Empfehlung geben, auf die allgemeine Frage nach dem „besten Modell“ nicht.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

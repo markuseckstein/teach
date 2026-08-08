@@ -1,0 +1,160 @@
+/* ===========================================================================
+   context-sim.css — Aussehen der Schreibtisch-Komponente (context-sim.js)
+   =========================================================================== */
+
+.ctxsim {
+  max-width: var(--measure);
+  font-family: var(--sans);
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  padding: 1.1rem 1.2rem 1.2rem;
+  margin: 2rem 0;
+  background: var(--paper-2);
+}
+
+.ctxsim-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.55rem;
+}
+.ctxsim-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ctxsim-fill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.ctxsim-fill.ok   { color: var(--ok); }
+.ctxsim-fill.warn { color: var(--accent); }
+.ctxsim-fill.bad  { color: var(--flag); }
+
+/* ------------------------------------------------------------------- Balken */
+
+.ctxsim-bar {
+  display: flex;
+  height: 22px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.ctxsim-seg {
+  display: block;
+  flex-basis: 0;
+  border-right: 1px solid var(--paper);
+  transition: flex-grow 0.25s ease;
+}
+.ctxsim-seg:last-child { border-right: none; }
+
+/* Farbe nach Thema, damit die Vermischung sichtbar wird. */
+.ctxsim-seg.t-setup { background: var(--ink-faint); opacity: 0.45; }
+.ctxsim-seg.t-a     { background: var(--accent);    opacity: 0.72; }
+.ctxsim-seg.t-b     { background: var(--accent-2); }
+.ctxsim-seg.is-free { background: transparent; }
+.ctxsim-seg.is-dropped {
+  background: repeating-linear-gradient(
+    45deg, var(--flag), var(--flag) 3px, transparent 3px, transparent 6px);
+  opacity: 0.5;
+}
+
+/* -------------------------------------------------------------------- Liste */
+
+.ctxsim-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0 0;
+  max-width: none;
+}
+.ctxsim-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.2rem 0;
+  margin: 0;
+}
+.ctxsim-dot {
+  width: 9px; height: 9px;
+  border-radius: 2px;
+  flex: none;
+}
+.ctxsim-item.t-setup .ctxsim-dot { background: var(--ink-faint); opacity: 0.5; }
+.ctxsim-item.t-a     .ctxsim-dot { background: var(--accent); opacity: 0.75; }
+.ctxsim-item.t-b     .ctxsim-dot { background: var(--accent-2); }
+
+.ctxsim-label { flex: 1; }
+.ctxsim-cost {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+  font-size: 0.74rem;
+}
+.ctxsim-gone {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--flag);
+}
+.ctxsim-item.is-dropped .ctxsim-label {
+  text-decoration: line-through;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------ Fazit */
+
+.ctxsim-verdict {
+  font-size: 0.81rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--rule);
+}
+.ctxsim-verdict b { color: var(--ink); }
+.ctxsim-verdict.bad b { color: var(--flag); }
+
+/* ----------------------------------------------------------------- Knöpfe */
+
+.ctxsim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.95rem;
+}
+.ctxsim-btn {
+  font-family: inherit;
+  font-size: 0.76rem;
+  line-height: 1.3;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 0.32rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.13s;
+}
+.ctxsim-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ctxsim-btn.t-b:hover { border-color: var(--accent-2); color: var(--accent-2); }
+.ctxsim-btn-cost {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+  font-size: 0.9em;
+}
+.ctxsim-btn.is-reset {
+  margin-left: auto;
+  border-style: dashed;
+  color: var(--ink-soft);
+}
+
+@media print {
+  .ctxsim-actions { display: none; }
+  .ctxsim { background: #f6f4ef; }
+}
