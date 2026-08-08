@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: Corporate Proxy Cheat Sheet</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<h1>Corporate Proxy Cheat Sheet</h1>
+<p class="lesson-meta">Reference · every tool in the SDD toolchain, and which knob makes it trust the proxy</p>
+
+<div class="callout">
+<span class="label">The one rule</span>
+SSL-inspecting proxies re-sign every HTTPS connection with the corporate CA. <strong>Each runtime keeps its own trust store</strong>, so each tool must be told about that CA separately. One error message — <code>self-signed certificate in certificate chain</code> / <code>UnknownIssuer</code> — many knobs.
+</div>
+
+<h2>Proxy address (all tools)</h2>
+<p>In <code>~/.bashrc</code> (Git Bash reads it):</p>
+<pre><code>export HTTP_PROXY="http://proxy.company.example:8080"
+export HTTPS_PROXY="$HTTP_PROXY"
+export NO_PROXY="localhost,127.0.0.1,.company.example"
+# lowercase twins — some tools only read these
+export http_proxy="$HTTP_PROXY" https_proxy="$HTTPS_PROXY" no_proxy="$NO_PROXY"</code></pre>
+
+<h2>Trust knobs per tool</h2>
+<table>
+<tr><th>Tool</th><th>Runtime</th><th>Knob</th><th>Notes</th></tr>
+<tr><td><strong>uv / uvx</strong> (runs <code>specify</code>)</td><td>Rust (own TLS)</td><td><code>export UV_SYSTEM_CERTS=true</code></td><td>Uses the Windows cert store, where IT's GPO already put the corporate CA. Default is bundled Mozilla roots, which do <em>not</em> know your proxy. Older docs call this <code>--native-tls</code> / <code>UV_NATIVE_TLS</code>. Alternative: <code>SSL_CERT_FILE=/c/certs/corp-ca.pem</code> (overrides entirely — bundle must then contain public roots too).</td></tr>
+<tr><td><strong>git</strong> (clones spec-kit templates; branch scripts)</td><td>Git for Windows (OpenSSL by default)</td><td><code>git config --global http.sslBackend schannel</code></td><td>Switches git to the native Windows TLS stack → corporate CA picked up automatically. Alternative: <code>git config --global http.sslCAInfo C:/certs/corp-ca.pem</code>. Proxy: git honors <code>HTTPS_PROXY</code>, or set <code>git config --global http.proxy</code>.</td></tr>
+<tr><td><strong>Copilot CLI</strong></td><td>Node.js</td><td><code>export NODE_EXTRA_CA_CERTS=/c/certs/corp-ca.pem</code></td><td><em>Extra</em> certs — added on top of Node's bundled roots, so no need to merge public CAs. Honors <code>HTTP(S)_PROXY</code>. Windows prerequisite: PowerShell 6+ installed, even when you launch it from Git Bash.</td></tr>
+<tr><td><strong>npm</strong> (installs Copilot CLI)</td><td>Node.js</td><td><code>npm config set proxy $HTTP_PROXY</code><br><code>npm config set https-proxy $HTTPS_PROXY</code><br><code>npm config set cafile C:/certs/corp-ca.pem</code></td><td>npm does <em>not</em> read <code>NODE_EXTRA_CA_CERTS</code> for its own registry traffic — it needs <code>cafile</code>.</td></tr>
+<tr><td><strong>Copilot in VS Code</strong></td><td>Electron/Node</td><td>Settings → <code>http.proxy</code>; corporate CA usually picked up from OS store via <code>http.systemCertificates</code> (default on)</td><td>Plus <code>NODE_EXTRA_CA_CERTS</code> if the extension host still complains.</td></tr>
+</table>
+
+<h2>Getting the corporate CA as a PEM file</h2>
+<pre><code># From Git Bash — show what the proxy actually presents, save the chain:
+openssl s_client -connect api.github.com:443 -showcerts &lt;/dev/null 2&gt;/dev/null \
+  | sed -n '/BEGIN CERT/,/END CERT/p' &gt; /c/certs/corp-ca.pem</code></pre>
+<p class="sidenote">Better: ask IT for the official root-CA bundle — the snippet above grabs the presented chain, which may omit the root. Store it somewhere stable like <code>C:\certs\</code>; several knobs reference it.</p>
+
+<h2>Domains to allowlist (for IT tickets)</h2>
+<p><code>github.com</code> · <code>api.github.com</code> · <code>*.githubusercontent.com</code> · <code>*.githubcopilot.com</code> — see <a href="https://docs.github.com/en/copilot/concepts/network-settings">GitHub's network settings doc</a> for the authoritative list.</p>
+
+<h2>Symptom → knob</h2>
+<table>
+<tr><th>Symptom</th><th>Likely fix</th></tr>
+<tr><td><code>uvx … specify init</code> fails: <code>invalid peer certificate: UnknownIssuer</code></td><td><code>UV_SYSTEM_CERTS=true</code></td></tr>
+<tr><td><code>git clone https://…</code> fails: <code>SSL certificate problem</code></td><td><code>http.sslBackend schannel</code></td></tr>
+<tr><td><code>npm install -g @github/copilot</code> fails: <code>SELF_SIGNED_CERT_IN_CHAIN</code></td><td><code>npm config set cafile …</code></td></tr>
+<tr><td>Copilot CLI installed but can't reach GitHub / login hangs</td><td><code>NODE_EXTRA_CA_CERTS</code> + check <code>HTTPS_PROXY</code>; ask IT about the allowlist; check org admin hasn't disabled Copilot CLI</td></tr>
+<tr><td>Everything fails only on the VPN</td><td>Proxy address differs on/off VPN — parameterize <code>~/.bashrc</code></td></tr>
+</table>
+
+<div class="footer-nav">
+Sources: <a href="https://docs.astral.sh/uv/concepts/authentication/certificates/">uv TLS docs</a> · <a href="https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/configuring-network-settings-for-github-copilot">Copilot network settings</a> · <a href="https://github.com/github/copilot-cli">github/copilot-cli README</a><br>
+<a href="../index.html">⌂ Course home</a> · Related: <a href="speckit-workflow.html">Workflow cheat sheet</a> · <a href="../lessons/0002-toolchain-behind-the-proxy.html">Lesson 2</a>
+</div>
+</body>
+</html>

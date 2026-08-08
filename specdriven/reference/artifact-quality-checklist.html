@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: Artifact Quality Checklist</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<h1>Artifact Quality Checklist</h1>
+<p class="lesson-meta">Reference · what "good" looks like for each Spec Kit artifact — use when reviewing what the agent generated</p>
+
+<h2>constitution.md</h2>
+<ul>
+<li><strong>Every article is enforceable.</strong> Test: could a reviewer objectively say "this PR violates article III"? "Code should be clean" fails the test; "generated API code is never hand-edited" passes.</li>
+<li>Non-negotiables are explicitly marked <code>(NON-NEGOTIABLE)</code>.</li>
+<li>It contains <em>principles</em>, not feature ideas or a tech wishlist. Stack choices belong here only when they are law ("all services are Spring Boot"), not preference.</li>
+<li>Has a Governance section + version and ratification date (the template footer: <code>Version | Ratified | Last Amended</code>).</li>
+<li>Short. If an article never changes a decision, delete it.</li>
+</ul>
+
+<h2>spec.md</h2>
+<ul>
+<li><strong>Zero technology.</strong> Grep it for your stack words (Spring, Angular, REST, JPA, HTTP) — every hit is a leak from the plan phase.</li>
+<li>User stories are <strong>prioritized (P1, P2, P3…) and independently testable</strong> — implementing only P1 must still yield a viable slice.</li>
+<li>Acceptance scenarios are <strong>Given/When/Then</strong>, concrete enough to become tests.</li>
+<li>Functional requirements are numbered (<code>FR-001</code>…) and each says MUST + one specific capability.</li>
+<li>Unknowns are marked <code>[NEEDS CLARIFICATION: …]</code>, not silently guessed. A spec with zero markers on the first pass is suspicious, not impressive.</li>
+<li>Success criteria are <strong>measurable and technology-agnostic</strong> ("account creation under 2 minutes", not "fast API").</li>
+</ul>
+
+<h2>plan.md (and friends)</h2>
+<ul>
+<li><strong>Constitution Check section exists and passes</strong> — it's the gate before research and after design. A plan that skipped the gate is invalid.</li>
+<li>Technical Context has no lingering <code>NEEDS CLARIFICATION</code> — that's unresolved risk headed for the tasks phase.</li>
+<li>Project structure reflects reality (for you: <code>backend/</code> + <code>frontend/</code> web-app layout, or your two-repo workspace).</li>
+<li><code>contracts/</code> contains the API contract — <strong>for your stack, the OpenAPI YAML.</strong> Check: every user story in the spec is reachable through some endpoint in the contract; every endpoint traces back to a requirement.</li>
+<li><code>data-model.md</code> entities match the spec's Key Entities — same names, no inventions.</li>
+</ul>
+
+<h2>Cross-artifact (what /speckit.analyze checks)</h2>
+<ul>
+<li>Every FR-NNN maps to at least one task; every task maps back to a requirement or the plan.</li>
+<li>No contradiction between constitution and plan (e.g. constitution says contract-first, plan hand-writes controllers).</li>
+<li>Terminology is consistent — the same entity isn't "Customer" in the spec and "Client" in the data model.</li>
+</ul>
+
+<div class="footer-nav">
+Source templates: <a href="https://github.com/github/spec-kit/tree/main/templates">github/spec-kit/templates</a> (constitution, spec, plan)<br>
+<a href="../index.html">⌂ Course home</a> · Related: <a href="speckit-workflow.html">Workflow cheat sheet</a> · <a href="../lessons/0003-the-constitution.html">Lesson 3</a> · <a href="../lessons/0004-specify-clarify-plan.html">Lesson 4</a>
+</div>
+</body>
+</html>

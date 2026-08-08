@@ -1,0 +1,287 @@
+/* ============================================================
+   Gemeinsames Stylesheet der Einheit „Todesstrafe" (7. Klasse)
+   Verwendet von allen Dateien in lessons/ und reference/
+   ============================================================ */
+
+:root {
+  --papier: #faf7f2;
+  --tinte: #26221c;
+  --grau: #6b645a;
+  --linie: #ddd5c8;
+  --akzent: #1f4e5f;        /* Petrol: Überschriften, Links */
+  --akzent-hell: #e8f0f2;
+  --warn: #8a3324;          /* Oxblood: sparsam, für Kernaussagen */
+  --warn-hell: #f6e8e4;
+  --gelb: #fdf3d8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tinte);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: var(--akzent);
+  line-height: 1.25;
+  margin: 2.2rem 0 0.7rem;
+}
+h1 { font-size: 2rem; margin-top: 0.5rem; }
+h2 { font-size: 1.45rem; border-bottom: 2px solid var(--linie); padding-bottom: 0.3rem; }
+h3 { font-size: 1.15rem; color: var(--tinte); }
+
+a { color: var(--akzent); }
+a:hover { color: var(--warn); }
+
+.vorspann {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--grau);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+
+.untertitel { color: var(--grau); font-style: italic; margin-top: 0; }
+
+/* --- Navigationsleiste (in jeder Datei, immer aktuell halten) --- */
+.navleiste {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--linie);
+  margin-bottom: 1.6rem;
+}
+.navleiste a { text-decoration: none; }
+.navleiste .aktuell { font-weight: 700; color: var(--warn); }
+.navleiste .geplant { color: var(--grau); }
+
+/* --- Kästen --------------------------------------------------- */
+.kasten {
+  border: 1px solid var(--linie);
+  border-left: 4px solid var(--akzent);
+  background: #fff;
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.kasten.hinweis  { border-left-color: var(--warn); background: var(--warn-hell); }
+.kasten.merke    { border-left-color: #b58a2a; background: var(--gelb); }
+.kasten .titel {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--grau);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* --- Tabellen ------------------------------------------------- */
+.tabelle-scroll { overflow-x: auto; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.97rem;
+  background: #fff;
+}
+th, td {
+  border: 1px solid var(--linie);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--akzent-hell);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--akzent);
+}
+
+/* --- Folien-Modus (Beamer) ------------------------------------ */
+.folie {
+  background: #fff;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  padding: 2rem 2.2rem;
+  margin: 1.8rem 0;
+  box-shadow: 0 2px 8px rgba(38,34,28,0.06);
+}
+.folie .folien-nr {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--grau);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.folie h2 { border: none; margin-top: 0.3rem; }
+.folie .gross {
+  font-size: 1.7rem;
+  line-height: 1.4;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.zitat {
+  font-size: 1.35rem;
+  font-style: italic;
+  text-align: center;
+  margin: 1.4rem 1rem;
+  color: var(--tinte);
+}
+.zitat .quelle {
+  display: block;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--grau);
+  margin-top: 0.5rem;
+}
+
+/* --- Interaktive Elemente ------------------------------------- */
+.aufdecken {
+  cursor: pointer;
+  background: var(--akzent);
+  color: #fff;
+  border: none;
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  margin-top: 0.6rem;
+}
+.aufdecken:hover { background: var(--warn); }
+.antwort { display: none; margin-top: 0.8rem; }
+.antwort.sichtbar { display: block; animation: einblenden 0.4s ease; }
+@keyframes einblenden { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; } }
+
+.tally { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+.tally .spalte {
+  flex: 1 1 9rem;
+  text-align: center;
+  background: var(--akzent-hell);
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  padding: 0.8rem;
+}
+.tally .zahl { font-size: 2.4rem; font-weight: 700; color: var(--akzent); }
+.tally .label { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 0.9rem; }
+.tally button {
+  font-size: 1.3rem;
+  width: 2.4rem; height: 2.4rem;
+  margin: 0.3rem 0.2rem 0;
+  border: 1px solid var(--linie);
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+.tally button:hover { background: var(--gelb); }
+.balken-wrap { background: var(--linie); border-radius: 4px; height: 0.7rem; margin-top: 0.6rem; overflow: hidden; }
+.balken { background: var(--akzent); height: 100%; width: 0; transition: width 0.4s ease; }
+
+/* --- Stationenkarten (QR-Stationenarbeit) --------------------- */
+.stationen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.station {
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.9rem 1rem;
+  break-inside: avoid;
+}
+.station h3 { margin-top: 0; }
+.station img.qr {
+  width: 9rem; height: 9rem;
+  display: block;
+  margin: 0.6rem auto;
+  image-rendering: pixelated;
+}
+.station .url {
+  font-family: monospace;
+  font-size: 0.72rem;
+  word-break: break-all;
+  color: var(--grau);
+}
+.station ol { padding-left: 1.2rem; margin: 0.5rem 0 0; }
+
+/* --- Umrechner (z.B. „Die Welt in unserer Klasse") ------------ */
+.umrechner input[data-rolle="gesamt"] {
+  font: inherit;
+  font-size: 1.2rem;
+  width: 4.5rem;
+  text-align: center;
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  padding: 0.2rem;
+}
+.umrechner .ergebnis { font-size: 1.15rem; }
+.umrechner .ergebnis strong { color: var(--akzent); font-size: 1.4rem; }
+
+/* --- Timer (Beamer-Countdown) --------------------------------- */
+.timer { text-align: center; margin: 1.2rem 0; }
+.timer .timer-anzeige {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--akzent);
+  line-height: 1.1;
+}
+.timer.abgelaufen .timer-anzeige {
+  color: var(--warn);
+  animation: blinken 0.8s step-start infinite;
+}
+@keyframes blinken { 50% { opacity: 0.25; } }
+.timer button {
+  font: inherit;
+  font-size: 0.95rem;
+  margin: 0.3rem 0.25rem 0;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+.timer button:hover { background: var(--gelb); }
+.timer button[data-timer-aktion="startpause"] { background: var(--akzent); color: #fff; }
+.timer button[data-timer-aktion="startpause"]:hover { background: var(--warn); }
+
+/* --- Fußzeile ------------------------------------------------- */
+.fusszeile {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--linie);
+  font-size: 0.9rem;
+  color: var(--grau);
+}
+
+/* --- Druck ---------------------------------------------------- */
+@media print {
+  body { background: #fff; font-size: 10.5pt; }
+  main { max-width: none; padding: 0; }
+  .folie { box-shadow: none; break-inside: avoid; }
+  .aufdecken, .tally button, .nicht-drucken { display: none !important; }
+  .antwort { display: block !important; }
+  a { color: var(--tinte); text-decoration: none; }
+}

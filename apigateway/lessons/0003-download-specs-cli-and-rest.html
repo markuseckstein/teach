@@ -1,0 +1,112 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3: Download Specs — CLI &amp; Raw REST</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Lesson 0003 · IBM API Connect 10.0.11 · ~20 minutes</p>
+  <h1>Download Specs — CLI &amp; Raw REST</h1>
+  <p class="lede">Everything that's in a catalog can come back out: whole-catalog exports with one command, single specs on demand, and — for your CI pipeline — the same thing with nothing but <code>curl</code>.</p>
+
+  <h2>Part A: the CLI read path</h2>
+  <p>Publishing (<a href="0002-publish-your-first-api.html">Lesson 2</a>) has a mirror image. Three commands cover it:</p>
+
+  <pre><code># The big one: download EVERY product + API in a catalog as YAML files
+# (your instant catalog backup / "what is actually deployed?" answer)
+apic products:clone --server $MGMT --org $ORG \
+     --scope catalog --catalog sandbox
+
+# One product's definition (plans, visibility, referenced APIs)
+apic products:get findbranch-product:1.0.0 --server $MGMT --org $ORG \
+     --scope catalog --catalog sandbox
+
+# One API's OpenAPI document, as deployed
+apic apis:get findbranch:1.0.0 --server $MGMT --org $ORG \
+     --scope catalog --catalog sandbox</code></pre>
+
+  <p>Each <code>get</code> writes a YAML file into your current directory; add <code>--output -</code> to dump to stdout instead (pipe it into <code>yq</code>/<code>jq</code>), and <code>--format json</code> if you prefer JSON. The same verbs exist for development artifacts in the pOrg: <code>draft-apis:get</code>, <code>draft-products:get</code>, <code>draft-apis:list-all</code>.</p>
+
+  <div class="callout">
+    <p class="kicker">Catalog vs. drafts — which do you want?</p>
+    <p><code>apis:get --scope catalog</code> gives you what is <em>actually running</em> in an environment. <code>draft-apis:get</code> gives you the development copy in the pOrg. After a few manual UI edits by colleagues, these can differ — diffing the two is a genuinely useful audit trick.</p>
+  </div>
+
+  <h2>Part B: the same thing with curl</h2>
+  <p>The toolkit is a wrapper over the Platform REST API. Two steps make that concrete.</p>
+
+  <h3>Step 1: watch the toolkit make REST calls</h3>
+  <pre><code>apic products:list-all --server $MGMT --org $ORG \
+     --scope catalog --catalog sandbox --debug</code></pre>
+  <p>The debug output shows the exact request, e.g. <code>GET https://$MGMT/api/catalogs/$ORG/sandbox/products</code>. This is your universal endpoint-discovery tool: any workflow you can do in the CLI, <code>--debug</code> hands you the REST recipe for.</p>
+
+  <h3>Step 2: do it yourself</h3>
+  <p>The Platform API uses OAuth password-grant tokens. You need a <code>client_id</code>/<code>client_secret</code> pair identifying <em>your tool</em>: the credentials file that ships with the toolkit download works (the CMC/API Manager "Download toolkit" tile offers <code>client-creds</code>), or an admin can mint a dedicated one with <code>apic registrations:create</code> — see <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts/blob/master/docs/REST-API-FirstSteps.md">IBM's REST API First Steps</a>.</p>
+
+  <pre><code># 1. Get a Bearer token (valid ~8h)
+curl -sk -X POST https://$MGMT/api/token \
+  -H 'Content-Type: application/json' -H 'Accept: application/json' \
+  -d '{
+    "username":      "you@company.example",
+    "password":      "********",
+    "realm":         "provider/default-idp-2",
+    "client_id":     "'$CLIENT_ID'",
+    "client_secret": "'$CLIENT_SECRET'",
+    "grant_type":    "password"
+  }'
+# → { "access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 28800 }
+
+# 2. Use it — list products in the catalog, straight from the API
+curl -sk "https://$MGMT/api/catalogs/$ORG/sandbox/products" \
+  -H "Authorization: Bearer $TOKEN" -H "Accept: application/json"</code></pre>
+
+  <p>Bonus discovery endpoint — the realm list needs no authentication at all (handy for scripts that must work on a fresh machine):</p>
+  <pre><code>curl -sk https://$MGMT/api/cloud/provider/identity-providers</code></pre>
+
+  <div class="callout">
+    <p class="kicker">Why this matters for your mission</p>
+    <p>This token flow is exactly what a CI/CD job does: no toolkit binary required, just <code>curl</code> against <code>/api/token</code> and the Provider API. The full endpoint reference is the <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">v10 API Explorer</a>. Lesson 5 turns this into a real pipeline.</p>
+  </div>
+
+  <h2>Check yourself</h2>
+  <div class="quiz" id="quiz"><noscript><p>Enable JavaScript for the quiz.</p></noscript></div>
+
+  <h2>Primary source</h2>
+  <p>Read <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts/blob/master/docs/REST-API-FirstSteps.md">v10 REST API: First Steps</a> (10 minutes) — an official, worked walk from zero to authenticated REST calls, including creating your own client registration. Keep the <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">API Explorer</a> and <a href="https://www.ibm.com/support/pages/how-consume-api-connect-platform-cloud-management-and-provider-apis">IBM's how-to-consume guide</a> beside it.</p>
+
+  <footer class="lesson-footer">
+    <p><strong>Homework:</strong> (1) <code>products:clone</code> your Sandbox catalog and look at what your colleagues have actually deployed. (2) Pull one API spec with <code>apis:get</code>. (3) Get a Bearer token with curl and repeat the product listing — if you can't find a client_id/secret, that's a finding too: report back and we'll sort the registration path. Questions to your teacher, as always.</p>
+    <div class="nav-links">
+      <a href="0002-publish-your-first-api.html">← Lesson 2: Publish your first API</a>
+      <a href="../index.html">Course home</a>
+      <a href="0004-the-assembly-custom-pipelines.html">Lesson 4: The assembly →</a>
+    </div>
+  </footer>
+</main>
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    stem: "Which command downloads every product and API definition from a catalog in one go?",
+    options: ["products:clone", "products:export", "catalogs:clone", "catalogs:export"],
+    answer: 0,
+    explain: "products:clone with --scope catalog pulls all products plus their referenced API documents as local YAML — the standard 'what is deployed?' snapshot."
+  },
+  {
+    stem: "Besides username, password and realm, what must the /api/token request include?",
+    options: ["a client id and client secret", "a bearer token from the UI", "an API key from the portal", "a certificate signed by the gateway"],
+    answer: 0,
+    explain: "The password grant identifies the calling tool via client_id/client_secret — from the toolkit's downloaded credentials or a registration an admin creates."
+  },
+  {
+    stem: "How do you discover the REST endpoint behind any toolkit command?",
+    options: ["append the --debug flag to it", "inspect the DataPower gateway log files", "capture the API Manager network tab", "search the platform OpenAPI document manually"],
+    answer: 0,
+    explain: "--debug prints the raw HTTPS requests the toolkit sends. (The UI's network tab works too, but --debug maps CLI verbs to endpoints directly.)"
+  },
+  {
+    stem: "Which call works with no authentication at all — useful for bootstrap scripts?",
+    options: ["listing the provider identity providers", "listing the products of a catalog", "listing the members of an organization", "listing the subscriptions of an application"],
+    answer: 0,
+    explain: "GET /api/cloud/provider/identity-providers is unauthenticated by design — you need the realm name before you can log in at all."
+  }
+]);
+</script>

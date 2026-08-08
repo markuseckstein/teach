@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IBM API Connect — Course Home</title>
+<link rel="stylesheet" href="assets/course.css">
+<main>
+  <p class="kicker">Course home · IBM API Connect 10.0.11 · DataPower API Gateway</p>
+  <h1>API Connect for API Publishers</h1>
+  <p class="lede">Publish and manage OpenAPI definitions on API Connect v10 — automation-first, from the <code>apic</code> CLI and the Platform REST API. The UI stays optional.</p>
+
+  <div class="callout">
+    <p class="kicker">Mission</p>
+    <p>Publish the team's <code>openapi.yml</code> files from the command line and CI/CD, export what's deployed, and master the assembly ("custom pipeline") — against the company's v10.0.11 installation with the native DataPower API Gateway.</p>
+  </div>
+
+  <h2>Lessons</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>#</th><th>Lesson</th><th>You will be able to…</th><th>Status</th></tr>
+    <tr>
+      <td>1</td>
+      <td><a href="lessons/0001-object-model-and-first-cli-contact.html">The Object Model &amp; First CLI Contact</a></td>
+      <td>Explain pOrg → Catalog → Product → Plan, log in with <code>apic</code>, list your catalogs.</td>
+      <td>✅ done</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="lessons/0002-publish-your-first-api.html">Publish Your First API</a></td>
+      <td>Wrap an <code>openapi.yml</code> in <code>x-ibm-configuration</code> + a product YAML and publish it with one command.</td>
+      <td>✅ done</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a href="lessons/0003-download-specs-cli-and-rest.html">Download Specs — CLI &amp; Raw REST</a></td>
+      <td>Export whole catalogs and single specs; get a Bearer token and call the Platform API with curl.</td>
+      <td>✅ done</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><a href="lessons/0004-the-assembly-custom-pipelines.html">The Assembly — Your Custom Pipeline</a></td>
+      <td>Read and write <code>assembly.execute</code> pipelines: the context tree, invoke/set-variable/switch/gatewayscript, <code>catch</code> error handling.</td>
+      <td>▶ current</td>
+    </tr>
+    <tr><td>5</td><td>CI/CD publishing pipeline</td><td>Scripted publish, staged rollouts with <code>products:replace</code>, promotion between catalogs.</td><td>planned</td></tr>
+    <tr><td>6</td><td>User-defined policies</td><td>Package reusable custom policies for the DataPower API Gateway.</td><td>planned</td></tr>
+  </table>
+  </div>
+
+  <h2>Reference (the keepers)</h2>
+  <p>Lessons are read once; these are for every day:</p>
+  <ul>
+    <li><a href="reference/object-model.html">The Object Model</a> — every noun, the hierarchy diagram, the glossary.</li>
+    <li><a href="reference/cli-cheatsheet.html">apic CLI &amp; REST Cheat Sheet</a> — session, publish, download, lifecycle, REST bootstrap.</li>
+    <li><a href="reference/assembly-policies.html">Assembly Policies &amp; the API Context</a> — the context tree, policy YAML shapes, which policy to reach for.</li>
+  </ul>
+
+  <h2>How this course works</h2>
+  <p>Each lesson is ~15–20 minutes: a small dose of concepts, a hands-on part against your real environment, a recall quiz, and homework. Your teacher is the agent in your terminal (<code>/teach</code> in this directory) — report homework results, paste weird errors, ask anything. The curated source list lives in <code>RESOURCES.md</code>; your progress in <code>learning-records/</code>.</p>
+
+  <footer class="lesson-footer">
+    <p>Built from primary sources: <a href="https://www.ibm.com/docs/en/api-connect/10.0.x_cd?topic=cli-working-toolkit">IBM Docs</a>, <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">v10 API Explorer</a>, and <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts">IBM's example-toolkit-scripts</a>.</p>
+  </footer>
+</main>

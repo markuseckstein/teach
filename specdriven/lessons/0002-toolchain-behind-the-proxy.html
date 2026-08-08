@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2: The Toolchain, Behind the Proxy</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+<h1>Lesson 2: The Toolchain, Behind the Proxy</h1>
+<p class="lesson-meta">≈25 minutes, hands-on at your Windows machine · builds on <a href="0001-the-sdd-loop.html">Lesson 1: The SDD Loop</a></p>
+
+<h2>The win you're after</h2>
+<p>By the end: <code>specify init</code> has scaffolded a scratch project, and Copilot CLI answers you — both from Git Bash, both through the corporate proxy. That's the entire toolchain for every later lesson.</p>
+
+<h2>The one idea</h2>
+<p>Your toolchain is <strong>three different runtimes</strong>, and an SSL-inspecting proxy breaks each one separately:</p>
+<table>
+<tr><th>Tool</th><th>Runtime</th><th>Trusts the corporate CA when…</th></tr>
+<tr><td><code>specify</code> (via <code>uvx</code>)</td><td>Rust — bundled Mozilla roots</td><td><code>UV_SYSTEM_CERTS=true</code> → Windows cert store</td></tr>
+<tr><td><code>git</code></td><td>Git for Windows — OpenSSL by default</td><td><code>http.sslBackend schannel</code> → Windows cert store</td></tr>
+<tr><td>Copilot CLI</td><td>Node.js</td><td><code>NODE_EXTRA_CA_CERTS=…corp-ca.pem</code></td></tr>
+</table>
+<p>The error is always some variant of <em>"self-signed certificate in chain"</em>; the knob is always runtime-specific. Once you see the pattern, no proxy failure in any tool will surprise you again. IT already pushed the corporate CA into the <strong>Windows certificate store</strong> via group policy — so the first two fixes just point the tool at what's already there (<a href="https://docs.astral.sh/uv/concepts/authentication/certificates/">uv TLS docs</a>).</p>
+
+<h2>Do it — at your machine, in Git Bash</h2>
+
+<h3>Step 1 — Proxy address, once, for everything</h3>
+<pre><code>cat &gt;&gt; ~/.bashrc &lt;&lt;'EOF'
+export HTTP_PROXY="http://proxy.company.example:8080"   # ← your real proxy
+export HTTPS_PROXY="$HTTP_PROXY"
+export NO_PROXY="localhost,127.0.0.1,.company.example"
+export http_proxy="$HTTP_PROXY" https_proxy="$HTTPS_PROXY" no_proxy="$NO_PROXY"
+export UV_SYSTEM_CERTS=true
+EOF
+source ~/.bashrc</code></pre>
+<p class="sidenote">Lowercase twins included deliberately — some tools read only those. Don't know the proxy address? In PowerShell: <code>netsh winhttp show proxy</code>, or ask a colleague for the PAC-file address.</p>
+
+<h3>Step 2 — Install uv, teach git the Windows trust store</h3>
+<pre><code>winget install --id=astral-sh.uv -e     # enterprise-friendly; avoids the curl-installer cert problem
+git config --global http.sslBackend schannel
+exec bash -l                             # new shell so PATH + env are fresh
+uv --version                             # ✓ expect a version string</code></pre>
+
+<h3>Step 3 — Bootstrap a scratch project with specify</h3>
+<pre><code>cd ~ &amp;&amp; uvx --from git+https://github.com/github/spec-kit.git \
+  specify init sdd-playground --ai copilot --script sh</code></pre>
+<p><strong>Verify:</strong> <code>ls sdd-playground/.github/prompts/</code> shows <code>speckit.*.prompt.md</code> files, and <code>sdd-playground/.specify/scripts/bash/</code> exists (that's what <code>--script sh</code> bought you — PowerShell scripts would be useless in Git Bash). If it fails with <code>UnknownIssuer</code>: Step 1's <code>UV_SYSTEM_CERTS</code> isn't in effect — <code>echo $UV_SYSTEM_CERTS</code>.</p>
+
+<h3>Step 4 — Copilot CLI</h3>
+<p>Two Windows quirks, straight from the <a href="https://github.com/github/copilot-cli">official README</a>: it requires <strong>PowerShell 6+</strong> installed (Windows ships 5.1 — install with <code>winget install Microsoft.PowerShell</code>), even though you'll drive it from Git Bash. And if your org admin has disabled Copilot CLI in enterprise policy, no local fix will help — that's an IT ticket, not a config problem.</p>
+<pre><code>winget install Microsoft.PowerShell      # only if pwsh -v fails
+winget install GitHub.Copilot            # or: npm install -g @github/copilot (needs Node 22+)
+export NODE_EXTRA_CA_CERTS=/c/certs/corp-ca.pem   # see cheat sheet for getting this PEM
+copilot                                  # then: /login and follow the device-code flow</code></pre>
+<p><strong>Verify:</strong> inside <code>copilot</code>, ask it <em>"what directory am I in?"</em> — a sensible answer proves auth <em>and</em> proxy traversal. Used npm instead? npm needs its own knobs first: <code>npm config set proxy/https-proxy/cafile</code> — see the <a href="../reference/proxy-cheatsheet.html">proxy cheat sheet</a>.</p>
+
+<h3>Step 5 — Confirm VS Code sees Spec Kit</h3>
+<pre><code>cd ~/sdd-playground &amp;&amp; code .</code></pre>
+<p><strong>Verify:</strong> in Copilot Chat (agent mode), type <code>/speckit.</code> — the command list from Lesson 1 should autocomplete. Don't run them yet; that's Lesson 3 (constitution).</p>
+
+<h2>Check yourself</h2>
+<p class="sidenote">From memory first — the retrieval is the workout.</p>
+
+<div class="quiz" data-answer="2" data-explain="uv defaults to bundled Mozilla roots; UV_SYSTEM_CERTS points it at the Windows store where IT already placed the corporate CA.">
+  <div class="quiz-q">1. uvx fails with "invalid peer certificate: UnknownIssuer". Which knob?</div>
+  <button class="quiz-opt">export NODE_EXTRA_CA_CERTS=corp-ca.pem</button>
+  <button class="quiz-opt">git config http.sslBackend schannel</button>
+  <button class="quiz-opt">export UV_SYSTEM_CERTS=true value</button>
+  <button class="quiz-opt">npm config set cafile corp-ca.pem</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="0" data-explain="Each runtime (Rust, OpenSSL-git, Node) keeps its own trust store — the proxy re-signs traffic with a CA that only the Windows store knows about.">
+  <div class="quiz-q">2. Why does one proxy break three tools three different ways?</div>
+  <button class="quiz-opt">Every runtime holds its own trust store</button>
+  <button class="quiz-opt">Windows blocks non-Microsoft TLS traffic</button>
+  <button class="quiz-opt">Git Bash strips the proxy env vars</button>
+  <button class="quiz-opt">The proxy only rewrites Node.js requests</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="1" data-explain="Auto-detection can hand you PowerShell helper scripts; --script sh forces the POSIX variants that Git Bash can run.">
+  <div class="quiz-q">3. Why pass --script sh to specify init on your machine?</div>
+  <button class="quiz-opt">It skips the PowerShell 6 requirement check</button>
+  <button class="quiz-opt">It forces bash helper scripts over PowerShell</button>
+  <button class="quiz-opt">It makes uv trust the system cert store</button>
+  <button class="quiz-opt">It enables the Copilot integration templates</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<h2>Primary source</h2>
+<p><a href="https://github.com/github/copilot-cli">The github/copilot-cli README</a> — short, current, and the authoritative word on the Windows prerequisites; pair it with the <a href="https://github.github.com/spec-kit/quickstart.html">Spec Kit Quick Start</a> you met in Lesson 1.</p>
+
+<h2>Next</h2>
+<p><a href="0003-the-constitution.html">Lesson 3</a>: writing the <strong>constitution</strong> for your two-repo Spring Boot + Angular project — the artifact every later phase must obey, and where "the OpenAPI contract is the source of truth between repos" gets written down as law.</p>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · ← Previous: <a href="0001-the-sdd-loop.html">Lesson 1: The SDD Loop</a> · Next: <a href="0003-the-constitution.html">Lesson 3: The Constitution</a> →<br>
+References: <a href="../reference/proxy-cheatsheet.html">Proxy cheat sheet</a> · <a href="../reference/speckit-workflow.html">Workflow cheat sheet</a> · <a href="../reference/glossary.html">Glossary</a><br>
+Hit a wall at any step? Ask your teacher (the agent) — proxy failures especially: paste the exact error.
+</div>
+</body>
+</html>
