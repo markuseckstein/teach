@@ -267,6 +267,57 @@ th {
 .timer button[data-timer-aktion="startpause"] { background: var(--akzent); color: #fff; }
 .timer button[data-timer-aktion="startpause"]:hover { background: var(--warn); }
 
+/* --- Inhaltsverzeichnis (Startseite) --------------------------- */
+.verzeichnis {
+  list-style: none;
+  margin: 1.4rem 0;
+  padding: 0;
+  counter-reset: kapitel;
+}
+.verzeichnis li {
+  counter-increment: kapitel;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 0.2rem 0.9rem 3.1rem;
+  border-bottom: 1px solid var(--linie);
+}
+.verzeichnis li:last-child { border-bottom: none; }
+.verzeichnis li::before {
+  content: counter(kapitel);
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--akzent-hell);
+  color: var(--akzent);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verzeichnis.referenz li::before { content: '§'; background: var(--gelb); color: #8a6a10; }
+.verzeichnis .eintrag { flex: 1; }
+.verzeichnis .eintrag a {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.verzeichnis .eintrag a:hover { text-decoration: underline; }
+.verzeichnis .beschreibung { display: block; color: var(--grau); font-size: 0.95rem; margin-top: 0.15rem; }
+.verzeichnis .dauer {
+  flex-shrink: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--grau);
+  white-space: nowrap;
+}
+
 /* --- Fußzeile ------------------------------------------------- */
 .fusszeile {
   margin-top: 3rem;

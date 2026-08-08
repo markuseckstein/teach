@@ -51,6 +51,14 @@
   gespeichert, damit Stunde 5 den Vorher/Nachher-Vergleich zeigen kann —
   dafür muss Stunde 1 und 5 im selben Browser geöffnet werden.
 
+## Arbeitsstand (08.08.2026)
+- Neue Startseite `index.html` (Workspace-Root): schönes Inhaltsverzeichnis mit
+  den 5 Stunden und dem Referenzmaterial (Einheitsplan, Faktenblatt, Rollenkarten),
+  je mit Kurzbeschreibung. Neue wiederverwendbare Komponente `.verzeichnis` in
+  `assets/unterricht.css`. Alle bestehenden Dateien (5 Lektionen + 3 Referenzdokumente)
+  haben in der Navleiste jetzt vorne einen „Start"-Link auf `index.html` bekommen
+  (Stehende Anweisung 18.07.2026 befolgt).
+
 ## Ideen für später
 - ~~Stunde 4 (Debatte): Rollenkarten als druckbares Referenzdokument.~~ → erledigt 18.07.2026.
 - Evtl. Elterninfo-Zettel, falls das Thema zuhause Fragen auslöst.
