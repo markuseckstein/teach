@@ -52,6 +52,90 @@ header.lesson-header {
   color: var(--accent);
 }
 
+.kicker a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-soft);
+}
+
+.kicker a:hover { color: var(--accent-soft); }
+
+.kicker .sep { color: var(--rule); margin: 0 0.35em; }
+
+/* Index / table-of-contents page (index.html) */
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  max-width: var(--measure);
+}
+
+.index-item {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.index-item:first-child { padding-top: 0; }
+.index-item:last-child { border-bottom: none; }
+
+.index-num {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  width: 1.5rem;
+  padding-top: 0.25rem;
+}
+
+.index-body { flex: 1 1 auto; min-width: 0; }
+
+.index-body h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  color: var(--ink);
+  max-width: none;
+}
+
+.index-body h3 a { color: var(--ink); text-decoration: none; }
+.index-body h3 a:hover { color: var(--accent); }
+
+.index-body p {
+  margin: 0 0 0.55rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: none;
+}
+
+.index-links {
+  font-size: 0.85rem;
+  font-family: var(--mono);
+}
+
+.index-links a { margin-right: 1.25rem; white-space: nowrap; }
+
+.index-refs {
+  max-width: var(--measure);
+  margin: 0 0 2.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.index-refs li {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.index-refs .ref-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  margin-right: 0.6rem;
+}
+
 /* Table of contents — sits right under the lesson header */
 nav.toc {
   max-width: var(--measure);
