@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Omarchy vs. Pop!_OS</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <p class="subtitle">Lesson 0007 · PopOS/COSMIC Fenstermanagement</p>
+  <h1>Omarchy vs. Pop!_OS</h1>
+
+  <p>Eine Einordnung statt einer neuen Fertigkeit: Omarchy taucht häufig auf, wenn man über moderne, entwicklerorientierte Linux-Setups mit Tiling liest. Diese Lesson klärt, was es ist und wie es sich von dem unterscheidet, was du bisher auf deinem Pop!_OS/COSMIC-Laptop gelernt hast.</p>
+
+  <div class="callout">
+    <div class="callout-title">Warum das hier auftaucht</div>
+    <p>Omarchy gehört genau in die Kategorie, die in <a href="../MISSION.md">MISSION.md</a> bewusst als „Out of scope" markiert ist: ein separater Tiling-Fenstermanager statt COSMICs eingebautem Tiling. Diese Lesson ist reine Orientierung — kein Einstieg in einen neuen Werkzeugpfad.</p>
+  </div>
+
+  <h2>Die fünf größten Unterschiede</h2>
+
+  <h3>1. Basis &amp; Release-Modell</h3>
+  <p>Pop!_OS ist Ubuntu/Debian-basiert mit LTS-Zyklus (24.04 LTS, seit Dezember 2025 stabil). Omarchy ist Arch-basiert mit Rolling Release — ständig aktuelle Pakete, aber potenziell mehr Reibung zwischen Updates.</p>
+
+  <h3>2. Was es eigentlich ist</h3>
+  <p>Pop!_OS ist eine vollwertige Distribution mit eigener Desktop-Umgebung (COSMIC), entwickelt und supportet von System76, die auch die passende Hardware verkauft. Omarchy ist eher ein stark meinungsbehaftetes Setup-Skript, das sich wie eine Distro anfühlt — von DHH (Erfinder von Ruby on Rails) als „sein perfektes Dev-Setup" auf Basis von Arch + Hyprland gebaut. Schwesterprojekt: Omakub, dasselbe Prinzip auf Ubuntu-Basis.</p>
+
+  <h3>3. Fenstermanagement</h3>
+  <p>COSMIC ist eine komplette DE mit Panel, Dock, GUI-Settings, App Library und Launcher — Tiling ist eine <em>Option</em>, die du an- und ausschaltest (Lesson 3). Omarchy setzt auf <strong>Hyprland</strong>, einen reinen Wayland-Tiling-Compositor: fast alles läuft über Tastatur und Config-Dateien, kein grafisches Settings-Panel wie bei COSMIC.</p>
+
+  <h3>4. Reife &amp; Praxistauglichkeit</h3>
+  <p>Reviews berichten bei Omarchy von Reibung bei Alltagsdingen wie Drucker-Setup, WLAN-Wechsel und Multi-Monitor-Konfiguration (Config-Dateien statt GUI). COSMIC gilt in Vergleichen als reifer für den täglichen Gebrauch, gerade weil System76 es als Produkt pflegt und auf eigener Hardware testet.</p>
+
+  <h3>5. Zielgruppe</h3>
+  <p>Omarchy kommt mit einem sehr spezifischen, vorinstallierten Dev-Stack (Neovim, tmux, Alacritty, Chromium …) — DHHs persönlicher Geschmack. Pop!_OS/COSMIC ist breiter ausgelegt, inklusive Nvidia-Treibern und Gaming-Support out of the box.</p>
+
+  <h2>Übung</h2>
+  <div class="quiz-mc" data-answer="2">
+    <p class="quiz-question">Was ist der zentrale Unterschied im Fenstermanagement zwischen COSMIC und Omarchy/Hyprland?</p>
+    <div class="quiz-options">
+      <button class="quiz-option" data-index="0">COSMIC hat kein Tiling, Hyprland schon</button>
+      <button class="quiz-option" data-index="1">Beide nutzen exakt dieselbe Engine</button>
+      <button class="quiz-option" data-index="2">COSMIC bietet Tiling als GUI-Option, Hyprland ist reiner Tiling-Compositor per Config</button>
+      <button class="quiz-option" data-index="3">Hyprland läuft nur unter X11, COSMIC nur unter Wayland</button>
+    </div>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <div class="quiz" data-answer="Arch">
+    <p class="quiz-question">Auf welcher Distribution basiert Omarchy?</p>
+    <input type="text" class="quiz-input" placeholder="Antwort eingeben…">
+    <button class="quiz-check">Prüfen</button>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <p class="citation">Quellen: <a href="https://world.hey.com/dhh/omarchy-is-out-4666dd31">„Omarchy is out" — DHH</a>, <a href="https://world.hey.com/ryan.hayden/why-i-choose-cosmic-over-omarchy-aeb6c6f0">„Why I choose Cosmic over Omarchy"</a>, <a href="https://tedium.co/2025/10/13/omarchy-linux-distro-commentary/">Tedium: Thoughts On Omarchy</a>, <a href="https://github.com/basecamp/omarchy/discussions/3306">basecamp/omarchy Discussion #3306</a>.</p>
+
+  <div class="lesson-nav">
+    <span><a href="0006-app-library.html">← Lesson 6: App Library</a></span>
+    <span class="center"><a href="../index.html">↑ Inhaltsverzeichnis</a></span>
+    <span><a href="../reference/cosmic-shortcuts-cheatsheet.html">Spickzettel: Alle Kürzel →</a></span>
+  </div>
+
+  <p class="ask-reminder">Das war die letzte Lesson dieser Reihe. Fragen? Frag jederzeit nach — sonst bis zum nächsten Deep-Dive.</p>
+</div>
+</body>
+</html>

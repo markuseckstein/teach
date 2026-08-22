@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Virtuelle Desktops in COSMIC</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <p class="subtitle">Lesson 0001 · PopOS/COSMIC Fenstermanagement</p>
+  <h1>Virtuelle Desktops: Workspaces in COSMIC</h1>
+
+  <p>Ja — COSMIC hat virtuelle Desktops, dort heißen sie <strong>Workspaces</strong>. Das Prinzip ist identisch zu Windows: mehrere unabhängige Arbeitsflächen, jede mit eigenem Satz offener Fenster, zwischen denen du wechselst statt alles auf einer Fläche zu stapeln. Diese Lesson gibt dir die Kürzel, um komplett ohne Maus zwischen Workspaces zu wechseln und Fenster gezielt dorthin zu verschieben.</p>
+
+  <div class="windows-analogy">
+    <div class="callout-title">Von Windows her kennst du</div>
+    <p><kbd>Win</kbd>+<kbd>Tab</kbd> für die Task View, <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>D</kbd> für einen neuen virtuellen Desktop, <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>←</kbd>/<kbd>→</kbd> zum Wechseln. COSMIC macht das Gleiche, nur mit <kbd>Super</kbd> (=Windows-Taste) statt <kbd>Win</kbd>, und mit ein paar zusätzlichen Direktzugriffen, die Windows nicht hat.</p>
+  </div>
+
+  <h2>Die Übersicht öffnen</h2>
+  <p><span class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>W</kbd></span> öffnet die Workspace-Übersicht — das Analogon zu Windows' Task View. Du siehst alle Workspaces nebeneinander mit ihren Fenstern als Miniaturen, kannst per Drag&amp;Drop Fenster zwischen Workspaces verschieben und Workspaces neu anordnen oder anpinnen, damit sie nicht automatisch verschwinden, wenn sie leer werden.</p>
+
+  <h2>Direkt zu einem Workspace springen</h2>
+  <p>Der größte Unterschied zu Windows: COSMIC-Workspaces sind <strong>nummeriert</strong>, und du kannst direkt zu jedem springen — kein sequenzielles Durchklicken nötig.</p>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>1</kbd> … <kbd>9</kbd></td><td>Direkt zu Workspace 1–9 springen</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>0</kbd></td><td>Zum zuletzt benutzten Workspace springen</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Ctrl</kbd><span class="plus">+</span><kbd>↑</kbd>/<kbd>↓</kbd></td><td>Relativ: einen Workspace nach oben/unten</td></tr>
+  </table>
+  <p>Beachte: COSMIC ordnet Workspaces standardmäßig <strong>vertikal</strong> (oben/unten), nicht horizontal wie Windows' Task View. Das relative Wechseln nutzt deshalb <kbd>↑</kbd>/<kbd>↓</kbd>, nicht <kbd>←</kbd>/<kbd>→</kbd>.</p>
+
+  <h2>Fenster zwischen Workspaces verschieben</h2>
+  <p>Gleiches Prinzip, nur mit <kbd>Shift</kbd> dazu — das aktive Fenster wandert mit:</p>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span><kbd>1</kbd> … <kbd>9</kbd></td><td>Aktives Fenster zu Workspace 1–9 verschieben</td></tr>
+    <tr><td class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span><kbd>↑</kbd>/<kbd>↓</kbd></td><td>Aktives Fenster zum Nachbar-Workspace verschieben</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">Praxis, direkt jetzt</div>
+    <p>Öffne zwei, drei Fenster (z.B. Terminal, Dateimanager, Browser). Drücke <kbd>Super</kbd>+<kbd>2</kbd>, um Workspace 2 zu erzeugen/zu öffnen — er entsteht automatisch. Verschiebe eines der Fenster mit <kbd>Shift</kbd>+<kbd>Super</kbd>+<kbd>1</kbd> zurück nach Workspace 1. Wechsle dann mit <kbd>Super</kbd>+<kbd>W</kbd> in die Übersicht und schau dir das Ergebnis an.</p>
+  </div>
+
+  <h2>Übung</h2>
+  <div class="quiz" data-answer="Super 5">
+    <p class="quiz-question">Welches Kürzel springt direkt zu Workspace 5?</p>
+    <input type="text" class="quiz-input" placeholder="Antwort eingeben…">
+    <button class="quiz-check">Prüfen</button>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <div class="quiz" data-answer="Shift Super 5">
+    <p class="quiz-question">Welches Kürzel verschiebt das aktive Fenster nach Workspace 5?</p>
+    <input type="text" class="quiz-input" placeholder="Antwort eingeben…">
+    <button class="quiz-check">Prüfen</button>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <div class="quiz-mc" data-answer="0">
+    <p class="quiz-question">Welches Kürzel öffnet die Workspace-Übersicht (Analogon zu Windows' Task View)?</p>
+    <div class="quiz-options">
+      <button class="quiz-option" data-index="0">Super + W</button>
+      <button class="quiz-option" data-index="1">Super + T</button>
+      <button class="quiz-option" data-index="2">Super + O</button>
+      <button class="quiz-option" data-index="3">Super + X</button>
+    </div>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <p class="citation">Primärquelle: <a href="https://support.system76.com/articles/pop-basics/">Pop!_OS Basics — System76 Support</a> (Abschnitt Workspaces) und <a href="https://support.system76.com/articles/pop-cosmic-keyboard-shortcuts/">COSMIC Keyboard Shortcuts — System76 Support</a>. Vollständige Kürzelliste: <a href="../reference/cosmic-shortcuts-cheatsheet.html">Referenz-Spickzettel</a>.</p>
+
+  <div class="lesson-nav">
+    <span></span>
+    <span class="center"><a href="../index.html">↑ Inhaltsverzeichnis</a></span>
+    <span><a href="0002-fenstersteuerung-grundlagen.html">Weiter: Lesson 2 — Fenstersteuerung-Grundlagen →</a></span>
+  </div>
+
+  <p class="ask-reminder">Fragen, die hier offen bleiben? Frag direkt nach — ich bin dein Ansprechpartner für alles, was in dieser Lesson unklar ist.</p>
+</div>
+</body>
+</html>

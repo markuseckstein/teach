@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Stacking</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <p class="subtitle">Lesson 0004 · PopOS/COSMIC Fenstermanagement</p>
+  <h1>Stacking: Fenster zu Tabs bündeln</h1>
+
+  <p>Ein Stack fasst mehrere Fenster an <strong>einer Tiling-Position</strong> zusammen — sie liegen übereinander wie Browser-Tabs, statt sich den Platz zu teilen. Praktisch, wenn zwei Fenster inhaltlich zusammengehören (z.B. zwei Terminals, oder Doku + Editor), aber nicht gleichzeitig sichtbar sein müssen.</p>
+
+  <div class="windows-analogy">
+    <div class="callout-title">Von Windows her kennst du</div>
+    <p>Dafür gibt es unter Windows kein direktes Gegenstück — am nächsten kommt noch das Gruppieren von Taskleisten-Icons, aber das ist rein visuell, kein echtes Zusammenlegen. Stacking ist ein genuin neues Werkzeug, kein Windows-Klon.</p>
+  </div>
+
+  <h2>Stack erzeugen und nutzen</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>S</kbd></td><td>Aktives Fenster in einen Stack umwandeln (mit dem Nachbarfenster an dieser Position)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>←</kbd>/<kbd>→</kbd></td><td>Zwischen Fenstern innerhalb des Stacks wechseln</td></tr>
+  </table>
+  <p>Ein Fenster aus dem Stack herausziehen (mit der Maus) und danach erneut <kbd>Super</kbd>+<kbd>S</kbd> drücken macht die Gruppierung wieder rückgängig. Die Tabs am oberen Rand des Stacks funktionieren auch per Klick — praktisch, wenn die Maus ohnehin schon da ist.</p>
+
+  <div class="callout">
+    <div class="callout-title">Praxis, direkt jetzt</div>
+    <p>Auf einem Workspace mit aktivem Tiling: öffne zwei Terminal-Fenster nebeneinander. Fokussiere eins und drücke <kbd>Super</kbd>+<kbd>S</kbd> — es wandert in den Stack des Nachbarn. Wechsle mit <kbd>Super</kbd>+<kbd>←</kbd>/<kbd>→</kbd> zwischen beiden. Das ist der komplette Werkzeugkasten: Workspaces für große Kontexttrennung, Tiling für die Fläche, Stacks für „gehört zusammen, aber nicht gleichzeitig sichtbar".</p>
+  </div>
+
+  <h2>Übung</h2>
+  <div class="quiz" data-answer="Super S">
+    <p class="quiz-question">Welches Kürzel wandelt das aktive Fenster in einen Stack um?</p>
+    <input type="text" class="quiz-input" placeholder="Antwort eingeben…">
+    <button class="quiz-check">Prüfen</button>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <div class="quiz-mc" data-answer="0">
+    <p class="quiz-question">Wie wechselst du zwischen den Fenstern innerhalb eines Stacks?</p>
+    <div class="quiz-options">
+      <button class="quiz-option" data-index="0">Super + ← / →</button>
+      <button class="quiz-option" data-index="1">Super + ↑ / ↓</button>
+      <button class="quiz-option" data-index="2">Super + O / P</button>
+      <button class="quiz-option" data-index="3">Super + X / Z</button>
+    </div>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <p class="citation">Primärquelle: <a href="https://support.system76.com/articles/pop-basics/">Pop!_OS Basics — System76 Support</a> (Abschnitt Window Stacking). Vollständige Kürzelliste: <a href="../reference/cosmic-shortcuts-cheatsheet.html">Referenz-Spickzettel</a>.</p>
+
+  <div class="lesson-nav">
+    <span><a href="0003-tiling-grundlagen.html">← Lesson 3: Tiling-Grundlagen</a></span>
+    <span class="center"><a href="../index.html">↑ Inhaltsverzeichnis</a></span>
+    <span><a href="0005-multi-monitor.html">Weiter: Lesson 5 — Multi-Monitor-Setup →</a></span>
+  </div>
+
+  <p class="ask-reminder">Fragen, die hier offen bleiben? Frag direkt nach — ich bin dein Ansprechpartner für alles, was in dieser Lesson unklar ist.</p>
+</div>
+</body>
+</html>

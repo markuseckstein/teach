@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Virtuelle Desktops ohne Verlust</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lektion 3 &middot; Windows Multi-Monitor Desktop Management</p>
+<h1>Virtuelle Desktops, ohne Outlook &amp; Teams zu verlieren</h1>
+<p class="lede">Frontend, Backend und Recherche sauber trennen &mdash; ohne dass Outlook und Teams beim Wechseln verschwinden. Der Trick ist eine einzige Einstellung pro Dauer-App.</p>
+
+<nav class="toc">
+  <span class="toc-label">Inhalt</span>
+  <ol>
+    <li><a href="#grundregel">Die Grundregel: Desktops sind global, nicht pro Monitor</a></li>
+    <li><a href="#trick">Der Trick: Dauer-Apps auf allen Desktops zeigen</a></li>
+    <li><a href="#kontexte">Kontext-Desktops für deinen Workflow</a></li>
+    <li><a href="#ablauf">Ablauf: einrichten und täglich nutzen</a></li>
+    <li><a href="#ueben">Üben</a></li>
+  </ol>
+</nav>
+
+<h2 id="grundregel">Die Grundregel: Desktops sind global, nicht pro Monitor</h2>
+<p>Anders als man bei 4 Monitoren vielleicht erwartet: Windows kennt <strong>keine unabhängigen virtuellen Desktops pro Monitor</strong>. Ein virtueller Desktop umfasst immer <em>alle</em> Monitore gleichzeitig. Drückst du <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>&rarr;</kbd>, wechseln alle 4 Monitore gemeinsam auf den nächsten Desktop &mdash; nicht nur der, auf dem du gerade arbeitest.</p>
+<div class="callout">
+  <span class="label">Konsequenz</span>
+  Ohne Gegenmaßnahme würden Outlook und Teams bei jedem Desktop-Wechsel mitverschwinden, egal auf welchem Monitor sie stehen. Genau dafür gibt es den Trick in Abschnitt 2.
+</div>
+
+<h2 id="trick">Der Trick: Dauer-Apps auf allen Desktops zeigen</h2>
+<ol class="steps">
+  <li>Task View öffnen: <kbd>Win</kbd>+<kbd>Tab</kbd>.</li>
+  <li>Rechtsklick auf die Miniaturansicht von Teams (bzw. Outlook).</li>
+  <li><strong>"Show windows from this app on all desktops"</strong> wählen (nicht nur "this window" &mdash; die App-Variante merkt sich die Einstellung auch für neu geöffnete Fenster).</li>
+  <li>Wiederholen für Outlook.</li>
+</ol>
+<p>Ab jetzt bleiben beide Apps auf ihrer Position sichtbar, egal welchen virtuellen Desktop du gerade aktiv hast &mdash; kombiniere das mit der festen Zone aus <a href="0002-fancyzones-4-monitore.html">Lektion 2</a> auf deinem Portrait-Monitor, dann stehen sie immer am gleichen Fleck.</p>
+<div class="callout win">
+  <span class="label">Unterschied der beiden Optionen</span>
+  <strong>"Show this window on all desktops"</strong> pinnt nur das aktuell offene Fenster. <strong>"Show windows from this app on all desktops"</strong> gilt für die ganze App, auch nach Neustart der App &mdash; für Outlook/Teams die richtige Wahl.
+</div>
+
+<h2 id="kontexte">Kontext-Desktops für deinen Workflow</h2>
+<p>Ein sinnvoller Zuschnitt für deinen Mix aus Frontend/Backend/Recherche:</p>
+<table class="shortcuts">
+  <thead><tr><th>Desktop</th><th>Inhalt</th></tr></thead>
+  <tbody>
+    <tr><td>Frontend</td><td>VS Code (Frontend-Projekt) + zugehöriges Terminal mit Copilot CLI</td></tr>
+    <tr><td>Backend</td><td>VS Code (Backend-Projekt) + zugehörige Terminal(s)</td></tr>
+    <tr><td>Recherche</td><td>Browser, ggf. zweites Terminal für Experimente</td></tr>
+  </tbody>
+</table>
+<p>Outlook und Teams tauchen auf <em>allen drei</em> Desktops an derselben Stelle auf, weil sie gepinnt sind &mdash; sie zählen quasi nicht als "Inhalt" eines einzelnen Desktops.</p>
+
+<h2 id="ablauf">Ablauf: einrichten und täglich nutzen</h2>
+<ol class="steps">
+  <li>Neue Desktops anlegen: <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>D</kbd> zweimal (macht insgesamt 3, plus den Standard-Desktop kannst du zu einem der drei umwidmen).</li>
+  <li>In Task View jeden Desktop per Rechtsklick &rarr; <strong>Umbenennen</strong> auf "Frontend" / "Backend" / "Recherche" setzen.</li>
+  <li>Auf jedem Desktop die passenden Apps öffnen und in die Zonen aus Lektion 2 einsortieren.</li>
+  <li>Outlook/Teams einmalig wie in Abschnitt 2 auf "alle Desktops" stellen.</li>
+  <li>Tagsüber wechseln mit <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>&larr;</kbd>/<kbd>&rarr;</kbd> oder gezielt per <kbd>Win</kbd>+<kbd>Tab</kbd>, wenn du direkt einen bestimmten Desktop anspringen willst.</li>
+</ol>
+<div class="callout win">
+  <span class="label">Kombiniert mit Workspaces</span>
+  PowerToys Workspaces (Lektion 1) startet alles auf dem aktuell aktiven Desktop &mdash; für eine Routine, die beides sauber verzahnt (mehrere kleine Workspaces statt einem großen), siehe <a href="0004-workspaces-plus-virtuelle-desktops.html">Lektion 4</a>.
+</div>
+
+<h2 id="ueben">Üben</h2>
+<div class="quiz" data-quiz>
+  <p class="q">1. Du wechselst mit Win+Strg+Rechts den virtuellen Desktop. Was passiert auf deinem zweiten Monitor?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Wechselt ebenfalls sofort mit auf Desktop</button>
+    <button class="opt">Bleibt komplett unverändert auf altem Desktop</button>
+    <button class="opt">Zeigt eine Auswahl, welcher Desktop gilt</button>
+    <button class="opt">Wechselt nur nach manueller Bestätigung um</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<div class="quiz" data-quiz>
+  <p class="q">2. Wie sorgst du dafür, dass Teams dauerhaft auf jedem virtuellen Desktop sichtbar bleibt?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">"Show windows from this app" aktivieren</button>
+    <button class="opt">Teams auf jedem Desktop einzeln öffnen</button>
+    <button class="opt">Teams zum Windows-Autostart hinzufügen</button>
+    <button class="opt">Teams-Fenster dauerhaft maximiert lassen</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<p class="ask-agent">Wenn "Show windows from this app on all desktops" bei dir anders heißt oder fehlt (abhängig von der Windows-Build-Version), frag im Chat nach &mdash; das lässt sich für deine genaue Version klären.</p>
+
+<p class="source">Primärquelle: <a href="https://support.microsoft.com/en-us/windows/how-to-multitask-in-windows-b4fa0333-98f8-ef43-e25c-06d4fb1d6960">How to multitask in Windows &mdash; Microsoft Support</a></p>
+
+<div class="lesson-nav">
+  <span><a href="0002-fancyzones-4-monitore.html">&larr; Lektion 2: Zonen für 4 Monitore</a></span>
+  <span><a href="../index.html">&uarr; Übersicht</a></span>
+  <span><a href="0004-workspaces-plus-virtuelle-desktops.html">Lektion 4: Workspaces + Desktops &rarr;</a></span>
+</div>
+
+<script>
+document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
+  var feedback = quiz.querySelector('.feedback');
+  quiz.querySelectorAll('.opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var correct = btn.dataset.correct === 'true';
+      quiz.querySelectorAll('.opt').forEach(function (b) {
+        b.classList.remove('correct', 'wrong');
+        b.disabled = true;
+      });
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        quiz.querySelector('[data-correct="true"]').classList.add('correct');
+      }
+      feedback.textContent = correct ? 'Richtig.' : 'Nicht ganz — die richtige Antwort ist jetzt markiert.';
+      quiz.querySelectorAll('.opt').forEach(function (b) { b.disabled = false; });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

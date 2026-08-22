@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Nie wieder morgens Fenster sortieren</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lektion 1 &middot; Windows Multi-Monitor Desktop Management</p>
+<h1>Nie wieder morgens Fenster sortieren</h1>
+<p class="lede">Dein größter Reibungspunkt: nach jedem Neustart ziehst du Outlook, Teams, VS Code &times; 2 und deine Terminals wieder von Hand an ihren Platz. <strong>PowerToys Workspaces</strong> nimmt dir das ab &mdash; ein Klick startet und positioniert deinen kompletten Arbeitstag.</p>
+
+<nav class="toc">
+  <span class="toc-label">Inhalt</span>
+  <ol>
+    <li><a href="#konzept">Das Konzept in 30 Sekunden</a></li>
+    <li><a href="#einrichten">Einen Workspace erfassen</a></li>
+    <li><a href="#starten">Starten &mdash; jeden Morgen mit einem Klick</a></li>
+    <li><a href="#stolpersteine">Stolpersteine für dein Setup</a></li>
+    <li><a href="#ueben">Üben</a></li>
+  </ol>
+</nav>
+
+<h2 id="konzept">Das Konzept in 30 Sekunden</h2>
+<p>Workspaces ist ein PowerToys-Modul, das einen kompletten Desktop-Zustand aufzeichnet: <em>welche Apps offen sind, wo sie stehen, wie groß sie sind</em> &mdash; und diesen Zustand auf Knopfdruck wiederherstellt. Technisch startet es jede App neu (oder verschiebt sie, falls schon offen) und positioniert sie anschließend über dieselbe Engine, die auch <a href="../reference/shortcuts-cheatsheet.html#fancyzones">FancyZones</a> für Zonen nutzt.</p>
+<div class="callout win">
+  <span class="label">Warum das dein Problem löst</span>
+  Ein Workspace übersteht den täglichen Reboot, weil er nichts "merkt" &mdash; er baut den Zustand jedes Mal aktiv neu auf. Genau das brauchst du bei täglichem Neustart, im Gegensatz zu Tools, die nur eine laufende Sitzung wiederherstellen.
+</div>
+
+<h2 id="einrichten">Einen Workspace erfassen</h2>
+<ol class="steps">
+  <li>Öffne den Editor: <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>`</kbd> (oder über PowerToys-Einstellungen &rarr; Workspaces &rarr; "Launch editor").</li>
+  <li>Klicke <strong>"+ Create workspace"</strong>. Der Desktop bleibt voll bedienbar &mdash; öffne jetzt genau die Apps, die morgens laufen sollen: Outlook, Teams, VS Code (Frontend-Ordner), VS Code (Backend-Ordner), Terminal(s), Browser.</li>
+  <li>Ordne jede App auf dem gewünschten Monitor an der gewünschten Position an (per Maus oder mit den <a href="../reference/shortcuts-cheatsheet.html#fancyzones">FancyZones-Shortcuts</a>, falls du schon Zonen definiert hast).</li>
+  <li>Klicke <strong>"Capture"</strong>. Du landest im Editor: hier kannst du die Fenstergrößen feinjustieren, Apps entfernen und pro App CLI-Argumente hinzufügen.</li>
+  <li>Vergib einen Namen (z. B. "Arbeitstag Start") und aktiviere die Option, eine <strong>Desktop-Verknüpfung</strong> zu erstellen.</li>
+</ol>
+
+<h3>CLI-Argumente &mdash; damit Apps nicht leer starten</h3>
+<p>Ein nachträglich verschobenes leeres VS-Code-Fenster bringt dir nichts. Trag im jeweiligen App-Dropdown Argumente ein, damit jede App direkt im richtigen Zustand öffnet:</p>
+<table class="shortcuts">
+  <thead><tr><th>App</th><th>Sinnvolles Argument</th></tr></thead>
+  <tbody>
+    <tr><td>VS Code (Frontend)</td><td><code>/pfad/zum/frontend-projekt</code></td></tr>
+    <tr><td>VS Code (Backend)</td><td><code>/pfad/zum/backend-projekt</code></td></tr>
+    <tr><td>Windows Terminal</td><td><code>-p "PowerShell"</code> oder dein bevorzugtes Profil</td></tr>
+    <tr><td>Browser</td><td>kommagetrennte Liste von Start-URLs für die Recherche-Tabs</td></tr>
+  </tbody>
+</table>
+
+<h2 id="starten">Starten &mdash; jeden Morgen mit einem Klick</h2>
+<p>Nach dem Neustart: Desktop-Verknüpfung doppelklicken (oder an die Taskleiste pinnen). PowerToys zeigt währenddessen eine Statusanzeige pro App &mdash; grüner Haken sobald sie steht. Das ist normal und dauert nur Sekunden.</p>
+<div class="callout">
+  <span class="label">Warum Fenster kurz "aufspringen"</span>
+  PowerToys kann Apps nicht direkt an eine Position starten &mdash; es startet sie normal und verschiebt sie danach. Das kurze Springen auf dem Bildschirm ist also kein Fehler, sondern wie das Feature technisch funktioniert.
+</div>
+
+<h2 id="stolpersteine">Stolpersteine für dein Setup</h2>
+<ul>
+  <li><strong>VS Code öffnet ein neues Fenster statt das alte zu verschieben.</strong> Standardverhalten. Wenn du lieber ein bereits offenes Fenster wiederverwendest, ergänze <code>--reuse-window</code> als CLI-Argument.</li>
+  <li><strong>Terminal als Administrator</strong> lässt sich aktuell nicht zuverlässig repositionieren (bekannter Bug). Falls du Terminals erhöht brauchst, plane das separat statt im Workspace.</li>
+  <li><strong>Single-Instance-Apps</strong> wie Einstellungen werden immer verschoben statt neu gestartet &mdash; unkritisch für dein Setup, aber gut zu wissen.</li>
+  <li><strong>Outlook/Teams als Dauer-Apps:</strong> Nimm sie explizit mit in den Workspace auf (inkl. fester Position), statt dich auf ihren Auto-Start beim Windows-Login zu verlassen &mdash; so landen sie garantiert auf dem richtigen Monitor und nicht irgendwo.</li>
+</ul>
+
+<h2 id="ueben">Üben</h2>
+<div class="quiz" data-quiz>
+  <p class="q">1. Eine App läuft beim Workspace-Start bereits, "Move existing windows" ist aktiviert. Was passiert?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Verschiebt das offene Fenster an die Zielposition</button>
+    <button class="opt">Öffnet zusätzlich ein neues Fenster daneben</button>
+    <button class="opt">Lässt das offene Fenster komplett unverändert</button>
+    <button class="opt">Schließt das offene Fenster automatisch komplett</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<div class="quiz" data-quiz>
+  <p class="q">2. Warum springen Fenster beim Start sichtbar erst auf, bevor sie an ihrer Position landen?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">PowerToys kann Apps nicht direkt positioniert starten</button>
+    <button class="opt">PowerToys wartet bewusst auf eine Bestätigung</button>
+    <button class="opt">Windows verzögert jeden Fensterstart um Sekunden</button>
+    <button class="opt">FancyZones prüft vorher jede Bildschirmauflösung neu</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<p class="ask-agent">Fragen zu einem Schritt, einem CLI-Argument oder warum etwas bei dir anders aussieht als hier beschrieben? Frag einfach direkt im Chat nach.</p>
+
+<p class="source">Primärquelle: <a href="https://learn.microsoft.com/en-us/windows/powertoys/workspaces">PowerToys Workspaces Utility for Windows Desktop Management &mdash; Microsoft Learn</a></p>
+
+<div class="lesson-nav">
+  <span><a href="../index.html">&uarr; Übersicht</a></span>
+  <span><a href="0002-fancyzones-4-monitore.html">Lektion 2: Zonen für 4 Monitore &rarr;</a></span>
+</div>
+
+<script>
+document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
+  var feedback = quiz.querySelector('.feedback');
+  quiz.querySelectorAll('.opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var correct = btn.dataset.correct === 'true';
+      quiz.querySelectorAll('.opt').forEach(function (b) {
+        b.classList.remove('correct', 'wrong');
+        b.disabled = true;
+      });
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        quiz.querySelector('[data-correct="true"]').classList.add('correct');
+      }
+      feedback.textContent = correct ? 'Richtig.' : 'Nicht ganz — die richtige Antwort ist jetzt markiert.';
+      quiz.querySelectorAll('.opt').forEach(function (b) { b.disabled = false; });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

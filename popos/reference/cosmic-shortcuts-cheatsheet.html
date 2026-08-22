@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>COSMIC Shortcuts — Referenz</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="page">
+  <p class="subtitle">Referenz · PopOS/COSMIC Fenstermanagement</p>
+  <h1>COSMIC Tastenkürzel — Spickzettel</h1>
+  <p>Kompakte Referenz aller Fensterkürzel für Pop!_OS 24.04 LTS mit COSMIC Desktop. Die <kbd>Super</kbd>-Taste (Windows-Taste) ist bei nahezu jedem Kürzel der Modifier — genau wie bei Windows.</p>
+
+  <div class="callout">
+    <div class="callout-title">Verifiziere lokal</div>
+    <p>COSMIC ist noch jung und Kürzel ändern sich gelegentlich zwischen Versionen. Falls ein Kürzel bei dir anders reagiert: <strong>COSMIC Settings → Input Devices → Keyboard → Keyboard Shortcuts</strong> zeigt die tatsächlich aktive Belegung auf deinem System — und dort lässt sich auch alles umbelegen.</p>
+  </div>
+
+  <h2 id="launcher">Launcher</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd></td><td>Launcher öffnen (App suchen &amp; starten)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>/</kbd></td><td>Launcher öffnen (Alternative)</td></tr>
+    <tr><td><code>t:</code> im Launcher</td><td>Terminal-Befehl direkt ausführen</td></tr>
+    <tr><td><code>=</code> im Launcher</td><td>Rechner</td></tr>
+  </table>
+
+  <h2 id="fenster">Fenstersteuerung</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Q</kbd></td><td>Aktives Fenster schließen</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>M</kbd></td><td>Fenster maximieren</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>F11</kbd></td><td>Vollbild</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>R</kbd></td><td>Größenänderungs-Modus (mit Pfeiltasten je Seite ziehen)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Tab</kbd> / <kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span><kbd>Tab</kbd></td><td>Zwischen offenen Fenstern wechseln (vor/zurück)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>T</kbd></td><td>Terminal öffnen</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Esc</kbd></td><td>Bildschirm sperren</td></tr>
+  </table>
+
+  <h2 id="workspaces">Workspaces (virtuelle Desktops)</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>W</kbd></td><td>Workspace-Übersicht öffnen</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>1</kbd>…<kbd>9</kbd></td><td>Zu Workspace 1–9 wechseln</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>0</kbd></td><td>Zum letzten Workspace wechseln</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Ctrl</kbd><span class="plus">+</span><kbd>↑</kbd>/<kbd>↓</kbd></td><td>Zum Workspace darüber/darunter wechseln</td></tr>
+    <tr><td class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span><kbd>1</kbd>…<kbd>9</kbd></td><td>Aktives Fenster zu Workspace 1–9 verschieben</td></tr>
+    <tr><td class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span><kbd>↑</kbd>/<kbd>↓</kbd></td><td>Aktives Fenster zum Nachbar-Workspace verschieben (danach zum nächsten Monitor)</td></tr>
+  </table>
+
+  <h2 id="tiling">Tiling</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Y</kbd></td><td>Auto-Tiling im aktuellen Workspace an/aus</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>G</kbd></td><td>Fenster zwischen Tiled und Floating umschalten</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>O</kbd></td><td>Ausrichtung im Tiled Layout wechseln (horizontal/vertikal)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>X</kbd></td><td>Swap-Modus: zwei Fenster tauschen</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span>Pfeiltasten</td><td>Fokus auf Nachbarfenster im Tiling wechseln</td></tr>
+    <tr><td class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span>Pfeiltasten</td><td>Ausgewähltes Fenster/Gruppe/Stack im Tiling verschieben</td></tr>
+  </table>
+
+  <h2 id="stacking">Stacking</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>S</kbd></td><td>Fenster in Stack umwandeln (aus dem Stack ziehen + erneut <kbd>Super</kbd>+<kbd>S</kbd> macht es rückgängig)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>←</kbd>/<kbd>→</kbd></td><td>Zwischen Fenstern innerhalb eines Stacks wechseln</td></tr>
+  </table>
+
+  <h2 id="system">System</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Print</kbd></td><td>Screenshot</td></tr>
+  </table>
+
+  <p class="citation">Quelle: <a href="https://support.system76.com/articles/pop-cosmic-keyboard-shortcuts/">Pop!_OS 24.04 LTS COSMIC Keyboard Shortcuts — System76 Support</a> und <a href="https://support.system76.com/articles/pop-basics/">Pop!_OS Basics — System76 Support</a>.</p>
+
+  <div class="lesson-nav">
+    <span><a href="../lessons/0007-omarchy-vs-popos.html">← Lesson 7: Omarchy vs. Pop!_OS</a></span>
+    <span class="center"><a href="../index.html">↑ Inhaltsverzeichnis</a></span>
+    <span></span>
+  </div>
+</div>
+</body>
+</html>
