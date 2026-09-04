@@ -1,0 +1,252 @@
+/* Geteilte Gestaltungsschicht dieser Workspace.
+   Lektionen in lessons/ binden diese Regeln INLINE ein, weil sie als Artifact
+   veroeffentlicht werden und dort keine relativen Pfade aufloesbar sind.
+   Diese Datei ist die Quelle, aus der neue Lektionen kopieren.
+   Schriften: Zilla Slab (Display), Source Sans 3 (Text), IBM Plex Mono (Marker).
+*/
+:root{
+  --paper:#F3F5F7;
+  --sheet:#FFFFFF;
+  --ink:#151A21;
+  --ink-soft:#4B5563;
+  --ink-faint:#78828F;
+  --rule:#D8DDE4;
+  --rule-soft:#E7EBF0;
+  --accent:#1E3A5F;
+  --accent-soft:#E5ECF4;
+  --epoch:#6A5936;
+  --epoch-soft:#F0EBDF;
+  --now:#265F53;
+  --now-soft:#E2EDEA;
+  --flag:#8C2A24;
+  --flag-soft:#F6E7E5;
+  --shadow:0 1px 2px rgba(21,26,33,.05), 0 8px 24px -16px rgba(21,26,33,.28);
+
+  --f-display:"Zilla Slab", "Bitstream Charter", Georgia, serif;
+  --f-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1318;
+    --sheet:#171C23;
+    --ink:#E7EBF1;
+    --ink-soft:#AEB7C3;
+    --ink-faint:#7E8794;
+    --rule:#2B333D;
+    --rule-soft:#222932;
+    --accent:#89B0DC;
+    --accent-soft:#1A2735;
+    --epoch:#CBB27C;
+    --epoch-soft:#26221A;
+    --now:#79BFAE;
+    --now-soft:#152622;
+    --flag:#E3928B;
+    --flag-soft:#2A1A19;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1318;
+  --sheet:#171C23;
+  --ink:#E7EBF1;
+  --ink-soft:#AEB7C3;
+  --ink-faint:#7E8794;
+  --rule:#2B333D;
+  --rule-soft:#222932;
+  --accent:#89B0DC;
+  --accent-soft:#1A2735;
+  --epoch:#CBB27C;
+  --epoch-soft:#26221A;
+  --now:#79BFAE;
+  --now-soft:#152622;
+  --flag:#E3928B;
+  --flag-soft:#2A1A19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.18;margin:0}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ---------- Marke / Kopf ---------- */
+.masthead{border-bottom:1px solid var(--rule);background:var(--sheet)}
+.masthead .wrap{padding-top:clamp(38px,7vw,72px);padding-bottom:34px;display:flex;flex-direction:column;gap:20px}
+.kicker{
+  font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);
+}
+h1{font-size:clamp(34px,6.2vw,58px);font-weight:700;letter-spacing:-.015em}
+h1 .quiet{display:block;font-size:clamp(17px,2.6vw,23px);font-weight:400;font-style:italic;color:var(--ink-soft);letter-spacing:0;margin-top:10px}
+.lede{max-width:64ch;color:var(--ink-soft);font-size:18.5px}
+.facts{
+  display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--rule);margin-top:6px;
+}
+.fact{padding:14px 26px 14px 0;margin-right:26px;border-right:1px solid var(--rule-soft)}
+.fact:last-child{border-right:0}
+.fact dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.fact dd{margin:2px 0 0;font-family:var(--f-display);font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- Navigation ---------- */
+nav.stunden{
+  position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+nav.stunden .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:thin}
+nav.stunden a{
+  flex:0 0 auto;text-decoration:none;color:var(--ink-soft);
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;
+  padding:6px 11px;border-radius:3px;white-space:nowrap;
+}
+nav.stunden a:hover{background:var(--accent-soft);color:var(--accent)}
+nav.stunden a b{color:var(--ink);font-weight:600}
+
+/* ---------- Abschnitte ---------- */
+section{padding:clamp(44px,7vw,76px) 0;border-bottom:1px solid var(--rule)}
+.sec-label{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:14px;
+}
+h2{font-size:clamp(25px,4vw,36px);font-weight:600;letter-spacing:-.01em}
+h3{font-size:21px;font-weight:600;margin-top:0}
+.stack{display:flex;flex-direction:column;gap:20px}
+.stack-lg{display:flex;flex-direction:column;gap:34px}
+.prose{max-width:66ch}
+
+/* ---------- Doppelstunden-Kopf ---------- */
+.ds-head{display:grid;grid-template-columns:auto 1fr;gap:0 22px;align-items:start}
+.ds-num{
+  font-family:var(--f-display);font-size:clamp(40px,7vw,66px);font-weight:700;
+  line-height:.86;color:var(--accent);font-variant-numeric:tabular-nums;
+  padding-top:4px;
+}
+.ds-num small{display:block;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.16em;color:var(--ink-faint);margin-bottom:6px}
+.ds-title{grid-column:2}
+.ds-title h2{margin-bottom:8px}
+.ds-sub{color:var(--ink-soft);font-style:italic;font-family:var(--f-display);font-size:19px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;grid-column:2}
+.chip{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;
+  padding:4px 9px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-soft);
+  background:var(--sheet);
+}
+.chip.on{border-color:var(--now);color:var(--now);background:var(--now-soft)}
+.chip.off{border-color:var(--rule);color:var(--ink-faint)}
+.chip.ke{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+
+/* ---------- Ziel-Notiz ---------- */
+.ziel{
+  border-left:3px solid var(--accent);padding:2px 0 2px 18px;margin:26px 0 0;
+  max-width:66ch;
+}
+.ziel .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px}
+
+/* ---------- Verlaufstabelle ---------- */
+.tablewrap{overflow-x:auto;margin-top:30px;border:1px solid var(--rule);background:var(--sheet)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+caption{
+  text-align:left;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);padding:12px 16px;border-bottom:1px solid var(--rule);
+}
+th,td{text-align:left;padding:9px 16px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+thead th{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:500;border-bottom:1px solid var(--rule);
+}
+tbody tr:last-child td{border-bottom:0}
+td.min{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap;font-size:13.5px}
+td.ph{font-weight:600}
+td.sf{color:var(--ink-soft);font-size:14px}
+
+/* ---------- Phasenblöcke ---------- */
+.phase{display:grid;grid-template-columns:76px 1fr;gap:0 20px;padding-top:26px;border-top:1px solid var(--rule-soft)}
+.phase-meta{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-faint);line-height:1.5;padding-top:5px}
+.phase-meta b{display:block;color:var(--accent);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:0}
+.phase-body{display:flex;flex-direction:column;gap:14px;min-width:0}
+.phase-body h4{font-size:18px;font-weight:600}
+.phase-body p{max-width:64ch}
+
+/* ---------- Überleitung (Lehrersprache) ---------- */
+.ueberleitung{
+  background:var(--epoch-soft);border-left:3px solid var(--epoch);
+  padding:14px 18px;font-family:var(--f-display);font-size:17px;font-style:italic;
+  color:var(--ink);max-width:66ch;
+}
+.ueberleitung .lbl{
+  display:block;font-family:var(--f-mono);font-style:normal;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--epoch);margin-bottom:7px;
+}
+.ueberleitung p + p{margin-top:10px}
+
+/* ---------- Arbeitsauftrag ---------- */
+.auftrag{border:1px solid var(--rule);background:var(--sheet);box-shadow:var(--shadow);max-width:70ch}
+.auftrag > header{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:9px 16px;border-bottom:1px solid var(--rule);background:var(--accent-soft);
+}
+.auftrag > header .t{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.auftrag > header .m{font-family:var(--f-mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
+.auftrag .inner{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.auftrag ol,.auftrag ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+.auftrag li::marker{color:var(--accent);font-family:var(--f-mono);font-size:13px}
+
+/* ---------- Material ---------- */
+.mat{border:1px solid var(--rule);border-left:3px solid var(--epoch);background:var(--sheet);padding:16px 18px;display:flex;flex-direction:column;gap:9px}
+.mat h5{margin:0;font-family:var(--f-display);font-size:17px;font-weight:600;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.mat h5 .id{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--epoch);background:var(--epoch-soft);padding:2px 7px;border-radius:2px}
+.mat p,.mat li{font-size:15.5px}
+.mat ul,.mat ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+.matgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start}
+.quelle{
+  font-family:var(--f-display);font-style:italic;font-size:16.5px;
+  border-left:2px solid var(--rule);padding-left:14px;color:var(--ink);
+}
+.quelle cite{display:block;font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;color:var(--ink-faint);margin-top:7px}
+
+/* ---------- Hinweiskästen ---------- */
+.note{border:1px solid var(--rule);background:var(--sheet);padding:16px 18px;display:flex;flex-direction:column;gap:8px;max-width:70ch}
+.note.warn{border-left:3px solid var(--flag);background:var(--flag-soft)}
+.note.now{border-left:3px solid var(--now);background:var(--now-soft)}
+.note .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.note.warn .lbl{color:var(--flag)}
+.note.now .lbl{color:var(--now)}
+.note p,.note li{font-size:15.5px;color:var(--ink)}
+.note ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:5px}
+
+/* ---------- Kompetenzmatrix ---------- */
+.matrix td.hit{color:var(--accent);font-family:var(--f-mono);font-weight:600;text-align:center}
+.matrix td.miss{color:var(--rule);text-align:center}
+.matrix th.rot{font-size:10.5px}
+
+/* ---------- Fußbereich ---------- */
+footer{padding:46px 0 70px;color:var(--ink-soft);font-size:15px}
+footer h3{margin-bottom:12px}
+footer ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+
+@media (max-width:640px){
+  .ds-head{grid-template-columns:1fr}
+  .ds-title,.chips{grid-column:1}
+  .phase{grid-template-columns:1fr;gap:10px}
+  .phase-meta{padding-top:0;display:flex;gap:10px;align-items:baseline}
+  .phase-meta b{display:inline}
+  .fact{border-right:0}
+}
+@media print{
+  nav.stunden{display:none}
+  body{background:#fff;font-size:11pt}
+  section{border-bottom:0;padding:18px 0;break-inside:auto}
+  .phase,.auftrag,.mat,.note,.ueberleitung{break-inside:avoid}
+  .ds-head{break-after:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

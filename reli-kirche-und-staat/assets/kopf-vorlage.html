@@ -1,0 +1,187 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F3F5F7; --sheet:#FFFFFF; --ink:#151A21; --ink-soft:#4B5563; --ink-faint:#78828F;
+  --rule:#D8DDE4; --rule-soft:#E7EBF0;
+  --accent:#1E3A5F; --accent-soft:#E5ECF4;
+  --epoch:#6A5936; --epoch-soft:#F0EBDF;
+  --now:#265F53; --now-soft:#E2EDEA;
+  --flag:#8C2A24; --flag-soft:#F6E7E5;
+  --shadow:0 1px 2px rgba(21,26,33,.05), 0 10px 30px -20px rgba(21,26,33,.35);
+  --f-display:"Zilla Slab","Bitstream Charter",Georgia,serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F1318; --sheet:#171C23; --ink:#E7EBF1; --ink-soft:#AEB7C3; --ink-faint:#7E8794;
+  --rule:#2B333D; --rule-soft:#222932;
+  --accent:#89B0DC; --accent-soft:#1A2735;
+  --epoch:#CBB27C; --epoch-soft:#26221A;
+  --now:#79BFAE; --now-soft:#152622;
+  --flag:#E3928B; --flag-soft:#2A1A19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.85);
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1318; --sheet:#171C23; --ink:#E7EBF1; --ink-soft:#AEB7C3; --ink-faint:#7E8794;
+  --rule:#2B333D; --rule-soft:#222932;
+  --accent:#89B0DC; --accent-soft:#1A2735;
+  --epoch:#CBB27C; --epoch-soft:#26221A;
+  --now:#79BFAE; --now-soft:#152622;
+  --flag:#E3928B; --flag-soft:#2A1A19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.85);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:64px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 clamp(14px,4vw,32px)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.masthead{background:var(--sheet);border-bottom:1px solid var(--rule)}
+.masthead .wrap{padding:clamp(32px,6vw,60px) clamp(14px,4vw,32px) 30px;display:flex;flex-direction:column;gap:16px}
+.kicker{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(30px,5.4vw,48px);font-weight:700;letter-spacing:-.015em}
+.lede{max-width:62ch;color:var(--ink-soft);font-size:18px}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
+nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav.jump a{flex:0 0 auto;text-decoration:none;color:var(--ink-soft);font-family:var(--f-mono);font-size:12px;padding:6px 10px;border-radius:3px;white-space:nowrap}
+nav.jump a:hover{background:var(--accent-soft);color:var(--accent)}
+
+section{padding:clamp(34px,5vw,56px) 0}
+.sec-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+h2{font-size:clamp(23px,3.6vw,32px);font-weight:600}
+.stack{display:flex;flex-direction:column;gap:18px}
+.stack-lg{display:flex;flex-direction:column;gap:30px}
+.prose{max-width:64ch}
+
+/* ---------- Blatt ---------- */
+.blatt{
+  background:var(--sheet);border:1px solid var(--rule);box-shadow:var(--shadow);
+  padding:clamp(20px,3.4vw,34px);display:flex;flex-direction:column;gap:18px;
+}
+.blatt > header{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--accent);padding-bottom:10px}
+.blatt > header .id{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600}
+.blatt > header .who{font-family:var(--f-mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em}
+.blatt h3{font-size:23px;font-weight:600}
+.blatt h4{font-size:17px;font-weight:600;margin-top:2px}
+.namensfeld{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;color:var(--ink-faint);border-top:1px dashed var(--rule);padding-top:10px;margin-top:auto}
+.namensfeld span{flex:1 1 180px;border-bottom:1px solid var(--rule);padding-bottom:14px}
+
+.auftragsbox{border:1px solid var(--accent);background:var(--accent-soft)}
+.auftragsbox > .t{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:8px 15px 0}
+.auftragsbox ol,.auftragsbox ul{margin:0;padding:8px 15px 14px 34px;display:flex;flex-direction:column;gap:7px}
+.auftragsbox li::marker{color:var(--accent)}
+
+.infotext{font-size:16px}
+.infotext p + p{margin-top:10px}
+.infotext strong{color:var(--ink)}
+
+.rechercheblock{border-left:3px solid var(--now);background:var(--now-soft);padding:13px 16px;display:flex;flex-direction:column;gap:8px}
+.rechercheblock .t{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--now)}
+.rechercheblock ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.rechercheblock .quellen{font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:8px}
+
+.hinweis{border:1px solid var(--rule);border-left:3px solid var(--epoch);background:var(--epoch-soft);padding:13px 16px;font-size:15.5px}
+.hinweis .t{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--epoch);margin-bottom:6px}
+.warnung{border:1px solid var(--rule);border-left:3px solid var(--flag);background:var(--flag-soft);padding:13px 16px;font-size:15.5px}
+.warnung .t{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--flag);margin-bottom:6px}
+
+/* ---------- Folien ---------- */
+.folie{
+  background:var(--sheet);border:1px solid var(--rule);box-shadow:var(--shadow);
+  aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(18px,3vw,34px);gap:14px;overflow:hidden;position:relative;
+}
+.folie.bild{padding:0;justify-content:stretch}
+.folie.bild img{width:100%;height:100%;object-fit:cover;display:block}
+.folie-nr{
+  position:absolute;top:12px;left:14px;z-index:2;
+  font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.1em;
+  color:#fff;background:rgba(21,26,33,.72);padding:3px 8px;border-radius:2px;
+}
+.folienliste{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.folienkarte{display:flex;flex-direction:column;gap:9px}
+.bildquelle{font-family:var(--f-mono);font-size:10.5px;line-height:1.55;color:var(--ink-faint)}
+.bildquelle a{color:var(--ink-soft)}
+.folien-was{font-size:14.5px;color:var(--ink-soft)}
+.folien-was b{color:var(--ink);font-weight:600}
+
+/* Faksimiles */
+.fax{font-family:var(--f-mono);width:100%}
+.fax-abrechnung{font-size:clamp(9px,1.35vw,13px);border-collapse:collapse}
+.fax-abrechnung caption{text-align:left;font-size:1.05em;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);padding-bottom:8px}
+.fax-abrechnung td{padding:3px 6px;border-bottom:1px solid var(--rule-soft)}
+.fax-abrechnung td.z{text-align:right;font-variant-numeric:tabular-nums}
+.fax-abrechnung tr.mark td{background:var(--flag-soft);color:var(--flag);font-weight:600;border-bottom:1px solid var(--flag)}
+.fax-abrechnung tr.summe td{border-top:2px solid var(--ink);border-bottom:0;font-weight:600;padding-top:6px}
+.fax-plan{border-collapse:collapse;font-size:clamp(8px,1.2vw,12px);width:100%}
+.fax-plan th,.fax-plan td{border:1px solid var(--rule);padding:4px 5px;text-align:center}
+.fax-plan th{background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.92em}
+.fax-plan td.mark{background:var(--flag-soft);color:var(--flag);font-weight:600}
+.fax-gesetz{font-family:var(--f-display);font-size:clamp(15px,2.3vw,24px);line-height:1.45}
+.fax-gesetz .quelle{font-family:var(--f-mono);font-size:clamp(9px,1.1vw,12px);letter-spacing:.06em;color:var(--ink-faint);margin-top:14px;display:block}
+.fax-gesetz em.hl{font-style:normal;background:var(--flag-soft);color:var(--flag);padding:0 5px;border-radius:2px;font-weight:600}
+.fax-para{font-family:var(--f-mono);font-size:clamp(10px,1.4vw,15px);color:var(--ink-soft);line-height:1.6}
+.fax-para b{color:var(--ink)}
+
+/* ---------- Tabellen ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+table.raster{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+table.raster th,table.raster td{border:1px solid var(--rule);padding:8px 10px;vertical-align:top;text-align:left}
+table.raster thead th{background:var(--accent-soft);color:var(--accent);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+table.raster tbody th{width:120px;font-family:var(--f-mono);font-size:11.5px;font-weight:600;color:var(--ink-soft);background:var(--rule-soft);letter-spacing:.04em}
+table.raster td{height:76px}
+table.verlauf{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+table.verlauf th,table.verlauf td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+table.verlauf thead th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;border-bottom:1px solid var(--rule)}
+table.verlauf td.min{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap;font-size:13px}
+table.verlauf td.ph{font-weight:600}
+
+/* ---------- Eckenschilder ---------- */
+.schild{
+  background:var(--sheet);border:3px solid var(--accent);box-shadow:var(--shadow);
+  aspect-ratio:1.414/1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;gap:10px;
+}
+.schild .gross{font-family:var(--f-display);font-size:clamp(24px,4.4vw,42px);font-weight:700;color:var(--accent);line-height:1.1}
+.schild .klein{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.schilderliste{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+
+.streitsatz{border:1px solid var(--rule);background:var(--sheet);padding:16px 18px;display:flex;gap:16px;align-items:baseline}
+.streitsatz .n{font-family:var(--f-display);font-size:30px;font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.streitsatz .s{font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.35}
+.streitsatzliste{display:flex;flex-direction:column;gap:12px}
+
+footer{padding:40px 0 70px;color:var(--ink-soft);font-size:15px}
+footer h3{margin-bottom:10px;color:var(--ink)}
+footer ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+
+@media (max-width:600px){ .folie{aspect-ratio:auto;min-height:230px} .schild{aspect-ratio:auto;min-height:190px} }
+
+/* ---------- Druck ---------- */
+@media print{
+  @page{size:A4 portrait;margin:14mm}
+  nav.jump,.noprint{display:none!important}
+  body{background:#fff;color:#000;font-size:10.5pt}
+  .wrap{max-width:none;padding:0}
+  section{padding:0}
+  .blatt,.folie,.schild{box-shadow:none;break-inside:avoid}
+  .blatt{border:1px solid #999;padding:0;min-height:243mm;display:flex}
+  .seitenumbruch{break-after:page}
+  .folienliste{grid-template-columns:1fr 1fr;gap:10mm}
+  .schilderliste{grid-template-columns:1fr;gap:0}
+  .schild{min-height:180mm;break-after:page;border-width:2px}
+  section{break-after:page}
+  section:last-of-type{break-after:auto}
+  h2{break-after:avoid}
+  a{color:#000;text-decoration:none}
+  .bildquelle{color:#555}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>

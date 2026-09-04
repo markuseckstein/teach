@@ -1,0 +1,646 @@
+<title>Kopiervorlagen Doppelstunde 6</title>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F3F5F7; --sheet:#FFFFFF; --ink:#151A21; --ink-soft:#4B5563; --ink-faint:#78828F;
+  --rule:#D8DDE4; --rule-soft:#E7EBF0;
+  --accent:#1E3A5F; --accent-soft:#E5ECF4;
+  --epoch:#6A5936; --epoch-soft:#F0EBDF;
+  --now:#265F53; --now-soft:#E2EDEA;
+  --flag:#8C2A24; --flag-soft:#F6E7E5;
+  --shadow:0 1px 2px rgba(21,26,33,.05), 0 10px 30px -20px rgba(21,26,33,.35);
+  --f-display:"Zilla Slab","Bitstream Charter",Georgia,serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F1318; --sheet:#171C23; --ink:#E7EBF1; --ink-soft:#AEB7C3; --ink-faint:#7E8794;
+  --rule:#2B333D; --rule-soft:#222932;
+  --accent:#89B0DC; --accent-soft:#1A2735;
+  --epoch:#CBB27C; --epoch-soft:#26221A;
+  --now:#79BFAE; --now-soft:#152622;
+  --flag:#E3928B; --flag-soft:#2A1A19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.85);
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1318; --sheet:#171C23; --ink:#E7EBF1; --ink-soft:#AEB7C3; --ink-faint:#7E8794;
+  --rule:#2B333D; --rule-soft:#222932;
+  --accent:#89B0DC; --accent-soft:#1A2735;
+  --epoch:#CBB27C; --epoch-soft:#26221A;
+  --now:#79BFAE; --now-soft:#152622;
+  --flag:#E3928B; --flag-soft:#2A1A19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.85);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:64px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 clamp(14px,4vw,32px)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.masthead{background:var(--sheet);border-bottom:1px solid var(--rule)}
+.masthead .wrap{padding:clamp(32px,6vw,60px) clamp(14px,4vw,32px) 30px;display:flex;flex-direction:column;gap:16px}
+.kicker{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(30px,5.4vw,48px);font-weight:700;letter-spacing:-.015em}
+.lede{max-width:62ch;color:var(--ink-soft);font-size:18px}
+
+nav.jump{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
+nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav.jump a{flex:0 0 auto;text-decoration:none;color:var(--ink-soft);font-family:var(--f-mono);font-size:12px;padding:6px 10px;border-radius:3px;white-space:nowrap}
+nav.jump a:hover{background:var(--accent-soft);color:var(--accent)}
+
+section{padding:clamp(34px,5vw,56px) 0}
+.sec-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+h2{font-size:clamp(23px,3.6vw,32px);font-weight:600}
+.stack{display:flex;flex-direction:column;gap:18px}
+.stack-lg{display:flex;flex-direction:column;gap:30px}
+.prose{max-width:64ch}
+
+/* ---------- Blatt ---------- */
+.blatt{
+  background:var(--sheet);border:1px solid var(--rule);box-shadow:var(--shadow);
+  padding:clamp(20px,3.4vw,34px);display:flex;flex-direction:column;gap:18px;
+}
+.blatt > header{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--accent);padding-bottom:10px}
+.blatt > header .id{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600}
+.blatt > header .who{font-family:var(--f-mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em}
+.blatt h3{font-size:23px;font-weight:600}
+.blatt h4{font-size:17px;font-weight:600;margin-top:2px}
+.namensfeld{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;color:var(--ink-faint);border-top:1px dashed var(--rule);padding-top:10px;margin-top:auto}
+.namensfeld span{flex:1 1 180px;border-bottom:1px solid var(--rule);padding-bottom:14px}
+
+.auftragsbox{border:1px solid var(--accent);background:var(--accent-soft)}
+.auftragsbox > .t{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;padding:8px 15px 0}
+.auftragsbox ol,.auftragsbox ul{margin:0;padding:8px 15px 14px 34px;display:flex;flex-direction:column;gap:7px}
+.auftragsbox li::marker{color:var(--accent)}
+
+.infotext{font-size:16px}
+.infotext p + p{margin-top:10px}
+.infotext strong{color:var(--ink)}
+
+.rechercheblock{border-left:3px solid var(--now);background:var(--now-soft);padding:13px 16px;display:flex;flex-direction:column;gap:8px}
+.rechercheblock .t{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--now)}
+.rechercheblock ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.rechercheblock .quellen{font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:8px}
+
+.hinweis{border:1px solid var(--rule);border-left:3px solid var(--epoch);background:var(--epoch-soft);padding:13px 16px;font-size:15.5px}
+.hinweis .t{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--epoch);margin-bottom:6px}
+.warnung{border:1px solid var(--rule);border-left:3px solid var(--flag);background:var(--flag-soft);padding:13px 16px;font-size:15.5px}
+.warnung .t{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--flag);margin-bottom:6px}
+
+/* ---------- Folien ---------- */
+.folie{
+  background:var(--sheet);border:1px solid var(--rule);box-shadow:var(--shadow);
+  aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(18px,3vw,34px);gap:14px;overflow:hidden;position:relative;
+}
+.folie.bild{padding:0;justify-content:stretch}
+.folie.bild img{width:100%;height:100%;object-fit:cover;display:block}
+.folie-nr{
+  position:absolute;top:12px;left:14px;z-index:2;
+  font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.1em;
+  color:#fff;background:rgba(21,26,33,.72);padding:3px 8px;border-radius:2px;
+}
+.folienliste{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.folienkarte{display:flex;flex-direction:column;gap:9px}
+.bildquelle{font-family:var(--f-mono);font-size:10.5px;line-height:1.55;color:var(--ink-faint)}
+.bildquelle a{color:var(--ink-soft)}
+.folien-was{font-size:14.5px;color:var(--ink-soft)}
+.folien-was b{color:var(--ink);font-weight:600}
+
+/* Faksimiles */
+.fax{font-family:var(--f-mono);width:100%}
+.fax-abrechnung{font-size:clamp(9px,1.35vw,13px);border-collapse:collapse}
+.fax-abrechnung caption{text-align:left;font-size:1.05em;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);padding-bottom:8px}
+.fax-abrechnung td{padding:3px 6px;border-bottom:1px solid var(--rule-soft)}
+.fax-abrechnung td.z{text-align:right;font-variant-numeric:tabular-nums}
+.fax-abrechnung tr.mark td{background:var(--flag-soft);color:var(--flag);font-weight:600;border-bottom:1px solid var(--flag)}
+.fax-abrechnung tr.summe td{border-top:2px solid var(--ink);border-bottom:0;font-weight:600;padding-top:6px}
+.fax-plan{border-collapse:collapse;font-size:clamp(8px,1.2vw,12px);width:100%}
+.fax-plan th,.fax-plan td{border:1px solid var(--rule);padding:4px 5px;text-align:center}
+.fax-plan th{background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.92em}
+.fax-plan td.mark{background:var(--flag-soft);color:var(--flag);font-weight:600}
+.fax-gesetz{font-family:var(--f-display);font-size:clamp(15px,2.3vw,24px);line-height:1.45}
+.fax-gesetz .quelle{font-family:var(--f-mono);font-size:clamp(9px,1.1vw,12px);letter-spacing:.06em;color:var(--ink-faint);margin-top:14px;display:block}
+.fax-gesetz em.hl{font-style:normal;background:var(--flag-soft);color:var(--flag);padding:0 5px;border-radius:2px;font-weight:600}
+.fax-para{font-family:var(--f-mono);font-size:clamp(10px,1.4vw,15px);color:var(--ink-soft);line-height:1.6}
+.fax-para b{color:var(--ink)}
+
+/* ---------- Tabellen ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+table.raster{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+table.raster th,table.raster td{border:1px solid var(--rule);padding:8px 10px;vertical-align:top;text-align:left}
+table.raster thead th{background:var(--accent-soft);color:var(--accent);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+table.raster tbody th{width:120px;font-family:var(--f-mono);font-size:11.5px;font-weight:600;color:var(--ink-soft);background:var(--rule-soft);letter-spacing:.04em}
+table.raster td{height:76px}
+table.verlauf{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+table.verlauf th,table.verlauf td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+table.verlauf thead th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;border-bottom:1px solid var(--rule)}
+table.verlauf td.min{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap;font-size:13px}
+table.verlauf td.ph{font-weight:600}
+
+/* ---------- Eckenschilder ---------- */
+.schild{
+  background:var(--sheet);border:3px solid var(--accent);box-shadow:var(--shadow);
+  aspect-ratio:1.414/1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;gap:10px;
+}
+.schild .gross{font-family:var(--f-display);font-size:clamp(24px,4.4vw,42px);font-weight:700;color:var(--accent);line-height:1.1}
+.schild .klein{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.schilderliste{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+
+.streitsatz{border:1px solid var(--rule);background:var(--sheet);padding:16px 18px;display:flex;gap:16px;align-items:baseline}
+.streitsatz .n{font-family:var(--f-display);font-size:30px;font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.streitsatz .s{font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.35}
+.streitsatzliste{display:flex;flex-direction:column;gap:12px}
+
+footer{padding:40px 0 70px;color:var(--ink-soft);font-size:15px}
+footer h3{margin-bottom:10px;color:var(--ink)}
+footer ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+
+@media (max-width:600px){ .folie{aspect-ratio:auto;min-height:230px} .schild{aspect-ratio:auto;min-height:190px} }
+
+/* ---------- Druck ---------- */
+@media print{
+  @page{size:A4 portrait;margin:14mm}
+  nav.jump,.noprint{display:none!important}
+  body{background:#fff;color:#000;font-size:10.5pt}
+  .wrap{max-width:none;padding:0}
+  section{padding:0}
+  .blatt,.folie,.schild{box-shadow:none;break-inside:avoid}
+  .blatt{border:1px solid #999;padding:0;min-height:243mm;display:flex}
+  .seitenumbruch{break-after:page}
+  .folienliste{grid-template-columns:1fr 1fr;gap:10mm}
+  .schilderliste{grid-template-columns:1fr;gap:0}
+  .schild{min-height:180mm;break-after:page;border-width:2px}
+  section{break-after:page}
+  section:last-of-type{break-after:auto}
+  h2{break-after:avoid}
+  a{color:#000;text-decoration:none}
+  .bildquelle{color:#555}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">Kopiervorlagen · Doppelstunde 6 von 6 · Ev. Religionslehre · Gymnasium Bayern · Jgst. 9</div>
+    <h1>Barmen 2026?</h1>
+    <p class="lede">Die letzte Doppelstunde: das Plakat für den Einstieg, die Schlagzeilenfolie mit Datumszeile, vier Textkarten mit den Stimmen der Debatte, die sechs Themenkarten der Barmen-Werkstatt mit Bibelstellen im Wortlaut, das Thesenblatt für die Tür und das Rechercheblatt zum Engagement vor Ort.</p>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Vorlagen">
+  <div class="wrap">
+    <a href="#lehrkraft">Beutelsbacher Konsens</a>
+    <a href="#plakat">Plakat</a>
+    <a href="#m23">M23 Schlagzeilen</a>
+    <a href="#m24">M24 Vier Stimmen</a>
+    <a href="#m25">M25 Barmen-Werkstatt</a>
+    <a href="#thesenblatt">Thesenblatt</a>
+    <a href="#m26">M26 Vor Ort</a>
+    <a href="#quellen">Quellen</a>
+  </div>
+</nav>
+
+<!-- ============ LEHRKRAFT ============ -->
+<section id="lehrkraft">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Für die Lehrkraft · vor dieser Stunde unbedingt lesen</div>
+      <h2>Warum diese Stunde belastbar ist</h2>
+    </div>
+
+    <div class="warnung">
+      <span class="t">Beutelsbacher Konsens</span>
+      <p>Diese Stunde berührt eine Partei, die im Bundestag sitzt und die manche Eltern dieser Klasse wählen. Drei Regeln machen sie unangreifbar — sie sind nicht angehängt, sondern in die Methode eingebaut:</p>
+      <ul style="margin:8px 0 0;padding-left:19px;display:flex;flex-direction:column;gap:7px">
+        <li><strong>Überwältigungsverbot.</strong> Es wird keine Wahlempfehlung gegeben. Die Lehrkraft darf ihre eigene Position auf Nachfrage nennen — aber erst am Ende und ausdrücklich als persönliche Meinung gekennzeichnet.</li>
+        <li><strong>Kontroversitätsgebot.</strong> Was in Gesellschaft und Wissenschaft strittig ist, muss auch im Unterricht strittig erscheinen. Deshalb enthält M24 ausdrücklich die Position von Christen, die die kirchlichen Erklärungen für einen Übergriff halten — und zwar in ihrer <em>besten</em>, nicht in ihrer schwächsten Fassung.</li>
+        <li><strong>Schülerorientierung.</strong> Die Stunde endet nicht bei einem fertigen Urteil, sondern bei den eigenen Mitwirkungsmöglichkeiten der Schülerinnen und Schüler.</li>
+      </ul>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">Die Unterscheidung</span><span class="who">trägt auch im Elterngespräch</span></header>
+      <div class="infotext">
+        <p>Der Unterricht behandelt <strong>Positionen von Kirchen zu politischen Aussagen</strong>. Das ist Gegenstand des Fachlehrplans — die Kompetenzerwartungen 1 und 4 des Lernbereichs verlangen ausdrücklich, Ausprägungen des Miteinanders von Kirche und Staat zu diskutieren und politisches Engagement der Kirche zu untersuchen. Der Unterricht bewertet <strong>keine Parteien und keine Wahlentscheidungen</strong>.</p>
+        <p>Diese Unterscheidung ist keine Ausrede, sondern der Inhalt: Kirchen sind keine staatlichen Stellen. Für sie gilt das Neutralitätsgebot nicht, das für Behörden gilt — sie dürfen sich äußern. Eine staatliche Lehrkraft im Klassenzimmer ist dagegen an das Überwältigungsverbot gebunden. Genau dieser Unterschied wird in M24, Stimme 3, ausdrücklich zum Unterrichtsgegenstand gemacht.</p>
+        <p><strong>Die didaktische Absicherung steckt in Arbeitsauftrag 6.3.</strong> Die Härteprüfung verlangt, dass eine These auch dann noch gelten muss, wenn morgen eine ganz andere Partei regiert. Eine These, die eine Partei beim Namen nennt, besteht diese Prüfung nicht — und wird von der Gruppe selbst überarbeitet. Damit erledigt sich die Neutralitätsfrage nicht durch ein Verbot der Lehrkraft, sondern durch eine Einsicht der Klasse.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table class="verlauf">
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Was passiert</th><th>Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–10</td><td class="ph">Einstieg</td><td>Klebepunkte auf das Plakat beim Hereinkommen, dann drei Schlagzeilen</td><td>Plakat, M23</td></tr>
+          <tr><td class="min">10–32</td><td class="ph">Erarbeitung I</td><td>Vier Stimmen im Textpuzzle, inklusive Faktencheck mit dem Handy</td><td>M24</td></tr>
+          <tr><td class="min">32–46</td><td class="ph">Abwägung</td><td>Jede Gruppe nennt <em>zuerst</em> die schwächste Stelle des eigenen Textes</td><td>Tafel, zwei Spalten</td></tr>
+          <tr><td class="min">46–68</td><td class="ph">Erarbeitung II</td><td>Barmen-Werkstatt: eigene Thesen schreiben, Härteprüfung bestehen</td><td>M25, Thesenblatt</td></tr>
+          <tr><td class="min">68–78</td><td class="ph">Höhepunkt</td><td>Thesenanschlag an der Klassenzimmertür, laut vorlesen, kein Kommentar</td><td>Klebeband</td></tr>
+          <tr><td class="min">78–88</td><td class="ph">Transfer</td><td>Recherche: Was tut die Kirche hier vor Ort — und wo kann ich mitmachen?</td><td>M26, Handy</td></tr>
+          <tr><td class="min">88–90</td><td class="ph">Abschluss</td><td>Placemat-Mittelfelder aus DS 4 aufhängen, zweiter Klebepunkt aufs Plakat</td><td>M17 aus DS 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hinweis">
+      <span class="t">Der Moment, an dem die Einheit zusammenläuft</span>
+      <p>Wenn in der Abwägung das Argument fällt „Die Kirche soll sich raushalten“, kommt die Rückfrage: <em>„Genau das war 1933 die Mehrheitsmeinung in dieser Kirche. Römer 13, Sie erinnern sich. Und 1934 hat eine Minderheit gesagt: Es gibt eine Grenze. Wo verläuft die Ihrer Meinung nach?“</em> — Diese Frage bleibt offen. Sie wird in der Werkstatt bearbeitet, nicht im Gespräch entschieden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAKAT ============ -->
+<section id="plakat">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Plakat · auf A3 vergrößern, vor der Stunde aufhängen</div>
+      <h2>Das Plakat für den Einstieg</h2>
+      <p class="prose">Hängt schon an der Wand, wenn die Klasse hereinkommt. Alle kleben beim Hereinkommen einen Punkt — <strong>bevor</strong> irgendetwas besprochen wird. Die Verteilung bleibt unkommentiert stehen. Am Ende der Stunde klebt jede und jeder einen zweiten Punkt in einer anderen Farbe.</p>
+    </div>
+    <div class="schild" style="aspect-ratio:1.414/1">
+      <span class="klein">Kleben Sie einen Punkt auf die Linie</span>
+      <span class="gross" style="font-size:clamp(20px,3.4vw,34px)">„Die Kirche soll sich<br>aus der Politik raushalten.“</span>
+      <span class="klein" style="margin-top:20px;display:flex;justify-content:space-between;width:100%;max-width:520px">
+        <span>stimmt genau</span><span>—————————————</span><span>stimmt gar nicht</span>
+      </span>
+    </div>
+    <div class="hinweis">
+      <span class="t">Warum zwei Farben</span>
+      <p>Der Vergleich am Ende ist ehrlicher als jede Abfrage, ob es „gefallen hat“. Er zeigt der Klasse — und Ihnen —, ob dieser Vormittag etwas verschoben hat. Und er zeigt es, ohne dass jemand etwas sagen muss.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ M23 ============ -->
+<section id="m23">
+  <div class="wrap stack-lg">
+    <div class="sec-label">M23 · Projektion</div>
+    <div class="blatt">
+      <header><span class="id">M23</span><span class="who">Drei Schlagzeilen · Sachstand</span></header>
+      <h3>Was die Kirchen gesagt haben</h3>
+
+      <div class="infotext">
+        <p style="border-left:3px solid var(--accent);padding-left:14px"><strong>Herbst 2023 — Synode der EKD.</strong> Das Kirchenparlament der Evangelischen Kirche in Deutschland stellt fest, die menschenverachtenden Haltungen und Äußerungen insbesondere der rechtsextremen Kräfte innerhalb der AfD seien mit den Grundsätzen des christlichen Glaubens in keiner Weise vereinbar.</p>
+        <p style="border-left:3px solid var(--accent);padding-left:14px;margin-top:12px"><strong>22. Februar 2024 — Deutsche Bischofskonferenz.</strong> Die katholischen Bischöfe erklären völkischen Nationalismus und Christentum für unvereinbar. Die EKD begrüßt diese Erklärung ausdrücklich.</p>
+        <p style="border-left:3px solid var(--flag);padding-left:14px;margin-top:12px"><strong>Mai 2025 — Bundesamt für Verfassungsschutz.</strong> Die Behörde stuft die AfD als gesichert rechtsextremistisch ein. Gegen die Einstufung läuft ein Gerichtsverfahren.</p>
+      </div>
+
+      <div class="warnung">
+        <span class="t">Diese Zeile gehört auf die Folie</span>
+        <p style="font-family:var(--f-mono);font-size:15px">Sachstand geprüft am: ______________________</p>
+        <p style="margin-top:8px">Die dritte Meldung ist rechtlich in Bewegung. Prüfen Sie den Stand vor jedem Einsatz und tragen Sie das Datum ein. Das ist kein bürokratischer Zusatz, sondern Teil der Stunde: Die Klasse soll sehen, wie man mit einem laufenden Verfahren korrekt umgeht — nämlich indem man sagt, was entschieden ist, was offen ist und wann man zuletzt nachgesehen hat.</p>
+      </div>
+
+      <div class="auftragsbox">
+        <span class="t">Arbeitsauftrag · Plenum, 5 Minuten</span>
+        <ol>
+          <li>Was fällt euch auf, wenn ihr diese drei Meldungen und das Plakat nebeneinander seht?</li>
+          <li>Eine Verständnisfrage, die geklärt sein muss, bevor wir weitermachen: Was heißt eigentlich <strong>„unvereinbar“</strong>? Und was heißt es <em>nicht</em>?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ M24 ============ -->
+<section id="m24">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">M24 · Kopiervorlage · je eine Karte pro Gruppe</div>
+      <h2>Vier Stimmen</h2>
+      <p class="prose">Der Auftrag ist auf allen vier Karten gleich. Aufgabe 3 — die schwächste Stelle des <em>eigenen</em> Textes — ist Pflicht und nicht Kür. Sie ist der Grund, warum in der anschließenden Runde ein Gespräch entsteht und kein Schlagabtausch.</p>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M24 · Auftrag für alle vier Gruppen</span><span class="who">Doppelstunde 6</span></header>
+      <div class="auftragsbox">
+        <span class="t">Arbeitsauftrag · Gruppe, 20 Minuten</span>
+        <ol>
+          <li>Fasst die Position eures Textes in <strong>einem</strong> Satz zusammen, der mit „Wir sagen: …“ beginnt.</li>
+          <li>Sucht die <strong>stärkste Stelle</strong> — die eine Formulierung, mit der ihr jemanden überzeugen könntet, der anderer Meinung ist.</li>
+          <li>Sucht die <strong>schwächste Stelle</strong>. Wo ist euer eigener Text angreifbar? <em>Diese Aufgabe ist Pflicht.</em></li>
+          <li>Prüft eine Tatsachenbehauptung eures Textes mit dem Handy nach. Nutzt die Originalseite der jeweiligen Institution, nicht eine Zusammenfassung, und notiert, wo ihr sie bestätigt gefunden habt.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M24 · Stimme 1</span><span class="who">Die Position der Kirchen</span></header>
+      <h3>„Damit ist das nicht vereinbar“</h3>
+      <div class="infotext">
+        <p>Die evangelische und die katholische Kirche haben sich in den vergangenen Jahren mehrfach zu völkischem Nationalismus geäußert. Ihre Begründung ist keine parteipolitische, sondern eine theologische.</p>
+        <p><strong>Das Kernargument:</strong> Nach dem ersten Buch der Bibel ist <em>jeder</em> Mensch zum Bild Gottes geschaffen — ohne Ausnahme, ohne Abstufung, unabhängig von Herkunft, Sprache und Pass. Eine Weltanschauung, die Menschen nach ihrer Abstammung in Wertigere und Wenigerwertige einteilt, widerspricht diesem Satz nicht in einem Detail, sondern im Kern.</p>
+        <p><strong>Das historische Argument:</strong> Die Kirchen berufen sich ausdrücklich auf die Erfahrung von 1933. Damals hat sich die Mehrheit der evangelischen Kirche vereinnahmen lassen und geschwiegen. Aus dieser Erfahrung leiten die Kirchen heute die Pflicht ab, früh und deutlich zu sprechen — und nicht erst dann, wenn es sie selbst betrifft.</p>
+        <p><strong>Was die Kirchen ausdrücklich nicht sagen:</strong> Sie sprechen niemandem den Glauben ab und schließen niemanden aus der Gemeinde aus. Die Seelsorge gilt allen. Es geht um Aussagen und Positionen, nicht um Personen.</p>
+      </div>
+      <div class="rechercheblock">
+        <span class="t">Faktencheck</span>
+        <ol><li>Sucht auf <strong>ekd.de</strong> die Erklärung zum Thema völkischer Nationalismus und findet die Stelle, an der die Gottesebenbildlichkeit begründet wird.</li></ol>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M24 · Stimme 2</span><span class="who">Der christliche Widerspruch</span></header>
+      <h3>„Das steht der Kirche nicht zu“</h3>
+      <div class="warnung">
+        <span class="t">Hinweis für diese Gruppe</span>
+        <p>Ihr vertretet eine Position, die ihr nicht teilen müsst — und ihr sollt sie <strong>stark</strong> vortragen. Sie steht hier, weil eine Debatte, in der die Gegenseite schwach dargestellt wird, keine Debatte ist, sondern eine Vorführung.</p>
+      </div>
+      <div class="infotext">
+        <p>Es gibt Christinnen und Christen, die den Erklärungen ihrer Kirchenleitungen widersprechen. Ihre Argumente sind nicht alle gleich, aber diese vier kehren wieder:</p>
+        <p><strong>1 · Das Mandat.</strong> Die Kirche hat den Auftrag, das Evangelium zu verkündigen — nicht, Wahlempfehlungen abzugeben. Wer von der Kanzel aus Parteipolitik betreibt, überschreitet seinen Auftrag, egal in welche Richtung.</p>
+        <p><strong>2 · Die eigenen Leute.</strong> In den Gemeinden sitzen Menschen, die so wählen. Wenn eine Kirchenleitung ihnen ausrichtet, ihre Überzeugung sei mit dem Glauben unvereinbar, dann redet sie über die eigenen Mitglieder — und treibt sie weg, statt mit ihnen zu reden.</p>
+        <p><strong>3 · Die Wirkung.</strong> Pauschale Urteile bestätigen genau das Gefühl, das viele zu dieser Partei bringt: dass „die da oben“ sie nicht ernst nehmen. Kirchliche Erklärungen könnten also bewirken, was sie verhindern wollen.</p>
+        <p><strong>4 · Die eigene Vergangenheit.</strong> Eine Kirche, die sich 1933 an die Politik gehängt hat, sollte besonders vorsichtig sein, wenn sie sich wieder politisch positioniert — auch wenn die Richtung diesmal eine andere ist.</p>
+      </div>
+      <div class="rechercheblock">
+        <span class="t">Faktencheck</span>
+        <ol><li>Findet eine <strong>namentlich benannte</strong> Person aus dem kirchlichen Raum, die sich in diesem Sinn geäußert hat, und gebt ihr Argument fair wieder.</li></ol>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M24 · Stimme 3</span><span class="who">Die rechtliche Einordnung</span></header>
+      <h3>„Was darf wer sagen?“</h3>
+      <div class="infotext">
+        <p>Hier geht es nicht um richtig oder falsch, sondern um eine Unterscheidung, die in der Debatte oft durcheinandergeht.</p>
+        <p><strong>Kirchen sind keine staatlichen Stellen.</strong> Sie sind Körperschaften des öffentlichen Rechts, aber keine Behörden. Das Neutralitätsgebot, das für staatliche Stellen gilt, gilt für sie nicht. Aus der Glaubensfreiheit des Artikels 4 des Grundgesetzes folgt vielmehr, dass sie sich zu gesellschaftlichen und politischen Fragen äußern dürfen — und historisch haben sie das immer getan, in alle Richtungen.</p>
+        <p><strong>Der Staat dagegen muss neutral sein.</strong> Eine Behörde darf keine Partei bevorzugen oder benachteiligen. Und eine <strong>staatliche Lehrkraft</strong> — also die Person, die vor euch steht — unterliegt dem Überwältigungsverbot: Sie darf euch keine politische Meinung aufdrängen und muss Strittiges strittig darstellen.</p>
+        <p><strong>Daraus folgt die feine Linie dieser Stunde:</strong> Wir behandeln, <em>was Kirchen sagen und warum</em>. Wir bewerten nicht, welche Partei man wählen soll. Das erste ist Unterrichtsstoff, das zweite wäre ein Verstoß.</p>
+        <p><strong>Zur Einstufung durch den Verfassungsschutz:</strong> Eine solche Einstufung ist eine Einschätzung einer Behörde, kein Gerichtsurteil und kein Verbot. Über Verbote entscheidet allein das Bundesverfassungsgericht.</p>
+      </div>
+      <div class="rechercheblock">
+        <span class="t">Faktencheck</span>
+        <ol><li>Sucht den Wortlaut von <strong>Artikel 4 des Grundgesetzes</strong> und klärt: Wovor genau schützt er — und wen?</li></ol>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M24 · Stimme 4</span><span class="who">Die Beobachtung</span></header>
+      <h3>„Wie einig ist die Kirche eigentlich?“</h3>
+      <div class="infotext">
+        <p>Eine Kirchenleitung ist nicht die Kirche. Wenn eine Synode oder eine Bischofskonferenz eine Erklärung beschließt, heißt das nicht, dass alle Mitglieder sie teilen.</p>
+        <p>Untersuchungen zum Wahlverhalten zeigen regelmäßig: Kirchenmitglieder stimmen keineswegs einheitlich ab. Es gibt Unterschiede zwischen den Konfessionen, zwischen Ost und West, zwischen Menschen, die regelmäßig zum Gottesdienst gehen, und solchen, die nur Mitglied sind. Wer eine kirchliche Erklärung liest, sollte deshalb wissen: <strong>Die Kirchenleitungen streiten mit diesen Erklärungen auch innerhalb der eigenen Reihen.</strong></p>
+        <p>Daraus folgt eine Frage, die diese Gruppe in die Runde tragen soll: Macht das die Erklärungen schwächer — weil sie nicht für alle sprechen? Oder gerade stärker — weil sie etwas sagen, das auch die eigenen Leute unbequem finden?</p>
+      </div>
+      <div class="rechercheblock">
+        <span class="t">Faktencheck</span>
+        <ol><li>Sucht eine <strong>belegte Zahl</strong> zum Wahlverhalten von Kirchenmitgliedern. Notiert Zahl, Quelle <em>und</em> Erhebungsjahr — ohne das dritte ist die Zahl wertlos.</li></ol>
+      </div>
+      <div class="hinweis">
+        <span class="t">Für die Lehrkraft</span>
+        <p>Setzen Sie hier vor der Stunde eine aktuelle, belegte Zahl ein oder lassen Sie die Gruppe sie selbst suchen. Beides funktioniert; die zweite Variante ist ehrlicher, dauert aber länger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ M25 ============ -->
+<section id="m25">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">M25 · Kopiervorlage · je eine Karte pro Gruppe</div>
+      <h2>Die Barmen-Werkstatt</h2>
+      <p class="prose">Das Kernstück der ganzen Einheit. Der Auftrag und die Härteprüfung stehen auf jeder Karte — sie dürfen nicht nur mündlich angesagt werden, weil die Gruppen sie beim Überarbeiten brauchen.</p>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25 · Auftrag für alle sechs Gruppen</span><span class="who">Doppelstunde 6</span></header>
+      <div class="auftragsbox">
+        <span class="t">Arbeitsauftrag 6.3 · Gruppe, 22 Minuten</span>
+        <ol>
+          <li>Lest die Bibelstellen auf eurer Karte. Wählt <strong>eine</strong> aus, die euch am meisten zu sagen hat.</li>
+          <li>Formuliert daraus den <strong>ersten Teil</strong> eurer These — eine positive Aussage darüber, woran ihr euch bindet:<br><em>„Weil …, gilt für uns: …“</em></li>
+          <li>Formuliert den <strong>zweiten Teil</strong> — die Verwerfung. Hier steht, was mit dem ersten Teil nicht zusammengeht:<br><em>„Wir verwerfen die falsche Lehre, als ob …“</em></li>
+          <li>Macht die <strong>Härteprüfung</strong> (siehe unten). Beide Fragen müssen mit Ja beantwortbar sein.</li>
+          <li>Schreibt die fertige These groß und leserlich auf das Thesenblatt. Unterschreibt mit euren Vornamen — freiwillig; wer nicht möchte, unterschreibt nicht.</li>
+        </ol>
+      </div>
+
+      <div class="warnung">
+        <span class="t">Die Härteprüfung — beide Fragen müssen mit Ja beantwortbar sein</span>
+        <ol style="margin:6px 0 0;padding-left:19px;display:flex;flex-direction:column;gap:8px">
+          <li><strong>Steht in eurer These eine Aussage — oder nur ein Vorwurf gegen eine Gruppe?</strong><br>Eine Verwerfung richtet sich gegen einen <em>Satz</em>, nie gegen Menschen. Barmen sagt nicht „Wir verwerfen die Deutschen Christen“, sondern „Wir verwerfen die falsche Lehre, als ob …“.</li>
+          <li><strong>Könnte eure These auch dann noch gelten, wenn morgen eine ganz andere Partei regiert?</strong><br>Wenn nein: überarbeiten. Barmen war deshalb stark, weil es nicht an einer Person und nicht an einer Partei hing. Eine These, die einen Parteinamen enthält, besteht diese Prüfung nicht.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25a · Gruppe 1</span><span class="who">Barmen-Werkstatt</span></header>
+      <h3>Umgang mit Geflüchteten</h3>
+      <div class="infotext">
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px">„Wenn ein Fremdling bei euch wohnt in eurem Lande, den sollt ihr nicht bedrücken. Er soll bei euch wohnen wie ein Einheimischer unter euch, und du sollst ihn lieben wie dich selbst; denn ihr seid auch Fremdlinge gewesen in Ägyptenland.“<span class="quelle">3. Mose 19,33–34</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Ich bin ein Fremder gewesen und ihr habt mich aufgenommen.“<span class="quelle">Matthäus 25,35</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Gastfrei zu sein vergesst nicht; denn dadurch haben einige ohne ihr Wissen Engel beherbergt.“<span class="quelle">Hebräer 13,2</span></p>
+      </div>
+      <div class="hinweis">
+        <span class="t">Denkhilfe</span>
+        <p>Beim ersten Text lohnt der letzte Halbsatz: <em>„denn ihr seid auch Fremdlinge gewesen“</em>. Die Begründung ist nicht Mitleid, sondern Erinnerung. Was folgt daraus für ein Land, aus dem Menschen einmal fliehen mussten?</p>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25b · Gruppe 2</span><span class="who">Barmen-Werkstatt</span></header>
+      <h3>Umgang mit Minderheiten</h3>
+      <div class="infotext">
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px">„Und Gott schuf den Menschen zu seinem Bilde, zum Bilde Gottes schuf er ihn; und schuf sie als Mann und Frau.“<span class="quelle">1. Mose 1,27</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Hier ist nicht Jude noch Grieche, hier ist nicht Sklave noch Freier, hier ist nicht Mann noch Frau; denn ihr seid alle einer in Christus Jesus.“<span class="quelle">Galater 3,28</span></p>
+        <p style="border-left:2px solid var(--rule);padding-left:14px;margin-top:12px"><strong>Lukas 10,25–37</strong> — das Gleichnis vom barmherzigen Samariter. Schlagt es in der Bibel nach. Achtet darauf, <em>wer</em> hilft und welchen Ruf diese Gruppe bei den Zuhörern Jesu hatte.</p>
+      </div>
+      <div class="hinweis">
+        <span class="t">Denkhilfe</span>
+        <p>„Zum Bilde Gottes“ ist der stärkste Satz, den die Bibel über Menschen sagt — und er steht vor jeder Unterscheidung nach Volk, Sprache oder Herkunft. Was heißt das für die Frage, wer dazugehört?</p>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25c · Gruppe 3</span><span class="who">Barmen-Werkstatt</span></header>
+      <h3>Wahrheit in der Öffentlichkeit</h3>
+      <div class="infotext">
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px">„Du sollst nicht falsch Zeugnis reden wider deinen Nächsten.“<span class="quelle">2. Mose 20,16 · das achte Gebot</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Darum legt die Lüge ab und redet die Wahrheit, ein jeder mit seinem Nächsten, weil wir untereinander Glieder sind.“<span class="quelle">Epheser 4,25</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Ihr werdet die Wahrheit erkennen, und die Wahrheit wird euch frei machen.“<span class="quelle">Johannes 8,32</span></p>
+      </div>
+      <div class="hinweis">
+        <span class="t">Denkhilfe</span>
+        <p>Luther erklärt das achte Gebot so, dass man den Nächsten nicht belügen, verraten oder verleumden, sondern alles zum Besten kehren solle. Übertragt das auf soziale Netzwerke: Was hieße das für jemanden, der etwas weiterleitet, ohne es zu prüfen?</p>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25d · Gruppe 4</span><span class="who">Barmen-Werkstatt</span></header>
+      <h3>Schöpfung und Klima</h3>
+      <div class="infotext">
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px">„Und Gott der HERR nahm den Menschen und setzte ihn in den Garten Eden, dass er ihn bebaute und bewahrte.“<span class="quelle">1. Mose 2,15</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Die Erde ist des HERRN und was darinnen ist, der Erdkreis und die darauf wohnen.“<span class="quelle">Psalm 24,1</span></p>
+        <p style="border-left:2px solid var(--rule);padding-left:14px;margin-top:12px"><strong>Römer 8,19–22</strong> — Paulus schreibt, die ganze Schöpfung warte und seufze. Schlagt die Stelle nach.</p>
+      </div>
+      <div class="hinweis">
+        <span class="t">Denkhilfe</span>
+        <p>„Bebauen <em>und</em> bewahren“ — zwei Aufträge in einem Satz. Und Psalm 24 sagt, wem die Erde gehört. Wenn sie nicht uns gehört: Was sind wir dann im Verhältnis zu ihr, und was folgt daraus?</p>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25e · Gruppe 5</span><span class="who">Barmen-Werkstatt</span></header>
+      <h3>Nation und Volkszugehörigkeit</h3>
+      <div class="infotext">
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px">„Und er hat aus einem Menschen das ganze Menschengeschlecht gemacht, damit sie auf dem ganzen Erdboden wohnen.“<span class="quelle">Apostelgeschichte 17,26</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Hier ist nicht Jude noch Grieche … denn ihr seid alle einer in Christus Jesus.“<span class="quelle">Galater 3,28</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Danach sah ich, und siehe, eine große Schar, die niemand zählen konnte, aus allen Nationen und Stämmen und Völkern und Sprachen.“<span class="quelle">Offenbarung 7,9</span></p>
+      </div>
+      <div class="warnung">
+        <span class="t">Eure Gruppe hat den direktesten Draht zu 1934</span>
+        <p>Genau an dieser Stelle verlief die Trennlinie zwischen Barmen und Ansbach: Sind Volk und Rasse Ordnungen Gottes — oder nicht? Schaut euch eure Aufzeichnungen aus Doppelstunde 3 an, bevor ihr schreibt.</p>
+      </div>
+    </div>
+
+    <div class="blatt">
+      <header><span class="id">M25f · Gruppe 6</span><span class="who">Barmen-Werkstatt</span></header>
+      <h3>Die Freiheit der Kirche gegenüber jeder Regierung</h3>
+      <div class="infotext">
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px">„Man muss Gott mehr gehorchen als den Menschen.“<span class="quelle">Apostelgeschichte 5,29</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„So gebt dem Kaiser, was des Kaisers ist, und Gott, was Gottes ist.“<span class="quelle">Matthäus 22,21</span></p>
+        <p style="font-family:var(--f-display);font-style:italic;border-left:2px solid var(--accent);padding-left:14px;margin-top:12px">„Wir verwerfen die falsche Lehre, als solle und könne der Staat über seinen besonderen Auftrag hinaus die einzige und totale Ordnung menschlichen Lebens werden und also auch die Bestimmung der Kirche erfüllen.“<span class="quelle">Barmer Theologische Erklärung, These 5, 1934</span></p>
+      </div>
+      <div class="hinweis">
+        <span class="t">Denkhilfe</span>
+        <p>Eure Gruppe schreibt die These, die auch dann noch gelten muss, wenn eine Regierung an der Macht ist, die euch <em>gefällt</em>. Das ist der schwierigere Fall — und der eigentliche Test.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THESENBLATT ============ -->
+<section id="thesenblatt">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Thesenblatt · auf A3 vergrößern, sechs Stück</div>
+      <h2>Das Blatt für die Tür</h2>
+      <p class="prose">Jede Gruppe geht zur Tür, liest ihre These <strong>laut</strong> vor und hängt sie auf. Kein Kommentar, keine Bewertung, kein Applaus — die Wirkung entsteht durch das Nacheinander. Erst wenn alle sechs hängen, tritt die Klasse gemeinsam zurück und liest still.</p>
+    </div>
+    <div class="blatt">
+      <header><span class="id">These Nr. ____</span><span class="who">Klasse 9__ · ____________</span></header>
+      <h3 style="font-size:19px;color:var(--ink-faint);font-weight:400">Unser Thema: ________________________________________</h3>
+      <div class="tablewrap">
+        <table class="raster">
+          <tbody>
+            <tr><th style="width:150px">Weil …<br><span style="font-weight:400;font-family:var(--f-body);font-size:12px">unsere Bibelstelle</span></th><td style="height:130px"></td></tr>
+            <tr><th>… gilt für uns:</th><td style="height:130px"></td></tr>
+            <tr><th style="background:var(--accent-soft);color:var(--accent)">Wir verwerfen die falsche Lehre, als ob …</th><td style="height:160px"></td></tr>
+            <tr><th>Härteprüfung</th><td style="height:70px">☐ Unsere These richtet sich gegen einen Satz, nicht gegen Menschen.<br>☐ Unsere These gilt auch unter einer anderen Regierung.</td></tr>
+            <tr><th>Unterschriften<br><span style="font-weight:400;font-family:var(--f-body);font-size:12px">freiwillig</span></th><td style="height:70px"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="auftragsbox">
+        <span class="t">Nach dem Anschlag · Plenum, 4 Minuten</span>
+        <ol>
+          <li>Welche der sechs Thesen wäre 1934 am gefährlichsten gewesen?</li>
+          <li>Welche ist heute am unbequemsten — und für wen?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ M26 ============ -->
+<section id="m26">
+  <div class="wrap stack-lg">
+    <div class="sec-label">M26 · Kopiervorlage · Klassensatz</div>
+    <div class="blatt">
+      <header><span class="id">M26</span><span class="who">Vom Text zur Tat</span></header>
+      <h3>Was die Kirche hier vor Ort tut</h3>
+
+      <div class="hinweis">
+        <span class="t">Warum diese Aufgabe nicht wegfallen darf</span>
+        <p>„Es ist wohlfeil, Thesen an eine Tür zu hängen, wenn dahinter nichts folgt. Die Bekennende Kirche war genau deshalb schwach: Sie hat 1934 einen großartigen Text geschrieben — und dann zur Verfolgung ihrer jüdischen Nachbarn überwiegend geschwiegen. Ein Bekenntnis, aus dem kein Handeln folgt, ist ein Aufsatz.“</p>
+      </div>
+
+      <div class="auftragsbox">
+        <span class="t">Arbeitsauftrag 6.5 · Partnerarbeit, 10 Minuten</span>
+        <ol>
+          <li>Sucht auf der Internetseite einer <strong>Kirchengemeinde oder eines Dekanats hier vor Ort</strong> ein Beispiel für politisches oder soziales Engagement: Asylkreis, Tafel, Umweltgruppe, Solaranlage auf dem Kirchendach, Besuchsdienst, Nachbarschaftshilfe.</li>
+          <li>Notiert: Was wird getan? Wer macht mit? Was würde hier fehlen, wenn es die Kirche nicht gäbe?</li>
+          <li><strong>Die persönliche Frage:</strong> Nennt eine Möglichkeit, wie eine Fünfzehnjährige oder ein Fünfzehnjähriger dort mitmachen könnte — ohne fromm sein zu müssen.<br><em>Wenn ihr keine findet: Schreibt das auf. Auch das ist ein Ergebnis, und es ist eine berechtigte Kritik.</em></li>
+        </ol>
+      </div>
+
+      <div class="tablewrap">
+        <table class="raster">
+          <tbody>
+            <tr><th>Das haben wir gefunden</th><td style="height:80px"></td></tr>
+            <tr><th>Wer macht mit?</th><td style="height:70px"></td></tr>
+            <tr><th>Was würde ohne die Kirche fehlen?</th><td style="height:80px"></td></tr>
+            <tr><th style="background:var(--now-soft);color:var(--now)">Hier könnte ich mitmachen</th><td style="height:90px"></td></tr>
+            <tr><th>Quelle</th><td style="height:50px"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rechercheblock">
+        <span class="t">Startpunkte</span>
+        <ol>
+          <li>Internetseite der eigenen Kirchengemeinde und des Dekanats</li>
+          <li>Diakonie im Landkreis</li>
+          <li>Evangelische Jugend in Bayern (ejb)</li>
+          <li>Umwelt- und Klimaarbeit der Evangelisch-Lutherischen Kirche in Bayern</li>
+        </ol>
+      </div>
+
+      <div class="hinweis">
+        <span class="t">Sicherung</span>
+        <p>Zwei bis drei Beispiele werden gesammelt und <strong>neben die Thesen an die Tür</strong> gehängt — mit der Überschrift, die die Lehrkraft dazuschreibt: <em>„Und das machen wir daraus.“</em></p>
+      </div>
+      <div class="namensfeld"><span>Name</span><span>Klasse</span><span>Datum</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABSCHLUSS ============ -->
+<section id="abschluss">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Stundenschluss · Regieanweisung</div>
+      <h2>Der Rückgriff</h2>
+    </div>
+    <div class="blatt">
+      <header><span class="id">Letzte 2 Minuten</span><span class="who">ohne Vorankündigung</span></header>
+      <div class="infotext">
+        <p>Die Placemat-Mittelfelder aus Doppelstunde 4 werden wieder aufgehängt — kommentarlos, während die Klasse noch am Rechercheblatt sitzt.</p>
+      </div>
+      <div class="hinweis">
+        <span class="t">Wortlaut</span>
+        <p>„Das haben Sie vor drei Wochen aufgeschrieben. Es war Ihre Antwort auf die Frage, was Menschen 1934 geholfen hat zu widersprechen. Lesen Sie es noch einmal — und lesen Sie es diesmal nicht als Geschichte, sondern als Gebrauchsanweisung. Da steht: früh anfangen. Nicht allein sein. Vorher geübt haben. Genau das haben Sie heute getan.“</p>
+        <p style="margin-top:10px">„Und zum Schluss: Kleben Sie bitte noch einmal auf das Plakat von heute Morgen. Dieselbe Frage, zweiter Klebepunkt, andere Farbe. Ich sage Ihnen nicht, wo Sie kleben sollen. Ich möchte nur, dass Sie sehen, ob dieser Vormittag etwas verschoben hat.“</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUELLEN ============ -->
+<section id="quellen">
+  <div class="wrap">
+    <footer>
+      <h3>Quellen und Hinweise</h3>
+      <ul>
+        <li><strong>Kirchliche Positionen:</strong> <a href="https://www.ekd.de/voelkischer-nationalismus-und-christentum-sind-unvereinbar-82915.htm">EKD — „Völkischer Nationalismus und Christentum sind unvereinbar“</a> · <a href="https://www.katholisch.de/artikel/51376-ekd-begruesst-afd-erklaerung-der-deutschen-bischoefe">Zur Erklärung der Deutschen Bischofskonferenz vom 22. Februar 2024</a></li>
+        <li><strong>Barmer Theologische Erklärung, Volltext:</strong> <a href="https://www.reformiert-info.de/Barmer_Theologische_Erklaerung_(1934)-35496-0-37-5.html">reformiert-info.de</a></li>
+        <li><strong>Grundgesetz:</strong> Artikel 4 und Artikel 140 auf gesetze-im-internet.de</li>
+      </ul>
+      <p style="margin-top:16px"><strong>Bibeltexte</strong> nach der Lutherbibel 2017; einzelne Stellen sind gekürzt, Auslassungen mit … gekennzeichnet. Wo statt des Wortlauts nur die Stellenangabe steht, ist das Nachschlagen Teil der Aufgabe.</p>
+      <p style="margin-top:12px"><strong>M24, Stimme 2</strong> fasst wiederkehrende Argumente zusammen und zitiert keine einzelne Person; der Faktencheck auf dieser Karte verlangt deshalb, eine namentlich benannte Stimme zu suchen. <strong>M23</strong> braucht vor jedem Einsatz eine Aktualitätsprüfung — die Datumszeile auf der Folie ist dafür da.</p>
+      <p style="margin-top:16px">Fachliche Grundlage: <a href="https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/evangelische-religionslehre">LehrplanPLUS Bayern, Gymnasium 9, Evangelische Religionslehre, Lernbereich 4</a> — Kompetenzerwartungen 1 und 4.</p>
+    </footer>
+  </div>
+</section>
