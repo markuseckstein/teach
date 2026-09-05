@@ -1,7 +1,7 @@
 ---
 id: 0003
 titel: Testnaht über HTTP
-status: offen
+status: erledigt
 label: ready-for-agent
 haengt-an: ["0001", "0002"]
 ---

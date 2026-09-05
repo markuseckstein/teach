@@ -6,7 +6,7 @@ Erzeugt mit `python3 tracker/index.py` — nicht von Hand ändern.
 |---|---|---|---|---|---|
 | ● | 0001 | [Projektgerüst und HTTP-Server](vorgaenge/0001-projektgeruest-und-http-server.md) | erledigt | `ready-for-agent` | — |
 | ● | 0002 | [Datenbankschema](vorgaenge/0002-datenbankschema.md) | erledigt | `ready-for-agent` | — |
-| ○ | 0003 | [Testnaht über HTTP](vorgaenge/0003-testnaht-ueber-http.md) | offen | `ready-for-agent` | 0001, 0002 |
+| ● | 0003 | [Testnaht über HTTP](vorgaenge/0003-testnaht-ueber-http.md) | erledigt | `ready-for-agent` | 0001, 0002 |
 | ○ | 0004 | [Kurs, Gruppen und Themenfelder anlegen](vorgaenge/0004-kurs-gruppen-und-themenfelder-anlegen.md) | offen | `ready-for-agent` | 0002, 0003 |
 | ○ | 0005 | [Beitritt per Code, Gerätetoken, Wiedereinstieg](vorgaenge/0005-beitritt-per-code-geraetetoken-wiederein.md) | offen | `ready-for-agent` | 0004 |
 | ○ | 0006 | [Schreibrecht innerhalb der Gruppe](vorgaenge/0006-schreibrecht-innerhalb-der-gruppe.md) | offen | `blockiert` | 0005 |
@@ -25,4 +25,4 @@ Erzeugt mit `python3 tracker/index.py` — nicht von Hand ändern.
 | ○ | 0019 | [Zeitkapsel: Fotos aus DS 4 und DS 5](vorgaenge/0019-zeitkapsel-fotos-aus-ds-4-und-ds-5.md) | offen | `spaeter` | 0004 |
 | ○ | 0020 | [Nacharbeit-Seiten digital](vorgaenge/0020-nacharbeit-seiten-digital.md) | offen | `spaeter` | 0017 |
 
-18 offen · 0 in Arbeit · 2 erledigt
+17 offen · 0 in Arbeit · 3 erledigt

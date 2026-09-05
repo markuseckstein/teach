@@ -3,6 +3,7 @@
 package main
 
 import (
+	"bytes"
 	"database/sql"
 	"embed"
 	"flag"
@@ -31,10 +32,13 @@ func newMux(database *sql.DB) *http.ServeMux {
 			http.NotFound(w, r)
 			return
 		}
-		if err := indexTmpl.Execute(w, nil); err != nil {
+		var body bytes.Buffer
+		if err := indexTmpl.Execute(&body, nil); err != nil {
 			http.Error(w, "Vorlage konnte nicht gerendert werden", http.StatusInternalServerError)
 			log.Printf("Vorlagenfehler: %v", err)
+			return
 		}
+		w.Write(body.Bytes())
 	})
 	return mux
 }
