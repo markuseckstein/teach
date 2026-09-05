@@ -1,7 +1,7 @@
 ---
 id: 0009
 titel: Neutralitätstest
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0008"]
 ---

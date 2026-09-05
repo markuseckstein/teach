@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
-	"strings"
 	"testing"
 )
 
@@ -301,10 +300,17 @@ func TestGeraetOhneSchreibrechtKannKeinenSchrittAendern(t *testing.T) {
 }
 
 // TestAutomatWertetNichtInhaltlich ist die ausführbare Fassung der
-// didaktischen Zusage aus SPEZIFIKATION.md ("Testentscheidungen") und darf
-// nie gelöscht werden: Zwei Thesen mit unterschiedlichem Text, aber
-// gleichem Antwortverhalten, kommen zum gleichen Ergebnis. Die Anwendung
-// bewertet nichts, erkennt keine Parteinamen, filtert keine Wörter.
+// didaktischen Zusage aus SPEZIFIKATION.md ("Testentscheidungen") und aus
+// Vorgang 0009 (Neutralitätstest) und DARF NIE GELÖSCHT WERDEN, auch nicht
+// beim Aufräumen oder Vereinfachen: Zwei inhaltlich völlig verschiedene
+// Thesen — eine davon mit Formulierungen, die ein naiver Wortfilter
+// beanstanden würde (Großschreibung, ein erfundener Parteiname,
+// abwertende Sprache über eine Gruppe von Menschen statt über einen Satz) —
+// durchlaufen mit identischem Antwortverhalten in den Prüffragen
+// (einmal nein, dann zweimal ja) denselben Automaten. Die Anwendung
+// bewertet nichts, erkennt keine Parteinamen, filtert keine Wörter — beide
+// Thesen müssen deshalb im gleichen Zustand, mit derselben Zahl an
+// Überarbeitungen landen.
 func TestAutomatWertetNichtInhaltlich(t *testing.T) {
 	texte := []struct {
 		weil, gilt, verwerfung string
@@ -315,34 +321,76 @@ func TestAutomatWertetNichtInhaltlich(t *testing.T) {
 			verwerfung: "wirtschaftliches Wachstum wichtiger sei als die Bewahrung der Schöpfung",
 		},
 		{
-			weil:       "PARTEI X FORDERT SOFORTIGEN AUSSTIEG",
-			gilt:       "wir uns diesem völlig unlogischen Unsinn nie anschließen dürfen",
-			verwerfung: "irgendetwas völlig anderes und beliebig Falsches",
+			// Absichtlich das, was ein naiver Filter beanstanden würde: ein
+			// erfundener Parteiname, Großschreibung, eine Formulierung, die
+			// gegen eine Gruppe von Menschen statt gegen einen Satz zielt.
+			weil:       "DIE PARTEI XYZ IMMER SCHON RECHT HATTE",
+			gilt:       "alle, die das anders sehen, keine Ahnung haben",
+			verwerfung: "irgendjemand widerspricht, was diese Partei sagt",
 		},
 	}
+
+	type ergebnis struct {
+		schritt          string
+		ueberarbeitungen int
+	}
+	var ergebnisse []ergebnis
 
 	for i, txt := range texte {
 		app, client := werkstattApp(t, "Schöpfung und Klima")
 		bringeBisVorschau(t, app, client, "Schöpfung und Klima", txt.weil, txt.gilt, txt.verwerfung)
 
-		resp, _ := client.PostForm(app.server.URL+"/gruppe/vorschau/einreichen", nil)
-		resp.Body.Close()
-		resp, _ = client.PostForm(app.server.URL+"/gruppe/pruefung1", url.Values{"antwort": {"ja"}})
-		resp.Body.Close()
-		resp, err := client.PostForm(app.server.URL+"/gruppe/pruefung2", url.Values{"antwort": {"ja"}})
+		var gruppeID int64
+		app.db.QueryRow(`SELECT id FROM gruppe`).Scan(&gruppeID)
+
+		einreichen := func() {
+			t.Helper()
+			resp, err := client.PostForm(app.server.URL+"/gruppe/vorschau/einreichen", nil)
+			if err != nil {
+				t.Fatalf("text %d: einreichen: %v", i, err)
+			}
+			resp.Body.Close()
+		}
+		antworten := func(pfad, antwort string) {
+			t.Helper()
+			resp, err := client.PostForm(app.server.URL+pfad, url.Values{"antwort": {antwort}})
+			if err != nil {
+				t.Fatalf("text %d: %s=%s: %v", i, pfad, antwort, err)
+			}
+			resp.Body.Close()
+		}
+
+		// Identisches Antwortverhalten für beide Thesen: einmal
+		// zurückgewiesen (nein bei Prüfung 1), erneut eingereicht, dann
+		// zweimal Ja.
+		einreichen()
+		antworten("/gruppe/pruefung1", "nein")
+
+		resp, err := client.PostForm(app.server.URL+"/gruppe/verwerfung", url.Values{"verwerfung": {txt.verwerfung}})
 		if err != nil {
-			t.Fatalf("text %d: pruefung2: %v", i, err)
+			t.Fatalf("text %d: verwerfung erneut einreichen: %v", i, err)
 		}
 		resp.Body.Close()
 
-		var gruppeID int64
-		app.db.QueryRow(`SELECT id FROM gruppe`).Scan(&gruppeID)
+		einreichen()
+		antworten("/gruppe/pruefung1", "ja")
+		antworten("/gruppe/pruefung2", "ja")
+
 		these := aktuellerSchritt(t, app, gruppeID)
+		ergebnisse = append(ergebnisse, ergebnis{schritt: these.Schritt, ueberarbeitungen: these.Ueberarbeitungen})
+
 		if these.Schritt != schrittFreigegeben {
 			t.Errorf("text %d: erwarte FREIGEGEBEN unabhängig vom Wortlaut, habe %s", i, these.Schritt)
 		}
-		if !strings.Contains(schrittPfad(these.Schritt), "freigegeben") {
-			t.Errorf("text %d: erwarte Pfad zu freigegeben", i)
-		}
+	}
+
+	if ergebnisse[0] != ergebnisse[1] {
+		t.Errorf(
+			"erwarte gleiches Ergebnis unabhängig vom Wortlaut, habe text0=%+v text1=%+v",
+			ergebnisse[0], ergebnisse[1],
+		)
+	}
+	if ergebnisse[0].ueberarbeitungen != 1 {
+		t.Errorf("erwarte ueberarbeitungen=1 nach einem Nein, habe %d", ergebnisse[0].ueberarbeitungen)
 	}
 }
