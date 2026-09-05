@@ -20,6 +20,9 @@ var staticFS embed.FS
 //go:embed templates
 var templatesFS embed.FS
 
+//go:embed data
+var dataFS embed.FS
+
 var indexTmpl = template.Must(template.ParseFS(templatesFS, "templates/index.html"))
 
 // newMux baut den Router der Anwendung.
@@ -35,6 +38,19 @@ func newMux(database *sql.DB) *http.ServeMux {
 	mux.HandleFunc("GET /beitreten", handleBeitreten(database))
 	mux.HandleFunc("GET /gruppe", handleGruppeStatus(database))
 	mux.HandleFunc("POST /gruppe/schreibrecht", handleSchreibrechtUebernehmen(database))
+	mux.HandleFunc("GET /gruppe/bibelstelle", handleBibelstelleAnzeigen(database))
+	mux.HandleFunc("POST /gruppe/bibelstelle", handleBibelstelleWaehlen(database))
+	mux.HandleFunc("GET /gruppe/positiv", handlePositivAnzeigen(database))
+	mux.HandleFunc("POST /gruppe/positiv", handlePositivSpeichern(database))
+	mux.HandleFunc("GET /gruppe/verwerfung", handleVerwerfungAnzeigen(database))
+	mux.HandleFunc("POST /gruppe/verwerfung", handleVerwerfungSpeichern(database))
+	mux.HandleFunc("GET /gruppe/vorschau", handleVorschauAnzeigen(database))
+	mux.HandleFunc("POST /gruppe/vorschau/einreichen", handleVorschauEinreichen(database))
+	mux.HandleFunc("GET /gruppe/pruefung1", handlePruefung1Anzeigen(database))
+	mux.HandleFunc("POST /gruppe/pruefung1", handlePruefung1Beantworten(database))
+	mux.HandleFunc("GET /gruppe/pruefung2", handlePruefung2Anzeigen(database))
+	mux.HandleFunc("POST /gruppe/pruefung2", handlePruefung2Beantworten(database))
+	mux.HandleFunc("GET /gruppe/freigegeben", handleFreigegebenAnzeigen(database))
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)

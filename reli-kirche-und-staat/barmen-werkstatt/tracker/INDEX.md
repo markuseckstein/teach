@@ -11,7 +11,7 @@ Erzeugt mit `python3 tracker/index.py` — nicht von Hand ändern.
 | ● | 0005 | [Beitritt per Code, Gerätetoken, Wiedereinstieg](vorgaenge/0005-beitritt-per-code-geraetetoken-wiederein.md) | erledigt | `ready-for-agent` | 0004 |
 | ● | 0006 | [Schreibrecht innerhalb der Gruppe](vorgaenge/0006-schreibrecht-innerhalb-der-gruppe.md) | erledigt | `blockiert` | 0005 |
 | ● | 0007 | [Themenfelder und Bibelstellen als Daten](vorgaenge/0007-themenfelder-und-bibelstellen-als-daten.md) | erledigt | `inhalt` | 0002 |
-| ○ | 0008 | [Zustandsautomat der Werkstatt](vorgaenge/0008-zustandsautomat-der-werkstatt.md) | offen | `blockiert` | 0006, 0007 |
+| ● | 0008 | [Zustandsautomat der Werkstatt](vorgaenge/0008-zustandsautomat-der-werkstatt.md) | erledigt | `blockiert` | 0006, 0007 |
 | ○ | 0009 | [Neutralitätstest](vorgaenge/0009-neutralitaetstest.md) | offen | `blockiert` | 0008 |
 | ○ | 0010 | [Live-Kanal über SSE](vorgaenge/0010-live-kanal-ueber-sse.md) | offen | `blockiert` | 0006 |
 | ○ | 0011 | [Regiepult](vorgaenge/0011-regiepult.md) | offen | `blockiert` | 0008, 0010 |
@@ -25,4 +25,4 @@ Erzeugt mit `python3 tracker/index.py` — nicht von Hand ändern.
 | ○ | 0019 | [Zeitkapsel: Fotos aus DS 4 und DS 5](vorgaenge/0019-zeitkapsel-fotos-aus-ds-4-und-ds-5.md) | offen | `spaeter` | 0004 |
 | ○ | 0020 | [Nacharbeit-Seiten digital](vorgaenge/0020-nacharbeit-seiten-digital.md) | offen | `spaeter` | 0017 |
 
-13 offen · 0 in Arbeit · 7 erledigt
+12 offen · 0 in Arbeit · 8 erledigt

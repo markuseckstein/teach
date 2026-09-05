@@ -1,7 +1,7 @@
 ---
 id: 0008
 titel: Zustandsautomat der Werkstatt
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0006", "0007"]
 ---

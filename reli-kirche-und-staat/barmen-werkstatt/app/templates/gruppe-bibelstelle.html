@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bibelstelle wählen — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Bibelstelle wählen</h1>
+		<p>Themenfeld: <strong>{{.Themenfeld}}</strong></p>
+		<ul>
+			{{range .Bibelstellen}}
+			<li>
+				<p><strong>{{.Angabe}}</strong></p>
+				<p>{{.Text}}</p>
+				<form method="post" action="/gruppe/bibelstelle">
+					<input type="hidden" name="bibelstelle" value="{{.Angabe}}">
+					<button type="submit">Diese Stelle wählen</button>
+				</form>
+			</li>
+			{{end}}
+		</ul>
+	</main>
+</body>
+</html>

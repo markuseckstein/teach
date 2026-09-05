@@ -193,4 +193,3 @@ func TestKursQRLiefertEinPNGBild(t *testing.T) {
 		t.Errorf("erwarte gültige PNG-Signatur")
 	}
 }
-

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Verwerfung — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Eure Verwerfung</h1>
+		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+		<form method="post" action="/gruppe/verwerfung">
+			<label>Wir verwerfen die falsche Lehre, als ob …
+				<textarea name="verwerfung" required>{{.Verwerfung}}</textarea>
+			</label>
+			<button type="submit">Weiter zur Vorschau</button>
+		</form>
+	</main>
+</body>
+</html>

@@ -236,6 +236,7 @@ func handleGruppeBeitreten(database *sql.DB) http.HandlerFunc {
 type gruppeStatusAnsicht struct {
 	Nummer          int
 	Schritt         string
+	SchrittPfad     string
 	HatSchreibrecht bool
 }
 
@@ -277,6 +278,7 @@ func handleGruppeStatus(database *sql.DB) http.HandlerFunc {
 		renderTemplate(w, gruppeStatusTmpl, gruppeStatusAnsicht{
 			Nummer:          nummer,
 			Schritt:         schritt,
+			SchrittPfad:     schrittPfad(schritt),
 			HatSchreibrecht: hatSchreibrecht,
 		})
 	}

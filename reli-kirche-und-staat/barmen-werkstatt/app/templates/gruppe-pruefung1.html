@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Härteprüfung 1 — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Prüffrage 1</h1>
+		<p>Steht in eurer These eine Aussage — oder ein Vorwurf gegen Menschen?</p>
+
+		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+		<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+
+		<form method="post" action="/gruppe/pruefung1">
+			<button type="submit" name="antwort" value="ja">Eine Aussage — ja</button>
+			<button type="submit" name="antwort" value="nein">Ein Vorwurf gegen Menschen — nein</button>
+		</form>
+	</main>
+</body>
+</html>

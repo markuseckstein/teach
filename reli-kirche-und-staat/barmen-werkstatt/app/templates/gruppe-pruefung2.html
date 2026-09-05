@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Härteprüfung 2 — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Prüffrage 2</h1>
+		<p>Gilt eure These auch, wenn morgen eine andere Partei regiert?</p>
+
+		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+		<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+
+		<form method="post" action="/gruppe/pruefung2">
+			<button type="submit" name="antwort" value="ja">Ja, das gilt auch dann</button>
+			<button type="submit" name="antwort" value="nein">Nein, das hängt an der Tagespolitik</button>
+		</form>
+	</main>
+</body>
+</html>
