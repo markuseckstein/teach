@@ -1,7 +1,7 @@
 ---
 id: 0017
 titel: Statische Inhalte mit ausliefern
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0001"]
 ---
