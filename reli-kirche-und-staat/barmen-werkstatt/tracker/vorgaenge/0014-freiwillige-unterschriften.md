@@ -1,7 +1,7 @@
 ---
 id: 0014
 titel: Freiwillige Unterschriften
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0008"]
 ---

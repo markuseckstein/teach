@@ -12,6 +12,29 @@
 		<p>Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
 		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
 		<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+
+		<section>
+			<h2>Unterschriften (freiwillig)</h2>
+			<p>Wer möchte, unterschreibt mit Vornamen. Niemand muss.</p>
+			{{if .Unterschriften}}
+			<ul>
+				{{range $i, $name := .Unterschriften}}
+				<li>
+					{{$name}}
+					<form method="post" action="/gruppe/unterschriften/entfernen" style="display:inline">
+						<input type="hidden" name="index" value="{{$i}}">
+						<button type="submit">Entfernen</button>
+					</form>
+				</li>
+				{{end}}
+			</ul>
+			{{end}}
+			<form method="post" action="/gruppe/unterschriften/hinzufuegen">
+				<input type="text" name="vorname" placeholder="Vorname" required>
+				<button type="submit">Unterschreiben</button>
+			</form>
+		</section>
+
 		<form method="post" action="/gruppe/vorschau/einreichen">
 			<button type="submit">Einreichen</button>
 		</form>

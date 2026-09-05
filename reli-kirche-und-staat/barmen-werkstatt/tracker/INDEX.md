@@ -17,7 +17,7 @@ Erzeugt mit `python3 tracker/index.py` — nicht von Hand ändern.
 | ● | 0011 | [Regiepult](vorgaenge/0011-regiepult.md) | erledigt | `blockiert` | 0008, 0010 |
 | ● | 0012 | [Beamer-Ansicht](vorgaenge/0012-beamer-ansicht.md) | erledigt | `blockiert` | 0008, 0010 |
 | ● | 0013 | [Druckansicht der freigegebenen These](vorgaenge/0013-druckansicht-der-freigegebenen-these.md) | erledigt | `blockiert` | 0008 |
-| ○ | 0014 | [Freiwillige Unterschriften](vorgaenge/0014-freiwillige-unterschriften.md) | offen | `blockiert` | 0008 |
+| ● | 0014 | [Freiwillige Unterschriften](vorgaenge/0014-freiwillige-unterschriften.md) | erledigt | `blockiert` | 0008 |
 | ● | 0015 | [Kurs beenden und Daten löschen](vorgaenge/0015-kurs-beenden-und-daten-loeschen.md) | erledigt | `blockiert` | 0004 |
 | ○ | 0016 | [Robustheit auf BYOD-Geräten](vorgaenge/0016-robustheit-auf-byod-geraeten.md) | offen | `blockiert` | 0010 |
 | ● | 0017 | [Statische Inhalte mit ausliefern](vorgaenge/0017-statische-inhalte-mit-ausliefern.md) | erledigt | `blockiert` | 0001 |
@@ -25,4 +25,4 @@ Erzeugt mit `python3 tracker/index.py` — nicht von Hand ändern.
 | ○ | 0019 | [Zeitkapsel: Fotos aus DS 4 und DS 5](vorgaenge/0019-zeitkapsel-fotos-aus-ds-4-und-ds-5.md) | offen | `spaeter` | 0004 |
 | ○ | 0020 | [Nacharbeit-Seiten digital](vorgaenge/0020-nacharbeit-seiten-digital.md) | offen | `spaeter` | 0017 |
 
-5 offen · 0 in Arbeit · 15 erledigt
+4 offen · 0 in Arbeit · 16 erledigt

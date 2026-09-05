@@ -65,6 +65,8 @@ func newMux(database *sql.DB) *http.ServeMux {
 	mux.HandleFunc("POST /gruppe/verwerfung", handleVerwerfungSpeichern(database))
 	mux.HandleFunc("GET /gruppe/vorschau", handleVorschauAnzeigen(database))
 	mux.HandleFunc("POST /gruppe/vorschau/einreichen", handleVorschauEinreichen(database))
+	mux.HandleFunc("POST /gruppe/unterschriften/hinzufuegen", handleUnterschriftHinzufuegen(database))
+	mux.HandleFunc("POST /gruppe/unterschriften/entfernen", handleUnterschriftEntfernen(database))
 	mux.HandleFunc("GET /gruppe/pruefung1", handlePruefung1Anzeigen(database))
 	mux.HandleFunc("POST /gruppe/pruefung1", handlePruefung1Beantworten(database))
 	mux.HandleFunc("GET /gruppe/pruefung2", handlePruefung2Anzeigen(database))

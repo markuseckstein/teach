@@ -453,11 +453,24 @@ func theseAnsichtAus(these theseZeile) theseAnsicht {
 		Weil:           these.Weil,
 		Gilt:           these.Gilt,
 		Verwerfung:     these.Verwerfung,
-		Unterschriften: these.Unterschriften,
+		Unterschriften: strings.Join(unterschriftenTeilen(these.Unterschriften), ", "),
 	}
 }
 
 var vorschauTmpl = template.Must(template.ParseFS(templatesFS, "templates/gruppe-vorschau.html"))
+
+// vorschauAnsicht zeigt zusätzlich zur zusammengesetzten These die bislang
+// eingetragenen Unterschriften als einzeln entfernbare Liste (Vorgang 0014) —
+// deshalb ein eigener Typ statt theseAnsicht, das den Sammelstring nur am
+// Stück zeigt (Druckblatt, gruppe-freigegeben.html).
+type vorschauAnsicht struct {
+	Themenfeld     string
+	Bibelstelle    string
+	Weil           string
+	Gilt           string
+	Verwerfung     string
+	Unterschriften []string
+}
 
 func handleVorschauAnzeigen(database *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -465,7 +478,14 @@ func handleVorschauAnzeigen(database *sql.DB) http.HandlerFunc {
 		if !weiter {
 			return
 		}
-		renderTemplate(w, vorschauTmpl, theseAnsichtAus(these))
+		renderTemplate(w, vorschauTmpl, vorschauAnsicht{
+			Themenfeld:     these.Themenfeld,
+			Bibelstelle:    these.Bibelstelle,
+			Weil:           these.Weil,
+			Gilt:           these.Gilt,
+			Verwerfung:     these.Verwerfung,
+			Unterschriften: unterschriftenTeilen(these.Unterschriften),
+		})
 	}
 }
 
