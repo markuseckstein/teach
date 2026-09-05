@@ -12,6 +12,10 @@
   die SuS die Rollen (Barth, Althaus, Meiser) — das bleibt so, es ist historisch
   und dramaturgisch richtig. Umgestellt wird mit `python3 duzen.py`.
 
+- **Nacharbeitsblaetter fuer kranke SuS** liegen in `word/nacharbeit/`, erzeugt mit
+  `nacharbeit.py`. Eine Seite je Doppelstunde, Merkpunkte + Merksatz + freiwilliger
+  Link. Beim Aendern einer Doppelstunde auch dort nachziehen.
+
 ## Technische Konventionen dieser Workspace
 - `assets/style.css` ist die geteilte Gestaltungsschicht (Tokens, Typo, Komponenten).
 - Lektionen in `lessons/` binden diese Tokens **inline** ein, weil sie als Artifact
