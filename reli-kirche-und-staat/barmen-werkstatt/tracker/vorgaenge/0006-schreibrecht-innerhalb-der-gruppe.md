@@ -1,7 +1,7 @@
 ---
 id: 0006
 titel: Schreibrecht innerhalb der Gruppe
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0005"]
 ---

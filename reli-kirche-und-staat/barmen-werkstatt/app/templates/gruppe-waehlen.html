@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gruppe wählen — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>In welcher Gruppe bist du?</h1>
+		<ul>
+			{{range .Gruppen}}
+			<li>
+				<form method="post" action="/kurse/{{$.KursID}}/gruppen/{{.}}/beitreten">
+					<button type="submit">Gruppe {{.}}</button>
+				</form>
+			</li>
+			{{end}}
+		</ul>
+	</main>
+</body>
+</html>

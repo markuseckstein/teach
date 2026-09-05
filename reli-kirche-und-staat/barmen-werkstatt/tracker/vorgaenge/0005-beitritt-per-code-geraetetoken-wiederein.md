@@ -1,7 +1,7 @@
 ---
 id: 0005
 titel: Beitritt per Code, Gerätetoken, Wiedereinstieg
-status: offen
+status: erledigt
 label: ready-for-agent
 haengt-an: ["0004"]
 ---

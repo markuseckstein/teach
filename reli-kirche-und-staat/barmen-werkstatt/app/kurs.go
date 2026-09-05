@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"database/sql"
 	"errors"
 	"fmt"
@@ -189,13 +188,7 @@ func handleKursAnzeigen(database *sql.DB) http.HandlerFunc {
 			Themenfelder:  themenfelder,
 		}
 
-		var body bytes.Buffer
-		if err := kursTmpl.Execute(&body, ansicht); err != nil {
-			http.Error(w, "Vorlage konnte nicht gerendert werden", http.StatusInternalServerError)
-			log.Printf("kurs-vorlage: %v", err)
-			return
-		}
-		w.Write(body.Bytes())
+		renderTemplate(w, kursTmpl, ansicht)
 	}
 }
 

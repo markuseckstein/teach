@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Beitreten — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Der Barmen-Werkstatt beitreten</h1>
+		{{if .Fehler}}<p role="alert">{{.Fehler}}</p>{{end}}
+		<form method="get" action="/beitreten">
+			<label>Kurscode
+				<input type="text" name="code" value="{{.Code}}" autocapitalize="characters" autocomplete="off" required>
+			</label>
+			<button type="submit">Weiter</button>
+		</form>
+	</main>
+</body>
+</html>

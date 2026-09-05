@@ -29,20 +29,33 @@ func newMux(database *sql.DB) *http.ServeMux {
 	mux.HandleFunc("POST /kurse", handleKursAnlegen(database))
 	mux.HandleFunc("GET /kurse/{id}", handleKursAnzeigen(database))
 	mux.HandleFunc("POST /kurse/{id}/gruppen/{nummer}/themenfeld", handleThemenfeldZuweisen(database))
+	mux.HandleFunc("GET /kurse/{id}/qr.png", handleKursQR(database))
+	mux.HandleFunc("GET /kurse/{id}/gruppe-waehlen", handleGruppeWaehlen(database))
+	mux.HandleFunc("POST /kurse/{id}/gruppen/{nummer}/beitreten", handleGruppeBeitreten(database))
+	mux.HandleFunc("GET /beitreten", handleBeitreten(database))
+	mux.HandleFunc("GET /gruppe", handleGruppeStatus(database))
+	mux.HandleFunc("POST /gruppe/schreibrecht", handleSchreibrechtUebernehmen(database))
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)
 			return
 		}
-		var body bytes.Buffer
-		if err := indexTmpl.Execute(&body, nil); err != nil {
-			http.Error(w, "Vorlage konnte nicht gerendert werden", http.StatusInternalServerError)
-			log.Printf("Vorlagenfehler: %v", err)
-			return
-		}
-		w.Write(body.Bytes())
+		renderTemplate(w, indexTmpl, nil)
 	})
 	return mux
+}
+
+// renderTemplate rendert tmpl zuerst in einen Puffer, bevor es geschrieben
+// wird — ein Renderfehler in der Mitte der Vorlage darf nicht mit einem
+// bereits gesendeten 200 kollidieren.
+func renderTemplate(w http.ResponseWriter, tmpl *template.Template, daten any) {
+	var body bytes.Buffer
+	if err := tmpl.Execute(&body, daten); err != nil {
+		http.Error(w, "Vorlage konnte nicht gerendert werden", http.StatusInternalServerError)
+		log.Printf("Vorlagenfehler: %v", err)
+		return
+	}
+	w.Write(body.Bytes())
 }
 
 func main() {
