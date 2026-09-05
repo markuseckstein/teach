@@ -6,6 +6,12 @@
 - Doppelstundenformat (90 min).
 - Aktivierung vor Vollständigkeit: lieber weniger Stoff, dafür Beteiligung.
 
+- **Duzen.** Die SuS werden geduzt — beim Ansprechen der ganzen Klasse "ihr",
+  bei Aufgaben an Einzelne "du". Auch der Regie- und Hinweistext an die Lehrkraft
+  wird geduzt (ausdrueckliche Erlaubnis). Ausnahme: Im Rollenspiel von DS 3 siezen
+  die SuS die Rollen (Barth, Althaus, Meiser) — das bleibt so, es ist historisch
+  und dramaturgisch richtig. Umgestellt wird mit `python3 duzen.py`.
+
 ## Technische Konventionen dieser Workspace
 - `assets/style.css` ist die geteilte Gestaltungsschicht (Tokens, Typo, Komponenten).
 - Lektionen in `lessons/` binden diese Tokens **inline** ein, weil sie als Artifact

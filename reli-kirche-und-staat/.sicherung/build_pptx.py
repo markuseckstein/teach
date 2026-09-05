@@ -397,8 +397,8 @@ def baue(ziel):
         ["Notiert zu zweit in einem Satz, was die sieben Bilder verbindet.",
          "Einigt euch auf ein Bild, bei dem ihr euch am wenigsten sicher seid, warum es dabei ist."],
         meta="Partnerarbeit · 3 min", kennung="Arbeitsauftrag 1.1",
-        notizen="ÜBERLEITUNG: „Ich höre viermal dasselbe Wort: Kirche. Ihr habt recht — in jedem "
-                "dieser Bilder steckt Kirche. Aber schaut genau hin: In keinem einzigen ist eine "
+        notizen="ÜBERLEITUNG: „Ich höre viermal dasselbe Wort: Kirche. Sie haben recht — in jedem "
+                "dieser Bilder steckt Kirche. Aber schauen Sie genau hin: In keinem einzigen ist eine "
                 "Kirche zu sehen. Das hier ist eine Lohnabrechnung, das ein Rettungswagen, das ein "
                 "Stundenplan. Das sind lauter staatliche Angelegenheiten. Und trotzdem ist Kirche darin. "
                 "Wie kommt sie da hinein?“")
@@ -419,8 +419,8 @@ def baue(ziel):
         "Deutschland hat keine Staatskirche — und trotzdem sind Kirche und Staat überall miteinander verflochten.\n\nWie viel Nähe ist gut? Und wann wird sie gefährlich?",
         None, "Leitfrage der ganzen Einheit", hintergrund=AKZENT_HELL,
         notizen="An die Tafel schreiben. Bleibt sechs Wochen lang stehen.\n\n"
-                "ÜBERLEITUNG: „Diese Frage kann ich euch nicht beantworten, ohne dass ihr wisst, "
-                "worüber wir reden. Also machen wir es umgekehrt: Ihr recherchiert selbst. Jede Gruppe "
+                "ÜBERLEITUNG: „Diese Frage kann ich Ihnen nicht beantworten, ohne dass Sie wissen, "
+                "worüber wir reden. Also machen wir es umgekehrt: Sie recherchieren selbst. Jede Gruppe "
                 "wird für zwanzig Minuten die einzige Person im Raum, die sich mit ihrem Thema auskennt.“")
 
     folie_auftrag(
@@ -430,9 +430,9 @@ def baue(ziel):
          "Füllt den A3-Steckbrief aus: WAS · WOHER · WEM NÜTZT ES · STREITPUNKT. Je Feld höchstens drei Sätze.",
          "Legt fest, wer den Steckbrief später in 90 Sekunden erklärt. Übt es einmal."],
         meta="Gruppenarbeit · 30 min", kennung="Arbeitsauftrag 1.2",
-        notizen="ÜBERLEITUNG danach: „Zeit ist um. Ab jetzt gilt: Euer Blatt bleibt liegen, ihr nehmt "
-                "nur euren Kopf mit. Wenn eure Zuhörer am Ende euer Feld ‚Streitpunkt‘ nicht ausfüllen "
-                "können, habt ihr schlecht erklärt — nicht die anderen schlecht zugehört.“")
+        notizen="ÜBERLEITUNG danach: „Zeit ist um. Ab jetzt gilt: Ihr Blatt bleibt liegen, Sie nehmen "
+                "nur Ihren Kopf mit. Wenn Ihre Zuhörer am Ende Ihr Feld ‚Streitpunkt‘ nicht ausfüllen "
+                "können, haben Sie schlecht erklärt — nicht die anderen schlecht zugehört.“")
 
     for nummer, satz in enumerate([
             "„Der Staat soll die Kirchensteuer nicht mehr für die Kirchen einziehen.“",
@@ -440,10 +440,10 @@ def baue(ziel):
             "„Eine Kirche, die Krankenhäuser betreibt, soll ihren Angestellten dieselben Streikrechte geben wie jeder andere Arbeitgeber.“",
             "„Solange die Kirche vom Staat Geld bekommt, sollte sie sich mit Kritik am Staat zurückhalten.“"], 1):
         folie_aussage(
-            prs, satz, "Stellt euch in die Ecke, die zu eurer Meinung passt.",
+            prs, satz, "Stellen Sie sich in die Ecke, die zu Ihrer Meinung passt.",
             f"M5 · Streitsatz {nummer} von 4",
             notizen=("Nach zwei Begründungen fragen: „Wer hat ein Argument gehört, das ihn ins Wanken "
-                     "bringt? Wechselt die Ecke — das ist ausdrücklich erlaubt.“"
+                     "bringt? Wechseln Sie die Ecke — das ist ausdrücklich erlaubt.“"
                      + ("\n\nSatz 4 ist der wichtigste. Verteilung im Raum notieren — sie kommt in "
                         "Doppelstunde 6 zurück." if nummer == 4 else "")))
 
@@ -453,7 +453,7 @@ def baue(ziel):
                notizen="Zehn Sekunden stehen lassen, nichts sagen.\n\n"
                        "ÜBERLEITUNG: „Damals war die Nähe zwischen Kirche und Staat so eng wie nie — und "
                        "für manche Menschen wurde sie lebensgefährlich. Nächste Stunde fangen wir genau "
-                       "hier an. Und die Frage, die ihr mitnehmt, ist nicht ‚Wie konnten die nur?‘, "
+                       "hier an. Und die Frage, die Sie mitnehmen, ist nicht ‚Wie konnten die nur?‘, "
                        "sondern: ‚Was hätte ich in diesem Raum gemacht?‘“\n\n"
                        "HAUSAUFGABE: Eine erwachsene Person fragen: Zahlst du Kirchensteuer — und warum "
                        "eigentlich (nicht)? Zwei Sätze, ohne Namen.")
@@ -467,14 +467,14 @@ def baue(ziel):
 
     folie_auftrag(
         prs, "Bildlesen in drei Schritten",
-        ["SEHEN — Notiere fünf Dinge, die du auf dem Bild tatsächlich siehst. Keine Deutung, nur Gegenstände.",
-         "VERMISSEN — Notiere eine Sache, die du in einer Kirche erwarten würdest und die hier fehlt oder überdeckt ist.",
-         "FRAGEN — Formuliere die eine Frage, die du den Menschen auf diesem Bild stellen würdest."],
+        ["SEHEN — Notieren Sie fünf Dinge, die Sie auf dem Bild tatsächlich sehen. Keine Deutung, nur Gegenstände.",
+         "VERMISSEN — Notieren Sie eine Sache, die Sie in einer Kirche erwarten würden und die hier fehlt oder überdeckt ist.",
+         "FRAGEN — Formulieren Sie die eine Frage, die Sie den Menschen auf diesem Bild stellen würden."],
         meta="Einzelarbeit · 8 min", kennung="Arbeitsauftrag 2.1",
         notizen="Auf dem Transparent hat das Kreuz nur die Hälfte des Platzes — die andere gehört dem "
                 "Hakenkreuz. Wenn niemand darauf kommt, nur fragen: „Wer wirbt hier eigentlich für wen?“\n\n"
-                "ÜBERLEITUNG: „Die meisten eurer Fragen laufen auf dasselbe hinaus: Wie konnten die nur? "
-                "Ich möchte euch diese Frage wegnehmen. Sie ist bequem — sie stellt uns auf die richtige "
+                "ÜBERLEITUNG: „Die meisten Ihrer Fragen laufen auf dasselbe hinaus: Wie konnten die nur? "
+                "Ich möchte Ihnen diese Frage wegnehmen. Sie ist bequem — sie stellt uns auf die richtige "
                 "Seite, bevor wir irgendetwas verstanden haben. Die schwierigere Frage lautet: Was war "
                 "daran so überzeugend?“")
 
@@ -502,9 +502,9 @@ def baue(ziel):
          "Was wäre die Folge? Beschreibt eine konkrete Person, für die dieser Text gefährlich wird.",
          "Ein Satz in heutiger Alltagssprache auf den Papierstreifen — für die Wäscheleine."],
         meta="Gruppenarbeit · 25 min", kennung="Arbeitsauftrag 2.2",
-        notizen="Vor dem Austeilen ansagen: „Zwei dieser Texte sind judenfeindlich. Ich gebe sie euch, "
+        notizen="Vor dem Austeilen ansagen: „Zwei dieser Texte sind judenfeindlich. Ich gebe sie Ihnen, "
                 "weil man nicht verstehen kann, was passiert ist, ohne zu sehen, wie normal diese Sätze "
-                "damals klangen. Wenn euch ein Satz zu nahe geht, sagt es mir.“")
+                "damals klangen. Wenn Ihnen ein Satz zu nahe geht, sagen Sie es mir.“")
 
     folie_aussage(
         prs,
@@ -526,10 +526,10 @@ def baue(ziel):
     folie_aussage(
         prs, "„Jesus Christus … ist das eine Wort Gottes, das wir zu hören … haben.“",
         "Mai 1934", "Cliffhanger", hervor="das eine Wort Gottes",
-        notizen="ÜBERLEITUNG: „Das EINE Wort. Nicht: eines von mehreren. Überlegt bis nächste Woche, "
+        notizen="ÜBERLEITUNG: „Das EINE Wort. Nicht: eines von mehreren. Überlegen Sie bis nächste Woche, "
                 "wem dieser Satz wehtut. Denn dreizehn Tage später haben acht evangelische Theologen — "
                 "sechs davon aus Franken — eine Gegenschrift veröffentlicht. Nächste Stunde lassen wir die "
-                "beiden Seiten aufeinandertreffen. Und ihr sitzt nicht im Publikum. Ihr seid die beiden Seiten.“")
+                "beiden Seiten aufeinandertreffen. Und Sie sitzen nicht im Publikum. Sie sind die beiden Seiten.“")
 
     # ================================================== DOPPELSTUNDE 3
     folie_trenner(prs, 3, "Barmen gegen Ansbach",
@@ -573,7 +573,7 @@ def baue(ziel):
          "Schreibt euren eigenen Verwerfungssatz für 1934: „Wir verwerfen die falsche Lehre, als ob …“",
          "Haltet fest: Wem tut dieser Satz weh? Nennt zwei Gruppen."],
         meta="Partnerarbeit · 14 min", kennung="Arbeitsauftrag 3.3",
-        notizen="ÜBERLEITUNG: „Der Originaltext ist sperrig — Theologendeutsch von 1934. Eure Aufgabe ist, "
+        notizen="ÜBERLEITUNG: „Der Originaltext ist sperrig — Theologendeutsch von 1934. Ihre Aufgabe ist, "
                 "ihn so zu übersetzen, dass ihn eine Siebtklässlerin versteht. Das ist die härteste Prüfung "
                 "für Verstehen, die ich kenne: Wer etwas nicht einfach sagen kann, hat es nicht verstanden.“\n\n"
                 "Diese Satzform kommt in Doppelstunde 6 zurück. Die besten Übersetzungen einsammeln.")
@@ -614,9 +614,9 @@ def baue(ziel):
 
     folie_aussage(
         prs, "Wobei würde ich heute wegschauen?",
-        "Ein Satz. Wird nicht eingesammelt und nicht vorgelesen. Der Zettel gehört dir.",
+        "Ein Satz. Wird nicht eingesammelt und nicht vorgelesen. Der Zettel gehört Ihnen.",
         "Stille Arbeit · 3 min", hintergrund=EPOCHE_HELL,
-        notizen="ÜBERLEITUNG: „Behaltet diesen Zettel. Der Mann, der den Text geschrieben hat, war "
+        notizen="ÜBERLEITUNG: „Behalten Sie diesen Zettel. Der Mann, der den Text geschrieben hat, war "
                 "1924 stolzer Nationalist und U-Boot-Kommandant. Später saß er sieben Jahre in "
                 "Sachsenhausen und Dachau. Menschen sind nicht von Anfang an Helden oder Feiglinge — "
                 "sie werden es, Entscheidung für Entscheidung.“")
@@ -629,8 +629,8 @@ def baue(ziel):
          "Beantwortet für euch, ohne es aufzuschreiben: Hätte diese Person mehr tun können? Was?"],
         meta="Gruppenarbeit · 26 min", kennung="Arbeitsauftrag 4.2",
         notizen="ÜBERLEITUNG: „Ich habe eine Leine gespannt. Links: Anpassung. Rechts: Widerstand. "
-                "Dazwischen ist nichts — kein Raster, keine Markierungen. Den Zwischenraum füllt ihr. "
-                "Und ich verspreche euch: Sobald die dritte Karte hängt, wird jemand widersprechen wollen.“")
+                "Dazwischen ist nichts — kein Raster, keine Markierungen. Den Zwischenraum füllen Sie. "
+                "Und ich verspreche Ihnen: Sobald die dritte Karte hängt, wird jemand widersprechen wollen.“")
 
     folie_auftrag(
         prs, "Was macht Widerstand wahrscheinlicher?",
@@ -652,7 +652,7 @@ def baue(ziel):
         notizen="Vorlesen. Pause. Nichts erklären, nicht deuten, keine Hausaufgabe hinterherschieben. "
                 "Projektion an lassen, bis der letzte Schüler den Raum verlassen hat.\n\n"
                 "Erst beim Hinausgehen, im Vorbeigehen: „Nächste Woche springen wir vierzig Jahre weiter. "
-                "Gleiches Land, andere Diktatur — und diesmal bringt ihr eure Handys mit.“")
+                "Gleiches Land, andere Diktatur — und diesmal bringen Sie Ihre Handys mit.“")
 
     # ================================================== DOPPELSTUNDE 5
     folie_trenner(prs, 5, "Kerzen statt Steine",
@@ -693,13 +693,13 @@ def baue(ziel):
          "Eine Bildidee: Welches Foto müsste hier hängen — und wo habt ihr es gefunden?",
          "Eine offene Frage am unteren Rand, auf die ihr selbst keine sichere Antwort habt."],
         meta="Redaktionsteams · 30 min", kennung="Arbeitsauftrag 5.2",
-        notizen="Regel laut ansagen: „Zu jeder Behauptung auf eurer Tafel muss ich fragen dürfen: Wo steht "
-                "das? — und ihr müsst es mir zeigen können.“ Startquellen: LeMO (dhm.de/lemo) und "
+        notizen="Regel laut ansagen: „Zu jeder Behauptung auf Ihrer Tafel muss ich fragen dürfen: Wo steht "
+                "das? — und Sie müssen es mir zeigen können.“ Startquellen: LeMO (dhm.de/lemo) und "
                 "Bundesstiftung Aufarbeitung.")
 
     folie_aussage(
         prs,
-        "Ihr geht schweigend durch die Ausstellung — wie in einem echten Museum.\n\nDrei Klebepunkte, und die kommen auf die offenen Fragen, die euch am meisten beschäftigen.\n\nNicht auf die schönste Tafel. Auf die beste Frage.",
+        "Sie gehen schweigend durch die Ausstellung — wie in einem echten Museum.\n\nDrei Klebepunkte, und die kommen auf die offenen Fragen, die Sie am meisten beschäftigen.\n\nNicht auf die schönste Tafel. Auf die beste Frage.",
         None, "Museumsrundgang · 7 min", hintergrund=JETZT_HELL,
         notizen="Die anschließende Besprechung der meistgeklebten Fragen ist die inhaltlich wertvollste "
                 "Phase der Stunde. Sie darf überziehen.")
@@ -716,8 +716,8 @@ def baue(ziel):
         notizen="ERWARTUNGSHORIZONT für die letzte Zeile — nicht vorsagen: die Erfahrung von 1933. "
                 "1989 wusste die Kirche, wie es ausgeht, wenn man sich vereinnahmen lässt. Barmen war "
                 "inzwischen ein Text, auf den man sich berufen konnte.\n\n"
-                "ÜBERLEITUNG: „Nächste Woche steht kein Jahr mehr an der Tafel, sondern dieses. Und ihr "
-                "werdet etwas tun, das seit 1934 kaum jemand mehr gemacht hat: Ihr schreibt eigene "
+                "ÜBERLEITUNG: „Nächste Woche steht kein Jahr mehr an der Tafel, sondern dieses. Und Sie "
+                "werden etwas tun, das seit 1934 kaum jemand mehr gemacht hat: Sie schreiben eigene "
                 "Bekenntnissätze. Und die hängen wir an die Tür.“")
 
     # ================================================== DOPPELSTUNDE 6
@@ -726,7 +726,7 @@ def baue(ziel):
 
     folie_aussage(
         prs, "„Die Kirche soll sich aus der Politik raushalten.“",
-        "Klebt einen Punkt auf die Linie — bevor wir anfangen.",
+        "Kleben Sie einen Punkt auf die Linie — bevor wir anfangen.",
         "Einstieg · Plakat an der Wand", hintergrund=SIGNAL_HELL,
         notizen="Das Plakat hängt schon, wenn die Klasse hereinkommt. Alle kleben beim Hereinkommen, "
                 "bevor irgendetwas besprochen wird. Verteilung unkommentiert stehen lassen. Am Stundenende "
@@ -742,7 +742,7 @@ def baue(ziel):
         notizen="VOR DER STUNDE PRÜFEN: Die dritte Meldung ist rechtlich in Bewegung. Datum eintragen — "
                 "das ist Teil der Stunde: Die Klasse soll sehen, wie man mit einem laufenden Verfahren "
                 "korrekt umgeht.\n\nFrage: Was heißt eigentlich „unvereinbar“? Und was heißt es nicht?\n\n"
-                "ÜBERLEITUNG: „Ich werde euch nicht sagen, was ihr wählen sollt — das steht mir nicht zu "
+                "ÜBERLEITUNG: „Ich werde Ihnen nicht sagen, was Sie wählen sollen — das steht mir nicht zu "
                 "und wäre auch verboten. Wir schauen uns an, was die Kirchen sagen, warum sie es sagen, "
                 "und ob sie es sagen dürfen.“")
 
@@ -761,7 +761,7 @@ def baue(ziel):
 
     folie_aussage(
         prs,
-        "Genau das war 1933 die Mehrheitsmeinung in dieser Kirche. Römer 13, ihr erinnert euch.\n\nUnd 1934 hat eine Minderheit gesagt: Es gibt eine Grenze.\n\nWo verläuft die eurer Meinung nach?",
+        "Genau das war 1933 die Mehrheitsmeinung in dieser Kirche. Römer 13, Sie erinnern sich.\n\nUnd 1934 hat eine Minderheit gesagt: Es gibt eine Grenze.\n\nWo verläuft die Ihrer Meinung nach?",
         None, "Die Frage, an der die Einheit zusammenläuft", hintergrund=AKZENT_HELL,
         notizen="Einblenden, wenn das Argument „Die Kirche soll sich raushalten“ fällt. Die Frage bleibt "
                 "offen — sie wird in der Werkstatt bearbeitet, nicht im Gespräch entschieden.")
@@ -774,9 +774,9 @@ def baue(ziel):
          "Macht die Härteprüfung. Beide Fragen müssen mit Ja beantwortbar sein.",
          "Schreibt die These groß auf das Thesenblatt. Unterschreiben ist freiwillig."],
         meta="Gruppenarbeit · 22 min", kennung="Arbeitsauftrag 6.3 · Kernstück",
-        notizen="ÜBERLEITUNG: „Ihr habt in der dritten Doppelstunde einen Satzanfang übersetzt, den ich "
-                "euch jetzt zurückgebe: ‚Wir verwerfen die falsche Lehre, als ob …‘ 1934 haben acht Sätze "
-                "in dieser Form eine Kirche verändert. Ihr seid jetzt dran. Nicht als Übung, sondern im "
+        notizen="ÜBERLEITUNG: „Sie haben in der dritten Doppelstunde einen Satzanfang übersetzt, den ich "
+                "Ihnen jetzt zurückgebe: ‚Wir verwerfen die falsche Lehre, als ob …‘ 1934 haben acht Sätze "
+                "in dieser Form eine Kirche verändert. Sie sind jetzt dran. Nicht als Übung, sondern im "
                 "Ernst. Und weil das eine hohe Messlatte ist, gibt es eine Bedingung: Jede These muss sich "
                 "an einer Bibelstelle festmachen lassen. Sonst ist es Meinung.“")
 
@@ -819,20 +819,20 @@ def baue(ziel):
         meta="Partnerarbeit · 10 min", kennung="Arbeitsauftrag 6.5", farbe=JETZT,
         hell=JETZT_HELL,
         notizen="Zwei bis drei Beispiele sammeln und neben die Thesen an die Tür hängen — mit der "
-                "Überschrift, die du dazuschreibst: „Und das machen wir daraus.“")
+                "Überschrift, die Sie dazuschreiben: „Und das machen wir daraus.“")
 
     folie_aussage(
         prs,
-        "Früh anfangen.\nNicht allein sein.\nVorher geübt haben.\n\nGenau das habt ihr heute getan.",
-        "Eure eigene Antwort aus Doppelstunde 4 — vor drei Wochen aufgeschrieben",
+        "Früh anfangen.\nNicht allein sein.\nVorher geübt haben.\n\nGenau das haben Sie heute getan.",
+        "Ihre eigene Antwort aus Doppelstunde 4 — vor drei Wochen aufgeschrieben",
         "Schluss der Einheit", hintergrund=AKZENT_HELL,
         notizen="Die Placemat-Mittelfelder aus DS 4 werden ohne Vorankündigung wieder aufgehängt.\n\n"
-                "WORTLAUT: „Das habt ihr vor drei Wochen aufgeschrieben. Es war eure Antwort auf die "
-                "Frage, was Menschen 1934 geholfen hat zu widersprechen. Lest es noch einmal — und "
-                "lest es diesmal nicht als Geschichte, sondern als Gebrauchsanweisung.“\n\n"
-                "„Und zum Schluss: Klebt noch einmal auf das Plakat von heute Morgen. Dieselbe Frage, "
-                "zweiter Klebepunkt, andere Farbe. Ich sage euch nicht, wo ihr kleben sollt. Ich möchte "
-                "nur, dass ihr seht, ob dieser Vormittag etwas verschoben hat.“")
+                "WORTLAUT: „Das haben Sie vor drei Wochen aufgeschrieben. Es war Ihre Antwort auf die "
+                "Frage, was Menschen 1934 geholfen hat zu widersprechen. Lesen Sie es noch einmal — und "
+                "lesen Sie es diesmal nicht als Geschichte, sondern als Gebrauchsanweisung.“\n\n"
+                "„Und zum Schluss: Kleben Sie noch einmal auf das Plakat von heute Morgen. Dieselbe Frage, "
+                "zweiter Klebepunkt, andere Farbe. Ich sage Ihnen nicht, wo Sie kleben sollen. Ich möchte "
+                "nur, dass Sie sehen, ob dieser Vormittag etwas verschoben hat.“")
 
     ziel.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(ziel))
