@@ -44,20 +44,24 @@ func schrittPfad(schritt string) string {
 }
 
 type theseZeile struct {
+	Themenfeld       string
 	Bibelstelle      string
 	Weil             string
 	Gilt             string
 	Verwerfung       string
 	Schritt          string
 	Ueberarbeitungen int
+	Unterschriften   string
 }
 
 func ladeThese(database *sql.DB, gruppeID int64) (theseZeile, error) {
 	var t theseZeile
 	err := database.QueryRow(
-		`SELECT bibelstelle, weil, gilt, verwerfung, schritt, ueberarbeitungen FROM these WHERE gruppe_id = ?`,
+		`SELECT g.themenfeld, t.bibelstelle, t.weil, t.gilt, t.verwerfung, t.schritt, t.ueberarbeitungen, t.unterschriften
+		 FROM these t JOIN gruppe g ON g.id = t.gruppe_id
+		 WHERE t.gruppe_id = ?`,
 		gruppeID,
-	).Scan(&t.Bibelstelle, &t.Weil, &t.Gilt, &t.Verwerfung, &t.Schritt, &t.Ueberarbeitungen)
+	).Scan(&t.Themenfeld, &t.Bibelstelle, &t.Weil, &t.Gilt, &t.Verwerfung, &t.Schritt, &t.Ueberarbeitungen, &t.Unterschriften)
 	return t, err
 }
 
@@ -325,14 +329,23 @@ func handleVerwerfungSpeichern(database *sql.DB) http.HandlerFunc {
 // theseAnsicht zeigt die zusammengesetzte These — für Vorschau, beide
 // Prüffragen und die Freigabe identisch, deshalb ein gemeinsamer Typ.
 type theseAnsicht struct {
-	Bibelstelle string
-	Weil        string
-	Gilt        string
-	Verwerfung  string
+	Themenfeld     string
+	Bibelstelle    string
+	Weil           string
+	Gilt           string
+	Verwerfung     string
+	Unterschriften string
 }
 
 func theseAnsichtAus(these theseZeile) theseAnsicht {
-	return theseAnsicht{Bibelstelle: these.Bibelstelle, Weil: these.Weil, Gilt: these.Gilt, Verwerfung: these.Verwerfung}
+	return theseAnsicht{
+		Themenfeld:     these.Themenfeld,
+		Bibelstelle:    these.Bibelstelle,
+		Weil:           these.Weil,
+		Gilt:           these.Gilt,
+		Verwerfung:     these.Verwerfung,
+		Unterschriften: these.Unterschriften,
+	}
 }
 
 var vorschauTmpl = template.Must(template.ParseFS(templatesFS, "templates/gruppe-vorschau.html"))

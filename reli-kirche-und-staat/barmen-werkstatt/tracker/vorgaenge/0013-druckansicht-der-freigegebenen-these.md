@@ -1,7 +1,7 @@
 ---
 id: 0013
 titel: Druckansicht der freigegebenen These
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0008"]
 ---

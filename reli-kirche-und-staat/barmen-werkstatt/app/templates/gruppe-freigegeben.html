@@ -5,14 +5,52 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Freigegeben — Barmen-Werkstatt</title>
 	<link rel="stylesheet" href="/static/style.css">
+	<style>
+		@page {
+			size: A4;
+			margin: 0;
+		}
+		@media print {
+			.nur-bildschirm {
+				display: none;
+			}
+			body {
+				margin: 0;
+			}
+			.blatt {
+				width: 210mm;
+				min-height: 297mm;
+				padding: 20mm;
+				box-sizing: border-box;
+			}
+			.blatt h1 {
+				font-size: 40pt;
+				line-height: 1.2;
+			}
+			.blatt p {
+				font-size: 22pt;
+				line-height: 1.5;
+			}
+			.blatt .themenfeld {
+				font-size: 16pt;
+			}
+		}
+	</style>
 </head>
 <body>
 	<main>
-		<h1>Eure These ist freigegeben</h1>
-		<p>Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
-		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
-		<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
-		<p>Geht damit zur Tür.</p>
+		<p class="nur-bildschirm">Eure These ist freigegeben. Geht damit zur Tür.</p>
+		<button class="nur-bildschirm" type="button" onclick="window.print()">Als Blatt drucken</button>
+
+		<div class="blatt">
+			<p class="themenfeld">Themenfeld: {{.Themenfeld}}</p>
+			<h1>{{.Bibelstelle}}</h1>
+			<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+			<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+			{{if .Unterschriften}}
+			<p>{{.Unterschriften}}</p>
+			{{end}}
+		</div>
 	</main>
 	<script src="/static/live.js" defer></script>
 </body>
