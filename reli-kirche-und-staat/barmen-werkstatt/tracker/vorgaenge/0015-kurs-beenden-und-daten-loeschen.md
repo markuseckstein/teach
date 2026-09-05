@@ -1,7 +1,7 @@
 ---
 id: 0015
 titel: Kurs beenden und Daten löschen
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0004"]
 ---

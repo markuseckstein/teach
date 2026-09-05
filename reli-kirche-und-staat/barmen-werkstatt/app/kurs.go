@@ -199,6 +199,71 @@ func handleKursAnzeigen(database *sql.DB) http.HandlerFunc {
 	}
 }
 
+type kursBeendenAnsicht struct {
+	ID   int64
+	Name string
+}
+
+var kursBeendenTmpl = template.Must(template.ParseFS(templatesFS, "templates/kurs-beenden.html"))
+
+// handleKursBeendenAnzeigen zeigt die Bestätigungsseite vor dem endgültigen
+// Löschen eines Kurses — sie benennt ausdrücklich, was verloren geht.
+func handleKursBeendenAnzeigen(database *sql.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		kursID, err := strconv.ParseInt(r.PathValue("id"), 10, 64)
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		var name string
+		err = database.QueryRow(`SELECT name FROM kurs WHERE id = ?`, kursID).Scan(&name)
+		if errors.Is(err, sql.ErrNoRows) {
+			http.NotFound(w, r)
+			return
+		}
+		if err != nil {
+			http.Error(w, "Kurs konnte nicht geladen werden", http.StatusInternalServerError)
+			log.Printf("kurs laden (beenden): %v", err)
+			return
+		}
+
+		renderTemplate(w, kursBeendenTmpl, kursBeendenAnsicht{ID: kursID, Name: name})
+	}
+}
+
+// handleKursBeenden löscht einen Kurs endgültig. Das Datenbankschema
+// (internal/db/db.go) kaskadiert über ON DELETE CASCADE zu Gruppen, Geräten,
+// Thesen und Zeitkapsel-Einträgen — ein einziges DELETE genügt.
+func handleKursBeenden(database *sql.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		kursID, err := strconv.ParseInt(r.PathValue("id"), 10, 64)
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		res, err := database.Exec(`DELETE FROM kurs WHERE id = ?`, kursID)
+		if err != nil {
+			http.Error(w, "Kurs konnte nicht gelöscht werden", http.StatusInternalServerError)
+			log.Printf("kurs beenden: %v", err)
+			return
+		}
+		betroffen, err := res.RowsAffected()
+		if err != nil {
+			http.Error(w, "Kurs konnte nicht gelöscht werden", http.StatusInternalServerError)
+			log.Printf("kurs beenden: %v", err)
+			return
+		}
+		if betroffen == 0 {
+			http.NotFound(w, r)
+			return
+		}
+
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+	}
+}
+
 // handleThemenfeldZuweisen weist einer Gruppe ein Themenfeld zu. Ist es im
 // selben Kurs bereits einer anderen Gruppe zugewiesen, wird abgelehnt.
 //
