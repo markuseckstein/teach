@@ -1,7 +1,7 @@
 ---
 id: 0016
 titel: Robustheit auf BYOD-Geräten
-status: offen
+status: verworfen
 label: blockiert
 haengt-an: ["0010"]
 ---
@@ -28,3 +28,13 @@ nicht läuft.
 
 Der erste echte Klassendurchlauf wird trotzdem etwas zutage fördern. Diese Aufgabe
 senkt die Wahrscheinlichkeit, sie beseitigt sie nicht.
+
+## Verworfen (2026-09-06)
+
+Won't fix — die tatsächliche Geräteflotte der Klasse besteht durchweg aus solider
+Samsung-Mittelklasse, kein Gerät älter als drei Jahre. Das im "Worum es geht"
+unterstellte Risiko (dreißig verschiedene, teils alte Geräte) trifft hier nicht zu; ein
+gezielter Alt-Geräte-Test würde ein Problem absichern, das nicht besteht. Die generelle
+Progressive-Enhancement-Haltung aus SPEZIFIKATION.md (kein Ablauf hängt an JavaScript
+allein) ist ohnehin durchgehend im Code umgesetzt — das war kein separater Aufwand,
+sondern der Standardweg jedes Formulars in dieser Anwendung.
