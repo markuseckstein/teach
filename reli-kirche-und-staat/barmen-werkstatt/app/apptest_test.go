@@ -5,11 +5,14 @@ package main
 // bedient sie über HTTP — wie ein Tablet oder das Regiepult es täten. Interne
 // Funktionen sind nicht Gegenstand der Tests.
 //
-// "Kurs anlegen" und "Gerät beitreten lassen" schreiben hier direkt in die
-// Datenbank, weil die zugehörigen HTTP-Endpunkte noch nicht existieren
-// (Vorgänge 0004 und 0005). Sobald sie stehen, ist das die Stelle, an der
-// diese Helfer auf echte HTTP-Anfragen umgestellt werden; ihre Signatur nach
-// außen kann dabei gleich bleiben.
+// KursAnlegen und GeraetBeitreten schreiben bewusst weiterhin direkt in die
+// Datenbank statt über HTTP. Sie sind das Arrange für Tests anderer
+// Vorgänge (0005 Beitritt, 0006 Schreibrecht, ...), die eine bereits
+// bestehende Gruppe voraussetzen — das eigentliche Verhalten von "Kurs
+// anlegen" (Vorgang 0004: Beitrittscode, Gruppenzahl, Themenfeld-Eindeutigkeit)
+// prüft kurs_test.go bereits über echte HTTP-Anfragen an POST /kurse. Für
+// "Gerät beitreten lassen" gilt dasselbe, sobald Vorgang 0005 seinen
+// Endpunkt liefert.
 
 import (
 	"database/sql"
@@ -139,12 +142,12 @@ func (g *geraetClient) do(t *testing.T, req *http.Request) *http.Response {
 	return resp
 }
 
-const zufallsalphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
-
+// zufallscode nutzt dasselbe Alphabet wie neuerBeitrittscode (kurs.go), damit
+// Testcode und Anwendungscode nicht auseinanderlaufen.
 func zufallscode(laenge int) string {
 	zeichen := make([]byte, laenge)
 	for i := range zeichen {
-		zeichen[i] = zufallsalphabet[rand.IntN(len(zufallsalphabet))]
+		zeichen[i] = beitrittscodeAlphabet[rand.IntN(len(beitrittscodeAlphabet))]
 	}
 	return string(zeichen)
 }

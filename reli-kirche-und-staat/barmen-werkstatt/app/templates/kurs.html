@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{.Name}} — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>{{.Name}}</h1>
+		<p>Beitrittscode: <strong>{{.Beitrittscode}}</strong></p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Gruppe</th>
+					<th>Themenfeld</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{range .Gruppen}}
+				<tr>
+					<td>Gruppe {{.Nummer}}</td>
+					<td>{{if .Themenfeld}}{{.Themenfeld}}{{else}}—{{end}}</td>
+					<td>
+						<form method="post" action="/kurse/{{$.ID}}/gruppen/{{.Nummer}}/themenfeld">
+							<select name="themenfeld" required>
+								<option value="">Themenfeld wählen</option>
+								{{range $.Themenfelder}}
+								<option value="{{.}}">{{.}}</option>
+								{{end}}
+							</select>
+							<button type="submit">Zuweisen</button>
+						</form>
+					</td>
+				</tr>
+				{{end}}
+			</tbody>
+		</table>
+	</main>
+</body>
+</html>

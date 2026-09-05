@@ -50,6 +50,12 @@ CREATE TABLE IF NOT EXISTS these (
 	freigegeben_am    TEXT
 );
 
+-- Ein Themenfeld darf innerhalb eines Kurses nicht doppelt vergeben werden.
+-- Leere Zuweisungen ('' als Default) sind von der Eindeutigkeit ausgenommen,
+-- sonst könnte nur eine einzige Gruppe je Kurs unzugewiesen bleiben.
+CREATE UNIQUE INDEX IF NOT EXISTS idx_gruppe_kurs_themenfeld
+	ON gruppe(kurs_id, themenfeld) WHERE themenfeld != '';
+
 CREATE TABLE IF NOT EXISTS kapsel (
 	id            INTEGER PRIMARY KEY AUTOINCREMENT,
 	kurs_id       INTEGER NOT NULL REFERENCES kurs(id) ON DELETE CASCADE,

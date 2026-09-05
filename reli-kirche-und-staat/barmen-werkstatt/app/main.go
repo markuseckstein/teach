@@ -22,11 +22,13 @@ var templatesFS embed.FS
 
 var indexTmpl = template.Must(template.ParseFS(templatesFS, "templates/index.html"))
 
-// newMux baut den Router der Anwendung. database ist derzeit ungenutzt und
-// dient künftigen Vorgängen als Anschlussstelle für Fachlogik.
+// newMux baut den Router der Anwendung.
 func newMux(database *sql.DB) *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.FileServer(http.FS(staticFS)))
+	mux.HandleFunc("POST /kurse", handleKursAnlegen(database))
+	mux.HandleFunc("GET /kurse/{id}", handleKursAnzeigen(database))
+	mux.HandleFunc("POST /kurse/{id}/gruppen/{nummer}/themenfeld", handleThemenfeldZuweisen(database))
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)

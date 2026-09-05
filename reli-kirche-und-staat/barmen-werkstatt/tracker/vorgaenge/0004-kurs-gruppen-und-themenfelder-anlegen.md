@@ -1,7 +1,7 @@
 ---
 id: 0004
 titel: Kurs, Gruppen und Themenfelder anlegen
-status: offen
+status: erledigt
 label: ready-for-agent
 haengt-an: ["0002", "0003"]
 ---

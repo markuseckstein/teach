@@ -1,7 +1,7 @@
 ---
 id: 0007
 titel: Themenfelder und Bibelstellen als Daten
-status: offen
+status: erledigt
 label: inhalt
 haengt-an: ["0002"]
 ---
