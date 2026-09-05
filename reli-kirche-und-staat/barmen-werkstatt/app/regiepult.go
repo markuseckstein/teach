@@ -23,20 +23,44 @@ type gruppenFortschritt struct {
 	Nummer              int
 	Themenfeld          string
 	Schritt             string
+	SchrittBezeichnung  string
+	Punkte              []bool
+	Freigegeben         bool
 	Ueberarbeitungen    int
 	SchreibrechtWarnung bool
 }
 
+// schrittBezeichnung übersetzt einen internen Automaten-Schritt in die
+// Bezeichnung, die die Lehrkraft am Regiepult sieht — die Rohkonstanten
+// (z.B. "PRUEFUNG_1") sind für die Programmlogik gedacht, nicht zum Lesen.
+func schrittBezeichnung(schritt string) string {
+	switch schritt {
+	case schrittBibelstelle:
+		return "Bibelstelle wählen"
+	case schrittPositiv:
+		return "Positiv-Aussage"
+	case schrittVerwerfung:
+		return "Verwerfung"
+	case schrittVorschau:
+		return "Vorschau"
+	case schrittPruefung1:
+		return "Prüfung 1"
+	case schrittPruefung2:
+		return "Prüfung 2"
+	case schrittFreigegeben:
+		return "Freigegeben"
+	default:
+		return schritt
+	}
+}
+
 type regiepultAnsicht struct {
-	KursID              int64
-	Name                string
-	Beitrittscode       string
-	Phase               string
-	WerkstattGestartet  bool
-	WerkstattStart      string // HH:MM, Serverzeit
-	WerkstattEnde       string // HH:MM, Serverzeit
-	WerkstattAbgelaufen bool
-	Gruppen             []gruppenFortschritt
+	KursID        int64
+	Name          string
+	Beitrittscode string
+	Phase         string
+	Timer         timerStand
+	Gruppen       []gruppenFortschritt
 }
 
 var regiepultTmpl = template.Must(template.ParseFS(templatesFS, "templates/regiepult.html"))
@@ -81,10 +105,7 @@ func handleRegiepultAnzeigen(database *sql.DB) http.HandlerFunc {
 			log.Printf("timer parsen: %v", err)
 			return
 		}
-		ansicht.WerkstattGestartet = stand.Gestartet
-		ansicht.WerkstattStart = stand.Start
-		ansicht.WerkstattEnde = stand.Ende
-		ansicht.WerkstattAbgelaufen = stand.Abgelaufen
+		ansicht.Timer = stand
 
 		rows, err := database.Query(
 			`SELECT g.nummer, g.themenfeld, COALESCE(g.schreibrecht_seit, ''),
@@ -114,6 +135,9 @@ func handleRegiepultAnzeigen(database *sql.DB) http.HandlerFunc {
 					g.SchreibrechtWarnung = time.Since(seit) > schreibrechtWarnungAb
 				}
 			}
+			g.SchrittBezeichnung = schrittBezeichnung(g.Schritt)
+			g.Punkte = punkteAus(g.Schritt)
+			g.Freigegeben = g.Schritt == schrittFreigegeben
 			ansicht.Gruppen = append(ansicht.Gruppen, g)
 		}
 		if err := rows.Err(); err != nil {
