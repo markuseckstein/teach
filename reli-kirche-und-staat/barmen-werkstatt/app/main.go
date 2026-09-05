@@ -25,14 +25,27 @@ var dataFS embed.FS
 
 var indexTmpl = template.Must(template.ParseFS(templatesFS, "templates/index.html"))
 
+// lessonsDirFlag zeigt auf das lessons-Verzeichnis mit den fertigen
+// Kopiervorlagen (Vorgang 0017). Es liegt zwei Ebenen über diesem Go-Modul
+// (barmen-werkstatt/app/../../lessons — go:embed erlaubt kein ".." im
+// Pattern), deshalb wird es zur Laufzeit über einen Dateisystem-Pfad
+// ausgeliefert statt eingebettet. Als Paket-Variable deklariert (statt lokal
+// in main()), damit Tests den Wert für die Dauer eines Tests umbiegen können,
+// ohne dass newMux einen zusätzlichen Parameter braucht.
+var lessonsDirFlag = flag.String("lessons-dir", "../../lessons", "Pfad zum lessons-Verzeichnis mit den Kopiervorlagen")
+
 // newMux baut den Router der Anwendung.
 func newMux(database *sql.DB) *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.FileServer(http.FS(staticFS)))
+	mux.Handle("/lessons/", http.StripPrefix("/lessons/", http.FileServer(http.Dir(*lessonsDirFlag))))
+	mux.HandleFunc("GET /inhalte", handleInhalteAnzeigen())
 	mux.HandleFunc("POST /kurse", handleKursAnlegen(database))
 	mux.HandleFunc("GET /kurse/{id}", handleKursAnzeigen(database))
 	mux.HandleFunc("POST /kurse/{id}/gruppen/{nummer}/themenfeld", handleThemenfeldZuweisen(database))
 	mux.HandleFunc("GET /kurse/{id}/qr.png", handleKursQR(database))
+	mux.HandleFunc("GET /kurse/{id}/beenden", handleKursBeendenAnzeigen(database))
+	mux.HandleFunc("POST /kurse/{id}/beenden", handleKursBeenden(database))
 	mux.HandleFunc("GET /kurse/{id}/gruppe-waehlen", handleGruppeWaehlen(database))
 	mux.HandleFunc("GET /kurse/{id}/regiepult", handleRegiepultAnzeigen(database))
 	mux.HandleFunc("POST /kurse/{id}/phase", handlePhaseSetzen(database))
