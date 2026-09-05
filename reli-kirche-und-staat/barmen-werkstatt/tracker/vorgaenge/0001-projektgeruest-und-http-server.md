@@ -1,7 +1,7 @@
 ---
 id: 0001
 titel: Projektgerüst und HTTP-Server
-status: offen
+status: erledigt
 label: ready-for-agent
 haengt-an: []
 ---

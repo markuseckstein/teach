@@ -1,7 +1,7 @@
 ---
 id: 0002
 titel: Datenbankschema
-status: offen
+status: erledigt
 label: ready-for-agent
 haengt-an: []
 ---
