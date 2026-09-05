@@ -171,8 +171,7 @@ func handleGruppeBeitreten(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
-		var gruppeID int64
-		err = database.QueryRow(`SELECT id FROM gruppe WHERE kurs_id = ? AND nummer = ?`, kursID, nummer).Scan(&gruppeID)
+		gruppeID, err := gruppeIDVon(database, kursID, nummer)
 		if errors.Is(err, sql.ErrNoRows) {
 			http.NotFound(w, r)
 			return

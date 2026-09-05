@@ -22,7 +22,8 @@ func geraetHatSchreibrecht(database *sql.DB, gruppeID, geraetID int64) (bool, er
 
 // handleSchreibrechtUebernehmen zieht das Schreibrecht der eigenen Gruppe an
 // das anfragende Gerät. Die Übernahme wirkt sofort und ist für jedes Gerät
-// der Gruppe über GET /gruppe sichtbar.
+// der Gruppe über GET /gruppe sichtbar — live über den SSE-Kanal
+// (Vorgang 0010), sonst spätestens beim nächsten Neuladen.
 func handleSchreibrechtUebernehmen(database *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		geraetID, gruppeID, ok := aktuellesGeraet(r, database)
@@ -40,6 +41,7 @@ func handleSchreibrechtUebernehmen(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, "/gruppe", http.StatusSeeOther)
 	}
 }

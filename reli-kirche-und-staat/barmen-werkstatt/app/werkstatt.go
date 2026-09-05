@@ -214,6 +214,7 @@ func handleBibelstelleWaehlen(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, schrittPfad(schrittPositiv), http.StatusSeeOther)
 	}
 }
@@ -265,6 +266,7 @@ func handlePositivSpeichern(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, schrittPfad(schrittVerwerfung), http.StatusSeeOther)
 	}
 }
@@ -315,6 +317,7 @@ func handleVerwerfungSpeichern(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, schrittPfad(schrittVorschau), http.StatusSeeOther)
 	}
 }
@@ -365,6 +368,7 @@ func handleVorschauEinreichen(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, schrittPfad(schrittPruefung1), http.StatusSeeOther)
 	}
 }
@@ -425,6 +429,7 @@ func handlePruefung1Beantworten(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, schrittPfad(naechsterSchritt), http.StatusSeeOther)
 	}
 }
@@ -484,6 +489,7 @@ func handlePruefung2Beantworten(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		werkstattHub.benachrichtigeGruppe(gruppeID)
 		http.Redirect(w, r, schrittPfad(naechsterSchritt), http.StatusSeeOther)
 	}
 }

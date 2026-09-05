@@ -1,7 +1,7 @@
 ---
 id: 0010
 titel: Live-Kanal über SSE
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0006"]
 ---

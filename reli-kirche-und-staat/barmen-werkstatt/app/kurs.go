@@ -50,6 +50,13 @@ func istEindeutigkeitsfehler(err error) bool {
 	return err != nil && strings.Contains(err.Error(), "UNIQUE constraint failed")
 }
 
+// gruppeIDVon löst die Gruppe eines Kurses über ihre Nummer auf.
+func gruppeIDVon(database *sql.DB, kursID int64, nummer int) (int64, error) {
+	var gruppeID int64
+	err := database.QueryRow(`SELECT id FROM gruppe WHERE kurs_id = ? AND nummer = ?`, kursID, nummer).Scan(&gruppeID)
+	return gruppeID, err
+}
+
 type gruppenAnsicht struct {
 	Nummer     int
 	Themenfeld string
@@ -244,6 +251,12 @@ func handleThemenfeldZuweisen(database *sql.DB) http.HandlerFunc {
 		if betroffen == 0 {
 			http.NotFound(w, r)
 			return
+		}
+
+		if gruppeID, err := gruppeIDVon(database, kursID, nummer); err != nil {
+			log.Printf("gruppe-id für sse-benachrichtigung laden: %v", err)
+		} else {
+			werkstattHub.benachrichtigeGruppe(gruppeID)
 		}
 
 		http.Redirect(w, r, fmt.Sprintf("/kurse/%d", kursID), http.StatusSeeOther)

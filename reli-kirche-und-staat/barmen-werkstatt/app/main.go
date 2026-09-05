@@ -51,6 +51,7 @@ func newMux(database *sql.DB) *http.ServeMux {
 	mux.HandleFunc("GET /gruppe/pruefung2", handlePruefung2Anzeigen(database))
 	mux.HandleFunc("POST /gruppe/pruefung2", handlePruefung2Beantworten(database))
 	mux.HandleFunc("GET /gruppe/freigegeben", handleFreigegebenAnzeigen(database))
+	mux.HandleFunc("GET /gruppe/live", handleGruppeLive(database))
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)
