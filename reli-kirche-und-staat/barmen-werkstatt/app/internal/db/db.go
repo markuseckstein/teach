@@ -13,11 +13,12 @@ import (
 // nichts verändert.
 const schema = `
 CREATE TABLE IF NOT EXISTS kurs (
-	id             INTEGER PRIMARY KEY AUTOINCREMENT,
-	name           TEXT NOT NULL,
-	beitrittscode  TEXT NOT NULL UNIQUE,
-	aktive_phase   TEXT NOT NULL DEFAULT '',
-	beendet_am     TEXT
+	id                     INTEGER PRIMARY KEY AUTOINCREMENT,
+	name                   TEXT NOT NULL,
+	beitrittscode          TEXT NOT NULL UNIQUE,
+	aktive_phase           TEXT NOT NULL DEFAULT '',
+	werkstatt_gestartet_um TEXT,
+	beendet_am             TEXT
 );
 
 CREATE TABLE IF NOT EXISTS gruppe (
@@ -85,5 +86,49 @@ func Open(path string) (*sql.DB, error) {
 		return nil, fmt.Errorf("schema anlegen: %w", err)
 	}
 
+	if err := ergaenzeSpalte(database, "kurs", "werkstatt_gestartet_um", "TEXT"); err != nil {
+		database.Close()
+		return nil, fmt.Errorf("schema erweitern: %w", err)
+	}
+
 	return database, nil
+}
+
+// ergaenzeSpalte fügt einer bestehenden Tabelle eine Spalte hinzu, falls sie
+// fehlt. "CREATE TABLE IF NOT EXISTS" allein hilft nicht, wenn die Tabelle
+// aus einer älteren Version der Anwendung schon existiert — eine solche
+// Datei bekäme die neue Spalte sonst nie und jede Abfrage darauf schlüge mit
+// "no such column" fehl. tabelle/spalte/typ sind stets fest im Code verdrahtet
+// (nie aus einer Anfrage abgeleitet), deshalb ist das Einsetzen per
+// fmt.Sprintf hier unbedenklich — SQLite erlaubt keine Platzhalter für
+// Bezeichner.
+func ergaenzeSpalte(database *sql.DB, tabelle, spalte, typ string) error {
+	rows, err := database.Query(fmt.Sprintf(`PRAGMA table_info(%s)`, tabelle))
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var (
+			cid        int
+			name       string
+			colType    string
+			notNull    int
+			defaultVal any
+			pk         int
+		)
+		if err := rows.Scan(&cid, &name, &colType, &notNull, &defaultVal, &pk); err != nil {
+			return err
+		}
+		if name == spalte {
+			return rows.Err()
+		}
+	}
+	if err := rows.Err(); err != nil {
+		return err
+	}
+
+	_, err = database.Exec(fmt.Sprintf(`ALTER TABLE %s ADD COLUMN %s %s`, tabelle, spalte, typ))
+	return err
 }

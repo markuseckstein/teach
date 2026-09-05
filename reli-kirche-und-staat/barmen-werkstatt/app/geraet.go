@@ -234,6 +234,7 @@ func handleGruppeBeitreten(database *sql.DB) http.HandlerFunc {
 
 type gruppeStatusAnsicht struct {
 	Nummer          int
+	Phase           string
 	Schritt         string
 	SchrittPfad     string
 	HatSchreibrecht bool
@@ -260,6 +261,19 @@ func handleGruppeStatus(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		phase, err := aktivePhase(database, gruppeID)
+		if err != nil {
+			http.Error(w, "Phase konnte nicht geladen werden", http.StatusInternalServerError)
+			log.Printf("phase laden: %v", err)
+			return
+		}
+		if phase == phaseVorbereitung {
+			// Die Werkstatt ist noch nicht freigeschaltet: keinen Schritt
+			// und kein Schreibrecht zeigen, damit niemand vorausliest.
+			renderTemplate(w, gruppeStatusTmpl, gruppeStatusAnsicht{Nummer: nummer, Phase: phase})
+			return
+		}
+
 		var schritt string
 		if err := database.QueryRow(`SELECT schritt FROM these WHERE gruppe_id = ?`, gruppeID).Scan(&schritt); err != nil {
 			http.Error(w, "These konnte nicht geladen werden", http.StatusInternalServerError)
@@ -276,6 +290,7 @@ func handleGruppeStatus(database *sql.DB) http.HandlerFunc {
 
 		renderTemplate(w, gruppeStatusTmpl, gruppeStatusAnsicht{
 			Nummer:          nummer,
+			Phase:           phase,
 			Schritt:         schritt,
 			SchrittPfad:     schrittPfad(schritt),
 			HatSchreibrecht: hatSchreibrecht,

@@ -1,7 +1,7 @@
 ---
 id: 0011
 titel: Regiepult
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0008", "0010"]
 ---

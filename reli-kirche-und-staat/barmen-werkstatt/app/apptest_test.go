@@ -53,12 +53,18 @@ func newTestApp(t *testing.T) *testApp {
 
 // KursAnlegen legt einen Kurs mit zufälligem Beitrittscode und der
 // angegebenen Zahl an Gruppen an und gibt Kurs-ID, Beitrittscode und die IDs
-// der Gruppen (in Reihenfolge ihrer Nummer) zurück.
+// der Gruppen (in Reihenfolge ihrer Nummer) zurück. Die Werkstatt-Phase ist
+// dabei bereits freigeschaltet (Vorgang 0011) — das ist der sinnvolle
+// Ausgangszustand für Tests, die den Zustandsautomaten selbst prüfen; Tests
+// der Phasensperre setzen die Phase gezielt zurück.
 func (a *testApp) KursAnlegen(t *testing.T, gruppenzahl int) (kursID int64, beitrittscode string, gruppenIDs []int64) {
 	t.Helper()
 
 	beitrittscode = zufallscode(6)
-	res, err := a.db.Exec(`INSERT INTO kurs (name, beitrittscode) VALUES (?, ?)`, "Testkurs", beitrittscode)
+	res, err := a.db.Exec(
+		`INSERT INTO kurs (name, beitrittscode, aktive_phase) VALUES (?, ?, ?)`,
+		"Testkurs", beitrittscode, phaseWerkstatt,
+	)
 	if err != nil {
 		t.Fatalf("Kurs anlegen: %v", err)
 	}

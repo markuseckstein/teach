@@ -9,6 +9,9 @@
 <body>
 	<main>
 		<h1>Gruppe {{.Nummer}}</h1>
+		{{if eq .Phase ""}}
+		<p>Die Werkstatt hat noch nicht begonnen. Wartet auf eure Lehrkraft.</p>
+		{{else}}
 		<p>Aktueller Schritt: <strong>{{.Schritt}}</strong></p>
 		{{if .HatSchreibrecht}}
 		<p>Du hast das Schreibrecht.</p>
@@ -19,6 +22,7 @@
 		</form>
 		{{end}}
 		<p><a href="{{.SchrittPfad}}">Weiter zu diesem Schritt</a></p>
+		{{end}}
 	</main>
 	<script src="/static/live.js" defer></script>
 </body>

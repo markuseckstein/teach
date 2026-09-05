@@ -32,6 +32,17 @@ func handleSchreibrechtUebernehmen(database *sql.DB) http.HandlerFunc {
 			return
 		}
 
+		phase, err := aktivePhase(database, gruppeID)
+		if err != nil {
+			http.Error(w, "Phase konnte nicht geladen werden", http.StatusInternalServerError)
+			log.Printf("phase laden: %v", err)
+			return
+		}
+		if phase != phaseWerkstatt {
+			http.Error(w, "Die Werkstatt ist gerade nicht freigeschaltet", http.StatusConflict)
+			return
+		}
+
 		if _, err := database.Exec(
 			`UPDATE gruppe SET schreibrecht_geraet = ?, schreibrecht_seit = ? WHERE id = ?`,
 			geraetID, jetzt(), gruppeID,

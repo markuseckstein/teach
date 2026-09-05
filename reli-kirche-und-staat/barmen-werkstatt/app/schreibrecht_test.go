@@ -86,6 +86,33 @@ func TestGeraetKannSchreibrechtUebernehmen(t *testing.T) {
 	}
 }
 
+// TestSchreibrechtUebernahmeAusserhalbDerWerkstattPhaseIstGesperrt deckt
+// dieselbe Phasensperre ab, die seit Vorgang 0011 für jede andere
+// schreibende Aktion gilt (siehe geraetMitSchreibrecht in werkstatt.go) —
+// die Übernahme selbst darf davon keine Ausnahme sein.
+func TestSchreibrechtUebernahmeAusserhalbDerWerkstattPhaseIstGesperrt(t *testing.T) {
+	app := newTestApp(t)
+	kursID, _, _ := app.KursAnlegen(t, 1)
+	erstesGeraet := beitreten(t, app, kursID, 1)
+	zweitesGeraet := beitreten(t, app, kursID, 1)
+
+	setzePhase(t, app, kursID, phaseVorbereitung)
+
+	resp, err := zweitesGeraet.PostForm(app.server.URL+"/gruppe/schreibrecht", nil)
+	if err != nil {
+		t.Fatalf("POST /gruppe/schreibrecht: %v", err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusConflict {
+		t.Errorf("erwarte 409 außerhalb der Werkstatt-Phase, habe %d", resp.StatusCode)
+	}
+
+	setzePhase(t, app, kursID, phaseWerkstatt)
+	if !strings.Contains(gruppenStatusText(t, app, erstesGeraet), "Du hast das Schreibrecht") {
+		t.Errorf("erwarte, dass das erste Gerät das Schreibrecht durch die abgelehnte Übernahme behalten hat")
+	}
+}
+
 func TestGeraetOhneSchreibrechtKannEsNichtVortaeuschen(t *testing.T) {
 	// Kein HTTP-Endpunkt speichert heute schon Eingaben (Vorgang 0008
 	// bringt den Zustandsautomat) — geprüft wird deshalb die Funktion, die

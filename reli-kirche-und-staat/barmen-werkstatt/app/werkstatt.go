@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 )
 
 // Die sieben Schritte des Zustandsautomaten aus SPEZIFIKATION.md. Rückwärts
@@ -21,6 +22,54 @@ const (
 )
 
 const verwerfungVorbelegt = "Wir verwerfen die falsche Lehre, als ob …"
+
+// schrittReihenfolge ist die Vorwärtsreihenfolge des Automaten — Grundlage
+// für die Notfall-Weiterschaltung im Regiepult (Vorgang 0011). Rückwärts
+// (aus den Prüffragen nach VERWERFUNG) bleibt Sache der Handler selbst, hier
+// geht es nur um "was kommt normalerweise als Nächstes".
+var schrittReihenfolge = []string{
+	schrittBibelstelle, schrittPositiv, schrittVerwerfung,
+	schrittVorschau, schrittPruefung1, schrittPruefung2, schrittFreigegeben,
+}
+
+// naechsterSchrittNach liefert den auf schritt folgenden Schritt. weiter ist
+// false bei FREIGEGEBEN (Endzustand) oder einem unbekannten Schritt.
+func naechsterSchrittNach(schritt string) (naechster string, weiter bool) {
+	for i, s := range schrittReihenfolge {
+		if s == schritt && i+1 < len(schrittReihenfolge) {
+			return schrittReihenfolge[i+1], true
+		}
+	}
+	return "", false
+}
+
+// Die drei Phasen der Doppelstunde 6, die für die Anwendung etwas bedeuten
+// (siehe lessons/0007-ds6-kopiervorlagen.html, Ablaufplan): Vorbereitung,
+// bevor "Erarbeitung II" beginnt (Gruppen dürfen noch nicht in die
+// Werkstatt hineinsehen — sonst würden sie vorauslesen, was die
+// Dramaturgie zerstören würde); die 22-minütige Werkstatt-Phase selbst; und
+// der Abschluss, in dem nichts mehr geschrieben wird, aber jede Gruppe ihre
+// eigene, bereits erreichte Seite noch sehen darf.
+const (
+	phaseVorbereitung = ""
+	phaseWerkstatt    = "werkstatt"
+	phaseAbschluss    = "abschluss"
+)
+
+// werkstattDauer ist die in SPEZIFIKATION.md fest vorgegebene Dauer der
+// Werkstatt-Phase ("die 22 Minuten der Werkstatt") — kein einstellbarer
+// Wert, weil die Doppelstunde selbst diese Zahl vorgibt.
+const werkstattDauer = 22 * time.Minute
+
+// aktivePhase liest die aktuelle Phase des Kurses, zu dem gruppeID gehört.
+func aktivePhase(database *sql.DB, gruppeID int64) (string, error) {
+	var phase string
+	err := database.QueryRow(
+		`SELECT k.aktive_phase FROM kurs k JOIN gruppe g ON g.kurs_id = k.id WHERE g.id = ?`,
+		gruppeID,
+	).Scan(&phase)
+	return phase, err
+}
 
 func schrittPfad(schritt string) string {
 	switch schritt {
@@ -66,9 +115,12 @@ func ladeThese(database *sql.DB, gruppeID int64) (theseZeile, error) {
 }
 
 // geradeSchritt löst das Geräte-Cookie auf und lädt die These der Gruppe.
-// Steht die Gruppe nicht (mehr) im erwarteten Schritt, leitet es zum
-// tatsächlichen Schritt weiter, statt eine veraltete oder übersprungene
-// Ansicht zu zeigen — weiter ist dann false, der Aufrufer ist fertig.
+// Ist die Werkstatt-Phase noch nicht freigeschaltet (Vorgang 0011), geht es
+// zur Statusseite statt zu einer Schritt-Ansicht — sonst könnte eine Gruppe
+// vorauslesen, was die Dramaturgie der Stunde zerstören würde. Steht die
+// Gruppe nicht (mehr) im erwarteten Schritt, leitet es zum tatsächlichen
+// Schritt weiter, statt eine veraltete oder übersprungene Ansicht zu
+// zeigen — weiter ist dann false, der Aufrufer ist fertig.
 func geradeSchritt(w http.ResponseWriter, r *http.Request, database *sql.DB, erwarteterSchritt string) (gruppeID int64, these theseZeile, weiter bool) {
 	_, gruppeID, ok := aktuellesGeraet(r, database)
 	if !ok {
@@ -76,7 +128,18 @@ func geradeSchritt(w http.ResponseWriter, r *http.Request, database *sql.DB, erw
 		return 0, theseZeile{}, false
 	}
 
-	these, err := ladeThese(database, gruppeID)
+	phase, err := aktivePhase(database, gruppeID)
+	if err != nil {
+		http.Error(w, "Phase konnte nicht geladen werden", http.StatusInternalServerError)
+		log.Printf("phase laden: %v", err)
+		return 0, theseZeile{}, false
+	}
+	if phase == phaseVorbereitung {
+		http.Redirect(w, r, "/gruppe", http.StatusSeeOther)
+		return 0, theseZeile{}, false
+	}
+
+	these, err = ladeThese(database, gruppeID)
 	if err != nil {
 		http.Error(w, "These konnte nicht geladen werden", http.StatusInternalServerError)
 		log.Printf("these laden: %v", err)
@@ -91,13 +154,25 @@ func geradeSchritt(w http.ResponseWriter, r *http.Request, database *sql.DB, erw
 	return gruppeID, these, true
 }
 
-// geraetMitSchreibrecht löst das Geräte-Cookie auf und prüft das
-// Schreibrecht. Ohne gültiges Cookie geht es zum Beitritt, ohne
-// Schreibrecht gibt es 403 — in beiden Fällen ist der Aufrufer fertig.
+// geraetMitSchreibrecht löst das Geräte-Cookie auf und prüft Werkstatt-Phase
+// und Schreibrecht. Ohne gültiges Cookie geht es zum Beitritt, außerhalb der
+// Werkstatt-Phase oder ohne Schreibrecht gibt es 409 bzw. 403 — in allen
+// drei Fällen ist der Aufrufer fertig.
 func geraetMitSchreibrecht(w http.ResponseWriter, r *http.Request, database *sql.DB) (gruppeID int64, ok bool) {
 	geraetID, gruppeID, ok := aktuellesGeraet(r, database)
 	if !ok {
 		http.Redirect(w, r, "/beitreten", http.StatusSeeOther)
+		return 0, false
+	}
+
+	phase, err := aktivePhase(database, gruppeID)
+	if err != nil {
+		http.Error(w, "Phase konnte nicht geladen werden", http.StatusInternalServerError)
+		log.Printf("phase laden: %v", err)
+		return 0, false
+	}
+	if phase != phaseWerkstatt {
+		http.Error(w, "Die Werkstatt ist gerade nicht freigeschaltet", http.StatusConflict)
 		return 0, false
 	}
 

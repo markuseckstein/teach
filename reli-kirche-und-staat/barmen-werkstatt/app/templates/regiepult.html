@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Regiepult — {{.Name}}</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Regiepult — {{.Name}}</h1>
+		<p>Beitrittscode: <strong>{{.Beitrittscode}}</strong> · <a href="/kurse/{{.KursID}}">Einrichtung (Themenfelder)</a></p>
+		<img src="/kurse/{{.KursID}}/qr.png" width="120" height="120" alt="QR-Code zum Beitritt">
+
+		<section>
+			<h2>Phase</h2>
+			<p>Aktuell: <strong>{{if eq .Phase ""}}Vorbereitung{{else if eq .Phase "werkstatt"}}Werkstatt läuft{{else}}Abschluss{{end}}</strong></p>
+			<form method="post" action="/kurse/{{.KursID}}/phase">
+				<input type="hidden" name="phase" value="werkstatt">
+				<button type="submit">Werkstatt freischalten</button>
+			</form>
+			<form method="post" action="/kurse/{{.KursID}}/phase">
+				<input type="hidden" name="phase" value="abschluss">
+				<button type="submit">Werkstatt beenden</button>
+			</form>
+		</section>
+
+		<section>
+			<h2>Timer</h2>
+			{{if .WerkstattGestartet}}
+			<p>Gestartet um {{.WerkstattStart}} Uhr, endet ca. {{.WerkstattEnde}} Uhr.
+				{{if .WerkstattAbgelaufen}}<strong>Zeit ist um.</strong>{{end}}
+			</p>
+			{{else}}
+			<p>Noch nicht gestartet.</p>
+			{{end}}
+			<form method="post" action="/kurse/{{.KursID}}/timer/starten">
+				<button type="submit">Timer starten</button>
+			</form>
+		</section>
+
+		<section>
+			<h2>Fortschritt</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Gruppe</th>
+						<th>Themenfeld</th>
+						<th>Schritt</th>
+						<th>Überarbeitungen</th>
+						<th>Warnung</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{range .Gruppen}}
+					<tr>
+						<td>Gruppe {{.Nummer}}</td>
+						<td>{{if .Themenfeld}}{{.Themenfeld}}{{else}}—{{end}}</td>
+						<td>{{.Schritt}}</td>
+						<td>{{.Ueberarbeitungen}}</td>
+						<td>{{if .SchreibrechtWarnung}}⚠ dasselbe Gerät schreibt seit Langem{{end}}</td>
+						<td>
+							<form method="post" action="/kurse/{{$.KursID}}/gruppen/{{.Nummer}}/weiterschalten">
+								<button type="submit">Manuell weiterschalten</button>
+							</form>
+						</td>
+					</tr>
+					{{end}}
+				</tbody>
+			</table>
+		</section>
+	</main>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package db
 
 import (
+	"database/sql"
 	"path/filepath"
 	"testing"
 )
@@ -49,6 +50,61 @@ func TestZweiterStartVeraendertNichts(t *testing.T) {
 	if anzahl != 1 {
 		t.Errorf("erwarte 1 Kurs nach zweitem Start, habe %d", anzahl)
 	}
+}
+
+// TestFehlendeSpalteWirdBeimStartNachtraeglichErgaenzt bildet eine
+// Datenbankdatei nach, die mit einer älteren Version der Anwendung entstand
+// (kurs-Tabelle noch ohne werkstatt_gestartet_um). Open muss die fehlende
+// Spalte ergänzen, statt bei jeder folgenden Abfrage mit "no such column"
+// zu scheitern — und darf die bestehende Zeile dabei nicht anfassen.
+func TestFehlendeSpalteWirdBeimStartNachtraeglichErgaenzt(t *testing.T) {
+	pfad := filepath.Join(t.TempDir(), "werkstatt.db")
+
+	altesSchema, err := sql.Open("sqlite", pfad)
+	if err != nil {
+		t.Fatalf("altes schema öffnen: %v", err)
+	}
+	if _, err := altesSchema.Exec(`CREATE TABLE kurs (
+		id             INTEGER PRIMARY KEY AUTOINCREMENT,
+		name           TEXT NOT NULL,
+		beitrittscode  TEXT NOT NULL UNIQUE,
+		aktive_phase   TEXT NOT NULL DEFAULT '',
+		beendet_am     TEXT
+	)`); err != nil {
+		t.Fatalf("altes schema anlegen: %v", err)
+	}
+	if _, err := altesSchema.Exec(
+		`INSERT INTO kurs (name, beitrittscode) VALUES ('Bestandskurs', 'OLD123')`,
+	); err != nil {
+		t.Fatalf("bestandszeile einfügen: %v", err)
+	}
+	if err := altesSchema.Close(); err != nil {
+		t.Fatalf("altes schema schließen: %v", err)
+	}
+
+	erste, err := Open(pfad)
+	if err != nil {
+		t.Fatalf("Open über eine Datei ohne die neue Spalte: %v", err)
+	}
+
+	var beitrittscode string
+	if err := erste.QueryRow(
+		`SELECT beitrittscode FROM kurs WHERE werkstatt_gestartet_um IS NULL`,
+	).Scan(&beitrittscode); err != nil {
+		t.Fatalf("spalte nach dem Ergänzen abfragen: %v", err)
+	}
+	if beitrittscode != "OLD123" {
+		t.Errorf("erwarte die bestehende Zeile unverändert, habe beitrittscode=%q", beitrittscode)
+	}
+	erste.Close()
+
+	// Zweiter Open (die Spalte existiert jetzt bereits) darf nicht erneut
+	// versuchen, sie anzulegen, und nicht scheitern.
+	zweite, err := Open(pfad)
+	if err != nil {
+		t.Fatalf("zweiter Open nach dem Ergänzen: %v", err)
+	}
+	defer zweite.Close()
 }
 
 func TestLoeschenEinesKursesLoeschtAllesDaranHaengende(t *testing.T) {
