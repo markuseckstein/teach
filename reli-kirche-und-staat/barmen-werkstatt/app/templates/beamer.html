@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Beamer — Barmen-Werkstatt</title>
+	<style>
+		/* Eigenständiges, dunkles Layout statt style.css: die Beamer-Ansicht
+		   wird nicht bedient, sondern aus der letzten Reihe gelesen — große
+		   Schrift und hoher Kontrast zählen hier mehr als Einheitlichkeit mit
+		   den Bedienseiten. */
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			background: #0b0f14;
+			color: #f4f6f8;
+			font-family: system-ui, sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 4vh 4vw;
+			gap: 4vh;
+		}
+		h1 {
+			font-size: clamp(2rem, 5vw, 4rem);
+			margin: 0;
+			text-align: center;
+		}
+		.timer {
+			font-size: clamp(4rem, 14vw, 12rem);
+			font-variant-numeric: tabular-nums;
+			line-height: 1;
+			letter-spacing: 0.05em;
+		}
+		.timer.abgelaufen { color: #ff6b6b; }
+		.hinweis { font-size: clamp(1.2rem, 3vw, 2rem); text-align: center; opacity: 0.85; }
+
+		.gruppen {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(min(90vw, 22rem), 1fr));
+			gap: 3vh 3vw;
+			width: 100%;
+		}
+		.gruppe {
+			background: #161d26;
+			border-radius: 1rem;
+			padding: 2rem;
+			text-align: center;
+		}
+		.gruppe h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin: 0 0 0.5rem; }
+		.gruppe .themenfeld { font-size: clamp(1rem, 2vw, 1.5rem); opacity: 0.8; margin: 0 0 1.5rem; }
+		.punkte { display: flex; justify-content: center; gap: 0.6rem; }
+		.punkt {
+			width: clamp(1rem, 2.5vw, 1.8rem);
+			height: clamp(1rem, 2.5vw, 1.8rem);
+			border-radius: 50%;
+			background: #2c3947;
+		}
+		.punkt.erreicht { background: #4fd1c5; }
+		.gruppe.freigegeben { outline: 3px solid #4fd1c5; }
+
+		.thesen {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(min(90vw, 26rem), 1fr));
+			gap: 3vh 3vw;
+			width: 100%;
+		}
+		.these {
+			background: #161d26;
+			border-radius: 1rem;
+			padding: 2rem;
+		}
+		.these .themenfeld { font-size: 1.1rem; opacity: 0.75; margin: 0 0 0.75rem; }
+		.these h2 { font-size: clamp(1.3rem, 2.4vw, 1.9rem); margin: 0 0 1rem; line-height: 1.3; }
+		.these p { font-size: clamp(1rem, 1.8vw, 1.4rem); line-height: 1.5; margin: 0.5rem 0; }
+
+		.qr { background: #fff; padding: 1.5rem; border-radius: 1rem; }
+		.qr img { display: block; width: min(50vh, 60vw); height: auto; }
+	</style>
+</head>
+<body data-ende-iso="{{.Timer.EndeISO}}">
+	{{if eq .Phase ""}}
+	<h1>Gleich geht's los</h1>
+	<div class="qr"><img src="/kurse/{{.KursID}}/qr.png" alt="QR-Code zum Beitritt"></div>
+	<p class="hinweis">Tablet zücken und den Code scannen.</p>
+
+	{{else if eq .Phase "abschluss"}}
+	<h1>Die Thesen der Klasse</h1>
+	{{if .FreigegebeneThesen}}
+	<div class="thesen">
+		{{range .FreigegebeneThesen}}
+		<div class="these">
+			<p class="themenfeld">{{.Themenfeld}}</p>
+			<h2>{{.Bibelstelle}}</h2>
+			<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+			<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+		</div>
+		{{end}}
+	</div>
+	{{else}}
+	<p class="hinweis">Noch keine These freigegeben.</p>
+	{{end}}
+
+	{{else}}
+	<h1 id="timer" class="timer{{if .Timer.Abgelaufen}} abgelaufen{{end}}">
+		{{if .Timer.Gestartet}}{{if .Timer.Abgelaufen}}Zeit ist um{{else}}…{{end}}{{else}}Timer läuft noch nicht{{end}}
+	</h1>
+
+	<div class="gruppen">
+		{{range .Gruppen}}
+		<div class="gruppe{{if .Freigegeben}} freigegeben{{end}}">
+			<h2>Gruppe {{.Nummer}}</h2>
+			<p class="themenfeld">{{if .Themenfeld}}{{.Themenfeld}}{{else}}—{{end}}</p>
+			<div class="punkte">
+				{{range .Punkte}}
+				<span class="punkt{{if .}} erreicht{{end}}"></span>
+				{{end}}
+			</div>
+		</div>
+		{{end}}
+	</div>
+	{{end}}
+
+	<script>
+		// Fortschreitender Countdown ganz ohne SSE-Rundlauf: der Server liefert
+		// nur den Endzeitpunkt, die Sekundenanzeige zählt lokal herunter. Ohne
+		// JavaScript zeigt die Überschrift stattdessen dauerhaft "…" — korrekt,
+		// nur nicht live, ganz wie live.js es an anderer Stelle vormacht.
+		(function () {
+			var endeIso = document.body.getAttribute("data-ende-iso");
+			var timer = document.getElementById("timer");
+			if (!endeIso || !timer) return;
+			var ende = new Date(endeIso).getTime();
+
+			function aktualisieren() {
+				var rest = Math.round((ende - Date.now()) / 1000);
+				if (rest <= 0) {
+					timer.textContent = "Zeit ist um";
+					timer.classList.add("abgelaufen");
+					return;
+				}
+				var minuten = Math.floor(rest / 60);
+				var sekunden = rest % 60;
+				timer.textContent = minuten + ":" + (sekunden < 10 ? "0" : "") + sekunden;
+			}
+
+			aktualisieren();
+			setInterval(aktualisieren, 1000);
+		})();
+
+		// Live-Update wie überall sonst (live.js): jedes "sync"-Signal von
+		// irgendeiner Gruppe des Kurses lädt neu, damit Fortschritt, Freigaben
+		// und Phasenwechsel ohne Handeingriff erscheinen.
+		if (window.EventSource) {
+			var quelle = new EventSource(window.location.pathname + "/live");
+			quelle.onmessage = function () {
+				location.reload();
+			};
+		}
+	</script>
+</body>
+</html>

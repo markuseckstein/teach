@@ -75,19 +75,16 @@ func handleRegiepultAnzeigen(database *sql.DB) http.HandlerFunc {
 			Beitrittscode: beitrittscode,
 			Phase:         phase,
 		}
-		if werkstattGestartetUm.Valid {
-			start, err := time.Parse(time.RFC3339, werkstattGestartetUm.String)
-			if err != nil {
-				http.Error(w, "Timer konnte nicht gelesen werden", http.StatusInternalServerError)
-				log.Printf("timer parsen: %v", err)
-				return
-			}
-			ende := start.Add(werkstattDauer)
-			ansicht.WerkstattGestartet = true
-			ansicht.WerkstattStart = start.Local().Format("15:04")
-			ansicht.WerkstattEnde = ende.Local().Format("15:04")
-			ansicht.WerkstattAbgelaufen = time.Now().After(ende)
+		stand, err := timerStandAus(werkstattGestartetUm)
+		if err != nil {
+			http.Error(w, "Timer konnte nicht gelesen werden", http.StatusInternalServerError)
+			log.Printf("timer parsen: %v", err)
+			return
 		}
+		ansicht.WerkstattGestartet = stand.Gestartet
+		ansicht.WerkstattStart = stand.Start
+		ansicht.WerkstattEnde = stand.Ende
+		ansicht.WerkstattAbgelaufen = stand.Abgelaufen
 
 		rows, err := database.Query(
 			`SELECT g.nummer, g.themenfeld, COALESCE(g.schreibrecht_seit, ''),

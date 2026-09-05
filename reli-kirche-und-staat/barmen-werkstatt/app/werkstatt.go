@@ -61,6 +61,40 @@ const (
 // Wert, weil die Doppelstunde selbst diese Zahl vorgibt.
 const werkstattDauer = 22 * time.Minute
 
+// timerStand fasst den aktuellen Stand des Werkstatt-Timers zusammen —
+// gemeinsam genutzt von Regiepult (Vorgang 0011) und Beamer-Ansicht
+// (Vorgang 0012), die beide denselben Timer nur unterschiedlich groß zeigen.
+// StartISO/EndeISO sind RFC3339 in UTC, damit die Beamer-Ansicht clientseitig
+// live herunterzählen kann, ohne bei jeder Sekunde neu vom Server zu laden;
+// Start/Ende sind die für Menschen lesbaren Uhrzeiten in Serverzeit.
+type timerStand struct {
+	Gestartet  bool
+	StartISO   string
+	EndeISO    string
+	Start      string
+	Ende       string
+	Abgelaufen bool
+}
+
+func timerStandAus(werkstattGestartetUm sql.NullString) (timerStand, error) {
+	if !werkstattGestartetUm.Valid {
+		return timerStand{}, nil
+	}
+	start, err := time.Parse(time.RFC3339, werkstattGestartetUm.String)
+	if err != nil {
+		return timerStand{}, err
+	}
+	ende := start.Add(werkstattDauer)
+	return timerStand{
+		Gestartet:  true,
+		StartISO:   start.UTC().Format(time.RFC3339),
+		EndeISO:    ende.UTC().Format(time.RFC3339),
+		Start:      start.Local().Format("15:04"),
+		Ende:       ende.Local().Format("15:04"),
+		Abgelaufen: time.Now().After(ende),
+	}, nil
+}
+
 // aktivePhase liest die aktuelle Phase des Kurses, zu dem gruppeID gehört.
 func aktivePhase(database *sql.DB, gruppeID int64) (string, error) {
 	var phase string

@@ -48,6 +48,8 @@ func newMux(database *sql.DB) *http.ServeMux {
 	mux.HandleFunc("POST /kurse/{id}/beenden", handleKursBeenden(database))
 	mux.HandleFunc("GET /kurse/{id}/gruppe-waehlen", handleGruppeWaehlen(database))
 	mux.HandleFunc("GET /kurse/{id}/regiepult", handleRegiepultAnzeigen(database))
+	mux.HandleFunc("GET /kurse/{id}/beamer", handleBeamerAnzeigen(database))
+	mux.HandleFunc("GET /kurse/{id}/beamer/live", handleBeamerLive(database))
 	mux.HandleFunc("POST /kurse/{id}/phase", handlePhaseSetzen(database))
 	mux.HandleFunc("POST /kurse/{id}/timer/starten", handleTimerStarten(database))
 	mux.HandleFunc("POST /kurse/{id}/gruppen/{nummer}/weiterschalten", handleGruppeManuellWeiterschalten(database))

@@ -63,21 +63,8 @@ func (h *sseHub) benachrichtigeGruppe(gruppeID int64) {
 // benachrichtigeKurs weckt alle Gruppen eines Kurses — für kursweite
 // Ereignisse wie Phase und Timer, die das Regiepult (Vorgang 0011) auslöst.
 func (h *sseHub) benachrichtigeKurs(database *sql.DB, kursID int64) error {
-	rows, err := database.Query(`SELECT id FROM gruppe WHERE kurs_id = ?`, kursID)
+	gruppenIDs, err := gruppenIDsVonKurs(database, kursID)
 	if err != nil {
-		return err
-	}
-	defer rows.Close()
-
-	var gruppenIDs []int64
-	for rows.Next() {
-		var id int64
-		if err := rows.Scan(&id); err != nil {
-			return err
-		}
-		gruppenIDs = append(gruppenIDs, id)
-	}
-	if err := rows.Err(); err != nil {
 		return err
 	}
 

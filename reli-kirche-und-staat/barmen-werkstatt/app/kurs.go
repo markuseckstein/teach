@@ -57,6 +57,27 @@ func gruppeIDVon(database *sql.DB, kursID int64, nummer int) (int64, error) {
 	return gruppeID, err
 }
 
+// gruppenIDsVonKurs liefert die IDs aller Gruppen eines Kurses — genutzt für
+// kursweite SSE-Benachrichtigungen (sse.go) und die Beamer-Ansicht
+// (Vorgang 0012), die sich bei allen Gruppen eines Kurses zugleich anmeldet.
+func gruppenIDsVonKurs(database *sql.DB, kursID int64) ([]int64, error) {
+	rows, err := database.Query(`SELECT id FROM gruppe WHERE kurs_id = ?`, kursID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var ids []int64
+	for rows.Next() {
+		var id int64
+		if err := rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		ids = append(ids, id)
+	}
+	return ids, rows.Err()
+}
+
 type gruppenAnsicht struct {
 	Nummer     int
 	Themenfeld string

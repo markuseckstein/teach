@@ -1,7 +1,7 @@
 ---
 id: 0012
 titel: Beamer-Ansicht
-status: offen
+status: erledigt
 label: blockiert
 haengt-an: ["0008", "0010"]
 ---
