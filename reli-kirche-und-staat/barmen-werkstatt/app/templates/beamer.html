@@ -152,10 +152,20 @@
 
 		// Live-Update wie überall sonst (live.js): jedes "sync"-Signal von
 		// irgendeiner Gruppe des Kurses lädt neu, damit Fortschritt, Freigaben
-		// und Phasenwechsel ohne Handeingriff erscheinen.
+		// und Phasenwechsel ohne Handeingriff erscheinen. Das allererste
+		// Signal kommt aber schon beim Verbindungsaufbau selbst (sse.go) —
+		// wer das auch als "neu laden" behandelt, öffnet nach dem Neuladen
+		// sofort wieder eine Verbindung, bekommt sofort wieder ihr erstes
+		// Signal, und lädt endlos weiter neu (siehe live.js für dieselbe
+		// Falle und denselben Fix).
 		if (window.EventSource) {
 			var quelle = new EventSource(window.location.pathname + "/live");
+			var ersteNachricht = true;
 			quelle.onmessage = function () {
+				if (ersteNachricht) {
+					ersteNachricht = false;
+					return;
+				}
 				location.reload();
 			};
 		}
