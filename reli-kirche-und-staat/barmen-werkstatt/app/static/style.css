@@ -1,4 +1,190 @@
-body {
-	font-family: system-ui, sans-serif;
-	margin: 2rem;
+/* Gemeinsames Design für alle Inhaltsseiten (Kurs anlegen, Beitritt,
+   Gruppenschritte, Übersichten). Regiepult und Beamer haben aus Vorgang
+   0011/0012 bewusst ein eigenes, in sich geschlossenes <style> — das sind
+   Steuerzentralen während des Unterrichts, keine Lese-/Formularseiten. */
+* { box-sizing: border-box; }
+:root {
+	--bg: #f4f6f8;
+	--flaeche: #ffffff;
+	--rand: #dde3ea;
+	--text: #1a2430;
+	--text-schwach: #5b6b7c;
+	--akzent: #2f6fed;
+	--akzent-dunkel: #1d4fbd;
+	--gut: #1a9e7a;
+	--warnung: #b6740a;
+	--warnung-bg: #fff6e5;
+	--gefahr: #d64545;
+	--gefahr-dunkel: #b53434;
 }
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: var(--bg);
+	color: var(--text);
+	font-family: system-ui, sans-serif;
+	line-height: 1.55;
+}
+main {
+	max-width: 38rem;
+	margin: 0 auto;
+	padding: 2.5rem 1.25rem 4rem;
+}
+h1 { font-size: 1.55rem; margin: 0 0 1.25rem; line-height: 1.3; }
+h2 {
+	font-size: 0.95rem;
+	margin: 0 0 0.9rem;
+	color: var(--text-schwach);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+p { margin: 0 0 1rem; }
+a { color: var(--akzent); }
+a:hover { color: var(--akzent-dunkel); }
+strong { color: var(--text); }
+
+label {
+	display: block;
+	margin-bottom: 1.1rem;
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+	display: block;
+	width: 100%;
+	margin-top: 0.4rem;
+	font: inherit;
+	padding: 0.65rem 0.75rem;
+	border: 1px solid var(--rand);
+	border-radius: 0.5rem;
+	background: var(--flaeche);
+	color: var(--text);
+}
+textarea { min-height: 5.5rem; resize: vertical; }
+input:focus, textarea:focus, select:focus {
+	outline: 2px solid var(--akzent);
+	outline-offset: 1px;
+}
+
+button {
+	font: inherit;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5rem;
+	padding: 0.7rem 1.25rem;
+	font-weight: 600;
+	background: var(--akzent);
+	color: #fff;
+	transition: background 0.15s ease;
+}
+button:hover { background: var(--akzent-dunkel); }
+button.gefahr { background: var(--gefahr); }
+button.gefahr:hover { background: var(--gefahr-dunkel); }
+button.leise {
+	background: transparent;
+	color: var(--text-schwach);
+	border: 1px solid var(--rand);
+}
+button.leise:hover { background: var(--bg); color: var(--text); }
+
+.karte {
+	background: var(--flaeche);
+	border: 1px solid var(--rand);
+	border-radius: 0.9rem;
+	padding: 1.4rem 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.these {
+	background: var(--flaeche);
+	border: 1px solid var(--rand);
+	border-left: 4px solid var(--akzent);
+	border-radius: 0.6rem;
+	padding: 1rem 1.25rem;
+	margin-bottom: 1.5rem;
+	color: var(--text);
+}
+.these p:last-child { margin-bottom: 0; }
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--flaeche);
+	border: 1px solid var(--rand);
+	border-radius: 0.7rem;
+	overflow: hidden;
+}
+th, td { text-align: left; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--rand); }
+tr:last-child td { border-bottom: none; }
+th {
+	background: var(--bg);
+	color: var(--text-schwach);
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+}
+
+ul.wahl { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+ul.wahl li {
+	background: var(--flaeche);
+	border: 1px solid var(--rand);
+	border-radius: 0.7rem;
+	padding: 1rem 1.25rem;
+}
+ul.wahl li form { margin: 0.6rem 0 0; }
+ul.wahl li p:last-of-type { margin-bottom: 0; }
+ul.wahl li form:only-child { margin-top: 0; }
+ul.wahl li form:only-child button { width: 100%; }
+
+ul.unterschriften { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+ul.unterschriften li {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: var(--bg);
+	border: 1px solid var(--rand);
+	border-radius: 999px;
+	padding: 0.3rem 0.4rem 0.3rem 0.9rem;
+	font-size: 0.9rem;
+}
+ul.unterschriften form { margin: 0; }
+ul.unterschriften button {
+	padding: 0.2rem 0.6rem;
+	font-size: 0.75rem;
+	background: transparent;
+	color: var(--text-schwach);
+	border: 1px solid var(--rand);
+}
+ul.unterschriften button:hover { background: #fff; color: var(--gefahr); }
+
+.fehler {
+	background: var(--warnung-bg);
+	color: var(--warnung);
+	border-radius: 0.5rem;
+	padding: 0.7rem 0.9rem;
+	font-weight: 600;
+}
+
+.meta { color: var(--text-schwach); }
+
+img.qr {
+	display: block;
+	background: #fff;
+	border: 1px solid var(--rand);
+	border-radius: 0.6rem;
+	padding: 0.5rem;
+	margin: 0 0 1.5rem;
+}
+
+.antworten { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.antworten button { flex: 1 1 12rem; }
+
+.karte form:has(input[type="text"]):has(button) {
+	display: flex;
+	gap: 0.6rem;
+	margin: 0;
+}
+.karte form:has(input[type="text"]):has(button) input { margin: 0; }

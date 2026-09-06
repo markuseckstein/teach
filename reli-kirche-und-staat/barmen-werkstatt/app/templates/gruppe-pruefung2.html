@@ -11,12 +11,14 @@
 		<h1>Prüffrage 2</h1>
 		<p>Gilt eure These auch, wenn morgen eine andere Partei regiert?</p>
 
-		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
-		<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+		<div class="these">
+			<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+			<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+		</div>
 
-		<form method="post" action="/gruppe/pruefung2">
+		<form method="post" action="/gruppe/pruefung2" class="antworten">
 			<button type="submit" name="antwort" value="ja">Ja, das gilt auch dann</button>
-			<button type="submit" name="antwort" value="nein">Nein, das hängt an der Tagespolitik</button>
+			<button type="submit" name="antwort" value="nein" class="leise">Nein, das hängt an der Tagespolitik</button>
 		</form>
 	</main>
 	<script src="/static/live.js" defer></script>

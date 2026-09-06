@@ -10,18 +10,23 @@
 	<main>
 		<h1>Gruppe {{.Nummer}}</h1>
 		{{if eq .Phase ""}}
-		<p>Die Werkstatt hat noch nicht begonnen. Wartet auf eure Lehrkraft.</p>
+		<div class="karte">
+			<p>Die Werkstatt hat noch nicht begonnen. Wartet auf eure Lehrkraft.</p>
+		</div>
 		{{else}}
-		<p>Aktueller Schritt: <strong>{{.Schritt}}</strong></p>
-		{{if .HatSchreibrecht}}
-		<p>Du hast das Schreibrecht.</p>
-		{{else}}
-		<p>Ein anderes Gerät eurer Gruppe hat gerade das Schreibrecht.</p>
-		<form method="post" action="/gruppe/schreibrecht">
-			<button type="submit">Schreibrecht übernehmen</button>
-		</form>
-		{{end}}
-		<p><a href="{{.SchrittPfad}}">Weiter zu diesem Schritt</a></p>
+		<div class="karte">
+			<p class="meta">Aktueller Schritt</p>
+			<p><strong>{{.Schritt}}</strong></p>
+			{{if .HatSchreibrecht}}
+			<p>Du hast das Schreibrecht.</p>
+			{{else}}
+			<p>Ein anderes Gerät eurer Gruppe hat gerade das Schreibrecht.</p>
+			<form method="post" action="/gruppe/schreibrecht">
+				<button type="submit" class="leise">Schreibrecht übernehmen</button>
+			</form>
+			{{end}}
+		</div>
+		<p><a href="{{.SchrittPfad}}">Weiter zu diesem Schritt →</a></p>
 		{{end}}
 	</main>
 	<script src="/static/live.js" defer></script>

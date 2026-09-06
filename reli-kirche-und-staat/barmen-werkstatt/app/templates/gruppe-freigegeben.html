@@ -6,6 +6,28 @@
 	<title>Freigegeben — Barmen-Werkstatt</title>
 	<link rel="stylesheet" href="/static/style.css">
 	<style>
+		.nur-bildschirm.hinweis {
+			max-width: 38rem;
+			margin: 2.5rem auto 1rem;
+			padding: 0 1.25rem;
+			text-align: center;
+			color: var(--gut);
+			font-weight: 600;
+		}
+		.nur-bildschirm.drucken {
+			display: block;
+			margin: 0 auto 2rem;
+		}
+		.blatt {
+			max-width: 38rem;
+			margin: 0 auto 3rem;
+			background: var(--flaeche);
+			border: 1px solid var(--rand);
+			border-radius: 0.9rem;
+			padding: 2rem;
+		}
+		.blatt .themenfeld { color: var(--text-schwach); margin: 0 0 0.5rem; }
+		.blatt h1 { margin: 0 0 1.25rem; }
 		@page {
 			size: A4;
 			margin: 0;
@@ -39,8 +61,8 @@
 </head>
 <body>
 	<main>
-		<p class="nur-bildschirm">Eure These ist freigegeben. Geht damit zur Tür.</p>
-		<button class="nur-bildschirm" type="button" onclick="window.print()">Als Blatt drucken</button>
+		<p class="nur-bildschirm hinweis">Eure These ist freigegeben. Geht damit zur Tür.</p>
+		<button class="nur-bildschirm drucken" type="button" onclick="window.print()">Als Blatt drucken</button>
 
 		<div class="blatt">
 			<p class="themenfeld">Themenfeld: {{.Themenfeld}}</p>

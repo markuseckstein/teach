@@ -9,8 +9,10 @@
 <body>
 	<main>
 		<h1>Eure Verwerfung</h1>
-		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
-		<form method="post" action="/gruppe/verwerfung">
+		<div class="these">
+			<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+		</div>
+		<form class="karte" method="post" action="/gruppe/verwerfung">
 			<label>Wir verwerfen die falsche Lehre, als ob …
 				<textarea name="verwerfung" required>{{.Verwerfung}}</textarea>
 			</label>

@@ -9,9 +9,9 @@
 <body>
 	<main>
 		<h1>Barmen-Werkstatt</h1>
-		<p>Das Projektgerüst lebt.</p>
+		<p class="meta">Neuen Kurs anlegen und Beitrittscode für die Klasse erzeugen.</p>
 
-		<form method="post" action="/kurse">
+		<form class="karte" method="post" action="/kurse">
 			<label>Name des Kurses <input type="text" name="name" placeholder="z. B. 9c"></label>
 			<label>Zahl der Gruppen <input type="number" name="gruppenzahl" min="1" max="6" value="6" required></label>
 			<button type="submit">Kurs anlegen</button>

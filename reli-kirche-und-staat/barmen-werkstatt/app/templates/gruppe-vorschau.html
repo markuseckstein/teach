@@ -9,19 +9,21 @@
 <body>
 	<main>
 		<h1>Eure These — Vorschau</h1>
-		<p>Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
-		<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
-		<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+		<div class="these">
+			<p class="meta">Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
+			<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+			<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+		</div>
 
-		<section>
+		<section class="karte">
 			<h2>Unterschriften (freiwillig)</h2>
 			<p>Wer möchte, unterschreibt mit Vornamen. Niemand muss.</p>
 			{{if .Unterschriften}}
-			<ul>
+			<ul class="unterschriften">
 				{{range $i, $name := .Unterschriften}}
 				<li>
 					{{$name}}
-					<form method="post" action="/gruppe/unterschriften/entfernen" style="display:inline">
+					<form method="post" action="/gruppe/unterschriften/entfernen">
 						<input type="hidden" name="index" value="{{$i}}">
 						<button type="submit">Entfernen</button>
 					</form>

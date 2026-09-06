@@ -9,7 +9,7 @@
 <body>
 	<main>
 		<h1>In welcher Gruppe bist du?</h1>
-		<ul>
+		<ul class="wahl">
 			{{range .Gruppen}}
 			<li>
 				<form method="post" action="/kurse/{{$.KursID}}/gruppen/{{.}}/beitreten">

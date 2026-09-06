@@ -9,8 +9,8 @@
 <body>
 	<main>
 		<h1>Eure positive Bindung</h1>
-		<p>Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
-		<form method="post" action="/gruppe/positiv">
+		<p class="meta">Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
+		<form class="karte" method="post" action="/gruppe/positiv">
 			<label>Weil …
 				<textarea name="weil" required>{{.Weil}}</textarea>
 			</label>
