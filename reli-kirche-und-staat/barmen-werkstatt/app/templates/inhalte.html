@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Inhaltsverzeichnis — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Kirche und Staat — Inhaltsverzeichnis</h1>
+		<p class="meta">Alle Kopiervorlagen bleiben als eigenständige Seiten erreichbar, unabhängig
+			davon, ob die Anwendung läuft.</p>
+
+		{{if .Gesamtueberblick}}
+		<p><a href="/lessons/{{.Gesamtueberblick}}">Gesamtüberblick: In Verantwortung vor Gott →</a></p>
+		{{end}}
+
+		<table>
+			<thead>
+				<tr>
+					<th>Doppelstunde</th>
+					<th>Kopiervorlagen</th>
+					<th>Anwendung</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{range .Doppelstunden}}
+				<tr>
+					<td>DS {{.Nummer}}</td>
+					<td><a href="/lessons/{{.Datei}}">Kopiervorlagen ansehen</a></td>
+					<td>{{if .Anwendung}}<a href="{{.Anwendung}}">Barmen-Werkstatt beitreten</a>{{else}}—{{end}}</td>
+				</tr>
+				{{end}}
+			</tbody>
+		</table>
+	</main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Vorschau — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Eure These — Vorschau</h1>
+		<div class="these">
+			<p class="meta">Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
+			<p>Weil {{.Weil}}, gilt für uns: {{.Gilt}}</p>
+			<p>Wir verwerfen die falsche Lehre, als ob {{.Verwerfung}}</p>
+		</div>
+
+		<section class="karte">
+			<h2>Unterschriften (freiwillig)</h2>
+			<p>Wer möchte, unterschreibt mit Vornamen. Niemand muss.</p>
+			{{if .Unterschriften}}
+			<ul class="unterschriften">
+				{{range $i, $name := .Unterschriften}}
+				<li>
+					{{$name}}
+					<form method="post" action="/gruppe/unterschriften/entfernen">
+						<input type="hidden" name="index" value="{{$i}}">
+						<button type="submit">Entfernen</button>
+					</form>
+				</li>
+				{{end}}
+			</ul>
+			{{end}}
+			<form method="post" action="/gruppe/unterschriften/hinzufuegen">
+				<input type="text" name="vorname" placeholder="Vorname" required>
+				<button type="submit">Unterschreiben</button>
+			</form>
+		</section>
+
+		<form method="post" action="/gruppe/vorschau/einreichen">
+			<button type="submit">Einreichen</button>
+		</form>
+	</main>
+	<script src="/static/live.js" defer></script>
+</body>
+</html>

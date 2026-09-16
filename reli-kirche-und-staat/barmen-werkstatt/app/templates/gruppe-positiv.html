@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Positive Bindung — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Eure positive Bindung</h1>
+		<p class="meta">Bibelstelle: <strong>{{.Bibelstelle}}</strong></p>
+		<form class="karte" method="post" action="/gruppe/positiv">
+			<label>Weil …
+				<textarea name="weil" required>{{.Weil}}</textarea>
+			</label>
+			<label>gilt für uns: …
+				<textarea name="gilt" required>{{.Gilt}}</textarea>
+			</label>
+			<button type="submit">Weiter</button>
+		</form>
+	</main>
+	<script src="/static/live.js" defer></script>
+</body>
+</html>

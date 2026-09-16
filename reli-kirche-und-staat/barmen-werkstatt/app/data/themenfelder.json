@@ -1,0 +1,114 @@
+{
+  "uebersetzung": "Lutherbibel 1912 (gemeinfrei)",
+  "hinweis": "Die Bibelstellen dieser Datei folgen der Lutherbibel 1912, weil sie gemeinfrei ist. Die Lutherbibel 2017, die in den Kopiervorlagen (lessons/0007-ds6-kopiervorlagen.html) zitiert wird, ist urheberrechtlich geschützt und darf hier nicht verwendet werden. Die These 5 der Barmer Theologischen Erklärung ist ein historisches Dokument von 1934 und unabhängig davon gemeinfrei.",
+  "themenfelder": [
+    {
+      "id": "umgang-mit-gefluechteten",
+      "name": "Umgang mit Geflüchteten",
+      "bibelstellen": [
+        {
+          "angabe": "3. Mose 19,33–34",
+          "text": "Wenn ein Fremdling bei dir in eurem Lande wohnt, den sollt ihr nicht schinden. Er soll bei euch wohnen wie ein Einheimischer unter euch, und du sollst ihn lieben wie dich selbst; denn ihr seid auch Fremdlinge gewesen in Ägyptenland. Ich bin der HERR, euer Gott."
+        },
+        {
+          "angabe": "Matthäus 25,35",
+          "text": "Ich bin ein Gast gewesen, und ihr habt mich beherbergt."
+        },
+        {
+          "angabe": "Hebräer 13,2",
+          "text": "Gastfrei zu sein vergesset nicht; denn dadurch haben etliche ohne ihr Wissen Engel beherbergt."
+        }
+      ]
+    },
+    {
+      "id": "umgang-mit-minderheiten",
+      "name": "Umgang mit Minderheiten",
+      "bibelstellen": [
+        {
+          "angabe": "1. Mose 1,27",
+          "text": "Und Gott schuf den Menschen ihm zum Bilde, zum Bilde Gottes schuf er ihn; und schuf sie einen Mann und ein Weib."
+        },
+        {
+          "angabe": "Galater 3,28",
+          "text": "Hier ist kein Jude noch Grieche, hier ist kein Knecht noch Freier, hier ist kein Mann noch Weib; denn ihr seid allzumal einer in Christo Jesu."
+        },
+        {
+          "angabe": "Lukas 10,25–37",
+          "text": "Und siehe, da stand ein Schriftgelehrter auf, versuchte ihn und sprach: Meister, was muß ich tun, daß ich das ewige Leben ererbe? Er aber sprach zu ihm: Wie steht im Gesetz geschrieben? Wie liesest du? Er antwortete und sprach: Du sollst Gott, deinen HERRN, lieben von ganzem Herzen, von ganzer Seele, von allen Kräften und von ganzem Gemüte und deinen Nächsten als dich selbst. Er aber sprach zu ihm: Du hast recht geantwortet; tue das, so wirst du leben. Er aber wollte sich selbst rechtfertigen und sprach zu Jesu: Wer ist denn mein Nächster? Da antwortete Jesus und sprach: Es war ein Mensch, der ging von Jerusalem hinab gen Jericho und fiel unter die Mörder; die zogen ihn aus und schlugen ihn und gingen davon und ließen ihn halbtot liegen. Es begab sich aber ohngefähr, daß ein Priester dieselbe Straße hinabzog; und da er ihn sah, ging er vorüber. Desgleichen auch ein Levit; da er kam zu der Stätte und sah ihn, ging er vorüber. Ein Samariter aber reiste und kam dahin; und da er ihn sah, jammerte ihn sein, ging zu ihm, verband ihm seine Wunden und goß darein Öl und Wein und hob ihn auf sein Tier und führte ihn in die Herberge und pflegte sein. Des anderen Tages reiste er und zog heraus zwei Groschen und gab sie dem Wirte und sprach: Pflege sein; und so du was mehr wirst dartun, will ich dir's bezahlen, wenn ich wiederkomme. Welcher dünkt dich, der unter diesen dreien der Nächste sei gewesen dem, der unter die Mörder gefallen war? Er sprach: Der die Barmherzigkeit an ihm tat. Da sprach Jesus zu ihm: So gehe hin und tue desgleichen."
+        }
+      ]
+    },
+    {
+      "id": "wahrheit-in-der-oeffentlichkeit",
+      "name": "Umgang mit der Wahrheit in der Öffentlichkeit",
+      "bibelstellen": [
+        {
+          "angabe": "2. Mose 20,16 · das achte Gebot",
+          "text": "Du sollst nicht falsch Zeugnis reden wider deinen Nächsten."
+        },
+        {
+          "angabe": "Epheser 4,25",
+          "text": "Darum leget die Lüge ab und redet die Wahrheit, ein jeglicher mit seinem Nächsten, sintemal wir untereinander Glieder sind."
+        },
+        {
+          "angabe": "Johannes 8,32",
+          "text": "Und werdet die Wahrheit erkennen, und die Wahrheit wird euch frei machen."
+        }
+      ]
+    },
+    {
+      "id": "schoepfung-und-klima",
+      "name": "Schöpfung und Klima",
+      "bibelstellen": [
+        {
+          "angabe": "1. Mose 2,15",
+          "text": "Und Gott der HERR nahm den Menschen und setzte ihn in den Garten Eden, daß er ihn baute und bewahrte."
+        },
+        {
+          "angabe": "Psalm 24,1",
+          "text": "Die Erde ist des HERRN und was darinnen ist, der Erdboden und was darauf wohnt."
+        },
+        {
+          "angabe": "Römer 8,19–22",
+          "text": "Denn das ängstliche Harren der Kreatur wartet auf die Offenbarung der Kinder Gottes. Sintemal die Kreatur unterworfen ist der Eitelkeit ohne ihren Willen, sondern um deswillen, der sie unterworfen hat, auf Hoffnung. Denn auch die Kreatur wird frei werden vom Dienst des vergänglichen Wesens zu der herrlichen Freiheit der Kinder Gottes. Denn wir wissen, daß alle Kreatur sehnt sich mit uns und ängstet sich noch immerdar."
+        }
+      ]
+    },
+    {
+      "id": "nation-und-volkszugehoerigkeit",
+      "name": "Nation und Volkszugehörigkeit",
+      "bibelstellen": [
+        {
+          "angabe": "Apostelgeschichte 17,26",
+          "text": "Und er hat gemacht, daß von einem Blut aller Menschen Geschlechter auf dem ganzen Erdboden wohnen, und hat Ziel gesetzt und vorgesehen, wie lange und wie weit sie wohnen sollen."
+        },
+        {
+          "angabe": "Galater 3,28",
+          "text": "Hier ist kein Jude noch Grieche, hier ist kein Knecht noch Freier, hier ist kein Mann noch Weib; denn ihr seid allzumal einer in Christo Jesu."
+        },
+        {
+          "angabe": "Offenbarung 7,9",
+          "text": "Darnach sah ich, und siehe, eine große Schar, welche niemand zählen konnte, aus allen Heiden und Völkern und Sprachen, vor dem Stuhl stehend und vor dem Lamm, angetan mit weißen Kleidern und Palmen in ihren Händen."
+        }
+      ]
+    },
+    {
+      "id": "freiheit-der-kirche-gegenueber-jeder-regierung",
+      "name": "Freiheit der Kirche gegenüber jeder Regierung",
+      "bibelstellen": [
+        {
+          "angabe": "Apostelgeschichte 5,29",
+          "text": "Man muß Gott mehr gehorchen denn den Menschen."
+        },
+        {
+          "angabe": "Matthäus 22,21",
+          "text": "So gebet dem Kaiser, was des Kaisers ist, und Gott, was Gottes ist!"
+        },
+        {
+          "angabe": "Barmer Theologische Erklärung, These 5, 1934",
+          "text": "Wir verwerfen die falsche Lehre, als solle und könne der Staat über seinen besonderen Auftrag hinaus die einzige und totale Ordnung menschlichen Lebens werden und also auch die Bestimmung der Kirche erfüllen."
+        }
+      ]
+    }
+  ]
+}

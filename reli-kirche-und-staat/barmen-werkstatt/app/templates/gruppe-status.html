@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gruppe {{.Nummer}} — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Gruppe {{.Nummer}}</h1>
+		{{if eq .Phase ""}}
+		<div class="karte">
+			<p>Die Werkstatt hat noch nicht begonnen. Wartet auf eure Lehrkraft.</p>
+		</div>
+		{{else}}
+		<div class="karte">
+			<p class="meta">Aktueller Schritt</p>
+			<p><strong>{{.Schritt}}</strong></p>
+			{{if .HatSchreibrecht}}
+			<p>Du hast das Schreibrecht.</p>
+			{{else}}
+			<p>Ein anderes Gerät eurer Gruppe hat gerade das Schreibrecht.</p>
+			<form method="post" action="/gruppe/schreibrecht">
+				<button type="submit" class="leise">Schreibrecht übernehmen</button>
+			</form>
+			{{end}}
+		</div>
+		<p><a href="{{.SchrittPfad}}">Weiter zu diesem Schritt →</a></p>
+		{{end}}
+	</main>
+	<script src="/static/live.js" defer></script>
+</body>
+</html>

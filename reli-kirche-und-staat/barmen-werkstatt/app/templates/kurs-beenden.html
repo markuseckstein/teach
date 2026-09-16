@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{.Name}} beenden — Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Kurs „{{.Name}}" beenden?</h1>
+		<div class="karte">
+			<p class="fehler">Das kann nicht rückgängig gemacht werden. Endgültig gelöscht werden:</p>
+			<ul>
+				<li>der Kurs „{{.Name}}" selbst</li>
+				<li>alle seine Gruppen</li>
+				<li>alle Geräte, die einer dieser Gruppen beigetreten sind</li>
+				<li>alle Thesen dieser Gruppen</li>
+				<li>alle Zeitkapsel-Einträge dieses Kurses</li>
+			</ul>
+			<p class="meta">Wer die Thesen behalten will, fotografiert die Tür — das ist ohnehin das
+				schönere Archiv.</p>
+		</div>
+
+		<form method="post" action="/kurse/{{.ID}}/beenden">
+			<button type="submit" class="gefahr">Kurs endgültig beenden und alles löschen</button>
+		</form>
+	</main>
+</body>
+</html>
