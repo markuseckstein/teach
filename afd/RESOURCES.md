@@ -231,16 +231,22 @@ Stand: 10.09.2026. Politische Quellen altern schnell — bei jeder Zahl auf das 
 
 ## Gaps
 
-- Keine belastbare Quelle bisher zu: Auswirkungen auf **Reisefreiheit, Zahlungsverkehr (SEPA/Euro),
-  NATO-Bindung** — das sind Bundesthemen, für die das Landesprogramm nichts hergibt. Dafür braucht
+- ~~Auswirkungen auf **Reisefreiheit, Zahlungsverkehr (SEPA/Euro), NATO-Bindung**~~
+  **Erledigt (16.09.2026):** Beide Bundesprogramme liegen maschinenlesbar in `quellen/`,
+  Lektion 5 arbeitet mit Originalzitaten. Siehe eigener Abschnitt unten. Alte Notiz — das sind Bundesthemen, für die das Landesprogramm nichts hergibt. Dafür braucht
   es das **Bundesprogramm** der AfD als eigene Primärquelle.
-- **Eskalation / Bürgerkriegsrisiko:** weiterhin ungedeckt. Polarisierungsstudien (KAS,
-  MIDEM) sind da, Konfliktforschung nicht. Nötig: Literatur zu *democratic backsliding*,
-  die Fälle Ungarn und Polen, Forschung zu politischer Gewalt in Europa. Lektion 4 sagt
-  das offen und markiert den Abschnitt als Vermutung.
-- **Russische Einflussnahme und US-Tech-Milliardäre:** noch keine Quelle geprüft. Nötig:
-  Verfassungsschutzberichte, EUvsDisinfo/EU DisinfoLab, Rechercheverbünde — und eine
-  strikte Trennung zwischen behördlich belegt, recherchiert und vermutet.
+- ~~**Eskalation / Bürgerkriegsrisiko:** weiterhin ungedeckt.~~ **Erledigt (16.09.2026):
+  Lektion 11.** Wichtigster Befund der Suche: **Es gibt keine Konfliktforschung, die ein
+  Bürgerkriegsmodell auf Deutschland anwendet.** Die einschlägige Literatur ist die zum
+  *democratic backsliding*. Quellen unten.
+- ~~**Russische Einflussnahme und US-Tech-Milliardäre:** noch keine Quelle geprüft.~~
+  **Erledigt (16.09.2026):** Lektion 8. Quellenlage siehe eigener Abschnitt unten.
+  **Was dort offen bleibt:** (a) das Ergebnis der Prüfung der Bundestagsverwaltung zum
+  Musk-Weidel-Gespräch ist nicht öffentlich auffindbar — gesucht am 16.09.2026, nichts
+  gefunden; (b) eine belegte Verbindung von Peter Thiel oder Palantir zur AfD existiert
+  nach meiner Suche nicht, nur eine zum Umfeld von JD Vance — deshalb in der Lektion
+  bewusst weggelassen; (c) die Wirkungsfrage (verändert Desinformation Wahlergebnisse?)
+  ist eine eigene Forschungsfrage und in der Lektion ausdrücklich nicht beantwortet.
 - **Öffentlich-rechtlicher Rundfunk:** ungeprüft, wie weit ein einzelnes Land beim
   Staatsvertrag kommt. In Lektion 3 als offene Frage markiert.
 - ~~Das Landesprogramm ist maschinell nicht auslesbar.~~ **Erledigt (10.09.2026):** Volltext
@@ -281,3 +287,163 @@ Stand: 10.09.2026. Politische Quellen altern schnell — bei jeder Zahl auf das 
   und XVII gibt es nicht — die IWH-Studie rechnet über das gesamte Programm.
 - Kein Längsschnitt zu Sachsen-Anhalt speziell (Demografie, Abwanderung, Einkommen), der die
   Frage „warum gerade hier?" strukturell beantwortet.
+
+
+## Einflussnahme: Russland und USA (geprüft am 16.09.2026, für Lektion 8)
+
+**Behördlich / primär**
+
+- [Deutscher Bundestag, hib 426/2026 (22.05.2026)](https://www.bundestag.de/presse/hib/kurzmeldungen-1182116) —
+  Antwort der Bundesregierung (BT-Drs. 21/5967) auf eine Kleine Anfrage der Linken
+  (21/5475): Die Bundesregierung hat **Storm-1516 im Dezember 2025 förmlich Russland
+  zugerechnet** (nationales Attributionsverfahren). Genannt: Center for Geopolitical
+  Expertise im Umfeld Alexander Dugins, das von Konstantin Malofejew finanzierte Netzwerk,
+  Unterstützung durch den GRU. Härteste verfügbare Quelle zum Thema.
+- [BfV: Gefährdungen durch russische Spionage, Sabotage und Desinformation](https://www.verfassungsschutz.de/SharedDocs/hintergruende/DE/spionage-und-proliferationsabwehr/gefaehrdung-russische-spionage-sabotage-desinformation.html) —
+  Doppelgänger (seit 2022, nachgebaute Seiten von Spiegel/Stern/FAZ) und Storm-1516.
+  **Wichtig: nennt keine Partei namentlich**, sondern nur „für Russland eher vorteilhafte
+  politische Positionen, Personen und Parteien“. Wer mehr daraus macht, zitiert falsch.
+- [Verfassungsschutzbericht 2025](https://www.verfassungsschutz.de/SharedDocs/publikationen/DE/verfassungsschutzberichte/2026-06-30-verfassungsschutzbericht-2025.html) —
+  vorgestellt am 30.06.2026. Primärquelle, als Leseempfehlung in Lektion 8 gesetzt.
+  *Nicht seitengenau ausgewertet* — wenn daraus zitiert werden soll, vorher öffnen.
+- [§ 25 Parteiengesetz](https://www.gesetze-im-internet.de/partg/__25.html) — Abs. 2 Nr. 3:
+  Spenden von außerhalb der EU über 1.000 € unzulässig; Weiterleitung an die
+  Bundestagspräsidentin, sonst dreifache Strafzahlung (§ 31c).
+- VG Berlin zur AfD-Spendenaffäre: [Goal AG, 108.412,80 €](https://www.lto.de/recht/nachrichten/n/vg-berlin-vg2k21320-parteispendenaffaere-afd-goal-ag)
+  und [rund 396.000 € („Wahlkampfspende Alice Weidel Social Media“)](https://www.lto.de/recht/nachrichten/n/vg-berlin-vg2k20920-parteispendenaffaere-afd-prozess-verloren-parteiengesetz-parteispende-direktspende-alice-weidel).
+  Der einzige Strang, bei dem ausländisches Geld **gerichtlich festgestellt** ist.
+
+**Recherche / Forschung**
+
+- [CeMAS (Smirnova/Meyer, 04.09.2026)](https://cemas.io/blog/desinformation-vor-landtagswahlen) —
+  Operation Overload/Matryoshka vor den Landtagswahlen 2026; dazu
+  [Plattform Wahlen](https://www.plattform-wahlen.org/news/desinformation-vor-den-landtagswahlen-in-sachsen-anhalt):
+  Overload, Doppelgänger, Storm-1516, Foundation to Battle Injustice rund um den 6.9.2026.
+  **Richtung beachten:** Die Angriffe zielten auf Kandidaten von CDU, SPD, FDP, Linke, Grüne.
+- [t-online-Recherche: Kreml-Kontakte auf allen Ebenen](https://www.t-online.de/nachrichten/deutschland/innenpolitik/id_100989818/afd-so-oft-reisen-ihre-abgeordneten-nach-russland.html) —
+  Chronologie der Russlandreisen, u. a. Tillschneider und Wald (Sachsen-Anhalt, 2022);
+  Frohnmaier und Kotré beim Petersburger Wirtschaftsforum im Juni 2026.
+- [Tagesspiegel zu Bystron und „Voice of Europe“](https://www.tagesspiegel.de/politik/ermittlungen-um-prorussisches-internetportal-afd-politiker-bystron-soll-aktiv-mit-voice-of-europe-zusammen-gearbeitet-haben-11768840.html) —
+  mindestens 34.000 € in bar und Krypto, aktive Mitwirkung am Portal. **Ermittlungsverfahren,
+  keine Anklage, kein Urteil, er bestreitet.** Immunität zuletzt im Februar 2026 aufgehoben.
+- [LTO zu Krah](https://www.lto.de/recht/nachrichten/n/aufhebung-immunitaet-bundestag-abgeordneter-maximilian-krah-ermittlungen-bestechlichkeit-geldwaesche) —
+  Generalstaatsanwaltschaft Dresden, Bestechlichkeit/Geldwäsche im Zusammenhang mit
+  **chinesischen** Zahlungen; Vorermittlungen zu russischen Zahlungen offen. Nicht mit dem
+  Russland-Komplex vermischen.
+- [netzpolitik.org: Studien zu Algorithmen](https://netzpolitik.org/2025/studien-zu-algorithmen-tiktok-und-x-pushen-rechte-parteien/) —
+  Global Witness (78 % TikTok, 64 % X), ZDF Frontal mit Team aus Dublin, Centre for AI and
+  Digital Humanism (über 2.000 eigens angelegte Konten für den Musk-Weidel-Stream).
+- [AlgorithmWatch/DFRLab: Der Musk-Effekt](https://algorithmwatch.org/de/der-musk-effekt/) —
+  **widerspricht in der Tendenz:** „keine eindeutigen Anhaltspunkte“ für algorithmische
+  Verzerrung. Andere Methode (bestehende statt neue Konten). Der Widerspruch gehört
+  ausgesprochen, nicht aufgelöst.
+- [taz: USA und AfD — „Getarnte Tyrannei“](https://taz.de/USA-und-AfD/!6085578/) — Vance in
+  München, Rubio zur Einstufung, laut Spiegel geprüfte Einreisesperren gegen
+  Verfassungsschutz-Mitarbeiter. Meinungsstarkes Blatt, aber die zitierten Äußerungen sind
+  öffentlich und anderweitig belegt.
+- [LTO: Bundestagsverwaltung prüft das X-Gespräch](https://www.lto.de/recht/nachrichten/n/x-gespraech-musk-weidel-illegale-parteispande-bundestagsverwaltung) —
+  juristische Einordnung (Schönberger: Reichweite allein ist kein geldwerter Vorteil).
+  **Ergebnis der Prüfung bis 16.09.2026 nicht auffindbar.**
+- [Jüdische Allgemeine: Musks „Gut gemacht!“](https://www.juedische-allgemeine.de/politik/gut-gemacht-elon-musk-gratuliert-afd-zu-wahltriumph/) —
+  6.9.2026, dazu Siegmunds öffentliches Kooperationsangebot.
+
+
+## Gespräch vor Publikum (geprüft am 16.09.2026, für Lektion 2)
+
+- [Geiger & Swim, Journal of Environmental Psychology 2016](https://www.sciencedirect.com/science/article/abs/pii/S027249441630038X) —
+  „Climate of silence: Pluralistic ignorance as a barrier to climate change discussion“.
+  Zwei Studien: Wer die Haltung der anderen richtig einschätzt, ist eher bereit zu reden;
+  das Korrigieren der Fehleinschätzung erhöht die Bereitschaft messbar. **Anderes Thema als
+  unseres** — die Übertragung auf politische Gespräche ist eine Ableitung, keine Messung.
+- [Hangartner et al., PNAS 2021](https://www.pnas.org/doi/10.1073/pnas.2116310118) —
+  Feldexperiment, 1.350 Konten, drei Antwortstrategien. **Nur Empathie wirkte** (rund ein
+  Drittel weniger fremdenfeindliche Beiträge); Humor und Konsequenzandrohung zeigten keinen
+  Effekt. Effektstärken 0,1–0,2 SD, also klein. Die beiden Nullbefunde sind praktisch
+  wichtiger als der Positivbefund.
+- [Roozenbeek, van der Linden et al., HKS Misinformation Review](https://misinforeview.hks.harvard.edu/article/global-vaccination-badnews/) —
+  Prebunking/Inoculation, über Länder und Sprachen hinweg konsistent. Geimpft wird gegen
+  ein *Muster*, nicht gegen eine Einzelbehauptung.
+- [bpb: Argumentationstraining gegen Stammtischparolen (nach Klaus-Peter Hufer)](https://www.bpb.de/lernen/angebote/politische-bildung-und-polizei/271819/die-auslaender-nehmen-uns-die-arbeitsplaetze-weg-argumentationstraining-gegen-stammtischparolen/) —
+  Praxisregeln: konkret nachfragen, Verallgemeinerungen nicht durchgehen lassen,
+  Widersprüche nebeneinanderlegen, Brücken bauen. Wird auch als VHS-Kurs angeboten —
+  der Übungsraum, den ein Text nicht ersetzt.
+
+## Demokratie und Bürgerrechte, Kapitel VIII (geprüft am 16.09.2026, für Lektion 9)
+
+- [BMI: Versammlungsrecht](https://www.bmi.bund.de/DE/themen/verfassung/staatliche-ordnung/versammlungsrecht/versammlungsrecht-node.html) —
+  Gesetzgebungskompetenz seit der Föderalismusreform 01.09.2006 bei den Ländern.
+  **Sachsen-Anhalt hat ein eigenes Versammlungsgesetz (VersammlG LSA), in Kraft seit 2009.**
+  Das ist der Dreh- und Angelpunkt der ganzen Lektion. *Wortlaut des Gesetzes selbst noch
+  nicht geprüft.*
+- [bpb: 40 Jahre Brokdorf-Beschluss](https://www.bpb.de/kurz-knapp/hintergrund-aktuell/562070/versammlungsfreiheit-40-jahre-brokdorf-beschluss/) —
+  BVerfGE 69, 315 vom 14.05.1985, Leitentscheidung zu Art. 8 GG.
+- [LTO zu BVerfG 1 BvR 2428/20 (01.10.2025)](https://www.lto.de/recht/nachrichten/n/1-bvr-2428/20-bundesverfassungsgericht-versammlungsrecht-verfassungsbeschwerde-unbegruendet-gegendemonstration) —
+  Gegendemonstrationen sind geschützt; die Grenze liegt bei der **faktischen Stilllegung**
+  der anderen Versammlung, nicht bei der Nähe. Genau dort verschiebt VIII.5 die Linie.
+- [BVerfG, PM zum Beschluss 2 BvC 7/10 (09.07.2013)](https://www.bundesverfassungsgericht.de/SharedDocs/Pressemitteilungen/DE/2013/bvg13-048.html) —
+  „Freigabe der Briefwahl ist verfassungsgemäß“; zugleich: Urnenwahl bleibt Leitbild,
+  Briefwahl darf nicht Regelfall werden. **Widerlegt die Begründung des Programms, nicht
+  die Forderung.**
+- [BVerfG, 1 BvR 1072/01 (24.05.2005, Junge Freiheit)](https://www.bundesverfassungsgericht.de/SharedDocs/Pressemitteilungen/DE/2005/bvg05-057.html) —
+  Erwähnung im Verfassungsschutzbericht ist ein Grundrechtseingriff mit Warnfunktion,
+  muss verhältnismäßig sein. Der ernstzunehmende Kern der VS-Kritik in VIII.1.
+- [Wissenschaftliche Dienste, WD 3 - 3000 - 129/20](https://www.bundestag.de/resource/blob/705370/807d171b06ed889ba09e8ddc55cd95e6/WD-3-129-20-pdf-data.pdf) —
+  § 5 Abs. 2 WaffG seit 20.02.2020: Mitgliedschaft in einer verfassungsfeindlichen
+  Vereinigung begründet die Regelvermutung der Unzuverlässigkeit; passive Mitgliedschaft
+  genügt.
+
+## Democratic Backsliding (geprüft am 16.09.2026, für Lektion 11)
+
+- [Nancy Bermeo, „On Democratic Backsliding“, Journal of Democracy 27 (2016) 1](https://www.journalofdemocracy.org/articles/on-democratic-backsliding/) —
+  Definition und der Begriff *executive aggrandizement*. Der Schlüsselbefund: Putsch und
+  Wahltagsbetrug nehmen ab, die legale Selbstermächtigung nimmt zu.
+- [V-Dem Democracy Report 2026 (PDF)](https://www.v-dem.net/documents/75/V-Dem_Institute_Democracy_Report_2026_lowres.pdf) —
+  92 Autokratien gegenüber 87 Demokratien; 44 Länder autokratisieren (41 % der
+  Weltbevölkerung, Höchstwert); Demokratieniveau für den Durchschnittsmenschen auf Stand
+  1978; sechs von zehn neuen Autokratisierern in Europa/Nordamerika.
+- [Zeitschrift für Vergleichende Politikwissenschaft: Kritiken der V-Dem-Demokratiemessung](https://link.springer.com/article/10.1007/s12286-026-00661-6) —
+  **Immer mitzitieren.** Expertencodierung ist methodisch angreifbar; die Krisendiagnose
+  ist nicht so sicher, wie die Zahlen wirken.
+- [bpb: Parlamentswahl in Ungarn](https://www.bpb.de/kurz-knapp/hintergrund-aktuell/576934/parlamentswahl-in-ungarn/) —
+  konkrete Eingriffe: 2011 Sitze 386 → 199 und zweiter Wahlgang abgeschafft,
+  Wahlkreiszuschnitt zugunsten des ländlichen Raums, 2024 zwei Mandate aus Budapest
+  verlagert und keine Stimmzettelumschläge mehr.
+- [taz zur Wahl in Ungarn 2026](https://taz.de/Wahl-in-Ungarn/!6170093/) — 12.04.2026:
+  Wahlbeteiligung 78,99 %, Tisza (Magyar) 53,1 % und 138 von 199 Mandaten, Fidesz 38,4 %
+  und 55 Sitze; Orbán räumte am Wahlabend ein.
+- [LTO: Nawrocki stoppt die Reform für einen unabhängigen Landesjustizrat](https://www.lto.de/recht/nachrichten/n/justiz-polen-rechtsstaat-tusk-nawrocki) —
+  Präsident seit 06.08.2025; Veto gegen das KRS-Gesetz vom Januar 2026; Überstimmen
+  bräuchte über 60 %. Der Fall, der die Asymmetrie belegt.
+- [BKA-PM vom 09.06.2026: Politisch motivierte Gewalt erreicht neuen Höchststand](https://www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/2026/Presse2026/260609_PM_PMK2025.html)
+  und [BMI-Factsheet PMK 2025 (PDF)](https://www.bmi.bund.de/SharedDocs/downloads/DE/publikationen/themen/sicherheit/BMI26013-factsheet2025.pdf?__blob=publicationFile&v=3) —
+  85.837 Straftaten insgesamt, 4.156 Gewaltdelikte (+1,2 %); rechts 42.544 / 1.598 (+7 %),
+  links 13.490 (+35 %) / 1.087 (+42 %). **Erfasste Straftaten, keine Verurteilungen.**
+
+
+## Bundesebene: die beiden Programme des Bundesverbands (beschafft am 16.09.2026)
+
+Vom Nutzer geliefert: <https://www.afd.de/grundsatzprogramm/>. **Beide Dokumente gelten** —
+die Seite weist das Grundsatzprogramm als durch spätere Papiere ergänzt, nicht ersetzt aus.
+Volltext und Seiten-JSON liegen in `quellen/`.
+
+- [Grundsatzprogramm „Programm für Deutschland“ (PDF, 96 S.)](https://www.afd.de/wp-content/uploads/2023/05/Programm_AfD_Online_.pdf) —
+  beschlossen auf dem Bundesparteitag Stuttgart, 30.04.–01.05.2016. Kapitel 4 (Außen- und
+  Sicherheitspolitik) ist der Kern für NATO-Fragen: 4.2 S. 30 f., 4.3 S. 31, 4.4 S. 31 f.
+  **Gedruckte Seite = PDF-Seite.**
+- [Bundestagswahlprogramm 2025 (PDF, 177 S.)](https://www.afd.de/wp-content/uploads/2025/02/AfD_Bundestagswahlprogramm2025_web.pdf) —
+  Kapitel „Äußere Sicherheit“ ab gedruckter S. 86. **Achtung: PDF-Seite = gedruckte Seite + 1.**
+  Das ist beim Landesprogramm anders und eine sichere Fehlerquelle.
+- Ebenfalls auf der Seite verlinkt, **noch nicht geprüft:** Kurzfassung des
+  Grundsatzprogramms (2021), Positionspapier Remigration, Resolution zur Kernenergie,
+  Konzept zur Sozialpolitik.
+
+**Die wichtigste Einzelfundstelle, die vorher fehlte** — GP 2016, 4.2, S. 31: „Die AfD
+setzt sich für den Abzug aller auf deutschem Boden stationierten alliierten Truppen und
+insbesondere ihrer Atomwaffen ein.“
+
+**Wo die Vorversion von Lektion 5 zu grob war:** Der NATO-Punkt stand dort aus zweiter
+Hand und war sachlich richtig (der Satz zum „europäischen Militärbündnis“ steht fast
+wörtlich in WP 2025, S. 87) — aber der Truppen- und Atomwaffenabzug fehlte, ebenso die
+Euro-Hintertür („ggf. unter paralleler Beibehaltung des Euro“, WP 2025 S. 62) und der
+bedingte Dexit im GP 2016 (S. 16). **Keine Falschaussage, aber eine Lücke an der
+wichtigsten Stelle.**

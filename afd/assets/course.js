@@ -28,51 +28,83 @@ var COURSE = {
     },
     {
       n: 2,
-      file: '0002-wer-regiert-eigentlich.html',
+      file: '0002-die-stillen-am-tisch.html',
+      title: 'Die Stillen am Tisch',
+      teaser: 'Sobald andere zuhören, ändert sich alles — nur nicht das, was die meisten denken. Nicht dein Gegenüber wird wichtiger, sondern dein Schweigen. Drei Sätze für die Mitte des Tisches.',
+      minutes: 11,
+      part: 'Teil I · Das Gespräch'
+    },
+    {
+      n: 3,
+      file: '0003-wer-regiert-eigentlich.html',
       title: 'Wer regiert eigentlich?',
       teaser: 'Drei Verfassungsartikel entscheiden alles: warum 39 von 83 Sitzen zum Blockieren reichen, zum Gestalten nicht — und warum eine Enthaltung im dritten Wahlgang keine neutrale Handlung ist.',
       minutes: 11,
       part: 'Teil II · Die Folgen'
     },
     {
-      n: 3,
-      file: '0003-was-ginge-ueberhaupt.html',
+      n: 4,
+      file: '0004-was-ginge-ueberhaupt.html',
       title: 'Die Schere: was ginge, was nicht',
       teaser: 'Die Programmanalyse Feld für Feld. Befund: Fast alles, worüber gestritten wird, ist rechtlich blockiert — und fast alles, was tief wirkt, wird kaum diskutiert.',
       minutes: 12,
       part: 'Teil II · Die Folgen'
     },
     {
-      n: 4,
-      file: '0004-ausblick-deutschland.html',
+      n: 5,
+      file: '0005-ausblick-deutschland.html',
       title: 'Ausblick: und wenn ganz Deutschland?',
-      teaser: 'Was auf Bundesebene wegfällt und was bleibt. Euro, NATO, Reisen, Zahlungsverkehr — streng getrennt nach belegt, gerechnet und bloß abgeleitet. Plus die Bürgerkriegsfrage.',
-      minutes: 12,
+      teaser: 'Euro, EU, NATO, Russland — jetzt mit beiden Bundesprogrammen im Wortlaut. Darunter die härteste Forderung von allen: Abzug aller alliierten Truppen und ihrer Atomwaffen.',
+      minutes: 15,
       part: 'Teil II · Die Folgen'
     },
     {
-      n: 5,
-      file: '0005-schule-kirche-kanzel.html',
+      n: 6,
+      file: '0006-schule-kirche-kanzel.html',
       title: 'Schule, Kirche, Kanzel',
       teaser: 'Die einzige Lektion, die nicht vom Land handelt, sondern von deinem Beruf: Das Programm nennt den Beutelsbacher Konsens beim Namen, die Evangelische Akademie beim Namen — und Bayern als Vorbild.',
       minutes: 12,
       part: 'Teil II · Die Folgen'
     },
     {
-      n: 6,
-      file: '0006-polizei-und-justiz.html',
+      n: 7,
+      file: '0007-polizei-und-justiz.html',
       title: 'Polizei und Justiz',
       teaser: 'Aufsicht wird zurückgebaut, Strafrecht ausgeweitet — und eine Kriminalstatistik auf Seite 109 trägt mehr Gewicht, als sie tragen kann. Wie man sie richtig liest.',
       minutes: 15,
       part: 'Teil II · Die Folgen'
     },
     {
-      n: 7,
-      file: '0007-bestellt-nicht-bezahlt.html',
+      n: 8,
+      file: '0008-bestellt-nicht-bezahlt.html',
       title: 'Bestellt, nicht bezahlt',
       teaser: 'Wissenschaft, Landwirtschaft, Verkehr, Gesundheit: vier Kapitel voller sympathischer Forderungen — und auf gut 40 Seiten genau eine Euro-Zahl. Die zweite Schere, diesmal nicht rechtlich, sondern haushalterisch.',
       minutes: 12,
       part: 'Teil II · Die Folgen'
+    },
+    {
+      n: 9,
+      file: '0009-die-freiheit-die-sie-meinen.html',
+      title: 'Die Freiheit, die sie meinen',
+      teaser: 'Kapitel VIII fordert mehr Volksentscheide, mehr Transparenz, weniger Überwachung — und auf denselben acht Seiten nur noch eine Demo pro Ort. Beides ist Landesrecht, beides ginge sofort.',
+      minutes: 15,
+      part: 'Teil II · Die Folgen'
+    },
+    {
+      n: 10,
+      file: '0010-moskau-und-mar-a-lago.html',
+      title: 'Moskau und Mar-a-Lago',
+      teaser: 'Russland und die US-Milliardäre: das Thema, bei dem man am schnellsten als Verschwörungstheoretiker dasteht. Wo die Aktenlage wirklich aufhört — und warum sie weiter reicht als gedacht.',
+      minutes: 14,
+      part: 'Teil II · Die Folgen'
+    },
+    {
+      n: 11,
+      file: '0011-wie-es-anderswo-ausging.html',
+      title: 'Wie es anderswo ausging',
+      teaser: 'Die Eskalationsfrage mit Quellen statt Bauchgefühl. Ungarn wurde im April 2026 abgewählt — Polen dreht seit 2023 nichts zurück. Was sich davon auf Sachsen-Anhalt überträgt und was nicht.',
+      minutes: 15,
+      part: 'Teil III · Die lange Sicht'
     }
   ],
 

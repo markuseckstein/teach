@@ -12,6 +12,8 @@
   Ausdrücklich *nicht* Unterrichtsmaterial. Beispiele also aus dem Erwachsenenalltag,
   nicht aus dem Klassenzimmer.
 - **Einstieg gewählt:** Gesprächsführung zuerst, Folgenanalyse danach.
+- **Kursstruktur seit 16.09.2026:** Teil I · Das Gespräch (1–2), Teil II · Die Folgen
+  (3–10), Teil III · Die lange Sicht (11).
 - Bilder und Diagramme sind erwünscht (inline SVG, offline- und drucktauglich).
 
 ## Architekturentscheidung: eine Quelle für die Navigation
@@ -43,30 +45,57 @@ Klassische `<script src>`-Tags mit globalen Variablen.
 
 ## Zu tun / offene Fäden
 
-- Folgenanalyse: pro Politikfeld eine eigene, kurze Lektion (Haushalt, Bildung, Energie,
-  EU/Reisen/Zahlungsverkehr, NATO, Rechtsstaat). Nicht alles in eine Lektion pressen.
-- Frage „Bürgerkrieg?" gehört ans Ende der Folgenanalyse, nicht an den Anfang —
-  sonst dominiert die Dramatik die Sachfragen.
+- ~~Folgenanalyse: pro Politikfeld eine eigene, kurze Lektion.~~ **Erledigt (16.09.2026):**
+  Alle siebzehn Programmkapitel sind seitengenau ausgewertet. Was auf Bundesebene fehlt
+  (Euro, NATO, Reisen, Zahlungsverkehr), braucht das **Bundesprogramm** als eigene
+  Primärquelle. **Erledigt (16.09.2026):** Der Nutzer hat
+  <https://www.afd.de/grundsatzprogramm/> geliefert; Grundsatzprogramm 2016 und
+  Wahlprogramm 2025 liegen maschinenlesbar in `quellen/`, Lektion 5 zitiert seitengenau.
+- ~~Frage „Bürgerkrieg?" gehört ans Ende der Folgenanalyse.~~ **Erledigt (16.09.2026):
+  Lektion 11**, und die Platzierung am Ende war richtig. Befund: Es war die falsche Frage.
+  Es gibt keine Konfliktforschung, die ein Bürgerkriegsmodell auf Deutschland anwendet —
+  die einschlägige Literatur ist die zum *democratic backsliding*. Die Lektion bremst
+  deshalb **beide** Seiten: die Verharmlosung und die Dramatisierung.
 - Prüfen, ob die GEW-Umsetzbarkeitsanalyse (Rechtsgutachten) als Primärquelle taugt oder
   als Interessenvertretung gekennzeichnet werden muss.
 - ~~Referenz „Glossar" anlegen.~~ **Erledigt (10.09.2026):** `reference/glossar.html`,
-  25 Einträge in sechs Gruppen, jeweils mit Fundstelle im Kurs und — wo es zählt — einem
+  inzwischen 37 Einträge in sieben Gruppen (16.09.2026: Gruppe „Einflussnahme und
+  Desinformation“ ergänzt), jeweils mit Fundstelle im Kurs und — wo es zählt — einem
   „Nicht verwechseln mit …". Regel für die Aufnahme: ein Begriff kommt hinein, wenn er in
   einer Lektion mit `<span class="term">` ausgezeichnet ist **oder** im Gespräch regelmäßig
   unscharf gebraucht wird. Beim nächsten Ausbau mitpflegen, sonst veraltet er still.
 - ~~Der Kurs hat keine Wiederholung.~~ **Erledigt (10.09.2026):**
   `reference/wiederholungsplan.html` — fünf Abrufe an Tag 1, 3, 7, 21, 60, Fragen aus dem
   Gedächtnis, Antworten in `<details class="reveal">`, Datumsfelder zum Eintragen. Ab
-  Abruf 4 sind es Anwendungsfragen, keine Wissensfragen mehr. Wenn Lektion 8 kommt, gehört
-  ihre Kernfrage in Abruf 3 und ihr Merksatz in die Liste in Abruf 5.
-- **Nachgereichte Frage (10.09.2026):** Warum unterstützen Russland und ein Teil der
-  US-Tech-Milliardäre die AfD? Eigene Lektion in Teil II. Heikel, weil hier die Grenze
-  zwischen Beleg und Verschwörungserzählung schmal ist — daher strikt dreiteilen:
-  (1) gerichtsfest/behördlich belegt, (2) gut recherchiert, aber bestritten, (3) plausibel,
-  aber unbelegt. Quellen: Verfassungsschutzberichte, EU DisinfoLab/EUvsDisinfo,
-  Rechercheverbünde (Correctiv, ZDF/SZ/NDR/WDR), öffentliche Äußerungen der Beteiligten selbst.
-- Noch keine Lektion zu „Publikum am Stammtisch". Steht im Roadmap-Abschnitt der index.html.
-- **Lektion 7 (10.09.2026): das Muster war nicht inhaltlich, sondern formal.** Die vier
+  Abruf 4 sind es Anwendungsfragen, keine Wissensfragen mehr. **Für Lektion 10 erledigt
+  (16.09.2026):** Kernfrage als Frage 5 in Abruf 3, Merksatz in der Liste in Abruf 5.
+  Für Lektion 2, 9 und 11 am 16.09.2026 ebenfalls erledigt.
+- ~~**Nachgereichte Frage (10.09.2026):** Warum unterstützen Russland und ein Teil der
+  US-Tech-Milliardäre die AfD?~~ **Erledigt (16.09.2026): Lektion 10.** Die geplante
+  Dreiteilung hat sich in der Recherche als überflüssig erwiesen — die vorhandenen drei
+  Sicherheitsstufen ①②③ tragen das Thema, ergänzt um eine ausdrückliche Regel:
+  *Ermittlungsverfahren ≠ Schuldspruch.* Der Kern der Lektion ist nicht der Befund,
+  sondern die Grenze: Der Satz „Die AfD wird aus Moskau gesteuert" kippt beim ersten
+  Nachhaken. Details im Learning Record 0006.
+- **Bewusst nicht in Lektion 10: Peter Thiel und Palantir.** Es gibt reichlich Belege für
+  Thiels Rolle im Umfeld von JD Vance, aber keinen für eine Verbindung zur AfD. Wenn der
+  Nutzer danach fragt (die Frage lag als „US-Milliardäre" im Plural vor), ist die ehrliche
+  Antwort: Musk ja, Vance und Rubio als Regierung ja, Thiel nicht belegt.
+- **Offen aus Lektion 9:** Versammlungsgesetz Sachsen-Anhalt im Wortlaut ungeprüft;
+  ob eine Pflicht zur deutschen Sprache auf Versammlungen vor dem BVerfG Bestand hätte,
+  steht nur als meine Einschätzung (keine einschlägige Entscheidung gefunden).
+- **Offen aus Lektion 11:** Ob sich Landesregierungen sinnvoll mit Nationalstaaten
+  vergleichen lassen, ist eine offene Forschungsfrage — die Übertragungstabelle ist
+  Stufe ③. Und: in ein paar Monaten nachfassen, was die neue ungarische Regierung mit
+  ihrer eigenen Zweidrittelmehrheit macht.
+- **Nächste Sitzung vermutlich keine Lektion, sondern eine Übung.** Der Kurs erklärt mehr,
+  als sich an einem Abend abrufen lässt. Lektion 2 ist fürs Durchspielen einer konkreten
+  Situation gebaut (Familienfeier, Lehrerzimmer, Vereinsabend) und bietet das selbst an.
+- **Offen aus Lektion 10:** Ergebnis der Prüfung der Bundestagsverwaltung zum
+  Musk-Weidel-Gespräch (am 16.09.2026 nicht auffindbar); Wirkungsforschung zu
+  Desinformation und Wahlergebnissen (in der Lektion bewusst nicht behauptet).
+- ~~Noch keine Lektion zu „Publikum am Stammtisch".~~ **Erledigt (16.09.2026): Lektion 2.**
+- **Lektion 8, damals 7 (10.09.2026): das Muster war nicht inhaltlich, sondern formal.** Die vier
   Kapitel V, XI, XIII und XVII haben thematisch nichts gemeinsam — verbunden sind sie durch
   die Bauform: überwiegend kostenwirksame Forderungen, streckenweise ausgesprochen
   sympathische, und auf gut 40 Seiten genau **eine** Euro-Zahl (180 Mio. €, S. 237) und eine
@@ -74,17 +103,28 @@ Klassische `<script src>`-Tags mit globalen Variablen.
   Kapitel XVI. Diese Zählung ist im Volltext nachprüfbar und ist das stärkste Argument der
   Lektion, weil sie ohne jede Wertung auskommt.
 - **Vorsicht mit den eigenen Notizen in RESOURCES.md.** Beim Nachprüfen der
-  BA-Pressemitteilung für Lektion 7 stand dort etwas anderes, als hier notiert war (keine
+  BA-Pressemitteilung für Lektion 8 stand dort etwas anderes, als hier notiert war (keine
   Ärzteschaftszahlen, andere Beschäftigtenzahlen). Die Notiz ist korrigiert. Lehre: Auch die
   eigene Ressourcenliste ist Sekundärliteratur — vor der Verwendung einer Zahl die Quelle
   selbst öffnen, nicht die Zusammenfassung.
-- **Offen aus Lektion 7:** Bologna-Ausstieg praktisch (keine Umsetzungsanalyse gefunden),
+- **Offen aus Lektion 8:** Bologna-Ausstieg praktisch (keine Umsetzungsanalyse gefunden),
   Investitionsstau in Zahlen (KfW-Kommunalpanel 2025 ungeprüft), Kostenschätzung speziell
   für diese vier Kapitel (existiert nicht).
-- **Erledigt aus Lektion 6 (10.09.2026):** Richterwahlausschuss und bilaterale
-  Rückführungsverträge sind nachrecherchiert; beide Stellen in Lektion 6 sind präzisiert,
+- **Erledigt aus Lektion 7 (10.09.2026):** Richterwahlausschuss und bilaterale
+  Rückführungsverträge sind nachrecherchiert; beide Stellen in Lektion 7 sind präzisiert,
   die verbliebene Rest-Unsicherheit steht dort ausdrücklich. Details in RESOURCES.md
   unter `## Gaps`.
+- **Zitierweise Bundesprogramme (seit 16.09.2026).** `GP 2016, 4.2, S. 30` und
+  `WP 2025, S. 87 (PDF 88)`. **Die Seitenversätze sind unterschiedlich:** Beim
+  Grundsatzprogramm ist gedruckte Seite = PDF-Seite, beim Wahlprogramm 2025 liegt die
+  PDF-Seite um eins höher. Beim Landesprogramm sind sie wieder gleich. Vor jedem Zitat
+  prüfen, sonst entstehen stillschweigend falsche Fundstellen.
+- **Lehre aus der Nachprüfung von Lektion 5 (16.09.2026).** Der NATO-Abschnitt war aus
+  zweiter Hand *nicht falsch* — der Satz zum europäischen Militärbündnis steht fast
+  wörtlich im Programm. Aber die härteste Forderung fehlte ganz: „Abzug aller auf
+  deutschem Boden stationierten alliierten Truppen und insbesondere ihrer Atomwaffen“
+  (GP 2016, S. 31). **Zusammenfassungen sind nicht falsch, sie sind glatt.** Sie lassen
+  weg, was sich schlecht zusammenfassen lässt — und das ist regelmäßig das Interessanteste.
 - **Der Programm-Volltext liegt jetzt im Workspace** (`quellen/`). Vor jeder weiteren
   Programmaussage dort nachschlagen, nie aus zweiter Hand zitieren. Zitierweise, die sich
   eingebürgert hat: Kapitelnummer, Forderungsnummer, Seite — z. B. „XIV.7, S. 213".
@@ -93,10 +133,30 @@ Klassische `<script src>`-Tags mit globalen Variablen.
   am Gymnasium (in Bayern). Das Programm greift den Beutelsbacher Konsens namentlich an
   (S. 77), nennt Bayern ausdrücklich als Vorbild (S. 78), streicht die Evangelische
   Akademie namentlich (S. 67) und bindet Staatsleistungen auf „geistliches Personal und
-  Erhalt der Gebäude" (S. 66 f.). Lektion 5 macht das zum Thema — mit dem klaren Hinweis
+  Erhalt der Gebäude" (S. 66 f.). Lektion 6 macht das zum Thema — mit dem klaren Hinweis
   vorweg, dass für Bayern kein Wort davon gilt. **Nicht in Unterrichtsmaterial abgleiten**:
   Die Mission sagt eigene Urteilsbildung, nicht Schule. Wenn er Material fürs Kollegium
   will, ist das ein eigener Workspace mit eigenen didaktischen Regeln.
+
+## Umnummerierung vom 16.09.2026 — unbedingt beachten
+
+Die drei neuen Lektionen gehören inhaltlich an Position 2, 9 und 11. Weil Dateiname und
+Lektionsnummer in diesem Workspace übereinstimmen, wurde der ganze Kurs umnummeriert:
+
+| alt | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|-----|---|---|---|---|---|---|---|---|
+| neu | 1 | 3 | 4 | 5 | 6 | 7 | 8 | 10 |
+
+**Die Learning Records 0001–0006 sind absichtlich nicht angepasst** — sie sind datierte
+Protokolle. Wer dort „Lektion 3" liest, muss oben nachschlagen. Die Umrechnung steht auch
+im Record 0007.
+
+**Wenn wieder eine Lektion eingeschoben wird:** Das Skript dafür ist klein, aber der
+Regex für „Lektion N" muss `Lektion(?:en)?` heißen — `Lektionen?` verlangt „Lektione" und
+greift stillschweigend ins Leere. Genau das ist beim ersten Versuch passiert und fiel nur
+auf, weil die Eyebrow-Zeilen danach noch die alten Nummern zeigten. Prüfen lässt es sich
+hart: data-n, Dateinummer, `<title>` und Eyebrow müssen für jede Lektion dieselbe Zahl
+ergeben; dieser Test läuft im Abschlussskript mit.
 
 ## Layout-Konventionen (nach dem Fehler vom 10.09.2026)
 
