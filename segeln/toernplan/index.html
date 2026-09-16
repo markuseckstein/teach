@@ -1,0 +1,1546 @@
+<title>Jungstörn Saronischer Golf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* required styles */
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
+.leaflet-container {
+	overflow: hidden;
+	}
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+	  -webkit-user-drag: none;
+	}
+/* Prevents IE11 from highlighting tiles in blue */
+.leaflet-tile::selection {
+	background: transparent;
+}
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+.leaflet-safari .leaflet-tile {
+	image-rendering: -webkit-optimize-contrast;
+	}
+/* hack that prevents hw layers "stretching" when loading new tiles */
+.leaflet-safari .leaflet-tile-container {
+	width: 1600px;
+	height: 1600px;
+	-webkit-transform-origin: 0 0;
+	}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	display: block;
+	}
+/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
+.leaflet-container .leaflet-overlay-pane svg {
+	max-width: none !important;
+	max-height: none !important;
+	}
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-shadow-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+	max-width: none !important;
+	max-height: none !important;
+	width: auto;
+	padding: 0;
+	}
+
+.leaflet-container img.leaflet-tile {
+	/* See: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */
+	mix-blend-mode: plus-lighter;
+}
+
+.leaflet-container.leaflet-touch-zoom {
+	-ms-touch-action: pan-x pan-y;
+	touch-action: pan-x pan-y;
+	}
+.leaflet-container.leaflet-touch-drag {
+	-ms-touch-action: pinch-zoom;
+	/* Fallback for FF which doesn't support pinch-zoom */
+	touch-action: none;
+	touch-action: pinch-zoom;
+}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.leaflet-container {
+	-webkit-tap-highlight-color: transparent;
+}
+.leaflet-container a {
+	-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+.leaflet-tile {
+	filter: inherit;
+	visibility: hidden;
+	}
+.leaflet-tile-loaded {
+	visibility: inherit;
+	}
+.leaflet-zoom-box {
+	width: 0;
+	height: 0;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	z-index: 800;
+	}
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+.leaflet-overlay-pane svg {
+	-moz-user-select: none;
+	}
+
+.leaflet-pane         { z-index: 400; }
+
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+
+.leaflet-vml-shape {
+	width: 1px;
+	height: 1px;
+	}
+.lvml {
+	behavior: url(#default#VML);
+	display: inline-block;
+	position: absolute;
+	}
+
+
+/* control positioning */
+
+.leaflet-control {
+	position: relative;
+	z-index: 800;
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+.leaflet-top,
+.leaflet-bottom {
+	position: absolute;
+	z-index: 1000;
+	pointer-events: none;
+	}
+.leaflet-top {
+	top: 0;
+	}
+.leaflet-right {
+	right: 0;
+	}
+.leaflet-bottom {
+	bottom: 0;
+	}
+.leaflet-left {
+	left: 0;
+	}
+.leaflet-control {
+	float: left;
+	clear: both;
+	}
+.leaflet-right .leaflet-control {
+	float: right;
+	}
+.leaflet-top .leaflet-control {
+	margin-top: 10px;
+	}
+.leaflet-bottom .leaflet-control {
+	margin-bottom: 10px;
+	}
+.leaflet-left .leaflet-control {
+	margin-left: 10px;
+	}
+.leaflet-right .leaflet-control {
+	margin-right: 10px;
+	}
+
+
+/* zoom and fade animations */
+
+.leaflet-fade-anim .leaflet-popup {
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+	   -moz-transition: opacity 0.2s linear;
+	        transition: opacity 0.2s linear;
+	}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+	opacity: 1;
+	}
+.leaflet-zoom-animated {
+	-webkit-transform-origin: 0 0;
+	    -ms-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	}
+svg.leaflet-zoom-animated {
+	will-change: transform;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+	   -moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
+	        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+	}
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+	-webkit-transition: none;
+	   -moz-transition: none;
+	        transition: none;
+	}
+
+.leaflet-zoom-anim .leaflet-zoom-hide {
+	visibility: hidden;
+	}
+
+
+/* cursors */
+
+.leaflet-interactive {
+	cursor: pointer;
+	}
+.leaflet-grab {
+	cursor: -webkit-grab;
+	cursor:    -moz-grab;
+	cursor:         grab;
+	}
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+	cursor: crosshair;
+	}
+.leaflet-popup-pane,
+.leaflet-control {
+	cursor: auto;
+	}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+	cursor: move;
+	cursor: -webkit-grabbing;
+	cursor:    -moz-grabbing;
+	cursor:         grabbing;
+	}
+
+/* marker & overlays interactivity */
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+	pointer-events: none;
+	}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+
+/* visual tweaks */
+
+.leaflet-container {
+	background: #ddd;
+	outline-offset: 1px;
+	}
+.leaflet-container a {
+	color: #0078A8;
+	}
+.leaflet-zoom-box {
+	border: 2px dotted #38f;
+	background: rgba(255,255,255,0.5);
+	}
+
+
+/* general typography */
+.leaflet-container {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	}
+
+
+/* general toolbar styles */
+
+.leaflet-bar {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	border-radius: 4px;
+	}
+.leaflet-bar a {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	}
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	display: block;
+	}
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+	background-color: #f4f4f4;
+	}
+.leaflet-bar a:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	}
+.leaflet-bar a:last-child {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom: none;
+	}
+.leaflet-bar a.leaflet-disabled {
+	cursor: default;
+	background-color: #f4f4f4;
+	color: #bbb;
+	}
+
+.leaflet-touch .leaflet-bar a {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	}
+.leaflet-touch .leaflet-bar a:first-child {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	}
+.leaflet-touch .leaflet-bar a:last-child {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	}
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+	}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+	font-size: 22px;
+	}
+
+
+/* layers control */
+
+.leaflet-control-layers {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+	background: #fff;
+	border-radius: 5px;
+	}
+.leaflet-control-layers-toggle {
+	background-image: url(images/layers.png);
+	width: 36px;
+	height: 36px;
+	}
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url(images/layers-2x.png);
+	background-size: 26px 26px;
+	}
+.leaflet-touch .leaflet-control-layers-toggle {
+	width: 44px;
+	height: 44px;
+	}
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	display: none;
+	}
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+	display: block;
+	position: relative;
+	}
+.leaflet-control-layers-expanded {
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #fff;
+	}
+.leaflet-control-layers-scrollbar {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-right: 5px;
+	}
+.leaflet-control-layers-selector {
+	margin-top: 2px;
+	position: relative;
+	top: 1px;
+	}
+.leaflet-control-layers label {
+	display: block;
+	font-size: 13px;
+	font-size: 1.08333em;
+	}
+.leaflet-control-layers-separator {
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 5px -10px 5px -6px;
+	}
+
+/* Default icon URLs */
+.leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */
+	background-image: url(images/marker-icon.png);
+	}
+
+
+/* attribution and scale controls */
+
+.leaflet-container .leaflet-control-attribution {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	}
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+	padding: 0 5px;
+	color: #333;
+	line-height: 1.4;
+	}
+.leaflet-control-attribution a {
+	text-decoration: none;
+	}
+.leaflet-control-attribution a:hover,
+.leaflet-control-attribution a:focus {
+	text-decoration: underline;
+	}
+.leaflet-attribution-flag {
+	display: inline !important;
+	vertical-align: baseline !important;
+	width: 1em;
+	height: 0.6669em;
+	}
+.leaflet-left .leaflet-control-scale {
+	margin-left: 5px;
+	}
+.leaflet-bottom .leaflet-control-scale {
+	margin-bottom: 5px;
+	}
+.leaflet-control-scale-line {
+	border: 2px solid #777;
+	border-top: none;
+	line-height: 1.1;
+	padding: 2px 5px 1px;
+	white-space: nowrap;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.8);
+	text-shadow: 1px 1px #fff;
+	}
+.leaflet-control-scale-line:not(:first-child) {
+	border-top: 2px solid #777;
+	border-bottom: none;
+	margin-top: -2px;
+	}
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+	border-bottom: 2px solid #777;
+	}
+
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	box-shadow: none;
+	}
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+	}
+
+
+/* popup */
+
+.leaflet-popup {
+	position: absolute;
+	text-align: center;
+	margin-bottom: 20px;
+	}
+.leaflet-popup-content-wrapper {
+	padding: 1px;
+	text-align: left;
+	border-radius: 12px;
+	}
+.leaflet-popup-content {
+	margin: 13px 24px 13px 20px;
+	line-height: 1.3;
+	font-size: 13px;
+	font-size: 1.08333em;
+	min-height: 1px;
+	}
+.leaflet-popup-content p {
+	margin: 17px 0;
+	margin: 1.3em 0;
+	}
+.leaflet-popup-tip-container {
+	width: 40px;
+	height: 20px;
+	position: absolute;
+	left: 50%;
+	margin-top: -1px;
+	margin-left: -20px;
+	overflow: hidden;
+	pointer-events: none;
+	}
+.leaflet-popup-tip {
+	width: 17px;
+	height: 17px;
+	padding: 1px;
+
+	margin: -10px auto 0;
+	pointer-events: auto;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background: white;
+	color: #333;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+	}
+.leaflet-container a.leaflet-popup-close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	text-align: center;
+	width: 24px;
+	height: 24px;
+	font: 16px/24px Tahoma, Verdana, sans-serif;
+	color: #757575;
+	text-decoration: none;
+	background: transparent;
+	}
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+	color: #585858;
+	}
+.leaflet-popup-scrolled {
+	overflow: auto;
+	}
+
+.leaflet-oldie .leaflet-popup-content-wrapper {
+	-ms-zoom: 1;
+	}
+.leaflet-oldie .leaflet-popup-tip {
+	width: 24px;
+	margin: 0 auto;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+	}
+
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+	border: 1px solid #999;
+	}
+
+
+/* div icon */
+
+.leaflet-div-icon {
+	background: #fff;
+	border: 1px solid #666;
+	}
+
+
+/* Tooltip */
+/* Base styles for the element that has a tooltip */
+.leaflet-tooltip {
+	position: absolute;
+	padding: 6px;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	color: #222;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+	}
+.leaflet-tooltip.leaflet-interactive {
+	cursor: pointer;
+	pointer-events: auto;
+	}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	position: absolute;
+	pointer-events: none;
+	border: 6px solid transparent;
+	background: transparent;
+	content: "";
+	}
+
+/* Directions */
+
+.leaflet-tooltip-bottom {
+	margin-top: 6px;
+}
+.leaflet-tooltip-top {
+	margin-top: -6px;
+}
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+	left: 50%;
+	margin-left: -6px;
+	}
+.leaflet-tooltip-top:before {
+	bottom: 0;
+	margin-bottom: -12px;
+	border-top-color: #fff;
+	}
+.leaflet-tooltip-bottom:before {
+	top: 0;
+	margin-top: -12px;
+	margin-left: -6px;
+	border-bottom-color: #fff;
+	}
+.leaflet-tooltip-left {
+	margin-left: -6px;
+}
+.leaflet-tooltip-right {
+	margin-left: 6px;
+}
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	top: 50%;
+	margin-top: -6px;
+	}
+.leaflet-tooltip-left:before {
+	right: 0;
+	margin-right: -12px;
+	border-left-color: #fff;
+	}
+.leaflet-tooltip-right:before {
+	left: 0;
+	margin-left: -12px;
+	border-right-color: #fff;
+	}
+
+/* Printing */
+
+@media print {
+	/* Prevent printers from removing background-images of controls. */
+	.leaflet-control {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+		}
+	}
+
+</style>
+<style>
+:root{
+  --paper:#F4F0E6; --surface:#FFFDF7; --sunk:#EDE7D9;
+  --sea:#DCEAF0; --shoal:#C0D9E5;
+  --ink:#14232B; --body:#2C3D46; --muted:#5F717C; --line:#DAD3C3; --line-2:#C6BCA6;
+  --magenta:#AC1A5C; --kelp:#2B6A51; --sun:#B9782F;
+  --d-so:#C42525; --d-mo:#D9760A; --d-di:#A88808; --d-mi:#107845; --d-do:#1160B0; --d-fr:#7128A0;
+  --shadow:0 1px 2px rgba(20,35,43,.06), 0 8px 24px -12px rgba(20,35,43,.22);
+  --radius:3px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E171D; --surface:#15222A; --sunk:#101C23;
+    --sea:#10242F; --shoal:#1B3B4A;
+    --ink:#EDF1F2; --body:#D3DDE1; --muted:#93A6B0; --line:#26363F; --line-2:#354952;
+    --magenta:#FF74A8; --kelp:#5FC69A; --sun:#E0A463;
+    --d-so:#F2635F; --d-mo:#F4A23C; --d-di:#DCC03A; --d-mi:#43BE86; --d-do:#63A8EE; --d-fr:#B983E8;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E171D; --surface:#15222A; --sunk:#101C23;
+  --sea:#10242F; --shoal:#1B3B4A;
+  --ink:#EDF1F2; --body:#D3DDE1; --muted:#93A6B0; --line:#26363F; --line-2:#354952;
+  --magenta:#FF74A8; --kelp:#5FC69A; --sun:#E0A463;
+  --d-so:#F2635F; --d-mo:#F4A23C; --d-di:#DCC03A; --d-mi:#43BE86; --d-do:#63A8EE; --d-fr:#B983E8;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:"Archivo","Segoe UI",system-ui,sans-serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Spectral",Georgia,serif; color:var(--ink); text-wrap:balance; margin:0; font-weight:600; letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,6vw,3.6rem); line-height:1.04; font-weight:700}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem); line-height:1.15}
+h3{font-size:1.2rem; line-height:1.3}
+p{margin:0}
+a{color:var(--magenta); text-underline-offset:3px}
+img{max-width:100%; display:block}
+:focus-visible{outline:2px solid var(--magenta); outline-offset:3px}
+
+.wrap{max-width:1180px; margin-inline:auto; padding-inline:20px}
+.col{max-width:70ch}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky; top:0; z-index:900; background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.bar-in{display:flex; align-items:center; gap:14px; padding-block:9px; overflow-x:auto; scrollbar-width:none}
+.bar-in::-webkit-scrollbar{display:none}
+.bar-brand{font-family:"Spectral",serif; font-weight:600; color:var(--ink); white-space:nowrap; font-size:.95rem}
+.chips{display:flex; gap:6px; margin-left:auto}
+.chip{border:1px solid var(--line-2); background:var(--surface); color:var(--body); border-radius:999px;
+  padding:4px 11px; font-size:.78rem; font-family:"IBM Plex Mono",monospace; cursor:pointer; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:6px; text-decoration:none}
+.chip:hover{border-color:var(--muted)}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--c); flex:none}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(38px,7vw,76px) 30px; position:relative; overflow:hidden}
+.hero::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 58px,color-mix(in srgb,var(--shoal) 55%,transparent) 58px 59px),
+    repeating-linear-gradient(0deg,transparent 0 58px,color-mix(in srgb,var(--shoal) 55%,transparent) 58px 59px);
+  -webkit-mask-image:radial-gradient(120% 90% at 80% 0%,#000,transparent 72%);
+  mask-image:radial-gradient(120% 90% at 80% 0%,#000,transparent 72%)}
+.hero>*{position:relative}
+.hero h1{margin-block:14px 0}
+.hero .lede{margin-top:18px; font-size:1.08rem; max-width:62ch; color:var(--body)}
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:1px; margin-top:34px;
+  background:var(--line); border:1px solid var(--line)}
+.fact{background:var(--surface); padding:15px 16px}
+.fact .v{font-family:"IBM Plex Mono",monospace; font-size:1.45rem; color:var(--ink); font-weight:500;
+  font-variant-numeric:tabular-nums; line-height:1.1}
+.fact .k{font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:6px}
+
+/* ---------- map ---------- */
+.mapsec{padding-block:26px 8px}
+.maphead{display:flex; flex-wrap:wrap; align-items:end; gap:14px; margin-bottom:14px}
+.maphead h2{flex:1 1 260px}
+.mapbox{position:relative; border:1px solid var(--line-2); background:var(--sea); box-shadow:var(--shadow)}
+#map{height:min(66vh,620px); width:100%; background:var(--sea)}
+#mapfallback{display:none}
+#mapfallback img{width:100%}
+.maplegend{display:flex; flex-wrap:wrap; gap:8px 18px; padding:11px 14px; border-top:1px solid var(--line);
+  background:var(--surface); font-size:.8rem; color:var(--muted)}
+.lg{display:inline-flex; align-items:center; gap:7px}
+.lg i{width:14px; height:3px; background:var(--c); border-radius:2px; display:inline-block}
+.lg b{width:11px; height:11px; border-radius:50%; border:2.5px solid var(--c); background:var(--surface); display:inline-block}
+.mapnote{font-size:.78rem; color:var(--muted); padding:9px 2px 0}
+.layerbtns{display:flex; gap:6px}
+.lb{font-family:"IBM Plex Mono",monospace; font-size:.75rem; padding:5px 10px; border:1px solid var(--line-2);
+  background:var(--surface); color:var(--body); cursor:pointer; border-radius:2px}
+.lb[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.leaflet-popup-content{font-family:"Archivo",sans-serif; font-size:.86rem; margin:11px 13px}
+.leaflet-popup-content b{font-family:"Spectral",serif; font-size:1rem; color:#14232B}
+.leaflet-container{font-family:"Archivo",sans-serif}
+
+/* ---------- overview table ---------- */
+.tablewrap{overflow-x:auto; border:1px solid var(--line); background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:620px; font-size:.9rem}
+th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--line)}
+th{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; background:var(--sunk)}
+tbody tr:last-child td{border-bottom:0}
+td.num{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+td .daymark{display:inline-flex; align-items:center; gap:8px; font-weight:500; color:var(--ink)}
+
+/* ---------- sections ---------- */
+section{scroll-margin-top:64px}
+.sec{padding-block:clamp(34px,5vw,60px)}
+.sec-head{border-top:2px solid var(--ink); padding-top:12px; margin-bottom:26px;
+  display:flex; align-items:baseline; gap:16px; flex-wrap:wrap}
+.sec-head h2{margin:0}
+
+/* ---------- day ---------- */
+.day{border-top:1px solid var(--line); padding-top:26px; margin-top:34px}
+.day:first-of-type{border-top:0; margin-top:0; padding-top:0}
+.dayhead{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 18px; margin-bottom:6px}
+.daytag{font-family:"IBM Plex Mono",monospace; font-size:.78rem; letter-spacing:.08em; color:var(--paper);
+  background:var(--c); padding:3px 9px; border-radius:2px; white-space:nowrap}
+.dayhead h3{font-size:clamp(1.35rem,2.6vw,1.75rem)}
+.daymeta{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.82rem; color:var(--muted);
+  display:flex; gap:14px; flex-wrap:wrap}
+.daygrid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:30px; margin-top:20px; align-items:start}
+@media (max-width:820px){.daygrid{grid-template-columns:1fr; gap:22px}}
+
+.log{border-left:2px solid var(--c); padding-left:0; margin:0; list-style:none}
+.log li{display:grid; grid-template-columns:62px 1fr; gap:14px; padding:0 0 16px 14px; position:relative}
+.log li:last-child{padding-bottom:0}
+.log li::before{content:""; position:absolute; left:-6px; top:7px; width:10px; height:10px; border-radius:50%;
+  background:var(--surface); border:2px solid var(--c)}
+.log .t{font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:var(--ink); font-variant-numeric:tabular-nums; padding-top:1px}
+.log .e{font-size:.94rem}
+.log .e strong{color:var(--ink); font-weight:600}
+.log .e span{display:block; color:var(--muted); font-size:.86rem; margin-top:2px}
+
+.daymap{border:1px solid var(--line-2); background:var(--sea)}
+.side h4{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; margin-bottom:8px}
+.side{display:flex; flex-direction:column; gap:18px}
+.notes{display:flex; flex-direction:column; gap:7px; font-size:.9rem}
+.notes div{position:relative; padding-left:20px}
+.notes div::before{content:"—"; position:absolute; left:0; top:0; color:var(--c); font-family:"IBM Plex Mono",monospace}
+.planb{background:var(--sunk); border-left:3px solid var(--sun); padding:13px 15px; font-size:.88rem}
+.planb b{color:var(--ink); font-family:"Spectral",serif; font-size:.95rem}
+.warn{background:color-mix(in srgb,var(--magenta) 9%,var(--surface)); border-left:3px solid var(--magenta);
+  padding:13px 15px; font-size:.88rem}
+.warn b{color:var(--ink); font-family:"Spectral",serif; font-size:.95rem}
+
+/* ---------- harbours ---------- */
+.ports{display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:26px; align-items:start}
+.port{border:1px solid var(--line); background:var(--surface); display:flex; flex-direction:column}
+.port figure{margin:0; border-bottom:1px solid var(--line); background:var(--sunk)}
+.port figcaption{font-size:.74rem; color:var(--muted); padding:7px 14px; font-family:"IBM Plex Mono",monospace}
+.port .pb{padding:16px 18px 20px; display:flex; flex-direction:column; gap:11px}
+.port h3{font-size:1.15rem}
+.port .wp{font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--magenta)}
+.port dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:5px 12px; font-size:.87rem}
+.port dt{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); padding-top:4px}
+.port dd{margin:0}
+
+/* ---------- info blocks ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px}
+.card h3{font-size:1.05rem; margin-bottom:9px; padding-bottom:7px; border-bottom:1px solid var(--line)}
+.card ul{margin:0; padding-left:18px; font-size:.9rem; display:flex; flex-direction:column; gap:6px}
+.card li::marker{color:var(--magenta)}
+.checklist{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2px}
+.checklist li{display:grid; grid-template-columns:auto 1fr; gap:11px; padding:9px 0; border-bottom:1px dashed var(--line); font-size:.92rem}
+.checklist li:last-child{border-bottom:0}
+.checklist li::before{content:"☐"; color:var(--magenta); font-size:1.05rem; line-height:1.3}
+.checklist b{color:var(--ink)}
+
+footer{border-top:1px solid var(--line); margin-top:40px; padding-block:26px 44px; font-size:.82rem; color:var(--muted)}
+footer p+p{margin-top:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="bar">
+  <div class="wrap bar-in">
+    <span class="bar-brand">Jungstörn 2026 · Saronischer Golf</span>
+    <nav class="chips" aria-label="Tage">
+      <a class="chip" href="#so" style="--c:var(--d-so)"><span class="dot"></span>So</a>
+      <a class="chip" href="#mo" style="--c:var(--d-mo)"><span class="dot"></span>Mo</a>
+      <a class="chip" href="#di" style="--c:var(--d-di)"><span class="dot"></span>Di</a>
+      <a class="chip" href="#mi" style="--c:var(--d-mi)"><span class="dot"></span>Mi</a>
+      <a class="chip" href="#do" style="--c:var(--d-do)"><span class="dot"></span>Do</a>
+      <a class="chip" href="#fr" style="--c:var(--d-fr)"><span class="dot"></span>Fr</a>
+      <a class="chip" href="#haefen">Häfen</a>
+      <a class="chip" href="#sicherheit">Sicherheit</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Törnplan · 18.–23. Oktober 2026 · zwei Yachten à 37 ft</div>
+    <h1>Sechs Tage<br>Saronischer Golf</h1>
+    <p class="lede">Von Alimos über Poros und Hydra bis Dokos, zurück über den Methana-Vulkan und
+      Epidauros. Zwei Nächte vor Anker, ein Aufbruch im Dunkeln, jeden Tag Wasser unter den Füßen –
+      und am Freitag entspannt zurück an die Basis.</p>
+    <div class="facts">
+      <div class="fact"><div class="v">131,8</div><div class="k">Seemeilen gesamt</div></div>
+      <div class="fact"><div class="v">6</div><div class="k">Segeltage So–Fr</div></div>
+      <div class="fact"><div class="v">2</div><div class="k">Nächte vor Anker</div></div>
+      <div class="fact"><div class="v">34,3</div><div class="k">längste Etappe (So)</div></div>
+      <div class="fact"><div class="v">5,2 kn</div><div class="k">Rechenschnitt</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="mapsec wrap" aria-label="Karte">
+  <div class="maphead">
+    <h2>Die Route</h2>
+    <div class="layerbtns">
+      <button class="lb" id="btnSea" aria-pressed="true">Seezeichen</button>
+      <button class="lb" id="btnAll" aria-pressed="true">Alle Tage</button>
+    </div>
+  </div>
+  <div class="mapbox">
+    <div id="map" role="img" aria-label="Karte des Törns im Saronischen Golf"></div>
+    <div id="mapfallback"><img src="karte_gesamt.jpg" alt="Übersichtskarte des Törns mit allen sechs Etappen"></div>
+    <div class="maplegend">
+      <span class="lg" style="--c:var(--d-so)"><i></i>So Alimos→Poros</span>
+      <span class="lg" style="--c:var(--d-mo)"><i></i>Mo →Hydra</span>
+      <span class="lg" style="--c:var(--d-di)"><i></i>Di →Dokos</span>
+      <span class="lg" style="--c:var(--d-mi)"><i></i>Mi →Methana</span>
+      <span class="lg" style="--c:var(--d-do)"><i></i>Do →Agistri</span>
+      <span class="lg" style="--c:var(--d-fr)"><i></i>Fr →Alimos</span>
+      <span class="lg" style="--c:var(--magenta)"><b></b>Hafen</span>
+      <span class="lg" style="--c:var(--d-do)"><b></b>Ankernacht</span>
+      <span class="lg" style="--c:var(--kelp)"><b></b>Badestopp</span>
+    </div>
+  </div>
+  <p class="mapnote" id="mapnote">Kartenbasis © OpenStreetMap-Mitwirkende, Seezeichen © OpenSeaMap.
+    Die Tracks sind Planungslinien, keine abgefahrenen Kurse – navigiert wird nach Karte, Plotter und Auge.</p>
+</section>
+
+<section class="sec wrap">
+  <div class="sec-head"><h2>Die Woche auf einen Blick</h2><span class="eyebrow">Sonnenaufgang 07:36 → 07:41 · Sonnenuntergang 18:43 → 18:36 (EEST)</span></div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Tag</th><th>Etappe</th><th>sm</th><th>ab</th><th>an</th><th>Nacht</th></tr></thead>
+      <tbody>
+        <tr><td><span class="daymark" style="--c:var(--d-so)"><span class="dot"></span>So 18.10.</span></td>
+            <td>Alimos → Moni → Poros</td><td class="num">34,3</td><td class="num">07:00</td><td class="num">14:50</td><td>Stadtkai Poros</td></tr>
+        <tr><td><span class="daymark" style="--c:var(--d-mo)"><span class="dot"></span>Mo 19.10.</span></td>
+            <td>Poros → Russian Bay → Hydra</td><td class="num">14,1</td><td class="num">08:30</td><td class="num">13:42</td><td>Hydra</td></tr>
+        <tr><td><span class="daymark" style="--c:var(--d-di)"><span class="dot"></span>Di 20.10.</span></td>
+            <td>Hydra → Bisti → Dokos</td><td class="num">10,6</td><td class="num">08:30</td><td class="num">13:02</td><td>vor Anker</td></tr>
+        <tr><td><span class="daymark" style="--c:var(--d-mi)"><span class="dot"></span>Mi 21.10.</span></td>
+            <td>Dokos → Methana</td><td class="num">24,3</td><td class="num">05:00</td><td class="num">09:39</td><td>Hafen Methana</td></tr>
+        <tr><td><span class="daymark" style="--c:var(--d-do)"><span class="dot"></span>Do 22.10.</span></td>
+            <td>Methana → Epidauros → Aponisos</td><td class="num">25,2</td><td class="num">07:00</td><td class="num">15:06</td><td>vor Anker</td></tr>
+        <tr><td><span class="daymark" style="--c:var(--d-fr)"><span class="dot"></span>Fr 23.10.</span></td>
+            <td>Aponisos → Alimos</td><td class="num">23,3</td><td class="num">07:15</td><td class="num">11:43</td><td>Rückgabe</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mapnote">Distanzen aus den geplanten Tracks gerechnet (nicht Luftlinie), Zeiten mit 5,2 kn Schnitt
+    inklusive der geplanten Pausen. Jede Ankunft liegt mindestens drei Stunden vor Sonnenuntergang.</p>
+</section>
+
+<section class="sec wrap" id="tage">
+  <div class="sec-head"><h2>Tag für Tag</h2><span class="eyebrow">Logbuch-Ansicht</span></div>
+
+  <!-- SONNTAG -->
+  <article class="day" id="so" style="--c:var(--d-so)">
+    <div class="dayhead">
+      <span class="daytag">Tag 1</span>
+      <h3>Sonntag, 18.10. · Alimos → Poros</h3>
+      <div class="daymeta"><span>34,3 sm</span><span>SA 07:36</span><span>SU 18:43</span></div>
+    </div>
+    <p class="col">Ablegen mit dem ersten Tageslicht, Frühstück unterwegs, Sonnenaufgang querab der
+      Athener Küste. Der längste Schlag der Woche liegt bewusst am ersten Tag, solange alle frisch sind –
+      und er endet am belebtesten Kai des Reviers.</p>
+    <div class="daygrid">
+      <ol class="log">
+        <li><span class="t">07:00</span><span class="e"><strong>Alimos, Leinen los</strong>
+          <span>Hell genug zum Ablegen, Fährverkehr Piräus noch ruhig. Verkehrstrennung rechtwinklig queren.</span></span></li>
+        <li><span class="t">07:36</span><span class="e"><strong>Sonnenaufgang auf See</strong>
+          <span>Frühstück in der Plicht, Ägina voraus.</span></span></li>
+        <li><span class="t">11:08</span><span class="e"><strong>Insel Moni – Badestopp</strong>
+          <span>21,5 sm. Unbewohntes Naturschutzgebiet mit Pfauen und Rehen, Schutz aus N und O, Sand.</span></span></li>
+        <li><span class="t">12:23</span><span class="e"><strong>Weiter nach Süden</strong>
+          <span>Vorbei an der Methana-Halbinsel, 12,8 sm bis Poros.</span></span></li>
+        <li><span class="t">14:50</span><span class="e"><strong>Poros, Stadtkai</strong>
+          <span>Heck zum Kai mit eigenem Anker. Strömung im Sund 1,5–2 kn, Fährwellen – großzügig abfendern.</span></span></li>
+      </ol>
+      <div class="side">
+        <img class="daymap" src="karte_so.jpg" alt="Karte der Etappe Alimos–Moni–Poros">
+        <div>
+          <h4>An Land</h4>
+          <div class="notes">
+            <div>Promenade und Uhrturm, Spaziergang zum Kathedralenplatz – oben ist es schlagartig ruhig.</div>
+            <div>Abendessen in der <em>Poseidon Taverna</em> oder der <em>Taverna Agrapidos</em> abseits der Promenade.</div>
+            <div>Proviant: mehrere Supermärkte, Metzger und Bäckerei im Ort, Diesel per Minitanker auf Kanal 77.</div>
+          </div>
+        </div>
+        <div class="planb"><b>Plan B</b><br>Ägina-Stadt oder Perdika statt Poros, wenn der Wind aus Süd zu
+          kräftig steht; Notausgang Agistri/Skala.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- MONTAG -->
+  <article class="day" id="mo" style="--c:var(--d-mo)">
+    <div class="dayhead">
+      <span class="daytag">Tag 2</span>
+      <h3>Montag, 19.10. · Poros → Hydra</h3>
+      <div class="daymeta"><span>14,1 sm</span><span>SA 07:37</span><span>SU 18:41</span></div>
+    </div>
+    <p class="col">Kurzer Tag mit zwei sehr unterschiedlichen Hälften: vormittags eine verfallene russische
+      Marinebasis zum Schnorcheln, nachmittags die autofreie Kapitänsinsel. Früh genug da, um in Ruhe
+      einen Platz am Kai zu bekommen.</p>
+    <div class="daygrid">
+      <ol class="log">
+        <li><span class="t">08:30</span><span class="e"><strong>Ablegen Poros</strong>
+          <span>1,1 sm nach Westen in die Russian Bay.</span></span></li>
+        <li><span class="t">08:42</span><span class="e"><strong>Russian Bay – Ankern &amp; Landgang</strong>
+          <span>Schwojen bei 4–6 m vor der Insel Dhaskalia oder 8–12 m tief in der Bucht. Ruinen der Marinebasis
+          des Zaren im NE, mit dem Dinghy erreichbar. Schutz NW–NE, Fährschwell beruhigt sich abends.</span></span></li>
+        <li><span class="t">11:13</span><span class="e"><strong>Anker auf</strong>
+          <span>Aus dem Sund nach Osten, dann um Ak Skillaion nach SSW – 13,0 sm.</span></span></li>
+        <li><span class="t">13:42</span><span class="e"><strong>Hydra, Limin Idhras</strong>
+          <span>Stadtkai auf der S-Seite oder Innenseite der N-Mole; dort liegen Ballaststeine – vorsichtig
+          Heck zum Kai. N–NW drückt in den Hafen, Ankerhalt prüfen.</span></span></li>
+      </ol>
+      <div class="side">
+        <img class="daymap" src="karte_mo.jpg" alt="Karte der Etappe Poros–Russian Bay–Hydra">
+        <div>
+          <h4>An Land</h4>
+          <div class="notes">
+            <div>Gassen und Kapitänshäuser; keine Autos, nur Esel und Wassertaxis.</div>
+            <div>Spaziergang Kamini–Vlychos, rund 1,5 Stunden hin und zurück, Taverne direkt am Wasser.</div>
+            <div>Sundowner: <em>Hydronetta</em> auf den Felsen (mit Badeleiter) oder <em>Windmill</em> mit Blick
+              über den Golf; für Essen mit Aussicht <em>Sunset Hydra</em> – Tisch vorher reservieren.</div>
+          </div>
+        </div>
+        <div class="planb"><b>Plan B</b><br>Hafen voll oder zu viel Schwell: davor ankern und mit dem Dinghy
+          reinfahren, oder 1 sm östlich nach <em>Mandraki</em> – Sand, 15–20 m, guter Halt, offen nur nach NW.
+          Ganz schlechtes Wetter: Ermioni.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DIENSTAG -->
+  <article class="day" id="di" style="--c:var(--d-di)">
+    <div class="dayhead">
+      <span class="daytag">Tag 3</span>
+      <h3>Dienstag, 20.10. · Hydra → Dokos</h3>
+      <div class="daymeta"><span>10,6 sm</span><span>SA 07:38</span><span>SU 18:40</span></div>
+    </div>
+    <p class="col">Der faulste Tag der Woche: zehn Meilen, eine lange Badepause und am Nachmittag eine
+      unbewohnte Insel für uns allein. Abends wird die Einfahrt als Track gesichert – morgen früh geht es
+      im Dunkeln wieder hinaus.</p>
+    <div class="daygrid">
+      <ol class="log">
+        <li><span class="t">08:30</span><span class="e"><strong>Ablegen Hydra</strong>
+          <span>An der Südküste entlang nach Westen, 5,7 sm.</span></span></li>
+        <li><span class="t">09:35</span><span class="e"><strong>Bisti / Agios Nikolaos – Baden</strong>
+          <span>Kiefern bis ans Wasser, kristallklar, Schnorcheln. Kein Rundumschutz – nur bei stabiler Lage.</span></span></li>
+        <li><span class="t">12:06</span><span class="e"><strong>Kurz nach Dokos</strong>
+          <span>4,9 sm quer über den Sund.</span></span></li>
+        <li><span class="t">13:02</span><span class="e"><strong>Ormos Skindos – Ankernacht 1</strong>
+          <span>Sand, 5–12 m, guter Schutz vor NE und SE. Untiefe an der NE-Seite der Bucht liegt 3,5 m tief.
+          Alte Muringkette in Derrick Cove beachten.</span></span></li>
+        <li><span class="t">17:00</span><span class="e"><strong>Klar für morgen früh</strong>
+          <span>Einfahrts-Track und Peilungen sichern, Ankerlicht setzen, Motor und Navlichter prüfen,
+          Nachbarboote notieren. Ankerwache in Zweierschichten.</span></span></li>
+      </ol>
+      <div class="side">
+        <img class="daymap" src="karte_di.jpg" alt="Karte der Etappe Hydra–Bisti–Dokos">
+        <div>
+          <h4>An Land</h4>
+          <div class="notes">
+            <div>18 Einwohner, meist Mönche und Schäfer – karg, still, kein Strom, keine Taverne.</div>
+            <div>Grillen am Strand, Müll kommt wieder mit an Bord.</div>
+            <div>Vor Dokos liegt das älteste bekannte Schiffswrack der Welt (2700–2200 v. Chr.) –
+              Tauchen nur mit Genehmigung, die Funde stehen im Museum von Spetses.</div>
+          </div>
+        </div>
+        <div class="warn"><b>Ankerwache</b><br>Vor Anker gilt die Ausguckpflicht weiter. Zwei-Stunden-Schichten,
+          Ankerlicht rundum sichtbar, GPS-Alarm nur als Ergänzung. Kettenlänge 5:1 bis 7:1 je nach Schwojraum.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- MITTWOCH -->
+  <article class="day" id="mi" style="--c:var(--d-mi)">
+    <div class="dayhead">
+      <span class="daytag">Tag 4</span>
+      <h3>Mittwoch, 21.10. · Dokos → Methana</h3>
+      <div class="daymeta"><span>24,3 sm</span><span>ab 05:00 · dunkel</span><span>SU 18:39</span></div>
+    </div>
+    <p class="col">Der eine geplante Nachtstart. Raus geht es unter Motor auf dem eigenen Track vom Vortag,
+      dann nordostwärts um Ak Skillaion, durch den Poros-Sund und weiter zur Vulkanhalbinsel. Ankunft zum
+      zweiten Frühstück, der ganze Rest des Tages gehört dem Krater.</p>
+    <div class="daygrid">
+      <ol class="log">
+        <li><span class="t">05:00</span><span class="e"><strong>Anker auf, Dokos</strong>
+          <span>Unter Motor auf dem gespeicherten Track hinaus, Taschenlampe für die Nachbarboote,
+          Segel erst auf freiem Wasser.</span></span></li>
+        <li><span class="t">07:39</span><span class="e"><strong>Sonnenaufgang</strong>
+          <span>Etwa auf Höhe Ak Skillaion – Kaffee und Frühstück unterwegs.</span></span></li>
+        <li><span class="t">09:39</span><span class="e"><strong>Methana, neuer Hafen</strong>
+          <span>24,3 sm. Rund 40 Plätze am langen Pier, Heck zum Kai, Strom am Pier. Vorreservierung empfohlen.
+          Schwefelgeruch ist normal – das ist der Vulkan, nicht das Boot.</span></span></li>
+        <li><span class="t">10:30</span><span class="e"><strong>Taxi nach Kameni Chora</strong>
+          <span>Rund 7 km. Dorf auf erkalteter Lava, heute noch etwa 15 Einwohner.</span></span></li>
+        <li><span class="t">11:15</span><span class="e"><strong>Auf den historischen Vulkan</strong>
+          <span>Vom Parkplatz 10–15 min auf die Hochebene des Lavadoms, weitere 25 min ins Zentrum.
+          Feste Schuhe, Wasser, nicht klettern – das Gestein rollt.</span></span></li>
+        <li><span class="t">14:00</span><span class="e"><strong>Zurück an Bord</strong>
+          <span>Thermalquellen am Meer, danach Hafenrunde: Restaurants, Bars, Eisdielen und die verfallene
+          Belle-Époque-Kurstadt.</span></span></li>
+      </ol>
+      <div class="side">
+        <img class="daymap" src="karte_mi.jpg" alt="Karte der Etappe Dokos–Methana">
+        <div>
+          <h4>Vorher klären</h4>
+          <div class="notes">
+            <div>Deckt die Charterversicherung das Auslaufen vor Sonnenaufgang? Bei der Übergabe ansprechen.</div>
+            <div>Liegeplatz Methana für Mittwochvormittag vorreservieren.</div>
+            <div>Zwei Taxis für sechs Mann – am Vorabend im Hafen bestellen; das letzte Stück ist unbefestigt.</div>
+          </div>
+        </div>
+        <div class="planb"><b>Plan B</b><br>Kein Taxi oder zu wenig Zeit: Kameni Chora streichen und stattdessen
+          nachmittags schon 16 sm weiter nach Epidauros – dann ist der Donnerstag halb so lang.
+          Zu viel Welle im Sund: Vathi auf der Ostseite der Halbinsel.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DONNERSTAG -->
+  <article class="day" id="do" style="--c:var(--d-do)">
+    <div class="dayhead">
+      <span class="daytag">Tag 5</span>
+      <h3>Donnerstag, 22.10. · Methana → Epidauros → Aponisos</h3>
+      <div class="daymeta"><span>25,2 sm</span><span>SA 07:40</span><span>SU 18:38</span></div>
+    </div>
+    <p class="col">Zwei Etappen mit dem Weltkulturerbe dazwischen. Wir sind vor den Reisebussen im Theater
+      und liegen am Abend wieder einsam vor Anker – Kiefernwald bis ans Wasser statt Hafenkai.</p>
+    <div class="daygrid">
+      <ol class="log">
+        <li><span class="t">07:00</span><span class="e"><strong>Ablegen Methana</strong>
+          <span>Nördlich um die Halbinsel herum, dann westwärts in den Golf von Epidauros – 16,2 sm.</span></span></li>
+        <li><span class="t">10:06</span><span class="e"><strong>Palaia Epidavros</strong>
+          <span>Kleiner Hafen; bei Vollbelegung davor ankern, maximal 20 m Kette stecken und
+          <em>nicht auf den Ruinen</em> ankern.</span></span></li>
+        <li><span class="t">10:30</span><span class="e"><strong>Taxi zum Theater von Epidauros</strong>
+          <span>15 km landeinwärts. Stätte geöffnet 08:00–18:00, Eintritt 20 € (ermäßigt 10 €),
+          Taxi rund 45 € für vier Personen.</span></span></li>
+        <li><span class="t">13:45</span><span class="e"><strong>Leinen los</strong>
+          <span>9,1 sm quer nach Osten zur Insel Agistri.</span></span></li>
+        <li><span class="t">15:06</span><span class="e"><strong>Aponisos – Ankernacht 2</strong>
+          <span>Geschützte Bucht an der SW-Seite von Agistri, Kiefernwald bis ans Wasser, flache Felsen
+          und Kies, Taverne an Land. Zweite Ankerwache der Woche.</span></span></li>
+      </ol>
+      <div class="side">
+        <img class="daymap" src="karte_do.jpg" alt="Karte der Etappe Methana–Epidauros–Aponisos">
+        <div>
+          <h4>An Land</h4>
+          <div class="notes">
+            <div>Das große Theater fasst 14.000 Zuschauer und ist für seine Akustik berühmt – ein Streichholz
+              auf der Orchestra ist in der obersten Reihe zu hören. Ausprobieren.</div>
+            <div>Am Hafen von Epidavros: kleines antikes Theater direkt am Ort und die versunkene Stadt
+              im Flachwasser – Schnorchelbrille mitnehmen.</div>
+            <div>Aponisos: Essen an Bord oder in der Strandtaverne; Dragonera mit Beach Bar liegt zwei Meilen
+              weiter nördlich.</div>
+          </div>
+        </div>
+        <div class="planb"><b>Plan B</b><br>Schwell oder zu viel Betrieb in Aponisos: <em>Metopi</em>
+          (100 % Schutz bei starkem Nordwind, gutes Schnorchelrevier) oder Hafen Skala auf Agistri.
+          Wer die letzte Nacht näher an Athen will: <em>Peristeria</em> oder <em>Kanakia</em> auf Salamis –
+          dann ist der Freitag nur 13 sm lang. Vorsicht bei Kakia Vigla: Schwell durch Frachter nach Piräus.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FREITAG -->
+  <article class="day" id="fr" style="--c:var(--d-fr)">
+    <div class="dayhead">
+      <span class="daytag">Tag 6</span>
+      <h3>Freitag, 23.10. · Aponisos → Alimos</h3>
+      <div class="daymeta"><span>23,3 sm</span><span>SA 07:41</span><span>SU 18:36</span></div>
+    </div>
+    <p class="col">Nördlich an Ägina vorbei zurück in die Bucht von Athen. Kurz genug, dass Tanken,
+      Aufklaren und Übergabe nicht in Hektik enden – und lang genug für einen letzten Schlag unter Segeln.</p>
+    <div class="daygrid">
+      <ol class="log">
+        <li><span class="t">07:15</span><span class="e"><strong>Anker auf, Aponisos</strong>
+          <span>Nordwärts zwischen Agistri und Ägina hindurch.</span></span></li>
+        <li><span class="t">09:00</span><span class="e"><strong>Ägina querab</strong>
+          <span>Optionaler letzter Badestopp in der Klima-Bucht, wenn die Zeit gut steht.</span></span></li>
+        <li><span class="t">11:43</span><span class="e"><strong>Alimos Marina</strong>
+          <span>23,3 sm. Anmeldung auf VHF-Kanal 71, tanken, Boote aufklaren.</span></span></li>
+        <li><span class="t">15:00</span><span class="e"><strong>Übergabe</strong>
+          <span>Reichlich Puffer für Check-out, Duschen und ein letztes Bier an der Marina.</span></span></li>
+      </ol>
+      <div class="side">
+        <img class="daymap" src="karte_fr.jpg" alt="Karte der Etappe Aponisos–Alimos">
+        <div>
+          <h4>Auf dem letzten Stück</h4>
+          <div class="notes">
+            <div>Vor Piräus kreuzen wir die Großschifffahrt: rechtwinklig, zügig, nicht im Fahrwasser trödeln.</div>
+            <div>Schnellfähren laufen 30+ kn – AIS nutzen und früh Platz machen statt auf Vorfahrt zu bestehen.</div>
+            <div>Diesel in Alimos vor der Rückgabe, Belege aufheben.</div>
+          </div>
+        </div>
+        <div class="planb"><b>Plan B</b><br>Bei auffrischendem Nordwind früher los und die Klima-Bucht streichen.
+          Notausgänge auf dem Weg: Ägina-Stadt und Marina Agios Kosmas.</div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section class="sec wrap" id="haefen">
+  <div class="sec-head"><h2>Häfen, Buchten &amp; Ansteuerung</h2>
+    <span class="eyebrow">Hafenpläne aus dem Revierführer · Wegpunkte aus dem Hafenkapitel</span></div>
+  <div class="ports">
+
+    <article class="port">
+      <figure><img src="charts/alimos.jpg" alt="Hafenplan Alimos Marina">
+        <figcaption>183 · Alimos Marina (Kalamaki)</figcaption></figure>
+      <div class="pb">
+        <h3>Alimos Marina</h3>
+        <div class="wp">WP 37°54,6′N 23°41,9′E</div>
+        <dl>
+          <dt>Anlegen</dt><dd>Größte Marina Griechenlands, ~1.100 Liegeplätze, Anmeldung VHF Kanal 71.</dd>
+          <dt>Versorgung</dt><dd>Landstrom 16–32 A, Wasser, Diesel, WLAN, 24-h-Bewachung.</dd>
+          <dt>Achtung</dt><dd>Beim Auslaufen quert man den Verkehr von und nach Piräus – rechtwinklig und zügig.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/moni.jpg" alt="Hafenplan Ägina Südküste mit Moni">
+        <figcaption>198 · Ägina – Marathonos, Klima, N. Moni</figcaption></figure>
+      <div class="pb">
+        <h3>Insel Moni</h3>
+        <div class="wp">WP 37°42,0′N 23°27,5′E</div>
+        <dl>
+          <dt>Ankern</dt><dd>Drei Plätze (zwei im N, einer im S), Sand, guter Halt, Schutz aus N und O.</dd>
+          <dt>Charakter</dt><dd>Unbewohntes Naturschutzgebiet, freilaufende Pfauen und Rehe, Wanderung zum Gipfel.</dd>
+          <dt>Alternative</dt><dd>Klima-Bucht an der Südküste Ägina – hufeisenförmig, ruhig, anfängerfreundlich.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/poros.jpg" alt="Hafenplan Poros">
+        <figcaption>203 · Poros</figcaption></figure>
+      <div class="pb">
+        <h3>Poros Stadtkai</h3>
+        <div class="wp">WP 37°30,2′N 23°27,0′E</div>
+        <dl>
+          <dt>Anlegen</dt><dd>NW-Pontoon (im Herbst längsseits), NW-Quay, S- und SE-Quay mit eigenem Anker
+            Heck zum Kai. Die Plätze ganz im SE sind für Charterboote reserviert.</dd>
+          <dt>Tiefen</dt><dd>2,5–3,5 m am Kai, am nördlichen Pontoon deutlich mehr.</dd>
+          <dt>Versorgung</dt><dd>Wasser und Strom am Kai, am Schwimmsteg nur Wasser. Diesel per Minitanker, Kanal 77.</dd>
+          <dt>Achtung</dt><dd>Strömung im Sund 1,5–2 kn, kräftige Fährwellen, bei starkem S Böen vom Peloponnes.
+            Der südliche Kanal Richtung Galatas ist nur 3,5–4 m tief.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/russian.jpg" alt="Hafenplan Poros Westbuchten mit Russian Bay">
+        <figcaption>202 · Poros – Russian Bay, Neorion, Navy Bay</figcaption></figure>
+      <div class="pb">
+        <h3>Russian Bay</h3>
+        <div class="wp">WP 37°30,5′N 23°26,4′E</div>
+        <dl>
+          <dt>Ankern</dt><dd>4–6 m vor der Insel Dhaskalia oder 8–12 m tief in der Bucht; Sand, guter Halt.</dd>
+          <dt>Schutz</dt><dd>Gut aus NW bis NE; Fährschwell tagsüber, abends ruhig.</dd>
+          <dt>Land</dt><dd>Reste der russischen Marinebasis des 19. Jh. im NE der Bucht, heute Kulturdenkmal.
+            Nebenan Chapel Cove mit Leine an Land (5–8 m) und die Villa Galini, in der Henry Miller schrieb.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/hydra.jpg" alt="Hafenplan Hydra">
+        <figcaption>207 · Hydra – Limin Idhras</figcaption></figure>
+      <div class="pb">
+        <h3>Hydra</h3>
+        <div class="wp">WP 37°21,2′N 23°27,9′E</div>
+        <dl>
+          <dt>Anlegen</dt><dd>Stadtkai auf der S-Seite oder Innenseite der N-Mole. Dort liegen Ballaststeine –
+            vorsichtig mit eigenem Anker, Heck zum Kai. Große Boote außen an der Mole mit langer Landleine.</dd>
+          <dt>Schutz</dt><dd>Gut, aber N–NW drückt hinein; Ankerhalt kontrollieren. Fähren und Ausflugsboote machen Schwell.</dd>
+          <dt>Ansteuerung</dt><dd>Einfach – der Hafen wird aber erst sichtbar, wenn man auf der Nordseite der Insel ist.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/mandraki.jpg" alt="Hafenplan Mandraki auf Hydra">
+        <figcaption>208a · Hydra – Mandraki</figcaption></figure>
+      <div class="pb">
+        <h3>Mandraki <span class="eyebrow">Plan B</span></h3>
+        <div class="wp">WP 37°21,4′N 23°28,9′E</div>
+        <dl>
+          <dt>Ankern</dt><dd>Vor den Badebojen bei 15–20 m, Sand und Schlamm, guter Halt.</dd>
+          <dt>Schutz</dt><dd>Offen nach NW, sonst gut aus den meisten Richtungen; die Insel Kivotos schirmt zusätzlich ab.</dd>
+          <dt>Land</dt><dd>Einziger Sandstrand der Insel, Restaurant, Strandbar, Wassertaxi nach Hydra-Stadt,
+            zu Fuß etwa 20 Minuten.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/dokos.jpg" alt="Hafenplan Dokos, Ormos Skindos">
+        <figcaption>209 · Dokos – Ormos Skindos, Derrick Cove</figcaption></figure>
+      <div class="pb">
+        <h3>Dokos – Ormos Skindos</h3>
+        <div class="wp">WP 37°21,2′N 23°20,4′E</div>
+        <dl>
+          <dt>Ankern</dt><dd>5–12 m, Sand, guter Halt. Bei Westwind auf die Ostseite der Insel wechseln.
+            In Derrick Cove 7–10 m, ggf. Leine an Land – auf die alte Muringkette achten.</dd>
+          <dt>Schutz</dt><dd>Gut gegen die üblichen NE- und SE-Winde; bei starkem Nordwind Fallböen von den Hügeln.</dd>
+          <dt>Ansteuerung</dt><dd>Von Norden einfach. Die Untiefe an der NE-Seite der Bucht liegt 3,5 m unter der
+            Oberfläche und ist bei Starkwind zu meiden.</dd>
+          <dt>Distanzen</dt><dd>Hydra-Stadt 6,5 sm, Ermioni 5 sm.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/methana.jpg" alt="Hafenplan Methana">
+        <figcaption>196 · Methana</figcaption></figure>
+      <div class="pb">
+        <h3>Methana</h3>
+        <div class="wp">WP 37°34,5′N 23°23,4′E</div>
+        <dl>
+          <dt>Anlegen</dt><dd>Rund 40 Plätze am langen Pier, Heck zum Kai. Strom am neuen Pier, nicht in der
+            alten Marina. Vorreservierung empfohlen.</dd>
+          <dt>Land</dt><dd>Thermalquellen direkt am Meer, verfallene Kurstadt der Belle Époque, Supermärkte,
+            Restaurants, Bars. Kameni Chora und der historische Krater per Taxi.</dd>
+          <dt>Achtung</dt><dd>Schwefelgeruch ist vulkanisch bedingt und völlig normal.</dd>
+          <dt>Alternative</dt><dd>Vathi auf der Ostseite der Halbinsel (WP 37°35,5′N 23°20,2′E) – kleiner und ruhiger.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/epidavros.jpg" alt="Hafenplan Palaia Epidavros">
+        <figcaption>193 · Epidhavros (Epidaurus)</figcaption></figure>
+      <div class="pb">
+        <h3>Palaia Epidavros</h3>
+        <div class="wp">WP 37°38,4′N 23°09,8′E</div>
+        <dl>
+          <dt>Anlegen</dt><dd>Kleiner, romantischer Hafen zwischen zwei Landzungen; bei Vollbelegung davor ankern.</dd>
+          <dt>Ankern</dt><dd>Maximal 20 m Kette stecken – und keinesfalls über den Ruinen ankern.</dd>
+          <dt>Land</dt><dd>Kleines antikes Theater am Ort, versunkene Stadt zum Schnorcheln, großes Theater
+            15 km landeinwärts per Taxi.</dd>
+          <dt>Alternative</dt><dd>Nea Epidavros – winziger Hafen an einer Flussmündung, sehr ruhig.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/agistri.jpg" alt="Hafenplan Agistri">
+        <figcaption>201 · Angistri (Milos), Nisis Dhoroussa</figcaption></figure>
+      <div class="pb">
+        <h3>Aponisos &amp; Agistri</h3>
+        <div class="wp">Aponisos 37°41,1′N 23°19,3′E</div>
+        <dl>
+          <dt>Ankern</dt><dd>Geschützte Bucht im SW, Kiefernwald bis ans Wasser, flache Felsen und Kies.
+            Weitere Buchten auf der SE-Seite bei ruhigem Wetter.</dd>
+          <dt>Häfen</dt><dd>Megalochori (Mylos) und Skala mit Platz zum Med-Mooring, Wasser und Strom am Kai –
+            im Sommer ist Wasser knapp.</dd>
+          <dt>Achtung</dt><dd>Die Durchfahrt zwischen Agistri und Metopi hat nur 3 m und viele Riffe: nur bei
+            ruhiger See, Ausguck am Bug, genau mittig durch.</dd>
+          <dt>Donnerstag</dt><dd>Megalochori abends wegen Musik und Diskotheken meiden – wir liegen ohnehin vor Anker.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/skillaion.jpg" alt="Hafenplan Aliki Bay und Akra Skillaion">
+        <figcaption>204 · Aliki Bay, O. Spathi, Akra Skillaion</figcaption></figure>
+      <div class="pb">
+        <h3>Ak Skillaion <span class="eyebrow">Notankerplätze</span></h3>
+        <div class="wp">WP 37°29,4′N 23°28,4′E</div>
+        <dl>
+          <dt>Lage</dt><dd>Auf dem Weg zwischen Poros und Hydra – mehrere Ankerplätze je nach Windrichtung.</dd>
+          <dt>Ankern</dt><dd>Bucht Spathi NW des Kaps, kleine Lagune südlich davon oder westlich der Insel Spathi
+            bei 4–6 m im Sand. Kristallklares Wasser, bei stabilem Wetter auch für eine Nacht tauglich.</dd>
+          <dt>Aliki Bay</dt><dd>Winden aus N und W ausgesetzt; Anker durch die dünne Grasschicht eingraben.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="port">
+      <figure><img src="charts/uebersicht.jpg" alt="Übersichtskarte Saronischer Golf">
+        <figcaption>Übersichtskarte Küstengebiet 6 – Saronischer Golf / Ostküste Peloponnes</figcaption></figure>
+      <div class="pb">
+        <h3>Revierübersicht</h3>
+        <div class="wp">Hafennummern 167–222</div>
+        <dl>
+          <dt>Nutzung</dt><dd>Grobe Etappenplanung und Nummernschlüssel zu den Hafenkapiteln des Revierführers.</dd>
+          <dt>Nicht dabei</dt><dd>Spetses, Ermioni und Porto Cheli liegen südwestlich außerhalb unserer Schleife –
+            gute Kandidaten für den nächsten Törn.</dd>
+        </dl>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="sec wrap" id="sicherheit">
+  <div class="sec-head"><h2>Sicherheit, Papiere &amp; Tagesritual</h2></div>
+  <div class="cards">
+    <div class="card">
+      <h3>Verkehr und Gefahren</h3>
+      <ul>
+        <li><b>Schnellfähren</b> mit 30+ kn auf allen Hauptrouten – AIS nutzen, früh Platz machen.</li>
+        <li><b>Großschifffahrt vor Piräus</b> rechtwinklig und zügig queren.</li>
+        <li><b>Fischfarmen und Netze</b> sind nicht überall im Plotter – vor dem Ansteuern heranzoomen und schauen.</li>
+        <li><b>Keine Gezeiten</b>, kaum Strömung außer im Poros-Sund (1,5–2 kn).</li>
+        <li><b>Untiefen</b> gut kartiert, aber Poros-Südkanal und die Metopi-Durchfahrt ernst nehmen.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Papiere an Bord</h3>
+      <ul>
+        <li><b>DEKPA</b> – Charter-/Crewzertifikat, griffbereit für den Hafenmeister.</li>
+        <li><b>TEPAI</b> – griechische Kreuzfahrtabgabe, seit 2019 Pflicht.</li>
+        <li>Segelscheine, Ausweise und Charterunterlagen digital zusätzlich im Crew-Chat.</li>
+        <li>Versicherungsbedingungen zum Auslaufen vor Sonnenaufgang schriftlich bestätigen lassen.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Tagesritual</h3>
+      <ul>
+        <li><b>Abends:</b> Poseidon-Wellenvorhersage und EMY gegen Windy prüfen, Modelle vergleichen.</li>
+        <li>Danach Etappe, Plan B und Notausgang festlegen und die Crew briefen.</li>
+        <li><b>Morgens:</b> Wetter bestätigen, Maschinencheck, Ablegebriefing mit Rollen, Kanal 16 auf Empfang.</li>
+        <li>Vor jeder Hafeneinfahrt: Manöver briefen, Fender und Leinen klar, Tiefe im Blick.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Zwei Boote, eine Crew</h3>
+      <ul>
+        <li>Feste Bordkanal-Absprache (z. B. VHF 72) für die Kommunikation zwischen den Yachten.</li>
+        <li>Treffpunkt und Uhrzeit für jeden Badestopp vorher vereinbaren – nicht unterwegs improvisieren.</li>
+        <li>In engen Häfen läuft ein Boot zuerst ein und meldet Platz und Tiefe zurück.</li>
+        <li>Vor Anker: Schwojkreise beider Boote so legen, dass sie sich nicht überschneiden.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="todo">
+  <div class="sec-head"><h2>Vor dem Ablegen zu klären</h2><span class="eyebrow">Stand 12.09.2026</span></div>
+  <div class="col">
+    <ul class="checklist">
+      <li><span><b>Nachtstart freigeben lassen.</b> Bei der Übergabe in Alimos klären, ob das Auslaufen um
+        05:00 Uhr am Mittwoch versicherungstechnisch gedeckt ist.</span></li>
+      <li><span><b>Liegeplatz Methana reservieren</b> für Mittwochvormittag – rund 40 Plätze, Vorreservierung empfohlen.</span></li>
+      <li><span><b>Zwei Taxis in Methana</b> für Kameni Chora und <b>zwei Taxis in Epidavros</b> für das Theater
+        jeweils am Vorabend bestellen.</span></li>
+      <li><span><b>Öffnungszeiten und Preise Epidauros</b> kurz vor der Reise gegenprüfen – Winterzeiten gelten ab 1. November.</span></li>
+      <li><span><b>Insel Kyra</b> aus dem Revier-Video ließ sich weder im Revierführer noch in OSM eindeutig verorten.
+        Aponisos ist deshalb der geplante Ankerplatz; wer vor Ort mehr weiß, kann tauschen.</span></li>
+      <li><span><b>Wetterfenster Sonntag</b> prüfen: Der 34-sm-Schlag ist die einzige Etappe ohne echten Ausweichhafen
+        auf halber Strecke.</span></li>
+      <li><span><b>Grillzeug, Landleinen und Schnorchelbrillen</b> einpacken – zwei Ankernächte und fünf Badestopps.</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>Planungsstand 12. September 2026 · Distanzen aus den geplanten Tracks, Zeiten mit 5,2 kn Rechenschnitt.
+    Alle Ankunftszeiten liegen mehr als drei Stunden vor Sonnenuntergang.</p>
+  <p>Kartenbasis © OpenStreetMap-Mitwirkende (ODbL), Seezeichen © OpenSeaMap. Hafenpläne und Wegpunkte aus dem
+    eigenen Revierführer Saronischer Golf, nur für die private Törnvorbereitung. <strong>Keine Navigationsgrundlage</strong> –
+    gefahren wird nach amtlicher Seekarte, Plotter und Ausguck.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+const DATA = {"wp":{"alimos":{"name":"Alimos Marina","kind":"base","lat":37.914,"lon":23.7},"moni":{"name":"Insel Moni","kind":"swim","lat":37.6909,"lon":23.4347},"poros":{"name":"Poros Stadtkai","kind":"port","lat":37.4995,"lon":23.453},"russian":{"name":"Russian Bay","kind":"swim","lat":37.51,"lon":23.435},"hydra":{"name":"Hydra \u2013 Limin Idhras","kind":"port","lat":37.3533,"lon":23.465},"bisti":{"name":"Bisti / Ag. Nikolaos","kind":"swim","lat":37.3028,"lon":23.3758},"dokos":{"name":"Dokos \u2013 Ormos Skindos","kind":"anchor","lat":37.343,"lon":23.325},"methana":{"name":"Methana Hafen","kind":"port","lat":37.5807,"lon":23.3914},"epidavros":{"name":"Palaia Epidavros","kind":"port","lat":37.6377,"lon":23.1556},"aponisos":{"name":"Aponisos (Agistri)","kind":"anchor","lat":37.6847,"lon":23.3216}},"land":{"kameni":{"name":"Kameni Chora \u2013 Vulkandorf","lat":37.6147,"lon":23.3334},"theatre":{"name":"Theater von Epidauros","lat":37.596,"lon":23.0794},"metopi":{"name":"Insel Metopi (Plan B)","lat":37.7228,"lon":23.3812},"mandraki":{"name":"Mandraki (Plan B)","lat":37.3567,"lon":23.4817}},"days":{"so":{"depart":"07:00","sm":34.3,"arrive":"14:50","segs":[{"from":"alimos","to":"moni","sm":21.5,"an":"11:08","stop":75,"pts":[[37.914,23.7],[37.7767,23.5279],[37.7742,23.4661],[37.7669,23.4393],[37.7669,23.4239],[37.7612,23.4167],[37.7172,23.4167],[37.6909,23.4347]]},{"from":"moni","to":"poros","sm":12.8,"an":"14:50","stop":0,"pts":[[37.6909,23.4347],[37.6871,23.4208],[37.5182,23.4208],[37.5067,23.4352],[37.4995,23.453]]}]},"mo":{"depart":"08:30","sm":14.1,"arrive":"13:42","segs":[{"from":"poros","to":"russian","sm":1.1,"an":"08:42","stop":150,"pts":[[37.4995,23.453],[37.51,23.435]]},{"from":"russian","to":"hydra","sm":13.0,"an":"13:42","stop":0,"pts":[[37.51,23.435],[37.5018,23.4455],[37.5018,23.4496],[37.4969,23.4527],[37.4904,23.4713],[37.4749,23.4908],[37.474,23.4991],[37.4569,23.5207],[37.4479,23.5217],[37.4356,23.5361],[37.3955,23.4877],[37.3533,23.465]]}]},"di":{"depart":"08:30","sm":10.6,"arrive":"13:02","segs":[{"from":"hydra","to":"bisti","sm":5.7,"an":"09:35","stop":150,"pts":[[37.3533,23.465],[37.3513,23.4579],[37.3513,23.4332],[37.3218,23.395],[37.3145,23.3786],[37.3028,23.3758]]},{"from":"bisti","to":"dokos","sm":4.9,"an":"13:02","stop":0,"pts":[[37.3028,23.3758],[37.3096,23.3744],[37.3128,23.3786],[37.3268,23.3765],[37.3366,23.3641],[37.3448,23.3621],[37.3522,23.3497],[37.343,23.325]]}]},"mi":{"depart":"05:00","sm":24.3,"arrive":"09:39","segs":[{"from":"dokos","to":"methana","sm":24.3,"an":"09:39","stop":0,"pts":[[37.343,23.325],[37.3538,23.3374],[37.3538,23.3508],[37.4111,23.427],[37.4119,23.4568],[37.4209,23.4816],[37.4217,23.4991],[37.4315,23.5207],[37.4315,23.532],[37.434,23.5351],[37.4389,23.5331],[37.4479,23.5217],[37.4569,23.5207],[37.4937,23.4744],[37.4937,23.461],[37.4977,23.4486],[37.5182,23.4208],[37.532,23.4198],[37.5623,23.4002],[37.5819,23.3992],[37.5807,23.3914]]}]},"do":{"depart":"07:00","sm":25.2,"arrive":"15:06","segs":[{"from":"methana","to":"epidavros","sm":16.2,"an":"10:06","stop":195,"pts":[[37.5807,23.3914],[37.5835,23.4002],[37.59,23.4084],[37.5982,23.4084],[37.6112,23.4167],[37.6194,23.4167],[37.6284,23.4074],[37.6382,23.4074],[37.6398,23.4043],[37.6422,23.3858],[37.6422,23.2457],[37.6414,23.1746],[37.639,23.1664],[37.6377,23.1556]]},{"from":"epidavros","to":"aponisos","sm":9.1,"an":"15:06","stop":0,"pts":[[37.6377,23.1556],[37.639,23.1684],[37.639,23.1911],[37.6871,23.255],[37.6847,23.3216]]}]},"fr":{"depart":"07:15","sm":23.3,"arrive":"11:43","segs":[{"from":"aponisos","to":"alimos","sm":23.3,"an":"11:43","stop":0,"pts":[[37.6847,23.3216],[37.7115,23.3363],[37.8109,23.462],[37.8109,23.4744],[37.8515,23.5258],[37.914,23.7]]}]}},"total":131.8,"speed":5.2};
+const DAYCOL = {so:'--d-so',mo:'--d-mo',di:'--d-di',mi:'--d-mi',do:'--d-do',fr:'--d-fr'};
+const DAYNAME = {so:'So 18.10.',mo:'Mo 19.10.',di:'Di 20.10.',mi:'Mi 21.10.',do:'Do 22.10.',fr:'Fr 23.10.'};
+const KIND = {base:'Basis',port:'Hafen',anchor:'Ankernacht',swim:'Badestopp'};
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+
+function showFallback(msg){
+  const m=document.getElementById('map'), f=document.getElementById('mapfallback');
+  if(!m) return;
+  m.style.display='none'; f.style.display='block';
+  document.querySelector('.layerbtns').style.display='none';
+  document.getElementById('mapnote').textContent=msg;
+}
+
+(function(){
+  if(typeof L==='undefined'){
+    showFallback('Statische Übersichtskarte. Kartenbasis © OpenStreetMap-Mitwirkende, Seezeichen © OpenSeaMap.');
+    return;
+  }
+  const map=L.map('map',{scrollWheelZoom:false,zoomControl:true,attributionControl:false,
+    center:[37.60,23.40], zoom:10});
+  const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:17,crossOrigin:true});
+  const sea=L.tileLayer('https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',{maxZoom:17,opacity:.95,crossOrigin:true});
+  let ok=false, errs=0;
+  osm.on('tileload',()=>{ok=true;});
+  osm.on('tileerror',()=>{ if(++errs>3 && !ok) showFallback('Statische Übersichtskarte – die Kachelserver sind auf dieser Seite nicht erreichbar. Die interaktive Version läuft in der lokalen HTML-Datei.'); });
+  osm.addTo(map); sea.addTo(map);
+  setTimeout(()=>{ if(!ok) showFallback('Statische Übersichtskarte – die Kachelserver sind auf dieser Seite nicht erreichbar. Die interaktive Version läuft in der lokalen HTML-Datei.'); },8000);
+
+  const groups={}; const all=[];
+  try{
+  Object.entries(DATA.days).forEach(([id,day])=>{
+    const col=cssVar(DAYCOL[id])||'#c42525';
+    const g=L.layerGroup().addTo(map);
+    day.segs.forEach(s=>{
+      L.polyline(s.pts,{color:'#ffffff',weight:9,opacity:.5}).addTo(g);
+      const pl=L.polyline(s.pts,{color:col,weight:4.5,opacity:.95}).addTo(g);
+      pl.bindPopup('<b>'+DAYNAME[id]+'</b><br>'+DATA.wp[s.from].name+' → '+DATA.wp[s.to].name+'<br>'+
+        String(s.sm).replace('.',',')+' sm · an '+s.an);
+      s.pts.forEach(p=>all.push(p));
+    });
+    groups[id]=g;
+  });
+  const kindcol={base:'#14232B',port:cssVar('--magenta')||'#AC1A5C',anchor:cssVar('--d-do')||'#1160B0',swim:cssVar('--kelp')||'#2B6A51'};
+  Object.entries(DATA.wp).forEach(([k,w])=>{
+    L.circleMarker([w.lat,w.lon],{radius:7,color:kindcol[w.kind],weight:3,fillColor:'#fff',fillOpacity:1})
+      .addTo(map).bindPopup('<b>'+w.name+'</b><br>'+KIND[w.kind]+'<br><span style="font-family:monospace">'+
+        w.lat.toFixed(4)+'° N  '+w.lon.toFixed(4)+'° E</span>');
+  });
+  Object.entries(DATA.land).forEach(([k,w])=>{
+    L.circleMarker([w.lat,w.lon],{radius:5,color:cssVar('--sun')||'#B9782F',weight:2.5,fillColor:'#fff',fillOpacity:1,dashArray:'2 2'})
+      .addTo(map).bindPopup('<b>'+w.name+'</b>');
+  });
+  if(all.length) map.fitBounds(L.latLngBounds(all).pad(0.06));
+  setTimeout(()=>map.invalidateSize(),200);
+  }catch(err){
+    console.error('Kartenaufbau fehlgeschlagen:',err);
+    showFallback('Statische Übersichtskarte. Kartenbasis © OpenStreetMap-Mitwirkende, Seezeichen © OpenSeaMap.');
+    return;
+  }
+
+  document.getElementById('btnSea').addEventListener('click',function(){
+    const on=this.getAttribute('aria-pressed')==='true';
+    this.setAttribute('aria-pressed',String(!on));
+    if(on) map.removeLayer(sea); else sea.addTo(map);
+  });
+  let onlyDay=null;
+  document.getElementById('btnAll').addEventListener('click',function(){
+    onlyDay=null; this.setAttribute('aria-pressed','true');
+    Object.values(groups).forEach(g=>g.addTo(map));
+    if(all.length) map.fitBounds(L.latLngBounds(all).pad(0.06));
+  });
+  document.querySelectorAll('.chip[href^="#"]').forEach(a=>{
+    const id=a.getAttribute('href').slice(1);
+    if(!DATA.days[id]) return;
+    a.addEventListener('click',()=>{
+      onlyDay=id;
+      document.getElementById('btnAll').setAttribute('aria-pressed','false');
+      Object.entries(groups).forEach(([k,g])=>{ if(k===id) g.addTo(map); else map.removeLayer(g); });
+      const pts=[]; DATA.days[id].segs.forEach(s=>s.pts.forEach(p=>pts.push(p)));
+      map.fitBounds(L.latLngBounds(pts).pad(0.12));
+    });
+  });
+})();
+</script>
