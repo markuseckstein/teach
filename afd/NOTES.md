@@ -212,3 +212,15 @@ Fehler ab, die man im Terminal sonst nicht sieht.
 - **Community-Lücke halb geschlossen.** Für den privaten Konfliktfall gibt es jetzt eine
   belastbare Anlaufstelle. Eine *Online*-Community für Gesprächstraining fehlt weiterhin —
   und Kommentarspalten bleiben dafür ungeeignet.
+
+## Rollenspiel (seit 22.09.2026)
+
+- **Format, das funktioniert:** WhatsApp-Chat als Markdown-Zitate im Terminal. Ich bleibe
+  in der Rolle bis „Stopp“, dann folgt die Auswertung. „Stopp – zurück zum Anfang“ heißt:
+  Auswertung, dann dieselbe Ausgangslage neu.
+- **Echte Details zum Fall aus Lektion 12:** Einzelchat. Ihr erster Satz war eine Frage:
+  „Wer hat von euch beiden neulich als wir mit dem Kremser unterwegs waren den Vogel
+  gezeigt?“ Im Spiel heißt sie Kerstin. Man kennt sich aus dem Fitnessstudio.
+- **Kurze, mehrdeutige Eingaben** („Ok“, „ich weiß nicht was du meinst“) als Chatnachricht
+  behandeln und in einem Satz anbieten, sie zurückzunehmen, falls sie an mich gingen.
+- Verlauf und Befunde: Record 0009.
