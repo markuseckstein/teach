@@ -105,6 +105,14 @@ var COURSE = {
       teaser: 'Die Eskalationsfrage mit Quellen statt Bauchgefühl. Ungarn wurde im April 2026 abgewählt — Polen dreht seit 2023 nichts zurück. Was sich davon auf Sachsen-Anhalt überträgt und was nicht.',
       minutes: 15,
       part: 'Teil III · Die lange Sicht'
+    },
+    {
+      n: 12,
+      file: '0012-der-vorwurf-nach-der-grenze.html',
+      title: 'Der Vorwurf nach der Grenze',
+      teaser: 'Du hast freundlich eine Grenze gezogen — und bekommst einen Vorwurf zurück, der mit der Sache nichts zu tun hat. Warum gerade die Höflichkeit der Auslöser war, und welche eine Nachricht den Streit beendet.',
+      minutes: 12,
+      part: 'Teil IV · Die Übung'
     }
   ],
 

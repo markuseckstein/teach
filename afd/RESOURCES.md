@@ -447,3 +447,61 @@ wörtlich in WP 2025, S. 87) — aber der Truppen- und Atomwaffenabzug fehlte, e
 Euro-Hintertür („ggf. unter paralleler Beibehaltung des Euro“, WP 2025 S. 62) und der
 bedingte Dexit im GP 2016 (S. 16). **Keine Falschaussage, aber eine Lücke an der
 wichtigsten Stelle.**
+
+## Konflikt im Privaten: Grenze, Gegenvorwurf, Chat (geprüft am 22.09.2026, für Lektion 12)
+
+Anlass: eine reale Situation des Nutzers — freundliche Bitte an eine Bekannte, keine
+AfD-Wahlwerbung mehr per WhatsApp zu schicken; darauf ein unwahrer Vorwurf gegen seinen
+Mann, der die Absenderin gar nicht kennt.
+
+- [Rosenberg & Siegel, Motivation Science 2018: „A 50-year review of psychological
+  reactance theory“](https://scholar.dominican.edu/cgi/viewcontent.cgi?article=1002&context=psychology-faculty-scholarship) —
+  frei zugänglich. Wichtigster Punkt für uns: Reaktanz hat **vier Bedingungen**
+  (beanspruchte Freiheit, Wichtigkeit, als *unberechtigt* empfundene Bedrohung,
+  Wehrmöglichkeit). Die Volksfassung „sag jemandem, er darf nicht, und er will erst recht“
+  unterschlägt sie. Dass Höflichkeit nicht hilft, folgt genau daraus.
+- [Freyd: „What is DARVO?“](https://www.jjfreyd.com/darvo) — Definition, Ursprung
+  (Freyd 1997, *Feminism & Psychology*) und Studienübersicht, von der Forscherin selbst.
+- [Harsey & Freyd, Journal of Aggression, Maltreatment & Trauma
+  2020](https://www.tandfonline.com/doi/full/10.1080/10926771.2020.1774695) — Experiment:
+  DARVO senkt die Glaubwürdigkeit der konfrontierenden Person bei Mitlesenden und erhöht
+  die ihr zugeschriebene Mitschuld. **Der für den Kurs entscheidende Nebenbefund:** Wer
+  über das Muster aufgeklärt wurde, sitzt ihm deutlich weniger auf. Das ist die
+  Rechtfertigung dafür, die Lektion überhaupt zu schreiben.
+  **Grenze der Übertragbarkeit:** Gegenstand ist zwischenmenschliche Gewalt, nicht
+  Streit über Wahlwerbung. Die Übertragung ist Stufe ③ und in der Lektion so markiert.
+- [Kruger, Epley, Parker & Ng, JPSP 2005: „Egocentrism over
+  e-mail“](https://pubmed.ncbi.nlm.nih.gov/16393025/) — fünf Experimente. Menschen
+  überschätzen systematisch, wie zuverlässig ihr Tonfall schriftlich ankommt (Ironie,
+  Ernst, Humor). Ursache: Egozentrik, man hört die eigene Stimme mit. Direkt anwendbar auf
+  WhatsApp — daraus die Regel „keine Ironie, kein Emoji als Tonrettung“.
+- [Glasl, neun Eskalationsstufen — Überblick bei
+  business-wissen.de](https://www.business-wissen.de/artikel/eskalationsstufen-nach-glasl-ratgeber-fuer-fuehrungskraefte-bei-konflikten/) —
+  Stufe 4 *Images und Koalitionen* erklärt, warum eine unbeteiligte dritte Person
+  hineingezogen wird; Stufe 5 *Gesichtsverlust*, warum eine Forderung nach Entschuldigung
+  die Lage verschärft. **Kennzeichnung:** Modell aus der Organisationsberatung, keine
+  experimentelle Prüfung. Ordnet gut, misst nicht.
+- [Voit, Political Psychology 2025: „Victimhood claims in German political
+  manifestos“](https://onlinelibrary.wiley.com/doi/10.1111/pops.70088) — Inhaltsanalyse
+  über sechs Bundestagswahlen; höchste Dichte an Opferschaftsansprüchen bei der AfD,
+  dahinter die Linke, Mitte-Parteien deutlich seltener. **⚠ Nur das Abstract geprüft, der
+  Volltext liegt hinter einer Paywall (403 beim Abruf am 22.09.2026).** In der Lektion so
+  gekennzeichnet. Wenn sich ein Zugang findet: Methode und Kodierregeln nachlesen, bevor
+  die Aussage irgendwo zitiert wird.
+- [LSE: „The weaponisation of victimhood“](https://www.lse.ac.uk/research/research-for-the-world/society/weaponisation-victimhood) —
+  gut lesbarer Überblick zu *competitive victimhood*.
+- **BYAF („but you are free“) — ein Lehrstück in Beleg-Hygiene.**
+  [Carpenter, Communication Studies 2013](https://www.tandfonline.com/doi/full/10.1080/10510974.2012.727941)
+  findet die Technik über 42 Studien wirksam;
+  [Fillon, Souchet, Pascual & Girandola, Meta-Psychology
+  2023](https://open.lnu.se/index.php/metapsychology/article/view/2640) rechnen nach:
+  über alle 52 Experimente *g* = 0,44, in den sieben Studien mit geringem Bias-Risiko aber
+  *g* = 0,11 (KI −0,18 bis 0,40), also **kein Effekt**. Die Empfehlung in der Lektion ruht
+  deshalb auf dem Reaktanzmechanismus, nicht auf dieser Technik.
+
+**Wisdom-Ergänzung:**
+[Bundesverband Mobile Beratung](https://bundesverband-mobile-beratung.de/mobile-beratung/) —
+Beratungsteams in allen sechzehn Bundesländern, kostenlos und vertraulich, ausdrücklich
+auch für Privatpersonen. Nennen als Beispielfall wörtlich „Verschwörungsmythen im
+Familienchat“. Damit ist die seit 10.09.2026 offene Community-Lücke für den privaten Fall
+geschlossen — die Lücke für eine *Online*-Community besteht weiter.

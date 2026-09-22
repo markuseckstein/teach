@@ -12,8 +12,9 @@
   Ausdrücklich *nicht* Unterrichtsmaterial. Beispiele also aus dem Erwachsenenalltag,
   nicht aus dem Klassenzimmer.
 - **Einstieg gewählt:** Gesprächsführung zuerst, Folgenanalyse danach.
-- **Kursstruktur seit 16.09.2026:** Teil I · Das Gespräch (1–2), Teil II · Die Folgen
-  (3–10), Teil III · Die lange Sicht (11).
+- **Kursstruktur seit 22.09.2026:** Teil I · Das Gespräch (1–2), Teil II · Die Folgen
+  (3–10), Teil III · Die lange Sicht (11), Teil IV · Die Übung (12 ff. — reale Fälle des
+  Nutzers, siehe „Regel für Fallübungen“).
 - Bilder und Diagramme sind erwünscht (inline SVG, offline- und drucktauglich).
 
 ## Architekturentscheidung: eine Quelle für die Navigation
@@ -43,6 +44,21 @@ Klassische `<script src>`-Tags mit globalen Variablen.
   inkonsistente Wahlabsichten). Wer sein Gegenüber als „Protestwähler" einsortiert, redet oft
   an der Person vorbei.
 
+## Regel für Fallübungen (seit 22.09.2026)
+
+Wenn der Nutzer eine reale Situation mitbringt, gehört sie in **Teil IV**, nicht in Teil I
+— und die Lektion bekommt die nächste freie Nummer. Der Grund ist pragmatisch: Einschieben
+heißt Umnummerieren, und das ist die fehleranfälligste Operation in diesem Workspace
+(siehe unten). Eine Fallübung ist didaktisch ohnehin etwas anderes als eine Lektion aus
+Teil I.
+
+**Inhaltliche Regel, die sich dabei ergeben hat und die ich für übertragbar halte:** Bei
+einem Einzelfall ist die Motivfrage („was will die Person damit bezwecken?“) *nicht*
+beantwortbar — Forschung beschreibt Muster über viele Fälle. Statt zu diagnostizieren also
+mehrere plausible Lesarten nebeneinanderstellen und **eine Antwort suchen, die bei allen
+funktioniert.** Das ist die Umkehrung des Vorgehens aus Lektion 1 und der Kern von
+Lektion 12.
+
 ## Zu tun / offene Fäden
 
 - ~~Folgenanalyse: pro Politikfeld eine eigene, kurze Lektion.~~ **Erledigt (16.09.2026):**
@@ -59,8 +75,9 @@ Klassische `<script src>`-Tags mit globalen Variablen.
 - Prüfen, ob die GEW-Umsetzbarkeitsanalyse (Rechtsgutachten) als Primärquelle taugt oder
   als Interessenvertretung gekennzeichnet werden muss.
 - ~~Referenz „Glossar" anlegen.~~ **Erledigt (10.09.2026):** `reference/glossar.html`,
-  inzwischen 37 Einträge in sieben Gruppen (16.09.2026: Gruppe „Einflussnahme und
-  Desinformation“ ergänzt), jeweils mit Fundstelle im Kurs und — wo es zählt — einem
+  inzwischen 42 Einträge in acht Gruppen (16.09.2026: Gruppe „Einflussnahme und
+  Desinformation“; 22.09.2026: Gruppe „Konflikt im Privaten“ mit Reaktanz, Aufrechnung,
+  DARVO, Eskalationsstufen, Opferschaftsanspruch), jeweils mit Fundstelle im Kurs und — wo es zählt — einem
   „Nicht verwechseln mit …". Regel für die Aufnahme: ein Begriff kommt hinein, wenn er in
   einer Lektion mit `<span class="term">` ausgezeichnet ist **oder** im Gespräch regelmäßig
   unscharf gebraucht wird. Beim nächsten Ausbau mitpflegen, sonst veraltet er still.
@@ -88,9 +105,12 @@ Klassische `<script src>`-Tags mit globalen Variablen.
   vergleichen lassen, ist eine offene Forschungsfrage — die Übertragungstabelle ist
   Stufe ③. Und: in ein paar Monaten nachfassen, was die neue ungarische Regierung mit
   ihrer eigenen Zweidrittelmehrheit macht.
-- **Nächste Sitzung vermutlich keine Lektion, sondern eine Übung.** Der Kurs erklärt mehr,
-  als sich an einem Abend abrufen lässt. Lektion 2 ist fürs Durchspielen einer konkreten
-  Situation gebaut (Familienfeier, Lehrerzimmer, Vereinsabend) und bietet das selbst an.
+- ~~**Nächste Sitzung vermutlich keine Lektion, sondern eine Übung.**~~ **Eingetreten
+  (22.09.2026): Lektion 12.** Der Anlass war ein echter Vorfall — freundliche Bitte an eine
+  Bekannte, keine AfD-Wahlwerbung mehr per WhatsApp zu schicken; darauf ein unwahrer
+  Vorwurf gegen den Mann des Nutzers, den sie gar nicht kennt. Die Lektion hat einen
+  **eigenen Kursteil** bekommen (Teil IV · Die Übung), damit der Kurs nicht zum dritten Mal
+  umnummeriert werden muss. Details im Record 0008.
 - **Offen aus Lektion 10:** Ergebnis der Prüfung der Bundestagsverwaltung zum
   Musk-Weidel-Gespräch (am 16.09.2026 nicht auffindbar); Wirkungsforschung zu
   Desinformation und Wahlergebnissen (in der Lektion bewusst nicht behauptet).
@@ -176,3 +196,19 @@ Drei Regeln, die aus einem kaputten Rendering entstanden sind:
 **Vor jedem Abschluss laufen lassen:** Tag-Verschachtelung aller Seiten (`html.parser`),
 SVG-Wohlgeformtheit, tote interne Links. Drei kurze Python-Schnipsel, fangen zusammen die
 Fehler ab, die man im Terminal sonst nicht sieht.
+
+## Offene Fäden aus Lektion 12 (22.09.2026)
+
+- **Volltext von Voit (2025)** zu Opferschaftsansprüchen in deutschen Wahlprogrammen ist
+  paywalled (403). In der Lektion ist das mitten in der Quellenangabe gekennzeichnet.
+  Wenn sich ein Zugang findet: Methode und Kodierregeln nachlesen, bevor die Aussage
+  irgendwo mündlich verwendet wird.
+- **Ungeklärt: Einzelchat oder Gruppe?** Bei einer Gruppe ändert sich der Rat erheblich —
+  dann ist es der Publikumsfall aus Lektion 2. Die Lektion fragt das im Schlusskasten nach;
+  bei der nächsten Sitzung daran denken.
+- **Nachfassen:** Hat er geantwortet, und was kam zurück? Wenn die Geschichte
+  weitergetragen wird, ist es keine Gesprächsführungsfrage mehr, sondern ein Fall für den
+  Bundesverband Mobile Beratung (jetzt in RESOURCES.md und in der Lektion verlinkt).
+- **Community-Lücke halb geschlossen.** Für den privaten Konfliktfall gibt es jetzt eine
+  belastbare Anlaufstelle. Eine *Online*-Community für Gesprächstraining fehlt weiterhin —
+  und Kommentarspalten bleiben dafür ungeeignet.
