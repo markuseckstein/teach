@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geldschöpfung in Buchungen</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<style>
+  .tk { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; margin: .6rem 0 1.4rem; }
+  .tk div { border-top: 1.5px solid var(--fg); font-family: var(--sans); font-size: .78rem; display: grid; grid-template-columns: 1fr 1fr; }
+  .tk div > span { padding: .25rem .4rem; }
+  .tk div > span + span { border-left: 1.5px solid var(--fg); }
+  .tk b { display: block; grid-column: 1 / -1; text-align: center; font-weight: 600; padding: .2rem; border-bottom: 1px solid var(--rule); }
+  .gm { font-family: var(--sans); font-size: .75rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Referenz · zu Lektion 0001–0002</p>
+  <h1>Geldschöpfung in Buchungen</h1>
+  <p class="subtitle">Die Grundbuchungen als T-Konten. Links Aktiva (was ich habe), rechts Passiva (was ich schulde).</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="kernsaetze">Kernsätze</h2>
+<ol>
+  <li>Ein Bankguthaben ist eine <strong>Forderung gegen die Bank</strong>. Bei der Bank steht es als Verbindlichkeit auf der Passivseite.</li>
+  <li><strong>Kredit schafft Geld</strong>: Die Bank bucht Kredit (Aktiva) und Einlage (Passiva) gleichzeitig, das ist eine Bilanzverlängerung.</li>
+  <li><strong>Tilgung vernichtet Geld</strong>: Einlage und Kredit werden ausgebucht, das ist eine Bilanzverkürzung.</li>
+  <li><strong>Abheben und Einzahlen</strong> ändern nur die Form (Buchgeld ↔ Bargeld), nicht die Geldmenge.</li>
+  <li><strong>Grenzen</strong>: Kreditnachfrage, Risiko und Rentabilität, Eigenkapitalregeln, Zins der Zentralbank.</li>
+  <li><strong>Zwei Ebenen</strong>: Nichtbanken zahlen mit Buchgeld (Schuld der Geschäftsbank), Banken zahlen untereinander mit Zentralbankgeld (Schuld der Zentralbank: Zentralbankguthaben + Bargeld).</li>
+  <li><strong>Überweisung zu einer anderen Bank</strong> und <strong>Barabhebung</strong> kosten die Bank Zentralbankgeld. Das bekommt sie vom Interbankenmarkt, von der Zentralbank (gegen Sicherheiten, zum Leitzins) oder durch zufließende Einlagen.</li>
+  <li><strong>Mindestreserve</strong>: 1 % der Einlagen (seit 2012), unverzinst seit 09/2023.</li>
+</ol>
+
+<h2 id="buchungen">Die Grundbuchungen</h2>
+
+<h3>Kreditvergabe 1.000 € <span class="gm">· Geldmenge +1.000</span></h3>
+<div class="tk">
+  <div><b>Bank</b><span>+ Kredit an Kunde 1.000</span><span>+ Einlage Kunde 1.000</span></div>
+  <div><b>Kunde</b><span>+ Guthaben 1.000</span><span>+ Kreditschuld 1.000</span></div>
+</div>
+
+<h3>Tilgung 500 € <span class="gm">· Geldmenge −500</span></h3>
+<div class="tk">
+  <div><b>Bank</b><span>− Kredit an Kunde 500</span><span>− Einlage Kunde 500</span></div>
+  <div><b>Kunde</b><span>− Guthaben 500</span><span>− Kreditschuld 500</span></div>
+</div>
+
+<h3>Barabhebung 200 € <span class="gm">· Geldmenge ±0</span></h3>
+<div class="tk">
+  <div><b>Bank</b><span>− Kasse 200</span><span>− Einlage Kunde 200</span></div>
+  <div><b>Kunde</b><span>− Guthaben 200<br>+ Bargeld 200</span><span>&nbsp;</span></div>
+</div>
+
+<h3>Bareinzahlung 200 € <span class="gm">· Geldmenge ±0</span></h3>
+<div class="tk">
+  <div><b>Bank</b><span>+ Kasse 200</span><span>+ Einlage Kunde 200</span></div>
+  <div><b>Kunde</b><span>− Bargeld 200<br>+ Guthaben 200</span><span>&nbsp;</span></div>
+</div>
+
+<h3>Überweisung 1.000 € von Anna (Bank A) an Bernd (Bank B) <span class="gm">· Geldmenge ±0 · Zentralbankgeld ±0</span></h3>
+<div class="tk">
+  <div><b>Bank A</b><span>− Zentralbankguthaben 1.000</span><span>− Einlage Anna 1.000</span></div>
+  <div><b>Bank B</b><span>+ Zentralbankguthaben 1.000</span><span>+ Einlage Bernd 1.000</span></div>
+  <div><b>Zentralbank</b><span>&nbsp;</span><span>− Guthaben Bank A 1.000<br>+ Guthaben Bank B 1.000</span></div>
+</div>
+
+<h3>Bank leiht sich 1.000 € bei der Zentralbank <span class="gm">· Geldmenge ±0 · Zentralbankgeld +1.000</span></h3>
+<div class="tk">
+  <div><b>Zentralbank</b><span>+ Kredit an Bank 1.000</span><span>+ Guthaben Bank 1.000</span></div>
+  <div><b>Bank</b><span>+ Zentralbankguthaben 1.000</span><span>+ Kredit von Zentralbank 1.000</span></div>
+</div>
+
+<h3>Bank holt 200 € Banknoten <span class="gm">· Geldmenge ±0 · Zentralbankgeld ±0</span></h3>
+<div class="tk">
+  <div><b>Zentralbank</b><span>&nbsp;</span><span>− Guthaben Bank 200<br>+ Banknotenumlauf 200</span></div>
+  <div><b>Bank</b><span>− Zentralbankguthaben 200<br>+ Kasse 200</span><span>&nbsp;</span></div>
+</div>
+
+<h2 id="zahlen">Größenordnung</h2>
+<table class="facts">
+  <tr><th>Euroraum, August 2026</th><th class="num">Mrd. €</th></tr>
+  <tr><td>Geldmenge M3</td><td class="num">17.646</td></tr>
+  <tr><td>Bargeldumlauf (≈ 9 %)</td><td class="num">1.617</td></tr>
+  <tr><td>Täglich fällige Einlagen</td><td class="num">9.676</td></tr>
+</table>
+
+<h2 id="mythen">Mythen</h2>
+<table class="facts">
+  <tr><th>Mythos</th><th>Tatsächlich</th></tr>
+  <tr><td>Banken verleihen die Spareinlagen anderer Kunden.</td><td>Der Kredit erzeugt die Einlage (Bundesbank, Bank of England).</td></tr>
+  <tr><td>Banken „vervielfachen“ vorhandenes Zentralbankgeld (Multiplikator).</td><td>Zentralbankgeld ist keine Voraussetzung für die Kreditvergabe. Es wird gebraucht, wenn Geld die Bank verlässt.</td></tr>
+  <tr><td>Die EZB druckt das meiste Geld.</td><td>Gut 9 % von M3 sind Bargeld, der Rest ist Buchgeld der Geschäftsbanken.</td></tr>
+  <tr><td>Mein Guthaben liegt bei der Bank für mich bereit.</td><td>Es ist eine Forderung. Bei einer Bankpleite greift die Einlagensicherung (100.000 € pro Kunde und Bank).</td></tr>
+</table>
+
+<h2 id="quellen">Quellen</h2>
+<ol class="sources">
+  <li>Deutsche Bundesbank, <a href="https://www.bundesbank.de/resource/blob/665284/c0eeb9d1460e0489c7b5f55cf98c98c6/mL/2017-04-monatsbericht-data.pdf">Monatsbericht April 2017</a>, S. 15–23.</li>
+  <li>McLeay/Radia/Thomas, <a href="https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy">Money creation in the modern economy</a>, BoE QB 2014 Q1.</li>
+  <li><a href="https://www.bundesbank.de/resource/blob/964882/36093646501ca8b86b0664129e2efc20/472B63F073F071307366337C94F8C870/2026-09-25-geldmenge-download.pdf">Geldmengenentwicklung im Euroraum: August 2026</a>.</li>
+  <li><a href="https://www.bundesbank.de/de/aufgaben/geldpolitik/mindestreserven/mindestreserven-602268">Bundesbank: Mindestreserven</a>; <a href="https://lxgesetze.de/aeuv/127">Art. 127</a> und <a href="https://lxgesetze.de/aeuv/128">Art. 128 AEUV</a>.</li>
+  <li><a href="https://www.bafin.de/DE/verbraucherinnen-verbraucher/themen-finanzprodukte/geldanlage/einlagensicherung-anlegerentschaedigung/einlagensicherung-anlegerentschaedigung_node.html">BaFin: Einlagensicherung</a>.</li>
+</ol>
+</main>
+</body>
+</html>

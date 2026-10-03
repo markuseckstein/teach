@@ -1,0 +1,183 @@
+<title>Referenz — Browser-Kiosk für die Alarmanzeige</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+
+<p class="meta">Referenz · Raspberry Pi OS / Debian mit Wayland + labwc · Stand 27.07.2026</p>
+<h1>Browser-Kiosk für die Alarmanzeige</h1>
+<p class="subtitle">Copy-&amp;-Paste-Blatt. Gilt für Raspberry Pi OS Desktop
+(Bookworm und neuer) und für Debian-Desktops mit labwc. Auf X11-Systemen gelten
+andere Befehle — siehe letzter Abschnitt.</p>
+
+<div class="callout warn">
+  <span class="label">Zuerst prüfen: X11 oder Wayland?</span>
+<pre><code>echo $XDG_SESSION_TYPE     # erwartet: wayland
+echo $XDG_CURRENT_DESKTOP  # erwartet: labwc (o. wayfire)
+which chromium chromium-browser</code></pre>
+  <p>Steht dort <span class="mono">x11</span>, gilt der Abschnitt „Altsysteme"
+  unten. Der Browser heißt je nach Version <span class="mono">chromium</span>
+  oder <span class="mono">chromium-browser</span> — setz unten den ein, den
+  <span class="mono">which</span> gefunden hat.</p>
+</div>
+
+<h2>1 · System vorbereiten</h2>
+
+<pre><code>sudo apt update &amp;&amp; sudo apt full-upgrade
+sudo apt install chromium wlopm      # cec-utils nur bei Fernseher
+sudo raspi-config</code></pre>
+
+<p>Im <span class="mono">raspi-config</span>-Menü zwei Dinge setzen:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Menüpfad</th><th>Wert</th><th>Warum</th></tr></thead>
+  <tbody>
+    <tr><td>System Options → Boot / Auto Login</td><td><strong>Desktop Autologin</strong></td><td>Ohne Sitzung kein Browser. Nach Stromausfall darf niemand ein Passwort tippen.</td></tr>
+    <tr><td>Display Options → Screen Blanking</td><td><strong>No</strong></td><td>Anzeige darf nicht von selbst schwarz werden.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>2 · Autostart</h2>
+
+<p>Datei <span class="mono">~/.config/labwc/autostart</span> — anlegen, falls
+nicht vorhanden:</p>
+
+<pre><code>mkdir -p ~/.config/labwc
+nano ~/.config/labwc/autostart</code></pre>
+
+<p>Inhalt (URL in der letzten Zeile anpassen):</p>
+
+<pre><code>#!/bin/sh
+# Alarmanzeige — startet neu, falls Chromium abstuerzt
+while true; do
+  chromium \
+    --kiosk \
+    --noerrdialogs \
+    --disable-infobars \
+    --disable-session-crashed-bubble \
+    --disable-features=TranslateUI \
+    --no-first-run \
+    --autoplay-policy=no-user-gesture-required \
+    --password-store=basic \
+    --check-for-update-interval=604800 \
+    --enable-features=OverlayScrollbar \
+    --start-maximized \
+    "https://time.is/Berlin"
+  sleep 5
+done &amp;</code></pre>
+
+<h3>Was die Schalter tun</h3>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Schalter</th><th>Wirkung</th></tr></thead>
+  <tbody>
+    <tr><td><span class="mono">--kiosk</span></td><td>Vollbild, keine Adressleiste, keine Tabs</td></tr>
+    <tr><td><span class="mono">--noerrdialogs</span></td><td>Unterdrückt Fehlerdialoge</td></tr>
+    <tr><td><span class="mono">--disable-infobars</span></td><td>Keine Hinweisleisten oben</td></tr>
+    <tr><td><span class="mono">--disable-session-crashed-bubble</span></td><td><strong>Kein „Seiten wiederherstellen?" nach Stromausfall.</strong> Der wichtigste Schalter.</td></tr>
+    <tr><td><span class="mono">--disable-features=TranslateUI</span></td><td>Kein Übersetzungs-Popup</td></tr>
+    <tr><td><span class="mono">--no-first-run</span></td><td>Überspringt den Einrichtungsassistenten</td></tr>
+    <tr><td><span class="mono">--autoplay-policy=no-user-gesture-required</span></td><td>Erlaubt Tonausgabe ohne vorherigen Klick — <strong>nötig für einen Alarmton</strong></td></tr>
+    <tr><td><span class="mono">--password-store=basic</span></td><td>Kein Schlüsselbund-Dialog beim Start (gespeichertes Login)</td></tr>
+    <tr><td><span class="mono">--check-for-update-interval</span></td><td>Kein Update-Hinweis mitten im Betrieb</td></tr>
+    <tr><td><span class="mono">--enable-features=OverlayScrollbar</span></td><td>Scrollbalken nur wenn nötig</td></tr>
+    <tr><td><span class="mono">while … sleep 5 … done</span></td><td>Startet die Anzeige neu, falls der Browser stirbt</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>3 · Abnahme</h2>
+
+<ol class="steps">
+  <li><strong>Stecker ziehen</strong>, 10 s warten, einstecken.</li>
+  <li>Gerät kommt von selbst in die Vollbildanzeige — kein Login, kein Dialog, kein Klick.</li>
+  <li>Zweites Mal wiederholen. Erst dann gilt es.</li>
+  <li>Maus und Tastatur abziehen. Ist die Anzeige noch bedienbar genug? (Mauszeiger
+      verstecken ist unter Wayland unbequem — Maus einfach abziehen.)</li>
+  <li>30 Minuten stehen lassen: bleibt der Bildschirm an, bleibt die Sitzung angemeldet?</li>
+</ol>
+
+<h2>4 · Bildschirm schalten (optional)</h2>
+
+<p>Ersetzt „Monitor ON/OFF Modus" des Windows-Monitors. Erst einbauen, wenn
+Schritt 3 zuverlässig sitzt.</p>
+
+<pre><code># PC-Monitor: nur Stromsparmodus, Layout bleibt
+export XDG_RUNTIME_DIR=/run/user/1000
+export WAYLAND_DISPLAY=wayland-0
+wlopm --off '*'          # aus
+wlopm --on  '*'          # an
+wlopm                    # Zustand anzeigen
+
+# NICHT dafuer benutzen — loest den Ausgang aus dem Layout
+# wlr-randr --output HDMI-A-1 --off</code></pre>
+
+<pre><code># Fernseher via HDMI-CEC (Pi 4/5: nur HDMI-Port neben USB-C)
+sudo apt install cec-utils
+echo 'scan'     | cec-client -s -d 1   # Geraete finden
+echo 'on 0'     | cec-client -s -d 1   # TV an
+echo 'as'       | cec-client -s -d 1   # auf diesen Eingang schalten
+echo 'standby 0'| cec-client -s -d 1   # TV aus
+echo 'pow 0'    | cec-client -s -d 1   # Zustand abfragen</code></pre>
+
+<h2>5 · Web-Monitor einsetzen</h2>
+
+<ol class="steps">
+  <li>URL, Login-Name und Passwort aus dem Portal holen — siehe
+      <a href="poweralarm-bausteine.html">PowerAlarm-Bausteine</a>, Abschnitt
+      „Web-Monitor einrichten".</li>
+  <li>Chromium <em>einmal normal</em> (nicht im Kiosk) starten, Web-Monitor
+      aufrufen, anmelden, <strong>Passwort speichern</strong> lassen.</li>
+  <li>Fensterpositionen im Web-Monitor einrichten und mit dem Disketten-Symbol
+      speichern.</li>
+  <li>URL in <span class="mono">~/.config/labwc/autostart</span> eintragen,
+      Abnahme aus Schritt 3 wiederholen.</li>
+  <li>Alten Windows-Rechner <strong>parallel weiterlaufen lassen</strong>, bis
+      mehrere echte Alarme sauber durchgelaufen sind.</li>
+</ol>
+
+<h2>Wartung — der eigentliche Grund für den Umbau</h2>
+
+<pre><code># Sicherheitsupdates automatisch einspielen
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure -plow unattended-upgrades</code></pre>
+
+<p>Debian/Raspberry Pi OS bekommt Updates ohne Hardware-Zwang — das ist der
+Unterschied zum festsitzenden Windows 10. Zusätzlich: SD-Karte des Pi einmal
+fertig konfiguriert <strong>klonen</strong> und im Schrank ablegen. Ausfall am
+Einsatztag heißt dann: Karte tauschen, zwei Minuten.</p>
+
+<h2>Altsysteme (X11)</h2>
+
+<p>Nur wenn <span class="mono">echo $XDG_SESSION_TYPE</span> oben
+<span class="mono">x11</span> sagte:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Aufgabe</th><th>Wayland/labwc</th><th>X11</th></tr></thead>
+  <tbody>
+    <tr><td>Autostart</td><td><span class="mono">~/.config/labwc/autostart</span></td><td><span class="mono">~/.config/lxsession/LXDE-pi/autostart</span></td></tr>
+    <tr><td>Blanking aus</td><td>raspi-config</td><td><span class="mono">xset s off; xset -dpms; xset s noblank</span></td></tr>
+    <tr><td>Bildschirm aus</td><td><span class="mono">wlopm --off '*'</span></td><td><span class="mono">xset dpms force off</span></td></tr>
+    <tr><td>Zeiger verstecken</td><td>Maus abziehen</td><td><span class="mono">unclutter -idle 0</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout warn">
+  <span class="label">Nicht verwechseln</span>
+  <p>Die X11-Befehle laufen auf einem Wayland-System <strong>ohne Fehlermeldung
+  durch und wirken nicht</strong>. Wenn eine Anleitung aus dem Netz
+  <span class="mono">xset</span> oder <span class="mono">unclutter</span> sagt,
+  ist sie älter als Oktober 2024.</p>
+</div>
+
+<footer>
+  <p>Gehört zu <a href="../lessons/0002-kiosk-der-von-selbst-startet.html">Lektion 2 —
+  Der Kiosk, der von selbst startet</a>. Primärquelle:
+  <a href="https://www.raspberrypi.com/tutorials/how-to-use-a-raspberry-pi-in-kiosk-mode/">Raspberry
+  Pi Ltd — How to use a Raspberry Pi in kiosk mode</a>. Bildschirmschaltung:
+  <a href="https://github.com/labwc/labwc/discussions/3059">labwc Discussion #3059</a>.</p>
+  <p>Läuft etwas nicht: frag deinen Lehrer, mit dem Inhalt deiner
+  <span class="mono">autostart</span>-Datei.</p>
+</footer>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Tiling-Grundlagen</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <p class="subtitle">Lesson 0003 · PopOS/COSMIC Fenstermanagement</p>
+  <h1>Tiling-Grundlagen</h1>
+
+  <p>Das ist der Teil, den es unter Windows so nicht gibt: <strong>Auto-Tiling</strong>. Statt Fenster manuell zu positionieren und zu überlappen, ordnet COSMIC alle Fenster eines Workspace automatisch lückenlos nebeneinander an. Du steuerst nur noch, <em>welches</em> Fenster wo sitzt — nicht mehr <em>wie groß</em> oder <em>wo genau</em>.</p>
+
+  <div class="windows-analogy">
+    <div class="callout-title">Von Windows her kennst du</div>
+    <p>Windows' <strong>Snap Layouts</strong> (Fenster an den Rand ziehen, es snapped in eine Hälfte/Viertel) sind der nächste Verwandte — aber Snap ist eine manuelle Einzelaktion pro Fenster. Tiling ist der permanente Zustand: <em>jedes</em> Fenster im Workspace wird automatisch verwaltet, es gibt kein „frei schwebend über anderen Fenstern" mehr, außer du erlaubst es explizit.</p>
+  </div>
+
+  <h2>Tiling aktivieren</h2>
+  <p><span class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>Y</kbd></span> schaltet Auto-Tiling für den <strong>aktuellen Workspace</strong> an oder aus — es ist also pro Workspace einstellbar, nicht global. Alternative: das Tiling-Icon oben rechts im Panel anklicken.</p>
+  <p>Öffne jetzt zwei oder drei Fenster in einem Workspace mit aktivem Tiling — sie ordnen sich automatisch nebeneinander an, ohne dass du etwas ziehst.</p>
+
+  <h2>Im Tiling navigieren und umordnen</h2>
+  <table class="shortcuts">
+    <tr><th>Kürzel</th><th>Aktion</th></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span>Pfeiltasten</td><td>Fokus zum Nachbarfenster wechseln</td></tr>
+    <tr><td class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span>Pfeiltasten</td><td>Fokussiertes Fenster im Layout verschieben</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>O</kbd></td><td>Ausrichtung des Layouts wechseln (horizontal ↔ vertikal)</td></tr>
+    <tr><td class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>X</kbd></td><td>Swap-Modus: zwei Fenster tauschen Plätze</td></tr>
+  </table>
+
+  <h2>Die Fluchttür: Floating</h2>
+  <p>Manche Fenster wollen nicht getilt werden — ein kleiner Taschenrechner, ein Bild-Viewer, ein Popup. <span class="keys"><kbd>Super</kbd><span class="plus">+</span><kbd>G</kbd></span> nimmt das aktive Fenster aus dem Tiling heraus (oder wieder hinein), es verhält sich dann wie ein klassisches, frei bewegliches Windows-Fenster.</p>
+
+  <div class="callout">
+    <div class="callout-title">Praxis, direkt jetzt</div>
+    <p>Aktiviere Tiling (<kbd>Super</kbd>+<kbd>Y</kbd>) auf einem leeren Workspace. Öffne drei Fenster. Wechsle den Fokus mit <kbd>Super</kbd>+Pfeiltasten durch, verschiebe eins mit <kbd>Shift</kbd>+<kbd>Super</kbd>+Pfeiltaste an eine andere Stelle, und probiere <kbd>Super</kbd>+<kbd>O</kbd>, um die Ausrichtung zu kippen. Nimm zuletzt eines der Fenster mit <kbd>Super</kbd>+<kbd>G</kbd> aus dem Tiling heraus und beobachte den Unterschied.</p>
+  </div>
+
+  <h2>Übung</h2>
+  <div class="quiz" data-answer="Super Y">
+    <p class="quiz-question">Welches Kürzel schaltet Auto-Tiling für den aktuellen Workspace an/aus?</p>
+    <input type="text" class="quiz-input" placeholder="Antwort eingeben…">
+    <button class="quiz-check">Prüfen</button>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <div class="quiz-mc" data-answer="1">
+    <p class="quiz-question">Ein Fenster soll frei beweglich bleiben statt getilt zu werden. Welches Kürzel?</p>
+    <div class="quiz-options">
+      <button class="quiz-option" data-index="0">Super + O</button>
+      <button class="quiz-option" data-index="1">Super + G</button>
+      <button class="quiz-option" data-index="2">Super + X</button>
+      <button class="quiz-option" data-index="3">Super + Y</button>
+    </div>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <p class="citation">Primärquelle: <a href="https://support.system76.com/articles/pop-basics/">Pop!_OS Basics — System76 Support</a> und <a href="https://blog.system76.com/post/cosmic-de-tiling-redesign-and-libcosmic-rebasing/">COSMIC DE: Tiling redesign — System76 Blog</a>. Vollständige Kürzelliste: <a href="../reference/cosmic-shortcuts-cheatsheet.html">Referenz-Spickzettel</a>.</p>
+
+  <div class="lesson-nav">
+    <span><a href="0002-fenstersteuerung-grundlagen.html">← Lesson 2: Fenstersteuerung-Grundlagen</a></span>
+    <span class="center"><a href="../index.html">↑ Inhaltsverzeichnis</a></span>
+    <span><a href="0004-stacking.html">Weiter: Lesson 4 — Stacking →</a></span>
+  </div>
+
+  <p class="ask-reminder">Fragen, die hier offen bleiben? Frag direkt nach — ich bin dein Ansprechpartner für alles, was in dieser Lesson unklar ist.</p>
+</div>
+</body>
+</html>

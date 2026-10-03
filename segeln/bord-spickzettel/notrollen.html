@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notrollen-Tafel</title>
+<link rel="stylesheet" href="print.css">
+<style>
+  .roles td { vertical-align: middle; }
+  .roles .k { font-size: 16pt; width: 11mm; text-align: center; }
+  .roles .field i { height: 7mm; }
+  table.matrix { font-size: 9pt; }
+  table.matrix th { font-size: 9.5pt; color: #fff; background: var(--navy); padding: 1mm 1.6mm; }
+  table.matrix th:first-child { width: 25mm; }
+  table.matrix td { padding: 1.3mm 1.6mm; border-bottom: .8pt solid #bbb; }
+  table.matrix td:first-child { font-weight: bold; font-size: 10pt; color: var(--mayday); }
+  table.matrix tr:nth-child(odd) td { background: #f6f6f6; }
+  table.matrix .funk { color: var(--secu); font-weight: bold; }
+  .where { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.6mm 4mm; }
+  .where .field b { font-weight: normal; font-size: 8.8pt; }
+  .alarm { display: flex; gap: 2mm; flex-wrap: wrap; }
+  .alarm span { background: var(--mayday); color: #fff; font-weight: bold; padding: .8mm 2.4mm; border-radius: 1mm; font-size: 10pt; }
+</style>
+</head>
+<body>
+<p class="screen-only"><a href="index.html">← Alle Spickzettel</a> · Drucken: A4 hoch, Hintergrundgrafiken an.</p>
+<div class="sheet">
+
+  <header class="head">
+    <h1>NOTROLLEN <small>&nbsp;SY ☐ Melina &nbsp;☐ Sienna</small></h1>
+    <div class="tag">Am Niedergang aufhängen · bei der Sicherheits­einweisung ausfüllen<br>Saronischer Golf · Oktober 2026</div>
+  </header>
+
+  <div class="grid2" style="grid-template-columns: 1.25fr 1fr;">
+    <section class="box">
+      <h2>Wer ist wer?</h2>
+      <table class="roles">
+        <tr><td class="k">S</td><td><div class="field"><b>Skipper</b><i></i></div><span class="small">führt, steuert im Notfall, entscheidet über MAYDAY und Verlassen</span></td></tr>
+        <tr><td class="k">V</td><td><div class="field"><b>Vertretung</b><i></i></div><span class="small">funkt, übernimmt komplett, wenn S ausfällt</span></td></tr>
+        <tr><td class="k">C</td><td><div class="field"><b>Crew</b><i></i></div><span class="small">Ausguck, Rettungsmittel, Pumpe, Löscher; übernimmt V, wenn V ausfällt</span></td></tr>
+      </table>
+    </section>
+    <section class="box mayday">
+      <h2>Alarm: laut rufen, dann Rollen</h2>
+      <div class="alarm"><span>MENSCH ÜBER BORD!</span><span>FEUER!</span><span>WASSER IM BOOT!</span></div>
+      <ol class="steps" style="margin-top:1.4mm">
+        <li><b>Alle an Deck</b>, Rettungsweste an, Sammelpunkt <b>Cockpit</b></li>
+        <li><b>Wer es zuerst sieht, handelt sofort</b> (zeigen, löschen, pumpen) und gibt dann an die zuständige Rolle ab</li>
+        <li>Ein Ansprechpartner: <b>S sagt an</b>, alle bestätigen laut</li>
+      </ol>
+    </section>
+  </div>
+
+  <table class="matrix">
+    <tr><th>Notfall</th><th>S · Skipper</th><th>V · Vertretung</th><th>C · Crew</th></tr>
+    <tr><td>Mensch über Bord</td>
+      <td>Quickstopp fahren, bleibt am Ruder, Annäherung in Lee</td>
+      <td>MOB-Taste am Plotter, Bergung vorbereiten (Leine, Badeleiter). <span class="funk">DSC „Man overboard“ + MAYDAY, wenn nicht sofort geborgen oder außer Sicht</span></td>
+      <td>Rettungskragen und MOB-Boje werfen, <b>zeigt ununterbrochen</b> auf die Person, Blick nie abwenden</td></tr>
+    <tr><td>Feuer</td>
+      <td>Boot so legen, dass das Feuer in Lee liegt. Motor bzw. Gas bzw. Strom aus, je nach Brandort</td>
+      <td><span class="funk">Funk: PAN PAN, sobald nicht in 1 min gelöscht: MAYDAY</span>. Insel und Grab-Bag klar</td>
+      <td><b>Löscher bzw. Löschdecke</b>, kurze Stöße auf den Brandherd. Kein Wasser auf Fett, Diesel oder Gas</td></tr>
+    <tr><td>Wassereinbruch</td>
+      <td>Fahrt raus, Leck suchen: Seeventile, Schläuche, Welle, Ruder. Kosten: Salz oder Süß?</td>
+      <td><span class="funk">Funk früh: PAN PAN, bei Kontrollverlust MAYDAY</span>. Elektrische Lenzpumpe an</td>
+      <td><b>Handlenzpumpe</b> und Pütz, Holzpfropfen und Werkzeug reichen</td></tr>
+    <tr><td>Grund­berührung</td>
+      <td>Auskuppeln, Lage prüfen, dann rückwärts auf dem Weg, den du gekommen bist</td>
+      <td>Bilge kontrollieren, Crew auf Verletzungen prüfen. <span class="funk">Charterbasis anrufen, bei Leck PAN PAN</span></td>
+      <td>Tiefe rundum loten, Gewicht verlagern (Krängung), Anker zum Abziehen klarmachen</td></tr>
+    <tr><td>Motor­ausfall</td>
+      <td>Segel setzen oder ankern, <b>Abstand zur Leeküste</b> halten</td>
+      <td>Ursache suchen: Leine im Propeller? Kühlwasser? Kraftstoff, Filter? <span class="funk">Bei Strandungsgefahr PAN PAN</span></td>
+      <td>Anker klar zum Fallen, Ausguck, Fender bereit</td></tr>
+    <tr><td>Medizin</td>
+      <td>Fahrt raus, ruhiger Kurs, entscheidet über Hafen bzw. Evakuierung</td>
+      <td><b>Erste Hilfe</b> (bei Bewusstlosigkeit: Atmung prüfen, Seitenlage bzw. HLW 30:2)</td>
+      <td>Erste-Hilfe-Kasten holen. <span class="funk">Arzt: Medico +49 4721 785, PAN PAN „RADIOMEDICAL“, Lebensgefahr: MAYDAY / 112</span></td></tr>
+    <tr><td>Schiff verlassen</td>
+      <td>Entscheidet: <b>nur wenn das Sinken unvermeidlich ist</b>. Insel festmachen, in Lee werfen, auslösen</td>
+      <td><span class="funk">MAYDAY + DSC „Abandoning ship“</span>, EPIRB auslösen und mitnehmen</td>
+      <td><b>Grab-Bag</b>, Handfunke, Wasser, warme Kleidung. Trocken in die Insel steigen, beim Boot bleiben</td></tr>
+  </table>
+  <p class="small">Ist S verletzt oder über Bord: V übernimmt die S-Spalte, C die V-Spalte. Bei nur zwei Personen an Deck gilt: erst werfen und zeigen, dann funken.</p>
+
+  <section class="box grey">
+    <h2>Wo ist was? <span>· bei der Einweisung eintragen und allen zeigen</span></h2>
+    <div class="where">
+      <div class="field"><b>Rettungsinsel</b><i></i></div>
+      <div class="field"><b>Grab-Bag</b><i></i></div>
+      <div class="field"><b>EPIRB / PLB</b><i></i></div>
+      <div class="field"><b>Handfunkgerät</b><i></i></div>
+      <div class="field"><b>Signalfackeln</b><i></i></div>
+      <div class="field"><b>Rettungskragen / Boje</b><i></i></div>
+      <div class="field"><b>Feuerlöscher 1</b><i></i></div>
+      <div class="field"><b>Feuerlöscher 2</b><i></i></div>
+      <div class="field"><b>Löschdecke</b><i></i></div>
+      <div class="field"><b>Gas-Absperrhahn</b><i></i></div>
+      <div class="field"><b>Batterie-Hauptschalter</b><i></i></div>
+      <div class="field"><b>Motorraum-Löschöffnung</b><i></i></div>
+      <div class="field"><b>Lenzpumpe + Hebel</b><i></i></div>
+      <div class="field"><b>Holzpfropfen</b><i></i></div>
+      <div class="field"><b>Seeventile (Anzahl)</b><i></i></div>
+      <div class="field"><b>Notpinne</b><i></i></div>
+      <div class="field"><b>Erste-Hilfe-Kasten</b><i></i></div>
+      <div class="field"><b>Werkzeug</b><i></i></div>
+      <div class="field"><b>Taschenlampe</b><i></i></div>
+      <div class="field"><b>Wurfleine</b><i></i></div>
+      <div class="field"><b>Lifebelts / Lifelines</b><i></i></div>
+      <div class="field"><b>Messer (Insel-Leine)</b><i></i></div>
+      <div class="field"><b>Badeleiter (von außen)</b><i></i></div>
+      <div class="field"><b>Bolzenschneider</b><i></i></div>
+    </div>
+  </section>
+
+  <div class="foot">Grundlage: BSH „Sicherheit auf dem Wasser“ (12/2023) S. 26–27 · World Sailing Offshore Special Regulations 2026–27: 1.02 (Vertretung), 4.12 (Sicherheitsplan), App. J (Verlassen, Unterkühlung) · IMO SMCP. Eine amtliche Rollenmatrix für Sportboote gibt es nicht. Diese Verteilung ist eine Empfehlung und bei der Einweisung anpassbar.</div>
+</div>
+</body>
+</html>

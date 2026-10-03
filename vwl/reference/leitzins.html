@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leitzins & Transmission</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<style>
+  .chain { list-style: none; padding: 0; counter-reset: c; }
+  .chain li { counter-increment: c; padding: .35rem 0 .35rem 2.2rem; position: relative; border-bottom: 1px solid var(--rule); }
+  .chain li::before { content: counter(c); position: absolute; left: 0; top: .35rem; font-family: var(--sans); font-size: .75rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 50%; width: 1.4rem; height: 1.4rem; text-align: center; line-height: 1.35rem; }
+  .formula { font-size: 1.05rem; background: var(--panel); border: 1px solid var(--rule); padding: .7rem 1rem; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Referenz · zu Lektion 0003</p>
+  <h1>Leitzins & Transmission</h1>
+  <p class="subtitle">Die drei EZB-Zinsen, die Wirkungskette und die Kreditformel.</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="leitzinsen">Die drei Leitzinsen</h2>
+<table class="facts">
+  <tr><th>Satz</th><th>Funktion</th><th class="num">ab 16.09.2026</th></tr>
+  <tr><td>Spitzenrefinanzierung</td><td>Obergrenze: Notfall-Kredit über Nacht</td><td class="num">2,90 %</td></tr>
+  <tr><td>Hauptrefinanzierung</td><td>wöchentliche Kredite an Banken gegen Sicherheiten (Einlagesatz + 0,15 Prozentpunkte seit 09/2024)</td><td class="num">2,65 %</td></tr>
+  <tr><td><strong>Einlagefazilität</strong></td><td><strong>Steuerungszins</strong> und Boden der Geldmarktzinsen (wegen Überschussliquidität)</td><td class="num"><strong>2,50 %</strong></td></tr>
+</table>
+
+<h2 id="kette">Transmission: vom Leitzins zu den Preisen</h2>
+<ol class="chain">
+  <li>Leitzins ↑ → Geldmarktzinsen ↑ (sofort)</li>
+  <li>Kredit- und Sparzinsen der Banken ↑</li>
+  <li>Kreditnachfrage ↓, Sparen ↑</li>
+  <li>weniger neues Buchgeld (Geldschöpfung ↓)</li>
+  <li>Ausgaben, Investitionen, Bau ↓ → Preisauftrieb ↓</li>
+</ol>
+<p>Weitere Kanäle: <strong>Erwartungen</strong> (bestimmen langfristige Zinsen), <strong>Vermögenspreise</strong> (Aktien, Immobilien), <strong>Wechselkurs</strong>. Wirkung mit „langen, variablen und unsicheren Zeitverzögerungen“ (EZB).</p>
+
+<h2 id="kurz-lang">Kurz- vs. langfristige Zinsen</h2>
+<ul>
+  <li>Der Leitzins steuert direkt die <strong>kurzfristigen</strong> Zinsen.</li>
+  <li><strong>Langfristige</strong> Zinsen (z. B. 10 Jahre Zinsbindung) folgen den Erwartungen über künftige Leitzinsen und Inflation.</li>
+  <li>Beispiel 2022: Bauzinsen 1,39 % (Jan.) → 2,62 % (Juni), <em>vor</em> der ersten EZB-Erhöhung im Juli.</li>
+  <li>Beispiel 2024/25: Einlagesatz 4,00 % → 2,00 %, Bauzinsen nur ≈ 4 % → ≈ 3,6 %.</li>
+</ul>
+
+<h2 id="formel">Annuitätendarlehen</h2>
+<p class="formula">Monatsrate = Darlehen × (Zins + anfängliche Tilgung) ÷ 12<br>
+Darlehen = Monatsrate × 12 ÷ (Zins + anfängliche Tilgung)</p>
+<table class="facts">
+  <tr><th>Rate 1.500 €, Tilgung 2 %</th><th class="num">Zins</th><th class="num">möglicher Kredit</th><th class="num">Laufzeit</th></tr>
+  <tr><td>Dezember 2021</td><td class="num">1,37 %</td><td class="num">≈ 534.000 €</td><td class="num">≈ 38 Jahre</td></tr>
+  <tr><td>November 2023</td><td class="num">4,27 %</td><td class="num">≈ 287.000 €</td><td class="num">≈ 27 Jahre</td></tr>
+</table>
+
+<h2 id="daten">Eckdaten</h2>
+<table class="facts">
+  <tr><th>Ereignis</th><th>Wert</th></tr>
+  <tr><td>Inflation Euroraum, Höchststand</td><td>10,6 % (Okt. 2022)</td></tr>
+  <tr><td>Zinserhöhungen Juli 2022 bis Sept. 2023</td><td>10 Schritte, −0,50 % → 4,00 %</td></tr>
+  <tr><td>Senkungen Juni 2024 bis Juni 2025</td><td>4,00 % → 2,00 %</td></tr>
+  <tr><td>Erhöhungen 2026 (Nahost-Konflikt, Energie)</td><td>Juni 2,25 %, Sept. 2,50 %</td></tr>
+  <tr><td>Wohnimmobilienpreise DE 2023</td><td>−8,4 % (stärkster Rückgang seit 2000)</td></tr>
+</table>
+
+<h2 id="quellen">Quellen</h2>
+<ol class="sources">
+  <li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.de.html">EZB: Leitzinsen</a></li>
+  <li><a href="https://www.ecb.europa.eu/ecb-and-you/explainers/html/operational_framework.de.html">EZB: Operativer Handlungsrahmen</a></li>
+  <li><a href="https://www.ecb.europa.eu/mopo/intro/transmission/html/index.de.html">EZB: Transmissionsmechanismus</a></li>
+  <li><a href="https://www.bundesbank.de/resource/blob/615036/aa09ce060a03d2ed87adc856473c54eb/472B63F073F071307366337C94F8C870/s510athyp-data.pdf">Bundesbank: Zinsstatistik Wohnungsbaukredite</a></li>
+  <li><a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html">EZB: Monetary policy decisions, 10.09.2026</a></li>
+  <li><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/03/PD24_114_61262.html">Destatis: Wohnimmobilienpreise 2023</a></li>
+  <li><a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/-/2-17112022-ap">Eurostat: Inflation Oktober 2022</a></li>
+</ol>
+</main>
+</body>
+</html>

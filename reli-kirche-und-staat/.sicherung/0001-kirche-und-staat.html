@@ -1,0 +1,1763 @@
+<meta charset="utf-8">
+<title>In Verantwortung vor Gott</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F3F5F7;
+  --sheet:#FFFFFF;
+  --ink:#151A21;
+  --ink-soft:#4B5563;
+  --ink-faint:#78828F;
+  --rule:#D8DDE4;
+  --rule-soft:#E7EBF0;
+  --accent:#1E3A5F;
+  --accent-soft:#E5ECF4;
+  --epoch:#6A5936;
+  --epoch-soft:#F0EBDF;
+  --now:#265F53;
+  --now-soft:#E2EDEA;
+  --flag:#8C2A24;
+  --flag-soft:#F6E7E5;
+  --shadow:0 1px 2px rgba(21,26,33,.05), 0 8px 24px -16px rgba(21,26,33,.28);
+
+  --f-display:"Zilla Slab", "Bitstream Charter", Georgia, serif;
+  --f-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1318;
+    --sheet:#171C23;
+    --ink:#E7EBF1;
+    --ink-soft:#AEB7C3;
+    --ink-faint:#7E8794;
+    --rule:#2B333D;
+    --rule-soft:#222932;
+    --accent:#89B0DC;
+    --accent-soft:#1A2735;
+    --epoch:#CBB27C;
+    --epoch-soft:#26221A;
+    --now:#79BFAE;
+    --now-soft:#152622;
+    --flag:#E3928B;
+    --flag-soft:#2A1A19;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1318;
+  --sheet:#171C23;
+  --ink:#E7EBF1;
+  --ink-soft:#AEB7C3;
+  --ink-faint:#7E8794;
+  --rule:#2B333D;
+  --rule-soft:#222932;
+  --accent:#89B0DC;
+  --accent-soft:#1A2735;
+  --epoch:#CBB27C;
+  --epoch-soft:#26221A;
+  --now:#79BFAE;
+  --now-soft:#152622;
+  --flag:#E3928B;
+  --flag-soft:#2A1A19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:66px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.18;margin:0}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ---------- Marke / Kopf ---------- */
+.masthead{border-bottom:1px solid var(--rule);background:var(--sheet)}
+.masthead .wrap{padding-top:clamp(38px,7vw,72px);padding-bottom:34px;display:flex;flex-direction:column;gap:20px}
+.kicker{
+  font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);
+}
+h1{font-size:clamp(34px,6.2vw,58px);font-weight:700;letter-spacing:-.015em}
+h1 .quiet{display:block;font-size:clamp(17px,2.6vw,23px);font-weight:400;font-style:italic;color:var(--ink-soft);letter-spacing:0;margin-top:10px}
+.lede{max-width:64ch;color:var(--ink-soft);font-size:18.5px}
+.facts{
+  display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--rule);margin-top:6px;
+}
+.fact{padding:14px 26px 14px 0;margin-right:26px;border-right:1px solid var(--rule-soft)}
+.fact:last-child{border-right:0}
+.fact dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.fact dd{margin:2px 0 0;font-family:var(--f-display);font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- Navigation ---------- */
+nav.stunden{
+  position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+nav.stunden .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:thin}
+nav.stunden a{
+  flex:0 0 auto;text-decoration:none;color:var(--ink-soft);
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;
+  padding:6px 11px;border-radius:3px;white-space:nowrap;
+}
+nav.stunden a:hover{background:var(--accent-soft);color:var(--accent)}
+nav.stunden a b{color:var(--ink);font-weight:600}
+
+/* ---------- Abschnitte ---------- */
+section{padding:clamp(44px,7vw,76px) 0;border-bottom:1px solid var(--rule)}
+.sec-label{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:14px;
+}
+h2{font-size:clamp(25px,4vw,36px);font-weight:600;letter-spacing:-.01em}
+h3{font-size:21px;font-weight:600;margin-top:0}
+.stack{display:flex;flex-direction:column;gap:20px}
+.stack-lg{display:flex;flex-direction:column;gap:34px}
+.prose{max-width:66ch}
+
+/* ---------- Doppelstunden-Kopf ---------- */
+.ds-head{display:grid;grid-template-columns:auto 1fr;gap:0 22px;align-items:start}
+.ds-num{
+  font-family:var(--f-display);font-size:clamp(40px,7vw,66px);font-weight:700;
+  line-height:.86;color:var(--accent);font-variant-numeric:tabular-nums;
+  padding-top:4px;
+}
+.ds-num small{display:block;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.16em;color:var(--ink-faint);margin-bottom:6px}
+.ds-title{grid-column:2}
+.ds-title h2{margin-bottom:8px}
+.ds-sub{color:var(--ink-soft);font-style:italic;font-family:var(--f-display);font-size:19px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;grid-column:2}
+.chip{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;
+  padding:4px 9px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-soft);
+  background:var(--sheet);
+}
+.chip.on{border-color:var(--now);color:var(--now);background:var(--now-soft)}
+.chip.off{border-color:var(--rule);color:var(--ink-faint)}
+.chip.ke{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+
+/* ---------- Ziel-Notiz ---------- */
+.ziel{
+  border-left:3px solid var(--accent);padding:2px 0 2px 18px;margin:26px 0 0;
+  max-width:66ch;
+}
+.ziel .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px}
+
+/* ---------- Verlaufstabelle ---------- */
+.tablewrap{overflow-x:auto;margin-top:30px;border:1px solid var(--rule);background:var(--sheet)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+caption{
+  text-align:left;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);padding:12px 16px;border-bottom:1px solid var(--rule);
+}
+th,td{text-align:left;padding:9px 16px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+thead th{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:500;border-bottom:1px solid var(--rule);
+}
+tbody tr:last-child td{border-bottom:0}
+td.min{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap;font-size:13.5px}
+td.ph{font-weight:600}
+td.sf{color:var(--ink-soft);font-size:14px}
+
+/* ---------- Phasenblöcke ---------- */
+.phase{display:grid;grid-template-columns:76px 1fr;gap:0 20px;padding-top:26px;border-top:1px solid var(--rule-soft)}
+.phase-meta{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-faint);line-height:1.5;padding-top:5px}
+.phase-meta b{display:block;color:var(--accent);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:0}
+.phase-body{display:flex;flex-direction:column;gap:14px;min-width:0}
+.phase-body h4{font-size:18px;font-weight:600}
+.phase-body p{max-width:64ch}
+
+/* ---------- Überleitung (Lehrersprache) ---------- */
+.ueberleitung{
+  background:var(--epoch-soft);border-left:3px solid var(--epoch);
+  padding:14px 18px;font-family:var(--f-display);font-size:17px;font-style:italic;
+  color:var(--ink);max-width:66ch;
+}
+.ueberleitung .lbl{
+  display:block;font-family:var(--f-mono);font-style:normal;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--epoch);margin-bottom:7px;
+}
+.ueberleitung p + p{margin-top:10px}
+
+/* ---------- Arbeitsauftrag ---------- */
+.auftrag{border:1px solid var(--rule);background:var(--sheet);box-shadow:var(--shadow);max-width:70ch}
+.auftrag > header{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:9px 16px;border-bottom:1px solid var(--rule);background:var(--accent-soft);
+}
+.auftrag > header .t{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.auftrag > header .m{font-family:var(--f-mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
+.auftrag .inner{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.auftrag ol,.auftrag ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+.auftrag li::marker{color:var(--accent);font-family:var(--f-mono);font-size:13px}
+
+/* ---------- Material ---------- */
+.mat{border:1px solid var(--rule);border-left:3px solid var(--epoch);background:var(--sheet);padding:16px 18px;display:flex;flex-direction:column;gap:9px}
+.mat h5{margin:0;font-family:var(--f-display);font-size:17px;font-weight:600;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.mat h5 .id{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--epoch);background:var(--epoch-soft);padding:2px 7px;border-radius:2px}
+.mat p,.mat li{font-size:15.5px}
+.mat ul,.mat ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+.matgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start}
+.quelle{
+  font-family:var(--f-display);font-style:italic;font-size:16.5px;
+  border-left:2px solid var(--rule);padding-left:14px;color:var(--ink);
+}
+.quelle cite{display:block;font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;color:var(--ink-faint);margin-top:7px}
+
+/* ---------- Hinweiskästen ---------- */
+.note{border:1px solid var(--rule);background:var(--sheet);padding:16px 18px;display:flex;flex-direction:column;gap:8px;max-width:70ch}
+.note.warn{border-left:3px solid var(--flag);background:var(--flag-soft)}
+.note.now{border-left:3px solid var(--now);background:var(--now-soft)}
+.note .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.note.warn .lbl{color:var(--flag)}
+.note.now .lbl{color:var(--now)}
+.note p,.note li{font-size:15.5px;color:var(--ink)}
+.note ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:5px}
+
+/* ---------- Inhaltsverzeichnis ---------- */
+.toc{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule)}
+.toc-item{
+  display:grid;grid-template-columns:52px 1fr auto;gap:0 18px;align-items:baseline;
+  padding:16px 4px;border-bottom:1px solid var(--rule-soft);text-decoration:none;color:inherit;
+}
+.toc-item:hover{background:var(--accent-soft)}
+.toc-item:hover .toc-t{color:var(--accent)}
+.toc-n{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;
+}
+.toc-item:hover .toc-n{color:var(--accent)}
+.toc-main{min-width:0}
+.toc-t{font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.3}
+.toc-d{color:var(--ink-soft);font-size:15px;margin-top:2px}
+.toc-side{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--ink-faint);
+  text-align:right;white-space:nowrap;line-height:1.7;
+}
+.toc-side .ke{color:var(--accent)}
+.toc-side .rec{color:var(--now)}
+.toc-sub{
+  display:flex;flex-wrap:wrap;gap:0 14px;padding:9px 0 15px 70px;
+  border-bottom:1px solid var(--rule-soft);
+}
+.toc-sub a{
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;text-decoration:none;
+  color:var(--ink-soft);border-bottom:1px solid var(--rule);padding-bottom:1px;
+}
+.toc-sub a:hover{color:var(--accent);border-color:var(--accent)}
+@media (max-width:640px){
+  .toc-item{grid-template-columns:44px 1fr;gap:0 12px}
+  .toc-side{grid-column:2;text-align:left;margin-top:6px}
+  .toc-sub{padding-left:56px}
+}
+
+/* ---------- Kompetenzmatrix ---------- */
+.matrix td.hit{color:var(--accent);font-family:var(--f-mono);font-weight:600;text-align:center}
+.matrix td.miss{color:var(--rule);text-align:center}
+.matrix th.rot{font-size:10.5px}
+
+/* ---------- Fußbereich ---------- */
+footer{padding:46px 0 70px;color:var(--ink-soft);font-size:15px}
+footer h3{margin-bottom:12px}
+footer ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+
+@media (max-width:640px){
+  .ds-head{grid-template-columns:1fr}
+  .ds-title,.chips{grid-column:1}
+  .phase{grid-template-columns:1fr;gap:10px}
+  .phase-meta{padding-top:0;display:flex;gap:10px;align-items:baseline}
+  .phase-meta b{display:inline}
+  .fact{border-right:0}
+}
+@media print{
+  nav.stunden{display:none}
+  body{background:#fff;font-size:11pt}
+  section{border-bottom:0;padding:18px 0;break-inside:auto}
+  .phase,.auftrag,.mat,.note,.ueberleitung{break-inside:avoid}
+  .ds-head{break-after:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">LehrplanPLUS Bayern · Gymnasium · Jgst. 9 · Ev. Religionslehre · Lernbereich 4</div>
+    <h1>In Verantwortung vor Gott
+      <span class="quiet">Sechs Doppelstunden über die Frage, wem man gehorcht, wenn Staat und Gewissen auseinandergehen.</span>
+    </h1>
+    <p class="lede">Die Einheit führt vom Kirchensteuerabzug auf dem Lohnzettel über den Kirchenkampf 1934 und die Friedensgebete von 1989 bis zu der Frage, die diese Klasse in zwei Jahren an der Wahlurne selbst beantwortet. Sie endet nicht mit einem Merksatz, sondern mit sechs selbst verfassten Thesen an der Klassenzimmertür.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Umfang</dt><dd>6 Doppelstunden · 12 Std.</dd></div>
+      <div class="fact"><dt>Medien</dt><dd>Beamer durchgehend</dd></div>
+      <div class="fact"><dt>Smartphone</dt><dd>DS 1 · 5 · 6</dd></div>
+      <div class="fact"><dt>Produkt</dt><dd>Thesenanschlag</dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="stunden" aria-label="Inhalt der Einheit">
+  <div class="wrap">
+    <a href="#inhalt">Inhalt</a>
+    <a href="#ueberblick">Überblick</a>
+    <a href="#ds1"><b>DS 1</b> — Wo steckt Kirche im Staat?</a>
+    <a href="#ds2"><b>DS 2</b> — 1933: Die Kirche jubelt mit</a>
+    <a href="#ds3"><b>DS 3</b> — Barmen gegen Ansbach</a>
+    <a href="#ds4"><b>DS 4</b> — Was hätte ich getan?</a>
+    <a href="#ds5"><b>DS 5</b> — Kerzen statt Steine</a>
+    <a href="#ds6"><b>DS 6</b> — Barmen 2026?</a>
+    <a href="#leistungsnachweis">Leistungsnachweis</a>
+    <a href="#checkliste">Kopierliste</a>
+    <a href="#quellen">Quellen</a>
+    <a href="https://claude.ai/code/artifact/afed6ed7-8b52-4d8e-a7a6-c4e2ce3c835f">↗ Kopiervorlagen DS 1</a>
+  </div>
+</nav>
+
+<!-- ================= INHALTSVERZEICHNIS ================= -->
+<section id="inhalt">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Inhalt</div>
+      <h2>Die Einheit auf einen Blick</h2>
+      <p class="prose">Jede Zeile führt direkt zur ausformulierten Doppelstunde; der zweite Link darunter springt in deren Materialteil. Die Spalte rechts nennt die abgedeckte Kompetenzerwartung und sagt, ob in dieser Stunde mit dem Smartphone recherchiert wird.</p>
+    </div>
+
+    <div class="toc">
+      <a class="toc-item" href="#ueberblick">
+        <span class="toc-n">00</span>
+        <span class="toc-main">
+          <span class="toc-t">Überblick: Dramaturgie und Kompetenzmatrix</span>
+          <span class="toc-d">Warum die Reihenfolge trägt — plus die Vorbereitung, die einmalig für die ganze Einheit nötig ist.</span>
+        </span>
+        <span class="toc-side">KE 1–4</span>
+      </a>
+
+      <a class="toc-item" href="#ds1">
+        <span class="toc-n">DS 1</span>
+        <span class="toc-main">
+          <span class="toc-t">Wo steckt Kirche im Staat?</span>
+          <span class="toc-d">Bilderrätsel · Gruppenpuzzle zu Religionsunterricht, Kirchensteuer, Militärseelsorge, Diakonie · Vier Ecken</span>
+        </span>
+        <span class="toc-side"><span class="ke">KE 1</span><br><span class="rec">mit Recherche</span></span>
+      </a>
+      <div class="toc-sub"><a href="#ds1-mat">Materialien M1 – M5</a><a href="#ds1">Verlaufsplanung</a><a href="https://claude.ai/code/artifact/afed6ed7-8b52-4d8e-a7a6-c4e2ce3c835f">↗ fertige Kopiervorlagen mit Bildern</a></div>
+
+      <a class="toc-item" href="#ds2">
+        <span class="toc-n">DS 2</span>
+        <span class="toc-main">
+          <span class="toc-t">1933: Die Kirche jubelt mit</span>
+          <span class="toc-d">Bildlesen · Quellen-Autopsie zu den Deutschen Christen · Standbild · Römer 13 gegen Apostelgeschichte 5</span>
+        </span>
+        <span class="toc-side"><span class="ke">KE 2</span><br>ohne Recherche</span>
+      </a>
+      <div class="toc-sub"><a href="#ds2-mat">Materialien M6 – M9</a><a href="#ds2">Verlaufsplanung</a><a href="https://claude.ai/code/artifact/cc7012ca-da81-4aa8-b1df-c20a47879376">↗ fertige Kopiervorlagen</a></div>
+
+      <a class="toc-item" href="#ds3">
+        <span class="toc-n">DS 3</span>
+        <span class="toc-main">
+          <span class="toc-t">Barmen gegen Ansbach</span>
+          <span class="toc-d">Talkrunde Juni 1934 in Rollenteams · Barmen These 1 selbst übersetzen · der Fall Landesbischof Meiser</span>
+        </span>
+        <span class="toc-side"><span class="ke">KE 2</span><br>ohne Recherche</span>
+      </a>
+      <div class="toc-sub"><a href="#ds3-mat">Materialien M10 – M14</a><a href="#ds3">Verlaufsplanung</a><a href="https://claude.ai/code/artifact/511b286d-9f78-4a6f-96a9-1290c8e5ebfc">↗ fertige Kopiervorlagen</a></div>
+
+      <a class="toc-item" href="#ds4">
+        <span class="toc-n">DS 4</span>
+        <span class="toc-main">
+          <span class="toc-t">Was hätte ich getan?</span>
+          <span class="toc-d">Chorlesung · fünf Biografien an der Wäscheleine · Verschiebe-Duell · Placemat zu den Bedingungen von Widerstand</span>
+        </span>
+        <span class="toc-side"><span class="ke">KE 2</span><br>ohne Recherche</span>
+      </a>
+      <div class="toc-sub"><a href="#ds4-mat">Materialien M15 – M18</a><a href="#ds4">Verlaufsplanung</a><a href="https://claude.ai/code/artifact/2b527cc0-bffb-4d77-b56d-35487ad71856">↗ fertige Kopiervorlagen</a></div>
+
+      <a class="toc-item" href="#ds5">
+        <span class="toc-n">DS 5</span>
+        <span class="toc-main">
+          <span class="toc-t">Kerzen statt Steine</span>
+          <span class="toc-d">Kirche in der DDR · fünf Redaktionsteams bauen eine Ausstellung · Museumsrundgang · Vergleich NS und DDR</span>
+        </span>
+        <span class="toc-side"><span class="ke">KE 3</span><br><span class="rec">mit Recherche</span></span>
+      </a>
+      <div class="toc-sub"><a href="#ds5-mat">Materialien M19 – M22</a><a href="#ds5">Verlaufsplanung</a><a href="https://claude.ai/code/artifact/a72fdf2c-7069-4078-a7be-a0b178acb9df">↗ fertige Kopiervorlagen</a></div>
+
+      <a class="toc-item" href="#ds6">
+        <span class="toc-n">DS 6</span>
+        <span class="toc-main">
+          <span class="toc-t">Barmen 2026?</span>
+          <span class="toc-d">Kirchliche Positionen zum völkischen Nationalismus · vier Stimmen im Streit · Barmen-Werkstatt · Thesenanschlag · Engagement vor Ort</span>
+        </span>
+        <span class="toc-side"><span class="ke">KE 1 · KE 4</span><br><span class="rec">mit Recherche</span></span>
+      </a>
+      <div class="toc-sub"><a href="#ds6-hinweis">Hinweis Beutelsbacher Konsens</a><a href="#ds6-mat">Materialien M23 – M26</a><a href="#ds6">Verlaufsplanung</a><a href="https://claude.ai/code/artifact/e4fcc78b-d22c-44cf-9e00-2bbd01861fd1">↗ fertige Kopiervorlagen</a></div>
+
+      <a class="toc-item" href="#leistungsnachweis">
+        <span class="toc-n">A 1</span>
+        <span class="toc-main">
+          <span class="toc-t">Vorschlag für einen kleinen Leistungsnachweis</span>
+          <span class="toc-d">Vier Aufgaben über alle Anforderungsbereiche, 20 Minuten, mit Bewertungshinweis zur Urteilsaufgabe.</span>
+        </span>
+        <span class="toc-side">nach DS 6</span>
+      </a>
+
+      <a class="toc-item" href="#checkliste">
+        <span class="toc-n">A 2</span>
+        <span class="toc-main">
+          <span class="toc-t">Checkliste Kopien und Vorbereitung</span>
+          <span class="toc-d">Was für jede einzelne Doppelstunde kopiert, laminiert und mitgebracht werden muss.</span>
+        </span>
+        <span class="toc-side">6 Zeilen</span>
+      </a>
+
+      <a class="toc-item" href="#kurzfassung">
+        <span class="toc-n">A 3</span>
+        <span class="toc-main">
+          <span class="toc-t">Kurzfassung für vier Doppelstunden</span>
+          <span class="toc-d">Was zusammengelegt werden kann, wenn die Zeit fehlt — und was auf keinen Fall entfallen darf.</span>
+        </span>
+        <span class="toc-side">Notfallplan</span>
+      </a>
+
+      <a class="toc-item" href="#quellen">
+        <span class="toc-n">A 4</span>
+        <span class="toc-main">
+          <span class="toc-t">Grundlage und Quellen</span>
+          <span class="toc-d">Fachlehrplan, Barmer Erklärung im Volltext, bayerische Quellen zum Kirchenkampf, Rechercheportale.</span>
+        </span>
+        <span class="toc-side">belegt</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÜBERBLICK ================= -->
+<section id="ueberblick">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Überblick</div>
+      <h2>Die Dramaturgie der Einheit</h2>
+      <p class="prose">Die sechs Doppelstunden bauen einen Bogen: Zwei Stunden Gegenwart am Anfang und am Ende, dazwischen vier Stunden Geschichte, die nur deshalb erzählt wird, weil sie die Werkzeuge liefert, mit denen am Schluss die Gegenwart bearbeitet wird. Das in DS 4 erarbeitete Raster („Was macht Widerstand wahrscheinlich?“) und die in DS 3 entschlüsselte Barmer Sprachform kehren in DS 6 zurück — das ist beabsichtigtes Wiederaufgreifen über Abstand hinweg und der Grund, warum die Reihenfolge nicht getauscht werden sollte.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table class="matrix">
+        <caption>Kompetenzerwartungen des Lernbereichs 4 und ihre Verortung</caption>
+        <thead>
+          <tr>
+            <th>Die Schülerinnen und Schüler …</th>
+            <th class="rot">DS&nbsp;1</th><th class="rot">DS&nbsp;2</th><th class="rot">DS&nbsp;3</th>
+            <th class="rot">DS&nbsp;4</th><th class="rot">DS&nbsp;5</th><th class="rot">DS&nbsp;6</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>identifizieren verschiedene Ausprägungen des Miteinanders von Kirche und Staat im 21.&nbsp;Jahrhundert und diskutieren die Folgen für den Einzelnen und die Gesellschaft</td>
+            <td class="hit">●</td><td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="hit">●</td>
+          </tr>
+          <tr>
+            <td>beschreiben Konflikte der evangelischen Kirche im Nationalsozialismus und beurteilen unterschiedliche Haltungen von Christen gegenüber dem Nationalsozialismus</td>
+            <td class="miss">○</td><td class="hit">●</td><td class="hit">●</td><td class="hit">●</td><td class="miss">○</td><td class="miss">○</td>
+          </tr>
+          <tr>
+            <td>erläutern die Rolle der Kirche in der DDR und reflektieren verschiedene Wege von Christen, sich für Freiheit und Gerechtigkeit einzusetzen</td>
+            <td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="hit">●</td><td class="miss">○</td>
+          </tr>
+          <tr>
+            <td>recherchieren Beispiele für politisches Engagement der Kirche vor Ort und diskutieren eigene Mitwirkungsmöglichkeiten</td>
+            <td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="miss">○</td><td class="hit">●</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Vorbereitung einmalig für die ganze Einheit</span>
+      <ul>
+        <li>Eine <strong>Wäscheleine</strong> quer durch das Klassenzimmer plus Wäscheklammern (ab DS 4 mehrfach im Einsatz).</li>
+        <li>Ein <strong>Packen A3-Bögen</strong> und dicke Stifte — alle Gruppenprodukte sind analog und hängen am Ende gemeinsam im Raum.</li>
+        <li>Ein leerer Bereich an der <strong>Klassenzimmertür</strong>, der bis DS 6 frei bleibt. Nicht ankündigen, wofür.</li>
+        <li>Vier Schilder <em>„Stimme voll zu“ / „Stimme eher zu“ / „Stimme eher nicht zu“ / „Stimme nicht zu“</em> in den vier Ecken, laminiert.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DS 1 ================= -->
+<section id="ds1">
+  <div class="wrap stack-lg">
+    <div class="ds-head">
+      <div class="ds-num"><small>Doppelstunde</small>1</div>
+      <div class="ds-title">
+        <h2>Wo steckt Kirche im Staat?</h2>
+        <p class="ds-sub">Eine Spurensuche im eigenen Alltag — mit dem Lohnzettel der Eltern als Tatort.</p>
+      </div>
+      <div class="chips">
+        <span class="chip ke">KE 1</span>
+        <span class="chip on">Smartphone-Recherche</span>
+        <span class="chip">Beamer</span>
+        <span class="chip">Gruppenpuzzle</span>
+        <span class="chip">4 × A3-Bogen</span>
+      </div>
+    </div>
+
+    <div class="ziel">
+      <span class="lbl">Stundenziel</span>
+      <p>Die SuS können an vier konkreten Beispielen (Religionsunterricht, Kirchensteuer, Militärseelsorge, Diakonie) belegen, dass Kirche und Staat in Deutschland eng zusammenarbeiten, obwohl das Grundgesetz eine Staatskirche ausschließt — und sie können zu einem dieser Beispiele eine eigene begründete Position beziehen.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Verlaufsplanung · 90 Minuten</caption>
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Inhalt</th><th>Sozialform / Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–10</td><td class="ph">Einstieg</td><td>Bilderrätsel: sieben Bilder, ein gemeinsamer Nenner</td><td class="sf">Plenum · M1 (Beamer)</td></tr>
+          <tr><td class="min">10–20</td><td class="ph">Problematisierung</td><td>Grundgesetz-Doppelschlag: Präambel gegen Art. 137 WRV</td><td class="sf">Plenum · M2</td></tr>
+          <tr><td class="min">20–50</td><td class="ph">Erarbeitung</td><td>Expertengruppen A–D: Steckbrief zu je einem Berührungspunkt</td><td class="sf">GA · M3a–d, Smartphone, A3</td></tr>
+          <tr><td class="min">50–68</td><td class="ph">Austausch</td><td>Stammgruppen: gegenseitiges Lehren, Raster füllen</td><td class="sf">GA · M4</td></tr>
+          <tr><td class="min">68–83</td><td class="ph">Urteil</td><td>Vier Ecken zu vier Streitsätzen</td><td class="sf">Plenum · M5</td></tr>
+          <tr><td class="min">83–90</td><td class="ph">Ausblick</td><td>Überleitung in den historischen Teil, Hausaufgabe</td><td class="sf">Plenum</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>0–10</b>Einstieg<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Sieben Bilder, kein Kommentar</h4>
+        <p>Die sieben Bilder aus <strong>M1</strong> laufen einzeln über den Beamer, je etwa zehn Sekunden, ohne ein Wort dazu. Danach alle sieben gleichzeitig auf einer Folie. Erst dann die Frage.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 1.1</span><span class="m">Partnerarbeit · 3 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Notiert zu zweit in einem Satz: <em>Was haben diese sieben Bilder gemeinsam?</em></li>
+              <li>Einigt euch auf <strong>ein</strong> Bild, bei dem ihr euch am wenigsten sicher seid, warum es dabei ist.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Problematisierung</span>
+          <p>„Ich höre gerade viermal dasselbe Wort: Kirche. Sie haben recht — in jedem dieser Bilder steckt Kirche. Aber schauen Sie noch einmal genau hin: In keinem einzigen dieser Bilder ist eine Kirche zu sehen. Kein Kirchturm, kein Altar, kein Gottesdienst. Das hier ist eine Lohnabrechnung, das ein Rettungswagen, das ein Stundenplan, das eine Vereidigung im Bundestag. Das sind lauter staatliche Angelegenheiten. Und trotzdem ist Kirche darin. Wie kommt sie da hinein?“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>10–20</b>Problem<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Zwei Sätze, die sich zu widersprechen scheinen</h4>
+        <p><strong>M2</strong> zeigt beide Sätze groß untereinander an der Wand. Die SuS lesen still, dann Zuruf: Welcher Satz passt zu welchem Bild von vorhin? Die Spannung wird an der Tafel als Leitfrage festgehalten.</p>
+        <div class="auftrag">
+          <header><span class="t">Leitfrage an der Tafel</span><span class="m">bleibt die ganze Einheit stehen</span></header>
+          <div class="inner">
+            <p><strong>Deutschland hat keine Staatskirche — und trotzdem sind Kirche und Staat überall miteinander verflochten. Wie viel Nähe ist gut? Und wann wird sie gefährlich?</strong></p>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Erarbeitung</span>
+          <p>„Diese Frage kann ich Ihnen nicht beantworten, ohne dass Sie wissen, worüber wir eigentlich reden. Also machen wir es umgekehrt: Sie recherchieren jetzt selbst. Jede Gruppe bekommt einen dieser Berührungspunkte und wird für zwanzig Minuten die einzige Person im Raum, die sich damit auskennt. Danach müssen Sie es den anderen erklären — und die anderen können es nirgends nachlesen. Nur bei Ihnen.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>20–50</b>Erarbeitung<br>Expertengruppen</div>
+      <div class="phase-body">
+        <h4>Vier Expertengruppen, vier Steckbriefe</h4>
+        <p>Klasse in vier Themen aufteilen (bei größeren Klassen jedes Thema doppelt besetzen, max. 4 SuS pro Gruppe). Jede Gruppe erhält ihr Materialblatt <strong>M3a–d</strong> und einen A3-Bogen mit vorgedrucktem Raster.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 1.2</span><span class="m">Gruppenarbeit · 30 min · M3, Smartphone</span></header>
+          <div class="inner">
+            <ol>
+              <li>Lest euer Materialblatt und klärt untereinander alle Begriffe, die keiner erklären kann — <em>bevor</em> ihr das Handy anfasst.</li>
+              <li>Recherchiert die beiden Rechercheaufträge auf eurem Blatt. Beginnt bei den zwei angegebenen Startquellen. Regel: Was ihr aufschreibt, muss auf einer Seite stehen, die ihr nennen könnt.</li>
+              <li>Füllt den A3-Steckbrief aus, vier Felder, je höchstens drei Sätze:<br>
+                <strong>WAS</strong> — Worum geht es? · <strong>WOHER</strong> — Auf welcher Rechtsgrundlage? · <strong>WEM NÜTZT ES</strong> — Wer profitiert konkret? · <strong>STREITPUNKT</strong> — Welches Argument bringen Kritiker?</li>
+              <li>Legt fest, wer den Steckbrief später in <strong>90 Sekunden</strong> erklärt. Übt es einmal in der Gruppe.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note">
+          <span class="lbl">Beobachtung durch die Lehrkraft</span>
+          <p>Das Feld <em>Streitpunkt</em> ist das anspruchsvollste. Gruppen, die dort feststecken, mit einer Gegenfrage anschieben statt mit einer Antwort: „Stellen Sie sich vor, jemand ist aus der Kirche ausgetreten. Was stört diese Person an Ihrem Thema?“</p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Austausch</span>
+          <p>„Zeit ist um. Ab jetzt gilt: Ihr Blatt bleibt liegen, Sie nehmen nur Ihren Kopf mit. Ich mische die Gruppen neu, so dass in jeder neuen Gruppe genau ein Experte für jedes Thema sitzt. Sie haben dann viereinhalb Minuten pro Thema. Wenn Ihre Zuhörer am Ende Ihr Feld ‚Streitpunkt‘ nicht ausfüllen können, haben Sie schlecht erklärt — nicht die anderen schlecht zugehört.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>50–68</b>Austausch<br>Stammgruppen</div>
+      <div class="phase-body">
+        <h4>Gruppenpuzzle: alle lehren, alle lernen</h4>
+        <p>Neue Vierergruppen mit je einem Experten pro Thema. Alle füllen das Übersichtsraster <strong>M4</strong> aus. Die Lehrkraft geht herum und stoppt die Zeit laut alle 4:30 min.</p>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Urteil</span>
+          <p>„Sie wissen jetzt, wie es ist. Die spannendere Frage ist, ob es so bleiben soll. Stehen Sie bitte auf und schieben Sie die Stühle an die Tische. Ich lese Ihnen gleich vier Sätze vor. Zu jedem Satz stellen Sie sich in die Ecke, die zu Ihrer Meinung passt. Und ich sage es vorweg: Die Ecke, in der die Mehrheit steht, ist nicht automatisch die richtige.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>68–83</b>Urteil<br>Vier Ecken</div>
+      <div class="phase-body">
+        <h4>Vier Ecken — Position beziehen und begründen</h4>
+        <p>Die vier Streitsätze aus <strong>M5</strong> nacheinander vorlesen und je an die Wand projizieren. Nach jedem Satz: aus zwei verschiedenen Ecken je eine Begründung hören. Anschließend die Frage, die die Methode erst wertvoll macht: <em>„Wer hat ein Argument gehört, das ihn ins Wanken bringt? Wechseln Sie die Ecke — das ist hier ausdrücklich erlaubt und kein Zeichen von Schwäche.“</em></p>
+        <div class="note now">
+          <span class="lbl">Warum diese Methode hier</span>
+          <p>Das Positionieren ist kein Spiel zur Auflockerung, sondern die Vorwegnahme des ganzen Themas: In DS 2 bis 4 werden die SuS Menschen begegnen, die genau das tun mussten — Position beziehen, während andere zusehen. Die körperliche Erfahrung, sich sichtbar hinstellen zu müssen, wird in DS 4 ausdrücklich wieder aufgerufen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>83–90</b>Ausblick</div>
+      <div class="phase-body">
+        <h4>Der Riss im Bild</h4>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → nächste Doppelstunde (Stundenschluss)</span>
+          <p>„Wir haben heute über Kirchensteuer und Militärseelsorge gestritten, und ehrlich gesagt: Das sind Luxusprobleme. Ich zeige Ihnen zum Schluss ein einziges Bild.“</p>
+          <p><em>(Foto einblenden: Gottesdienst 1933, Hakenkreuzfahnen im Altarraum. Zehn Sekunden stehen lassen, nichts sagen.)</em></p>
+          <p>„Das ist eine evangelische Kirche in Deutschland. Das Bild ist ungefähr neunzig Jahre alt. Damals war die Nähe zwischen Kirche und Staat so eng wie nie — und für manche Menschen wurde sie lebensgefährlich. Nächste Stunde fangen wir genau hier an. Und die Frage, die Sie mitnehmen, ist nicht ‚Wie konnten die nur?‘, sondern: ‚Was hätte ich in diesem Raum gemacht?‘“</p>
+        </div>
+        <div class="auftrag">
+          <header><span class="t">Hausaufgabe</span><span class="m">bis zur nächsten Stunde</span></header>
+          <div class="inner">
+            <p>Fragen Sie eine erwachsene Person in Ihrem Umfeld: <em>„Zahlst du Kirchensteuer — und warum eigentlich (nicht)?“</em> Notieren Sie die Antwort in zwei Sätzen. Kein Name nötig, nur die Begründung. Wir sammeln in DS 6 anonym.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="ds1-mat">Materialien zu DS 1</h3>
+    <div class="note now"><span class="lbl">Druckfertig vorhanden</span><p>Für diese Doppelstunde gibt es die Materialien bereits als ausgearbeitete Kopiervorlage — mit sieben fertigen Projektionsfolien (drei davon mit frei lizenzierten Fotos), den vier Expertenblättern samt Infotext, dem Raster, dem Steckbriefbogen und den Eckenschildern: <a href="https://claude.ai/code/artifact/afed6ed7-8b52-4d8e-a7a6-c4e2ce3c835f">Kopiervorlagen Doppelstunde 1</a>. Die folgenden Beschreibungen bleiben als Übersicht stehen.</p></div>
+    <div class="matgrid">
+      <div class="mat">
+        <h5><span class="id">M1</span> Bilderrätsel „Sieben Spuren“</h5>
+        <p>Eine Beamer-Folie pro Bild, am Ende alle gemeinsam. Vorschlag:</p>
+        <ol>
+          <li>Ausschnitt einer Lohnabrechnung mit der Zeile <em>Kirchensteuer ev. 8 %</em></li>
+          <li>Stundenplan einer 9. Klasse mit den Fächern <em>Ev / K / Eth</em> in derselben Spalte</li>
+          <li>Militärpfarrer im Feldgottesdienst der Bundeswehr</li>
+          <li>Rettungswagen mit Trägerlogo (Diakonie bzw. Malteser/Caritas)</li>
+          <li>Zeitungsschlagzeile zum Karfreitags-Tanzverbot in Bayern</li>
+          <li>Vereidigung im Bundestag mit der Formel <em>„so wahr mir Gott helfe“</em></li>
+          <li>Ein evangelischer Kindergarten mit dem Ortsschild der Kommune davor</li>
+        </ol>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M2</span> Zwei Verfassungssätze</h5>
+        <p class="quelle">„Im Bewußtsein seiner Verantwortung vor Gott und den Menschen … hat sich das Deutsche Volk kraft seiner verfassungsgebenden Gewalt dieses Grundgesetz gegeben.“<cite>Präambel des Grundgesetzes</cite></p>
+        <p class="quelle">„Es besteht keine Staatskirche.“<cite>Art. 137 Abs. 1 der Weimarer Reichsverfassung, gemäß Art. 140 GG Bestandteil des Grundgesetzes</cite></p>
+        <p>Zusätzlich klein darunter: Art. 4 GG (Glaubensfreiheit) und Art. 7 Abs. 3 GG (Religionsunterricht als ordentliches Lehrfach).</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M3a</span> Expertengruppe A · Religionsunterricht</h5>
+        <p>Kernfakten auf dem Blatt: Art. 7 Abs. 3 GG, Konfessionalität, Abmeldemöglichkeit, Ethik als Ersatzfach, Verantwortung der Kirchen für die Inhalte, staatliche Finanzierung der Lehrkräfte.</p>
+        <p><strong>Rechercheaufträge:</strong> (1) Ab welchem Alter darf man sich in Bayern selbst vom RU abmelden? (2) Welche zwei Bundesländer machen es anders als Bayern — und wie?</p>
+        <p><strong>Startquellen:</strong> Text von Art. 7 GG auf gesetze-im-internet.de; Seite des Bayerischen Kultusministeriums zum Religionsunterricht.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M3b</span> Expertengruppe B · Kirchensteuer</h5>
+        <p>Kernfakten: 8 % der Einkommensteuer in Bayern, Einzug durch das Finanzamt, Kostenerstattung an den Staat, Kirchenaustritt beim Standesamt, Verwendung (Gehälter, Gebäude, Kitas, Beratungsstellen).</p>
+        <p><strong>Rechercheaufträge:</strong> (1) Wie viel Kirchensteuer zahlt ein Single mit 3.000 € brutto ungefähr im Monat? (2) Nennt ein Land in Europa, das die Kirchen völlig anders finanziert.</p>
+        <p><strong>Startquellen:</strong> Kirchensteuer-Seite der EKD; ein Kirchensteuerrechner einer Landeskirche.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M3c</span> Expertengruppe C · Militär- und Notfallseelsorge</h5>
+        <p>Kernfakten: Militärseelsorgevertrag von 1957, Militärpfarrer sind keine Soldaten und tragen keine Waffe, Seelsorgegeheimnis auch gegenüber Vorgesetzten, Lebenskundlicher Unterricht; daneben Notfallseelsorge nach Unfällen und Katastrophen.</p>
+        <p><strong>Rechercheaufträge:</strong> (1) Wer ruft die Notfallseelsorge — und wer bezahlt sie? (2) Findet ein Argument von Menschen, die die Militärseelsorge kritisch sehen.</p>
+        <p><strong>Startquellen:</strong> Evangelische Militärseelsorge (eka.de); Notfallseelsorge-Seite einer Landeskirche.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M3d</span> Expertengruppe D · Diakonie</h5>
+        <p>Kernfakten: Diakonie als größter Wohlfahrtsverband neben der Caritas, Subsidiaritätsprinzip, Finanzierung überwiegend aus Sozialkassen und öffentlichen Mitteln, kirchliches Arbeitsrecht („Dritter Weg“), Krankenhäuser, Kitas, Pflege, Suchtberatung.</p>
+        <p><strong>Rechercheaufträge:</strong> (1) Wie viele Menschen arbeiten ungefähr bei der Diakonie in Deutschland? (2) Was bedeutet es, dass in diakonischen Einrichtungen nicht regulär gestreikt werden darf?</p>
+        <p><strong>Startquellen:</strong> diakonie.de, Bereich „Über uns“; Diakonie Bayern.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M4</span> Übersichtsraster für die Stammgruppen</h5>
+        <p>DIN A4 quer, vier Spalten (RU / Kirchensteuer / Militärseelsorge / Diakonie), vier Zeilen (Was · Rechtsgrundlage · Wem nützt es · Streitpunkt). Wird eingeklebt und ist die Grundlage für die Leistungserhebung am Ende der Einheit.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M5</span> Vier Streitsätze für die Ecken-Methode</h5>
+        <ol>
+          <li>„Der Staat soll die Kirchensteuer nicht mehr für die Kirchen einziehen.“</li>
+          <li>„Religionsunterricht gehört nicht an eine staatliche Schule.“</li>
+          <li>„Eine Kirche, die Krankenhäuser betreibt, soll ihren Angestellten dieselben Streikrechte geben wie alle anderen Arbeitgeber.“</li>
+          <li>„Solange die Kirche vom Staat Geld bekommt, sollte sie sich mit Kritik am Staat zurückhalten.“</li>
+        </ol>
+        <p>Satz 4 ist der wichtigste — er ist die verkleinerte Fassung der Frage, die die ganze Einheit trägt. Antworten notieren, sie kommen in DS 6 zurück.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DS 2 ================= -->
+<section id="ds2">
+  <div class="wrap stack-lg">
+    <div class="ds-head">
+      <div class="ds-num"><small>Doppelstunde</small>2</div>
+      <div class="ds-title">
+        <h2>1933: Die Kirche jubelt mit</h2>
+        <p class="ds-sub">Warum die Frage nicht lautet „Wie konnten die nur?“, sondern „Was war daran so überzeugend?“</p>
+      </div>
+      <div class="chips">
+        <span class="chip ke">KE 2</span>
+        <span class="chip off">ohne Smartphone</span>
+        <span class="chip">Beamer</span>
+        <span class="chip">Quellenarbeit</span>
+        <span class="chip">Standbild</span>
+      </div>
+    </div>
+
+    <div class="ziel">
+      <span class="lbl">Stundenziel</span>
+      <p>Die SuS können anhand von Quellen beschreiben, wie sich große Teile der evangelischen Kirche 1933 dem Nationalsozialismus anpassten, und mindestens vier Gründe dafür benennen. Sie erkennen an Röm 13 und Apg 5 die biblische Doppeldeutigkeit, die diesen Streit theologisch überhaupt erst möglich machte.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Verlaufsplanung · 90 Minuten</caption>
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Inhalt</th><th>Sozialform / Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–12</td><td class="ph">Einstieg</td><td>Bildlesen in drei Schritten: Gottesdienst mit Hakenkreuzfahnen</td><td class="sf">Plenum · M6</td></tr>
+          <tr><td class="min">12–20</td><td class="ph">Orientierung</td><td>Kurzer Zeitstrahl 1933: Machtübernahme bis Kirchenwahl</td><td class="sf">LV · M7</td></tr>
+          <tr><td class="min">20–48</td><td class="ph">Erarbeitung</td><td>Quellen-Autopsie in fünf Gruppen</td><td class="sf">GA · M8a–e</td></tr>
+          <tr><td class="min">48–62</td><td class="ph">Sicherung</td><td>Standbild „Gemeinde im Herbst 1933“ + Blitzlicht</td><td class="sf">Plenum</td></tr>
+          <tr><td class="min">62–80</td><td class="ph">Vertiefung</td><td>Zwei Bibelverse, zwei Konsequenzen: Röm 13 gegen Apg 5</td><td class="sf">PA/Plenum · M9</td></tr>
+          <tr><td class="min">80–90</td><td class="ph">Ausblick</td><td>Ein Satz, der 1934 alles verändert (Cliffhanger)</td><td class="sf">Plenum</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>0–12</b>Einstieg<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Bildlesen in drei Schritten</h4>
+        <p>Das Bild aus <strong>M6</strong> steht schon an der Wand, wenn die Klasse hereinkommt. Kein Titel, keine Jahreszahl. Die drei Schritte werden einzeln aufgerufen, jeder wird schriftlich beantwortet, bevor gesprochen wird.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 2.1</span><span class="m">Einzelarbeit, dann Plenum · 8 min</span></header>
+          <div class="inner">
+            <ol>
+              <li><strong>Sehen:</strong> Notieren Sie fünf Dinge, die Sie auf dem Bild <em>tatsächlich sehen</em>. Keine Deutung, nur Gegenstände.</li>
+              <li><strong>Vermissen:</strong> Notieren Sie eine Sache, die Sie in einer Kirche erwarten würden und die hier <em>fehlt</em> oder überdeckt ist.</li>
+              <li><strong>Fragen:</strong> Formulieren Sie die eine Frage, die Sie den Menschen auf diesem Bild stellen würden.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Orientierung</span>
+          <p>„Die meisten Ihrer Fragen laufen auf dasselbe hinaus: <em>Wie konnten die nur?</em> Ich möchte Ihnen diese Frage heute wegnehmen. Sie ist nämlich bequem. Sie stellt uns auf die richtige Seite, bevor wir irgendetwas verstanden haben. Die schwierigere Frage lautet: <em>Was war daran so überzeugend?</em> Denn das hier sind keine Verbrecher. Das sind Leute wie die Familie, bei der Sie das Kirchensteuer-Interview gemacht haben. Um das zu verstehen, brauchen Sie acht Minuten Vorgeschichte.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>12–20</b>Input<br>Lehrervortrag</div>
+      <div class="phase-body">
+        <h4>Zeitstrahl 1933 — kurz, hart, ohne Ausschmückung</h4>
+        <p>Der Zeitstrahl <strong>M7</strong> läuft am Beamer mit. Sieben Stationen, mehr nicht: 30. Januar 1933 · Ermächtigungsgesetz im März · „Deutsche Christen“ als Kirchenpartei · Kirchenwahl im Juli 1933 mit deutlicher DC-Mehrheit · Ludwig Müller wird Reichsbischof · Arierparagraph in einzelnen Landeskirchen · Sportpalastkundgebung im November 1933.</p>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Erarbeitung</span>
+          <p>„So weit die Rahmendaten. Jetzt kommt der interessante Teil: die Stimmen. Sie bekommen gleich Originaltexte aus genau diesen Monaten. Manche davon sind schwer auszuhalten. Ich möchte trotzdem, dass Sie sie nicht sofort verurteilen, sondern zuerst sezieren — so wie ein Arzt einen Befund liest, bevor er ein Urteil fällt. Deshalb heißt die Methode auch Quellen-Autopsie.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>20–48</b>Erarbeitung<br>Gruppen</div>
+      <div class="phase-body">
+        <h4>Quellen-Autopsie</h4>
+        <p>Fünf Gruppen, fünf Quellen aus <strong>M8a–e</strong>. Alle Gruppen bearbeiten dieselben vier Fragen — das macht die anschließende Zusammenschau vergleichbar.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 2.2</span><span class="m">Gruppenarbeit · 25 min · M8</span></header>
+          <div class="inner">
+            <ol>
+              <li><strong>Wer spricht hier, wann, zu wem?</strong> (Ein Satz.)</li>
+              <li><strong>Was wird gefordert?</strong> Unterstreichen Sie im Text die stärkste Forderung.</li>
+              <li><strong>Womit wird es begründet?</strong> Achten Sie besonders darauf, ob religiöse Sprache benutzt wird, um etwas Politisches zu fordern.</li>
+              <li><strong>Was wäre die Folge?</strong> Beschreiben Sie eine konkrete Person, für die dieser Text unmittelbar gefährlich wird.</li>
+              <li>Schreiben Sie Ihre Quelle in <strong>einem</strong> Satz in heutiger Alltagssprache auf einen Streifen Papier. Dieser Satz kommt an die Wäscheleine.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note warn">
+          <span class="lbl">Achtung bei M8b und M8c</span>
+          <p>Diese beiden Quellen enthalten antisemitische Positionen (Arierparagraph, Forderung nach Streichung des Alten Testaments). Sie müssen vorher angekündigt und hinterher eingeordnet werden. Formulierungsvorschlag vor der Austeilung: <em>„Zwei dieser Texte sind judenfeindlich. Ich gebe sie Ihnen nicht, weil sie eine Meinung unter vielen wären, sondern weil man nicht verstehen kann, was hier passiert ist, ohne zu sehen, wie normal diese Sätze damals klangen. Wenn Ihnen ein Satz zu nahe geht, sagen Sie es mir.“</em> Bei Bedarf die Gruppen mit diesen Quellen bewusst besetzen.</p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Sicherung</span>
+          <p>„Hängen Sie Ihre Sätze an die Leine, in der Reihenfolge, in der ich Sie aufrufe. — Schauen Sie sich das jetzt bitte als Ganzes an. Was da hängt, ist keine Randgruppe. Das ist die Mehrheit einer Kirche innerhalb von zehn Monaten. Und jetzt stellen wir uns die Gemeinde vor, in der diese Sätze gesagt wurden.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>48–62</b>Sicherung<br>Standbild</div>
+      <div class="phase-body">
+        <h4>Standbild „Gemeinde im Herbst 1933“</h4>
+        <p>Fünf bis sechs Freiwillige bauen ein eingefrorenes Bild einer Gemeinde: der begeisterte Kirchenvorsteher in Uniform, die Pfarrfrau, die sich abwendet, der Pfarrer jüdischer Herkunft, der seit dem Arierparagraphen nicht weiß, ob er noch predigen darf, die alte Frau, die einfach ihren Gottesdienst zurückwill, der Jugendliche, der lieber zur HJ geht als zum Konfirmandenunterricht.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 2.3</span><span class="m">Plenum · 14 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Die Standbild-Gruppe stellt sich auf und friert ein. Der Rest der Klasse beobachtet schweigend 30 Sekunden.</li>
+              <li>Die Lehrkraft tippt einzelne Figuren an — <em>Gedankenstopp</em>: Die angetippte Person sagt einen einzigen Satz, den ihre Figur gerade denkt.</li>
+              <li>Publikumsfrage: <em>„Welche Figur fehlt in diesem Bild?“</em> Wer eine Antwort hat, stellt sich selbst dazu und erklärt, wen er darstellt.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note">
+          <span class="lbl">Erwartete Erkenntnis, die festgehalten wird</span>
+          <p>Die Kirche 1933 war nicht gespalten in Täter und Helden. Sie war überwiegend gefüllt mit Menschen, die zustimmten, wegsahen oder hofften, ihre Ruhe zu behalten. Die Tafelnotiz dazu — sie wird in DS 4 wieder gebraucht: <strong>Zustimmung · Anpassung · Rückzug · Widerspruch · Widerstand.</strong></p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Vertiefung</span>
+          <p>„Eine Sache lässt mich nicht los. Die Menschen, die 1933 gejubelt haben, waren keine schlechten Christen in ihren eigenen Augen. Sie hatten einen Bibelvers dafür. Und die, die widersprochen haben, hatten auch einen. Ich zeige Ihnen beide — und Sie werden sehen, warum dieser Streit nicht mit ‚die eine Seite kannte die Bibel nicht‘ zu erklären ist.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>62–80</b>Vertiefung<br>PA / Plenum</div>
+      <div class="phase-body">
+        <h4>Zwei Verse, zwei Welten</h4>
+        <p><strong>M9</strong> zeigt Röm 13,1 und Apg 5,29 groß nebeneinander. Beide Verse werden zunächst nur gelesen, dann bearbeitet.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 2.4</span><span class="m">Partnerarbeit · 10 min · M9</span></header>
+          <div class="inner">
+            <ol>
+              <li>Formulieren Sie jeden Vers als <strong>Handlungsanweisung</strong> für einen Menschen im Jahr 1933: „Wenn ich diesem Vers folge, dann tue ich …“</li>
+              <li>Suchen Sie zu jedem Vers eine Person aus dem Standbild von vorhin, die sich darauf berufen könnte.</li>
+              <li>Beantworten Sie schriftlich: <em>Kann man beide Verse gleichzeitig befolgen? Wenn nein — woran entscheidet sich, welcher gilt?</em></li>
+            </ol>
+          </div>
+        </div>
+        <div class="note">
+          <span class="lbl">Tafelbild zum Mitschreiben</span>
+          <p>Röm 13 („Jedermann sei untertan der Obrigkeit …“) wurde in der lutherischen Tradition oft mit der Zwei-Reiche-Lehre verbunden und so gelesen, als sei jede staatliche Macht von Gott gewollt. Apg 5,29 („Man muss Gott mehr gehorchen als den Menschen“) setzt genau dort eine Grenze. <strong>Der ganze Kirchenkampf ist ein Streit darüber, wo diese Grenze verläuft.</strong> Diesen Satz mitschreiben lassen — er ist die Brücke in DS 3 und die Brücke in DS 6.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>80–90</b>Ausblick</div>
+      <div class="phase-body">
+        <h4>Cliffhanger</h4>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → nächste Doppelstunde (Stundenschluss)</span>
+          <p>„Ich lasse Sie heute mit einem einzigen Satz gehen. Er wurde im Mai 1934 aufgeschrieben, von einer Handvoll Theologen, die es nicht mehr aushielten. Der Satz klingt harmlos:“</p>
+          <p><em>(Einblenden:)</em> <strong>„Jesus Christus … ist das eine Wort Gottes, das wir zu hören … haben.“</strong></p>
+          <p>„Das <em>eine</em> Wort. Nicht: eines von mehreren. Überlegen Sie bis nächste Woche, wem dieser Satz wehtut. Denn dreizehn Tage später haben acht evangelische Theologen — sechs davon aus Franken, zwei Professoren — eine Gegenschrift veröffentlicht. Nächste Stunde lassen wir die beiden Seiten aufeinandertreffen. Und Sie sitzen nicht im Publikum. Sie sind die beiden Seiten.“</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="ds2-mat">Materialien zu DS 2</h3>
+    <div class="note now"><span class="lbl">Druckfertig vorhanden</span><p>Die Materialien dieser Doppelstunde gibt es als ausgearbeitete Kopiervorlage zum Ausdrucken: <a href="https://claude.ai/code/artifact/cc7012ca-da81-4aa8-b1df-c20a47879376">Kopiervorlagen Doppelstunde 2</a>. Die folgenden Beschreibungen bleiben als Übersicht stehen.</p></div>
+    <div class="matgrid">
+      <div class="mat">
+        <h5><span class="id">M6</span> Einstiegsbild</h5>
+        <p>Foto eines evangelischen Gottesdienstes 1933/34 mit Hakenkreuzfahnen im Kirchenraum (z. B. Berliner Dom, Kirchenwahl Juli 1933). Über Bundesarchiv-Bilddatenbank oder das Bildarchiv der EKD beziehen. <strong>Ohne Bildunterschrift projizieren</strong> — die Jahreszahl wird erst in Phase 2 aufgelöst.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M7</span> Zeitstrahl 1933</h5>
+        <p>Sieben Marken auf einer Folie, jeweils Datum und ein Halbsatz. Die Kirchenwahl im Juli 1933 optisch hervorheben — sie ist der Beleg dafür, dass die Anpassung <em>gewählt</em> und nicht nur befohlen wurde.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M8a</span> Quelle A · Richtlinien der „Deutschen Christen“</h5>
+        <p>Auszug aus den Richtlinien der Glaubensbewegung Deutsche Christen (1932), insbesondere die Passagen zu „Rasse, Volkstum und Nation“ als „von Gott geschenkte Lebensordnungen“ und zur „Mission an Juden“.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M8b</span> Quelle B · Der Arierparagraph in der Kirche</h5>
+        <p>Beschluss einer Landeskirche von 1933, wonach Pfarrer und Kirchenbeamte „nicht arischer Abstammung“ in den Ruhestand zu versetzen seien. Dazu ein knapper Sachtext: Was das für konkrete Pfarrer bedeutete.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M8c</span> Quelle C · Sportpalastkundgebung, November 1933</h5>
+        <p>Auszug aus der Rede des DC-Gauobmanns Reinhold Krause: Forderung nach Befreiung von „allem Undeutschen im Gottesdienst“, Abschaffung des Alten Testaments, Ablehnung der „Sündenbock- und Minderwertigkeitstheologie des Rabbiners Paulus“. Diese Kundgebung war so radikal, dass sie viele Gemeindeglieder von den DC wegtrieb — das ist der historisch wichtige Punkt, den die Gruppe herausarbeiten soll.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M8d</span> Quelle D · Eine Gemeindestimme</h5>
+        <p>Zeitgenössischer Zeitungsartikel oder Gemeindebriefauszug 1933, in dem ein Pfarrer die „nationale Erhebung“ als Geschenk Gottes deutet. Zeigt: Die religiöse Aufladung kam nicht nur von oben.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M8e</span> Quelle E · Die erste Gegenstimme</h5>
+        <p>Auszug aus dem Aufruf zum Pfarrernotbund (September 1933, Martin Niemöller): Verpflichtung auf Schrift und Bekenntnis, Widerspruch gegen den Arierparagraphen in der Kirche. Wichtig als Beleg, dass Widerspruch schon 1933 möglich war — und wie klein er anfangs blieb.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M9</span> Zwei Bibelverse</h5>
+        <p class="quelle">„Jedermann sei untertan der Obrigkeit, die Gewalt über ihn hat. Denn es ist keine Obrigkeit außer von Gott.“<cite>Römer 13,1 (Lutherbibel 2017)</cite></p>
+        <p class="quelle">„Man muss Gott mehr gehorchen als den Menschen.“<cite>Apostelgeschichte 5,29 (Lutherbibel 2017)</cite></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DS 3 ================= -->
+<section id="ds3">
+  <div class="wrap stack-lg">
+    <div class="ds-head">
+      <div class="ds-num"><small>Doppelstunde</small>3</div>
+      <div class="ds-title">
+        <h2>Barmen gegen Ansbach</h2>
+        <p class="ds-sub">Zwei Texte, dreizehn Tage Abstand, dieselbe Kirche — und ein bayerischer Landesbischof mittendrin.</p>
+      </div>
+      <div class="chips">
+        <span class="chip ke">KE 2</span>
+        <span class="chip off">ohne Smartphone</span>
+        <span class="chip">Beamer</span>
+        <span class="chip">Rollenspiel</span>
+        <span class="chip">Rollenkarten drucken</span>
+      </div>
+    </div>
+
+    <div class="ziel">
+      <span class="lbl">Stundenziel</span>
+      <p>Die SuS können die zentrale Aussage der Barmer Theologischen Erklärung in eigenen Worten wiedergeben und sie von der Gegenposition des Ansbacher Ratschlags abgrenzen. Sie erkennen an der Person Hans Meisers, dass historische Urteile über kirchliches Handeln mehrdeutig bleiben können.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Verlaufsplanung · 90 Minuten</caption>
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Inhalt</th><th>Sozialform / Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–8</td><td class="ph">Einstieg</td><td>Zwei Zitate nebeneinander, ohne Zuordnung</td><td class="sf">Plenum · M10</td></tr>
+          <tr><td class="min">8–28</td><td class="ph">Vorbereitung</td><td>Rollenkarten lesen, Argumente in Rollenteams schärfen</td><td class="sf">GA · M11</td></tr>
+          <tr><td class="min">28–52</td><td class="ph">Erarbeitung</td><td>Talkrunde „Streit am Sonntagabend, Juni 1934“</td><td class="sf">Rollenspiel · M12</td></tr>
+          <tr><td class="min">52–62</td><td class="ph">Auswertung</td><td>Beobachterteams berichten, Rollen werden abgelegt</td><td class="sf">Plenum · M12</td></tr>
+          <tr><td class="min">62–78</td><td class="ph">Sicherung</td><td>Barmen These 1 in eigene Sprache übersetzen</td><td class="sf">PA · M13</td></tr>
+          <tr><td class="min">78–90</td><td class="ph">Vertiefung</td><td>Der Fall Meiser: Straßenname behalten oder nicht?</td><td class="sf">Plenum · M14</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>0–8</b>Einstieg<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Zwei Zitate, keine Namen</h4>
+        <p><strong>M10</strong> projiziert beide Zitate nebeneinander, nur mit „Text A“ und „Text B“ überschrieben.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 3.1</span><span class="m">Zuruf · 5 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Welcher der beiden Texte wurde von Christen geschrieben, die gegen den Nationalsozialismus waren? Zeigen Sie mit dem Finger: links oder rechts.</li>
+              <li>Woran haben Sie das festgemacht? Ein Wort genügt.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Vorbereitung</span>
+          <p>„Sie haben richtig getippt. Und jetzt die unangenehme Information: <em>Beide</em> Texte stammen aus dem Jahr 1934. <em>Beide</em> sind von evangelischen Theologen. Zwischen ihnen liegen dreizehn Tage. Text A ist die Barmer Theologische Erklärung, Ende Mai in Wuppertal beschlossen. Text B ist der Ansbacher Ratschlag, am 11. Juni veröffentlicht — von acht Theologen, sechs davon fränkische Pfarrer, dazu zwei Professoren aus Erlangen. Das ist keine ferne Geschichte. Das ist hier passiert, eine Autostunde von diesem Klassenzimmer entfernt. Heute holen wir diesen Streit ins Klassenzimmer — und Sie führen ihn.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>8–28</b>Vorbereitung<br>Rollenteams</div>
+      <div class="phase-body">
+        <h4>Rollenteams statt Einzelrollen</h4>
+        <p>Die Klasse wird in <strong>fünf Rollenteams</strong> und ein <strong>Beobachterteam</strong> aufgeteilt. Jedes Rollenteam bereitet gemeinsam die Argumente vor, schickt dann aber nur <em>eine</em> Person in die Talkrunde. Der Rest sitzt hinter dieser Person und darf zweimal per Zettel „nachladen“. So arbeiten alle, auch die, die nicht gern vorne sprechen.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 3.2</span><span class="m">Gruppenarbeit · 20 min · M11</span></header>
+          <div class="inner">
+            <ol>
+              <li>Lest eure Rollenkarte zweimal. Beim zweiten Mal unterstreicht ihr den Satz, der eure Position am schärfsten trifft.</li>
+              <li>Formuliert <strong>drei</strong> Argumente in ganzen Sätzen, jeweils beginnend mit „Ich sage das, weil …“.</li>
+              <li>Formuliert <strong>eine</strong> Frage, mit der ihr eine andere Rolle in Schwierigkeiten bringt. Überlegt vorher, an wen sie geht.</li>
+              <li>Bereitet euch auf den härtesten Angriff vor, der euch treffen kann: Was würde eure Rolle darauf antworten?</li>
+              <li>Bestimmt eure Sprecherin oder euren Sprecher und zwei Zettelschreiber.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Talkrunde</span>
+          <p>„Stühle in den Halbkreis, in der Mitte fünf Plätze. Ab dem Moment, in dem Sie sich setzen, sind Sie nicht mehr Sie selbst. Ich siezee Sie mit Ihrem Rollennamen, und Sie antworten in der Rolle. Eine Regel, die ich streng nehme: Sie greifen Positionen an, nicht Personen. Und eine zweite: Wenn ich ‚Stopp‘ sage, frieren alle ein — dann will ich von den Beobachtern wissen, was gerade passiert ist.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>28–52</b>Erarbeitung<br>Rollenspiel</div>
+      <div class="phase-body">
+        <h4>„Streit am Sonntagabend“ — Ansbach, Juni 1934</h4>
+        <p>Die Lehrkraft moderiert (oder eine sichere Schülerin nach vorbereitetem Moderationsbogen <strong>M12</strong>). Fester Ablauf: Eröffnungsstatement je 60 Sekunden — freie Streitrunde 10 Minuten — Zuschauerfrage aus dem Halbkreis — Schlusswort je 30 Sekunden.</p>
+        <div class="note">
+          <span class="lbl">Die drei Fragen, die die Moderation stellen muss</span>
+          <ul>
+            <li>„Herr Barth, Sie sagen: nur Christus. Heißt das, ein Christ darf sich um sein Vaterland nicht kümmern?“</li>
+            <li>„Herr Professor Althaus, wenn Volk und Rasse Ordnungen Gottes sind — gilt Ihr Satz auch dann, wenn dieser Staat Menschen aus der Kirche wirft?“</li>
+            <li>„Herr Landesbischof, Sie haben beide Texte gelesen und keinen von beiden unterschrieben. Wie lange kann man das durchhalten?“</li>
+          </ul>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Auswertung (Rollen ablegen)</span>
+          <p>„Danke. Bitte stehen Sie kurz auf, schütteln Sie sich einmal aus und setzen Sie sich auf einen anderen Platz. Damit sind die Rollen abgelegt — ab jetzt sind Sie wieder Sie selbst, und niemand wird für das verantwortlich gemacht, was seine Rolle gesagt hat. Ich fange bei den Beobachtern an.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>52–62</b>Auswertung<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Was war das stärkste Argument — und was das gefährlichste?</h4>
+        <p>Reihenfolge einhalten: erst Beobachter (sachlich, mit Bogen), dann die Spielenden („Wie hat sich Ihre Rolle angefühlt?“), zuletzt das Plenum. Die historische Auflösung kommt zum Schluss: Barmen wurde zur Grundlage der Bekennenden Kirche; der Ansbacher Ratschlag blieb Minderheitenposition, aber er zeigt, dass die theologische Rechtfertigung des Regimes von angesehenen Professoren kam, nicht von Randfiguren.</p>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Sicherung</span>
+          <p>„Sie haben jetzt zweiundzwanzig Minuten lang über einen Text gestritten, den Sie noch gar nicht richtig gelesen haben. Das holen wir nach. Der Originaltext ist sperrig — Theologendeutsch von 1934. Ihre Aufgabe ist es, ihn so zu übersetzen, dass ihn eine Siebtklässlerin versteht. Das ist übrigens die härteste Prüfung für Verstehen, die ich kenne: Wer etwas nicht einfach sagen kann, hat es nicht verstanden.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>62–78</b>Sicherung<br>Partnerarbeit</div>
+      <div class="phase-body">
+        <h4>Barmen in eigener Sprache</h4>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 3.3</span><span class="m">Partnerarbeit · 14 min · M13</span></header>
+          <div class="inner">
+            <ol>
+              <li>Lest These 1 der Barmer Erklärung laut vor — einmal ganz, ohne zu stocken.</li>
+              <li>Übersetzt sie in <strong>höchstens 25 Wörter</strong> heutiger Alltagssprache. Kein Wort aus dem Original darf übernommen werden außer „Gott“ und „Jesus Christus“.</li>
+              <li>Der zweite Teil jeder Barmer These beginnt mit <em>„Wir verwerfen die falsche Lehre, als ob …“</em>. Schreibt euren eigenen Verwerfungssatz für 1934: <em>Wir verwerfen die falsche Lehre, als ob …</em></li>
+              <li>Haltet fest: Wem tut dieser Satz weh? Nennt zwei Gruppen.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note now">
+          <span class="lbl">Diese Sprachform wird in DS 6 gebraucht</span>
+          <p>Die Formel <em>„Wir verwerfen die falsche Lehre, als ob …“</em> ist das methodische Werkzeug der ganzen Einheit. In DS 6 schreiben die SuS damit eigene Thesen zu heutigen Fragen. Die besten Übersetzungen von heute deshalb einsammeln und aufheben.</p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Vertiefung</span>
+          <p>„Ein Letztes für heute, und es ist unbequem. Der Landesbischof, der in unserer Talkrunde saß, hieß Hans Meiser. Er hat die bayerische Landeskirche gegen die Eingliederung in die Reichskirche verteidigt, er wurde dafür im Oktober 1934 unter Hausarrest gestellt, und Tausende Bayern gingen für ihn auf die Straße. Ein Held also. In München und Nürnberg waren Straßen nach ihm benannt. Waren.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>78–90</b>Vertiefung<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Der Fall Meiser: Wie umgehen mit halben Helden?</h4>
+        <p><strong>M14</strong> stellt beides nebeneinander: Meisers Widerstand gegen die Gleichschaltung der Landeskirche — und seine antijudaistischen Äußerungen sowie sein weitgehendes Schweigen zur Verfolgung der Juden. Beide Straßen wurden nach jahrelangem Streit umbenannt.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 3.4</span><span class="m">Blitzumfrage + Begründung · 10 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Handzeichen: Umbenennen — ja oder nein?</li>
+              <li>Je eine Begründung von beiden Seiten hören.</li>
+              <li>Dritte Möglichkeit ins Spiel bringen: Straßenname behalten, aber ein Zusatzschild anbringen. Was müsste darauf stehen? Ein Satz, gemeinsam formuliert, an die Tafel.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → nächste Doppelstunde (Stundenschluss)</span>
+          <p>„Meiser hat seine Kirche gerettet und zu den Deportationen geschwiegen. Bonhoeffer hat an einem Attentat mitgewirkt und ist dafür gehängt worden. Niemöller hat Hitler zuerst gewählt und ist dann im KZ gelandet. Drei Christen, drei völlig verschiedene Wege. Nächste Stunde spannen wir eine Leine quer durch diesen Raum, und Sie hängen diese Menschen daran auf — zwischen Anpassung und Widerstand. Das wird streitig. Und ganz am Ende steht die Frage, vor der Sie sich heute noch drücken dürfen: Wo hätten Sie gehangen?“</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="ds3-mat">Materialien zu DS 3</h3>
+    <div class="note now"><span class="lbl">Druckfertig vorhanden</span><p>Die Materialien dieser Doppelstunde gibt es als ausgearbeitete Kopiervorlage zum Ausdrucken: <a href="https://claude.ai/code/artifact/511b286d-9f78-4a6f-96a9-1290c8e5ebfc">Kopiervorlagen Doppelstunde 3</a>. Die folgenden Beschreibungen bleiben als Übersicht stehen.</p></div>
+    <div class="matgrid">
+      <div class="mat">
+        <h5><span class="id">M10</span> Die beiden Einstiegszitate</h5>
+        <p class="quelle">„Jesus Christus, wie er uns in der Heiligen Schrift bezeugt wird, ist das eine Wort Gottes, das wir zu hören, dem wir im Leben und im Sterben zu vertrauen und zu gehorchen haben.“<cite>Text A — Barmer Theologische Erklärung, These 1, 31. Mai 1934</cite></p>
+        <p class="quelle">Sinngemäß: Gott begegne uns auch in den natürlichen Ordnungen des Lebens — in Familie, Volk und Rasse —, und der Christ sei zum Gehorsam gegenüber diesen Ordnungen und der von Gott gegebenen Obrigkeit verpflichtet.<cite>Text B — Kernaussage des Ansbacher Ratschlags, 11. Juni 1934</cite></p>
+        <p><strong>Hinweis:</strong> Für den Unterricht den Wortlaut beider Texte aus einer belegbaren Ausgabe übernehmen (Links in <code>RESOURCES.md</code>); die hier stehende Fassung von Text B ist eine Zusammenfassung, kein Zitat.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M11</span> Fünf Rollenkarten</h5>
+        <ul>
+          <li><strong>Karl Barth</strong>, Theologieprofessor, Hauptverfasser von Barmen. Kernsatz: Die Kirche hat nur einen Herrn. Sie darf ihre Botschaft nicht aus Blut, Volk oder Geschichte beziehen. Verweigert später den Beamteneid auf Hitler und verliert seinen Lehrstuhl.</li>
+          <li><strong>Paul Althaus</strong>, Theologieprofessor in Erlangen, Mitunterzeichner des Ansbacher Ratschlags. Kernsatz: Wer die natürlichen Ordnungen — Volk, Familie, Obrigkeit — leugnet, macht das Christentum weltfremd. Sieht sich nicht als Nationalsozialist, sondern als Bewahrer lutherischer Tradition.</li>
+          <li><strong>Pfarrer der „Deutschen Christen“</strong>, Anfang 30, überzeugt. Kernsatz: Endlich kommen die Männer wieder in die Kirche. Sieht in der Bewegung eine religiöse Erneuerung.</li>
+          <li><strong>Hans Meiser</strong>, Landesbischof in Bayern. Kernsatz: Meine Aufgabe ist es, diese Landeskirche zusammenzuhalten. Wer sich zu weit hinauslehnt, verliert sie ganz. Lehnt den Ansbacher Ratschlag ab, unterschreibt Barmen aber auch nicht.</li>
+          <li><strong>Charlotte S.</strong>, 24, Vikarin, Großvater jüdischer Herkunft, seit dem Arierparagraphen vom Dienst suspendiert. Kernsatz: Sie streiten über Lehrsätze. Ich streite um meinen Beruf und bald um mein Leben. <em>(Zusammengesetzte Rolle nach realen Biografien, u. a. Elisabeth Schmitz. Als solche kennzeichnen.)</em></li>
+        </ul>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M12</span> Moderationsbogen und Beobachtungsbogen</h5>
+        <p><strong>Moderation:</strong> Ablauf, die drei Pflichtfragen, Zeitmarken.</p>
+        <p><strong>Beobachtung</strong> (je zwei Beobachter pro Rolle, drei Spalten): Welches Argument war das stärkste? · Wo wurde ausgewichen? · Welches Argument war gefährlich, obwohl es freundlich klang?</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M13</span> Barmen These 1, Volltext</h5>
+        <p>These 1 vollständig, mit Bibelstellen (Joh 14,6; Joh 10,1.9) und dem Verwerfungssatz. Darunter viel Platz für die eigene Übersetzung. Volltext über reformiert-info.de oder das Themenheft der ELKB.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M14</span> Dossier Hans Meiser</h5>
+        <p>Zwei Spalten auf einem Blatt. Links: Widerstand gegen die Eingliederung der bayerischen Landeskirche, Hausarrest im Oktober 1934, Protestkundgebungen in Franken, Wiederaufbau der Kirche nach 1945. Rechts: antijudaistische Äußerungen, Schweigen zur Judenverfolgung, Umgang mit belasteten Pfarrern nach 1945, Umbenennung der nach ihm benannten Straßen in München (2007) und Nürnberg (2010).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DS 4 ================= -->
+<section id="ds4">
+  <div class="wrap stack-lg">
+    <div class="ds-head">
+      <div class="ds-num"><small>Doppelstunde</small>4</div>
+      <div class="ds-title">
+        <h2>Was hätte ich getan?</h2>
+        <p class="ds-sub">Fünf Biografien an einer Wäscheleine — zwischen Anpassung und Widerstand.</p>
+      </div>
+      <div class="chips">
+        <span class="chip ke">KE 2</span>
+        <span class="chip off">ohne Smartphone</span>
+        <span class="chip">Beamer</span>
+        <span class="chip">Wäscheleine</span>
+        <span class="chip">Placemat</span>
+      </div>
+    </div>
+
+    <div class="ziel">
+      <span class="lbl">Stundenziel</span>
+      <p>Die SuS können fünf unterschiedliche Haltungen von Christen gegenüber dem Nationalsozialismus beschreiben, sie auf einer Skala zwischen Anpassung und Widerstand begründet verorten und ihre Einordnung gegen Widerspruch verteidigen. Sie entwickeln daraus ein Raster von Bedingungen, die Widerstand wahrscheinlicher machen.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Verlaufsplanung · 90 Minuten</caption>
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Inhalt</th><th>Sozialform / Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–10</td><td class="ph">Einstieg</td><td>Chorlesung des Niemöller-Textes</td><td class="sf">Plenum · M15</td></tr>
+          <tr><td class="min">10–38</td><td class="ph">Erarbeitung</td><td>Fünf Biografien, fünf Personenkarten</td><td class="sf">GA · M16a–e</td></tr>
+          <tr><td class="min">38–58</td><td class="ph">Sicherung</td><td>Aufhängen an der Skala, Vorstellung je 2 min</td><td class="sf">Plenum · Wäscheleine</td></tr>
+          <tr><td class="min">58–70</td><td class="ph">Konfrontation</td><td>Verschiebe-Duell: Karten umhängen und begründen</td><td class="sf">Plenum</td></tr>
+          <tr><td class="min">70–84</td><td class="ph">Abstraktion</td><td>Placemat: Was macht Widerstand wahrscheinlicher?</td><td class="sf">GA · M17</td></tr>
+          <tr><td class="min">84–90</td><td class="ph">Schluss</td><td>Bonhoeffers letzter Satz, stiller Abschluss</td><td class="sf">Plenum · M18</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>0–10</b>Einstieg<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Chorlesung</h4>
+        <p>Der Niemöller-Text <strong>M15</strong> wird in vier Streifen zerschnitten. Vier Gruppen im Raum lesen nacheinander laut je einen Streifen; die letzte Zeile liest die ganze Klasse gemeinsam. Danach zehn Sekunden Stille — nicht sofort auflösen.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 4.1</span><span class="m">Einzelarbeit · 3 min, wird nicht eingesammelt</span></header>
+          <div class="inner">
+            <p>Schreiben Sie einen Satz auf, den Sie niemandem zeigen müssen: <em>„Wobei würde ich heute wegschauen?“</em></p>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Erarbeitung</span>
+          <p>„Behalten Sie diesen Zettel. Der Mann, der diesen Text geschrieben hat, war 1924 stolzer Nationalist, U-Boot-Kommandant im Ersten Weltkrieg, und er hat 1933 mit einiger Sympathie auf die neue Regierung geblickt. Später saß er sieben Jahre in Sachsenhausen und Dachau. Menschen sind nicht von Anfang an Helden oder Feiglinge — sie werden es, Entscheidung für Entscheidung. Fünf solcher Wege liegen jetzt auf Ihren Tischen.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>10–38</b>Erarbeitung<br>Gruppen</div>
+      <div class="phase-body">
+        <h4>Fünf Biografien</h4>
+        <p>Fünf Gruppen, je eine Biografie aus <strong>M16a–e</strong>: Dietrich Bonhoeffer · Martin Niemöller · Hans Meiser · Elisabeth Schmitz · Paul Schneider. Jede Gruppe fertigt eine <strong>Personenkarte</strong> auf A4 an, die später an die Leine gehängt wird.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 4.2</span><span class="m">Gruppenarbeit · 26 min · M16</span></header>
+          <div class="inner">
+            <ol>
+              <li>Gestaltet die Personenkarte: Name · Lebensdaten · <strong>eine</strong> Entscheidung, die alles veränderte · was diese Entscheidung gekostet hat.</li>
+              <li>Findet in Ihrem Text den <strong>Satz Ihrer Person</strong> — einen Originalsatz, der ihre Haltung zeigt. Schreibt ihn groß auf die Rückseite.</li>
+              <li>Ordnet eure Person auf der Skala von <strong>1 (Anpassung)</strong> bis <strong>5 (Widerstand unter Lebensgefahr)</strong> ein. Notiert die Zahl klein in die Ecke — und darunter <em>einen</em> Satz, warum nicht eine Stufe höher oder tiefer.</li>
+              <li>Beantwortet für euch selbst, ohne es aufzuschreiben: Hätte diese Person mehr tun können? Was?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Sicherung</span>
+          <p>„Ich habe quer durch den Raum eine Leine gespannt. Links hängt ein Schild: <em>Anpassung.</em> Rechts hängt eines: <em>Widerstand.</em> Dazwischen ist nichts — kein Raster, keine Markierungen. Den Zwischenraum füllen Sie. Und ich verspreche Ihnen: Sobald die dritte Karte hängt, wird jemand widersprechen wollen. Halten Sie das bitte aus, bis alle fünf hängen.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>38–58</b>Sicherung<br>Wäscheleine</div>
+      <div class="phase-body">
+        <h4>Die Skala füllt sich</h4>
+        <p>Jede Gruppe hängt ihre Karte auf und stellt sie in maximal zwei Minuten vor — Pflichtbestandteil: der Originalsatz wird vorgelesen. Die Lehrkraft ergänzt nur, was für die Einordnung fehlt, und hält sich mit Bewertungen zurück.</p>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Konfrontation</span>
+          <p>„Jetzt hängen fünf Menschen an dieser Leine, und ich habe während der Vorträge mindestens vier Gesichter gesehen, die nicht einverstanden waren. Ihre Chance: Wer eine Karte verschieben will, geht nach vorne, hängt sie um und sagt einen Satz dazu. Die Gruppe, deren Karte verschoben wurde, darf einmal zurückverschieben. Danach entscheidet die Klasse per Handzeichen — und die Entscheidung ist nicht endgültig, sondern nur die Position, mit der wir heute nach Hause gehen.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>58–70</b>Konfrontation<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Das Verschiebe-Duell</h4>
+        <div class="note">
+          <span class="lbl">Die Streitpunkte, die erfahrungsgemäß kommen</span>
+          <ul>
+            <li><strong>Meiser:</strong> Ist institutioneller Selbstschutz schon Widerstand? Oder war die „intakte“ Landeskirche der Preis für das Schweigen?</li>
+            <li><strong>Bonhoeffer:</strong> Darf ein Christ an einem Mordanschlag mitwirken? Sein Bild vom „Rad in den Speichen“ gehört hier hin.</li>
+            <li><strong>Elisabeth Schmitz:</strong> Sie hat 1935 eine Denkschrift über die Lage der deutschen Nichtarier verfasst und verbreitet — und wurde jahrzehntelang vergessen. Warum eigentlich? Das führt zur Frage, wer über Heldengeschichten entscheidet.</li>
+          </ul>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Abstraktion</span>
+          <p>„Wir hören auf, einzelne Menschen zu benoten. Denn keiner von uns weiß, wie er sich verhalten hätte — und wer behauptet, er wüsste es, hat meistens am wenigsten darüber nachgedacht. Die nützlichere Frage lautet: Was hatten die Leute rechts an der Leine, was die Leute links nicht hatten? Wenn wir das herausfinden, haben wir etwas in der Hand, das nicht nur für 1934 gilt.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>70–84</b>Abstraktion<br>Placemat</div>
+      <div class="phase-body">
+        <h4>Placemat: Bedingungen für Widerstand</h4>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 4.3</span><span class="m">Vierergruppen · 12 min · M17 (A3)</span></header>
+          <div class="inner">
+            <ol>
+              <li><strong>Allein (4 min):</strong> Jeder schreibt in sein Außenfeld drei Bedingungen, die es Menschen leichter gemacht haben, zu widersprechen.</li>
+              <li><strong>Reihum (4 min):</strong> Jeder liest vor, ohne dass diskutiert wird.</li>
+              <li><strong>Gemeinsam (4 min):</strong> Einigt euch auf die <strong>drei</strong> wichtigsten Bedingungen und schreibt sie in die Mitte.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note now">
+          <span class="lbl">Dieses Ergebnis wird aufgehoben</span>
+          <p>Die Mittelfelder werden eingesammelt und in DS 6 unverändert wieder aufgehängt. Erfahrungsgemäß kommen: früh anfangen · nicht allein sein · eine feste Überzeugung, die nicht von Erfolg abhängt · Informationen haben · schon vorher geübt haben, Nein zu sagen · wenig zu verlieren haben. Nicht vorwegnehmen — die Klasse muss selbst darauf kommen, sonst trägt es in DS 6 nicht.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>84–90</b>Schluss</div>
+      <div class="phase-body">
+        <h4>Ein letzter Satz</h4>
+        <div class="ueberleitung">
+          <span class="lbl">Stundenschluss</span>
+          <p>„Ein Satz noch, dann gehen Sie. Dietrich Bonhoeffer wurde am 9. April 1945 im KZ Flossenbürg hingerichtet — das ist in Bayern, keine zwei Stunden von hier. Wenige Tage vorher gab er einem Mitgefangenen einen Gruß für einen Freund in England mit. Der Gruß lautete: <em>‚Dies ist das Ende — für mich der Beginn des Lebens.‘</em>“</p>
+          <p><em>(Pause. Nichts erklären. Nicht deuten. Die Stunde endet hier.)</em></p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → nächste Doppelstunde (erst beim Hinausgehen)</span>
+          <p>„Nächste Woche springen wir vierzig Jahre weiter. Gleiches Land, andere Diktatur, und diesmal bringen Sie Ihre Handys mit — Sie bauen eine Ausstellung.“</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="ds4-mat">Materialien zu DS 4</h3>
+    <div class="note now"><span class="lbl">Druckfertig vorhanden</span><p>Die Materialien dieser Doppelstunde gibt es als ausgearbeitete Kopiervorlage zum Ausdrucken: <a href="https://claude.ai/code/artifact/2b527cc0-bffb-4d77-b56d-35487ad71856">Kopiervorlagen Doppelstunde 4</a>. Die folgenden Beschreibungen bleiben als Übersicht stehen.</p></div>
+    <div class="matgrid">
+      <div class="mat">
+        <h5><span class="id">M15</span> Niemöller-Text für die Chorlesung</h5>
+        <p>Der bekannte Text „Als die Nazis die Kommunisten holten …“ in einer belegten Fassung, in vier Streifen geschnitten. <strong>Wichtig für die Einordnung:</strong> Es gibt keine autorisierte Urfassung; Niemöller hat den Gedanken in Reden nach 1945 mehrfach unterschiedlich formuliert. Diese Information gehört in die Auswertung — sie ist selbst ein Lehrstück über Quellenkritik.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M16a</span> Dietrich Bonhoeffer</h5>
+        <p>1906–1945. Theologe, Bekennende Kirche, illegales Predigerseminar Finkenwalde, Kontakt zur Widerstandsgruppe um Canaris, Mitwisser des Attentats vom 20. Juli. Verhaftet 1943, hingerichtet in Flossenbürg am 9. April 1945. Zentraler Text: das Bild vom Rad und den Speichen aus „Die Kirche vor der Judenfrage“ (1933).</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M16b</span> Martin Niemöller</h5>
+        <p>1892–1984. U-Boot-Kommandant, zunächst deutschnational, gründete 1933 den Pfarrernotbund gegen den Arierparagraphen, ab 1937 „persönlicher Gefangener des Führers“ in Sachsenhausen und Dachau. Nach 1945 Mitverfasser des Stuttgarter Schuldbekenntnisses, später Pazifist. Die Wandlung ist der Kern seiner Biografie.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M16c</span> Hans Meiser</h5>
+        <p>1881–1956. Landesbischof in Bayern. Verhinderte die Eingliederung der bayerischen Landeskirche in die Reichskirche, Hausarrest im Oktober 1934, Massenproteste in Franken. Zugleich antijudaistische Äußerungen und kein öffentlicher Protest gegen die Judenverfolgung. Die Gruppe hat den Auftrag, beides auf die Karte zu schreiben.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M16d</span> Elisabeth Schmitz</h5>
+        <p>1893–1977. Studienrätin und Theologin. Verfasste 1935 die Denkschrift „Zur Lage der deutschen Nichtarier“, ließ sie vervielfältigen und an führende Vertreter der Bekennenden Kirche verteilen — eine der schärfsten kirchlichen Anklagen gegen die Judenverfolgung. Nach der Reichspogromnacht gab sie ihren Schuldienst auf. Ihre Autorschaft wurde erst Anfang der 2000er Jahre sicher geklärt.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M16e</span> Paul Schneider</h5>
+        <p>1897–1939. Pfarrer im Hunsrück, verweigerte den Hitlergruß bei Gottesdiensten und widersprach öffentlich. Im KZ Buchenwald predigte er aus dem Fenster seiner Arrestzelle über den Appellplatz, bis er 1939 zu Tode gequält wurde — bekannt als „Prediger von Buchenwald“. Das Beispiel für Widerstand ohne jede politische Strategie, allein aus dem Amt heraus.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M17</span> Placemat-Vorlage</h5>
+        <p>A3 quer, vier Außenfelder für die Einzelarbeit, ein großes Mittelfeld. Überschrift des Mittelfelds: <em>„Unsere drei wichtigsten Bedingungen dafür, dass Menschen widersprechen.“</em></p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M18</span> Schlusszitat</h5>
+        <p>Bonhoeffers letzte überlieferte Worte, weiße Schrift auf schwarzem Grund, ohne weiteren Text auf der Folie. Nach dem Vorlesen die Projektion an lassen, bis der letzte Schüler den Raum verlassen hat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DS 5 ================= -->
+<section id="ds5">
+  <div class="wrap stack-lg">
+    <div class="ds-head">
+      <div class="ds-num"><small>Doppelstunde</small>5</div>
+      <div class="ds-title">
+        <h2>Kerzen statt Steine</h2>
+        <p class="ds-sub">Kirche in der DDR — und wie aus Friedensgebeten eine Revolution wurde.</p>
+      </div>
+      <div class="chips">
+        <span class="chip ke">KE 3</span>
+        <span class="chip on">Smartphone-Recherche</span>
+        <span class="chip">Beamer</span>
+        <span class="chip">Ausstellung</span>
+        <span class="chip">5 × A3-Bogen</span>
+      </div>
+    </div>
+
+    <div class="ziel">
+      <span class="lbl">Stundenziel</span>
+      <p>Die SuS können die Doppelrolle der Kirche in der DDR erläutern — geduldeter Freiraum und zugleich vom Staat bespitzelte Institution — und an konkreten Beispielen zeigen, wie sich Christen für Freiheit und Gerechtigkeit einsetzten. Sie vergleichen die Lage der Kirche in der DDR mit der im Nationalsozialismus.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Verlaufsplanung · 90 Minuten</caption>
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Inhalt</th><th>Sozialform / Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–10</td><td class="ph">Einstieg</td><td>Ein Aufnäher als Staatsfeind: „Schwerter zu Pflugscharen“</td><td class="sf">Plenum · M19</td></tr>
+          <tr><td class="min">10–20</td><td class="ph">Input</td><td>Kirche im Sozialismus: Nische, Druck, Jugendweihe</td><td class="sf">LV · M20</td></tr>
+          <tr><td class="min">20–50</td><td class="ph">Erarbeitung</td><td>Fünf Redaktionsteams bauen je eine Ausstellungstafel</td><td class="sf">GA · M21, Smartphone, A3</td></tr>
+          <tr><td class="min">50–66</td><td class="ph">Präsentation</td><td>Museumsrundgang mit Klebepunkten</td><td class="sf">Plenum</td></tr>
+          <tr><td class="min">66–82</td><td class="ph">Vergleich</td><td>NS und DDR: Was war gleich, was anders?</td><td class="sf">PA · M22</td></tr>
+          <tr><td class="min">82–90</td><td class="ph">Ausblick</td><td>Überleitung in die Gegenwart</td><td class="sf">Plenum</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>0–10</b>Einstieg<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Ein Stück Stoff, das gefährlich war</h4>
+        <p>Groß am Beamer: der Aufnäher „Schwerter zu Pflugscharen“ mit dem Bild des Schmieds. Daneben Micha 4,3. Keine weitere Erklärung.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 5.1</span><span class="m">Plenum · 7 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Beschreiben Sie, was auf dem Bild passiert. Was wird da gerade aus was gemacht?</li>
+              <li>Lesen Sie den Bibelvers. Passt er zum Bild?</li>
+              <li>Behauptung zum Widerlegen oder Bestätigen: <em>„Jugendliche, die diesen Aufnäher 1982 in der DDR auf der Jacke trugen, konnten von der Schule fliegen.“</em> Warum sollte ein Staat Angst vor einem Aufnäher haben, der zum Frieden aufruft?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Input</span>
+          <p>„Genau da liegt der Witz — und der ist bitter. Die Skulptur, auf der dieses Bild beruht, war ein Geschenk der Sowjetunion an die Vereinten Nationen. Der Staat konnte das Motiv also schlecht verbieten, ohne sich selbst zu widersprechen. Trotzdem hat er die Jugendlichen von der Schule geworfen. Damit sind wir mitten im Thema: In der DDR war die Kirche der einzige Ort, an dem man Sätze sagen durfte, die sonst nirgends erlaubt waren. Das machte sie kostbar — und für den Staat zu einem Problem, das er nicht einfach zerschlagen konnte. Zehn Minuten Hintergrund, dann übernehmen Sie.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>10–20</b>Input<br>Lehrervortrag</div>
+      <div class="phase-body">
+        <h4>Kirche im Sozialismus — der Preis der Nische</h4>
+        <p>Kurzvortrag entlang <strong>M20</strong>, fünf Punkte, mehr nicht: (1) Der Staat ist atheistisch, die Kirche geduldet. (2) Wer in der Kirche aktiv ist, kommt oft nicht zum Abitur. (3) Jugendweihe statt Konfirmation als gesellschaftlicher Zwang. (4) Die Formel „Kirche im Sozialismus“ von 1971 — Abgrenzung und Arrangement zugleich. (5) Die Staatssicherheit schleust Inoffizielle Mitarbeiter bis in kirchliche Leitungsämter ein.</p>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Erarbeitung</span>
+          <p>„Das war das Gerüst. Die Geschichten fehlen noch — und die suchen Sie jetzt selbst. Wir bauen eine Ausstellung. Fünf Teams, fünf Tafeln, eine Ausstellung, die am Ende dieser Doppelstunde an dieser Wand hängt und die für den Rest der Einheit hängen bleibt. Handys raus. Und eine Regel, die ich ernst meine: Zu jeder Behauptung auf Ihrer Tafel muss ich fragen dürfen ‚Wo steht das?‘ — und Sie müssen es mir zeigen können.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>20–50</b>Erarbeitung<br>Recherche</div>
+      <div class="phase-body">
+        <h4>Fünf Redaktionsteams</h4>
+        <p>Themen aus <strong>M21</strong>: (a) Friedensgebete in der Leipziger Nikolaikirche und der 9. Oktober 1989 · (b) Jugendweihe gegen Konfirmation · (c) Schwerter zu Pflugscharen und die kirchliche Friedensbewegung · (d) Umwelt-Bibliothek in der Berliner Zionsgemeinde · (e) Die Stasi in der Kirche: der Fall eines IM im Pfarramt.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 5.2</span><span class="m">Gruppenarbeit · 30 min · M21, Smartphone, A3</span></header>
+          <div class="inner">
+            <p>Gestaltet eine Ausstellungstafel auf A3. Sie muss genau diese sechs Bestandteile haben:</p>
+            <ol>
+              <li>Eine <strong>Überschrift</strong>, die neugierig macht und nichts verrät.</li>
+              <li>Eine <strong>Jahreszahl</strong> oder Zeitspanne, groß.</li>
+              <li><strong>Fünf Sätze</strong>, die erklären, was passiert ist. Nicht sechs.</li>
+              <li>Ein <strong>Originalzitat</strong> eines beteiligten Menschen, mit Namen.</li>
+              <li>Eine <strong>Bildidee</strong> — beschreibt in einem Satz, welches Foto hier hängen müsste, und notiert, wo ihr es gefunden habt.</li>
+              <li>Eine <strong>offene Frage</strong> am unteren Rand, auf die ihr selbst keine sichere Antwort habt.</li>
+            </ol>
+            <p><strong>Startquellen für alle:</strong> LeMO des Deutschen Historischen Museums (dhm.de/lemo) und die Bundesstiftung Aufarbeitung. Von dort weitersuchen. Wikipedia darf als Einstieg dienen, aber nicht als einzige Quelle auf der Tafel stehen.</p>
+          </div>
+        </div>
+        <div class="note">
+          <span class="lbl">Differenzierung</span>
+          <p>Team (e) ist das anspruchsvollste — hier geht es um Schuld innerhalb der Kirche, nicht um Heldentum. Es sollte an eine Gruppe gehen, die Ambivalenz aushält. Team (b) ist am zugänglichsten und eignet sich für eine Gruppe, die Erfolgserlebnisse braucht.</p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Präsentation</span>
+          <p>„Tafeln an die Wand, in der Reihenfolge der Jahreszahlen. Jeder bekommt drei Klebepunkte. Sie gehen jetzt schweigend durch die Ausstellung — schweigend, wie in einem echten Museum — und kleben Ihre Punkte auf die <em>offenen Fragen</em>, die Sie am meisten beschäftigen. Nicht auf die schönste Tafel. Auf die beste Frage.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>50–66</b>Präsentation<br>Rundgang</div>
+      <div class="phase-body">
+        <h4>Museumsrundgang</h4>
+        <p>Sieben Minuten stiller Rundgang mit Klebepunkten. Danach werden die zwei bis drei meistgeklebten Fragen im Plenum aufgegriffen — die jeweilige Gruppe erklärt zuerst, warum sie die Frage offen lassen musste, dann diskutiert die Klasse. Das ist die inhaltlich wertvollste Phase der Stunde; sie darf überziehen.</p>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Vergleich</span>
+          <p>„Wir haben jetzt zwei Diktaturen gesehen, und in beiden dieselbe Kirche — dieselbe Institution, dieselben Bibeltexte. Aber sie hat sich sehr unterschiedlich verhalten. 1933 hat die Mehrheit gejubelt. 1989 standen die Leute mit Kerzen in der Nikolaikirche, und keiner hat geschossen. Ich möchte, dass Sie den Unterschied nicht bloß spüren, sondern benennen können.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>66–82</b>Vergleich<br>Partnerarbeit</div>
+      <div class="phase-body">
+        <h4>Zwei Diktaturen, eine Kirche</h4>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 5.3</span><span class="m">Partnerarbeit · 12 min · M22</span></header>
+          <div class="inner">
+            <p>Füllt die Vergleichstabelle aus. Nutzt dafür ausdrücklich eure Aufzeichnungen aus DS 2 bis 4.</p>
+            <ol>
+              <li>Was wollte der Staat jeweils von der Kirche?</li>
+              <li>Wie groß war der Freiraum, den die Kirche behielt?</li>
+              <li>Woran orientierten sich die Christen, die widersprachen?</li>
+              <li>Welchen Preis zahlte, wer widersprach?</li>
+              <li><strong>Die entscheidende Zeile:</strong> Was hatte die Kirche 1989, was ihr 1933 fehlte?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note now">
+          <span class="lbl">Zielrichtung der letzten Zeile</span>
+          <p>Erwartungshorizont, aber nicht vorsagen: 1989 gab es die Erfahrung von 1933 — die Kirche wusste, wie es ausgeht, wenn man sich vereinnahmen lässt. Barmen war da schon ein Bekenntnistext, auf den man sich berufen konnte. Genau diese Lernfähigkeit ist der Übergang zu DS 6.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>82–90</b>Ausblick</div>
+      <div class="phase-body">
+        <h4>Der Sprung in die Gegenwart</h4>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → nächste Doppelstunde (Stundenschluss)</span>
+          <p>„Wir sind am Ende der Geschichte angekommen — jedenfalls am Ende des Teils, der in Geschichtsbüchern steht. Nächste Woche steht kein Jahr mehr an der Tafel, sondern dieses. Sie bringen Ihre Handys mit. Wir schauen uns an, wie die Kirchen sich heute politisch äußern, wir werden über eine Partei sprechen, über die in Ihren Familien vermutlich unterschiedlich gedacht wird, und Sie werden am Ende etwas tun, das seit 1934 kaum jemand mehr gemacht hat: Sie schreiben eigene Bekenntnissätze. Und die hängen wir an die Tür.“</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="ds5-mat">Materialien zu DS 5</h3>
+    <div class="note now"><span class="lbl">Druckfertig vorhanden</span><p>Die Materialien dieser Doppelstunde gibt es als ausgearbeitete Kopiervorlage zum Ausdrucken: <a href="https://claude.ai/code/artifact/a72fdf2c-7069-4078-a7be-a0b178acb9df">Kopiervorlagen Doppelstunde 5</a>. Die folgenden Beschreibungen bleiben als Übersicht stehen.</p></div>
+    <div class="matgrid">
+      <div class="mat">
+        <h5><span class="id">M19</span> Aufnäher und Bibelvers</h5>
+        <p>Abbildung des Aufnähers „Schwerter zu Pflugscharen“ (Motiv nach der Bronzeplastik von Jewgeni Wutschetitsch, Geschenk der UdSSR an die UNO, 1959).</p>
+        <p class="quelle">„Sie werden ihre Schwerter zu Pflugscharen machen und ihre Spieße zu Sicheln. Es wird kein Volk wider das andere das Schwert erheben, und sie werden hinfort nicht mehr lernen, Krieg zu führen.“<cite>Micha 4,3 (Lutherbibel 2017)</cite></p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M20</span> Input-Folie „Kirche im Sozialismus“</h5>
+        <p>Fünf Punkte auf einer Folie, dazu zwei Zahlen zur Veranschaulichung: der Anteil der Jugendlichen mit Jugendweihe in den 1980er Jahren und der Rückgang der Kirchenmitgliedschaft in der DDR. Zahlen vor dem Unterricht aus einer belegbaren Quelle prüfen und die Quelle auf der Folie nennen.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M21</span> Fünf Themenkarten für die Redaktionsteams</h5>
+        <ul>
+          <li><strong>(a) Nikolaikirche Leipzig:</strong> Friedensgebete seit 1982, montags; 9. Oktober 1989, rund 70.000 Menschen, Kerzen in den Händen — „Wir hatten alles geplant, nur nicht Kerzen und Gebete.“</li>
+          <li><strong>(b) Jugendweihe:</strong> staatliches Übergangsritual, faktischer Zwang, Konsequenzen für Konfirmanden bei Studienplatz und Lehrstelle.</li>
+          <li><strong>(c) Schwerter zu Pflugscharen:</strong> Friedensdekade ab 1980, kirchlicher Freiraum, Verbot des Aufnähers, Konflikte an Schulen.</li>
+          <li><strong>(d) Umwelt-Bibliothek Berlin:</strong> unabhängige Umweltgruppe unter dem Dach der Zionsgemeinde, Zeitschrift „Umweltblätter“, Razzia der Stasi 1987 und Proteste danach.</li>
+          <li><strong>(e) Stasi in der Kirche:</strong> Inoffizielle Mitarbeiter in kirchlichen Ämtern; die Aufarbeitung nach 1990. Leitfrage für dieses Team: Was macht es mit einer Gemeinde, wenn sich herausstellt, dass der eigene Pfarrer berichtet hat?</li>
+        </ul>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M22</span> Vergleichstabelle</h5>
+        <p>A4, zwei Spalten („Nationalsozialismus 1933–1945“ / „DDR 1949–1989“), fünf Zeilen entsprechend Arbeitsauftrag 5.3. Die letzte Zeile ist doppelt so hoch wie die übrigen — das signalisiert optisch, wo der Schwerpunkt liegt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DS 6 ================= -->
+<section id="ds6">
+  <div class="wrap stack-lg">
+    <div class="ds-head">
+      <div class="ds-num"><small>Doppelstunde</small>6</div>
+      <div class="ds-title">
+        <h2>Barmen 2026?</h2>
+        <p class="ds-sub">Die Kirchen und das Erstarken der AfD — und die Frage, wo für Christen heute die Grenze verläuft.</p>
+      </div>
+      <div class="chips">
+        <span class="chip ke">KE 1</span>
+        <span class="chip ke">KE 4</span>
+        <span class="chip on">Smartphone-Recherche</span>
+        <span class="chip">Beamer</span>
+        <span class="chip">Thesenanschlag</span>
+      </div>
+    </div>
+
+    <div class="ziel">
+      <span class="lbl">Stundenziel</span>
+      <p>Die SuS können die Position der evangelischen Kirche zum völkischen Nationalismus mit Belegen wiedergeben, sie gegen den Einwand der politischen Neutralität abwägen und mithilfe der Barmer Sprachform eine eigene, biblisch begründete These zu einer heutigen gesellschaftlichen Frage formulieren. Sie benennen mindestens eine konkrete eigene Mitwirkungsmöglichkeit vor Ort.</p>
+    </div>
+
+    <div class="note warn" id="ds6-hinweis">
+      <span class="lbl">Vor dieser Doppelstunde unbedingt lesen</span>
+      <p><strong>Beutelsbacher Konsens.</strong> Diese Stunde berührt eine Partei, die im Bundestag sitzt und die manche Eltern dieser Klasse wählen. Drei Regeln machen sie unangreifbar:</p>
+      <ul>
+        <li><strong>Überwältigungsverbot:</strong> Den SuS wird keine Wahlempfehlung gegeben. Die Lehrkraft darf ihre eigene Position auf Nachfrage nennen, aber erst am Ende und ausdrücklich als persönliche Meinung gekennzeichnet.</li>
+        <li><strong>Kontroversitätsgebot:</strong> Was in Wissenschaft und Gesellschaft strittig ist, muss auch im Unterricht strittig erscheinen. Deshalb enthält M24 ausdrücklich auch die Position von Christen, die die kirchlichen Erklärungen für einen Übergriff halten — sie wird fair und in ihren besten Argumenten dargestellt.</li>
+        <li><strong>Schülerorientierung:</strong> Die SuS sollen ihre eigene Interessenlage analysieren können — deshalb endet die Stunde bei ihren eigenen Mitwirkungsmöglichkeiten, nicht bei einem fertigen Urteil.</li>
+      </ul>
+      <p>Klare Unterscheidung, die auch gegenüber Eltern trägt: Der Unterricht behandelt <strong>Positionen von Kirchen zu politischen Aussagen</strong> — das ist Gegenstand des Fachlehrplans (KE 1 und KE 4). Er bewertet keine Parteien und keine Wahlentscheidungen.</p>
+      <p><strong>Aktualität prüfen:</strong> Die Einstufung der AfD durch das Bundesamt für Verfassungsschutz und die dazu laufenden Gerichtsverfahren verändern sich. Der Sachstand in M23 muss vor jedem Einsatz neu geprüft werden; er ist als Datumszeile angelegt, damit das auffällt.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Verlaufsplanung · 90 Minuten</caption>
+        <thead><tr><th>Zeit</th><th>Phase</th><th>Inhalt</th><th>Sozialform / Material</th></tr></thead>
+        <tbody>
+          <tr><td class="min">0–10</td><td class="ph">Einstieg</td><td>Drei Schlagzeilen und eine Provokation an der Wand</td><td class="sf">Plenum · M23</td></tr>
+          <tr><td class="min">10–32</td><td class="ph">Erarbeitung I</td><td>Vier Stimmen im Textpuzzle: Wer sagt was, mit welchem Recht?</td><td class="sf">GA · M24</td></tr>
+          <tr><td class="min">32–46</td><td class="ph">Abwägung</td><td>Streitgespräch: Darf sich Kirche so einmischen?</td><td class="sf">Plenum</td></tr>
+          <tr><td class="min">46–68</td><td class="ph">Erarbeitung II</td><td>Barmen-Werkstatt: eigene Thesen schreiben</td><td class="sf">GA · M25</td></tr>
+          <tr><td class="min">68–78</td><td class="ph">Höhepunkt</td><td>Thesenanschlag an der Klassenzimmertür</td><td class="sf">Plenum</td></tr>
+          <tr><td class="min">78–88</td><td class="ph">Transfer</td><td>Vom Text zur Tat: Recherche zum Engagement vor Ort</td><td class="sf">PA · M26, Smartphone</td></tr>
+          <tr><td class="min">88–90</td><td class="ph">Abschluss</td><td>Rückgriff auf die Placemat-Ergebnisse aus DS 4</td><td class="sf">Plenum</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>0–10</b>Einstieg<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Drei Schlagzeilen, eine These an der Wand</h4>
+        <p>Vor Stundenbeginn hängt ein Plakat an der Wand: <strong>„Die Kirche soll sich aus der Politik raushalten.“</strong> Daneben eine Klebepunkt-Skala von <em>stimmt</em> bis <em>stimmt nicht</em>. Die SuS kleben beim Hereinkommen, bevor irgendetwas besprochen wird. Die Verteilung bleibt unkommentiert stehen — sie wird am Stundenende wiederholt.</p>
+        <p>Dann die drei Schlagzeilen aus <strong>M23</strong> am Beamer.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 6.1</span><span class="m">Plenum · 5 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Was fällt Ihnen auf, wenn Sie diese drei Schlagzeilen und das Plakat nebeneinander sehen?</li>
+              <li>Eine Verständnisfrage, die geklärt werden muss, bevor wir weitermachen: Was heißt eigentlich „unvereinbar“?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Erarbeitung I</span>
+          <p>„Sie merken, dass ich vorsichtig formuliere, und ich sage Ihnen auch warum. Wir sprechen heute über eine Partei, die im Bundestag sitzt und die manche Menschen in Ihren Familien wählen. Ich werde Ihnen nicht sagen, was Sie wählen sollen — das steht mir nicht zu und wäre auch verboten. Was wir tun, ist etwas anderes, und dafür sind wir im Religionsunterricht genau richtig: Wir schauen uns an, was die Kirchen sagen, warum sie es sagen, und ob sie es sagen dürfen. Und dann prüfen Sie das mit dem Werkzeug, das Sie sich in den letzten Wochen selbst gebaut haben.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>10–32</b>Erarbeitung I<br>Gruppen</div>
+      <div class="phase-body">
+        <h4>Vier Stimmen</h4>
+        <p>Vier Gruppen, vier Texte aus <strong>M24</strong>: die kirchliche Position · die Position von Christen, die diesen Erklärungen widersprechen · die verfassungsrechtliche Einordnung · die religionssoziologische Beobachtung.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 6.2</span><span class="m">Gruppenarbeit · 20 min · M24, Smartphone</span></header>
+          <div class="inner">
+            <ol>
+              <li>Fasst die Position eures Textes in <strong>einem</strong> Satz zusammen, der mit „Wir sagen: …“ beginnt.</li>
+              <li>Sucht die <strong>stärkste Stelle</strong> eures Textes heraus — die eine Formulierung, mit der ihr jemanden überzeugen könntet, der anderer Meinung ist.</li>
+              <li>Sucht die <strong>schwächste Stelle</strong>. Wo ist euer eigener Text angreifbar? Diese Aufgabe ist Pflicht, nicht Kür.</li>
+              <li>Prüft eine Tatsachenbehauptung eures Textes mit dem Handy nach und notiert, wo ihr sie bestätigt gefunden habt. Nutzt dafür die Originalseite der jeweiligen Institution, nicht eine Zusammenfassung.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Abwägung</span>
+          <p>„Aufgabe 3 war die wichtigste, und ich möchte, dass Sie merken, warum: Wer nur die starken Stellen der eigenen Seite kennt, kann kein Gespräch führen, sondern nur einen Schlagabtausch. Wir machen es jetzt anders herum als sonst. Jede Gruppe stellt <em>nicht</em> ihre eigene Position vor, sondern nennt zuerst die schwächste Stelle ihres eigenen Textes. Danach dürfen die anderen antworten.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>32–46</b>Abwägung<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Darf sich Kirche so einmischen?</h4>
+        <p>Reihenfolge: schwächste Stelle — Erwiderungen — dann erst die stärkste Stelle. Die Lehrkraft moderiert und hält an der Tafel zwei Spalten fest: <strong>Argumente für die Zurückhaltung</strong> und <strong>Argumente für die Einmischung</strong>. Beide Spalten müssen am Ende ähnlich voll sein; ist eine leer, wird nachgefragt, nicht ergänzt.</p>
+        <div class="note">
+          <span class="lbl">Der Punkt, an dem die ganze Einheit zusammenläuft</span>
+          <p>Wenn das Argument „Die Kirche soll sich raushalten“ fällt, ist der Moment für die Rückfrage da: <em>„Genau das war 1933 die Mehrheitsmeinung in dieser Kirche. Röm 13, Sie erinnern sich. Und 1934 hat eine Minderheit gesagt: Es gibt eine Grenze. Wo verläuft die Ihrer Meinung nach?“</em> — Diese Frage darf offen bleiben; sie wird in der Barmen-Werkstatt bearbeitet, nicht im Gespräch entschieden.</p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Barmen-Werkstatt</span>
+          <p>„Sie haben in der dritten Doppelstunde einen Satzanfang übersetzt, den ich Ihnen jetzt zurückgebe. Er lautet: <em>‚Wir verwerfen die falsche Lehre, als ob …‘</em> 1934 haben acht Sätze in dieser Form eine Kirche verändert. Sie sind jetzt dran. Nicht als Übung, sondern im Ernst: Was müsste heute in dieser Form gesagt werden? Und weil das eine hohe Messlatte ist, gibt es eine Bedingung — jede Ihrer Thesen muss sich an einer Bibelstelle festmachen lassen. Sonst ist es Meinung. Meinungen haben wir schon genug an der Tafel.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>46–68</b>Erarbeitung II<br>Werkstatt</div>
+      <div class="phase-body">
+        <h4>Die Barmen-Werkstatt</h4>
+        <p>Sechs Gruppen, sechs Themenfelder aus <strong>M25</strong>: Umgang mit Geflüchteten · Umgang mit Minderheiten · Umgang mit der Wahrheit in der Öffentlichkeit · Schöpfung und Klima · Nation und Volkszugehörigkeit · Freiheit der Kirche gegenüber jeder Regierung. Jede Gruppe hat einen Bibelstellen-Vorrat auf ihrer Karte.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 6.3 — das Kernstück der Einheit</span><span class="m">Gruppenarbeit · 22 min · M25</span></header>
+          <div class="inner">
+            <ol>
+              <li>Lest die Bibelstellen auf eurer Karte und wählt <strong>eine</strong> aus, die euch am meisten zu sagen hat.</li>
+              <li>Formuliert daraus den <strong>ersten Teil</strong> eurer These — eine positive Aussage darüber, woran ihr euch bindet. Beginnt mit: „Weil …, gilt für uns: …“</li>
+              <li>Formuliert den <strong>zweiten Teil</strong> — die Verwerfung: „Wir verwerfen die falsche Lehre, als ob …“ Hier steht, was mit dem ersten Teil nicht zusammengeht.</li>
+              <li><strong>Härteprüfung — beide Fragen müssen mit Ja beantwortbar sein:</strong><br>
+                Steht in eurer These eine <em>Aussage</em>, oder nur ein Vorwurf gegen eine Gruppe? Eine Verwerfung richtet sich gegen einen Satz, nie gegen Menschen.<br>
+                Könnte eure These auch dann noch gelten, wenn morgen eine ganz andere Partei regiert? Wenn nein: überarbeiten. Barmen war deshalb stark, weil es nicht an einer Person hing.</li>
+              <li>Schreibt die fertige These groß und leserlich auf das Thesenblatt. Unterschreibt mit euren Vornamen — freiwillig, wer nicht möchte, unterschreibt nicht.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note now">
+          <span class="lbl">Warum die Härteprüfung nicht weggelassen werden darf</span>
+          <p>Sie ist der Unterschied zwischen einer Bekenntnisthese und einem Wahlkampfplakat — und zugleich die didaktische Absicherung der Stunde. Eine These, die eine Partei beim Namen nennt, erfüllt Kriterium 2 nicht und wird von der Gruppe selbst überarbeitet. Damit erledigt sich die Neutralitätsfrage nicht durch ein Verbot der Lehrkraft, sondern durch eine Einsicht der SuS.</p>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Thesenanschlag</span>
+          <p>„Fertig. Und jetzt schauen Sie bitte einmal zur Tür. Die Fläche daneben ist seit sechs Wochen leer, und einige von Ihnen haben mich gefragt, warum. Sie war für heute reserviert. Ein Theologieprofessor hat vor gut fünfhundert Jahren seine Thesen an eine Kirchentür geschlagen, weil er wollte, dass darüber gestritten wird — nicht, weil er sicher war, recht zu haben. In diesem Geist hängen wir jetzt auf.“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>68–78</b>Höhepunkt<br>Plenum</div>
+      <div class="phase-body">
+        <h4>Thesenanschlag</h4>
+        <p>Jede Gruppe geht zur Tür, liest ihre These <strong>laut</strong> vor und hängt sie auf. Kein Kommentar, keine Bewertung, kein Applaus — die Wirkung entsteht durch das Nacheinander. Erst wenn alle sechs hängen, tritt die Klasse gemeinsam zurück und liest still.</p>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 6.4</span><span class="m">Plenum · 4 min</span></header>
+          <div class="inner">
+            <ol>
+              <li>Welche der sechs Thesen wäre 1934 am gefährlichsten gewesen?</li>
+              <li>Welche ist heute am unbequemsten — und für wen?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="ueberleitung">
+          <span class="lbl">Überleitung → Transfer</span>
+          <p>„Eine Sache fehlt noch, und sie ist die entscheidende. Es ist wohlfeil, Thesen an eine Tür zu hängen, wenn dahinter nichts folgt. Die Bekennende Kirche war genau deshalb schwach: Sie hat 1934 einen großartigen Text geschrieben — und dann zur Verfolgung ihrer jüdischen Nachbarn überwiegend geschwiegen. Ein Bekenntnis, aus dem kein Handeln folgt, ist ein Aufsatz. Also: Was folgt daraus für Sie, hier, in dieser Stadt?“</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>78–88</b>Transfer<br>Partnerarbeit</div>
+      <div class="phase-body">
+        <h4>Vom Text zur Tat — Engagement vor Ort</h4>
+        <div class="auftrag">
+          <header><span class="t">Arbeitsauftrag 6.5</span><span class="m">Partnerarbeit · 10 min · M26, Smartphone</span></header>
+          <div class="inner">
+            <ol>
+              <li>Sucht auf der Internetseite einer Kirchengemeinde oder eines Dekanats <strong>hier vor Ort</strong> ein Beispiel für politisches oder soziales Engagement — Asylkreis, Tafel, Umweltgruppe, Energieprojekt auf dem Kirchendach, Seniorenbesuchsdienst, Klimaentscheid der Landeskirche.</li>
+              <li>Notiert: Was wird getan? Wer macht mit? Was würde dort fehlen, wenn es die Kirche nicht gäbe?</li>
+              <li><strong>Die persönliche Frage:</strong> Nennt eine Möglichkeit, wie eine Fünfzehnjährige oder ein Fünfzehnjähriger dort mitmachen könnte — ohne fromm sein zu müssen. Wenn ihr keine findet, notiert das als Kritik. Auch das ist ein Ergebnis.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note">
+          <span class="lbl">Sicherung an der Tafel</span>
+          <p>Zwei bis drei Beispiele werden gesammelt und neben die Thesen an die Tür gehängt — mit der Überschrift, die die Lehrkraft dazuschreibt: <em>„Und das machen wir daraus.“</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-meta"><b>88–90</b>Abschluss</div>
+      <div class="phase-body">
+        <h4>Der Rückgriff</h4>
+        <div class="ueberleitung">
+          <span class="lbl">Schluss der Einheit</span>
+          <p><em>(Die Placemat-Mittelfelder aus DS 4 werden wieder aufgehängt, ohne Vorankündigung.)</em></p>
+          <p>„Das haben Sie vor drei Wochen aufgeschrieben. Es war Ihre Antwort auf die Frage, was Menschen 1934 geholfen hat zu widersprechen. Lesen Sie es noch einmal — und lesen Sie es diesmal nicht als Geschichte, sondern als Gebrauchsanweisung. Da steht: früh anfangen. Nicht allein sein. Vorher geübt haben. Genau das haben Sie heute getan.“</p>
+          <p>„Und zum Schluss: Kleben Sie bitte noch einmal auf das Plakat von heute Morgen. Dieselbe Frage, zweiter Klebepunkt, andere Farbe. Ich sage Ihnen nicht, wo Sie kleben sollen. Ich möchte nur, dass Sie sehen, ob dieser Vormittag etwas verschoben hat.“</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="ds6-mat">Materialien zu DS 6</h3>
+    <div class="note now"><span class="lbl">Druckfertig vorhanden</span><p>Die Materialien dieser Doppelstunde gibt es als ausgearbeitete Kopiervorlage zum Ausdrucken: <a href="https://claude.ai/code/artifact/e4fcc78b-d22c-44cf-9e00-2bbd01861fd1">Kopiervorlagen Doppelstunde 6</a>. Die folgenden Beschreibungen bleiben als Übersicht stehen.</p></div>
+    <div class="matgrid">
+      <div class="mat">
+        <h5><span class="id">M23</span> Drei Schlagzeilen · Sachstand mit Datumszeile</h5>
+        <ul>
+          <li><strong>Herbst 2023:</strong> Die Synode der EKD stellt fest, die menschenverachtenden Haltungen und Äußerungen insbesondere der rechtsextremen Kräfte innerhalb der AfD seien mit den Grundsätzen des christlichen Glaubens in keiner Weise vereinbar.</li>
+          <li><strong>22. Februar 2024:</strong> Die Deutsche Bischofskonferenz erklärt völkischen Nationalismus und Christentum für unvereinbar; die EKD begrüßt diese Erklärung ausdrücklich.</li>
+          <li><strong>Mai 2025:</strong> Das Bundesamt für Verfassungsschutz stuft die AfD als gesichert rechtsextremistisch ein. <em>Gegen die Einstufung läuft ein Gerichtsverfahren.</em></li>
+        </ul>
+        <p><strong>Datumszeile für die Folie:</strong> „Sachstand geprüft am ____________“. Vor jedem Einsatz aktualisieren — die dritte Zeile ist rechtlich in Bewegung, und die SuS sollen genau daran lernen, wie man mit laufenden Verfahren korrekt umgeht.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M24</span> Vier Stimmen · Textpuzzle</h5>
+        <ul>
+          <li><strong>Stimme 1 — die kirchliche Position.</strong> Auszug aus der EKD-Erklärung „Völkischer Nationalismus und Christentum sind unvereinbar“ und dem Synodenbeschluss. Kernargument: Die Gottesebenbildlichkeit jedes Menschen (Gen 1,27) lässt sich nicht mit einer Abstufung von Menschen nach Herkunft vereinbaren.</li>
+          <li><strong>Stimme 2 — der christliche Widerspruch.</strong> Position von Christen, die die kirchlichen Erklärungen ablehnen. Kernargumente in ihrer stärksten Form: Die Kirche überschreitet ihr geistliches Mandat; sie schließt Gemeindeglieder aus, statt mit ihnen zu reden; wer Millionen Wähler pauschal ins Unrecht setzt, treibt sie erst recht weg; Seelsorge gilt allen. <em>Diese Karte ist für das Kontroversitätsgebot unverzichtbar und muss in ihrer besten, nicht in ihrer schwächsten Fassung vorliegen.</em></li>
+          <li><strong>Stimme 3 — die rechtliche Einordnung.</strong> Kirchen sind keine staatlichen Stellen und unterliegen nicht dem Neutralitätsgebot, das für Behörden gilt. Sie dürfen sich aus Art. 4 GG heraus zu politischen Fragen äußern. Zugleich: Ein staatlicher Lehrer im Klassenzimmer <em>ist</em> an das Überwältigungsverbot gebunden. Der Unterschied wird ausdrücklich thematisiert.</li>
+          <li><strong>Stimme 4 — die Beobachtung.</strong> Kurzer Sachtext dazu, dass Kirchenmitglieder in Umfragen keineswegs einheitlich abstimmen und dass die Kirchenleitungen mit ihren Erklärungen also auch innerhalb der eigenen Reihen streiten. Belegbare Zahl mit Quelle einsetzen und Erhebungsjahr nennen.</li>
+        </ul>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M25</span> Sechs Themenkarten der Barmen-Werkstatt</h5>
+        <p>Jede Karte enthält das Themenfeld, den Satzbaukasten und drei bis vier Bibelstellen im Volltext:</p>
+        <ul>
+          <li><strong>Geflüchtete:</strong> Lev 19,33–34 · Mt 25,35 · Hebr 13,2</li>
+          <li><strong>Minderheiten:</strong> Gen 1,27 · Gal 3,28 · Lk 10,25–37</li>
+          <li><strong>Wahrheit in der Öffentlichkeit:</strong> Ex 20,16 · Eph 4,25 · Joh 8,32</li>
+          <li><strong>Schöpfung und Klima:</strong> Gen 2,15 · Ps 24,1 · Röm 8,19–22</li>
+          <li><strong>Nation und Volk:</strong> Gal 3,28 · Apg 17,26 · Offb 7,9</li>
+          <li><strong>Freiheit der Kirche:</strong> Apg 5,29 · Barmen These 1 und 5 · Mt 22,21</li>
+        </ul>
+        <p>Dazu die Härteprüfung als abgedruckte Checkliste — sie muss auf der Karte stehen, nicht nur gesagt werden.</p>
+      </div>
+      <div class="mat">
+        <h5><span class="id">M26</span> Rechercheblatt „Kirche vor Ort“</h5>
+        <p>Ein Blatt mit vorbereiteten Einstiegen: Internetseite der eigenen Kirchengemeinde und des Dekanats, Diakonie im Landkreis, Evangelische Jugend in Bayern (ejb), Umwelt- und Klimaarbeit der ELKB. Vier Felder zum Ausfüllen entsprechend Arbeitsauftrag 6.5.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ANHANG ================= -->
+<section id="anhang">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="sec-label">Anhang</div>
+      <h2>Leistungserhebung und Kopiervorlagen</h2>
+    </div>
+
+    <div class="note" id="leistungsnachweis">
+      <span class="lbl">Vorschlag für einen kleinen Leistungsnachweis (20 min, nach DS 6)</span>
+      <ul>
+        <li><strong>Aufgabe 1 (Reproduktion, 4 BE):</strong> Nennen Sie zwei Bereiche, in denen Kirche und Staat in Deutschland zusammenarbeiten, und geben Sie jeweils die rechtliche Grundlage an.</li>
+        <li><strong>Aufgabe 2 (Reorganisation, 6 BE):</strong> Erläutern Sie, warum die Barmer Theologische Erklärung von 1934 ein Widerspruch gegen den Nationalsozialismus war, obwohl in ihr weder Hitler noch die NSDAP vorkommen.</li>
+        <li><strong>Aufgabe 3 (Transfer, 5 BE):</strong> Beschreiben Sie an einem Beispiel, wie Christen in der DDR sich für Freiheit und Gerechtigkeit einsetzten, und erklären Sie, warum die Kirche dafür überhaupt einen Raum bieten konnte.</li>
+        <li><strong>Aufgabe 4 (Urteil, 5 BE):</strong> „Die Kirche soll sich aus der Politik raushalten.“ Nehmen Sie begründet Stellung. Beziehen Sie ein historisches und ein gegenwärtiges Beispiel ein.</li>
+      </ul>
+      <p>Bewertungshinweis zu Aufgabe 4: Bewertet wird die Qualität der Begründung und die Verwendung der Beispiele — nicht die vertretene Position.</p>
+    </div>
+
+    <div class="note" id="checkliste">
+      <span class="lbl">Checkliste Kopien und Vorbereitung</span>
+      <ul>
+        <li><strong>DS 1:</strong> M1 Folien · M2 Folie · M3a–d je Gruppensatz · M4 Klassensatz · M5 Folie · 4 A3-Bögen · Eckenschilder</li>
+        <li><strong>DS 2:</strong> M6 Folie · M7 Folie · M8a–e je Gruppensatz · M9 Folie und Klassensatz · Papierstreifen · Wäscheleine</li>
+        <li><strong>DS 3:</strong> M10 Folie · M11 fünf Rollenkarten je Teamsatz · M12 Moderations- und Beobachtungsbogen · M13 Klassensatz · M14 Folie</li>
+        <li><strong>DS 4:</strong> M15 in vier Streifen · M16a–e je Gruppensatz · 5 A4-Personenkarten blanko · M17 fünf A3-Placemats · M18 Folie · Wäscheleine, Klammern, zwei Schilder</li>
+        <li><strong>DS 5:</strong> M19 Folie · M20 Folie · M21 fünf Themenkarten · M22 Klassensatz · 5 A3-Bögen · Klebepunkte</li>
+        <li><strong>DS 6:</strong> Plakat mit der Provokationsthese und zwei Farben Klebepunkte · M23 Folie <em>mit aktualisiertem Datum</em> · M24 vier Textkarten je Gruppensatz · M25 sechs Themenkarten · sechs Thesenblätter A3 · M26 Klassensatz · Klebeband für die Tür</li>
+      </ul>
+    </div>
+
+    <div class="note now" id="kurzfassung">
+      <span class="lbl">Wenn nur vier Doppelstunden zur Verfügung stehen</span>
+      <p>DS 3 und DS 4 lassen sich zu einer Doppelstunde verdichten (Talkrunde entfällt, Barmen wird über die Übersetzungsaufgabe eingeführt, die Wäscheleine bleibt), und DS 5 kann auf den Museumsrundgang mit vorbereiteten Tafeln reduziert werden. <strong>Nicht kürzen lässt sich DS 6</strong> — sie ist der Zielpunkt, auf den alles zuläuft. Eine Einheit, die mit der DDR endet, hat den Lernbereich formal erfüllt und didaktisch verfehlt.</p>
+    </div>
+
+    <footer>
+      <h3 id="quellen">Grundlage und Quellen</h3>
+      <ul>
+        <li>Fachlehrplan: <a href="https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/9/evangelische-religionslehre">LehrplanPLUS Bayern, Gymnasium 9, Evangelische Religionslehre, Lernbereich 4</a> (abgerufen am 4. September 2026)</li>
+        <li>Barmer Theologische Erklärung im Volltext: <a href="https://www.reformiert-info.de/Barmer_Theologische_Erklaerung_(1934)-35496-0-37-5.html">reformiert-info.de</a> · bayerische Perspektive im <a href="https://www.bayern-evangelisch.de/epaper/barmen/epaper/ausgabe.pdf">Themenheft der ELKB</a></li>
+        <li>Zum Ansbacher Ratschlag und zu Hans Meiser: <a href="https://www.sonntagsblatt.de/artikel/barmer-theologische-erklaerung/kirche/bischof-meisers-kampf-um-die-intakte-kirche">Sonntagsblatt, Chronologie des Kirchenkampfs in Bayern</a></li>
+        <li>Kirchliche Positionen zum völkischen Nationalismus: <a href="https://www.ekd.de/voelkischer-nationalismus-und-christentum-sind-unvereinbar-82915.htm">EKD</a></li>
+        <li>Für die Recherche in DS 5: <a href="https://www.dhm.de/lemo">LeMO des Deutschen Historischen Museums</a> · <a href="https://www.bundesstiftung-aufarbeitung.de">Bundesstiftung Aufarbeitung</a></li>
+      </ul>
+      <p style="margin-top:22px">Alle Materialien sind als Bauanleitung beschrieben, nicht als fertige Kopiervorlage — Quellentexte und Bilder müssen aus den genannten Quellen eingesetzt werden, damit die Rechtslage und die Belegbarkeit stimmen. Fragen Sie zurück, wenn Sie zu einer einzelnen Doppelstunde die Materialien als druckfertige Blätter brauchen: das ist der nächste Schritt.</p>
+    </footer>
+  </div>
+</section>

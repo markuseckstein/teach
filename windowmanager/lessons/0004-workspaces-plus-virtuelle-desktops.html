@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Workspaces trifft virtuelle Desktops</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lektion 4 &middot; Windows Multi-Monitor Desktop Management</p>
+<h1>Workspaces + virtuelle Desktops kombinieren</h1>
+<p class="lede">Der offene Punkt aus Lektion 3: Ein einziger PowerToys-Workspace kann nicht drei Desktops gleichzeitig befüllen. Die Lösung ist kein Kompromiss, sondern <strong>mehrere kleine Workspaces</strong> &mdash; eine pro Kontext.</p>
+
+<nav class="toc">
+  <span class="toc-label">Inhalt</span>
+  <ol>
+    <li><a href="#stand">Der Stand der Dinge: nur der aktuelle Desktop</a></li>
+    <li><a href="#workaround">Der Workaround: vier kleine statt einem großen Workspace</a></li>
+    <li><a href="#routine">Deine Morgen-Routine, Schritt für Schritt</a></li>
+    <li><a href="#taskleiste">Für 1-Klick-Ketten vorbereiten</a></li>
+    <li><a href="#ueben">Üben</a></li>
+  </ol>
+</nav>
+
+<h2 id="stand">Der Stand der Dinge: nur der aktuelle Desktop</h2>
+<p>PowerToys Workspaces positioniert Apps immer auf dem virtuellen Desktop, der beim Start gerade aktiv ist &mdash; eine native Zuordnung "diese App auf Desktop Frontend, jene auf Desktop Backend" gibt es (Stand dieser Recherche) nicht. Das ist keine Fehlbedienung deinerseits, sondern eine dokumentierte Lücke: Auf dem offiziellen PowerToys-GitHub gibt es dazu mehrere offene Feature-Requests, u. a. <a href="https://github.com/microsoft/PowerToys/issues/38221">#38221</a> und <a href="https://github.com/microsoft/PowerToys/issues/35407">#35407</a>.</p>
+<div class="callout">
+  <span class="label">Einordnung</span>
+  PowerToys wird aktiv weiterentwickelt &mdash; es lohnt sich, das bei einem größeren PowerToys-Update erneut zu prüfen. Für jetzt gehen wir vom aktuellen (fehlenden) Stand aus.
+</div>
+
+<h2 id="workaround">Der Workaround: vier kleine statt einem großen Workspace</h2>
+<p>Statt einem Mammut-Workspace baust du vier schlanke, je einem Kontext aus <a href="0003-virtuelle-desktops.html">Lektion 3</a> zugeordnet:</p>
+<table class="shortcuts">
+  <thead><tr><th>Workspace</th><th>Inhalt</th><th>Läuft auf Desktop</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Dauer-Apps</strong></td><td>Outlook + Teams, positioniert auf dem Portrait-Monitor</td><td>egal welchem (wird danach gepinnt)</td></tr>
+    <tr><td><strong>Frontend</strong></td><td>VS Code Frontend + Terminal mit Copilot CLI</td><td>Frontend</td></tr>
+    <tr><td><strong>Backend</strong></td><td>VS Code Backend + Terminal(s)</td><td>Backend</td></tr>
+    <tr><td><strong>Recherche</strong></td><td>Browser (+ optional Terminal)</td><td>Recherche</td></tr>
+  </tbody>
+</table>
+<p>Jeden dieser vier baust du genau wie in <a href="0001-powertoys-workspaces-daily-reset.html">Lektion 1</a> beschrieben &mdash; nur eben viermal, mit kleinerem Umfang pro Workspace statt einem einzigen großen.</p>
+
+<h2 id="routine">Deine Morgen-Routine, Schritt für Schritt</h2>
+<ol class="steps">
+  <li>Nach dem Login: Workspace <strong>"Dauer-Apps"</strong> starten. Outlook/Teams stehen jetzt auf dem Portrait-Monitor.</li>
+  <li>Einmal <kbd>Win</kbd>+<kbd>Tab</kbd>, auf beiden Fenstern <strong>"Show windows from this app on all desktops"</strong> setzen (siehe <a href="0003-virtuelle-desktops.html#trick">Lektion 3</a>).</li>
+  <li>Zum Desktop <strong>"Frontend"</strong> wechseln, <em>dann erst</em> Workspace "Frontend" starten.</li>
+  <li>Zum Desktop <strong>"Backend"</strong> wechseln, Workspace "Backend" starten.</li>
+  <li>Zum Desktop <strong>"Recherche"</strong> wechseln, Workspace "Recherche" starten.</li>
+</ol>
+<div class="callout win">
+  <span class="label">Warum die Reihenfolge zählt</span>
+  Da Workspaces auf dem <em>aktuell aktiven</em> Desktop landet, muss der Desktop-Wechsel vor dem Workspace-Start passieren &mdash; nicht danach. Sonst landet z. B. das Backend-Setup versehentlich auf dem Frontend-Desktop.
+</div>
+<p>Macht insgesamt vier Starts plus drei Desktop-Wechsel &mdash; unter 30 Sekunden, statt jedes einzelne Fenster von Hand zu ziehen.</p>
+
+<h2 id="taskleiste">Für 1-Klick-Ketten vorbereiten</h2>
+<p>Pinne alle vier Desktop-Verknüpfungen aus Lektion 1 an die Taskleiste, in der Reihenfolge, in der du sie morgens brauchst. Dann ist die Routine oben rein visuell abzuarbeiten, ohne im Editor suchen zu müssen.</p>
+<p class="callout win"><span class="label">Noch schneller</span> Ganz ohne Taskleiste geht es mit PowerToys Run &mdash; siehe <a href="0005-powertoys-run.html">Lektion 5</a>.</p>
+<div class="callout">
+  <span class="label">Unklar &mdash; wert, es auszuprobieren</span>
+  Ob der "Show windows from this app on all desktops"-Status einen Neustart übersteht, ist nicht eindeutig dokumentiert. Falls er jeden Morgen neu gesetzt werden muss, ist das nur ein einmaliger Rechtsklick zusätzlich in der Routine &mdash; kein Beinbruch, aber gut zu wissen, statt sich zu wundern.
+</div>
+
+<h2 id="ueben">Üben</h2>
+<div class="quiz" data-quiz>
+  <p class="q">1. Warum reicht ein einzelner PowerToys-Workspace nicht für Frontend, Backend und Recherche gleichzeitig?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Workspaces kennt nur den aktuellen Desktop</button>
+    <button class="opt">Workspaces erlaubt maximal drei offene Apps</button>
+    <button class="opt">Windows verbietet mehrere Workspaces pro Tag</button>
+    <button class="opt">FancyZones blockiert mehrere gleichzeitige Layouts</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<div class="quiz" data-quiz>
+  <p class="q">2. Was ist die richtige Reihenfolge, um einen Kontext-Workspace auf dem passenden Desktop zu starten?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Erst Desktop wechseln, dann Workspace starten</button>
+    <button class="opt">Erst Workspace starten, dann Desktop wechseln</button>
+    <button class="opt">Beides gleichzeitig per Tastenkombination auslösen</button>
+    <button class="opt">Reihenfolge spielt für Workspaces keine Rolle</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<p class="ask-agent">Falls sich das Verhalten bei dir anders zeigt (z. B. weil eine neuere PowerToys-Version die Lücke schon geschlossen hat), frag im Chat nach &mdash; dann aktualisieren wir diese Lektion.</p>
+
+<p class="source">Quellen: <a href="https://learn.microsoft.com/en-us/windows/powertoys/workspaces">PowerToys Workspaces &mdash; Microsoft Learn</a> &middot; <a href="https://github.com/microsoft/PowerToys/issues/38221">GitHub Issue #38221</a> &middot; <a href="https://github.com/microsoft/PowerToys/issues/35407">GitHub Issue #35407</a></p>
+
+<div class="lesson-nav">
+  <span><a href="0003-virtuelle-desktops.html">&larr; Lektion 3: Virtuelle Desktops</a></span>
+  <span><a href="../index.html">&uarr; Übersicht</a></span>
+  <span><a href="0005-powertoys-run.html">Lektion 5: PowerToys Run &rarr;</a></span>
+</div>
+
+<script>
+document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
+  var feedback = quiz.querySelector('.feedback');
+  quiz.querySelectorAll('.opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var correct = btn.dataset.correct === 'true';
+      quiz.querySelectorAll('.opt').forEach(function (b) {
+        b.classList.remove('correct', 'wrong');
+        b.disabled = true;
+      });
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        quiz.querySelector('[data-correct="true"]').classList.add('correct');
+      }
+      feedback.textContent = correct ? 'Richtig.' : 'Nicht ganz — die richtige Antwort ist jetzt markiert.';
+      quiz.querySelectorAll('.opt').forEach(function (b) { b.disabled = false; });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

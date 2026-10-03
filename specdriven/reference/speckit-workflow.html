@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: The Spec Kit Workflow</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<h1>The Spec Kit Workflow</h1>
+<p class="lesson-meta">Reference · cheat sheet for the command loop and its artifacts</p>
+
+<h2>The loop at a glance</h2>
+<pre>
+constitution ──▶ specify ──▶ clarify ──▶ plan ──▶ checklist ──▶ tasks ──▶ analyze ──▶ implement
+ (principles)    (what/why)  (de-risk)  (how)     (quality)     (steps)   (consistency)  (code)
+</pre>
+<p class="sidenote">Each phase writes a Markdown artifact into <code>specs/&lt;NNN-feature-name&gt;/</code>. The artifact — not your chat history — is the context the agent works from.</p>
+
+<h2>Commands</h2>
+<table>
+<tr><th>Command</th><th>Produces</th><th>Purpose / when to run</th></tr>
+<tr><td><code>/speckit.constitution</code></td><td><code>constitution.md</code></td><td>Once per project. Non-negotiable principles: stack, testing rules, conventions. Every later phase must comply with it.</td></tr>
+<tr><td><code>/speckit.specify</code></td><td><code>spec.md</code> + feature branch</td><td>Start of every feature. Describe <em>what</em> and <em>why</em> — no tech choices here.</td></tr>
+<tr><td><code>/speckit.clarify</code></td><td>updates <code>spec.md</code></td><td>Agent interviews <em>you</em> about ambiguities. Run before planning; skipping it is the #1 source of rework.</td></tr>
+<tr><td><code>/speckit.plan</code></td><td><code>plan.md</code> (+ research, data model, contracts)</td><td>Now the tech enters: stack, architecture, API contracts (your OpenAPI spec belongs here).</td></tr>
+<tr><td><code>/speckit.checklist</code></td><td>checklist files</td><td>Optional quality gates: custom validation lists for the spec/plan.</td></tr>
+<tr><td><code>/speckit.tasks</code></td><td><code>tasks.md</code></td><td>Breaks the plan into ordered, dependency-aware tasks.</td></tr>
+<tr><td><code>/speckit.analyze</code></td><td>report (read-only)</td><td>Cross-checks spec ↔ plan ↔ tasks for gaps and contradictions. Last stop before code.</td></tr>
+<tr><td><code>/speckit.implement</code></td><td>code</td><td>Agent executes <code>tasks.md</code>. For big features, implement phase-by-phase to protect context.</td></tr>
+<tr><td><code>/speckit.converge</code></td><td>report</td><td>Post-implementation: verifies completion, lists remaining work.</td></tr>
+</table>
+
+<h2>Bootstrap (Git Bash)</h2>
+<pre><code># one-off run, nothing installed permanently
+uvx --from git+https://github.com/github/spec-kit.git specify init &lt;PROJECT&gt; --ai copilot --script sh
+
+# or in an existing repo
+uvx --from git+https://github.com/github/spec-kit.git specify init . --ai copilot --script sh</code></pre>
+<p class="sidenote"><code>--script sh</code> forces the POSIX-shell helper scripts — the right choice for Git Bash on Windows, where auto-detection may pick PowerShell. <code>--no-git</code> skips branch management if you need to own that yourself.</p>
+
+<h2>Rules of thumb</h2>
+<ul>
+<li><strong>Spec = what/why. Plan = how.</strong> Tech stack mentioned in a spec is a smell.</li>
+<li>Commands detect the active feature from the branch name (<code>001-feature-name</code>).</li>
+<li>Artifacts are Markdown in your repo — review them in PRs like code.</li>
+<li>Don't skip <code>clarify</code> or <code>analyze</code>: they are the cheap checkpoints; <code>implement</code> is the expensive one.</li>
+</ul>
+
+<div class="footer-nav">
+Sources: <a href="https://github.github.com/spec-kit/quickstart.html">Spec Kit Quick Start</a> · <a href="https://github.github.com/spec-kit/">Spec Kit Docs</a> · <a href="https://github.com/github/spec-kit">github/spec-kit</a><br>
+<a href="../index.html">⌂ Course home</a> · Related: <a href="glossary.html">Glossary</a> · <a href="../lessons/0001-the-sdd-loop.html">Lesson 1: The SDD loop</a>
+</div>
+</body>
+</html>

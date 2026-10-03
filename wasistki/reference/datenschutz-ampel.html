@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz-Ampel für Lehrkräfte</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+<style>
+  .ampel { max-width: var(--measure); margin: 1.6rem 0; }
+  .ampel-row {
+    display: grid;
+    grid-template-columns: 3.2rem 1fr;
+    gap: 0 1rem;
+    align-items: start;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.9rem;
+    break-inside: avoid;
+  }
+  .ampel-row.rot  { border-left: 5px solid var(--flag); }
+  .ampel-row.gelb { border-left: 5px solid var(--accent); }
+  .ampel-row.gruen{ border-left: 5px solid var(--ok); }
+  .ampel-dot { width: 2.4rem; height: 2.4rem; border-radius: 50%; margin-top: .15rem; }
+  .rot   .ampel-dot { background: var(--flag); }
+  .gelb  .ampel-dot { background: var(--accent); }
+  .gruen .ampel-dot { background: var(--ok); }
+  .ampel-h {
+    font-family: var(--sans); font-weight: 700; font-size: 1.02rem;
+    margin: 0 0 .1rem; letter-spacing: .02em;
+  }
+  .rot .ampel-h { color: var(--flag); }
+  .gelb .ampel-h { color: var(--accent); }
+  .gruen .ampel-h { color: var(--ok); }
+  .ampel-sub {
+    font-family: var(--sans); font-size: .78rem; color: var(--ink-faint);
+    margin: 0 0 .6rem;
+  }
+  .ampel ul { margin: 0; padding-left: 1.1rem; max-width: none; }
+  .ampel li { font-size: .92rem; margin-bottom: .28rem; }
+</style>
+</head>
+<body data-page="reference" data-file="datenschutz-ampel.html">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Referenz · fürs Lehrerzimmer</p>
+    <h1>Datenschutz-Ampel</h1>
+    <p class="standfirst">
+      Was darf in ein KI-Werkzeug, was nicht. Bewusst streng gehalten: Die Ampel
+      soll Ihnen die Entscheidung abnehmen, nicht sie verkomplizieren.
+    </p>
+  </header>
+
+  <div class="box warn">
+    <p class="box-title">Keine Rechtsberatung</p>
+    <p style="margin-bottom:0">
+      Schulrecht ist Ländersache. Diese Ampel liegt auf der sicheren Seite, ersetzt
+      aber nicht die Handreichung Ihres Bundeslandes und nicht die Auskunft Ihrer
+      Schulleitung. Im Zweifel: fragen, bevor Sie tippen.
+    </p>
+  </div>
+
+  <div class="ampel">
+
+    <div class="ampel-row rot">
+      <div class="ampel-dot"></div>
+      <div>
+        <p class="ampel-h">ROT — geht nicht hinein</p>
+        <p class="ampel-sub">Auch nicht „nur kurz“, auch nicht im Privatkonto</p>
+        <ul>
+          <li>Namen von Schülerinnen und Schülern, Eltern, Kolleginnen und Kollegen</li>
+          <li>Noten, sobald sie einer Person zuzuordnen sind</li>
+          <li>Gutachten, Förderpläne, Nachteilsausgleiche</li>
+          <li>Gesundheitsangaben jeder Art — auch beiläufig erwähnte</li>
+          <li>Zeugnisbemerkungen im Original</li>
+          <li>Inhalte aus Elterngesprächen und Klassenkonferenzen</li>
+          <li>Beobachtungen zum Verhalten einzelner Kinder</li>
+          <li>Fotos, Scans und Tonaufnahmen aus dem Schulalltag</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ampel-row gelb">
+      <div class="ampel-dot"></div>
+      <div>
+        <p class="ampel-h">GELB — nur sauber anonymisiert</p>
+        <p class="ampel-sub">Zweimal hinschauen: Personenbezug entsteht durch Kombination</p>
+        <ul>
+          <li>Ein Schülertext ohne Namen und ohne verräterische Details</li>
+          <li>Eine Unterrichtssituation ohne Zuordnung zu einer Person</li>
+          <li>Anonymisierte Leistungsverteilungen („12 von 26 unter Erwartung“)</li>
+          <li>Fallschilderungen, bei denen Schule, Klasse, Fach und Besonderheit
+              entfernt wurden — <em>alle vier</em>, nicht nur der Name</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ampel-row gruen">
+      <div class="ampel-dot"></div>
+      <div>
+        <p class="ampel-h">GRÜN — unbedenklich</p>
+        <p class="ampel-sub">Hier liegt fast alles, wofür Sie das Werkzeug wirklich brauchen</p>
+        <ul>
+          <li>Lehrpläne, Bildungsstandards, Operatorenlisten</li>
+          <li>Ihre eigenen Arbeitsblätter, Aufgaben und Materialien</li>
+          <li>Fachinhalte, Erklärungen, Beispiele, Analogien</li>
+          <li>Veröffentlichte Texte, sofern das Urheberrecht es zulässt</li>
+          <li>Ihre eigenen Entwürfe — solange keine dritte Person darin vorkommt</li>
+          <li>Organisatorisches ohne Personenbezug (Ablaufpläne, Materiallisten)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Der Test, der die ganze Ampel ersetzt</h2>
+
+  <div class="takeaway">
+    Würde ich diesen Text einer fremden Firma per E-Mail schicken, ohne zu wissen,
+    wer ihn liest? Wenn nein — nicht absenden.
+  </div>
+
+  <h2>Anonymisieren richtig gemacht</h2>
+
+  <p>
+    Den Namen streichen genügt nicht. Streichen Sie zusätzlich:
+  </p>
+
+  <ul>
+    <li>Schulname und Ort</li>
+    <li>Klasse und Jahrgang, wenn die Gruppe klein ist</li>
+    <li>jede Besonderheit, die nur auf eine Person zutrifft — Erkrankung,
+      Herkunft, Familiensituation, besondere Begabung</li>
+    <li>Zeitangaben, die mit einem bekannten Ereignis zusammenfallen</li>
+  </ul>
+
+  <p>
+    Nach dem Streichen die Probe: <em>Könnte eine Kollegin, die die Schule kennt,
+    erraten, wer gemeint ist?</em> Wenn ja, ist noch zu viel drin.
+  </p>
+
+  <h2>Zwei Einstellungen, die Sie heute prüfen sollten</h2>
+
+  <ol>
+    <li>
+      <strong>Wird mit meinen Chats trainiert?</strong> In den Kontoeinstellungen
+      unter „Datenschutz“ oder „Data Controls“. Bei privaten Konten ist das bei
+      mehreren großen Anbietern voreingestellt <em>an</em>. Abschalten verkürzt
+      bei manchen Anbietern zugleich die Speicherdauer erheblich.
+    </li>
+    <li>
+      <strong>Nutze ich ein dienstliches oder ein privates Konto?</strong> Geschäfts-
+      und Behördenkonten schließen die Nutzung fürs Training vertraglich aus. Wenn
+      Ihre Schule so etwas hat, benutzen Sie es — auch wenn das private bequemer ist.
+    </li>
+  </ol>
+
+  <div class="box key">
+    <p class="box-title">Wenn Sie mehr brauchen als Gelb</p>
+    <p style="margin-bottom:0">
+      Es gibt drei Wege: ein offenes Modell lokal auf dem eigenen Rechner (nichts
+      verlässt das Gerät), ein Geschäftskonto mit Auftragsverarbeitungsvertrag
+      (vertraglich abgesichert), oder ein Anbieter mit Verarbeitung in der EU. Alle
+      drei sind Entscheidungen, die nicht Sie allein treffen — sprechen Sie mit der
+      Schulleitung.
+    </p>
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

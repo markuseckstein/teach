@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3 · Der Schreibtisch: das Kontextfenster</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+<link rel="stylesheet" href="../assets/context-sim.css">
+</head>
+<body data-page="lesson" data-n="3">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 3 · Teil I — Die Bausteine</p>
+    <h1>Der Schreibtisch: das Kontextfenster</h1>
+    <p class="standfirst">
+      Das Modell merkt sich nichts — und trotzdem weiß der Chat, worüber Sie
+      sprechen. Der Trick dahinter ist simpel, und er hat vier Folgen, die Ihren
+      Umgang mit diesen Werkzeugen ab heute verändern sollten.
+    </p>
+    <div class="meta">
+      <span>10 Minuten</span>
+      <span>Ziel: wissen, wann man einen neuen Chat aufmacht</span>
+      <span>Setzt <a href="0002-das-llm-hat-kein-gedaechtnis.html">Lektion 2</a> voraus</span>
+    </div>
+  </header>
+
+  <p>
+    Wir haben eine offene Frage aus der letzten Lektion. Wenn das Sprachmodell
+    zustandslos ist — wie kann ein Chat dann ein Gespräch führen?
+  </p>
+
+  <p>
+    Die Antwort ist fast schon enttäuschend: <strong>Der Chatbot schickt jedes Mal
+    alles noch einmal mit.</strong> Bei Ihrer fünften Nachricht bekommt das Modell
+    nicht etwa nur diese fünfte Nachricht, sondern das komplette bisherige Gespräch,
+    von vorne bis hier, plus Ihre neue Zeile.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 268" role="img"
+         aria-label="Drei Runden nebeneinander. In jeder Runde wird der Stapel, der ans Modell geschickt wird, höher: erst eine Nachricht, dann drei, dann fünf.">
+      <text x="120" y="24" class="d-t-xs d-mid">1. Runde</text>
+      <text x="360" y="24" class="d-t-xs d-mid">2. Runde</text>
+      <text x="600" y="24" class="d-t-xs d-mid">3. Runde</text>
+
+      <!-- Runde 1 -->
+      <rect x="30" y="186" width="180" height="20" rx="4" class="d-fill-accent"/>
+      <text x="120" y="200" class="d-t-sm d-mid d-t-invert">Ihre Frage 1</text>
+
+      <!-- Runde 2 -->
+      <rect x="270" y="138" width="180" height="20" rx="4" class="d-fill"/>
+      <rect x="270" y="138" width="180" height="20" rx="4" class="d-stroke"/>
+      <text x="360" y="152" class="d-t-sm d-mid">Ihre Frage 1</text>
+      <rect x="270" y="162" width="180" height="20" rx="4" class="d-fill"/>
+      <rect x="270" y="162" width="180" height="20" rx="4" class="d-stroke"/>
+      <text x="360" y="176" class="d-t-sm d-mid">Antwort 1</text>
+      <rect x="270" y="186" width="180" height="20" rx="4" class="d-fill-accent"/>
+      <text x="360" y="200" class="d-t-sm d-mid d-t-invert">Ihre Frage 2</text>
+
+      <!-- Runde 3 -->
+      <rect x="510" y="90"  width="180" height="20" rx="4" class="d-fill"/>
+      <rect x="510" y="90"  width="180" height="20" rx="4" class="d-stroke"/>
+      <text x="600" y="104" class="d-t-sm d-mid">Ihre Frage 1</text>
+      <rect x="510" y="114" width="180" height="20" rx="4" class="d-fill"/>
+      <rect x="510" y="114" width="180" height="20" rx="4" class="d-stroke"/>
+      <text x="600" y="128" class="d-t-sm d-mid">Antwort 1</text>
+      <rect x="510" y="138" width="180" height="20" rx="4" class="d-fill"/>
+      <rect x="510" y="138" width="180" height="20" rx="4" class="d-stroke"/>
+      <text x="600" y="152" class="d-t-sm d-mid">Ihre Frage 2</text>
+      <rect x="510" y="162" width="180" height="20" rx="4" class="d-fill"/>
+      <rect x="510" y="162" width="180" height="20" rx="4" class="d-stroke"/>
+      <text x="600" y="176" class="d-t-sm d-mid">Antwort 2</text>
+      <rect x="510" y="186" width="180" height="20" rx="4" class="d-fill-accent"/>
+      <text x="600" y="200" class="d-t-sm d-mid d-t-invert">Ihre Frage 3</text>
+
+      <line x1="120" y1="208" x2="120" y2="222" class="d-line-faint"/>
+      <line x1="360" y1="208" x2="360" y2="222" class="d-line-faint"/>
+      <line x1="600" y1="208" x2="600" y2="222" class="d-line-faint"/>
+
+      <rect x="30" y="222" width="660" height="28" rx="6" class="d-fill"/>
+      <rect x="30" y="222" width="660" height="28" rx="6" class="d-stroke"/>
+      <text x="360" y="241" class="d-t d-mid">Sprachmodell — sieht jedes Mal nur diesen einen Stapel und sonst nichts</text>
+
+      <line x1="228" y1="76" x2="492" y2="76" class="d-line-warn d-dash"/>
+      <text x="360" y="66" class="d-t-sm d-mid d-t-warn">wächst mit jeder einzelnen Runde</text>
+
+      <text x="30" y="266" class="d-t-xs">Farbig = Ihre neue Nachricht · Weiß = alles Bisherige, noch einmal</text>
+    </svg>
+    <figcaption>
+      <b>Das ganze Gespräch, jedes Mal neu.</b> Nichts wird gespeichert — es wird
+      wiederholt. Die „Erinnerung“ des Chatbots ist ein Stapel Papier, den er dem
+      Modell bei jeder Frage komplett neu auf den Tisch legt.
+    </figcaption>
+  </figure>
+
+  <h2>Der Stapel passt auf einen Schreibtisch — und der ist endlich</h2>
+
+  <p class="sidenote">
+    <span class="sn-label">Fachwort</span>
+    <b>Kontextfenster</b> (englisch <em>context window</em>) ist die maximale
+    Textmenge, die auf einmal in eine Anfrage passt. Gemessen wird sie in
+    <em>Tokens</em> — Wortbausteinen. Ein Token ist grob ein halbes bis ein
+    ganzes deutsches Wort.
+  </p>
+
+  <p>
+    Dieser Stapel hat eine Obergrenze. Er heißt <strong>Kontextfenster</strong>,
+    und Sie können ihn sich als Schreibtisch vorstellen, auf dem alles liegen muss,
+    was das Modell für diese eine Antwort sehen soll. Was nicht auf dem Tisch liegt,
+    existiert für das Modell nicht.
+  </p>
+
+  <p>
+    Auf diesem Tisch liegt mehr, als Sie vermuten:
+  </p>
+
+  <ul>
+    <li>eine <strong>Systemanweisung</strong> des Anbieters, die Sie nie zu sehen
+      bekommen („du bist ein hilfreicher Assistent, heute ist der …“)</li>
+    <li>gegebenenfalls gespeicherte <strong>Erinnerungen</strong> aus früheren Chats</li>
+    <li>das <strong>gesamte bisherige Gespräch</strong></li>
+    <li>jede <strong>hochgeladene Datei</strong> — vollständig, nicht als Zusammenfassung</li>
+    <li>die Ergebnisse aller <strong>Werkzeuge</strong>, die unterwegs benutzt wurden,
+      etwa ganze Websuchen</li>
+    <li>und ganz zum Schluss: Ihre eigentliche Frage</li>
+  </ul>
+
+  <p>
+    Ein hochgeladenes PDF mit vierzig Seiten belegt den halben Tisch. Ab da liegt
+    es dort — bei jeder weiteren Frage, auch wenn es längst nicht mehr um das PDF
+    geht.
+  </p>
+
+  <h2>Probieren Sie es aus</h2>
+
+  <p>
+    Legen Sie unten Dinge auf den Schreibtisch und schauen Sie zu, was passiert.
+    Achten Sie besonders auf zwei Momente: wenn der Tisch überläuft, und wenn Sie
+    <em>ein neues Thema</em> auf einen vollen Tisch legen.
+  </p>
+
+  <div class="ctxsim"></div>
+
+  <p style="font-size:.82rem;color:var(--ink-faint);font-family:var(--sans);max-width:var(--measure)">
+    Die Zahlen sind zur Veranschaulichung gewählt, nicht gemessen. Richtig
+    wiedergegeben ist der <em>Verlauf</em>: Es wird lange kaum schlechter und dann
+    ziemlich schnell deutlich schlechter.
+  </p>
+
+  <h2>Vier Folgen, die im Alltag zählen</h2>
+
+  <h3>1. Ein langer Chat wird schlechter, nicht besser</h3>
+
+  <p>
+    Das ist keine Anekdote, sondern gemessen. Die Forschungsgruppe von Chroma hat
+    18 aktuelle Modelle unter kontrollierten Bedingungen getestet und kommt zu
+    einem eindeutigen Ergebnis:
+  </p>
+
+  <blockquote>
+    „Modelle nutzen ihren Kontext nicht gleichmäßig; ihre Leistung wird zunehmend
+    unzuverlässiger, je länger die Eingabe wird.“
+    <cite>Chroma Research, <a href="https://www.trychroma.com/research/context-rot">Context Rot:
+    How Increasing Input Tokens Impacts LLM Performance</a></cite>
+  </blockquote>
+
+  <p>
+    Bemerkenswert daran: Das galt für <em>jedes einzelne</em> der 18 getesteten
+    Modelle, und es galt schon bei einfachen Aufgaben. Ein großes Kontextfenster
+    verspricht also, dass viel <em>hineinpasst</em> — nicht, dass alles davon
+    gleich gut <em>genutzt</em> wird. Der Fachbegriff dafür hat sich als
+    <strong>Context Rot</strong> eingebürgert, „Kontextfäule“.
+  </p>
+
+  <h3>2. Die Mitte geht verloren</h3>
+
+  <p>
+    Eine Stanford-Arbeit mit dem treffenden Titel <em>Lost in the Middle</em> hat
+    gezeigt, dass die Trefferquote einem U folgt: Was am Anfang steht, wird
+    zuverlässig gefunden. Was am Ende steht, auch. Was in der Mitte steht — deutlich
+    schlechter.
+  </p>
+
+  <figure>
+    <svg class="diagram" viewBox="0 0 520 190" role="img"
+         aria-label="Eine U-förmige Kurve: die Trefferquote ist am Anfang und am Ende des Kontexts hoch und in der Mitte deutlich niedriger.">
+      <line x1="56" y1="26" x2="56" y2="140" class="d-line-faint"/>
+      <line x1="56" y1="140" x2="484" y2="140" class="d-line-faint"/>
+
+      <path d="M 56 42 C 130 96, 190 118, 270 118 C 350 118, 410 96, 484 42"
+            class="d-line-accent" style="stroke-width:2.4"/>
+
+      <circle cx="56"  cy="42"  r="4" class="d-fill-accent"/>
+      <circle cx="270" cy="118" r="4" class="d-fill-warn"/>
+      <circle cx="484" cy="42"  r="4" class="d-fill-accent"/>
+
+      <text x="56"  y="30" class="d-t-sm d-mid d-t-accent">gut</text>
+      <text x="270" y="136" class="d-t-sm d-mid d-t-warn">schwach</text>
+      <text x="484" y="30" class="d-t-sm d-mid d-t-accent">gut</text>
+
+      <text x="56"  y="158" class="d-t-xs">Anfang</text>
+      <text x="270" y="158" class="d-t-xs d-mid">Mitte des Kontexts</text>
+      <text x="484" y="158" class="d-t-xs d-end">Ende</text>
+
+      <text x="20" y="90" class="d-t-xs" transform="rotate(-90 20 90)" text-anchor="middle">Trefferquote</text>
+      <text x="56" y="180" class="d-t-xs">Quelle: Liu et al., „Lost in the Middle“ (Stanford)</text>
+    </svg>
+    <figcaption>
+      <b>Praktische Konsequenz:</b> Das Wichtigste gehört an den Anfang oder ans
+      Ende Ihrer Nachricht — nie in die Mitte eines langen Textes. Und wenn eine
+      Anweisung wirklich zählt, wiederholen Sie sie am Schluss.
+    </figcaption>
+  </figure>
+
+  <h3>3. Das alte Thema redet ins neue hinein</h3>
+
+  <p>
+    Das ist die Folge, die im Alltag am häufigsten unbemerkt Schaden anrichtet.
+    Sie haben eine Stunde lang an einem Elternbrief gefeilt — Tonfall,
+    Formulierungen, drei Korrekturschleifen. Dann tippen Sie in denselben Chat:
+    „Erkläre mir mal den Photoeffekt für Klasse 9.“
+  </p>
+
+  <p>
+    Der ganze Elternbrief liegt weiter auf dem Tisch. Und das Modell tut, was es
+    immer tut: Es schreibt plausibel weiter — passend zu <em>allem</em>, was es
+    sieht. Sie bekommen eine Erklärung, die sich anfühlt wie ein Elternbrief. Höflich
+    distanziert, in Ihrem Korrekturstil, vielleicht mit einem Gruß am Ende.
+  </p>
+
+  <div class="box warn">
+    <p class="box-title">Der Effekt ist heimtückisch, weil er nicht wie ein Fehler aussieht</p>
+    <p style="margin-bottom:0">
+      Sie bekommen keine Fehlermeldung und keine offensichtlich falsche Antwort.
+      Sie bekommen eine <em>etwas</em> unpassende Antwort und denken: „Naja, das
+      Modell ist heute nicht so gut.“ In Wahrheit haben Sie ihm einen unaufgeräumten
+      Schreibtisch hingestellt.
+    </p>
+  </div>
+
+  <h3>4. Es kostet Zeit und Geld — jedes Mal</h3>
+
+  <p>
+    Weil der komplette Stapel bei jeder Runde neu verarbeitet wird, wird jede
+    Antwort in einem langen Chat langsamer und teurer als dieselbe Antwort in einem
+    frischen. Bei einem Abo merken Sie das an Ihrem Nutzungslimit, das schneller
+    aufgebraucht ist, als Sie erwarten würden.
+  </p>
+
+  <h2>Die Regel, die daraus folgt</h2>
+
+  <div class="takeaway">
+    Ein Chat = eine Aufgabe. Neues Thema, neuer Chat. Immer.
+  </div>
+
+  <p>
+    Das fühlt sich anfangs verschwenderisch an, so als würde man ein Gespräch
+    abbrechen. Es ist aber das genaue Gegenteil: Sie räumen den Schreibtisch ab,
+    bevor Sie die nächste Arbeit darauf legen. Konkret:
+  </p>
+
+  <ul>
+    <li><strong>Themenwechsel?</strong> Neuer Chat. Ohne Ausnahme.</li>
+    <li><strong>Es lief in die falsche Richtung und Sie haben dreimal korrigiert?</strong>
+      Neuer Chat — und diesmal die gute Fassung der Aufgabe gleich am Anfang.
+      Die drei Fehlversuche liegen sonst weiter auf dem Tisch und ziehen die
+      Antwort zurück in Richtung Fehler.</li>
+    <li><strong>Großes Dokument hochgeladen, Frage beantwortet?</strong> Neuer Chat,
+      bevor Sie etwas anderes machen.</li>
+    <li><strong>Der Chat ist sehr lang und Sie brauchen den Faden trotzdem?</strong>
+      Bitten Sie um eine kurze Zusammenfassung des bisher Vereinbarten, kopieren
+      Sie die in einen neuen Chat, und arbeiten Sie dort weiter. Sie behalten das
+      Ergebnis und werfen den Ballast weg.</li>
+  </ul>
+
+  <div class="box key">
+    <p class="box-title">Der letzte Punkt ist der wertvollste</p>
+    <p style="margin-bottom:0">
+      „Fasse zusammen, worauf wir uns geeinigt haben, in Stichpunkten“ — dann
+      neuer Chat, Zusammenfassung oben einfügen, weiterarbeiten. Das ist die
+      wichtigste Handbewegung im Umgang mit diesen Werkzeugen, und fast niemand
+      kennt sie. Profis machen im Grunde den ganzen Tag nichts anderes.
+    </p>
+  </div>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Sie haben ein 60-seitiges PDF hochgeladen und drei Fragen dazu gestellt.
+      Jetzt fragen Sie etwas völlig anderes. Was passiert mit dem PDF?
+    </p>
+    <ul class="quiz-opts">
+      <li>Es wird verworfen, sobald ein anderes Thema angesprochen wird.</li>
+      <li>Es bleibt gespeichert, wird aber nur bei Bedarf herangezogen.</li>
+      <li data-correct>Es wird weiterhin bei jeder Frage vollständig mitgeschickt.</li>
+      <li>Es wird automatisch zu wenigen Stichpunkten zusammengefasst.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p>
+        Es liegt weiter auf dem Schreibtisch — und zwar ganz. Jede Ihrer weiteren
+        Fragen wird zusammen mit sechzig Seiten Lehrplan an das Modell geschickt.
+        Das macht die Antwort langsamer, teurer und schlechter.
+      </p>
+      <p style="margin-bottom:0">
+        Manche Produkte schummeln hier und schieben lange Verläufe in eine
+        automatische Zusammenfassung. Das hilft gegen den Überlauf, kostet aber
+        Genauigkeit — und Sie erfahren nicht, was dabei weggefallen ist.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Warum lohnt es sich, nach drei erfolglosen Korrekturschleifen neu anzufangen,
+      statt weiter nachzubessern?
+    </p>
+    <ul class="quiz-opts">
+      <li>Weil das Modell nach mehreren Versuchen in einen Sparmodus wechselt.</li>
+      <li data-correct>Weil die Fehlversuche mitliegen und die Antwort zurückziehen.</li>
+      <li>Weil die Antwortqualität pro Chat streng begrenzt zugeteilt wird.</li>
+      <li>Weil das Modell Korrekturen ab dem dritten Mal generell ignoriert.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Das Modell sieht drei ausführliche Beispiele dafür, wie die Antwort
+        aussehen soll — leider Beispiele in die falsche Richtung. Es schreibt
+        plausibel weiter zu dem, was auf dem Tisch liegt, und auf dem Tisch liegt
+        überwiegend Falsches. Ein frischer Chat mit einer sauber formulierten
+        Aufgabe schlägt drei Korrekturrunden fast immer.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Zählen Sie auf, was in diesem Moment alles auf dem Schreibtisch eines
+      Chatbots liegt, dem Sie gerade Ihre dritte Frage stellen. Sie sollten auf
+      mindestens vier verschiedene Arten von Inhalten kommen — eine davon haben
+      Sie selbst nie gesehen.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      <a href="https://www.trychroma.com/research/context-rot">Chroma Research —
+      „Context Rot“</a>. Die Studie ist gut lesbar geschrieben und die Diagramme
+      sprechen für sich; man muss den Text nicht ganz durcharbeiten. Wenn Sie
+      jemanden überzeugen müssen, der „aber das Fenster ist doch riesig“ sagt: Das
+      ist die Quelle dafür.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Wenn Sie einen konkreten langen Chat haben,
+    der aus dem Ruder gelaufen ist: Schildern Sie ihn. Man kann daran ziemlich
+    genau zeigen, an welcher Stelle der Schreibtisch gekippt ist — das prägt sich
+    besser ein als jede Regel.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+<script src="../assets/context-sim.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 6: Tasks → Analyze → Implement</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+<h1>Lesson 6: Tasks → Analyze → Implement</h1>
+<p class="lesson-meta">≈40 minutes, hands-on · closes the loop started in <a href="0004-specify-clarify-plan.html">Lesson 4</a> — you need its spec + plan (ideally inside the <a href="0005-where-do-specs-live.html">Lesson 5 umbrella</a>)</p>
+
+<h2>The win you're after</h2>
+<p>The bookmark feature from Lesson 4, implemented end-to-end by Copilot from <code>tasks.md</code> — with the OpenAPI contract flowing from <code>specs/…/contracts/</code> into <em>both</em> repos' generators, the way it will at work.</p>
+
+<h2>The one idea: tasks.md is an execution contract</h2>
+<p>The <a href="https://github.com/github/spec-kit/blob/main/templates/tasks-template.md">tasks template</a> isn't a to-do list — it's structured for machine execution:</p>
+<ul>
+<li><strong>Format <code>[ID] [P?] [Story]</code> + exact file paths.</strong> <code>[P]</code> marks tasks parallelizable (different files, no dependencies); <code>[Story]</code> ties every task to a user story from the spec.</li>
+<li><strong>Story-grouped phases.</strong> Setup → Foundational (blocking — nothing proceeds without it) → one phase per user story, each independently implementable and testable. This is why Lesson 4 insisted P1 must stand alone: the phases inherit that property, so you can stop after P1 and still have shipped something.</li>
+<li><strong>Checkpoints between phases</strong> — natural places to review, commit, and (for large features) restart the agent with fresh context.</li>
+</ul>
+
+<div class="callout">
+<span class="label">The trap: tests are optional by default</span>
+The template says it plainly: <em>"Tests are OPTIONAL — only include them if explicitly requested in the feature specification."</em> But your Lesson 3 constitution's Article III says every FR maps to a test. Those two collide — and the resolution is the system working: either your spec requests tests (say it in <code>/speckit.specify</code> or add it via clarify), or <code>/speckit.analyze</code> should flag the gap as a constitution violation. If tasks.md arrives test-free and analyze stays silent, you've found a hole worth fixing <em>upstream</em>, not by hand-editing tasks.
+</div>
+
+<h2>Analyze: the last cheap checkpoint</h2>
+<p>Two properties, verified in the <a href="https://github.com/github/spec-kit/blob/main/templates/commands/analyze.md">command definition</a>: it is <strong>strictly read-only</strong> (it reports; you decide), and <strong>constitution conflicts are automatically CRITICAL</strong> — the fix must adjust spec/plan/tasks, never dilute or reinterpret the principle. If a principle itself is wrong, that's an explicit constitution amendment, outside analyze. Your constitution really is the supreme court of this workflow.</p>
+
+<h2>Do it</h2>
+<h3>Step 1 — Generate the task list</h3>
+<pre><code>/speckit.tasks</code></pre>
+<p><strong>Audit before proceeding</strong> (the <a href="../reference/artifact-quality-checklist.html">checklist</a> has the full list):</p>
+<ol>
+<li>Every task has an exact file path; story phases match the spec's P1/P2/P3.</li>
+<li>Test tasks exist for every FR — if not, see the trap above.</li>
+<li><strong>Contract-sync tasks exist</strong>: something must carry <code>specs/001-*/contracts/openapi.yaml</code> into the backend's and frontend's generator inputs and run generation (<code>mvn generate-sources</code> / your <code>npm run generate</code>). If the plan didn't produce such tasks, tell the agent: <em>"Add tasks: sync the contract into backend and frontend generator configs and regenerate — per constitution Article I, no hand-written API code."</em></li>
+</ol>
+
+<h3>Step 2 — Analyze, and take it seriously</h3>
+<pre><code>/speckit.analyze</code></pre>
+<p>Read the report end-to-end once. Expect findings — coverage gaps (an FR no task implements), terminology drift, constitution conflicts marked CRITICAL. Fix the artifacts it names (re-run <code>/speckit.clarify</code> or edit the spec/plan via the agent), then re-run analyze until CRITICALs are gone. <strong>Resist the urge to skip this on a green-looking feature</strong> — it's minutes now against a refactor later.</p>
+
+<h3>Step 3 — Implement, phase by phase</h3>
+<pre><code>/speckit.implement Complete Phase 1 and Phase 2 only, then stop for review.</code></pre>
+<p>For anything non-trivial, phase-wise beats one-shot: context stays small, and each checkpoint is a commit you actually reviewed. Then continue story-by-story (<code>Implement Phase 3 (User Story 1) only</code>…). After the last phase:</p>
+<pre><code>/speckit.converge</code></pre>
+<p>which verifies completion and lists remaining work.</p>
+<p><strong>Verify the mission-critical bit:</strong> in the umbrella, check that backend controllers implement <em>generated</em> server interfaces and the Angular code calls the <em>generated</em> client — <code>git -C backend diff --stat</code> / <code>git -C frontend diff --stat</code> should show generated sources changing alongside handlers, and nothing hand-edited inside generated output directories. That's Article I holding under fire.</p>
+
+<h2>Check yourself</h2>
+<div class="quiz" data-answer="2" data-explain="The template includes test tasks only when the spec explicitly requests them — your constitution's test rule must reach the spec, or analyze must catch the gap.">
+  <div class="quiz-q">1. tasks.md arrives with no test tasks. What does the template say happened?</div>
+  <button class="quiz-opt">The plan phase failed its constitution gate check</button>
+  <button class="quiz-opt">The tasks command ran before analyze had finished</button>
+  <button class="quiz-opt">The spec never explicitly requested any test tasks</button>
+  <button class="quiz-opt">The feature has no requirements needing test cover</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="0" data-explain="Analyze is strictly read-only by design — it reports inconsistencies and offers a remediation plan you must explicitly approve.">
+  <div class="quiz-q">2. What is /speckit.analyze forbidden from doing?</div>
+  <button class="quiz-opt">Modifying any artifact files during its run</button>
+  <button class="quiz-opt">Reading the constitution from memory storage</button>
+  <button class="quiz-opt">Flagging conflicts as critical severity items</button>
+  <button class="quiz-opt">Running after tasks have been generated once</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="1" data-explain="Constitution conflicts require adjusting spec, plan, or tasks — never diluting the principle; changing a principle is a separate explicit amendment.">
+  <div class="quiz-q">3. Analyze flags a CRITICAL constitution conflict. The sanctioned fix is…</div>
+  <button class="quiz-opt">soften the article so the plan can still pass</button>
+  <button class="quiz-opt">adjust the offending artifact to fit the article</button>
+  <button class="quiz-opt">override the finding and proceed to implement</button>
+  <button class="quiz-opt">delete the finding and rerun the tasks command</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="3" data-explain="[P] marks tasks touching different files with no dependencies — safe to run in parallel; the other options describe nothing the template defines.">
+  <div class="quiz-q">4. In tasks.md, what does the [P] marker on a task mean?</div>
+  <button class="quiz-opt">The task belongs to the P-numbered story</button>
+  <button class="quiz-opt">The task is a prerequisite for every phase</button>
+  <button class="quiz-opt">The task awaits product owner permission</button>
+  <button class="quiz-opt">The task can run parallel to its neighbors</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<h2>Watch &amp; read</h2>
+<p>📺 The implement segment of <a href="https://www.youtube.com/watch?v=a9eR1xsfvHg">Den Delimarsky's walkthrough (40 min)</a> shows phase-wise execution live. For a second full rep with built-in checks, the official <a href="https://learn.microsoft.com/en-us/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/">Microsoft Learn module</a> ends where you now are — implementation.</p>
+
+<h2>Next</h2>
+<p>You've now run every phase of the loop at least once. From here the course shifts from acquisition to durability: a review session (retrieval practice on lessons 1–6), then Copilot CLI vs VS Code driving, and applying the whole workflow to your real work project.</p>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · ← Previous: <a href="0005-where-do-specs-live.html">Lesson 5: Where Do the Specs Live?</a> · Next: review session (not yet written)<br>
+References: <a href="../reference/artifact-quality-checklist.html">Artifact quality checklist</a> · <a href="../reference/speckit-workflow.html">Workflow cheat sheet</a> · <a href="../reference/glossary.html">Glossary</a><br>
+Implementation went sideways? Paste the analyze report or the diff here — debugging the workflow together is the fastest way to learn it.
+</div>
+</body>
+</html>

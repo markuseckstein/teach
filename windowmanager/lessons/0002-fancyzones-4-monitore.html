@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Zonen für 4 Monitore bauen</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lektion 2 &middot; Windows Multi-Monitor Desktop Management</p>
+<h1>Zonen für deine 4 Monitore bauen</h1>
+<p class="lede">Portrait 4K, Landscape 4K, Laptop, Landscape 4K &mdash; jeder Monitor hat eine andere Form und einen anderen Zweck. FancyZones lässt dir für <em>jeden Monitor ein eigenes Layout</em> zuweisen. Diese Lektion baut ein Startlayout, das zu deinem App-Mix passt: Outlook/Teams, 2&times; VS Code, Terminals, Browser.</p>
+
+<nav class="toc">
+  <span class="toc-label">Inhalt</span>
+  <ol>
+    <li><a href="#prinzip">Ein Layout pro Monitor</a></li>
+    <li><a href="#plan">Dein Startlayout: 4 Monitore, 4 Rollen</a></li>
+    <li><a href="#bauen">Eine Zone bauen &mdash; am Beispiel des Portrait-Monitors</a></li>
+    <li><a href="#zuweisen">Layouts den anderen Monitoren zuweisen</a></li>
+    <li><a href="#einstellungen">Zwei Einstellungen, die bei Mischbetrieb wichtig sind</a></li>
+    <li><a href="#ueben">Üben</a></li>
+  </ol>
+</nav>
+
+<h2 id="prinzip">Ein Layout pro Monitor</h2>
+<p>Im Zonen-Editor (<kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>`</kbd>) zeigt PowerToys alle angeschlossenen Monitore nebeneinander. Klickst du einen Monitor an, wird <em>er</em> zum Ziel des als Nächstes gewählten Layouts &mdash; jeder Monitor bekommt sein eigenes, unabhängiges Layout. Ein Portrait-Monitor bekommt so sinnvollerweise ein ganz anderes Raster als ein breiter Landscape-Monitor.</p>
+<div class="callout win">
+  <span class="label">Kernidee</span>
+  Du baust nicht ein Layout für "den Desktop", sondern bis zu vier &mdash; eines pro Monitor, passend zu dessen Form und Rolle in deinem Workflow.
+</div>
+
+<h2 id="plan">Dein Startlayout: 4 Monitore, 4 Rollen</h2>
+<p>Ein Vorschlag als Ausgangspunkt &mdash; pass ihn an, sobald du merkst, was in der Praxis nicht passt:</p>
+<table class="shortcuts">
+  <thead><tr><th>Monitor</th><th>Form</th><th>Rolle</th><th>Zonen-Vorschlag</th></tr></thead>
+  <tbody>
+    <tr><td>1 (links)</td><td>Portrait 4K</td><td>Dauer-Apps</td><td>2 Zonen übereinander: oben Teams, unten Outlook</td></tr>
+    <tr><td>2</td><td>Landscape 4K</td><td>Hauptarbeit</td><td>2 Spalten: links breit VS Code Frontend, rechts schmal gestapelte Terminals</td></tr>
+    <tr><td>3</td><td>Laptop</td><td>Recherche</td><td>1&ndash;2 Zonen: Browser groß, optional kleine Zweitzone</td></tr>
+    <tr><td>4 (rechts)</td><td>Landscape 4K</td><td>Zweitarbeit</td><td>2 Spalten: links breit VS Code Backend, rechts schmal Terminal/Browser</td></tr>
+  </tbody>
+</table>
+<p>Die schmale Spalte auf Monitor 2 und 4 kannst du bei Bedarf per <kbd>Ctrl</kbd>+Ziehen über zwei Zonen spannen, wenn du mal 2&ndash;3 Terminals gleichzeitig brauchst, statt sie fest vorzudefinieren.</p>
+
+<h2 id="bauen">Eine Zone bauen &mdash; am Beispiel des Portrait-Monitors</h2>
+<p>Der Portrait-Monitor ist der ungewöhnlichste Fall, deshalb üben wir daran:</p>
+<ol class="steps">
+  <li>Editor öffnen: <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>`</kbd>.</li>
+  <li>Den Portrait-Monitor (Monitor 1) in der Monitor-Übersicht auswählen &mdash; er wird zum Bearbeitungsziel.</li>
+  <li><strong>"Create new layout"</strong> &rarr; <strong>Grid</strong> wählen (relatives Raster, passt sich der Auflösung an).</li>
+  <li>Die Zone fokussieren (<kbd>Ctrl</kbd>+<kbd>Tab</kbd>), dann <kbd>S</kbd> drücken, um sie horizontal zu teilen &rarr; zwei Zonen übereinander.</li>
+  <li>Layout benennen (z. B. "Portrait Comms"), Hotkey vergeben (z. B. <kbd>1</kbd>), speichern.</li>
+</ol>
+<div class="callout">
+  <span class="label">Grid vs. Canvas</span>
+  <strong>Grid</strong> skaliert automatisch mit &mdash; ideal für feste Rollen wie diese. <strong>Canvas</strong> erlaubt frei positionierte, auch überlappende Zonen &mdash; eher für Sonderfälle, nicht für dein Basis-Setup.
+</div>
+
+<h2 id="zuweisen">Layouts den anderen Monitoren zuweisen</h2>
+<p>Wiederhole den Ablauf aus Schritt <a href="#bauen">3</a> für Monitor 2, 3 und 4 &mdash; jeweils mit dem passenden Raster aus der Tabelle oben. Für die beiden Landscape-Monitore (2 und 4) kannst du dasselbe 2-Spalten-Layout zweimal anlegen oder es einmal bauen und beiden Monitoren zuweisen.</p>
+<p>Aktivierst du zusätzlich <strong>"Enable quick layout switch"</strong>, kannst du jedes benannte Layout jederzeit per <kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[Zahl]</kbd> erneut auf den aktiven Monitor anwenden &mdash; nützlich, falls ein Layout mal durcheinandergerät.</p>
+
+<h2 id="einstellungen">Zwei Einstellungen, die bei Mischbetrieb wichtig sind</h2>
+<ul>
+  <li><strong>"Allow zones to span across monitors" &mdash; aus lassen.</strong> Die Einstellung verlangt identisches DPI-Scaling auf allen Monitoren und verhält sich laut Doku bei unterschiedlicher Ausrichtung (Portrait + Landscape gemischt) unvorhersehbar. Bei deinem Setup lieber vier getrennte Layouts als ein gespanntes.</li>
+  <li><strong>"Keep windows in their zones when the screen resolution changes" &mdash; an lassen.</strong> Schützt dich, falls nach dem Neustart mal kurz eine andere Auflösung/Skalierung erkannt wird, bevor sich alles stabilisiert.</li>
+</ul>
+
+<h2 id="ueben">Üben</h2>
+<div class="quiz" data-quiz>
+  <p class="q">1. Du willst allen 4 Monitoren unterschiedliche Zonen-Layouts geben. Wie geht das im Editor?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Jeden Monitor einzeln auswählen, Layout zuweisen</button>
+    <button class="opt">Nur ein Layout für alle Monitore</button>
+    <button class="opt">Monitore vorher in Windows-Einstellungen zusammenführen</button>
+    <button class="opt">Layout einmal ziehen, automatisch überallhin kopieren</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<div class="quiz" data-quiz>
+  <p class="q">2. Warum lieber nicht "Zonen über Monitore hinweg spannen" bei deinem Setup aktivieren?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Portrait und Landscape zusammen wirken unvorhersehbar</button>
+    <button class="opt">Diese Option existiert in PowerToys gar nicht</button>
+    <button class="opt">Sie verlangsamt spürbar jeden Fensterwechsel</button>
+    <button class="opt">Sie funktioniert nur mit exakt zwei Monitoren</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<p class="ask-agent">Wenn ein Layout bei dir anders reagiert als beschrieben (z. B. wegen unterschiedlicher DPI-Skalierung zwischen 4K- und Laptop-Display), frag im Chat nach &mdash; das lässt sich gezielt debuggen.</p>
+
+<p class="source">Primärquelle: <a href="https://learn.microsoft.com/en-us/windows/powertoys/fancyzones">FancyZones Window Manager for Windows &mdash; Microsoft Learn</a></p>
+
+<div class="lesson-nav">
+  <span><a href="0001-powertoys-workspaces-daily-reset.html">&larr; Lektion 1: Workspaces</a></span>
+  <span><a href="../index.html">&uarr; Übersicht</a></span>
+  <span><a href="0003-virtuelle-desktops.html">Lektion 3: Virtuelle Desktops &rarr;</a></span>
+</div>
+
+<script>
+document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
+  var feedback = quiz.querySelector('.feedback');
+  quiz.querySelectorAll('.opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var correct = btn.dataset.correct === 'true';
+      quiz.querySelectorAll('.opt').forEach(function (b) {
+        b.classList.remove('correct', 'wrong');
+        b.disabled = true;
+      });
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        quiz.querySelector('[data-correct="true"]').classList.add('correct');
+      }
+      feedback.textContent = correct ? 'Richtig.' : 'Nicht ganz — die richtige Antwort ist jetzt markiert.';
+      quiz.querySelectorAll('.opt').forEach(function (b) { b.disabled = false; });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

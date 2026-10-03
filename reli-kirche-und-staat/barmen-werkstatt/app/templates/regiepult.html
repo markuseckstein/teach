@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Regiepult — {{.Name}}</title>
+	<style>
+		/* Eigenständiges Layout statt style.css, aus demselben Grund wie bei
+		   der Beamer-Ansicht (Vorgang 0012): das Regiepult ist eine
+		   Steuerzentrale während des Unterrichts, kein Formular — auf einen
+		   Blick erfassbare Karten und Farbcodierung zählen hier mehr als
+		   Einheitlichkeit mit den Bedienseiten der Gruppen. */
+		* { box-sizing: border-box; }
+		:root {
+			--bg: #f4f6f8;
+			--flaeche: #ffffff;
+			--rand: #dde3ea;
+			--text: #1a2430;
+			--text-schwach: #5b6b7c;
+			--akzent: #2f6fed;
+			--akzent-dunkel: #1d4fbd;
+			--gut: #1a9e7a;
+			--warnung: #b6740a;
+			--warnung-bg: #fff6e5;
+			--gefahr: #d64545;
+		}
+		body {
+			margin: 0;
+			min-height: 100vh;
+			background: var(--bg);
+			color: var(--text);
+			font-family: system-ui, sans-serif;
+		}
+		main {
+			max-width: 72rem;
+			margin: 0 auto;
+			padding: 2rem 1.5rem 4rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		header.kopf {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 1rem 1.5rem;
+			padding-bottom: 1rem;
+			border-bottom: 1px solid var(--rand);
+		}
+		header.kopf .qr {
+			background: #fff;
+			border: 1px solid var(--rand);
+			border-radius: 0.5rem;
+			padding: 0.4rem;
+			line-height: 0;
+			flex-shrink: 0;
+		}
+		header.kopf h1 { font-size: 1.6rem; margin: 0 0 0.35rem; }
+		header.kopf .meta { color: var(--text-schwach); font-size: 0.95rem; }
+		header.kopf .meta code {
+			background: var(--flaeche);
+			border: 1px solid var(--rand);
+			border-radius: 0.35rem;
+			padding: 0.1rem 0.4rem;
+			font-size: 1rem;
+			font-weight: 600;
+			color: var(--text);
+		}
+		header.kopf .meta a { color: var(--akzent); text-decoration: none; }
+		header.kopf .meta a:hover { text-decoration: underline; }
+
+		section.karte {
+			background: var(--flaeche);
+			border: 1px solid var(--rand);
+			border-radius: 0.9rem;
+			padding: 1.5rem;
+		}
+		section.karte h2 {
+			margin: 0 0 1rem;
+			font-size: 1.05rem;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			color: var(--text-schwach);
+		}
+
+		.phasen-reihe { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+		.phasen-schritte {
+			display: flex;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+			margin-bottom: 1.25rem;
+		}
+		.phase-pille {
+			padding: 0.4rem 0.9rem;
+			border-radius: 999px;
+			font-size: 0.9rem;
+			font-weight: 600;
+			background: var(--bg);
+			color: var(--text-schwach);
+			border: 1px solid var(--rand);
+		}
+		.phase-pille.aktiv {
+			background: var(--akzent);
+			border-color: var(--akzent);
+			color: #fff;
+		}
+
+		button {
+			font: inherit;
+			cursor: pointer;
+			border: none;
+			border-radius: 0.5rem;
+			padding: 0.6rem 1.1rem;
+			font-weight: 600;
+			background: var(--akzent);
+			color: #fff;
+			transition: background 0.15s ease;
+		}
+		button:hover { background: var(--akzent-dunkel); }
+		button.leise {
+			background: transparent;
+			color: var(--text-schwach);
+			border: 1px solid var(--rand);
+			font-size: 0.85rem;
+			padding: 0.4rem 0.8rem;
+		}
+		button.leise:hover { background: var(--bg); color: var(--text); }
+
+		.timer-zeile { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+		.timer-anzeige {
+			font-size: clamp(2.2rem, 6vw, 3.5rem);
+			font-variant-numeric: tabular-nums;
+			font-weight: 700;
+			line-height: 1;
+		}
+		.timer-anzeige.abgelaufen { color: var(--gefahr); }
+		.timer-details { color: var(--text-schwach); font-size: 0.9rem; }
+		.fortschrittsbalken {
+			margin-top: 1rem;
+			height: 0.6rem;
+			border-radius: 999px;
+			background: var(--bg);
+			overflow: hidden;
+		}
+		.fortschrittsbalken > div {
+			height: 100%;
+			background: var(--akzent);
+			border-radius: 999px;
+			width: 0%;
+		}
+		.fortschrittsbalken > div.abgelaufen { background: var(--gefahr); }
+
+		.gruppen-gitter {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+			gap: 1rem;
+		}
+		.gruppen-karte {
+			border: 1px solid var(--rand);
+			border-radius: 0.7rem;
+			padding: 1.1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.6rem;
+		}
+		.gruppen-karte.freigegeben { border-color: var(--gut); background: #f2fbf8; }
+		.gruppen-karte .titel { display: flex; justify-content: space-between; align-items: baseline; }
+		.gruppen-karte .titel h3 { margin: 0; font-size: 1.1rem; }
+		.gruppen-karte .themenfeld { color: var(--text-schwach); font-size: 0.9rem; min-height: 1.2em; }
+		.punkte { display: flex; gap: 0.35rem; }
+		.punkt { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--rand); }
+		.punkt.erreicht { background: var(--akzent); }
+		.gruppen-karte.freigegeben .punkt.erreicht { background: var(--gut); }
+		.schritt-zeile { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
+		.ueberarbeitungen {
+			display: inline-block;
+			min-width: 1.4em;
+			text-align: center;
+			padding: 0.05rem 0.4rem;
+			border-radius: 999px;
+			background: var(--bg);
+			color: var(--text-schwach);
+			font-weight: 600;
+			font-size: 0.85rem;
+		}
+		.ueberarbeitungen.hat-ueberarbeitungen { background: var(--warnung-bg); color: var(--warnung); }
+		.warnhinweis {
+			font-size: 0.85rem;
+			color: var(--warnung);
+			background: var(--warnung-bg);
+			border-radius: 0.4rem;
+			padding: 0.35rem 0.6rem;
+		}
+		.gruppen-karte form { margin-top: auto; }
+	</style>
+</head>
+<body>
+	<main>
+		<header class="kopf">
+			<div class="qr"><img src="/kurse/{{.KursID}}/qr.png" width="88" height="88" alt="QR-Code zum Beitritt"></div>
+			<div>
+				<h1>{{.Name}}</h1>
+				<p class="meta">
+					Beitrittscode <code>{{.Beitrittscode}}</code>
+					· <a href="/kurse/{{.KursID}}">Einrichtung (Themenfelder)</a>
+					· <a href="/kurse/{{.KursID}}/beamer" target="_blank">Beamer-Ansicht öffnen</a>
+				</p>
+			</div>
+		</header>
+
+		<section class="karte">
+			<h2>Phase</h2>
+			<div class="phasen-schritte">
+				<span class="phase-pille{{if eq .Phase ""}} aktiv{{end}}">Vorbereitung</span>
+				<span class="phase-pille{{if eq .Phase "werkstatt"}} aktiv{{end}}">Werkstatt läuft</span>
+				<span class="phase-pille{{if eq .Phase "abschluss"}} aktiv{{end}}">Abschluss</span>
+			</div>
+			<div class="phasen-reihe">
+				<form method="post" action="/kurse/{{.KursID}}/phase">
+					<input type="hidden" name="phase" value="werkstatt">
+					<button type="submit">Werkstatt freischalten</button>
+				</form>
+				<form method="post" action="/kurse/{{.KursID}}/phase">
+					<input type="hidden" name="phase" value="abschluss">
+					<button type="submit" class="leise">Werkstatt beenden</button>
+				</form>
+			</div>
+		</section>
+
+		<section class="karte">
+			<h2>Timer</h2>
+			<div class="timer-zeile">
+				<div id="timer" class="timer-anzeige{{if .Timer.Abgelaufen}} abgelaufen{{end}}" data-ende-iso="{{.Timer.EndeISO}}">
+					{{if .Timer.Gestartet}}{{if .Timer.Abgelaufen}}Zeit ist um{{else}}…{{end}}{{else}}Noch nicht gestartet{{end}}
+				</div>
+				<div class="timer-details">
+					{{if .Timer.Gestartet}}Gestartet um {{.Timer.Start}} Uhr, endet ca. {{.Timer.Ende}} Uhr{{end}}
+				</div>
+			</div>
+			{{if .Timer.Gestartet}}
+			<div class="fortschrittsbalken"><div id="timer-balken" class="{{if .Timer.Abgelaufen}}abgelaufen{{end}}" data-start-iso="{{.Timer.StartISO}}"></div></div>
+			{{end}}
+			<div class="phasen-reihe" style="margin-top: 1rem;">
+				<form method="post" action="/kurse/{{.KursID}}/timer/starten">
+					<button type="submit">Timer starten</button>
+				</form>
+			</div>
+		</section>
+
+		<section class="karte">
+			<h2>Fortschritt je Gruppe</h2>
+			<div class="gruppen-gitter">
+				{{range .Gruppen}}
+				<div class="gruppen-karte{{if .Freigegeben}} freigegeben{{end}}">
+					<div class="titel">
+						<h3>Gruppe {{.Nummer}}</h3>
+						<div class="punkte">
+							{{range .Punkte}}
+							<span class="punkt{{if .}} erreicht{{end}}"></span>
+							{{end}}
+						</div>
+					</div>
+					<p class="themenfeld">{{if .Themenfeld}}{{.Themenfeld}}{{else}}—{{end}}</p>
+					<div class="schritt-zeile">
+						<span>{{.SchrittBezeichnung}}</span>
+						<span class="ueberarbeitungen{{if .Ueberarbeitungen}} hat-ueberarbeitungen{{end}}" title="Überarbeitungen">{{.Ueberarbeitungen}}</span>
+					</div>
+					{{if .SchreibrechtWarnung}}<p class="warnhinweis">⚠ dasselbe Gerät schreibt seit Langem</p>{{end}}
+					{{if not .Freigegeben}}
+					<form method="post" action="/kurse/{{$.KursID}}/gruppen/{{.Nummer}}/weiterschalten">
+						<button type="submit" class="leise">Manuell weiterschalten</button>
+					</form>
+					{{end}}
+				</div>
+				{{end}}
+			</div>
+		</section>
+	</main>
+
+	<script>
+		// Fortschreitender Countdown wie am Beamer (beamer.html): der Server
+		// liefert nur Start-/Endzeitpunkt, Anzeige und Balken zählen lokal.
+		(function () {
+			var endeIso = document.getElementById("timer") && document.getElementById("timer").getAttribute("data-ende-iso");
+			var timer = document.getElementById("timer");
+			var balken = document.getElementById("timer-balken");
+			if (!endeIso || !timer) return;
+			var ende = new Date(endeIso).getTime();
+			var start = balken ? new Date(balken.getAttribute("data-start-iso")).getTime() : null;
+			var dauer = start ? ende - start : null;
+
+			function aktualisieren() {
+				var restMs = ende - Date.now();
+				var rest = Math.round(restMs / 1000);
+				if (rest <= 0) {
+					timer.textContent = "Zeit ist um";
+					timer.classList.add("abgelaufen");
+					if (balken) { balken.style.width = "100%"; balken.classList.add("abgelaufen"); }
+					return;
+				}
+				var minuten = Math.floor(rest / 60);
+				var sekunden = rest % 60;
+				timer.textContent = minuten + ":" + (sekunden < 10 ? "0" : "") + sekunden;
+				if (balken && dauer) {
+					var anteil = Math.min(100, Math.max(0, 100 - (restMs / dauer) * 100));
+					balken.style.width = anteil + "%";
+				}
+			}
+
+			aktualisieren();
+			setInterval(aktualisieren, 1000);
+		})();
+	</script>
+</body>
+</html>

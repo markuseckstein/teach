@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hubschrauber-Sound · Übungssteuerung</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  main { max-width: 560px; }
+  .status { text-align: center; margin: 1.2rem 0; }
+  .status .phase { font-size: 1.6rem; font-weight: 700; }
+  .status .time { font-family: var(--mono); font-size: 1.1rem; color: var(--muted); }
+  .bigbtn {
+    display: block; width: 100%; min-height: 6.5rem; margin: 0 0 1rem;
+    font: 700 1.5rem/1.2 var(--sans); border-radius: 14px; border: 3px solid var(--rule);
+    background: var(--card); color: var(--fg); cursor: pointer; padding: .8rem 1rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .bigbtn small { display: block; font-weight: 400; font-size: .95rem; color: var(--muted); margin-top: .3rem; }
+  .bigbtn:disabled { opacity: .4; cursor: not-allowed; }
+  .bigbtn.go { border-color: var(--ok); background: var(--ok-soft); }
+  .bigbtn.land { border-color: var(--accent); background: var(--accent-soft); }
+  .bigbtn.active { outline: 4px solid var(--fg); outline-offset: 2px; }
+  .bigbtn.stop { min-height: 3.5rem; font-size: 1.1rem; }
+  .vol { display: flex; align-items: center; gap: .8rem; margin: 1.2rem 0; }
+  .vol input { flex: 1; height: 2.2rem; }
+  .loadmsg { text-align: center; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Übungsleiter · Einspielung</p>
+  <h1>Hubschrauber-Sound</h1>
+
+  <div class="status" aria-live="polite">
+    <div class="phase" id="phase">Bereit</div>
+    <div class="time" id="time">0:00</div>
+  </div>
+
+  <button class="bigbtn go" id="b1">1 · Anflug starten<small>leise aus der Ferne, wird lauter, dann Schwebeflug (10 min)</small></button>
+  <button class="bigbtn land" id="b2" disabled>2 · Landung<small>blendet aus dem Schwebeflug in Landung, Rotor läuft aus</small></button>
+  <button class="bigbtn stop" id="b0" disabled>Stopp (Ausblenden)</button>
+
+  <div class="vol">
+    <label for="vol">Lautstärke</label>
+    <input type="range" id="vol" min="0" max="1" step="0.01" value="1">
+  </div>
+  <p class="loadmsg" id="load">Lade Audio …</p>
+
+  <div class="box warn">
+    <h3>Vorher testen</h3>
+    <ul>
+      <li>Das Handy per Bluetooth mit der BoomBox koppeln, Handy-Lautstärke am Gerät hochdrehen, hier nur fein regeln.</li>
+      <li>Bildschirm bleibt an, solange die Seite offen ist. Nicht in den Energiesparmodus wechseln, sonst stoppt manche Handys das Audio.</li>
+      <li>Den Sprung von 1 auf 2 einmal ausprobieren: Er ist im Schwebeflug gleich laut und wird kurz überblendet.</li>
+    </ul>
+  </div>
+  <p class="meta"><a href="../index.html">← Inhaltsverzeichnis</a></p>
+</main>
+<script>
+(function () {
+  var FILES = { 1: "../audio/1_anflug_und_schwebeflug.mp3", 2: "../audio/2_landung_und_abschaltung.mp3" };
+  // Phasen je Track: [bis Sekunde, Name]
+  var PHASES = {
+    1: [[45, "Anflug"], [1e9, "Schwebeflug"]],
+    2: [[8, "Schwebeflug"], [22, "Landung"], [36, "Am Boden, Turbine im Leerlauf"], [70, "Abschaltung, Rotor läuft aus"], [1e9, "Rotor steht"]]
+  };
+  var XFADE = 0.5;   // Sekunden Überblendung beim Umschalten
+  var ctx, master, els = {}, gains = {}, current = 0;
+  var b1 = document.getElementById("b1"), b2 = document.getElementById("b2"), b0 = document.getElementById("b0");
+  var phaseEl = document.getElementById("phase"), timeEl = document.getElementById("time");
+  var wake = null;
+
+  function setup() {
+    if (ctx) return;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain();
+    master.gain.value = document.getElementById("vol").value;
+    master.connect(ctx.destination);
+    [1, 2].forEach(function (n) {
+      var a = els[n];
+      var g = ctx.createGain(); g.gain.value = 0;
+      ctx.createMediaElementSource(a).connect(g); g.connect(master);
+      gains[n] = g;
+    });
+  }
+
+  [1, 2].forEach(function (n) {
+    var a = new Audio(FILES[n]); a.preload = "auto"; els[n] = a;
+    a.addEventListener("canplaythrough", function () {
+      a._ready = true;
+      if (els[1]._ready && els[2]._ready) document.getElementById("load").textContent = "Audio geladen.";
+    });
+    a.addEventListener("error", function () {
+      document.getElementById("load").textContent = "Audio nicht gefunden: " + FILES[n] + " (Ordner audio/ muss neben reference/ liegen).";
+    });
+    a.addEventListener("ended", function () { if (current === n) finish(); });
+  });
+
+  function ramp(g, to, dur) {
+    var t = ctx.currentTime;
+    g.gain.cancelScheduledValues(t);
+    g.gain.setValueAtTime(g.gain.value, t);
+    g.gain.linearRampToValueAtTime(to, t + dur);
+  }
+
+  var pauseTimer = {};
+  function stopTrack(n, dur) {
+    ramp(gains[n], 0, dur);
+    clearTimeout(pauseTimer[n]);
+    pauseTimer[n] = setTimeout(function () { els[n].pause(); }, dur * 1000 + 50);
+  }
+
+  function startTrack(n, fadeIn) {
+    var a = els[n];
+    clearTimeout(pauseTimer[n]);
+    a.currentTime = 0;
+    gains[n].gain.cancelScheduledValues(ctx.currentTime);
+    gains[n].gain.setValueAtTime(fadeIn ? 0 : 1, ctx.currentTime);
+    a.play();
+    if (fadeIn) ramp(gains[n], 1, XFADE);
+  }
+
+  function select(n) {
+    setup();
+    ctx.resume();
+    var prev = current;
+    if (prev && prev !== n) stopTrack(prev, XFADE);
+    startTrack(n, !!prev && prev !== n);
+    current = n;
+    b1.classList.toggle("active", n === 1);
+    b2.classList.toggle("active", n === 2);
+    b2.disabled = (n === 2);
+    b0.disabled = false;
+    keepAwake();
+  }
+
+  function finish() {
+    current = 0;
+    b1.classList.remove("active"); b2.classList.remove("active");
+    b2.disabled = true; b0.disabled = true;
+    phaseEl.textContent = "Beendet";
+    releaseAwake();
+  }
+
+  b1.onclick = function () { select(1); };
+  b2.onclick = function () { if (current === 1) select(2); };
+  b0.onclick = function () {
+    if (!current) return;
+    stopTrack(current, 3);
+    var n = current; current = 0;
+    setTimeout(function () { if (!current) finish(); }, 3100);
+    phaseEl.textContent = "Blende aus …";
+  };
+  document.getElementById("vol").oninput = function () { if (master) master.gain.value = this.value; };
+
+  function fmt(s) { s = Math.floor(s); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
+  setInterval(function () {
+    if (!current) return;
+    var t = els[current].currentTime, ph = PHASES[current];
+    for (var i = 0; i < ph.length; i++) if (t < ph[i][0]) { phaseEl.textContent = ph[i][1]; break; }
+    timeEl.textContent = fmt(t) + " / " + fmt(els[current].duration || 0);
+  }, 250);
+
+  function keepAwake() {
+    if (navigator.wakeLock && !wake) navigator.wakeLock.request("screen").then(function (l) { wake = l; l.addEventListener("release", function () { wake = null; }); }).catch(function () {});
+  }
+  function releaseAwake() { if (wake) { wake.release(); wake = null; } }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && current) keepAwake(); });
+})();
+</script>
+</body>
+</html>

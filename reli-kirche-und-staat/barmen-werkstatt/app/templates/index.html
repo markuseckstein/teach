@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Barmen-Werkstatt</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main>
+		<h1>Barmen-Werkstatt</h1>
+		<p class="meta">Neuen Kurs anlegen und Beitrittscode für die Klasse erzeugen.</p>
+
+		<form class="karte" method="post" action="/kurse">
+			<label>Name des Kurses <input type="text" name="name" placeholder="z. B. 9c"></label>
+			<label>Zahl der Gruppen <input type="number" name="gruppenzahl" min="1" max="6" value="6" required></label>
+			<button type="submit">Kurs anlegen</button>
+		</form>
+	</main>
+</body>
+</html>

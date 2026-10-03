@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 4 — Boje über Bord: Rettungsmanöver</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0003-kreuzen.html">← Lektion 3</a>
+    <a href="../reference/mob-checkliste.html">📄 MOB-Checkliste</a>
+    <span class="spacer"></span>
+    <a href="0005-ablegen-unter-motor.html">Nächste Lektion: Ablegen →</a>
+  </nav>
+
+  <h1>Boje über Bord: die Rettungsmanöver</h1>
+  <p class="lesson-meta">Lektion 4 · Modul A — Grundlagen &amp; Manöver · ca. 25 Minuten</p>
+
+  <p>Das eine Manöver, das sitzen muss, ohne dass du nachdenkst — denn wenn es zählt, ist
+  Adrenalin im Spiel und die Person im Wasser ist vielleicht deine. Die gute Nachricht:
+  Der <strong>Quickstopp</strong>, das heute übliche Manöver, besteht nur aus Bausteinen,
+  die du schon aufgefrischt hast: Wende ohne Fockbedienung
+  (= <a href="0002-wende-halse-q-wende-beidrehen.html">Beidreh-Trick</a>), kontrollierte
+  Halse mit dichtem Groß, Aufschießer.</p>
+
+  <h2>1 · Die erste Minute — immer gleich, egal welches Manöver</h2>
+
+  <ol>
+    <li>Laut <strong>„Mensch über Bord!"</strong> rufen — die ganze Crew muss es hören.</li>
+    <li><strong>Rettungsmittel nachwerfen</strong> (Rettungskragen/MOB-Modul am Heckkorb) — lieber sofort und ungenau als spät und perfekt.</li>
+    <li><strong>Ausguck einteilen:</strong> Eine Person zeigt <em>ununterbrochen</em> mit ausgestrecktem Arm auf die Person im Wasser und macht nichts anderes. Ein Kopf in der Welle ist nach Sekunden unsichtbar.</li>
+    <li><strong>MOB-Taste am Plotter</strong> drücken (Position wird gespeichert — mehr dazu in Modul E).</li>
+    <li>Manöver einleiten. Reicht die Crew nicht für alles gleichzeitig: <strong>Manöver vor Plotter-Taste.</strong></li>
+    <li>Wenn die Lage unübersichtlich wird: <strong>DSC-Alarm / MAYDAY</strong> — das ist ein Seenotfall (→ Modul C).</li>
+  </ol>
+
+  <h2>2 · Der Quickstopp — Standard auf der Yacht</h2>
+
+  <p>Grundidee: <strong>sofort stoppen und in der Nähe der Person bleiben</strong>, statt
+  wegzusegeln und einen schönen Anlauf zu planen. Die Großschot wird einmal dichtgeholt
+  und dann <em>nicht mehr angefasst</em> — das dichte Groß und die backstehende Fock
+  halten das Boot langsam, während du einen engen Kreis um die Person fährst
+  (<a href="https://www.segeln-traum.de/segelmanoever/rettungsmanoever/quick-stop-segelrettungsmanoever/">segeln-traum.de</a>).</p>
+
+  <figure>
+    <svg viewBox="0 0 640 560" role="img" aria-label="Quickstopp-Manöver">
+      <defs>
+        <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#5c6b78"/>
+        </marker>
+      </defs>
+
+      <!-- Wind -->
+      <line x1="520" y1="30" x2="520" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="560" y1="30" x2="560" y2="90" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="500" y="115" font-family="Gill Sans, Segoe UI, sans-serif" font-size="16" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Person im Wasser -->
+      <circle cx="300" cy="340" r="10" fill="#b3541e"/>
+      <circle cx="300" cy="340" r="17" fill="none" stroke="#b3541e" stroke-width="2" opacity="0.5"/>
+      <text x="300" y="318" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#b3541e" font-weight="bold">Person</text>
+
+      <!-- Track: Amwind, sofortige Wende, Kreis mit Halse, Aufschießer -->
+      <path d="M200,450 L340,310 L370,265
+               C420,215 350,150 285,180
+               C195,222 165,330 225,410
+               C255,450 288,435 296,385"
+            fill="none" stroke="#5c6b78" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#ap)"/>
+
+      <!-- Boote -->
+      <g transform="translate(240,410) rotate(45)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="5.4" y2="21.4" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(370,265) rotate(-20)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="3" y2="20" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(180,300) rotate(190)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <line x1="0" y1="-4" x2="6" y2="19" stroke="#b3541e" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(293,415) rotate(-8)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c"/>
+        <path d="M0,-4 Q4,4 0,10 Q-4,16 0,22" fill="none" stroke="#b3541e" stroke-width="3" stroke-linecap="round"/>
+      </g>
+
+      <!-- Beschriftung -->
+      <text x="60" y="475" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545"><tspan font-weight="bold">①</tspan> „Mensch über Bord!" — Groß dicht,</text>
+      <text x="60" y="494" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Rettungsmittel werfen, Ausguck zeigt</text>
+
+      <text x="400" y="255" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545"><tspan font-weight="bold">②</tspan> Sofort Wende —</text>
+      <text x="400" y="274" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Fock bleibt back,</text>
+      <text x="400" y="292" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Groß bleibt dicht</text>
+
+      <text x="40" y="255" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545"><tspan font-weight="bold">③</tspan> Enger Kreis um die</text>
+      <text x="40" y="274" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Person; unten: kontrollierte</text>
+      <text x="40" y="292" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Halse (Groß ist ja dicht)</text>
+
+      <text x="330" y="445" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14.5" fill="#0b2545"><tspan font-weight="bold">④</tspan> Fast im Aufschießer annähern,</text>
+      <text x="330" y="464" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Segel leicht fieren, mit minimaler</text>
+      <text x="330" y="482" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Restfahrt neben der Person stoppen</text>
+    </svg>
+    <figcaption><strong>Quickstopp.</strong> Großschot dicht — und dann Segelbedienung
+    vergessen: Wende mit backstehender Fock, enger Kreis, kontrollierte Halse, Annäherung
+    fast im Aufschießer. Das Boot bleibt die ganze Zeit nah an der Person.</figcaption>
+  </figure>
+
+  <ol>
+    <li><strong>Großschot dichtholen</strong> — ab jetzt werden die Segel nicht mehr bedient.</li>
+    <li><strong>Sofort Wende einleiten</strong>, Fockschot bleibt fest (Fock steht back und bremst).</li>
+    <li><strong>Enger Kreis um die Person</strong> — abfallen bis vor den Wind, dabei kommt eine <strong>Halse</strong>: Mit dichtem Groß ist sie harmlos, der Baum hat kaum Weg.</li>
+    <li>Anluven auf Amwindkurs, <strong>Annäherung fast im Aufschießer</strong>: Segel leicht fieren, damit das Boot mit minimaler Restfahrt <strong>neben</strong> der Person stehen bleibt — Person an der <strong>Leeseite auf Höhe der Wanten</strong> aufnehmen.</li>
+  </ol>
+
+  <h2>3 · Die Alternativen — kurz</h2>
+
+  <ul>
+    <li><strong>Klassisches SKS-Manöver („mit Aufschießer"):</strong> Abfallen auf Halbwind, 4–6 Bootslängen ablaufen, Halse, zurück und die Person mit einem sauberen Aufschießer aus Lee anfahren (<a href="https://www.segeln-traum.de/segelmanoever/rettungsmanoever/mann-ueber-bord-mit-aufschiesser/">Ablauf bei segeln-traum.de</a>). Braucht mehr Platz und mehr Kopf — dafür einen kontrollierten Endanlauf. Gut, wenn Crew und Zeit da sind.</li>
+    <li><strong>Unter Motor</strong> — auf dem Chartertörn oft die ehrlichste Option: Motor an (<em>vorher</em> prüfen: keine Schoten oder Leinen im Wasser!), Fock wegrollen, Groß dicht mittschiffs, <strong>gegen den Wind</strong> an die Person heranfahren, Person in Lee aufnehmen. Beim Kontakt: <strong>Getriebe auf Leerlauf</strong> — der Propeller ist die größte Gefahr für die Person im Wasser.</li>
+  </ul>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Quickstopp = dicht bleiben, Segel vergessen, Kreis, Aufschießer.</strong>
+    Nicht das elegante Manöver rettet, sondern das, das deine Crew unter Stress noch
+    hinbekommt. Genau deshalb ist der Quickstopp Standard: Nach dem Dichtholen gibt es
+    nichts mehr zu bedienen.</p>
+  </div>
+
+  <h2>4 · Das eigentliche Problem: die Bergung</h2>
+
+  <p>Neben der Person stehen ist die halbe Miete — eine erschöpfte, nasse Person wiegt
+  gefühlt das Doppelte und kann oft nicht mehr mithelfen. Vorher wissen, was an Bord ist:</p>
+
+  <ul>
+    <li><strong>Badeleiter am Heck</strong> — der Normalfall bei ansprechbarer Person und wenig Welle. Achtung: Bei Seegang schlägt das Heck — Person erst bei ruhigem Boot heranholen.</li>
+    <li><strong>Rettungsschlinge/Lifesling</strong> nachschleppen und die Person heranziehen, wenn sie nicht zum Boot schwimmen kann.</li>
+    <li><strong>Fall + Winsch:</strong> Bewusstlose oder kraftlose Personen mit einem freien Fall (Großfall/Spifall) und der Winsch an Deck hieven — mit der Charter-Crew einmal durchsprechen, wo was ist.</li>
+  </ul>
+
+  <div class="callout achtung">
+    <span class="label">Prävention schlägt jedes Manöver</span>
+    <p>Automatik-Rettungswesten anziehen ist Skipper-Ansage, nicht Crew-Geschmack: bei
+    Nacht, Welle, Starkwind und allein im Cockpit zusätzlich <strong>einpicken</strong>
+    (Lifebelt/Strecktau). Und der Klassiker der MOB-Statistik ist banal:
+    <strong>nachts über die Reling urinieren</strong>. Eimer benutzen — ernsthaft.</p>
+  </div>
+
+  <div class="callout revier">
+    <span class="label">Praxis-Tipp für den Törn</span>
+    <p>Mach am ersten Segeltag im Saronischen Golf ein <strong>Fender-über-Bord-Training</strong>:
+    Fender mit Pütz als „Person" ins Wasser, einmal Quickstopp unter Segeln, einmal
+    Annäherung unter Motor. Kostet 20 Minuten, macht der Crew Spaß — und danach wissen
+    alle, wer im Ernstfall was tut.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://www.segeln-traum.de/segelmanoever/rettungsmanoever/quick-stop-segelrettungsmanoever/">segeln-traum.de: Quick-Stop — Ablauf des Rettungsmanövers</a> (mit Grafiken); dazu <a href="https://www.segeln360.de/seemannschaft/segelmanoever/mann-ueber-bord-manoever.html">segeln360: Das Mann-über-Bord-Manöver</a>.</li>
+      <li><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=gde4Z3hi8_I">„Alle SKS Manöver"</a> — der MOB-Teil zeigt das Manöver in Echtzeit.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/mob-checkliste.html">MOB-Checkliste</a> — ausdrucken und an die Navi-Ecke kleben.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Quickstopp mit nur einer weiteren Person an
+    Bord — was lasse ich weg?" oder „Wie hole ich eine bewusstlose Person an Deck?"</p>
+    <p><a href="0003-kreuzen.html">← Lektion 3</a> · <a href="../index.html">Kursübersicht</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Person fällt über Bord. Was sind die ersten drei Dinge — in dieser Reihenfolge?',
+    options: ['Rufen „Mensch über Bord!", Rettungsmittel werfen, Ausguck einteilen', 'MOB-Taste drücken, Motor starten, danach die Segel schnell bergen', 'Mayday funken, Rettungsinsel klarmachen, die Crew unter Deck schicken'],
+    correct: 0,
+    why: 'Alarmieren, Rettungsmittel nach, Ausguck — erst dann Technik (MOB-Taste) und Manöver. Ein Kopf in der Welle ist ohne zeigenden Ausguck nach Sekunden verloren.'
+  },
+  {
+    q: 'Was passiert beim Quickstopp mit der Großschot?',
+    options: ['Sie wird dichtgeholt und danach im ganzen Manöver nicht mehr bedient', 'Sie wird komplett gefiert, damit das Großsegel sofort drucklos killt', 'Sie wird bei jedem Kurswechsel neu auf den passenden Trimm gestellt'],
+    correct: 0,
+    why: 'Einmal dicht — dann Hände weg. Das dichte Groß bremst, macht die Halse im Kreis harmlos und lässt die Crew sich auf die Person konzentrieren.'
+  },
+  {
+    q: 'Warum ist die Halse im Quickstopp-Kreis ungefährlich?',
+    options: ['Weil das Boot dabei ohnehin fast keine Fahrt mehr im Schiff hat', 'Weil das Groß dicht ist und der Baum kaum Weg zum Überschlagen hat', 'Weil die Fock back steht und den Baum auf seiner Seite festhält'],
+    correct: 1,
+    why: 'Dichtgeholtes Groß = kurzer, kontrollierter Baumweg — dieselbe Logik wie das „Rund achtern" aus Lektion 2.'
+  },
+  {
+    q: 'Wie näherst du dich der Person im Wasser am Ende an?',
+    options: ['Fast im Aufschießer, mit minimaler Restfahrt, Person in Lee an den Wanten', 'Mit vollem Speed von achtern, um die Person schnellstens zu erreichen', 'Genau vor dem Wind treibend, damit das Boot zur Person hinübersegelt'],
+    correct: 0,
+    why: 'Gegen den Wind mit killenden, leicht gefierten Segeln stirbt die Fahrt genau dosierbar — und die Person wird an der tiefen Leeseite bei den Wanten aufgenommen.'
+  },
+  {
+    q: 'Rettung unter Motor: Was ist beim Kontakt mit der Person zwingend?',
+    options: ['Das Getriebe auf Leerlauf schalten — der Propeller darf nicht drehen', 'Den Rückwärtsgang einlegen, um das Boot exakt auf Position zu halten', 'Das Ruder hart nach Luv legen, damit das Heck zur Person schwenkt'],
+    correct: 0,
+    why: 'Der drehende Propeller ist die größte Gefahr für die Person im Wasser. Vor dem Motorstart außerdem: keine Leinen/Schoten im Wasser.'
+  },
+  {
+    q: 'Was ist laut MOB-Statistik die banale Hauptursache, die du als Skipper abstellst?',
+    options: ['Nachts ohne Weste und Sicherung über die Reling urinieren', 'Beim Reffen am Mast ohne festes Schuhwerk auszurutschen', 'Beim Ankermanöver über die ausrauschende Kette zu steigen'],
+    correct: 0,
+    why: 'Der traurige Klassiker. Deine Ansage als Skipper: Westen an, nachts einpicken — und der Eimer ist Bordstandard.'
+  }
+]);
+</script>
+</body>
+</html>

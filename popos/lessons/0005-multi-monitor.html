@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Multi-Monitor-Setup</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <p class="subtitle">Lesson 0005 · PopOS/COSMIC Fenstermanagement</p>
+  <h1>Multi-Monitor-Setup</h1>
+
+  <p>Sobald ein zweiter Bildschirm dran hängt, ändert sich eine Grundannahme: Workspaces gehören unter COSMIC standardmäßig <strong>jeweils zu einem Monitor</strong>, nicht zu allen gemeinsam. Diese Lesson zeigt, wie du Monitore einrichtest, wie sich Workspaces darüber verteilen, und wie du Fenster gezielt zwischen Bildschirmen bewegst.</p>
+
+  <div class="windows-analogy">
+    <div class="callout-title">Von Windows her kennst du</div>
+    <p><kbd>Win</kbd>+<kbd>P</kbd> für den Projektionsmodus, die Anordnung in <em>Einstellungen → Anzeige</em>, und <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd> um ein Fenster auf den Nachbarbildschirm zu schieben. Unter Windows sind virtuelle Desktops dabei <strong>über alle Monitore hinweg geteilt</strong> — genau das ist der Punkt, an dem COSMIC standardmäßig anders tickt.</p>
+  </div>
+
+  <h2>Monitore einrichten</h2>
+  <p><strong>Settings → Displays</strong> zeigt eine Layout-Ansicht ähnlich wie bei GNOME oder Windows: Monitore per Drag&amp;Drop anordnen, Ausrichtung, Skalierung und Farbprofil pro Bildschirm einstellen. Fraktionale Skalierung (z.B. 125&nbsp;%, 150&nbsp;%) funktioniert pro Monitor unabhängig — praktisch, wenn dein Laptop-Panel eine andere Pixeldichte hat als ein externer Monitor.</p>
+
+  <h2>Workspaces sind pro Monitor (Standard)</h2>
+  <p>Im Standardmodus <strong>„OutputBound"</strong> hat jeder angeschlossene Bildschirm seine <em>eigene</em>, unabhängige Liste von Workspaces. Wechselst du auf Monitor 1 zu Workspace 3, bleibt Monitor 2 unberührt auf seinem eigenen aktuellen Workspace stehen — die beiden Zählungen laufen komplett getrennt.</p>
+
+  <div class="callout">
+    <div class="callout-title">Wenn du das Windows-Verhalten willst</div>
+    <p>Unter <strong>Settings → Workspaces</strong> gibt es einen Umschalter auf den <strong>Global</strong>-Modus: dann teilen sich alle Monitore einen gemeinsamen Workspace-Pool, und der Wechsel auf einem Bildschirm wechselt überall gleichzeitig — das ist näher an Windows' Verhalten. Der Standard (pro Monitor getrennt) gilt aber als die für Multi-Monitor-Setups sinnvollere Einstellung, weil du z.B. auf dem externen Monitor durchgehend Referenzmaterial offen lassen kannst, während der Laptop-Bildschirm durch verschiedene Workspaces wechselt.</p>
+  </div>
+
+  <h2>Fenster zwischen Monitoren bewegen</h2>
+  <p>Dasselbe Kürzel wie beim Workspace-Wechsel funktioniert auch über Bildschirmgrenzen hinweg: <span class="keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Super</kbd><span class="plus">+</span>Pfeiltaste</span> schiebt das aktive Fenster zunächst durch die Workspaces des aktuellen Monitors — und sobald du am letzten Workspace angekommen bist, weiter auf den nächsten Monitor. Alternativ: in der Workspace-Übersicht (<kbd>Super</kbd>+<kbd>W</kbd>) ein Fenster einfach auf einen Workspace-Streifen des anderen Monitors ziehen.</p>
+
+  <div class="callout">
+    <div class="callout-title">Bekannte Grenze</div>
+    <p>Ein einzelnes Fenster kann unter COSMIC/Wayland aktuell nicht über zwei Monitore hinweg gespannt werden (echtes Fullscreen über beide Displays funktioniert nicht) — jedes Fenster gehört immer genau einem Monitor. Für die meisten Entwickler-Workflows ist das unauffällig, aber bei bestimmten Remote-Desktop- oder Präsentations-Tools kann es auffallen.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Praxis, direkt jetzt</div>
+    <p>Falls gerade ein zweiter Monitor verfügbar ist: schließe ihn an, öffne <strong>Settings → Displays</strong> und ordne die Bildschirme so an, wie sie physisch stehen. Öffne dann auf jedem Monitor einen anderen Workspace und beobachte, dass sie unabhängig sind. Verschiebe ein Fenster mit <kbd>Shift</kbd>+<kbd>Super</kbd>+Pfeiltaste über den Workspace-Rand hinweg auf den anderen Bildschirm.</p>
+  </div>
+
+  <h2>Übung</h2>
+  <div class="quiz-mc" data-answer="1">
+    <p class="quiz-question">Standardmäßig (OutputBound-Modus) — wie verhalten sich Workspaces auf zwei Monitoren?</p>
+    <div class="quiz-options">
+      <button class="quiz-option" data-index="0">Beide Monitore teilen sich einen Workspace-Pool</button>
+      <button class="quiz-option" data-index="1">Jeder Monitor hat seine eigene, unabhängige Workspace-Liste</button>
+      <button class="quiz-option" data-index="2">Workspaces existieren nur auf dem Hauptmonitor</button>
+      <button class="quiz-option" data-index="3">Jedes Fenster bekommt einen eigenen Monitor zugewiesen</button>
+    </div>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <div class="quiz" data-answer="Settings Workspaces">
+    <p class="quiz-question">Wo schaltest du auf den Global-Modus um (geteilter Workspace-Pool über alle Monitore)?</p>
+    <input type="text" class="quiz-input" placeholder="Antwort eingeben…">
+    <button class="quiz-check">Prüfen</button>
+    <p class="quiz-feedback"></p>
+  </div>
+
+  <p class="citation">Primärquelle: <a href="https://blog.system76.com/post/cosmic-alpha-6-big-leaps-forward/">COSMIC Alpha 6: Big Leaps Forward — System76 Blog</a> (Displays &amp; Workspace-Modus), <a href="https://support.system76.com/articles/pop-cosmic-keyboard-shortcuts/">COSMIC Keyboard Shortcuts — System76 Support</a> (Fenster über Monitor-Grenzen verschieben) sowie <a href="https://github.com/pop-os/pop/issues/3902">pop-os/pop Issue #3902</a> (Grenze: Fenster können nicht über mehrere Monitore gespannt werden). Vollständige Kürzelliste: <a href="../reference/cosmic-shortcuts-cheatsheet.html">Referenz-Spickzettel</a>.</p>
+
+  <div class="lesson-nav">
+    <span><a href="0004-stacking.html">← Lesson 4: Stacking</a></span>
+    <span class="center"><a href="../index.html">↑ Inhaltsverzeichnis</a></span>
+    <span><a href="0006-app-library.html">Weiter: Lesson 6 — App Library →</a></span>
+  </div>
+
+  <p class="ask-reminder">Fragen, die hier offen bleiben? Frag direkt nach — ich bin dein Ansprechpartner für alles, was in dieser Lesson unklar ist.</p>
+</div>
+</body>
+</html>

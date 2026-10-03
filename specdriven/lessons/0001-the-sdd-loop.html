@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1: The SDD Loop</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+<h1>Lesson 1: The SDD Loop</h1>
+<p class="lesson-meta">≈10 minutes · Mission: ship features on your Spring Boot + Angular project spec-first</p>
+
+<h2>The one idea</h2>
+<p>You already know what happens in Copilot agent mode on a non-trivial feature: the first prompt goes well, the third one contradicts the first, and by the end the <em>real</em> requirements exist only in your chat scrollback. Next week, neither you nor the agent can reconstruct why the code looks the way it does.</p>
+<p><strong>Spec-Driven Development flips the primary artifact.</strong> Instead of prompts producing code directly, prompts produce a <em>specification</em> — a Markdown file in your repo — and the code is derived from it. When requirements change, you change the spec and re-derive, rather than archaeologically prompting at the code. GitHub's announcement post puts it as: the spec becomes the source of truth, and code becomes its expression (<a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">GitHub Blog</a>).</p>
+
+<div class="callout info">
+<span class="label">Anchor to what you know</span>
+You already work this way at the API layer: your OpenAPI spec is the contract, and the Spring controllers and Angular clients are <em>generated expressions</em> of it. Nobody on your team hand-edits a generated client and calls it done — they fix the contract. SDD applies that same discipline one level up, to the feature itself.
+</div>
+
+<h2>The artifact chain</h2>
+<p><a href="https://github.com/github/spec-kit">Spec Kit</a> operationalizes SDD as a pipeline of Markdown artifacts, each produced by a slash command you run in Copilot (<a href="https://github.github.com/spec-kit/quickstart.html">Quick Start</a>):</p>
+<pre>
+/speckit.constitution   →  constitution.md   the project's non-negotiable principles (once per project)
+/speckit.specify        →  spec.md           WHAT the feature does and WHY — no tech allowed
+/speckit.clarify        →  spec.md (refined) the agent interviews YOU about ambiguities
+/speckit.plan           →  plan.md           HOW: stack, architecture — your OpenAPI contract is born here
+/speckit.tasks          →  tasks.md          ordered, dependency-aware implementation steps
+/speckit.analyze        →  (report)          consistency check across spec ↔ plan ↔ tasks
+/speckit.implement      →  code              the agent executes tasks.md
+</pre>
+<p>Two properties make this more than bureaucracy:</p>
+<ul>
+<li><strong>Each phase is a cheap checkpoint before an expensive one.</strong> Fixing a wrong assumption in <code>spec.md</code> costs a sentence; fixing it after <code>/speckit.implement</code> costs a refactor. <code>clarify</code> and <code>analyze</code> exist purely to catch problems while they're still cheap.</li>
+<li><strong>The what/how separation is enforced by phase.</strong> "Spring Boot" appearing in <code>spec.md</code> is a smell — technology belongs in <code>plan.md</code>. This matters doubly for you: one feature spec can drive a plan that spans <em>both</em> your backend and frontend, because the spec itself is stack-neutral.</li>
+</ul>
+<p class="sidenote">Full command table, including the optional <code>checklist</code> and <code>converge</code> commands, is in the <a href="../reference/speckit-workflow.html">workflow cheat sheet</a>.</p>
+
+<h2>One terminology trap</h2>
+<p>Your project has two things called a "spec": the SDD <strong>feature spec</strong> (Markdown, what/why) and the <strong>OpenAPI spec</strong> (YAML/JSON, API contract). They live at different levels: the feature spec drives the plan, and the plan produces or updates the OpenAPI contract as one of its outputs. When Spec Kit docs say "spec", they always mean the feature spec. The <a href="../reference/glossary.html">glossary</a> pins this down — it's the vocabulary this course will hold to.</p>
+
+<h2>Check yourself</h2>
+<p class="sidenote">Answer from memory before clicking — the retrieval attempt is what builds retention.</p>
+
+<div class="quiz" data-answer="1" data-explain="The spec deliberately stays technology-free; stack decisions enter in the plan phase.">
+  <div class="quiz-q">1. Where does "Spring Boot" get named for the first time?</div>
+  <button class="quiz-opt">In the constitution file</button>
+  <button class="quiz-opt">In the plan artifact</button>
+  <button class="quiz-opt">In the spec artifact</button>
+  <button class="quiz-opt">In the tasks list</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="0" data-explain="clarify has the agent interview you to resolve ambiguities before they contaminate the plan — skipping it is the top source of rework.">
+  <div class="quiz-q">2. What does /speckit.clarify actually do?</div>
+  <button class="quiz-opt">Agent questions you on gaps</button>
+  <button class="quiz-opt">Agent verifies plan versus tasks</button>
+  <button class="quiz-opt">Agent rewrites unclear code files</button>
+  <button class="quiz-opt">Agent shortens the feature spec</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="2" data-explain="In SDD the durable, re-derivable source of truth is the spec; code becomes its expression.">
+  <div class="quiz-q">3. After adopting SDD, when requirements change you primarily edit…</div>
+  <button class="quiz-opt">the code, then update docs</button>
+  <button class="quiz-opt">the tasks, then re-implement</button>
+  <button class="quiz-opt">the spec, then re-derive</button>
+  <button class="quiz-opt">the plan, then re-analyze</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="3" data-explain="Both are contracts whose downstream artifacts are regenerated, never hand-patched — your OpenAPI habit is the same discipline one level down.">
+  <div class="quiz-q">4. The feature spec relates to code the way an OpenAPI spec relates to…</div>
+  <button class="quiz-opt">the backend controller tests</button>
+  <button class="quiz-opt">the Angular framework itself</button>
+  <button class="quiz-opt">the corporate proxy config</button>
+  <button class="quiz-opt">the generated client classes</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<h2>Primary source</h2>
+<p>Read GitHub's announcement post — it is the best 10-minute articulation of the philosophy and worth internalizing before you touch the tooling: <a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">"Spec-driven development with AI: Get started with a new open source toolkit" — The GitHub Blog</a>.</p>
+
+<h2>Next</h2>
+<p><a href="0002-toolchain-behind-the-proxy.html">Lesson 2</a> goes hands-on: installing <code>uv</code>/<code>uvx</code> and bootstrapping Spec Kit with <code>specify init</code> on your Windows machine, in Git Bash, behind the corporate proxy — including the <code>NODE_EXTRA_CA_CERTS</code> and SSL-inspection quirks.</p>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · Next: <a href="0002-toolchain-behind-the-proxy.html">Lesson 2: The Toolchain, Behind the Proxy</a> →<br>
+References: <a href="../reference/speckit-workflow.html">Workflow cheat sheet</a> · <a href="../reference/glossary.html">Glossary</a><br>
+Stuck or curious? Ask your teacher (the agent) — follow-up questions are the point, not an interruption.
+</div>
+</body>
+</html>

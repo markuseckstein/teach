@@ -1,0 +1,134 @@
+<title>Referenz — PowerAlarm-Bausteine &amp; Web-Monitor-Einrichtung</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+
+<p class="meta">Referenz · Stand 27.07.2026 · Quelle: FITT-Handbuch v2.21</p>
+<h1>PowerAlarm-Bausteine</h1>
+<p class="subtitle">Ein Blatt für den Ordner im Feuerwehrhaus. Alles hier ist aus
+der offiziellen Anleitung, Version 2.21 vom 15.06.2026.</p>
+
+<h2>Die Bausteine</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Name</th><th>Rolle</th><th>Plattform</th><th>Handbuch</th></tr></thead>
+  <tbody>
+    <tr><td><strong>poweralarm.de</strong></td><td>Portal: Verwaltung von Gruppen, Kontakten, Fahrzeugen, Alarmtexten, API-Keys</td><td>Browser</td><td>Kap. 2</td></tr>
+    <tr><td><strong>PAWinS</strong></td><td>Bindeglied zu FMS32 / POC32 / monitord — dekodierter Funk → poweralarm.de</td><td>Windows-Dienst</td><td>Kap. 3</td></tr>
+    <tr><td><strong>PA-Monitor</strong></td><td>Alarmanzeige im Feuerwehrhaus, voller Funktionsumfang</td><td>Windows-Programm</td><td>Kap. 4</td></tr>
+    <tr><td><strong>PA Web-Monitor</strong></td><td>Alarmanzeige im Browser — „eine Web Version der PowerAlarm-Monitor Software“</td><td>jeder Browser</td><td>Kap. 5</td></tr>
+    <tr><td><strong>PowerAlarm App</strong></td><td>Alarmierung + Rückmeldung für Einsatzkräfte</td><td>iOS, Android</td><td>Kap. 2.5</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Merksatz:</strong> Anzeige (Monitor) und Alarmempfang (PAWinS) sind
+getrennte Jobs. Der Web-Monitor ersetzt nur die Anzeige.</p>
+
+<h2>Lizenz-Schranken</h2>
+
+<p>Beide Monitore hängen an einem <strong>API-Key mit einer freigeschalteten
+Option</strong>. Ohne Freischaltung durch FITT ist der Menüpunkt nicht da.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Was du willst</th><th>Benötigte Option</th></tr></thead>
+  <tbody>
+    <tr><td>Windows-Anzeige</td><td><span class="mono">PA-Monitor</span></td></tr>
+    <tr><td>Browser-Anzeige</td><td><span class="mono">PA Web-Monitor</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>API-Keys anlegen: Portal → <strong>Administration → Verwaltung →
+API-Schlüssel</strong>. Gruppen und Fahrzeuggruppen brauchen zusätzlich den
+Schalter <strong>„Übertragung PA-Monitor aktiv“</strong>, sonst erscheinen sie
+nicht auf der Anzeige (Kap. 2.3 / 2.9).</p>
+
+<h2>Web-Monitor einrichten</h2>
+
+<ol class="steps">
+  <li>Lizenz „PA Web-Monitor“ bei FITT freischalten lassen.</li>
+  <li>Portal → <strong>Benutzer → Web-Monitor</strong> (Punkt 2.18.d).</li>
+  <li>Plus-Symbol → <strong>Passwort</strong> vergeben → „Ok“.</li>
+  <li>System zeigt <strong>Login-Name</strong> (nicht selbst wählbar) und die
+      <strong>URL</strong>. Beides notieren.</li>
+  <li>URL im Browser aufrufen, anmelden. Kein Setup nötig.</li>
+</ol>
+
+<p><strong>Bedienung:</strong> Kästchen am blauen Rand mit der Maus ziehen;
+Größe ändern mit <kbd>Strg</kbd> + am Rand ziehen; Disketten-Symbol speichert die
+Positionen. Zahnrad = Optionen, danach mit <kbd>F5</kbd> neu laden.</p>
+
+<h2>Funktionsvergleich</h2>
+
+<p>„—“ heißt: im Handbuch für den Web-Monitor <em>nicht dokumentiert</em>. Nicht
+zwingend abwesend, aber ungeklärt.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Funktion</th><th>Windows</th><th>Web</th></tr></thead>
+  <tbody>
+    <tr><td>Alarmierungen &amp; Rückmeldungen</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+    <tr><td>Status der Kontakte</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+    <tr><td>Fahrzeuggruppen mit Status</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+    <tr><td>Fenster frei anordnen</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+    <tr><td>Alarmton (MP3/WAV)</td><td class="yes">✓ (4.4)</td><td class="no">—</td></tr>
+    <tr><td>Alarmtext vorlesen (ab Win 10)</td><td class="yes">✓ (4.4)</td><td class="no">—</td></tr>
+    <tr><td>Karten: OSM / Google, bis 3</td><td class="yes">✓ (4.1)</td><td class="no">—</td></tr>
+    <tr><td>OpenFireMap: Hydranten, Wasserentnahme</td><td class="yes">✓</td><td class="no">—</td></tr>
+    <tr><td>Wasserkarte (eigene Hydranten)</td><td class="yes">✓</td><td class="no">—</td></tr>
+    <tr><td>Google Routing / Verkehr / StreetView</td><td class="yes">✓ (API-Key)</td><td class="no">—</td></tr>
+    <tr><td>Alarmfax anzeigen</td><td class="yes">✓</td><td class="no">—</td></tr>
+    <tr><td>Alarm automatisch drucken (~7 s)</td><td class="yes">✓ (4.5)</td><td class="no">—</td></tr>
+    <tr><td>Alarm als PDF/JSON speichern</td><td class="yes">✓ (4.5)</td><td class="no">—</td></tr>
+    <tr><td>Termine, News, Uhrzeit</td><td class="yes">✓</td><td class="no">—</td></tr>
+    <tr><td>Bis zu 3 eingebettete Browser-Fenster</td><td class="yes">✓</td><td class="no">—</td></tr>
+    <tr><td>Bildschirmschoner, Monitor ON/OFF</td><td class="yes">✓ (4.3)</td><td class="no">OS-Sache</td></tr>
+    <tr><td>Mehrere Monitore ansteuern</td><td class="yes">✓ (4.1)</td><td class="no">OS-Sache</td></tr>
+    <tr><td>Suchen/Ersetzen + Regex im Alarmtext</td><td class="yes">✓ (4.4)</td><td class="no">—</td></tr>
+    <tr><td>HTTP-Weiterleitung, 2 URLs (Türsteuerung)</td><td class="yes">✓ (4.5)</td><td class="no">—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Alarmwege (wer kann auslösen)</h2>
+
+<p><strong>Auslöser</strong> (Kap. 1.1): SMS · JSON-Schnittstelle · Telefonanruf ·
+externe Programme über PAWinS · App · Mail.<br>
+<strong>Empfänger</strong> (Kap. 1.2): SMS · e*Cityruf/e*Message · Telefax ·
+Anruf · Apps · Mail · Fireboard · Fireplan · Dräger Smart Rescue · HTTP.<br>
+<strong>Leitstellen-Schnittstellen</strong> (nur wenn freigeschaltet):
+katsys · EDI · eMID.</p>
+
+<p><strong>API:</strong> <span class="mono">https://www.poweralarm.de/api/custom/</span>
+— Backup: <span class="mono">https://www2.poweralarm.de/api/custom/</span> (Kap. 9).</p>
+
+<h2>Kontakt</h2>
+
+<p>FITT GmbH, Obermaierstraße 18, 90408 Nürnberg ·
+Tel. <span class="mono">0911 – 36 66 928</span> ·
+Fax <span class="mono">0911 – 36 66 938</span> ·
+<span class="mono">service@fitt-gmbh.de</span><br>
+Software-Downloads (PAWinS, PA-Monitor) und Kundencenter: Portal → <strong>Links</strong>
+(Kap. 2.19).</p>
+
+<h2>Ungeklärt</h2>
+
+<div class="callout warn">
+  <span class="label">Noch nicht beantwortet</span>
+  <ul>
+    <li>Gibt der Web-Monitor einen <strong>Alarmton</strong> aus? Entscheidend für
+        den Einsatz im Feuerwehrhaus.</li>
+    <li>Welche Optionen hat der Web-Monitor jenseits der drei Standardfelder?</li>
+    <li>Bleibt die Browser-Sitzung dauerhaft angemeldet (Kiosk-Dauerbetrieb)?</li>
+    <li>Kostet die Option „PA Web-Monitor“ extra?</li>
+  </ul>
+</div>
+
+<footer>
+  <p>Gehört zu <a href="../lessons/0001-web-monitor-statt-windows.html">Lektion 1 —
+  Vom Windows-Monitor zum Web-Monitor</a>. Primärquelle:
+  <a href="https://www.fitt-gmbh.de/wp-content/uploads/hilfe_poweralarm.pdf">Anleitung
+  PowerAlarm v2.21, FITT GmbH</a>.</p>
+  <p>Fragen zu irgendeinem Punkt hier: frag deinen Lehrer.</p>
+</footer>

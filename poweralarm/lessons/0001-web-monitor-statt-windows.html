@@ -1,0 +1,321 @@
+<title>Lektion 1 — Vom Windows-Monitor zum Web-Monitor</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+
+<p class="meta">Lektion 1 · PowerAlarm im Feuerwehrhaus</p>
+<h1>Vom Windows-Monitor zum Web-Monitor</h1>
+<p class="subtitle">Es gibt eine Web-Version. Sie heißt PA&nbsp;Web-Monitor, sie
+braucht eine Freischaltung, und ihre URL steht nur an einer einzigen Stelle —
+in deinem eigenen Portal.</p>
+
+<div class="callout ok">
+  <span class="label">Die kurze Antwort</span>
+  <p>Ja, das gibt es. Der <strong>PowerAlarm Web-Monitor</strong> ist laut
+  Herstellerhandbuch „eine Web&nbsp;Version der PowerAlarm-Monitor Software“ —
+  also genau das, was du für einen Browser-Kiosk auf Linux oder Raspberry&nbsp;Pi
+  brauchst. Du kannst ihn aber nicht einfach aufrufen: es braucht einen von FITT
+  <em>freigeschalteten</em> API-Key mit der Option „PA Web-Monitor“, und die URL
+  wird dir erst danach im Portal angezeigt.<sup><a href="#q1">1</a></sup></p>
+</div>
+
+<h2>Die vier Bausteine</h2>
+
+<p>Bevor du mit FITT telefonierst, musst du ein Wort für jedes Teil haben.
+„PowerAlarm“ ist nämlich nicht ein Programm, sondern vier — und nur eines davon
+zieht gerade um.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Baustein</th><th>Was es tut</th><th>Läuft wo</th><th>Betrifft dich?</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>poweralarm.de</strong><br><span class="mono">das Portal</span></td>
+      <td>Zentrale Verwaltung: Gruppen, Kontakte, Fahrzeuge, Alarmtexte, API-Keys.
+          Läuft beim Hersteller.</td>
+      <td>Jeder Browser</td>
+      <td class="yes">Hier machst du alles</td>
+    </tr>
+    <tr>
+      <td><strong>PA-Monitor</strong><br><span class="mono">Kapitel 4</span></td>
+      <td>Die Anzeige im Feuerwehrhaus: Alarme, Rückmeldungen, Status, Karten,
+          Alarmfax. <em>Windows-Programm.</em></td>
+      <td>Der alte Rechner</td>
+      <td class="no">Das ist dein Problem</td>
+    </tr>
+    <tr>
+      <td><strong>PA Web-Monitor</strong><br><span class="mono">Kapitel 5</span></td>
+      <td>Dieselbe Idee im Browser. Kein Programm, keine Installation, kein
+          Windows.</td>
+      <td>Jeder Browser, auch Pi</td>
+      <td class="yes">Das ist die Lösung</td>
+    </tr>
+    <tr>
+      <td><strong>PAWinS</strong><br><span class="mono">Kapitel 3</span></td>
+      <td>Bindeglied zu lokaler Auswerte-Software (FMS32, POC32, monitord) —
+          dekodiert Funk und meldet ihn an poweralarm.de. <em>Windows-Dienst.</em></td>
+      <td>Ein Windows-Rechner</td>
+      <td class="warn">Musst du prüfen ↓</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Der wichtige Gedanke: <strong>Anzeige und Alarmempfang sind zwei verschiedene
+Jobs.</strong> Der Web-Monitor ersetzt nur den ersten.</p>
+
+<h2>Das Lizenz-Tor</h2>
+
+<p>Beide Monitor-Varianten sind hinter derselben Art Schranke: einem
+<strong>API-Key mit einer Option</strong>. Für die Windows-Version braucht es die
+Option „PA-Monitor“, für die Web-Version die Option „PA Web-Monitor“ — und die
+muss FITT für deinen Account freischalten.<sup><a href="#q1">1</a></sup></p>
+
+<div class="callout warn">
+  <span class="label">Rechne damit</span>
+  <p>Dass bei dir seit Jahren der Windows-Monitor läuft, heißt <em>nicht</em>, dass
+  der Web-Monitor schon freigeschaltet ist. Das sind zwei getrennte Optionen. Ob
+  die zweite Geld kostet, sagt das Handbuch nicht — das ist eine Frage an den
+  Vertrieb, nicht an die Technik.</p>
+</div>
+
+<h2>Woher die URL kommt</h2>
+
+<p>Du fragst genau richtig: es gibt eine spezielle URL, und sie ist nirgends
+öffentlich dokumentiert. Ich habe gesucht — sie steht weder im Handbuch noch auf
+der Herstellerseite noch in irgendeinem Forum. Das ist Absicht. Sie wird dir im
+Portal angezeigt, zusammen mit deinem Login-Namen:</p>
+
+<ol class="steps">
+  <li>Im Portal <a href="https://www.poweralarm.de/">poweralarm.de</a> als
+      Administrator anmelden.</li>
+  <li>Zum Menüpunkt <strong>Benutzer → Web-Monitor</strong> gehen
+      (Handbuch-Punkt 2.18.d).</li>
+  <li>Auf das Plus-Symbol klicken, ein <strong>Passwort vergeben</strong>, mit „Ok“
+      bestätigen. Das System zeigt dir daraufhin deinen
+      <strong>Login-Namen</strong> — den vergibst du nicht selbst.</li>
+  <li>Auf derselben Seite steht die <strong>URL</strong>. Notiere alle drei Werte
+      sofort: URL, Login-Name, Passwort.</li>
+</ol>
+
+<p>Sind die Zugangsdaten da, rufst du die URL im Browser auf und meldest dich an —
+das ist der ganze „Installations“-Vorgang. Kein Setup, kein Windows, kein
+Update-Zwang.</p>
+
+<div class="callout">
+  <span class="label">Wenn der Menüpunkt fehlt oder leer bleibt</span>
+  <p>Dann ist die Lizenz nicht freigeschaltet. Das Handbuch sagt das ausdrücklich:
+  „Um den PowerAlarm Web-Monitor nutzen zu können, benötigen Sie vorab einen von
+  uns freigeschaltete Lizenz.“ Kein Grund zu basteln — das ist ein Anruf, keine
+  Fehlersuche.</p>
+</div>
+
+<h2>Was du dabei verlierst</h2>
+
+<p>Hier musst du mit offenen Augen reingehen. Das Handbuch beschreibt für den
+Windows-Monitor <em>fünf Seiten</em> Funktionen, für den Web-Monitor
+<em>eine</em>. Was in Kapitel 5 nicht steht, ist damit nicht widerlegt — aber
+auch nicht zugesagt:</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Funktion</th><th>PA-Monitor (Windows)</th><th>PA Web-Monitor</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alarme &amp; Rückmeldungen</td><td class="yes">ja</td><td class="yes">ja</td></tr>
+    <tr><td>Status der Kontakte</td><td class="yes">ja</td><td class="yes">ja</td></tr>
+    <tr><td>Fahrzeuge / Fahrzeuggruppen</td><td class="yes">ja</td><td class="yes">ja</td></tr>
+    <tr><td>Fenster frei anordnen</td><td class="yes">ja</td><td class="yes">ja, per Maus</td></tr>
+    <tr><td><strong>Alarmton, Sprachausgabe</strong></td><td class="yes">ja (MP3/WAV + Vorlesen)</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>Karten (OSM/Google, OpenFireMap, Hydranten)</td><td class="yes">bis zu 3</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>Alarmfax anzeigen</td><td class="yes">ja</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>Alarm automatisch ausdrucken</td><td class="yes">ja, ca. 7&nbsp;s später</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>Bildschirmschoner, Monitor-Standby</td><td class="yes">ja</td><td class="no">Sache des Betriebssystems</td></tr>
+    <tr><td>Termine, News, Uhrzeit</td><td class="yes">ja</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>HTTP-Weiterleitung (z.&nbsp;B. Türsteuerung)</td><td class="yes">2 URLs</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>Suchen/Ersetzen im Alarmtext (Regex)</td><td class="yes">ja</td><td class="no">nicht dokumentiert</td></tr>
+    <tr><td>Mehrere Monitore ansteuern</td><td class="yes">ja</td><td class="no">Sache des Betriebssystems</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout warn">
+  <span class="label">Der eine Punkt, der alles kippen kann</span>
+  <p><strong>Der Alarmton.</strong> Ein Alarmmonitor, der lautlos umschaltet,
+  taugt im Feuerwehrhaus wenig. Beim Windows-Monitor ist der Ton ein
+  ausdrückliches Feature; für den Web-Monitor schweigt das Handbuch. Zwei Dinge
+  können hier klemmen: die Funktion fehlt — oder sie ist da, aber der Browser
+  blockiert Ton ohne Nutzerklick. Das Zweite lässt sich lösen (Kiosk-Schalter),
+  das Erste nicht. <strong>Diese Frage stellst du zuerst.</strong></p>
+</div>
+
+<h2>Selbst-Check: kann der Windows-Rechner ganz weg?</h2>
+
+<p>Bevor du irgendwas bestellst, geh einmal an den alten Rechner und sieh nach,
+was dort <em>außer</em> dem Monitor noch läuft. Suche in der Taskleiste, den
+installierten Programmen und den Windows-Diensten nach:
+<code>PAWinS</code>, <code>PowerAlarm-WinS</code>, <code>FMS32</code>,
+<code>POC32</code>, <code>monitord</code>.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Befund</th><th>Was das bedeutet</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Nichts davon gefunden</strong> — der Rechner zeigt nur an</td>
+      <td class="yes">Bestmöglicher Fall. Der Alarm kommt von der Leitstelle oder
+      per Mail/SMS direkt bei poweralarm.de an. Web-Monitor auf einem Pi, alter
+      Rechner ausstecken, fertig.</td>
+    </tr>
+    <tr>
+      <td><strong>PAWinS oder ein Decoder läuft dort</strong></td>
+      <td class="warn">Der Rechner hat einen zweiten Job: er dekodiert Funk
+      (ZVEI, POCSAG, TETRA, FMS) und speist ihn ein. Den ersetzt der Web-Monitor
+      <em>nicht</em> — PAWinS ist ein Windows-Dienst. Die Anzeige zieht trotzdem
+      um; über den Decoder reden wir dann separat.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Das Ergebnis dieses Blicks entscheidet über den ganzen weiteren Weg. Sag mir,
+was du gefunden hast.</p>
+
+<h2>Behalten, nicht nur gelesen</h2>
+
+<p>Vier Fragen, aus dem Kopf. Nicht nach oben scrollen — das Ratenmüssen ist der
+Teil, der hängen bleibt.</p>
+
+<div class="quiz" data-quiz></div>
+
+<h2>Dein nächster Schritt</h2>
+
+<p>Ein Blick an den alten Rechner, dann eine Mail. Der Text darf ruhig so knapp
+sein — er nennt genau die Begriffe, an denen der Support andocken kann:</p>
+
+<pre><code>An: service@fitt-gmbh.de
+Betreff: PA Web-Monitor — Freischaltung und Funktionsumfang
+
+Guten Tag,
+
+wir betreiben bei der Feuerwehr [Ort] aktuell den PowerAlarm-Monitor
+als Windows-Version. Der Rechner ist am Ende seines Lebenszyklus
+(Windows 10, kein Upgrade moeglich). Wir moechten die Anzeige auf
+einen Browser im Kiosk-Modus (Linux / Raspberry Pi) umstellen.
+
+Kundennummer: [Nummer]
+
+1. Ist fuer unseren Account die Option "PA Web-Monitor" freigeschaltet?
+   Falls nicht: was ist dafuer noetig und was kostet es?
+2. Gibt der PA Web-Monitor bei Alarmeingang einen Ton aus bzw. liest er
+   den Alarmtext vor — wie die Windows-Version es kann?
+3. Welche Anzeigefelder und Optionen hat der Web-Monitor ausser
+   Alarmierungen/Rueckmeldungen, Status und Fahrzeuggruppen?
+   Insbesondere: Karte, Alarmfax, Uhrzeit, News?
+4. Empfehlen Sie eine bestimmte Browser-Konfiguration fuer den
+   Dauerbetrieb, und bleibt die Sitzung dauerhaft angemeldet?
+
+Vielen Dank
+[Name, Funktion, Telefon]</code></pre>
+
+<p>Telefonisch geht es meist schneller: <span class="mono">0911 – 36 66 928</span>.</p>
+
+<div class="callout">
+  <span class="label">Wichtig</span>
+  <p>Schalte den alten Rechner nicht ab, solange der Web-Monitor nicht über
+  mehrere echte Alarme hinweg mitgelaufen ist. Zwei Anzeigen parallel sind für
+  ein paar Wochen kein Problem — eine ausgefallene Anzeige im Einsatz schon.</p>
+</div>
+
+<h2>Primärquelle</h2>
+
+<p>Lies selbst nach, es lohnt sich — es sind zwei Seiten:
+<strong><a href="https://www.fitt-gmbh.de/wp-content/uploads/hilfe_poweralarm.pdf">Anleitung
+PowerAlarm, Version 2.21 (FITT GmbH, PDF)</a></strong>, dort
+<strong>Kapitel 5</strong> (Seite 58–59, Web-Monitor) und
+<strong>Punkt 2.18.d</strong> (Seite 43, Zugangsdaten und URL). Alles in dieser
+Lektion stammt aus diesem Dokument. Es ist die einzige belastbare Quelle zum
+Thema — die Marketing-Seiten erwähnen den Web-Monitor nicht einmal.</p>
+
+<footer>
+  <p><strong>Frag nach.</strong> Ich bin dein Lehrer für dieses Thema — wenn etwas
+  unklar ist, wenn FITT antwortet, oder wenn du am alten Rechner etwas
+  Unerwartetes findest: einfach fragen. Genau das formt die nächste Lektion.</p>
+
+  <p><strong>Weiter geht es</strong> mit einer dieser beiden — je nachdem, was du
+  mir berichtest: Kiosk-Betrieb sauber aufsetzen (Autostart, Vollbild,
+  Bildschirm wecken), oder was mit PAWinS passiert, wenn Windows gehen soll.</p>
+
+  <p><strong>Referenz zum Ausdrucken:</strong>
+  <a href="../reference/poweralarm-bausteine.html">PowerAlarm-Bausteine &amp;
+  Web-Monitor-Einrichtung</a> — die verdichtete Version dieser Lektion, für den
+  Ordner im Feuerwehrhaus.</p>
+
+  <p class="citations"><strong>Quellen</strong></p>
+  <ol class="citations">
+    <li id="q1">FITT GmbH: <a href="https://www.fitt-gmbh.de/wp-content/uploads/hilfe_poweralarm.pdf">Anleitung
+    PowerAlarm</a>, Version 2.21 vom 15.06.2026 — Kap. 4 (PA-Monitor, S. 54–58),
+    Kap. 5 (PA Web-Monitor, S. 58–59), Punkt 2.18.d (S. 43), Kap. 3 (PAWinS,
+    S. 44).</li>
+    <li>FITT GmbH: <a href="https://www.fitt-gmbh.de/produkte/poweralarm/">Produktseite
+    PowerAlarm</a> — Modulübersicht; erwähnt den Web-Monitor nicht.</li>
+    <li>Alarm Dispatcher Systems GmbH:
+    <a href="https://support.alarm-dispatcher.de/help/de-de/19-poweralarm/69-fur-den-endkunden-konfiguration-poweralarm">Konfiguration
+    PowerAlarm</a> — Weg zum API-Schlüssel im Portal.</li>
+  </ol>
+</footer>
+
+<script src="../assets/quiz.js"></script>
+<script>
+PowerQuiz.render(document.querySelector('[data-quiz]'), [
+  {
+    q: 'Was schaltet den PA Web-Monitor überhaupt frei?',
+    a: [
+      'Ein API-Key mit passender Option',
+      'Ein aktueller Browser am Gerät',
+      'Ein weiterer Benutzer im Portal'
+    ],
+    correct: 0,
+    why: 'Handbuch Kap. 5: „einen von uns freigeschalteten API-Key mit der Option ' +
+         '»PA Web-Monitor«“. Browser und Benutzer allein reichen nicht — die ' +
+         'Schranke ist die Lizenz, nicht die Technik.'
+  },
+  {
+    q: 'Wo bekommst du die URL des Web-Monitors?',
+    a: [
+      'Im Portal unter Benutzer → Web-Monitor',
+      'Im Handbuch als fest genannter Link',
+      'Auf der Startseite von poweralarm.de'
+    ],
+    correct: 0,
+    why: 'Punkt 2.18.d: dort vergibst du das Passwort, bekommst den Login-Namen ' +
+         '— „Hier wird Ihnen auch die URL angezeigt.“ Öffentlich dokumentiert ist ' +
+         'sie nirgends, also auch nicht erratbar.'
+  },
+  {
+    q: 'Welche Funktion ist für den Web-Monitor nicht dokumentiert?',
+    a: [
+      'Ein Alarmton beim Eingang eines Alarms',
+      'Die Anzeige der aktuellen Alarmierungen',
+      'Die Anzeige der Rückmeldungen dazu'
+    ],
+    correct: 0,
+    why: 'Kapitel 5 nennt nur drei Felder: Alarmierungen & Rückmeldungen, Status, ' +
+         'Fahrzeuggruppen. Der Ton ist beim Windows-Monitor ein eigener Abschnitt ' +
+         '(4.4) — beim Web-Monitor fehlt er. Das ist die Frage Nummer eins an FITT.'
+  },
+  {
+    q: 'Wofür bräuchtest du weiterhin einen Windows-Rechner?',
+    a: [
+      'Zum Dekodieren von ZVEI oder POCSAG',
+      'Zum Anzeigen der Alarme im Browser',
+      'Zum Anmelden am PowerAlarm-Portal'
+    ],
+    correct: 0,
+    why: 'PAWinS (Kap. 3) ist ein Windows-Dienst und das Bindeglied zu FMS32, ' +
+         'POC32 oder monitord. Anzeige und Portal laufen in jedem Browser — der ' +
+         'Funkempfang ist der Job, der eventuell an Windows hängt.'
+  }
+]);
+</script>

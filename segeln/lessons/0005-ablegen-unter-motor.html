@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 5 — Ablegen unter Motor</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<main>
+  <nav class="course-nav">
+    <a href="../index.html">⌂ Kursübersicht</a>
+    <a href="0004-boje-ueber-bord.html">← Lektion 4</a>
+    <a href="../reference/hafen-und-anker.html">📄 Hafen-Referenzkarte</a>
+    <span class="spacer"></span>
+    <a href="0006-anlegen-roemisch-katholisch.html">Nächste Lektion: Anlegen →</a>
+  </nav>
+
+  <h1>Ablegen unter Motor</h1>
+  <p class="lesson-meta">Lektion 5 · Modul B — Hafenpraxis · ca. 20 Minuten</p>
+
+  <p>Hafenmanöver sind die stressigsten fünf Minuten des Törntages — nicht weil sie schwer
+  wären, sondern weil Publikum zuschaut und vieles gleichzeitig passiert. Das Gegenmittel
+  ist immer dasselbe: <strong>erst denken, dann briefen, dann langsam fahren.</strong>
+  Diese Lektion frischt die Leinenarbeit und die zwei Standard-Ablegemanöver auf.</p>
+
+  <h2>1 · Die Leinen — einmal sauber benennen</h2>
+
+  <figure>
+    <svg viewBox="0 0 640 380" role="img" aria-label="Die vier Festmacherleinen">
+      <defs>
+        <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#1d6f8f"/>
+        </marker>
+        <marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#5c6b78"/>
+        </marker>
+      </defs>
+
+      <!-- Steg -->
+      <rect x="40" y="290" width="560" height="50" fill="#d8d2c4"/>
+      <text x="320" y="322" text-anchor="middle" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#5c6b78">Steg / Pier</text>
+
+      <!-- Poller -->
+      <circle cx="100" cy="290" r="7" fill="#13315c"/>
+      <circle cx="225" cy="290" r="7" fill="#13315c"/>
+      <circle cx="395" cy="290" r="7" fill="#13315c"/>
+      <circle cx="520" cy="290" r="7" fill="#13315c"/>
+
+      <!-- Boot längsseits, Bug nach rechts -->
+      <g transform="translate(310,240) rotate(90) scale(2.3)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c" opacity="0.9"/>
+      </g>
+
+      <!-- Leinen -->
+      <line x1="362" y1="248" x2="520" y2="286" stroke="#1d6f8f" stroke-width="2.5"/>
+      <text x="455" y="252" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#1d6f8f" font-weight="bold">Vorleine</text>
+
+      <line x1="258" y1="248" x2="100" y2="286" stroke="#1d6f8f" stroke-width="2.5"/>
+      <text x="120" y="252" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#1d6f8f" font-weight="bold">Achterleine</text>
+
+      <line x1="362" y1="252" x2="225" y2="287" stroke="#b3541e" stroke-width="2.5"/>
+      <text x="212" y="262" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#b3541e" font-weight="bold">Vorspring</text>
+
+      <line x1="258" y1="252" x2="395" y2="287" stroke="#b3541e" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <text x="368" y="270" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#b3541e" font-weight="bold">Achterspring</text>
+
+      <!-- Bug-Markierung -->
+      <text x="380" y="225" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">Bug →</text>
+
+      <!-- Wind -->
+      <line x1="90" y1="60" x2="90" y2="115" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="130" y1="60" x2="130" y2="115" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="155" y="95" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#1d6f8f" font-weight="bold">auflandiger Wind (drückt an den Steg)</text>
+    </svg>
+    <figcaption><strong>Die vier Festmacher.</strong> Vor- und Achterleine halten das Boot
+    am Platz, die <strong>Springs</strong> (vom Bug nach achtern = Vorspring, vom Heck nach
+    vorn = Achterspring) verhindern Längsbewegung — und sind der Schlüssel für elegante
+    Manöver.</figcaption>
+  </figure>
+
+  <ul>
+    <li><strong>Auf Slip nehmen:</strong> Leine um Poller/Klampe an Land legen und <em>beide Enden an Bord</em> behalten — beim Ablegen kann die Crew sie einholen, ohne dass jemand an Land bleibt. Vorher prüfen: Läuft sie frei? (Keine Kinken, nicht unter anderen Leinen.)</li>
+    <li><strong>Radeffekt:</strong> Rückwärts zieht der (meist rechtsdrehende) Propeller das Heck nach <strong>Backbord</strong>. Vor jedem Manöver kurz überlegen — oder im Hafenbecken einmal kurz rückwärts testen. Er ist am stärksten bei viel Gas und wenig Fahrt.</li>
+    <li><strong>Ruderwirkung braucht Fahrt oder Schraubenwasser:</strong> Ein Stoß voraus mit hart gelegtem Ruder dreht das Heck, fast ohne Fahrt aufzubauen („eindampfen"/Radeffekt-Steuern) — dein wichtigstes Werkzeug auf engem Raum.</li>
+  </ul>
+
+  <h2>2 · Fall 1: Wind ablandig oder längs — der einfache Fall</h2>
+
+  <p>Drückt der Wind das Boot vom Steg weg (oder weht er längs), macht der Wind die Arbeit:
+  Briefing, Motor an und warmlaufen lassen, Leinen auf Slip, Fender bleiben bis zuletzt.
+  Dann: Leinen gleichzeitig loswerfen und einholen, das Boot treibt frei — aufstoppen,
+  geradeaus raus. Merkposten: <strong>Erst wenn alle Leinen und Fender an Bord sind, Gas geben.</strong></p>
+
+  <h2>3 · Fall 2: Auflandiger Wind — Eindampfen in die Vorspring</h2>
+
+  <p>Der Wind presst das Boot an den Steg; einfach loswerfen endet schrammend am Nachbarn.
+  Die Lösung kennt jeder SKS-Prüfer auswendig:</p>
+
+  <figure>
+    <svg viewBox="0 0 640 400" role="img" aria-label="Eindampfen in die Vorspring">
+      <!-- Steg -->
+      <rect x="40" y="300" width="560" height="50" fill="#d8d2c4"/>
+
+      <!-- Poller -->
+      <circle cx="230" cy="300" r="7" fill="#13315c"/>
+
+      <!-- Wind auflandig -->
+      <line x1="520" y1="50" x2="520" y2="105" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <line x1="560" y1="50" x2="560" y2="105" stroke="#1d6f8f" stroke-width="3" marker-end="url(#aw)"/>
+      <text x="430" y="80" font-family="Gill Sans, Segoe UI, sans-serif" font-size="15" fill="#1d6f8f" font-weight="bold">Wind</text>
+
+      <!-- Boot: Bug rechts, leicht zum Steg geneigt -->
+      <g transform="translate(330,255) rotate(96) scale(2.3)">
+        <path d="M0,-26 C12,-12 12,16 7,24 L-7,24 C-12,16 -12,-12 0,-26 Z" fill="#13315c" opacity="0.9"/>
+      </g>
+
+      <!-- Fender am Bug -->
+      <ellipse cx="390" cy="278" rx="8" ry="13" fill="#b3541e" opacity="0.8"/>
+      <text x="405" y="268" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#b3541e" font-weight="bold">Fender vorn!</text>
+
+      <!-- Vorspring auf Slip -->
+      <line x1="382" y1="262" x2="230" y2="296" stroke="#b3541e" stroke-width="2.5"/>
+      <text x="238" y="272" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#b3541e" font-weight="bold">Vorspring (auf Slip)</text>
+
+      <!-- Motor voraus -->
+      <line x1="420" y1="240" x2="480" y2="228" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ap)"/>
+      <text x="418" y="215" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#2e7d32" font-weight="bold">Motor langsam voraus</text>
+
+      <!-- Heck schwenkt aus -->
+      <path d="M262,230 C240,190 235,160 250,125" fill="none" stroke="#c62828" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#ap)"/>
+      <text x="60" y="150" font-family="Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#c62828" font-weight="bold">Heck schwenkt frei</text>
+      <text x="60" y="170" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">→ dann Spring einholen und</text>
+      <text x="60" y="188" font-family="Gill Sans, Segoe UI, sans-serif" font-size="13.5" fill="#5c6b78">rückwärts gegen den Wind raus</text>
+    </svg>
+    <figcaption><strong>Eindampfen in die Vorspring:</strong> Nur die Vorspring bleibt (auf
+    Slip), dicker Fender zwischen Bug und Steg. Motor langsam voraus — die Spring stoppt das
+    Boot, der Bug drückt in den Fender, das Heck schwenkt gegen den Wind frei. Spring los,
+    rückwärts raus.</figcaption>
+  </figure>
+
+  <ol>
+    <li>Briefing: Wer bedient die Spring, wer den Fender, wer holt Leinen ein?</li>
+    <li>Alle Leinen weg bis auf die <strong>Vorspring auf Slip</strong>; <strong>dicker Fender am Bug</strong> zwischen Rumpf und Steg.</li>
+    <li><strong>Ruder zum Steg, Motor langsam voraus</strong> — das Boot „dampft in die Spring ein", der Bug legt sich in den Fender, das Heck schwenkt langsam vom Steg weg.</li>
+    <li>Zeigt das Heck weit genug in den freien Raum (45°–60°): Motor Leerlauf, <strong>Spring loswerfen und zügig einholen</strong> (nichts darf in die Schraube!), <strong>rückwärts</strong> vom Steg weg.</li>
+    <li>Mit Abstand: aufstoppen, sortieren, Fender rein, ausdrehen.</li>
+  </ol>
+
+  <p><em>Spiegelbildlich</em> funktioniert das Eindampfen in die <strong>Achterspring</strong>
+  (Motor rückwärts, Bug schwenkt frei, vorwärts raus) — wähle die Variante, bei der du in
+  den freieren Raum hinein manövrierst und der Radeffekt dir hilft statt schadet.</p>
+
+  <div class="callout merke">
+    <span class="label">Merke</span>
+    <p><strong>Langsamkeit ist Professionalität.</strong> Nur so schnell fahren, wie du
+    bereit bist anzudocken. Und für die Crew gilt: <strong>Körperteile niemals zwischen
+    Boot und Steg</strong> — abhalten immer mit Fender, nie mit Händen oder Füßen.</p>
+  </div>
+
+  <h2>4 · Ablegen vom griechischen Liegeplatz (rückwärts an der Pier)</h2>
+
+  <p>In Griechenland liegst du meist römisch-katholisch: Heck zur Pier, eigener Anker
+  voraus (Details in <a href="0006-anlegen-roemisch-katholisch.html">Lektion 6</a>). Das
+  Ablegen ist dann angenehm logisch:</p>
+
+  <ol>
+    <li>Motor an, Briefing: eine Person an die <strong>Ankerwinsch</strong>, Crew an die Heckleinen (auf Slip).</li>
+    <li>Bei Seitenwind: <strong>leewärtige Heckleine zuerst los</strong>, Luvleine hält das Heck bis zuletzt.</li>
+    <li>Heckleinen los und einholen, <strong>langsam voraus</strong> Richtung Anker — die Ankerwinsch holt die Kette ein und zieht den Bug zum Anker; nicht zu langsam fahren, sonst verblasen — aber Vorsicht: <strong>keine Nachbarkette unter den Kiel oder in die Schraube</strong>.</li>
+    <li>Kette steil unter dem Bug → Anker bricht aus, komplett aufholen, Anker verstauen — erst dann Fahrt aufnehmen.</li>
+  </ol>
+
+  <div class="callout revier">
+    <span class="label">Revier-Tipp Griechenland</span>
+    <p>Morgens früh ablegen lohnt doppelt: Der thermische Wind schläft noch (einfaches
+    Manöver) und du bekommst am Zielhafen einen Platz, bevor die Flotte eintrifft.
+    An Stadtkais wie Ägina oder Poros wird es ab 15 Uhr eng.</p>
+  </div>
+
+  <div class="quiz" id="quiz"></div>
+
+  <div class="next-steps">
+    <h2>Weiterführend</h2>
+    <ul>
+      <li><strong>Primärquelle:</strong> <a href="https://www.skippercharly.de/Download/Segeln/Manoever.pdf">Skipper Charly: Segel- &amp; Motormanöver (PDF)</a> — kompakte Manöverblätter inkl. An-/Ablegen.</li>
+      <li><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=gde4Z3hi8_I">„Alle SKS Manöver"</a> — An- und Ablegeteil.</li>
+      <li><strong>Spickzettel:</strong> <a href="../reference/hafen-und-anker.html">Referenzkarte Hafen &amp; Anker</a>.</li>
+    </ul>
+    <p>❓ Fragen an deinen Lehrer, z. B.: „Wie nutze ich den Radeffekt beim Eindrehen in
+    die Box?" oder „Was briefe ich einer Crew, die noch nie Leinen bedient hat?"</p>
+    <p><a href="0004-boje-ueber-bord.html">← Lektion 4</a> · <a href="../index.html">Kursübersicht</a> · <a href="0006-anlegen-roemisch-katholisch.html">Lektion 6 →</a></p>
+  </div>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    q: 'Was bedeutet es, eine Leine „auf Slip" zu nehmen?',
+    options: ['Beide Enden bleiben an Bord, die Leine läuft nur um den Poller an Land', 'Die Leine wird an Land von einem Helfer gehalten statt belegt zu werden', 'Die Leine wird mit einem Slipstek so belegt, dass sie unter Last hält'],
+    correct: 0,
+    why: 'Auf Slip = um den Poller herum, beide Enden an Bord. Beim Ablegen wirft niemand an Land ab — die Crew holt einfach durch.'
+  },
+  {
+    q: 'Wohin zieht der Radeffekt das Heck bei den meisten Yachten im Rückwärtsgang?',
+    options: ['Nach Backbord, wegen des rechtsdrehenden Propellers', 'Nach Steuerbord, wegen des rechtsdrehenden Propellers', 'Immer nach Luv, unabhängig von der Drehrichtung'],
+    correct: 0,
+    why: 'Rechtsdrehender Propeller: rückwärts wandert das Heck nach Backbord. Am stärksten bei viel Gas und wenig Fahrt — vor dem Manöver einplanen oder kurz testen.'
+  },
+  {
+    q: 'Auflandiger Wind presst dich an den Steg. Wie legst du ab?',
+    options: ['Eindampfen in die Vorspring: Heck schwenkt frei, dann rückwärts raus', 'Alle Leinen gleichzeitig los und mit Vollgas parallel zum Steg heraus', 'Mit dem Bugstrahlruder den Bug abdrücken und langsam vorwärts weg'],
+    correct: 0,
+    why: 'Vorspring auf Slip, Fender an den Bug, Motor voraus — das Heck schwenkt gegen den Wind frei, dann rückwärts ablegen. (Spiegelbildlich geht es über die Achterspring.)'
+  },
+  {
+    q: 'Beim Eindampfen in die Vorspring: Wo muss zwingend ein Fender hängen?',
+    options: ['Am Bug, zwischen Rumpf und Steg, wo sich das Boot abstützt', 'Am Heck, damit es beim Ausschwenken nicht den Nachbarn trifft', 'Mittschiffs auf beiden Seiten, wie bei jeder normalen Hafenlage'],
+    correct: 0,
+    why: 'Der Bug drückt sich beim Eindampfen kräftig in Richtung Steg — ohne dicken Fender an genau dieser Stelle gibt es Gelcoat-Schäden.'
+  },
+  {
+    q: 'Ablegen vom Römisch-katholisch-Platz bei Seitenwind: Welche Heckleine geht zuerst los?',
+    options: ['Die leewärtige — die Luvleine hält das Heck bis zuletzt', 'Die luvwärtige — sie hat die höchste Last und muss weg', 'Beide exakt gleichzeitig, sonst dreht das Boot sich ein'],
+    correct: 0,
+    why: 'Lee zuerst, Luv zuletzt: Die Luvleine verhindert bis zum Schluss, dass der Wind das Heck auf den Nachbarn drückt.'
+  },
+  {
+    q: 'Warum solltest du beim Vorausfahren zum eigenen Anker nicht zu langsam sein?',
+    options: ['Der Seitenwind verblast sonst das Boot über die Ketten der Nachbarn', 'Die Ankerwinsch funktioniert nur, wenn das Boot schnelle Fahrt macht', 'Der Anker gräbt sich sonst beim Einholen immer tiefer in den Grund'],
+    correct: 0,
+    why: 'Ohne Fahrt bist du Spielball des Windes — und Nachbarketten unterm Kiel oder in der Schraube sind der klassische Charter-Albtraum.'
+  }
+]);
+</script>
+</body>
+</html>

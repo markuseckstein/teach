@@ -1,0 +1,313 @@
+<title>Lektion 2 — Der Kiosk, der von selbst startet</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+
+<p class="meta">Lektion 2 · PowerAlarm im Feuerwehrhaus</p>
+<h1>Der Kiosk, der von selbst startet</h1>
+<p class="subtitle">Ein Gerät, das nach dem Stromausfall ohne Tastatur, ohne
+Anmeldung und ohne Klick wieder die Alarmanzeige zeigt. Das kannst du heute bauen
+— die Web-Monitor-URL setzt du später einfach ein.</p>
+
+<div class="callout ok">
+  <span class="label">Warum jetzt schon</span>
+  <p>Du wartest auf FITTs Antwort zu Lizenz und Alarmton. Der Kiosk hängt davon
+  nicht ab: baue ihn mit einer beliebigen Test-URL, etwa
+  <span class="mono">https://time.is/Berlin</span>. Wenn die Zugangsdaten kommen,
+  tauschst du eine Zeile aus. So steht die Hardware, bevor es eilig wird — und du
+  hast in Ruhe geübt, statt unter Druck zu basteln.</p>
+</div>
+
+<h2>Erst die Hardware-Frage, in einem Satz</h2>
+
+<p>Dein alter Rechner ist <strong>reine Anzeige</strong> — kein PAWinS, kein
+Decoder. Das heißt: du brauchst gar nicht zwingend neue Hardware.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Weg</th><th>Kosten</th><th>Wofür</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Der alte PC, neu mit Linux</strong><br>Debian oder Raspberry Pi OS Desktop (x86)</td>
+      <td class="yes">0 €</td>
+      <td>Sofort testbar, Hardware ist da, Windows 10 ist damit vom Tisch. Frisst
+      mehr Strom und ist irgendwann trotzdem alt.</td>
+    </tr>
+    <tr>
+      <td><strong>Raspberry Pi 4 (≥2 GB) oder Pi 5</strong></td>
+      <td>~60–100 €</td>
+      <td>Lautlos, ~5 W, hinter den Monitor geschraubt, jahrelang wartungsarm.
+      Der saubere Endzustand.</td>
+    </tr>
+    <tr>
+      <td><s>Pi Zero, Pi 3</s></td>
+      <td class="no">—</td>
+      <td>Für Chromium im Dauerbetrieb zu schwach. Nicht anfangen.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Empfehlung:</strong> üb auf dem alten PC mit Linux — das kostet nichts
+und du lernst genau dieselben Schritte. Läuft es, entscheide in Ruhe, ob ein Pi
+einziehen soll. Die Konfiguration ist identisch.</p>
+
+<h2>Die eine Sache, an der du sonst scheiterst</h2>
+
+<p>Wenn du „Raspberry Pi Kiosk" suchst, findest du hunderte Anleitungen. Die
+meisten sind falsch — nicht schlecht geschrieben, sondern <em>veraltet</em>. Das
+musst du wissen, sonst suchst du einen halben Abend nach einem Fehler, den du
+nicht gemacht hast:</p>
+
+<div class="callout warn">
+  <span class="label">X11 ist tot, es ist Wayland</span>
+  <p>Seit dem 28.10.2024 startet Raspberry Pi OS Desktop standardmäßig
+  <strong>Wayland mit dem Compositor labwc</strong>, nicht mehr X11.<sup><a href="#q2">2</a></sup>
+  Zwei Konsequenzen:</p>
+  <ul>
+    <li>Der Autostart gehört in <span class="mono">~/.config/labwc/autostart</span>
+        — <strong>nicht</strong> in <span class="mono">~/.config/lxsession/…/autostart</span>
+        oder <span class="mono">/etc/xdg/autostart</span>. Die alten LXDE-Dateien
+        werden in einer Wayland-Sitzung nie ausgeführt.</li>
+    <li><span class="mono">xset s off</span>, <span class="mono">xrandr</span> und
+        <span class="mono">unclutter</span> tun <strong>nichts</strong>. Sie
+        laufen fehlerfrei durch und wirken nicht. Das ist die perfideste Falle:
+        keine Fehlermeldung, keine Wirkung.</li>
+  </ul>
+  <p>Wenn eine Anleitung <span class="mono">xset</span> sagt, ist sie von vor
+  2024. Weiterklicken.</p>
+</div>
+
+<p>Merkregel: <strong>labwc für Autostart, wlopm für den Bildschirm.</strong> Mit
+diesen zwei Namen kannst du gezielt suchen und findest aktuelles Material.</p>
+
+<h2>Vier Schritte, dann läuft es</h2>
+
+<ol class="steps">
+  <li><strong>Autologin einschalten.</strong> <span class="mono">sudo raspi-config</span>
+      → <em>System Options → Boot / Auto Login → Desktop Autologin</em>. Ohne das
+      startet die Grafiksitzung nicht — und ohne Sitzung kein Browser. Nach einem
+      Stromausfall darf niemand ein Passwort tippen müssen.</li>
+  <li><strong>Bildschirm-Abschaltung aus.</strong> <span class="mono">sudo raspi-config</span>
+      → <em>Display Options → Screen Blanking → No</em>. Eine Alarmanzeige, die
+      nach zehn Minuten schwarz wird, ist keine.</li>
+  <li><strong>Autostart schreiben.</strong> Eine Zeile in
+      <span class="mono">~/.config/labwc/autostart</span> — die Datei existiert
+      vielleicht noch nicht, dann legst du sie an. Der genaue Befehl mit allen
+      Schaltern steht in der
+      <a href="../reference/kiosk-setup.html">Kiosk-Referenz</a>.</li>
+  <li><strong>Den Test machen, der zählt:</strong> nicht neu starten — den
+      <strong>Stecker ziehen</strong>. Genau das passiert im Feuerwehrhaus. Kommt
+      das Gerät von selbst in die Vollbildanzeige zurück, ohne Tastatur, ohne
+      Dialog, ohne Klick? Dann bist du fertig. Sonst nicht.</li>
+</ol>
+
+<h2>Die Schalter, die im Feuerwehrhaus den Unterschied machen</h2>
+
+<p>Von den Chromium-Schaltern sind vier nicht offensichtlich, aber genau die
+entscheiden, ob das Ding einsatztauglich ist:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Schalter</th><th>Warum ausgerechnet der</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="mono">--kiosk</span></td>
+      <td>Vollbild, keine Adressleiste, keine Tabs. Das Offensichtliche.<sup><a href="#q1">1</a></sup></td>
+    </tr>
+    <tr>
+      <td><span class="mono">--disable-session-crashed-bubble</span><br>
+          <span class="mono">--noerrdialogs</span></td>
+      <td><strong>Der wichtigste Punkt.</strong> Nach jedem Stromausfall meint
+      Chromium, er sei abgestürzt, und legt „Seiten wiederherstellen?" über die
+      Anzeige. Beim nächsten Alarm klebt dieser Dialog über dem Einsatz und
+      niemand ist da, um ihn wegzuklicken. Ohne diese Schalter baust du dir einen
+      Ausfall mit Zeitzünder.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">--autoplay-policy=<br>no-user-gesture-required</span></td>
+      <td>Browser spielen von sich aus keinen Ton ab, solange niemand geklickt
+      hat. Im Kiosk klickt nie jemand. <em>Falls</em> der Web-Monitor einen
+      Alarmton hat, bleibt er ohne diesen Schalter stumm — und du hältst
+      fälschlich die Funktion für fehlend.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">--password-store=basic</span></td>
+      <td>Sonst will Chromium beim Start einen Schlüsselbund entsperren, um das
+      gespeicherte Web-Monitor-Passwort zu holen — und wartet auf eine Eingabe,
+      die nie kommt.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Der rote Faden: <strong>im Kiosk gibt es keinen Menschen, der etwas
+wegklickt.</strong> Jeder Dialog, der auftauchen kann, ist ein potenzieller
+Ausfall im Einsatz. So prüfst du künftig jede Einstellung.</p>
+
+<h2>Bildschirm wecken — der Ersatz für „Monitor ON/OFF"</h2>
+
+<p>Der Windows-Monitor konnte den Bildschirm schlafen legen und bei Alarm wecken
+(Handbuch 4.3). Unter Linux ist das nicht mehr Sache des Programms, sondern des
+Systems — was mehr Arbeit und mehr Freiheit heißt:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Anzeige ist ein…</th><th>Werkzeug</th><th>Prinzip</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>PC-Monitor</td>
+      <td><span class="mono">wlopm</span></td>
+      <td><span class="mono">wlopm --off '*'</span> /
+          <span class="mono">--on '*'</span>. Ausdrücklich <em>nicht</em>
+          <span class="mono">wlr-randr --off</span> — das wirft den Bildschirm aus
+          dem Layout und verschiebt deine Fenster.<sup><a href="#q3">3</a></sup></td>
+    </tr>
+    <tr>
+      <td>Fernseher</td>
+      <td><span class="mono">cec-client</span></td>
+      <td>Über HDMI-CEC:
+          <span class="mono">echo 'on 0' | cec-client -s -d 1</span>. Schaltet den
+          TV ein <em>und</em> auf den richtigen Eingang.<sup><a href="#q4">4</a></sup>
+          Am Pi 4/5 nur der HDMI-Port neben USB-C.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Das ist Ausbaustufe, nicht Pflicht. <strong>Fang mit „Bildschirm bleibt immer
+an" an.</strong> Ein dauerhaft laufender Monitor ist nie der Grund, warum ein
+Alarm nicht gesehen wird — eine kaputte Weckautomatik schon.</p>
+
+<h2>Behalten, nicht nur gelesen</h2>
+
+<div class="quiz" data-quiz></div>
+
+<h2>Dein nächster Schritt</h2>
+
+<p>Nimm den alten PC — oder einen Pi, wenn schon einer da ist — und arbeite die
+<a href="../reference/kiosk-setup.html">Kiosk-Referenz</a> ab. Ziel für heute ist
+bewusst klein und vollständig prüfbar:</p>
+
+<div class="callout">
+  <span class="label">Ziel dieser Übung</span>
+  <p>Ein Gerät, das nach <strong>Stecker ziehen und wieder einstecken</strong> von
+  selbst mit <span class="mono">https://time.is/Berlin</span> im Vollbild
+  hochkommt. Keine Tastatur, kein Dialog, kein Klick. Zweimal hintereinander.</p>
+  <p>Schaffst du das, ist der schwierige Teil erledigt — der Rest ist eine
+  URL austauschen.</p>
+</div>
+
+<h2>Primärquelle</h2>
+
+<p><strong><a href="https://www.raspberrypi.com/tutorials/how-to-use-a-raspberry-pi-in-kiosk-mode/">„How
+to use a Raspberry Pi in kiosk mode" — Raspberry Pi Ltd</a></strong>. Die
+offizielle Anleitung des Herstellers, und eine der wenigen, die schon auf labwc
+umgestellt ist. Lies sie als Gegenprobe zu dieser Lektion. Beachte: sie behandelt
+weder Bildschirmabschaltung noch die Absturz-Dialoge — das ist genau der Teil, den
+du für den Einsatzbetrieb zusätzlich brauchst.</p>
+
+<footer>
+  <p><strong>Frag nach.</strong> Kiosk-Aufbauten scheitern selten am Konzept und
+  fast immer an einer Zeile. Wenn etwas nicht startet: schick mir, was du in
+  <span class="mono">~/.config/labwc/autostart</span> stehen hast und was passiert
+  — das finden wir.</p>
+
+  <p><strong>Vorher:</strong> <a href="0001-web-monitor-statt-windows.html">Lektion 1 —
+  Vom Windows-Monitor zum Web-Monitor</a>.<br>
+  <strong>Referenzen:</strong>
+  <a href="../reference/kiosk-setup.html">Kiosk-Setup (Copy-&amp;-Paste)</a> ·
+  <a href="../reference/poweralarm-bausteine.html">PowerAlarm-Bausteine</a>.</p>
+
+  <p><strong>Danach:</strong> sobald FITT geantwortet hat — URL einsetzen,
+  Anmeldung dauerhaft machen, Parallelbetrieb zum alten Rechner, Abnahme.</p>
+
+  <p class="citations"><strong>Quellen</strong></p>
+  <ol class="citations">
+    <li id="q1">Raspberry Pi Ltd: <a href="https://www.raspberrypi.com/tutorials/how-to-use-a-raspberry-pi-in-kiosk-mode/">How
+    to use a Raspberry Pi in kiosk mode</a> — Autostart über
+    <span class="mono">.config/labwc/autostart</span>, Schalter
+    <span class="mono">--kiosk --noerrdialogs --disable-infobars --no-first-run</span>.</li>
+    <li id="q2">Raspberry Pi Forums:
+    <a href="https://forums.raspberrypi.com/viewtopic.php?t=390764">A Chromium Kiosk
+    for Wayland/labwc</a> — labwc/Wayland ist Standard bei allen
+    Neuinstallationen von Raspberry Pi OS Desktop nach dem 28.10.2024; LXDE-Autostart
+    läuft in Wayland-Sitzungen nicht.</li>
+    <li id="q3"><a href="https://github.com/labwc/labwc/discussions/3059">labwc
+    Discussion #3059 — „How to switch off display?"</a>: <span class="mono">wlopm</span>
+    zum vorübergehenden Abschalten, <span class="mono">wlr-randr</span> nur zum
+    dauerhaften Deaktivieren, da es das Output-Layout ändert.</li>
+    <li id="q4">Linux Uprising:
+    <a href="https://www.linuxuprising.com/2019/07/raspberry-pi-power-on-off-tv-connected.html">Raspberry
+    Pi: Power On / Off A TV Connected Via HDMI-CEC</a> ·
+    <a href="https://pimylifeup.com/raspberrypi-hdmi-cec/">Pi My Life Up: Using
+    HDMI-CEC on a Raspberry Pi</a>.</li>
+    <li>Raspberry Pi Ltd: <a href="https://www.raspberrypi.com/documentation/computers/configuration.html">Configuration
+    documentation</a> — <span class="mono">consoleblank</span> in
+    <span class="mono">/boot/firmware/cmdline.txt</span> (Textkonsole).</li>
+  </ol>
+</footer>
+
+<script src="../assets/quiz.js"></script>
+<script>
+PowerQuiz.render(document.querySelector('[data-quiz]'), [
+  {
+    q: 'Wohin gehört der Autostart-Befehl auf aktuellem Raspberry Pi OS?',
+    a: [
+      'In die Datei ~/.config/labwc/autostart',
+      'In die Datei ~/.config/lxsession/autostart',
+      'In ein Startskript unter /etc/xdg/autostart'
+    ],
+    correct: 0,
+    why: 'Seit 28.10.2024 ist Wayland mit labwc Standard. Die LXDE-Autostartdateien ' +
+         'werden in einer Wayland-Sitzung nie ausgeführt — sie sind nicht kaputt, ' +
+         'sie sind nur nicht zuständig.'
+  },
+  {
+    q: 'Was bewirkt "xset s off" auf so einem System?',
+    a: [
+      'Gar nichts, es ist ein X11-Werkzeug',
+      'Es schaltet die Bildschirmsperre ab',
+      'Es hält den Bildschirm dauerhaft an'
+    ],
+    correct: 0,
+    why: 'Und genau deshalb ist es so tückisch: der Befehl läuft ohne Fehlermeldung ' +
+         'durch und wirkt nicht. Unter Wayland regelt raspi-config das Blanking, ' +
+         'und wlopm schaltet den Bildschirm.'
+  },
+  {
+    q: 'Warum ist --disable-session-crashed-bubble einsatzkritisch?',
+    a: [
+      'Sonst verdeckt ein Dialog nach Stromausfall',
+      'Sonst startet Chromium nicht im Vollbild',
+      'Sonst fehlt der Alarmton bei Alarmeingang'
+    ],
+    correct: 0,
+    why: 'Nach einem Stromausfall hält Chromium sich für abgestürzt und fragt ' +
+         '„Seiten wiederherstellen?“. Im Kiosk ist niemand da, der das wegklickt — ' +
+         'der Dialog liegt dann beim nächsten Alarm über der Anzeige.'
+  },
+  {
+    q: 'Womit schaltest du einen PC-Monitor vorübergehend ab?',
+    a: [
+      'Mit wlopm, weil es das Layout lässt',
+      'Mit wlr-randr, weil es den Output löst',
+      'Mit cec-client, weil es per HDMI geht'
+    ],
+    correct: 0,
+    why: 'wlopm schaltet nur die Stromversorgung des Ausgangs. wlr-randr --off ' +
+         'entfernt den Ausgang aus dem Layout und verschiebt deine Fenster. ' +
+         'cec-client ist der Weg für einen Fernseher, nicht für einen Monitor.'
+  },
+  {
+    q: 'Welcher Test entscheidet, ob der Kiosk einsatztauglich ist?',
+    a: [
+      'Stecker ziehen und wieder einstecken',
+      'Chromium beenden und neu aufrufen',
+      'Das Gerät per Befehl neu durchstarten'
+    ],
+    correct: 0,
+    why: 'Nur der Stromausfall reproduziert, was im Feuerwehrhaus wirklich ' +
+         'passiert: unsauberes Herunterfahren, Absturzdialog, fehlende Anmeldung. ' +
+         'Ein sauberer Reboot verschweigt genau die Fehler, die dich treffen.'
+  }
+]);
+</script>

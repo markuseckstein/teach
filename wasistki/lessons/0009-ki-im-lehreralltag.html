@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9 · KI im Lehreralltag</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="lesson" data-n="9">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 9 · Teil IV — Anwenden</p>
+    <h1>KI im Lehreralltag</h1>
+    <p class="standfirst">
+      Der häufigste Einwand lautet: „Bis ich dem Ding erklärt habe, was ich will,
+      habe ich es dreimal selbst geschrieben.“ Der Einwand stimmt — für genau eine
+      Art der Nutzung. Diese Lektion zeigt, wo die Grenze verläuft.
+    </p>
+    <div class="meta">
+      <span>12 Minuten</span>
+      <span>Ziel: ein Rezept am Montag anwenden</span>
+      <span>Setzt <a href="0007-skills.html">Lektion 7</a> voraus</span>
+    </div>
+  </header>
+
+  <p>
+    Nehmen wir den Einwand ernst, denn er ist berechtigt. Wenn Sie einen Chatbot
+    öffnen, um ein Arbeitsblatt erstellen zu lassen, passiert typischerweise
+    Folgendes: Sie schreiben drei Sätze. Sie bekommen etwas Generisches. Sie
+    erklären den Jahrgang. Sie bekommen etwas zu Leichtes. Sie erklären das Niveau,
+    das Bundesland, den Lehrplanbezug, die Textsorte. Nach zwanzig Minuten haben
+    Sie etwas Brauchbares — und Sie hätten es in fünfzehn selbst geschrieben.
+  </p>
+
+  <p>
+    Das ist keine Anfängerfehler-Geschichte. Das ist die <em>strukturelle</em>
+    Eigenschaft der Chatbot-Nutzung: Der Einrichtungsaufwand fällt <strong>jedes
+    Mal neu an</strong>, weil nichts bleibt
+    (<a href="0003-das-kontextfenster.html">Lektion 3</a>).
+  </p>
+
+  <h2>Die Kurve, um die es geht</h2>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 330" role="img"
+         aria-label="Ein Diagramm: Die Zeitersparnis des Chatbots steigt nur schwach an. Die Ersparnis mit Skill und Agent beginnt im Minus, überholt aber nach etwa drei bis vier Wiederholungen deutlich.">
+      <defs>
+        <marker id="l9-a" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead"/>
+        </marker>
+      </defs>
+
+      <line x1="80" y1="278" x2="700" y2="278" class="d-line" marker-end="url(#l9-a)"/>
+      <line x1="80" y1="278" x2="80"  y2="30"  class="d-line" marker-end="url(#l9-a)"/>
+
+      <line x1="80" y1="200" x2="680" y2="200" class="d-line-faint d-dash"/>
+      <text x="74" y="204" class="d-t-xs d-end">null</text>
+
+      <!-- Chatbot -->
+      <line x1="80" y1="200" x2="680" y2="150" class="d-line" style="stroke-width:2.4"/>
+      <circle cx="680" cy="150" r="5" class="d-fill"/>
+      <circle cx="680" cy="150" r="5" class="d-stroke"/>
+
+      <!-- Skill + Agent -->
+      <line x1="80" y1="245" x2="680" y2="55" class="d-line-accent" style="stroke-width:2.8"/>
+      <circle cx="680" cy="55" r="5" class="d-fill-accent"/>
+
+      <!-- Schnittpunkt -->
+      <circle cx="273" cy="184" r="6" class="d-fill-warn"/>
+      <line x1="273" y1="184" x2="273" y2="278" class="d-line-warn d-dash-fine"/>
+      <text x="286" y="172" class="d-t-sm d-t-warn">ab hier lohnt es sich</text>
+      <text x="286" y="188" class="d-t-sm">meist beim dritten oder vierten Mal</text>
+
+      <text x="596" y="140" class="d-t-sm d-end">Chatbot</text>
+      <text x="596" y="124" class="d-t-xs d-end">jedes Mal neu erklären</text>
+
+      <text x="600" y="46" class="d-t d-end d-t-accent">Skill + Agent</text>
+      <text x="600" y="62" class="d-t-xs d-end">einmal einrichten, dann läuft es</text>
+
+      <text x="96" y="258" class="d-t-sm d-t-warn">erst kostet es Zeit</text>
+
+      <text x="30" y="150" class="d-t-xs" transform="rotate(-90 30 150)" text-anchor="middle">insgesamt gesparte Zeit</text>
+      <text x="80" y="300" class="d-t-xs">Wie oft Sie dieselbe Art von Aufgabe machen →</text>
+
+      <line x1="80" y1="312" x2="700" y2="312" class="d-line-faint"/>
+      <text x="80" y="328" class="d-t-xs">Schematisch — die Form stimmt, die Zahlen sind es nicht</text>
+    </svg>
+    <figcaption>
+      <b>Beide Aussagen sind wahr.</b> „KI spart mir keine Zeit“ stimmt für
+      einmalige Aufgaben im Chatbot. „KI spart mir enorm Zeit“ stimmt für
+      wiederkehrende Aufgaben mit einem eingerichteten Verfahren. Die Leute reden
+      nicht über dasselbe.
+    </figcaption>
+  </figure>
+
+  <div class="takeaway">
+    Fragen Sie nicht „lohnt sich KI?“, sondern: „Mache ich das noch mal — und wie oft?“
+  </div>
+
+  <p>
+    Daraus folgt eine einfache Sortierregel für Ihren Alltag:
+  </p>
+
+  <ul>
+    <li><strong>Einmalig und schnell?</strong> Selbst machen oder Chatbot, egal.</li>
+    <li><strong>Einmalig, aber groß?</strong> Chatbot — der Aufwand lohnt sich für
+      diesen einen Fall.</li>
+    <li><strong>Kommt wieder?</strong> Aufschreiben, was die Regeln sind. Das ist
+      Ihr Skill (<a href="0007-skills.html">Lektion 7</a>).</li>
+    <li><strong>Kommt wieder <em>und</em> betrifft viele Dateien?</strong> Agent.
+      Hier liegt die eigentliche Zeitersparnis, und fast niemand kommt bis hierher.</li>
+  </ul>
+
+  <h2>Sieben Rezepte</h2>
+
+  <p class="sidenote">
+    <span class="sn-label">Alle Rezepte</span>
+    Die sieben gibt es auch als abtrennbare Karten mit fertigen Formulierungen:
+    <a href="../reference/rezepte-lehreralltag.html">Rezeptkarten</a>. Zum
+    Ausdrucken und ins Fach legen.
+  </p>
+
+  <p>
+    Sortiert nach dem, was sie kosten. Die ersten drei können Sie heute Abend
+    ausprobieren, ohne irgendetwas zu installieren.
+  </p>
+
+  <h3>1 · Differenzierung in drei Niveaus</h3>
+  <p>
+    Sie haben ein funktionierendes Arbeitsblatt. Sie fügen es ein und bitten um
+    zwei weitere Fassungen: eine mit mehr Hilfen, eine mit offenerer Aufgabenstellung.
+    <strong>Warum das gut funktioniert:</strong> Das Modell muss nichts wissen, was
+    es nicht hat — die Fachlichkeit steht ja schon da. Es muss nur umformen.
+    Das ist genau seine Stärke.
+  </p>
+
+  <h3>2 · Typische Fehlvorstellungen aufspüren</h3>
+  <p>
+    „Hier ist meine Aufgabe zum Thema Auftrieb. Welche verbreiteten Fehlvorstellungen
+    haben Schülerinnen und Schüler dazu, und an welcher Stelle meiner Aufgabe könnten
+    sie unbemerkt durchrutschen?“ Das liefert oft etwas, das man selbst nicht auf
+    dem Schirm hatte — und kostet zwei Minuten.
+  </p>
+
+  <h3>3 · Der Einstieg, den Sie nicht gefunden hätten</h3>
+  <p>
+    „Gib mir fünf mögliche Einstiege in eine Stunde zum Thema X für Klasse 9. Einer
+    davon soll provozieren, einer soll mit einem Alltagsgegenstand arbeiten, einer
+    ohne Sprache auskommen.“ Sie nehmen einen davon oder keinen — beides ist ein
+    Gewinn gegenüber zwanzig Minuten Grübeln.
+  </p>
+
+  <h3>4 · Feedback nach Ihrem Kriterienraster</h3>
+  <p>
+    Sie geben Ihr Bewertungsraster vor und dazu einen <em>anonymisierten</em>
+    Schülertext (<a href="0005-was-passiert-mit-meinen-daten.html">Lektion 5</a> —
+    das ist der Punkt, an dem Sie aufpassen müssen). Sie lassen sich Formulierungen
+    für die Rückmeldung vorschlagen, nicht die Note. Die Bewertung bleibt bei Ihnen;
+    was Sie abgeben, ist das Ringen um die höfliche Formulierung zum vierten Mal
+    an diesem Abend.
+  </p>
+
+  <h3>5 · Der Elternbrief als Skill</h3>
+  <p>
+    Ab hier wird es interessant. Statt jedes Mal neu zu erklären, wie ein Brief an
+    Ihrer Schule klingt, schreiben Sie es einmal auf — das Beispiel aus
+    <a href="0007-skills.html">Lektion 7</a>. Danach dauert ein Elternbrief unter
+    einer Minute.
+  </p>
+
+  <h3>6 · Materialordner aufräumen lassen</h3>
+  <p>
+    Das erste Rezept, für das Sie einen Agenten brauchen. Sie haben 300 Dateien mit
+    Namen wie <code>AB_neu_final_2.docx</code>. Sie geben den Ordner frei und sagen:
+    „Schau in jede Datei, benenne sie nach dem Muster
+    <em>Jahrgang_Thema_Typ</em> um und schreib mir eine Übersichtstabelle.“
+  </p>
+  <p>
+    Das ist der Moment, in dem der Groschen bei den meisten fällt. Es geht nicht
+    darum, dass der Agent klüger wäre als Sie — er ist nur bereit, 300-mal
+    dasselbe zu tun, ohne die Geduld zu verlieren.
+  </p>
+
+  <h3>7 · Klausurentwurf zerpflücken lassen</h3>
+  <p>
+    Der <code>grill-me</code>-Skill aus <a href="0007-skills.html">Lektion 7</a>,
+    angewendet auf Ihre nächste Klassenarbeit: Passen die Operatoren zu den
+    Anforderungsbereichen? Ist Aufgabe 3 ohne Aufgabe 2 lösbar? Wo hängt die
+    Bewertung an einer Formulierung, die missverständlich ist? Zwanzig Minuten,
+    bevor die Arbeit geschrieben wird, sparen zwei Stunden Ärger danach.
+  </p>
+
+  <h2>Was ehrlicherweise nicht gut funktioniert</h2>
+
+  <p>
+    Eine Liste mit Nutzen ohne die Gegenliste wäre Werbung. Diese Dinge sollten
+    Sie <em>nicht</em> abgeben:
+  </p>
+
+  <div class="scroll-x">
+  <table class="wide">
+    <thead>
+      <tr>
+        <th style="width:32%">Wobei es schiefgeht</th>
+        <th style="width:68%">Warum</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Fakten und Quellen</strong></td>
+        <td>Ohne Werkzeug zum Nachschlagen erfindet es Belege, die überzeugend
+            aussehen (<a href="0002-das-llm-hat-kein-gedaechtnis.html">Lektion 2</a>).
+            Jahreszahlen, Seitenangaben, Paragrafen: immer selbst prüfen.</td>
+      </tr>
+      <tr>
+        <td><strong>Benoten</strong></td>
+        <td>Nicht nur rechtlich heikel — es ist auch schlecht darin. Es bewertet
+            Sprachoberfläche, nicht Gedankengang. Ein sprachlich schwacher Text mit
+            kluger Idee fällt durch.</td>
+      </tr>
+      <tr>
+        <td><strong>Alles, was Ihre Klasse kennt</strong></td>
+        <td>„Wie gehe ich mit der Situation in meiner 8b um?“ — Das Modell kennt
+            weder das Kind noch die Dynamik noch Sie. Es gibt Ihnen den Mittelwert
+            aus Ratgeberliteratur.</td>
+      </tr>
+      <tr>
+        <td><strong>Aktuelles</strong></td>
+        <td>Das Wissen ist zum Trainingszeitpunkt eingefroren. Ohne Websuche
+            bekommen Sie den Stand von vorgestern, präsentiert wie der von heute.</td>
+      </tr>
+      <tr>
+        <td><strong>Der letzte Schliff</strong></td>
+        <td>Auf achtzig Prozent kommt es schnell. Die letzten zwanzig — Ihre
+            Handschrift, der Bezug auf letzte Woche, der Insiderwitz — macht es
+            nicht. Rechnen Sie damit, statt sich zu ärgern.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box key">
+    <p class="box-title">Die Faustregel für die Arbeitsteilung</p>
+    <p style="margin-bottom:0">
+      Geben Sie ab, was <em>Fleiß</em> ist: umformen, variieren, sortieren,
+      formulieren, gegenlesen. Behalten Sie, was <em>Urteil</em> ist: bewerten,
+      auswählen, entscheiden, verantworten. Die Grenze verläuft nicht zwischen
+      leicht und schwer, sondern zwischen Menge und Verantwortung.
+    </p>
+  </div>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Eine Kollegin sagt: „Ich habe es probiert, es hat mehr Zeit gekostet als
+      gespart.“ Was ist die wahrscheinlichste Erklärung?
+    </p>
+    <ul class="quiz-opts">
+      <li>Sie hat ein zu schwaches Modell für die Aufgabe verwendet.</li>
+      <li data-correct>Sie hat eine einmalige Aufgabe im Chatbot gemacht.</li>
+      <li>Sie hat ihre Anweisungen zu knapp und zu ungenau formuliert.</li>
+      <li>Sie hat den bisherigen Gesprächsverlauf nicht regelmäßig geleert.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p>
+        Bei einer einmaligen Aufgabe fällt der gesamte Erklärungsaufwand an und der
+        Ertrag bleibt einmalig. Da hat sie schlicht recht — und es hilft nichts,
+        ihr besseres Formulieren zu empfehlen.
+      </p>
+      <p style="margin-bottom:0">
+        Die produktive Antwort ist eine andere Frage: „Was machst du jede Woche
+        gleich?“ Dort, und nur dort, liegt der Gewinn.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Welche dieser Aufgaben eignet sich am besten für einen Agenten statt für
+      einen Chatbot?
+    </p>
+    <ul class="quiz-opts">
+      <li>Eine Rückmeldung zu einem einzelnen Schüleraufsatz formulieren.</li>
+      <li>Fünf Ideen für den Einstieg in die nächste Stunde sammeln.</li>
+      <li data-correct>Vierzig Arbeitsblätter durchsehen und tabellarisch erfassen.</li>
+      <li>Einen schwierigen Sachverhalt für Klasse 7 verständlich erklären.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Die anderen drei sind Ein-Text-Aufgaben; da bringt ein Agent nichts, was
+        ein Chatbot nicht auch kann. Vierzig Dateien öffnen, lesen und erfassen ist
+        dagegen genau der Fall, in dem Sie sonst kopieren, einfügen, kopieren,
+        einfügen — vierzigmal. Das ist die Arbeit, die der Agent Ihnen wirklich
+        abnimmt.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Nennen Sie eine Aufgabe aus Ihrem Alltag für jede der vier Sortierstufen —
+      einmalig-klein, einmalig-groß, wiederkehrend, wiederkehrend-mit-vielen-Dateien.
+      Bei der letzten dürfen Sie überlegen; sie fällt den meisten am schwersten und
+      ist die lohnendste.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      Hier gibt es keine gute Primärquelle, und das sollte man offen sagen: Belastbare
+      Studien zum Zeitgewinn durch KI im Schuldienst fehlen weitgehend. Was es
+      gibt, sind Erfahrungsberichte. Die beste Quelle sind deshalb Kolleginnen und
+      Kollegen, die es tatsächlich benutzen — fragen Sie im Lehrerzimmer nach
+      konkreten Beispielen, nicht nach Meinungen. Und probieren Sie <em>ein</em>
+      Rezept aus, bevor Sie sich eine Meinung bilden.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Das lohnendste Gespräch zu dieser Lektion:
+    Beschreiben Sie eine Aufgabe, die Sie regelmäßig nervt. Daraus lässt sich meist
+    binnen Minuten ein Verfahren machen — und das ist überzeugender als jede Liste.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

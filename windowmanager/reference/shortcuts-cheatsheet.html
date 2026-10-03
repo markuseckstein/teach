@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Shortcuts Referenz</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Referenz &middot; Windows Multi-Monitor Desktop Management</p>
+<h1>Shortcuts-Spickzettel</h1>
+<p class="lede">Alle Tastenkombinationen für Fenster, Zonen und virtuelle Desktops an einem Ort. Zum Ausdrucken oder als Tab offen halten, bis es Muskelgedächtnis ist.</p>
+
+<nav class="toc">
+  <span class="toc-label">Inhalt</span>
+  <ol>
+    <li><a href="#fenster">Fenster verschieben &amp; snappen (Windows-Bordmittel)</a></li>
+    <li><a href="#fancyzones">FancyZones (PowerToys)</a></li>
+    <li><a href="#workspaces">PowerToys Workspaces</a></li>
+    <li><a href="#run">PowerToys Run</a></li>
+    <li><a href="#desktops">Virtuelle Desktops &amp; Task View</a></li>
+  </ol>
+</nav>
+
+<h2 id="fenster">Fenster verschieben &amp; snappen (Windows-Bordmittel)</h2>
+<table class="shortcuts">
+  <thead><tr><th>Shortcut</th><th>Aktion</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><span class="combo"><kbd>Win</kbd>+<kbd>&larr;</kbd></span> / <span class="combo"><kbd>Win</kbd>+<kbd>&rarr;</kbd></span></td><td>Fenster in linke/rechte Bildschirmhälfte snappen</td></tr>
+    <tr><td class="combo-cell"><span class="combo"><kbd>Win</kbd>+<kbd>&uarr;</kbd></span> / <span class="combo"><kbd>Win</kbd>+<kbd>&darr;</kbd></span></td><td>Fenster maximieren / minimieren (bzw. in obere/untere Viertel-Ecke, nach seitlichem Snap)</td></tr>
+    <tr><td class="combo-cell"><span class="combo"><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>&larr;</kbd></span> / <span class="combo"><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>&rarr;</kbd></span></td><td>Fokussiertes Fenster auf den <strong>nächsten Monitor</strong> verschieben (gleiche Größe/Position relativ zum neuen Bildschirm). Läuft an den Rändern um.</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Z</kbd></td><td>Snap-Layouts-Auswahl öffnen (native Layout-Raster, dann Zahl 1-9 zur Auswahl der Zielzone)</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>D</kbd></td><td>Alle Fenster minimieren / wiederherstellen (Desktop anzeigen)</td></tr>
+  </tbody>
+</table>
+<p class="source">Quelle: <a href="https://www.microsoft.com/en-us/windows/learning-center/organize-screen-with-snap-layouts">Snap Layouts — Microsoft Windows Learning Center</a></p>
+
+<h2 id="fancyzones">FancyZones (PowerToys)</h2>
+<table class="shortcuts">
+  <thead><tr><th>Shortcut</th><th>Aktion</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>`</kbd></td><td>Zonen-Editor öffnen (Layout wählen/bauen)</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1-9</kbd></td><td>Ein zugewiesenes Custom-Layout sofort auf den aktiven Monitor anwenden</td></tr>
+    <tr><td class="combo-cell"><span class="combo"><kbd>Win</kbd>+<kbd>&larr;</kbd></span> / <span class="combo"><kbd>Win</kbd>+<kbd>&rarr;</kbd></span></td><td>Fokussiertes Fenster zwischen Zonen bewegen &mdash; <em>nur</em> wenn <strong>Override Windows Snap</strong> aktiv &amp; Modus <strong>Zone index</strong> gewählt ist</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>&larr;/&rarr;/&uarr;/&darr;</kbd></td><td>Fokussiertes Fenster zwischen Zonen bewegen (alle 4 Richtungen) &mdash; wenn Modus <strong>Relative position</strong> gewählt ist</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>PgUp</kbd> / <kbd>PgDn</kbd></td><td>Zwischen mehreren Fenstern wechseln, die in derselben Zone gestapelt sind</td></tr>
+    <tr><td class="combo-cell">Ziehen + <kbd>Shift</kbd> halten</td><td>Zonen beim Ziehen per Maus aktivieren (Standardeinstellung)</td></tr>
+    <tr><td class="combo-cell">Ziehen + <kbd>Ctrl</kbd> halten</td><td>Fenster über mehrere Zonen gleichzeitig spannen</td></tr>
+  </tbody>
+</table>
+<div class="callout">
+  <span class="label">Falle</span>
+  Elevated Apps wie Windows Terminal oder Task-Manager lassen sich nur snappen, wenn PowerToys selbst <strong>als Administrator</strong> läuft.
+</div>
+<p class="source">Quelle: <a href="https://learn.microsoft.com/en-us/windows/powertoys/fancyzones">FancyZones Window Manager — Microsoft Learn</a></p>
+
+<h2 id="workspaces">PowerToys Workspaces</h2>
+<table class="shortcuts">
+  <thead><tr><th>Shortcut</th><th>Aktion</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>`</kbd></td><td>Workspaces-Editor öffnen (Setups erfassen/starten)</td></tr>
+  </tbody>
+</table>
+<p>Ein einzelnes Workspace-Layout wird sonst per Desktop-Verknüpfung oder Taskleisten-Pin gestartet &mdash; siehe <a href="../lessons/0001-powertoys-workspaces-daily-reset.html">Lektion 1</a>.</p>
+<p class="source">Quelle: <a href="https://learn.microsoft.com/en-us/windows/powertoys/workspaces">PowerToys Workspaces — Microsoft Learn</a></p>
+
+<h2 id="run">PowerToys Run</h2>
+<table class="shortcuts">
+  <thead><tr><th>Shortcut / Präfix</th><th>Aktion</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><kbd>Alt</kbd>+<kbd>Space</kbd></td><td>PowerToys Run öffnen/schließen</td></tr>
+    <tr><td class="combo-cell"><code>&lt;</code></td><td>Window Walker &mdash; zwischen offenen Fenstern springen</td></tr>
+    <tr><td class="combo-cell"><code>.</code></td><td>Program &mdash; App starten, optional mit Argumenten</td></tr>
+    <tr><td class="combo-cell"><code>&gt;</code></td><td>Shell &mdash; Befehl direkt ausführen</td></tr>
+    <tr><td class="combo-cell"><code>=</code></td><td>Calculator &mdash; schnelle Rechnung</td></tr>
+    <tr><td class="combo-cell"><code>$</code></td><td>Windows Settings &mdash; direkt zur Einstellungsseite</td></tr>
+    <tr><td class="combo-cell"><code>#</code></td><td>Value Generator &mdash; GUIDs, Hashes, Base64</td></tr>
+    <tr><td class="combo-cell"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></td><td>Ausgewählte App als Administrator öffnen</td></tr>
+    <tr><td class="combo-cell"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd></td><td>Enthaltenden Ordner im Explorer öffnen</td></tr>
+  </tbody>
+</table>
+<p class="source">Quelle: <a href="https://learn.microsoft.com/en-us/windows/powertoys/run">PowerToys Run Quick Launcher for Windows &mdash; Microsoft Learn</a></p>
+
+<h2 id="desktops">Virtuelle Desktops &amp; Task View</h2>
+<table class="shortcuts">
+  <thead><tr><th>Shortcut</th><th>Aktion</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Tab</kbd></td><td>Task View öffnen (alle Fenster &amp; Desktops im Überblick)</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Neuen virtuellen Desktop erstellen (und dorthin wechseln)</td></tr>
+    <tr><td class="combo-cell"><span class="combo"><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>&larr;</kbd></span> / <span class="combo"><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>&rarr;</kbd></span></td><td>Zum vorherigen/nächsten virtuellen Desktop wechseln</td></tr>
+    <tr><td class="combo-cell"><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>F4</kbd></td><td>Aktuellen virtuellen Desktop schließen (Fenster wandern zum vorherigen Desktop)</td></tr>
+  </tbody>
+</table>
+<div class="callout win">
+  <span class="label">Wichtig für dein Setup</span>
+  Ein virtueller Desktop umfasst <strong>immer alle Monitore gleichzeitig</strong> — Windows kennt keine unabhängigen Desktops pro Monitor. Ohne Gegenmaßnahme verschwinden Outlook/Teams beim Wechseln mit. Details &amp; Lösung: <a href="../lessons/0003-virtuelle-desktops.html">Lektion 3</a>.
+</div>
+
+<p class="ask-agent">Unklar bei einem Shortcut oder einer Einstellung? Frag einfach direkt im Chat nach &mdash; das ist Teil des Lernprozesses.</p>
+
+<div class="lesson-nav">
+  <span><a href="../lessons/0005-powertoys-run.html">&larr; Lektion 5: PowerToys Run</a></span>
+  <span><a href="../index.html">&uarr; Übersicht</a></span>
+  <span><a href="../MISSION.md">Mission</a></span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5 · Was passiert mit meinen Daten?</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="lesson" data-n="5">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Lektion 5 · Teil II — Die Landschaft</p>
+    <h1>Was passiert mit meinen Daten?</h1>
+    <p class="standfirst">
+      Jedes Wort, das Sie in einen Chatbot tippen, verlässt Ihren Rechner. Für
+      Lehrkräfte ist das kein Nebenaspekt, sondern die Frage, an der alles andere
+      hängt.
+    </p>
+    <div class="meta">
+      <span>9 Minuten</span>
+      <span>Ziel: die Ampel im Kopf haben</span>
+      <span>Wichtigste Lektion für den Schuldienst</span>
+    </div>
+  </header>
+
+  <div class="box warn">
+    <p class="box-title">Vorab, damit es klar ist</p>
+    <p style="margin-bottom:0">
+      Diese Lektion ist keine Rechtsberatung. Schulrecht ist Ländersache, und was
+      in Bayern gilt, gilt in Nordrhein-Westfalen nicht unbedingt. Was Sie hier
+      bekommen, ist ein <em>technisches</em> Verständnis davon, was passiert — und
+      eine Faustregel, die auf der sicheren Seite liegt. Die verbindliche Auskunft
+      gibt Ihre Schulleitung oder der schulische Datenschutzbeauftragte.
+    </p>
+  </div>
+
+  <h2>Der Weg, den Ihr Text nimmt</h2>
+
+  <p>
+    Ein Chatbot läuft nicht auf Ihrem Gerät. Ihr Browser ist nur das Fenster; die
+    Arbeit passiert in einem Rechenzentrum, das meistens nicht in Deutschland steht.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 268" role="img"
+         aria-label="Der Text geht vom Rechner über das Internet zum Anbieter. Dort verzweigt er sich in drei Wege: Speicherung, Sichtung durch Menschen und Nutzung fürs Training.">
+      <defs>
+        <marker id="l5-a" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead-warn"/>
+        </marker>
+        <marker id="l5-b" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead"/>
+        </marker>
+      </defs>
+
+      <rect x="16" y="60" width="120" height="52" rx="7" class="d-fill"/>
+      <rect x="16" y="60" width="120" height="52" rx="7" class="d-stroke"/>
+      <text x="76" y="82" class="d-t d-mid">Ihr Rechner</text>
+      <text x="76" y="99" class="d-t-sm d-mid">Sie tippen</text>
+
+      <line x1="142" y1="86" x2="206" y2="86" class="d-line-warn" marker-end="url(#l5-a)"/>
+      <text x="174" y="76" class="d-t-xs d-mid d-t-warn">verschlüsselt,</text>
+      <text x="174" y="64" class="d-t-xs d-mid d-t-warn">aber weg</text>
+
+      <rect x="212" y="46" width="150" height="80" rx="8" class="d-fill"/>
+      <rect x="212" y="46" width="150" height="80" rx="8" class="d-stroke-warn"/>
+      <text x="287" y="74" class="d-t d-mid d-t-warn">Anbieter</text>
+      <text x="287" y="92" class="d-t-sm d-mid">Rechenzentrum,</text>
+      <text x="287" y="108" class="d-t-sm d-mid">oft außerhalb der EU</text>
+
+      <line x1="368" y1="70"  x2="428" y2="42"  class="d-line" marker-end="url(#l5-b)"/>
+      <line x1="368" y1="86"  x2="428" y2="106" class="d-line" marker-end="url(#l5-b)"/>
+      <line x1="368" y1="102" x2="428" y2="170" class="d-line" marker-end="url(#l5-b)"/>
+
+      <rect x="434" y="20" width="266" height="42" rx="7" class="d-fill-plain"/>
+      <rect x="434" y="20" width="266" height="42" rx="7" class="d-stroke"/>
+      <text x="448" y="38" class="d-t">Gespeichert</text>
+      <text x="448" y="54" class="d-t-sm">Tage bis Jahre — je nach Einstellung</text>
+
+      <rect x="434" y="84" width="266" height="42" rx="7" class="d-fill-plain"/>
+      <rect x="434" y="84" width="266" height="42" rx="7" class="d-stroke"/>
+      <text x="448" y="102" class="d-t">Von Menschen gesichtet</text>
+      <text x="448" y="118" class="d-t-sm">stichprobenartig, zur Missbrauchskontrolle</text>
+
+      <rect x="434" y="148" width="266" height="42" rx="7" class="d-fill-plain"/>
+      <rect x="434" y="148" width="266" height="42" rx="7" class="d-stroke-warn"/>
+      <text x="448" y="166" class="d-t d-t-warn">Fürs Training verwendet</text>
+      <text x="448" y="182" class="d-t-sm">bei Privatkonten oft standardmäßig an</text>
+
+      <line x1="16" y1="216" x2="700" y2="216" class="d-line-faint"/>
+      <text x="16" y="236" class="d-t-xs">Was davon zutrifft, hängt an Ihrem Kontotyp und an einem Schalter in den Einstellungen</text>
+      <text x="16" y="254" class="d-t-sm">Der Weg selbst lässt sich nicht abschalten — nur das, was am Ziel damit geschieht.</text>
+    </svg>
+    <figcaption>
+      <b>Verschlüsselt heißt nicht privat.</b> Die Übertragung ist gesichert, das
+      ist nicht der Punkt. Der Punkt ist, was am anderen Ende passiert: Dort liegt
+      Ihr Text im Klartext, und dort entscheidet die Vertragslage, was damit
+      geschieht.
+    </figcaption>
+  </figure>
+
+  <h2>Der Schalter, den kaum jemand kennt</h2>
+
+  <p class="sidenote">
+    <span class="sn-label">Nachprüfen</span>
+    Die genauen Voreinstellungen ändern sich mit den Geschäftsbedingungen. Schauen
+    Sie in Ihrem Konto unter „Datenschutz“ oder „Data Controls“ selbst nach —
+    einmal, jetzt. Es dauert zwei Minuten.
+  </p>
+
+  <p>
+    Grob gilt die folgende Faustregel, und sie überrascht die meisten:
+  </p>
+
+  <ul>
+    <li><strong>Privatkonten</strong> — kostenlos oder als persönliches Abo — sind
+      bei mehreren großen Anbietern so voreingestellt, dass Ihre Unterhaltungen
+      zur Verbesserung der Modelle verwendet werden dürfen. Sie müssen aktiv
+      <em>widersprechen</em>. Anthropic hat diese Umstellung 2025 vollzogen, bei
+      OpenAI ist das Training für private Konten ebenfalls standardmäßig aktiv.</li>
+    <li><strong>Geschäfts- und Behördenkonten</strong> sowie der Zugang für
+      Entwickler sind in der Regel davon ausgenommen — dort wird
+      standardmäßig <em>nicht</em> trainiert.</li>
+    <li>Wer das Training zulässt, stimmt bei manchen Anbietern zugleich einer
+      deutlich <strong>längeren Speicherdauer</strong> zu — statt einiger Wochen
+      bis zu mehreren Jahren.</li>
+  </ul>
+
+  <p>
+    Das ist juristisch umstritten; Fachleute halten voreingestellte Zustimmung
+    dieser Art für schwer mit der DSGVO vereinbar. Für Sie zählt aber weniger die
+    juristische Debatte als die praktische Konsequenz:
+  </p>
+
+  <div class="takeaway">
+    Behandeln Sie das Eingabefeld wie eine Postkarte, nicht wie ein Tagebuch.
+  </div>
+
+  <h2>Die Ampel</h2>
+
+  <p>
+    Damit Sie nicht bei jeder Nachricht neu abwägen müssen, hier eine Einteilung,
+    die im Schulalltag trägt. Sie ist bewusst streng — sie soll Ihnen die
+    Entscheidung abnehmen, nicht sie verkomplizieren.
+  </p>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 300" role="img"
+         aria-label="Eine Ampel mit drei Feldern: Rot für personenbezogene Daten, Gelb für anonymisierte Angaben, Grün für unbedenkliches Material.">
+      <rect x="16" y="14" width="688" height="84" rx="9" class="d-fill"/>
+      <rect x="16" y="14" width="688" height="84" rx="9" class="d-stroke-warn"/>
+      <circle cx="52" cy="56" r="15" class="d-fill-warn"/>
+      <text x="84" y="44" class="d-t-lead d-t-warn">ROT — geht nicht hinein</text>
+      <text x="84" y="64" class="d-t-sm">Namen von Schülerinnen und Schülern · Noten mit Zuordnung · Gutachten ·</text>
+      <text x="84" y="80" class="d-t-sm">Förderpläne · Gesundheitliches · Zeugnisbemerkungen · Elterngespräche ·</text>
+      <text x="84" y="94" class="d-t-sm">alles über das Verhalten einzelner Kinder — auch scheinbar Harmloses</text>
+
+      <rect x="16" y="110" width="688" height="80" rx="9" class="d-fill"/>
+      <rect x="16" y="110" width="688" height="80" rx="9" class="d-stroke"/>
+      <circle cx="52" cy="150" r="15" class="d-fill-accent"/>
+      <text x="84" y="138" class="d-t-lead d-t-accent">GELB — nur sauber anonymisiert</text>
+      <text x="84" y="158" class="d-t-sm">Ein Schülertext ohne Namen · „ein Kind der 7b, das im Unterricht oft stört“ ·</text>
+      <text x="84" y="174" class="d-t-sm">Klassensituationen ohne Zuordnung. Prüfen Sie zweimal: Ort, Klasse, Fach und</text>
+      <text x="84" y="190" class="d-t-sm">eine Besonderheit ergeben zusammen oft doch wieder eine erkennbare Person.</text>
+
+      <rect x="16" y="202" width="688" height="66" rx="9" class="d-fill"/>
+      <rect x="16" y="202" width="688" height="66" rx="9" class="d-stroke-ok"/>
+      <circle cx="52" cy="236" r="15" class="d-fill-ok"/>
+      <text x="84" y="224" class="d-t-lead d-t-ok">GRÜN — unbedenklich</text>
+      <text x="84" y="244" class="d-t-sm">Lehrpläne · eigene Arbeitsblätter und Materialien · Fachinhalte · veröffentlichte</text>
+      <text x="84" y="260" class="d-t-sm">Texte · Ihre eigenen Entwürfe, solange keine dritte Person darin vorkommt</text>
+
+      <text x="16" y="290" class="d-t-xs">Im Zweifel gilt die strengere Farbe</text>
+    </svg>
+    <figcaption>
+      <b>Zum Ausdrucken:</b> Diese Ampel gibt es auch als eigenes Blatt fürs
+      Lehrerzimmer — <a href="../reference/datenschutz-ampel.html">Datenschutz-Ampel</a>.
+    </figcaption>
+  </figure>
+
+  <h2>Anonymisieren ist Handwerk, nicht Wegschauen</h2>
+
+  <p>
+    Der häufigste Fehler beim Gelb-Bereich: Man streicht den Namen und hält die
+    Sache für erledigt. Sie ist es meist nicht.
+  </p>
+
+  <blockquote>
+    „Ein Junge aus meiner 7b an der Grundschule am Stadtpark, der wegen seiner
+    Diabetes-Erkrankung oft fehlt …“
+  </blockquote>
+
+  <p>
+    Hier steht kein Name — und trotzdem ist das Kind für jede Person, die die
+    Schule kennt, eindeutig identifiziert. Personenbezug entsteht durch
+    <em>Kombination</em>. Wenn Sie anonymisieren, ersetzen Sie deshalb nicht nur
+    den Namen, sondern auch Schule, Klasse und jede Besonderheit, die einzeln
+    vorkommt.
+  </p>
+
+  <details class="reveal">
+    <summary>So sähe dasselbe Anliegen unbedenklich aus</summary>
+    <p>
+      „Ein Kind in der Mittelstufe fehlt krankheitsbedingt häufig und verliert den
+      Anschluss in Mathematik. Welche Möglichkeiten habe ich, den Stoff so
+      aufzubereiten, dass es selbstständig aufholen kann?“
+    </p>
+    <p>
+      Sie bekommen exakt dieselbe fachliche Hilfe. Nur ist jetzt niemand mehr
+      erkennbar — und genau das war ja auch nie der Punkt Ihrer Frage.
+    </p>
+  </details>
+
+  <h2>Wenn Sie mehr brauchen als Gelb</h2>
+
+  <p>
+    Es gibt Wege, auch mit heiklerem Material zu arbeiten. Alle drei kosten etwas
+    — Geld, Aufwand oder Leistung:
+  </p>
+
+  <ul>
+    <li><strong>Ein Modell auf dem eigenen Rechner.</strong> Offene Modelle
+      (<a href="0004-anbieter-und-modelle.html">Lektion 4</a>) laufen lokal; kein
+      Wort verlässt das Gerät. Die Modelle sind schwächer und brauchen einen
+      kräftigen Computer, aber datenschutzrechtlich ist das die sauberste Lösung.</li>
+    <li><strong>Ein Geschäftskonto mit vertraglicher Zusicherung.</strong> Wenn die
+      Schule oder der Schulträger einen Vertrag mit Auftragsverarbeitung
+      abschließt, sind Training und lange Speicherung vertraglich ausgeschlossen.
+      Das ist der übliche Weg für Behörden — und die Entscheidung liegt nicht bei
+      Ihnen allein.</li>
+    <li><strong>Anbieter mit Verarbeitung in der EU.</strong> Verlagert das Problem
+      geografisch und löst manches, aber nicht alles.</li>
+  </ul>
+
+  <div class="box key">
+    <p class="box-title">Der eine Satz, den Sie mitnehmen sollten</p>
+    <p style="margin-bottom:0">
+      Fragen Sie sich vor dem Absenden: <em>Würde ich diesen Text einer fremden
+      Firma per E-Mail schicken, ohne zu wissen, wer ihn liest?</em> Wenn nein,
+      gehört er nicht in das Eingabefeld. Diese eine Frage ersetzt die ganze Ampel.
+    </p>
+  </div>
+
+  <h2>Kurz nachgedacht</h2>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Sie möchten eine Zeugnisbemerkung für ein Kind formulieren lassen. Wie gehen
+      Sie vor?
+    </p>
+    <ul class="quiz-opts">
+      <li>Text mit Namen eingeben und den Namen danach wieder ersetzen.</li>
+      <li>Vollständigen Text eingeben, weil die Übertragung verschlüsselt ist.</li>
+      <li data-correct>Nur die Beobachtungen, ohne Name, Schule und Klasse.</li>
+      <li>Gar nicht, weil dafür kein Werkzeug zulässig ist.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p>
+        Der erste Weg hilft nicht: Der Name ist bereits übertragen, das nachträgliche
+        Ersetzen passiert bei Ihnen, nicht beim Anbieter. Der zweite verwechselt
+        Transportsicherheit mit Vertraulichkeit.
+      </p>
+      <p style="margin-bottom:0">
+        Der vierte ist übervorsichtig — die Formulierungsarbeit selbst ist
+        unproblematisch, sobald kein Personenbezug mehr drinsteht. „Arbeitet
+        zuverlässig, meldet sich selten freiwillig, hat sich im zweiten Halbjahr
+        deutlich gesteigert“ reicht dem Modell völlig, um Ihnen drei Formulierungen
+        anzubieten.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <p class="quiz-label">Abrufübung</p>
+    <p class="quiz-q">
+      Warum ist ein Privatkonto für dienstliche Zwecke heikler als ein Geschäftskonto?
+    </p>
+    <ul class="quiz-opts">
+      <li>Weil Privatkonten technisch schlechter gegen Zugriffe abgesichert sind.</li>
+      <li data-correct>Weil bei Privatkonten oft standardmäßig trainiert wird.</li>
+      <li>Weil Privatkonten grundsätzlich auf schwächere Modelle zugreifen.</li>
+      <li>Weil Privatkonten die Antworten anderer Nutzer mitverwenden können.</li>
+    </ul>
+    <div class="quiz-explain">
+      <p style="margin-bottom:0">
+        Der Unterschied liegt nicht in der Technik, sondern im Vertrag. Bei
+        Geschäfts- und Behördenkonten ist die Nutzung fürs Training vertraglich
+        ausgeschlossen und die Speicherdauer begrenzt; bei Privatkonten ist beides
+        eine Einstellung, die häufig zu Ihren Ungunsten voreingestellt ist.
+      </p>
+    </div>
+  </section>
+
+  <div class="box recall">
+    <p class="box-title">Ohne nachzuschlagen</p>
+    <p style="margin-bottom:0">
+      Nennen Sie drei Dinge aus Ihrem eigenen Arbeitsalltag, die eindeutig rot
+      sind — und eine Sache, von der Sie sich nicht sicher sind. Die unsichere ist
+      die interessante: Nehmen Sie sie mit zur Schulleitung.
+    </p>
+  </div>
+
+  <div class="source">
+    <p class="box-title">Primärquelle für diese Lektion</p>
+    <p>
+      Die <a href="https://www.datenschutzkonferenz-online.de/orientierungshilfen.html">Orientierungshilfe
+      „Künstliche Intelligenz und Datenschutz“ der Datenschutzkonferenz</a> — die
+      abgestimmte Position der deutschen Aufsichtsbehörden. Wichtiger für Sie ist
+      aber die Handreichung <em>Ihres Bundeslandes</em>: Suchen Sie nach dem Namen
+      Ihres Kultusministeriums zusammen mit „KI“ und „Schule“. Nur das ist für Sie
+      verbindlich.
+    </p>
+  </div>
+
+  <div class="ask">
+    <strong>Fragen Sie nach.</strong> Wenn Sie einen konkreten Fall haben, bei dem
+    Sie unsicher sind, ob er gelb oder rot ist: schildern Sie ihn anonymisiert.
+    Genau an solchen Grenzfällen lernt man die Regel — nicht an den eindeutigen.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: API Connect v10 Object Model</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Reference · IBM API Connect v10</p>
+  <h1>The Object Model</h1>
+  <p class="lede">Every noun in API Connect, what it's for, and the CLI noun that manages it.</p>
+
+  <h2 id="hierarchy">The hierarchy at a glance</h2>
+  <div class="tree">API Cloud  (Cloud Manager — platform ops, not your problem)
+└── Provider organization (pOrg)         ← your team lives here
+    ├── Drafts                           ← development artifacts, not on any gateway
+    │   ├── Draft APIs      = openapi.yml + x-ibm-configuration
+    │   └── Draft Products  = product.yaml referencing APIs, containing Plans
+    │
+    └── Catalog  (Sandbox, dev, prod …)  ← a runtime environment; publish target
+        │        bound to: gateway service(s) + optional Developer Portal
+        ├── [Space]                      ← optional per-team partition (RBAC)
+        ├── Product   (staged/published) ← THE unit of publishing
+        │   ├── Plan(s)   rate limits, approval flow   ◄─────┐
+        │   └── API(s)    your openapi.yml, now live         │ subscription
+        └── Consumer organization                            │
+            └── Application  (client id / secret)  ──────────┘</div>
+
+  <div class="callout">
+    <p class="kicker">The one rule that explains everything</p>
+    <p>You never publish an <em>API</em>. You publish a <strong>Product</strong> (which bundles APIs and Plans) into a <strong>Catalog</strong> (which is bound to a gateway). Apps subscribe to a <strong>Plan</strong>, never to an API directly. Once you accept this, every CLI command and REST path makes sense.</p>
+  </div>
+
+  <h2 id="objects">Object-by-object</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Object</th><th>What it is</th><th>CLI noun</th></tr>
+    <tr><td><strong>Provider org</strong> (pOrg)</td><td>Home of an API-producing team. You must be a member to publish. Owns drafts and catalogs.</td><td><code>orgs</code></td></tr>
+    <tr><td><strong>Catalog</strong></td><td>An isolated runtime environment (think <em>dev</em>, <em>test</em>, <em>prod</em>). Bound to one or more gateway services and optionally a Developer Portal. Every pOrg starts with a <em>Sandbox</em> catalog.</td><td><code>catalogs</code></td></tr>
+    <tr><td><strong>Space</strong></td><td>Optional partition inside a catalog so multiple teams can share one environment with separate permissions. Off by default.</td><td><code>spaces</code></td></tr>
+    <tr><td><strong>Draft API</strong></td><td>Your OpenAPI 2.0/3.0 document plus the <code>x-ibm-configuration</code> extension (gateway type, assembly, properties). Lives in the pOrg, runs nowhere.</td><td><code>draft-apis</code></td></tr>
+    <tr><td><strong>Draft Product</strong></td><td>A YAML file listing which APIs it bundles and which Plans it offers. The thing you stage/publish.</td><td><code>draft-products</code></td></tr>
+    <tr><td><strong>Product</strong> (in catalog)</td><td>A published Product with a lifecycle: <em>staged → published → deprecated → retired → archived</em>. Only <em>published</em> Products serve traffic.</td><td><code>products</code></td></tr>
+    <tr><td><strong>Plan</strong></td><td>Subscription tier inside a Product: rate limits, burst limits, subscription approval. Not a standalone object — defined inside the Product YAML.</td><td>—</td></tr>
+    <tr><td><strong>Consumer org</strong></td><td>An organization of API <em>consumers</em> (app developers), registered per catalog, usually via the Developer Portal.</td><td><code>consumer-orgs</code></td></tr>
+    <tr><td><strong>Application</strong></td><td>A consumer's app; holds client ID/secret credentials used to call APIs.</td><td><code>apps</code></td></tr>
+    <tr><td><strong>Subscription</strong></td><td>The link: Application ↔ Plan (of a Product). This is what grants access.</td><td><code>subscriptions</code></td></tr>
+    <tr><td><strong>Gateway service</strong></td><td>The DataPower runtime cluster that actually executes calls. Catalogs are bound to it; ops manage it in Cloud Manager.</td><td><code>configured-gateway-services</code></td></tr>
+  </table>
+  </div>
+
+  <h2 id="cli-map">CLI orientation map</h2>
+  <p>Every toolkit command follows <code>apic &lt;noun&gt;:&lt;verb&gt;</code> plus <code>--server</code>, and <code>--org / --catalog / --space</code> to say <em>where</em>. Discover any noun's verbs with <code>apic &lt;noun&gt; --help</code>.</p>
+  <pre><code># who am I / where can I work
+apic login --server $MGMT --realm provider/default-idp-2 --username $USER
+apic orgs:list      --server $MGMT
+apic catalogs:list  --server $MGMT --org $ORG
+
+# development (drafts, in the pOrg)
+apic draft-apis:list      --server $MGMT --org $ORG
+apic draft-products:list  --server $MGMT --org $ORG
+
+# runtime (published, in a catalog)
+apic products:list  --server $MGMT --org $ORG --scope catalog --catalog $CAT
+apic products:clone --server $MGMT --org $ORG --scope catalog --catalog $CAT  # download everything
+
+# publish
+apic products:publish my-product.yaml --server $MGMT --org $ORG --catalog $CAT</code></pre>
+  <p><em>Note:</em> exact flags vary slightly by fixpack — trust <code>--help</code> on your installation over any blog post, including this one.</p>
+
+  <h2 id="glossary">Glossary</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>Management server / platform API endpoint</td><td>The host the toolkit and REST API talk to (<code>--server</code>). Same backend the API Manager UI uses.</td></tr>
+    <tr><td>Realm / identity provider</td><td>Which user registry you authenticate against, e.g. <code>provider/default-idp-2</code>. List with <code>apic identity-providers:list --scope provider</code>.</td></tr>
+    <tr><td><code>x-ibm-configuration</code></td><td>IBM's OpenAPI extension holding everything the gateway needs: gateway type, security, properties, and the <strong>assembly</strong>.</td></tr>
+    <tr><td>Assembly</td><td>The "custom pipeline": an ordered <code>execute</code> array of policies the gateway runs per request (invoke, map, gatewayscript, validate…).</td></tr>
+    <tr><td>Policy</td><td>One processing step in an assembly. User-defined policies package reusable custom steps.</td></tr>
+    <tr><td>DataPower API Gateway vs v5-compatible</td><td>Two gateway types in v10. The native <em>API Gateway</em> is current; <em>v5c</em> exists for migration. They support different policies — check which your catalog uses.</td></tr>
+    <tr><td>Toolkit</td><td>The <code>apic</code> CLI binary. It is a thin wrapper over the Platform REST API (see it with <code>--debug</code>).</td></tr>
+  </table>
+  </div>
+
+  <footer class="lesson-footer">
+    <p>Sources: <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=apis-working-catalogs">IBM Docs: Working with Catalogs</a> · <a href="https://www.ibm.com/docs/en/api-connect/10.0.x_cd?topic=cli-working-toolkit">IBM Docs: Working with the toolkit</a> · <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">v10 API Explorer</a> · <a href="https://medium.com/ibm-cloud-paks-help-and-guidance-from-ibm-cloud/ibm-api-connect-cloud-porg-catalog-space-plan-usage-recommendation-9c78c397904a">IBM Expert Labs: pOrg/Catalog/Space usage</a></p>
+    <div class="nav-links">
+      <a href="../index.html">Course home</a>
+      <a href="../lessons/0001-object-model-and-first-cli-contact.html">Lesson 1: Object model</a>
+      <a href="cli-cheatsheet.html">Reference: CLI cheat sheet →</a>
+    </div>
+  </footer>
+</main>

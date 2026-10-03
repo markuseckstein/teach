@@ -1,0 +1,147 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2: Publish Your First API</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Lesson 0002 · IBM API Connect 10.0.11 · ~20 minutes</p>
+  <h1>Publish Your First API</h1>
+  <p class="lede">Two YAML files and one command. No UI was harmed in the making of this lesson.</p>
+
+  <p>You know from <a href="0001-object-model-and-first-cli-contact.html">Lesson 1</a> that the unit of publishing is the <strong>Product</strong>. So publishing takes exactly two files: your OpenAPI definition, and a small product YAML that wraps it. Both examples below are taken (lightly trimmed) from IBM's own <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts">example-toolkit-scripts</a> repo and target your gateway type, the native <strong>DataPower API Gateway</strong>.</p>
+
+  <h2>File 1: the API — your OpenAPI plus <code>x-ibm-configuration</code></h2>
+  <p>Save as <code>findbranch_1.0.0.yaml</code>. It's a plain Swagger 2.0 document; everything API Connect adds lives under two IBM extensions:</p>
+
+  <pre><code>swagger: "2.0"
+info:
+  title: FindBranch
+  x-ibm-name: findbranch          # ← the machine name; lowercase, stable
+  version: 1.0.0
+schemes: [https]
+basePath: /findbranch             # ← path on the gateway
+security:
+  - clientID: []
+securityDefinitions:
+  clientID:                       # apps authenticate with their client ID
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+paths:
+  /details:
+    get:
+      responses:
+        "200":
+          description: 200 OK
+
+x-ibm-configuration:              # ← everything the gateway needs
+  gateway: datapower-api-gateway  # ← your gateway type (native, not v5c)
+  enforced: true                  # gateway enforces security &amp; limits
+  testable: true
+  phase: realized
+  cors:
+    enabled: true
+  properties:                     # ← name/value config, referenced as $(name)
+    target-url:
+      value: https://backend.example.com/branches
+      description: The URL of the target service
+  assembly:                       # ← the "custom pipeline" (Lesson 4!)
+    execute:
+      - invoke:                   # simplest pipeline: one proxy step
+          title: invoke
+          version: 2.0.0
+          verb: keep
+          target-url: $(target-url)</code></pre>
+
+  <div class="callout">
+    <p class="kicker">Note the shape</p>
+    <p>Your existing <code>openapi.yml</code> stays intact — API Connect only <em>adds</em> the <code>x-ibm-name</code> and the <code>x-ibm-configuration</code> block. The <code>assembly.execute</code> array is the pipeline you asked about: an ordered list of policies the gateway runs on every request. Here it's a single <code>invoke</code> (proxy to backend); Lesson 4 adds real logic.</p>
+  </div>
+
+  <h2>File 2: the Product — plans, visibility, and which APIs ride along</h2>
+  <p>Save as <code>findbranch_prod_1.0.0.yaml</code>:</p>
+
+  <pre><code>product: 1.0.0                    # product schema version, not your version
+info:
+  name: findbranch-product
+  title: Find Branches
+  version: 1.0.0
+gateways:
+  - datapower-api-gateway
+apis:
+  FindBranch:
+    $ref: findbranch_1.0.0.yaml   # ← local file; uploaded with the product
+visibility:
+  view:      { enabled: true, type: public }
+  subscribe: { enabled: true, type: authenticated }
+plans:
+  default:
+    title: Default Plan
+    approval: false               # true = subscriptions need approval
+    rate-limits:
+      default:
+        value: 100/hour           # the Plan is where limits live
+        hard-limit: false</code></pre>
+
+  <h2>Validate, publish, verify</h2>
+  <pre><code># 1. Lint both files before they leave your machine
+apic validate findbranch_prod_1.0.0.yaml
+
+# 2. Publish product + API into a catalog, in one shot
+apic products:publish findbranch_prod_1.0.0.yaml \
+     --server $MGMT --org $ORG --catalog sandbox
+
+# 3. Verify: what's in the catalog now?
+apic products:list-all --server $MGMT --org $ORG \
+     --scope catalog --catalog sandbox</code></pre>
+
+  <p>That's it. The product is <em>published</em>: live on every gateway the catalog is bound to, at <code>https://&lt;gateway-api-endpoint&gt;/&lt;org&gt;/&lt;catalog&gt;/findbranch/details</code>. Calling it still requires a subscribed application's <code>X-IBM-Client-Id</code> — consumer-side mechanics come later.</p>
+
+  <h3>Variant: stage now, go live later</h3>
+  <pre><code>apic products:publish --stage findbranch_prod_1.0.0.yaml \
+     --server $MGMT --org $ORG --catalog sandbox</code></pre>
+  <p><code>--stage</code> parks the product in the catalog in state <em>staged</em> — present, reviewable, but not serving traffic. The lifecycle you saw in the <a href="../reference/object-model.html#objects">reference</a> (<em>staged → published → deprecated → retired</em>) is driven by <code>products:replace</code> / <code>products:supersede</code> — that's the CI/CD lesson.</p>
+
+  <h2>Check yourself</h2>
+  <div class="quiz" id="quiz"><noscript><p>Enable JavaScript for the quiz.</p></noscript></div>
+
+  <h2>Primary source</h2>
+  <p>Skim IBM's <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts/blob/master/bash/doapic-prod.bash">doapic-prod.bash</a> (5 minutes) — an official, working script that publishes, stages, replaces, and deletes products. It is the distilled version of everything in this lesson plus a preview of the lifecycle commands. The prose reference is <a href="https://www.ibm.com/docs/en/api-connect/software/10.0.x_cd?topic=dyaa-creating-validating-api-product-definitions-by-using-cli">IBM Docs: Creating and validating API and Product definitions by using the CLI</a>.</p>
+
+  <footer class="lesson-footer">
+    <p><strong>Homework:</strong> publish FindBranch (or a trimmed copy of one of your real <code>openapi.yml</code> files with the <code>x-ibm-configuration</code> block bolted on) to your work Sandbox catalog, then delete it again with <code>apic products:delete --server $MGMT --org $ORG --scope catalog --catalog sandbox findbranch-product:1.0.0</code>. First confirm with your team that the Sandbox catalog is fair game. Anything odd — validation errors, missing permissions — bring it to your teacher.</p>
+    <div class="nav-links">
+      <a href="0001-object-model-and-first-cli-contact.html">← Lesson 1: Object model</a>
+      <a href="../index.html">Course home</a>
+      <a href="0003-download-specs-cli-and-rest.html">Lesson 3: Download specs, CLI &amp; REST →</a>
+    </div>
+  </footer>
+</main>
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    stem: "Which file do you hand to apic products:publish?",
+    options: ["the product YAML", "the OpenAPI YAML", "a catalog YAML", "a gateway YAML"],
+    answer: 0,
+    explain: "You publish the product file; it $ref's your OpenAPI file(s), and the toolkit uploads both in one shot."
+  },
+  {
+    stem: "Inside x-ibm-configuration, which key decides that this API targets the native DataPower API Gateway?",
+    options: ["gateway", "enforced", "phase", "type"],
+    answer: 0,
+    explain: "gateway: datapower-api-gateway selects the native gateway; datapower-gateway would mean the v5-compatible one, which your shop doesn't use."
+  },
+  {
+    stem: "In the invoke policy, $(target-url) resolves to…",
+    options: ["a property from x-ibm-configuration.properties", "an environment variable on the gateway", "a header copied from the request", "a setting stored in the catalog"],
+    answer: 0,
+    explain: "$(name) references x-ibm-configuration.properties entries — and catalogs can override property values per environment, which is how one YAML serves dev and prod."
+  },
+  {
+    stem: "What does the --stage flag change about publishing?",
+    options: ["product lands staged, not serving traffic", "product goes live without any plans", "product skips validation before uploading", "product publishes to every catalog simultaneously"],
+    answer: 0,
+    explain: "--stage puts the product in the catalog in 'staged' state: visible and reviewable, but not callable until it moves to 'published' (e.g. via products:replace in a controlled rollout)."
+  }
+]);
+</script>

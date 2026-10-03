@@ -1,0 +1,235 @@
+/* Shared stylesheet for the Windows Multi-Monitor Desktop Management workspace.
+   Tufte-ish: serif reading type, restrained color, print-friendly. */
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #fdfcf9;
+  --muted: #6b6b6b;
+  --rule: #d8d4c8;
+  --accent: #8a3324;
+  --accent-soft: #f5e9e3;
+  --kbd-bg: #2b2b2b;
+  --kbd-fg: #f5f0e6;
+  --code-bg: #f1efe6;
+  --win: #0f6b3f;
+  --win-soft: #e5f2ea;
+  font-size: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 6rem;
+  max-width: 42rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-weight: 600; line-height: 1.25; }
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.kicker {
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 2.5rem 0 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+h2:first-of-type { border-top: none; padding-top: 0; }
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--accent);
+}
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:visited { color: var(--accent); }
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* Keyboard key styling */
+kbd {
+  display: inline-block;
+  font-family: "SF Mono", "Segoe UI Mono", Consolas, monospace;
+  font-size: 0.82em;
+  background: var(--kbd-bg);
+  color: var(--kbd-fg);
+  padding: 0.12em 0.5em;
+  border-radius: 0.3em;
+  border-bottom: 2px solid #000;
+  white-space: nowrap;
+}
+
+.combo kbd + kbd { margin-left: 0.2em; }
+.combo { margin-right: 0.3em; }
+
+/* Callouts */
+.callout {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  padding: 0.9rem 1.1rem;
+  margin: 1.4rem 0;
+  border-radius: 0 0.3rem 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.callout.win {
+  border-left-color: var(--win);
+  background: var(--win-soft);
+}
+
+.callout .label {
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+
+.callout.win .label { color: var(--win); }
+
+/* Steps */
+ol.steps { padding-left: 1.4rem; }
+ol.steps li { margin-bottom: 0.9rem; }
+
+/* Shortcut table */
+table.shortcuts {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.92rem;
+}
+table.shortcuts th, table.shortcuts td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.shortcuts th {
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+table.shortcuts td.combo-cell { white-space: nowrap; }
+
+code {
+  font-family: "SF Mono", "Segoe UI Mono", Consolas, monospace;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25em;
+  font-size: 0.88em;
+}
+
+/* Quiz widget */
+.quiz {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.4rem;
+  background: #fbfaf5;
+}
+.quiz p.q { font-weight: 600; margin-bottom: 0.7rem; }
+.quiz .options { display: flex; flex-direction: column; gap: 0.4rem; }
+.quiz button.opt {
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+.quiz button.opt:hover { border-color: var(--accent); }
+.quiz button.opt.correct { background: var(--win-soft); border-color: var(--win); }
+.quiz button.opt.wrong { background: #f8e6e2; border-color: var(--accent); }
+.quiz .feedback { margin-top: 0.6rem; font-size: 0.9rem; min-height: 1.2em; }
+
+/* Table of contents */
+nav.toc {
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.4rem;
+  background: #fbfaf5;
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  font-size: 0.88rem;
+}
+nav.toc .toc-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+nav.toc ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+nav.toc li { margin-bottom: 0.3rem; }
+nav.toc a { text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+
+/* Footer nav */
+.lesson-nav {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+.ask-agent {
+  margin: 2.5rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.source {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media print {
+  body { max-width: 100%; padding: 0 0.5in; }
+  a { color: var(--ink); }
+  .ask-agent, .lesson-nav { display: none; }
+  .quiz { break-inside: avoid; }
+}

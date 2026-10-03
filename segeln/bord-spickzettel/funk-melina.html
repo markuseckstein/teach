@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funk SY Melina</title>
+<link rel="stylesheet" href="print.css">
+</head>
+<body>
+<p class="screen-only"><a href="index.html">← Alle Spickzettel</a> · Drucken: A4 hoch, Ränder „Standard“, Hintergrundgrafiken an.</p>
+<div class="sheet">
+
+  <header class="head">
+    <h1>UKW-FUNK · SY MELINA <small>über dem Funkgerät aufhängen</small></h1>
+    <div class="tag">Saronischer Golf · Oktober 2026<br>Partneryacht: SY Sienna</div>
+  </header>
+
+  <div class="fields" style="grid-template-columns: 1fr 1.15fr 1.15fr 1fr;">
+    <div class="field"><b>Rufzeichen</b><i></i></div>
+    <div class="field"><b>MMSI Melina</b><i></i></div>
+    <div class="field"><b>MMSI Sienna</b><i></i></div>
+    <div class="field"><b>DSC-Knopf halten</b><i></i><b>s</b></div>
+  </div>
+
+  <div class="grid2">
+    <!-- linke Spalte -->
+    <div class="col">
+      <section class="box mayday">
+        <h2>MAYDAY <span>· Lebensgefahr, sofortige Hilfe nötig</span></h2>
+        <ol class="steps">
+          <li><b>DSC:</b> Klappe auf → Notart wählen <span class="small">(wenn Zeit ist)</span> → <b>DISTRESS halten, bis das Gerät sendet</b></li>
+          <li>Kanal <b>16</b>, Leistung <b>HIGH (25 W)</b>, langsam und deutlich sprechen:</li>
+        </ol>
+        <div class="script">
+<span class="say">MAYDAY MAYDAY MAYDAY</span><br>
+<span class="say">THIS IS SAILING YACHT MELINA · MELINA · MELINA</span><br>
+CALL SIGN <em>(Rufz.)</em> · MMSI <em>(Nummer)</em><br>
+<span class="say">MAYDAY · MELINA</span> · CALL SIGN … · MMSI …<br>
+<span class="say">MY POSITION IS</span> <em>37° 41′</em> NORTH <em>023° 26′</em> EAST<br>
+<em>&nbsp;&nbsp;oder:</em> BEARING <em>…</em> DEGREES FROM <em>(Landmarke)</em>, <em>…</em> MILES<br>
+<span class="say">I AM</span> <em>(Art der Not – Tabelle unten)</em><br>
+<span class="say">I REQUIRE</span> <em>ASSISTANCE / PUMPS / A TOW / MEDICAL EVACUATION</em><br>
+<span class="say">THREE PERSONS ON BOARD</span> <em>(+ life raft, EPIRB, injuries …)</em><br>
+<span class="say">OVER</span>
+        </div>
+        <p class="small">Keine Antwort → wiederholen (DSC wiederholt alle ~4 min selbst). Parallel Handy: <b>108</b> / <b>112</b>.</p>
+        <table style="margin-top:1mm">
+          <tr><th style="width:34%">Not</th><th>sprechen</th></tr>
+          <tr><td>Feuer</td><td><b>I AM ON FIRE</b></td></tr>
+          <tr><td>Wassereinbruch</td><td><b>I AM FLOODING</b></td></tr>
+          <tr><td>Sinken</td><td><b>I AM SINKING</b></td></tr>
+          <tr><td>Grundberührung</td><td><b>I AM AGROUND</b></td></tr>
+          <tr><td>Kollision</td><td><b>I HAVE COLLIDED WITH …</b></td></tr>
+          <tr><td>Kentergefahr</td><td><b>I AM IN DANGER OF CAPSIZING</b></td></tr>
+          <tr><td>manövrierunfähig</td><td><b>I AM NOT UNDER COMMAND</b></td></tr>
+          <tr><td>Mensch über Bord</td><td><b>I HAVE LOST ONE PERSON OVERBOARD</b></td></tr>
+          <tr><td>Schiff verlassen</td><td><b>I MUST ABANDON VESSEL</b></td></tr>
+        </table>
+        <p class="small">DSC-Menü (Notart): Fire · Flooding · Sinking · Grounding · Collision · Listing · Disabled/adrift · Man overboard · Abandoning ship</p>
+      </section>
+
+      <section class="box grey">
+        <h2>Fehlalarm? Sofort widerrufen</h2>
+        <div class="script" style="color:var(--ink)">
+<span class="say">ALL STATIONS ALL STATIONS ALL STATIONS</span><br>
+THIS IS MELINA MELINA MELINA · CALL SIGN … · MMSI …<br>
+<span class="say">PLEASE CANCEL MY DISTRESS ALERT OF</span> <em>(Uhrzeit)</em> <span class="say">UTC</span> · OVER
+        </div>
+        <p class="small">Danach Kanal 16 weiter abhören. Ohne Widerruf läuft ein Rettungseinsatz an.</p>
+      </section>
+    </div>
+
+    <!-- rechte Spalte -->
+    <div class="col">
+      <section class="box pan">
+        <h2>PAN PAN <span>· dringend, aber keine Lebensgefahr</span></h2>
+        <div class="script">
+<span class="say">PAN PAN · PAN PAN · PAN PAN</span><br>
+<span class="say">ALL STATIONS</span> ×3 <em>(oder OLYMPIA RADIO ×3)</em><br>
+THIS IS MELINA MELINA MELINA · CALL SIGN … · MMSI …<br>
+MY POSITION IS …<br>
+<em>(Problem, z. B.</em> ENGINE FAILURE, DRIFTING TOWARDS ROCKS<em>)</em><br>
+I REQUIRE <em>A TOW / MEDICAL ADVICE …</em> · THREE PERSONS ON BOARD · OVER
+        </div>
+        <p class="small"><b>Arzt per Funk:</b> PAN PAN an OLYMPIA RADIO, „RADIOMEDICAL“. Widerruf: „PLEASE CANCEL URGENCY MESSAGE OF … UTC“.</p>
+      </section>
+
+      <section class="box secu">
+        <h2>SÉCURITÉ <span>· Warnung an alle, wird nicht quittiert</span></h2>
+        <div class="script">
+<span class="say">SÉCURITÉ ×3</span> <em>(französisch: sé-kü-ri-té)</em> · <span class="say">ALL STATIONS ×3</span><br>
+THIS IS MELINA ×3 · CALL SIGN … · MMSI …<br>
+<em>z. B.</em> DANGEROUS FLOATING CONTAINER IN POSITION … · OUT
+        </div>
+      </section>
+
+      <section class="box">
+        <h2>Fremdes MAYDAY gehört</h2>
+        <ol class="steps">
+          <li><b>Mitschreiben:</b> Name, Position, Not, Personen, Uhrzeit</li>
+          <li><b>Funkstille</b> auf 16, die Küstenfunkstelle quittiert zuerst</li>
+          <li><b>5 min ohne Quittung</b> und du kannst helfen: MAYDAY <em>(Name, Rufz.)</em> THIS IS MELINA ×3 <em>(Rufz.)</em> <b>RECEIVED MAYDAY</b></li>
+          <li>Weitermelden: <b>MAYDAY RELAY</b> ×3 · ALL STATIONS ×3 · THIS IS MELINA ×3 + Meldung</li>
+        </ol>
+        <p><span class="warn">Fremden DSC-Alarm nie per DSC quittieren oder an alle weiterleiten.</span><br>
+        <b>SEELONCE MAYDAY</b> = Funkstille · <b>SEELONCE FEENEE</b> = Notverkehr beendet</p>
+      </section>
+
+      <section class="box">
+        <h2>Kanäle</h2>
+        <table>
+          <tr><td class="k">16</td><td>Not · Anruf · <b>Hörwache</b></td><td class="k">71</td><td>Alimos Marina</td></tr>
+          <tr><td class="k">70</td><td>nur DSC, <b>nie sprechen</b></td><td class="k">12</td><td>Hafen Piräus</td></tr>
+          <tr><td class="k">72</td><td>Melina ↔ Sienna</td><td class="k">22</td><td>Wetter (Parnitha)</td></tr>
+          <tr><td class="k">13</td><td>Brücke zu Brücke</td><td class="k">__</td><td>Hafen: ________</td></tr>
+        </table>
+        <p class="small">Sienna auf 16 rufen, dann 72 (Ausweich 77). Kanal 06 nutzen auch Rettungsflieger. Marina: Länge, Tiefgang, ETA; Anweisungen zurücklesen.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <section class="box">
+      <h2>Wetter & Telefon</h2>
+      <p><b>Olympia Radio</b>, Ansage auf 16 → Kanal 22: <b>09 · 13 · 19 · 01 Uhr</b> <span class="small">Ortszeit (= 06/10/16/22 UTC)</span></p>
+      <table style="margin-top:.6mm">
+        <tr><td>Küstenwache · EU-Notruf</td><td><b>108 · 112</b></td></tr>
+        <tr><td>JRCC Piräus (Seenotleitung)</td><td><b>+30 210 411 2500</b></td></tr>
+        <tr><td>Medico Cuxhaven (Arzt, deutsch)</td><td><b>+49 4721 785</b></td></tr>
+        <tr><td>Alimos Marina</td><td>+30 210 98 80000</td></tr>
+        <tr><td>Charterbasis</td><td>____________________</td></tr>
+        <tr><td>Sienna (Handy)</td><td>____________________</td></tr>
+        <tr><td class="small">DSC-Einzelruf JRCC · Olympia</td><td class="small">002392000 · 002371000</td></tr>
+      </table>
+    </section>
+
+    <section class="box">
+      <h2>Buchstabieren</h2>
+      <p>Alfa · Bravo · Charlie · Delta · Echo · Foxtrot · Golf · Hotel · India · Juliett · Kilo · Lima · Mike · November · Oscar · Papa · Quebec · Romeo · Sierra · Tango · Uniform · Victor · Whiskey · X-ray · Yankee · Zulu</p>
+      <p><b>Zahlen einzeln:</b> 0 ZEE-RO · 1 WUN · 2 TOO · 3 TREE · 4 FOW-ER · 5 FIFE · 6 SIX · 7 SEV-EN · 8 AIT · 9 NIN-ER</p>
+      <p class="small">I SPELL · SAY AGAIN · CORRECTION · OVER (Antwort erwartet) · OUT (Ende)</p>
+    </section>
+  </div>
+
+  <div class="foot">Quellen: ITU Radio Regulations 2024 Art. 32/33 · ITU-R M.493/M.541 · IMO SMCP · ITU MARS · HNHS Notices 2026 (inkl. 631/2026). Kanäle der Inselhäfen sind nicht amtlich belegt, darum im Revierführer prüfen. Stand 02.10.2026.</div>
+</div>
+</body>
+</html>

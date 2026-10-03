@@ -1,0 +1,105 @@
+/* ===========================================================================
+   diagram.css — gemeinsame Bildsprache für alle Diagramme des Kurses.
+
+   Alle Diagramme sind Inline-SVG. Sie holen ihre Farben aus diesen Klassen und
+   damit aus den CSS-Variablen von lesson.css — dadurch funktionieren sie im
+   Hell- und im Dunkelmodus und drucken sauber, ohne dass in jeder Lektion
+   Farben wiederholt werden.
+
+   Konventionen, an die sich jedes Diagramm hält:
+     .d-fill     Fläche eines Kastens
+     .d-stroke   Umriss
+     .d-line     Verbindung / Pfeil
+     .d-t        Beschriftung          .d-t-sm klein   .d-t-lead hervorgehoben
+     .d-accent   das, worum es geht    .d-muted  Beiwerk
+     .d-warn     Gefahr / Verlust      .d-ok  gut
+   =========================================================================== */
+
+svg.diagram {
+  font-family: var(--sans);
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* --------------------------------------------------------------- Flächen */
+
+.d-fill        { fill: var(--paper-2); }
+.d-fill-plain  { fill: var(--paper); }
+.d-fill-none   { fill: none; }
+.d-fill-accent { fill: var(--accent); }
+.d-fill-ok     { fill: var(--ok); }
+.d-fill-warn   { fill: var(--flag); }
+
+/* --------------------------------------------------------------- Umrisse */
+
+.d-stroke        { stroke: var(--rule); stroke-width: 1.5; fill: none; }
+.d-stroke-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-stroke-ok     { stroke: var(--ok); stroke-width: 1.8; fill: none; }
+.d-stroke-warn   { stroke: var(--flag); stroke-width: 1.8; fill: none; }
+.d-dash          { stroke-dasharray: 5 4; }
+.d-dash-fine     { stroke-dasharray: 2 3; }
+
+/* --------------------------------------------------------------- Linien */
+
+.d-line {
+  stroke: var(--ink-faint);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; stroke-linecap: round; }
+.d-line-warn   { stroke: var(--flag);   stroke-width: 1.8; fill: none; stroke-linecap: round; }
+.d-line-faint  { stroke: var(--rule);   stroke-width: 1.2; fill: none; }
+
+/* --------------------------------------------------------------- Schrift */
+
+.d-t {
+  fill: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+.d-t-lead {
+  fill: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+.d-t-sm {
+  fill: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 500;
+}
+.d-t-xs {
+  fill: var(--ink-faint);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.d-t-mono {
+  fill: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 10.5px;
+}
+.d-t-accent { fill: var(--accent); }
+.d-t-ok     { fill: var(--ok); }
+.d-t-warn   { fill: var(--flag); }
+.d-t-muted  { fill: var(--ink-faint); }
+.d-t-invert { fill: var(--paper); }
+
+.d-mid { text-anchor: middle; }
+.d-end { text-anchor: end; }
+
+/* --------------------------------------------------------------- Diverses */
+
+.d-muted { opacity: 0.45; }
+
+/* Pfeilspitzen werden pro SVG als <marker> definiert; diese Klasse färbt sie. */
+.d-arrowhead       { fill: var(--ink-faint); stroke: none; }
+.d-arrowhead-accent{ fill: var(--accent);    stroke: none; }
+.d-arrowhead-warn  { fill: var(--flag);      stroke: none; }
+
+@media print {
+  svg.diagram { max-width: 15.5cm; }
+}

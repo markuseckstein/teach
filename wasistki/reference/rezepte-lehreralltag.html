@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezeptkarten für den Lehreralltag</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+<style>
+  .karte {
+    max-width: var(--measure);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem 1.2rem;
+    margin: 0 0 1.2rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .karte-kopf {
+    display: flex; align-items: baseline; gap: .7rem;
+    margin-bottom: .1rem;
+  }
+  .karte-n {
+    font-family: var(--sans); font-size: 1.5rem; font-weight: 700;
+    color: var(--rule); line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .karte h3 { margin: 0; font-size: 1.04rem; }
+  .karte-meta {
+    font-family: var(--sans); font-size: .7rem; font-weight: 700;
+    letter-spacing: .09em; text-transform: uppercase;
+    color: var(--ink-faint); margin: .35rem 0 .8rem;
+  }
+  .karte-meta .stufe { color: var(--accent); }
+  .karte-meta .warn  { color: var(--flag); }
+  .karte p { font-size: .93rem; margin-bottom: .7rem; }
+  .karte pre { margin: .6rem 0 .8rem; font-size: .76rem; }
+  .karte > :last-child { margin-bottom: 0; }
+</style>
+</head>
+<body data-page="reference" data-file="rezepte-lehreralltag.html">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Referenz · zum Ausdrucken und Auseinanderschneiden</p>
+    <h1>Rezeptkarten</h1>
+    <p class="standfirst">
+      Sieben Anwendungen mit fertigen Formulierungen. Die ersten vier gehen sofort
+      in jedem Chatbot; ab Karte 5 brauchen Sie ein Werkzeug, das Dateien anfassen
+      darf.
+    </p>
+  </header>
+
+  <div class="box warn">
+    <p class="box-title">Vor jeder Karte</p>
+    <p style="margin-bottom:0">
+      Prüfen Sie, ob in dem, was Sie einfügen wollen, eine Person erkennbar ist —
+      <a href="datenschutz-ampel.html">Datenschutz-Ampel</a>. Das ist bei Karte 4
+      besonders wichtig.
+    </p>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">01</span><h3>Differenzierung in drei Niveaus</h3></div>
+    <p class="karte-meta"><span class="stufe">Chatbot</span> · 5 Minuten · grün</p>
+    <p>
+      Sie haben ein funktionierendes Arbeitsblatt und brauchen es leichter und
+      schwerer. Das Modell muss nichts wissen, was nicht schon dasteht — es formt
+      nur um. Deshalb funktioniert es zuverlässig.
+    </p>
+    <pre><code>Hier ist mein Arbeitsblatt für [Fach, Klasse]:
+
+[Text einfügen]
+
+Erstelle zwei weitere Fassungen mit identischem Lernziel:
+- eine mit mehr Hilfen: kürzere Sätze, Wortspeicher,
+  ein durchgerechnetes Beispiel vorab
+- eine mit offenerer Aufgabenstellung, die zusätzlich
+  eine Begründung verlangt
+
+Behalte Aufbau und Nummerierung bei, damit ich die drei
+Fassungen im Unterricht nebeneinander nutzen kann.</code></pre>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">02</span><h3>Fehlvorstellungen aufspüren</h3></div>
+    <p class="karte-meta"><span class="stufe">Chatbot</span> · 2 Minuten · grün</p>
+    <p>
+      Liefert oft etwas, das man selbst nicht auf dem Schirm hatte — und ist eine
+      der Anwendungen mit dem besten Verhältnis von Aufwand zu Ertrag.
+    </p>
+    <pre><code>Ich unterrichte [Thema] in Klasse [x].
+
+Welche verbreiteten Fehlvorstellungen haben Lernende in
+diesem Alter zu diesem Thema?
+
+Nenne zu jeder: woran ich sie im Unterrichtsgespräch
+erkenne, und eine Aufgabe, die sie sichtbar macht statt
+sie zu überdecken.</code></pre>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">03</span><h3>Fünf Einstiege</h3></div>
+    <p class="karte-meta"><span class="stufe">Chatbot</span> · 3 Minuten · grün</p>
+    <p>
+      Sie nehmen einen davon oder keinen. Beides schlägt zwanzig Minuten Grübeln.
+      Wichtig ist, Vielfalt zu erzwingen — sonst bekommen Sie fünfmal dasselbe.
+    </p>
+    <pre><code>Gib mir fünf mögliche Einstiege in eine Stunde zum Thema
+[Thema] in Klasse [x], je zwei bis drei Sätze.
+
+Mach sie bewusst unterschiedlich:
+- einer soll provozieren oder widersprechen
+- einer soll mit einem Alltagsgegenstand arbeiten
+- einer soll ganz ohne Sprache auskommen
+- einer soll an Vorwissen aus [anderes Fach] anknüpfen
+- einer darf ruhig unkonventionell sein
+
+Keine Erklärungen dazu, nur die Einstiege.</code></pre>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">04</span><h3>Rückmeldung nach eigenem Raster</h3></div>
+    <p class="karte-meta"><span class="stufe">Chatbot</span> · 10 Minuten · <span class="warn">gelb — anonymisieren!</span></p>
+    <p>
+      Sie geben das Raster vor und einen anonymisierten Text. Sie lassen sich
+      <em>Formulierungen</em> vorschlagen, nicht die Note. Die Bewertung bleibt bei
+      Ihnen — abgegeben wird nur das Ringen um die höfliche Formulierung zum
+      vierten Mal an diesem Abend.
+    </p>
+    <pre><code>Mein Bewertungsraster:
+[Kriterien mit Beschreibungen einfügen]
+
+Hier ein Schülertext — Name und alle Hinweise auf die
+Person habe ich entfernt:
+
+[Text einfügen]
+
+Formuliere zu jedem Kriterium zwei bis drei Sätze
+Rückmeldung: erst was gelungen ist, dann der konkrete
+nächste Schritt. Freundlich, in der Du-Form, keine Note.
+Keine Floskeln wie "gut gemacht" ohne Begründung.</code></pre>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">05</span><h3>Der Elternbrief als Skill</h3></div>
+    <p class="karte-meta"><span class="stufe">Skill</span> · einmal 15 Minuten · grün</p>
+    <p>
+      Ab hier wird aus Benutzen ein Verfahren. Sie schreiben einmal auf, wie ein
+      Brief an Ihrer Schule klingt — danach dauert jeder Elternbrief unter einer
+      Minute. Speichern als <code>SKILL.md</code> in einem Ordner namens
+      <code>elternbrief</code>.
+    </p>
+    <pre><code>---
+name: elternbrief
+description: Schreibt einen Elternbrief im Stil unserer Schule.
+---
+
+Frag mich zuerst nach Anlass, Adressatenkreis und Termin,
+falls ich das nicht schon gesagt habe.
+
+Regeln für jeden Brief:
+- Anrede: "Liebe Eltern und Erziehungsberechtigte,"
+- höchstens eine halbe Seite
+- keine Behördensprache, keine Substantivketten
+- Datum und Uhrzeit fett, in einer eigenen Zeile
+- kein Konjunktiv bei Aufforderungen
+- Schlussformel: "Mit freundlichen Grüßen"
+
+Schreib mir zusätzlich einen Zweizeiler für den
+Klassenchat, mit derselben Information.
+
+Zeig zwei Varianten: eine sachliche und eine wärmere.</code></pre>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">06</span><h3>Materialordner aufräumen</h3></div>
+    <p class="karte-meta"><span class="stufe">Agent</span> · 20 Minuten · grün</p>
+    <p>
+      Das Rezept, bei dem der Groschen fällt. Nicht, weil der Agent klüger wäre —
+      sondern weil er bereit ist, dreihundertmal dasselbe zu tun.
+      <strong>Legen Sie vorher eine Kopie des Ordners an.</strong>
+    </p>
+    <pre><code>In diesem Ordner liegen meine Unterrichtsmaterialien,
+über Jahre gewachsen und chaotisch benannt.
+
+Geh sie einzeln durch. Schau in jede Datei hinein, um
+Fach, Jahrgang, Thema und Materialtyp zu bestimmen —
+verlass dich nicht auf den Dateinamen.
+
+Benenne dann um nach dem Muster:
+  Jahrgang_Fach_Thema_Typ.endung
+
+Bevor du etwas umbenennst, zeig mir die geplante Liste
+zur Freigabe. Bei Unklarheit frag nach, statt zu raten.
+
+Schreib zum Schluss eine Übersichtstabelle als
+uebersicht.md mit alten und neuen Namen.</code></pre>
+  </div>
+
+  <div class="karte">
+    <div class="karte-kopf"><span class="karte-n">07</span><h3>Klausurentwurf zerpflücken lassen</h3></div>
+    <p class="karte-meta"><span class="stufe">Skill</span> · 20 Minuten · grün</p>
+    <p>
+      Mit dem <code>grill-me</code>-Skill oder auch ohne, mit der Formulierung
+      unten. Zwanzig Minuten vorher sparen zwei Stunden Ärger nachher.
+    </p>
+    <pre><code>Hier ist mein Entwurf für eine Klassenarbeit in
+[Fach, Klasse]:
+
+[Entwurf einfügen]
+
+Sei mein kritischer Gegenleser und bohre nach. Prüfe:
+- Passen die Operatoren zu den Anforderungsbereichen?
+- Ist Aufgabe 3 ohne Aufgabe 2 lösbar, oder verliert
+  jemand alle Punkte auf einmal?
+- Wo ist eine Formulierung missverständlich?
+- Wo hängt die Bewertung an einem Wort?
+- Passt die Punkteverteilung zum Zeitaufwand?
+
+Stell mir Rückfragen, wenn dir etwas fehlt. Beschönige
+nichts — ich will die Schwachstellen jetzt finden und
+nicht beim Korrigieren.</code></pre>
+  </div>
+
+  <h2>Wofür Sie diese Karten nicht verwenden sollten</h2>
+
+  <ul>
+    <li><strong>Fakten und Quellen.</strong> Ohne Werkzeug zum Nachschlagen werden
+      Belege erfunden, die überzeugend aussehen. Jahreszahlen, Paragrafen,
+      Seitenzahlen immer selbst prüfen.</li>
+    <li><strong>Benoten.</strong> Nicht nur heikel, sondern schlecht: bewertet wird
+      Sprachoberfläche, nicht Gedankengang.</li>
+    <li><strong>Fragen, die Ihre Klasse voraussetzen.</strong> Das Modell kennt
+      weder das Kind noch die Dynamik. Sie bekommen den Mittelwert aus
+      Ratgeberliteratur.</li>
+    <li><strong>Den letzten Schliff.</strong> Auf achtzig Prozent kommt es schnell.
+      Die letzten zwanzig — Ihre Handschrift, der Bezug auf letzte Woche — machen
+      Sie selbst.</li>
+  </ul>
+
+  <div class="takeaway">
+    Abgeben, was Fleiß ist. Behalten, was Urteil ist.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

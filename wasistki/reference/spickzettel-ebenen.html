@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spickzettel: die vier Ebenen</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/diagram.css">
+</head>
+<body data-page="reference" data-file="spickzettel-ebenen.html">
+<main>
+
+  <header class="lesson-head">
+    <p class="eyebrow">Referenz · eine Seite, zum Ausdrucken</p>
+    <h1>Die vier Ebenen</h1>
+    <p class="standfirst">
+      Der Kern des ganzen Kurses. Wenn Sie ein neues Werkzeug sehen, fragen Sie
+      sich: In welchem dieser vier Ringe sitzt es?
+    </p>
+  </header>
+
+  <figure class="wide">
+    <svg class="diagram" viewBox="0 0 720 330" role="img"
+         aria-label="Vier gestapelte Ebenen von unten nach oben: LLM, Chatbot, Agent, autonomer Agent. Jede fügt genau eine Sache hinzu.">
+      <defs>
+        <marker id="sp-a" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" class="d-arrowhead-accent"/>
+        </marker>
+      </defs>
+
+      <!-- Ebene 4 -->
+      <rect x="20" y="16" width="420" height="62" rx="8" class="d-fill"/>
+      <rect x="20" y="16" width="420" height="62" rx="8" class="d-stroke-warn d-dash"/>
+      <text x="40" y="40" class="d-t-lead d-t-warn">4 · Autonomer Agent</text>
+      <text x="40" y="58" class="d-t-sm">darf handeln, ohne zu fragen — läuft auch ohne Sie weiter</text>
+      <text x="40" y="72" class="d-t-xs">der Chauffeur · OpenClaw, geplante Aufträge</text>
+
+      <!-- Ebene 3 -->
+      <rect x="20" y="86" width="420" height="62" rx="8" class="d-fill"/>
+      <rect x="20" y="86" width="420" height="62" rx="8" class="d-stroke-accent"/>
+      <text x="40" y="110" class="d-t-lead d-t-accent">3 · Agent</text>
+      <text x="40" y="128" class="d-t-sm">bekommt Werkzeuge: liest Dateien, sucht, führt aus</text>
+      <text x="40" y="142" class="d-t-xs">der Werkstattwagen · Claude Code, Cowork, Copilot</text>
+
+      <!-- Ebene 2 -->
+      <rect x="20" y="156" width="420" height="62" rx="8" class="d-fill"/>
+      <rect x="20" y="156" width="420" height="62" rx="8" class="d-stroke"/>
+      <text x="40" y="180" class="d-t-lead">2 · Chatbot</text>
+      <text x="40" y="198" class="d-t-sm">bekommt einen Gesprächsverlauf, der jedes Mal mitgeht</text>
+      <text x="40" y="212" class="d-t-xs">das Auto, Sie am Steuer · ChatGPT, Claude.ai, Gemini</text>
+
+      <!-- Ebene 1 -->
+      <rect x="20" y="226" width="420" height="62" rx="8" class="d-fill-accent"/>
+      <text x="40" y="250" class="d-t-lead d-t-invert">1 · LLM · Sprachmodell</text>
+      <text x="40" y="268" class="d-t-sm d-t-invert" style="opacity:.9">rechnet aus Text neuen Text · zustandslos · austauschbar</text>
+      <text x="40" y="282" class="d-t-xs d-t-invert" style="opacity:.75">der Motor · GPT, Claude, Gemini, Llama</text>
+
+      <!-- Klammer rechts -->
+      <path d="M 452 40 L 466 40 L 466 254 L 452 254" class="d-line-accent"/>
+      <line x1="466" y1="147" x2="486" y2="147" class="d-line-accent" marker-end="url(#sp-a)"/>
+
+      <text x="496" y="120" class="d-t d-t-accent">In allen vier</text>
+      <text x="496" y="138" class="d-t d-t-accent">steckt derselbe Motor.</text>
+      <text x="496" y="164" class="d-t-sm">Was sich ändert, ist nur,</text>
+      <text x="496" y="180" class="d-t-sm">wie viel Leine man ihm lässt.</text>
+
+      <text x="496" y="222" class="d-t-sm d-t-warn">Ab Ebene 3 kann</text>
+      <text x="496" y="238" class="d-t-sm d-t-warn">etwas kaputtgehen.</text>
+      <text x="496" y="256" class="d-t-xs">Darunter nur Text.</text>
+
+      <line x1="20" y1="306" x2="700" y2="306" class="d-line-faint"/>
+      <text x="20" y="324" class="d-t-xs">Jede Ebene fügt genau eine Sache hinzu — keine wird „intelligenter“</text>
+    </svg>
+  </figure>
+
+  <h2>Die drei Fragen, die die Ebene beantwortet</h2>
+
+  <div class="scroll-x">
+  <table class="wide">
+    <thead>
+      <tr>
+        <th style="width:34%">Frage</th>
+        <th style="width:22%">Antwort steckt in</th>
+        <th style="width:44%">Kurzfassung</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kann es etwas kaputt machen?</td>
+        <td>Ebene 3 und 4</td>
+        <td>Ein Chatbot hat keine Hände. Erst Werkzeuge machen Schaden möglich.</td>
+      </tr>
+      <tr>
+        <td>Wohin gehen meine Daten?</td>
+        <td>Ebene 1</td>
+        <td>Es zählt, wer den Motor betreibt — nicht, wie das Produkt heißt.</td>
+      </tr>
+      <tr>
+        <td>Warum wird mein Chat schlechter?</td>
+        <td>Ebene 2</td>
+        <td>Der Gesprächsverlauf wächst und wird jedes Mal komplett mitgeschickt.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Die sechs Sätze, die alles tragen</h2>
+
+  <ol>
+    <li>„KI“ ist ein Sammelbegriff für ein Forschungsfeld — kein Ding, das man kaufen kann.</li>
+    <li>Das Sprachmodell ist <strong>zustandslos</strong>: Jede Anfrage ist für es die erste.</li>
+    <li>Deshalb schickt der Chatbot bei jeder Frage das <strong>ganze Gespräch</strong> noch einmal mit.</li>
+    <li>Dieser Stapel ist der <strong>Schreibtisch</strong>. Er ist endlich, und ein voller Schreibtisch macht die Antworten schlechter.</li>
+    <li>Ein Agent ist ein Chatbot mit Werkzeugen, der in einer <strong>Schleife</strong> läuft. Das Modell schlägt vor — die Werkstatt tut.</li>
+    <li>„Autonom“ ist eine <strong>Erlaubnis</strong>, keine Fähigkeit.</li>
+  </ol>
+
+  <div class="takeaway">
+    Neues Thema, neuer Chat. Wenn Sie sich nur eine Sache merken, dann diese.
+  </div>
+
+</main>
+<script src="../assets/course.js"></script>
+<script src="../assets/lesson.js"></script>
+</body>
+</html>

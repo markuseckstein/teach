@@ -1,0 +1,102 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1: The Object Model &amp; First CLI Contact</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Lesson 0001 · IBM API Connect v10 · ~15 minutes</p>
+  <h1>The Object Model &amp; First CLI Contact</h1>
+  <p class="lede">Learn the seven nouns that explain everything, then prove — from your terminal, against your real environment — that you never need the UI.</p>
+
+  <h2>First, your burning question</h2>
+  <p><strong>Yes, there is a full automation surface.</strong> Everything the API Manager UI does goes through the <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">Platform REST API</a>, and IBM ships a CLI, the <a href="https://www.ibm.com/docs/en/api-connect/10.0.x_cd?topic=cli-working-toolkit"><code>apic</code> toolkit</a>, that wraps it. You can publish an <code>openapi.yml</code>, download every spec in a catalog, and script all of it. The UI is optional. Today you make first contact; publishing is Lesson 2.</p>
+
+  <h2>The seven nouns</h2>
+  <p>API Connect looks over-engineered until you see that it models two audiences: <em>providers</em> (you, publishing APIs) and <em>consumers</em> (app developers calling them). Seven objects connect the two:</p>
+
+  <div class="tree">Provider organization (pOrg)      ← your team's home; you develop here
+├── Draft APIs &amp; Draft Products   ← your openapi.yml lives here, runs nowhere
+└── Catalog (Sandbox, dev, prod…) ← a runtime environment on a real gateway
+    ├── Product                   ← the unit of publishing: bundles APIs + Plans
+    │   ├── Plan                  ← rate limits + subscription terms  ◄──┐
+    │   └── API                   ← your openapi.yml, now live           │
+    └── Consumer organization                                           │
+        └── Application (client id/secret) ── subscribes to a Plan ─────┘</div>
+
+  <div class="callout">
+    <p class="kicker">The one rule that explains everything</p>
+    <p>You never publish an API directly. You publish a <strong>Product</strong> into a <strong>Catalog</strong>. Consumers' apps subscribe to a <strong>Plan</strong> inside that Product. Every command, REST path, and UI screen is downstream of this rule.</p>
+  </div>
+
+  <p>In practice: a <strong>Catalog</strong> behaves like an environment (it's bound to a gateway cluster and optionally a Developer Portal), a <strong>Product</strong> behaves like a versioned release artifact with a lifecycle (<em>staged → published → deprecated → retired</em>), and your <code>openapi.yml</code> — with IBM's <code>x-ibm-configuration</code> extension carrying the "custom pipeline" (the <em>assembly</em>, Lesson 4's topic) — rides along inside it. The full noun-by-noun breakdown, including Spaces and Subscriptions, is in the <a href="../reference/object-model.html">object-model reference</a> — bookmark it.</p>
+
+  <h2>Hands-on: first contact, read-only</h2>
+  <p>Everything below is safe: list operations only. You need the toolkit binary and your management endpoint (the hostname behind your API Manager UI; ask your platform team for the "platform API endpoint" if unsure).</p>
+
+  <pre><code># 0. Get the toolkit (one-time): IBM Fix Central, or — one last UI sin —
+#    API Manager → help (?) menu → "Download toolkit". A single binary.
+
+# 1. What version is my work environment? (report this back to your teacher)
+apic version
+
+# 2. Which realm do I log in against?
+apic identity-providers:list --scope provider --server $MGMT
+
+# 3. Log in (use the realm name from step 2, often provider/default-idp-2)
+apic login --server $MGMT --realm provider/default-idp-2 --username you@company.example
+
+# 4. Which provider orgs am I a member of?
+apic orgs:list --server $MGMT
+
+# 5. The win: which catalogs can I publish to?
+apic catalogs:list --server $MGMT --org $ORG</code></pre>
+
+  <div class="callout">
+    <p class="kicker">The --debug trick</p>
+    <p>Re-run step 5 with <code>--debug</code> appended. The toolkit prints the raw HTTPS requests it makes — method, URL, headers. This is the Platform REST API, live from your own installation. Anything <code>apic</code> can do, your CI pipeline can do with <code>curl</code>. Keep this trick; it's how you'll discover endpoints in Lesson 5.</p>
+  </div>
+
+  <h2>Check yourself</h2>
+  <p>From memory — no scrolling up. Retrieval is the point.</p>
+  <div class="quiz" id="quiz"><noscript><p>Enable JavaScript for the quiz.</p></noscript></div>
+
+  <h2>Primary source</h2>
+  <p>Read <a href="https://www.ibm.com/docs/en/api-connect/10.0.x_cd?topic=cli-working-toolkit">IBM Docs: Working with the toolkit</a> (10 minutes). It is the authoritative reference for everything you just did, and the left-nav around it covers the whole CLI surface.</p>
+
+  <footer class="lesson-footer">
+    <p><strong>Report back:</strong> your <code>apic version</code> output and whether your catalogs use the DataPower <em>API Gateway</em> or the <em>v5-compatible</em> gateway — both steer the next lessons. And remember: your teacher is an agent in your terminal. Anything unclear — a weird login error, a realm that isn't <code>default-idp-2</code>, an empty org list — just ask.</p>
+    <div class="nav-links">
+      <a href="../index.html">Course home</a>
+      <a href="../reference/object-model.html">Reference: the object model</a>
+      <a href="0002-publish-your-first-api.html">Lesson 2: Publish your first API →</a>
+    </div>
+  </footer>
+</main>
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    stem: "What is the unit of publishing — the thing you actually push into a catalog?",
+    options: ["a Product", "an API", "a Plan", "a Space"],
+    answer: 0,
+    explain: "APIs never travel alone: a Product bundles APIs with Plans, and the Product is what gets staged and published into a Catalog."
+  },
+  {
+    stem: "An application gains the right to call an API by subscribing to…",
+    options: ["a Plan inside a Product", "an API inside a Catalog", "a Space inside a Catalog", "a Product inside a Plan"],
+    answer: 0,
+    explain: "Subscriptions bind an Application to a Plan. The Plan carries rate limits and approval rules; the API just comes along inside the Product."
+  },
+  {
+    stem: "Which object represents a runtime environment like dev or prod, bound to a real gateway?",
+    options: ["a Catalog", "a Product", "a Space", "an Org"],
+    answer: 0,
+    explain: "Catalogs are isolated runtime environments bound to gateway services (and optionally a Developer Portal). Spaces are just permission partitions within one."
+  },
+  {
+    stem: "Where in your openapi.yml does the gateway 'pipeline' configuration live?",
+    options: ["under x-ibm-configuration", "under x-ibm-assembly", "under x-ibm-pipeline", "under x-ibm-policies"],
+    answer: 0,
+    explain: "IBM's OpenAPI extension x-ibm-configuration holds gateway type, security, properties — and the assembly, which is the pipeline of policies. Lesson 4 dissects it."
+  }
+]);
+</script>

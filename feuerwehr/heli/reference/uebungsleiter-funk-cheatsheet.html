@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funk-Cheat-Sheet Übungsleiter</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  :root { --ils: #1f4e8c; --ils-soft: #e3ecf8; --pil: #8a5a00; --pil-soft: #fbf0d9; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ils: #8ab4f8; --ils-soft: #1d2a3d; --pil: #f3c66b; --pil-soft: #3a2f16; } }
+  :root[data-theme="dark"] {
+    --bg: #171614; --fg: #ece8e1; --muted: #a39d93; --rule: #3a3732; --accent: #ff8a80; --accent-soft: #3a2220;
+    --ok: #8fd6a4; --ok-soft: #1d3325; --warn: #f3c66b; --warn-soft: #3a2f16; --card: #211f1c;
+    --ils: #8ab4f8; --ils-soft: #1d2a3d; --pil: #f3c66b; --pil-soft: #3a2f16; color-scheme: dark;
+  }
+  main { max-width: 760px; }
+  .toolbar { display: flex; gap: .6rem; flex-wrap: wrap; margin: .8rem 0 1.2rem; font-family: var(--sans); align-items: center; }
+  .toolbar button { font: inherit; font-size: .9rem; padding: .5rem .9rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--card); color: var(--fg); cursor: pointer; }
+  .idea { font-family: var(--sans); border: 1px solid var(--rule); border-radius: 8px; background: var(--card); padding: .3rem 1rem; margin: 1rem 0; }
+  .idea p { margin: .5rem 0; }
+  table.over { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: .9rem; }
+  table.over td, table.over th { padding: .35rem .4rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  table.over a { text-decoration: none; }
+  .chip { display: inline-block; font-family: var(--sans); font-size: .75rem; font-weight: 700; padding: .12rem .5rem; border-radius: 99px; border: 1px solid var(--rule); white-space: nowrap; }
+  .chip.ils { background: var(--ils-soft); color: var(--ils); border-color: var(--ils); }
+  .chip.pil { background: var(--pil-soft); color: var(--pil); border-color: var(--pil); }
+  .step { border: 1px solid var(--rule); border-left: 6px solid var(--rule); border-radius: 8px; background: var(--card); margin: 1.2rem 0; padding: .8rem 1rem 1rem; font-family: var(--sans); }
+  .step.ils { border-left-color: var(--ils); }
+  .step.pil { border-left-color: var(--pil); }
+  .step.done { opacity: .55; }
+  .step header { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .4rem; }
+  .step header h3 { margin: 0; font-size: 1.1rem; flex: 1 1 12rem; }
+  .step header label { display: flex; align-items: center; gap: .4rem; cursor: pointer; font-weight: 700; font-size: 1.1rem; }
+  .step header input { width: 1.4rem; height: 1.4rem; }
+  .lbl { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: .8rem 0 .2rem; }
+  .say { border-left: 4px solid var(--fg); background: var(--bg); padding: .5rem .8rem; margin: .2rem 0; font-family: var(--serif); font-size: 1.08rem; line-height: 1.45; border-radius: 0 6px 6px 0; }
+  .step.ils .say { border-left-color: var(--ils); }
+  .step.pil .say { border-left-color: var(--pil); }
+  .say p { margin: .3rem 0; }
+  .say .who { font-family: var(--sans); font-size: .75rem; font-weight: 700; color: var(--muted); margin-right: .3rem; }
+  .exp { font-size: .95rem; }
+  .exp p { margin: .3rem 0; }
+  .ask { margin: .2rem 0 0; padding: 0; list-style: none; font-size: .92rem; }
+  .ask li { padding: .35rem 0; border-top: 1px dashed var(--rule); }
+  .ask .miss { display: block; font-size: .78rem; font-weight: 700; color: var(--accent); }
+  .note { font-size: .88rem; color: var(--muted); margin: .5rem 0 0; }
+  .cue { margin: .5rem 0; padding: .45rem .7rem; border-radius: 6px; background: var(--ok-soft); color: var(--ok); font-weight: 700; font-size: .92rem; }
+  .cue small { font-weight: 400; color: var(--fg); }
+  ul.check { list-style: none; padding-left: 0; }
+  ul.check li::before { content: "☐ "; }
+  @media print { .toolbar { display: none; } .step { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Übungsleiter · Funk</p>
+  <h1>Cheat-Sheet: Funk mit dem Piloten</h1>
+  <p class="lead">Die Mannschaft soll sich auf Ausleuchtung und den Funk mit dem Piloten konzentrieren. Die „Leitstelle“ kommt deshalb <strong>nur einmal am Anfang</strong> vor. Danach bist du nur noch Christoph Übung.</p>
+  <div class="toolbar">
+    <button type="button" id="night">Nachtansicht</button>
+    <button type="button" id="reset">Haken zurücksetzen</button>
+    <a href="heli-sound.html" style="font-size:.9rem">🔊 Hubschrauber-Sound öffnen</a>
+  </div>
+
+  <div class="idea">
+    <p><span class="chip">324</span> <strong>Einsatzstelle:</strong> die Mannschaft. Hier gibt der Staffelführer (SF) seine Befehle.</p>
+    <p><span class="chip ils">320</span> <strong>„ILS“ (steht für TMO FW_LAU):</strong> nur zu Beginn, du als <em>Übungsleitstelle</em>. Alarm, Auftrag, dann die Aufforderung, auf 322 zu wechseln.</p>
+    <p><span class="chip pil">322</span> <strong>Pilot:</strong> du als <em>Christoph Übung</em>. Lagemeldung, Hindernisse, Blaulicht, Landung. Hier muss der SF zwischen 322 und 324 wechseln.</p>
+  </div>
+
+  <div class="box warn">
+    <h3>Deine Geräte</h3>
+    <p><strong>Gerät 1:</strong> zuerst auf 320, nach dem Wechselauftrag auf 322, bleibt dort. <strong>Gerät 2:</strong> dauerhaft auf 324 zum Mithören und für „Übung Halt“. Mit nur einem Gerät gehst du beim Abbruch kurz auf 324.</p>
+    <p>DMO hat nur begrenzte Reichweite, bleib in Sichtweite (ca. 100 m). Vorher in 320 und 322 kurz reinhören, ob dort Verkehr ist.</p>
+  </div>
+
+  <h2>Sprechweise</h2>
+  <ul>
+    <li><strong>Anruf:</strong> „‹Gerufener› von ‹ich›, kommen.“ · <strong>Antwort:</strong> „Hier ‹ich›, kommen.“</li>
+    <li><strong>Nicht verstanden:</strong> „Wiederholen Sie ‹was›, kommen.“ · <strong>Abschluss:</strong> „Verstanden, Ende.“</li>
+    <li><strong>Abbruch:</strong> „Übung Halt, Übung Halt“ auf 322 und 324, bei echter Alarmierung sofort abbrechen.</li>
+  </ul>
+
+  <h2>Auf einen Blick</h2>
+  <table class="over">
+    <tr><th>Nr</th><th>ca.</th><th>Rolle</th><th>Gruppe</th><th>Thema</th></tr>
+    <tr><td><a href="#s0">0</a></td><td>20:05</td><td></td><td></td><td>Vorbereiten</td></tr>
+    <tr><td><a href="#s1">1</a></td><td>20:15</td><td><span class="chip ils">Übungsleitstelle</span></td><td>320</td><td>Alarm, Auftrag, Wechsel auf 322 anweisen</td></tr>
+    <tr><td><a href="#s2">2</a></td><td>20:18</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>Lagemeldung annehmen, Hindernisse klären</td></tr>
+    <tr><td><a href="#s3">3</a></td><td>20:25</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>E2 · Blaulicht · 🔊 Anflug starten</td></tr>
+    <tr><td><a href="#s4">4</a></td><td>20:27</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>E3 · Blendung, Wechsel 322 → 324 → 322</td></tr>
+    <tr><td><a href="#s5">5</a></td><td>bis 20:30</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>Platz fertig, Zeit stoppen</td></tr>
+    <tr><td><a href="#s6">6</a></td><td>20:29</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>E4 · Funkausfall</td></tr>
+    <tr><td><a href="#s7">7</a></td><td>20:32</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>E5 · Landung · 🔊 Landung starten</td></tr>
+    <tr><td><a href="#s8">8</a></td><td>20:37</td><td><span class="chip pil">Pilot</span></td><td>322</td><td>E6 · Start in 3 Minuten</td></tr>
+    <tr><td><a href="#s9">9</a></td><td>20:50</td><td></td><td>322, 324</td><td>Übungsende</td></tr>
+  </table>
+
+  <!-- 0 -->
+  <section class="step" id="s0">
+    <header><label><input type="checkbox"><span>0</span></label><h3>Vorbereiten (vor 20:15)</h3><span class="chip">kein Funk</span></header>
+    <ul class="check">
+      <li>Gerät 1 auf <strong>320</strong>, Gerät 2 auf <strong>324</strong>. Akkus voll, Reinhören in 320 und 322.</li>
+      <li>Der SF hat sein Gerät auf 320 (für den Alarm), die Mannschaft auf 324.</li>
+      <li>Stoppuhr, Beobachtungsbogen, Einsatzort (Name des Landeplatzes) zum Vorlesen.</li>
+      <li>Handy: <a href="heli-sound.html">Hubschrauber-Sound</a> geladen, Bildschirm-Timeout lang, BoomBox gekoppelt und getestet, <strong>versteckt</strong> am Platzrand.</li>
+    </ul>
+  </section>
+
+  <!-- 1 -->
+  <section class="step ils" id="s1">
+    <header><label><input type="checkbox"><span>1</span></label><h3>Alarm, Auftrag, Wechsel auf 322</h3><span class="chip">20:15</span><span class="chip ils">Übungsleitstelle</span><span class="chip">Gruppe 320</span></header>
+    <div class="lbl">Du sagst</div>
+    <div class="say">
+      <p><span class="who">ILS</span>„Florian Pattenhofen 136/44/1 von Übungsleitstelle, kommen.“</p>
+      <p class="note">Antwort abwarten: „Hier Florian Pattenhofen 136/44/1, kommen.“</p>
+      <p><span class="who">ILS</span>„Dies ist eine Übung. Einsatzauftrag: Landeplatz für einen Rettungshubschrauber einrichten und ausleuchten. Einsatzort ‹Landeplatz, Pattenhofen›. Christoph Übung trifft in 15 Minuten ein. Bitte Auftrag bestätigen, kommen.“</p>
+    </div>
+    <div class="lbl">Erwartet vom SF</div>
+    <div class="exp"><p>„Florian Pattenhofen 136/44/1: Auftrag verstanden. Landeplatz für Hubschrauber bei ‹Ort›, Eintreffen in 15 Minuten, wir rücken aus, kommen.“</p></div>
+    <div class="cue">⏱ Stoppuhr starten, sobald der SF den Auftrag bestätigt hat.</div>
+    <div class="lbl">Dann sofort</div>
+    <div class="say">
+      <p><span class="who">ILS</span>„Übungsleitstelle verstanden. Wechseln Sie auf DMO 322 und besprechen Sie den Fortschritt direkt mit Christoph Übung. Bitte bestätigen, kommen.“</p>
+    </div>
+    <div class="exp"><p>Erwartet: „Wechsel auf 322 verstanden, kommen.“ → du: „Übungsleitstelle, Ende.“ → <strong>Gerät 1 auf 322.</strong> Ab jetzt keine Rufe der Leitstelle mehr.</p></div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">Einsatzort oder Eintreffzeit fehlt</span>„Wiederholen Sie Einsatzort und Eintreffzeit des Hubschraubers, kommen.“</li>
+      <li><span class="miss">Nur „verstanden“ oder „OK“</span>„Bitte Auftrag wiederholen, kommen.“</li>
+      <li><span class="miss">Gruppe nicht wiederholt</span>„Wiederholen Sie die Gruppe für den Hubschrauberkontakt, kommen.“</li>
+      <li><span class="miss">Keine Antwort auf den Anruf</span>Anruf einmal wiederholen, dann Geräte und Gruppe prüfen lassen.</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section class="step pil" id="s2">
+    <header><label><input type="checkbox"><span>2</span></label><h3>Lagemeldung annehmen, Hindernisse klären</h3><span class="chip">20:18–20:22</span><span class="chip pil">Pilot</span><span class="chip">Gruppe 322</span></header>
+    <div class="lbl">Erwartet vom SF (<a href="melden-lagemeldung.html">Meldekarte MELDEN</a>)</div>
+    <div class="exp">
+      <p>Anruf „Christoph Übung von Florian Pattenhofen 136/44/1, kommen.“ → du: <span class="who" style="font-weight:700">Pilot</span> „Hier Christoph Übung, kommen.“</p>
+      <p><strong>M</strong> Meldender (Rufname, Funktion) · <strong>E</strong> Einsatzort, Zufahrt · <strong>L</strong> Größe, Untergrund, Stromleitungen, Hindernisse, Wind · <strong>D</strong> abgesperrt, ausgeleuchtet, abgesucht · <strong>E</strong> Einheiten, Kräfte ausreichend, „kommen“.</p>
+    </div>
+    <div class="lbl">Du sagst zum Schluss</div>
+    <div class="say"><p><span class="who">Pilot</span>„Christoph Übung verstanden, Ende.“</p></div>
+    <div class="lbl">Kommt bis 20:22 keine Meldung</div>
+    <div class="say"><p><span class="who">Pilot</span>„Florian Pattenhofen 136/44/1 von Christoph Übung: Eintreffen in 8 Minuten. Bitte Lagemeldung, kommen.“</p></div>
+    <div class="lbl">Wenn etwas fehlt</div>
+    <ul class="ask">
+      <li><span class="miss">Stromleitungen oder Hindernisse fehlen</span>„Welche Hindernisse gibt es am Landeplatz, kommen?“ Erwartet sind fünf Angaben: was, wo (Himmelsrichtung), wie weit, Verlauf und Höhe, was getan (Masten angeleuchtet, Anflugrichtung frei).</li>
+      <li><span class="miss">„links“ oder „rechts“ statt Himmelsrichtung</span>„Nennen Sie die Himmelsrichtung vom Landeplatz aus, kommen.“</li>
+      <li><span class="miss">Wind oder Größe fehlt</span>„Aus welcher Richtung kommt der Wind, kommen?“ · „Wie groß ist die Fläche, kommen?“</li>
+      <li><span class="miss">Absperrung oder Absuchen fehlt</span>„Ist der Platz abgesperrt und die Fläche abgesucht, kommen?“</li>
+    </ul>
+    <p class="note">Blaulicht hier nicht abfragen, das kommt als E2. Notnagel: Ist der SF bis etwa 20:25 nicht auf 322 erreichbar, schaltest du Gerät 2 kurz auf 320 und rufst <strong>einmal</strong>: „Florian Pattenhofen 136/44/1 von Übungsleitstelle: Wechseln Sie auf 322, kommen.“</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="step pil" id="s3">
+    <header><label><input type="checkbox"><span>3</span></label><h3>E2 · Blaulicht</h3><span class="chip">20:25</span><span class="chip pil">Pilot</span><span class="chip">Gruppe 322</span></header>
+    <div class="lbl">Du sagst</div>
+    <div class="say"><p><span class="who">Pilot</span>„Christoph Übung: Ist Blaulicht eingeschaltet, kommen?“</p></div>
+    <div class="lbl">Erwartet vom SF</div>
+    <div class="exp"><p>„Blaulicht ist eingeschaltet, seit ‹Uhrzeit›, kommen.“ Soll: mindestens 5 Minuten vor der Landung.</p></div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">Nein oder „wird eingeschaltet“</span>„Blaulicht sofort einschalten und mir bestätigen, kommen.“ (Der SF muss dafür auf 324 wechseln.)</li>
+      <li><span class="miss">Keine Uhrzeit</span>„Seit wann ist das Blaulicht an, kommen?“</li>
+    </ul>
+    <div class="cue">🔊 Nach dieser Frage (ca. 20:26): <strong>„1 · Anflug starten“</strong> am Handy. <small>Das Crescendo dauert 45 s, danach bleibt der Hubschrauber im Schwebeflug („Hocherkundung“).</small></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="step pil" id="s4">
+    <header><label><input type="checkbox"><span>4</span></label><h3>E3 · Blendung: Wechsel unter Druck</h3><span class="chip">20:27</span><span class="chip pil">Pilot</span><span class="chip">322 → 324 → 322</span></header>
+    <div class="lbl">Du sagst</div>
+    <div class="say"><p><span class="who">Pilot</span>„Christoph Übung: Scheinwerfer am Stativ blendet. Leuchtpunkt tiefer setzen, kommen.“</p></div>
+    <div class="lbl">Erwartet vom SF</div>
+    <div class="exp">
+      <p>1. „Christoph Übung von Florian Pattenhofen 136/44/1: verstanden, ich rufe zurück.“</p>
+      <p>2. SF wechselt auf 324, befiehlt dem Angriffstrupp die Korrektur, wartet den Vollzug ab.</p>
+      <p>3. SF wechselt zurück auf 322: „Christoph Übung von Florian Pattenhofen 136/44/1: Stativ korrigiert, Leuchtpunkt tiefer, kommen.“</p>
+    </div>
+    <div class="lbl">Du sagst zum Schluss</div>
+    <div class="say"><p><span class="who">Pilot</span>„Christoph Übung: Blendung jetzt gering, Licht gut, Ende.“</p></div>
+    <div class="cue">⏱ Stoppen, wie lange der SF auf 322 nicht erreichbar war (Notiz im Beobachtungsbogen).</div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">Nur „verstanden“, kein „ich rufe zurück“</span>„Wann ist mit der Korrektur zu rechnen, kommen?“</li>
+      <li><span class="miss">Nach ca. 3 Minuten keine Rückmeldung</span>Zweimal: „Florian Pattenhofen 136/44/1 von Christoph Übung, kommen.“ Bleibt es still: „Christoph Übung: Mit dieser Blendung lande ich nicht, bitte melden, kommen.“</li>
+      <li><span class="miss">Rückmeldung ohne Angabe, was geändert wurde</span>„Was wurde geändert, kommen?“</li>
+    </ul>
+    <p class="note">Nachbesprechung: Hat der SF seine Trupps vor dem Wechsel informiert, und wer hat in der Zwischenzeit auf 324 geführt?</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="step pil" id="s5">
+    <header><label><input type="checkbox"><span>5</span></label><h3>Platz fertig, Zeit stoppen</h3><span class="chip">spätestens 20:30</span><span class="chip pil">Pilot</span><span class="chip">Gruppe 322</span></header>
+    <p class="note" style="margin-top:0">Der SF meldet, wenn er fertig ist. Die Reihenfolge ist flexibel, aber <strong>vor E4</strong>.</p>
+    <div class="lbl">Erwartet vom SF (<a href="melden-lagemeldung.html">Meldekarte Punkt 4</a>)</div>
+    <div class="exp"><p>„Christoph Übung von Florian Pattenhofen 136/44/1, kommen.“ → du: „Hier Christoph Übung, kommen.“ → SF: „Landeplatz ‹Wiese› eingerichtet und ausgeleuchtet. Blaulicht eingeschaltet, Fläche frei von Hindernissen. Bereit zur Landung, kommen.“</p></div>
+    <div class="lbl">Du sagst</div>
+    <div class="say"><p><span class="who">Pilot</span>„Christoph Übung verstanden, Ende.“</p></div>
+    <div class="cue">⏱ Stoppuhr anhalten. Ziel: höchstens 15 Minuten ab Auftragsbestätigung.</div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">Bis 20:28 keine Meldung</span>„Florian Pattenhofen 136/44/1 von Christoph Übung: Wann ist der Landeplatz fertig, kommen?“</li>
+      <li><span class="miss">Ohne „bereit zur Landung“ oder ohne Blaulicht</span>„Ist der Platz bereit zur Landung und Blaulicht eingeschaltet, kommen?“</li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section class="step pil" id="s6">
+    <header><label><input type="checkbox"><span>6</span></label><h3>E4 · Funkausfall (du schweigst absichtlich)</h3><span class="chip">20:29</span><span class="chip pil">Pilot</span><span class="chip">Gruppe 322</span></header>
+    <div class="lbl">Du sagst</div>
+    <div class="say"><p><span class="who">Pilot</span>„Florian Pattenhofen 136/44/1 von Christoph Übung, beginne Hocherkundung. Ist die Fläche frei, kommen?“</p></div>
+    <div class="lbl">Dann</div>
+    <div class="exp">
+      <p>SF antwortet (z. B. „Fläche frei, kommen“). <strong>Du antwortest nicht.</strong></p>
+      <p>SF ruft erneut („Christoph Übung von Florian Pattenhofen 136/44/1, kommen“). <strong>Du antwortest wieder nicht.</strong></p>
+      <p>Erwartet: SF setzt <strong>blind, zweimal</strong> ab, ohne „kommen“: „Christoph Übung von Florian Pattenhofen 136/44/1: Landeplatz frei, ich wiederhole, Landeplatz frei.“ Danach Blaulicht und Licht unverändert lassen und hörbereit bleiben.</p>
+    </div>
+    <div class="lbl">Nach 30–60 Sekunden</div>
+    <div class="say"><p><span class="who">Pilot</span>„Christoph Übung, Funkverbindung wieder da. Fläche frei verstanden, lande, kommen.“</p></div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">SF sendet nach dem 2. Anruf nicht blind ab</span>Nach 60 Sekunden trotzdem melden wie oben. Nachbesprechung: Was hätte der echte Pilot ohne Funkkontakt gemacht? (Er wäre nicht gelandet.)</li>
+    </ul>
+  </section>
+
+  <div class="box goal">
+    <h3>Vor der Landung: Entscheidet der Pilot „Landung“?</h3>
+    <ul class="check">
+      <li>Funkkontakt steht (E4 abgeschlossen)</li>
+      <li>Blaulicht seit mindestens 5 Minuten an</li>
+      <li>Hindernisse und Stromleitung gemeldet</li>
+      <li>Blendung behoben (E3)</li>
+      <li>Platz fertig, „Fläche frei“ gemeldet</li>
+    </ul>
+    <p>Fehlt etwas, bleibt der Hubschrauber oben: <em>„Christoph Übung: Landung nicht möglich, ich kreise weiter. Grund: ‹…›. Melden, wenn behoben, kommen.“</em> Der Schwebeflug läuft weiter, du wartest die Meldung ab.</p>
+  </div>
+
+  <!-- 7 -->
+  <section class="step pil" id="s7">
+    <header><label><input type="checkbox"><span>7</span></label><h3>E5 · Landung und Rotor aus</h3><span class="chip">20:32</span><span class="chip pil">Pilot</span><span class="chip">Gruppe 322</span></header>
+    <div class="cue">🔊 Sobald du „lande“ gesagt hast: <strong>„2 · Landung“</strong> am Handy. <small>t = 0 beim Tippen.</small></div>
+    <div class="lbl">Ablauf (Zeit ab Tippen)</div>
+    <div class="exp">
+      <p><strong>t + 8 bis 20 s</strong> Sinkflug, wird lauter.</p>
+      <p><strong>t + 20 s</strong> Aufsetzen. Du: <span class="say" style="display:inline-block;padding:.1rem .5rem"><span class="who">Pilot</span>„Christoph Übung: Gelandet, Rotor dreht noch.“</span></p>
+      <p><strong>t + 36 bis 65 s</strong> Turbine läuft aus, Rotor wird langsamer.</p>
+      <p><strong>t + ca. 65 s</strong> Rotor steht (Ton praktisch weg). Du: <span class="say" style="display:inline-block;padding:.1rem .5rem"><span class="who">Pilot</span>„Christoph Übung: Rotor steht, benötigen zwei Helfer zum Tragen, kommen.“</span></p>
+    </div>
+    <div class="lbl">Erwartet vom SF</div>
+    <div class="exp"><p>Niemand geht los, solange der Rotor dreht. Nach „Rotor steht“: „Christoph Übung von Florian Pattenhofen 136/44/1: verstanden, zwei Helfer kommen von vorn, kommen.“ Annäherung von vorn, im Blickfeld, gebückt, nie über das Heck.</p></div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">Jemand geht vor „Rotor steht“ los</span>Sofort: „Halt! Rotor dreht noch! Niemand nähert sich!“ Dann normal weiter.</li>
+      <li><span class="miss">Helfer kommen von hinten</span>„Christoph Übung: Annäherung nur von vorn, bitte wiederholen, kommen.“</li>
+      <li><span class="miss">Keine Bestätigung vom SF</span>„Florian Pattenhofen 136/44/1 von Christoph Übung: Haben Sie verstanden, zwei Helfer zum Tragen, kommen?“</li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section class="step pil" id="s8">
+    <header><label><input type="checkbox"><span>8</span></label><h3>E6 · Start in 3 Minuten</h3><span class="chip">20:37</span><span class="chip pil">Pilot</span><span class="chip">Gruppe 322</span></header>
+    <div class="lbl">Du sagst</div>
+    <div class="say"><p><span class="who">Pilot</span>„Florian Pattenhofen 136/44/1 von Christoph Übung: Start in 3 Minuten. Beleuchtung wie bei der Landung, kommen.“</p></div>
+    <div class="lbl">Erwartet vom SF</div>
+    <div class="exp"><p>„Start in 3 Minuten verstanden. Absperrung wird erneuert, Beleuchtung unverändert, kommen.“ Alle Personen und Fahrzeuge außerhalb der Fläche.</p></div>
+    <div class="lbl">Wenn es hakt</div>
+    <ul class="ask">
+      <li><span class="miss">Absperrung nicht erwähnt</span>„Ist der Landeplatz abgesperrt und niemand auf der Fläche, kommen?“</li>
+      <li><span class="miss">Beleuchtung wird verändert</span>„Beleuchtung bitte unverändert lassen, kommen.“</li>
+    </ul>
+    <p class="note">Für den Start gibt es noch keinen Sound. Sag es der Mannschaft vorher, oder spiel den Schwebeflug kurz an und blende aus.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="step" id="s9">
+    <header><label><input type="checkbox"><span>9</span></label><h3>Übungsende</h3><span class="chip">ca. 20:40–20:50</span><span class="chip">Gruppe 322, dann 324</span></header>
+    <div class="lbl">Du sagst (als Übungsleiter, außerhalb der Rollen)</div>
+    <div class="say"><p>„An alle vom Übungsleiter: Übung beendet, Übung beendet. Alle Kräfte zurück auf 324, Ende.“</p></div>
+    <ul class="check">
+      <li>Stoppuhr und Beobachtungsbogen sichern. Blendungs-Check und Rückbau laut <a href="uebung-2026-10-01-drehbuch.html">Drehbuch</a>.</li>
+      <li>Übung bei der ILS Nürnberg abmelden (echter Anruf).</li>
+      <li>Nachbesprechung mit den drei Fragen aus dem Drehbuch.</li>
+    </ul>
+  </section>
+
+  <p class="meta"><a href="../index.html">← Inhaltsverzeichnis</a> · <a href="uebung-2026-10-01-drehbuch.html">Drehbuch</a> · <a href="melden-lagemeldung.html">Meldekarte</a></p>
+</main>
+<script>
+(function () {
+  var KEY = "heli-cheatsheet-v2";
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function save(o) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} }
+  var state = load();
+  document.querySelectorAll(".step").forEach(function (s) {
+    var cb = s.querySelector("header input[type=checkbox]");
+    if (!cb) return;
+    cb.checked = !!state[s.id]; s.classList.toggle("done", cb.checked);
+    cb.addEventListener("change", function () {
+      s.classList.toggle("done", cb.checked);
+      state[s.id] = cb.checked; save(state);
+    });
+  });
+  document.getElementById("reset").onclick = function () {
+    state = {}; save(state);
+    document.querySelectorAll(".step").forEach(function (s) {
+      s.classList.remove("done");
+      var cb = s.querySelector("header input[type=checkbox]"); if (cb) cb.checked = false;
+    });
+  };
+  var root = document.documentElement, night = document.getElementById("night");
+  night.onclick = function () {
+    var on = root.getAttribute("data-theme") !== "dark";
+    if (on) root.setAttribute("data-theme", "dark"); else root.removeAttribute("data-theme");
+    night.textContent = on ? "Tagansicht" : "Nachtansicht";
+  };
+})();
+</script>
+</body>
+</html>

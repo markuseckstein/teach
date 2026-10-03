@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5: Where Do the Specs Live?</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+<h1>Lesson 5: Where Do the Specs Live?</h1>
+<p class="lesson-meta">≈20 minutes, concept + hands-on layout · your session-1 question, now with the evidence · builds on <a href="0004-specify-clarify-plan.html">Lesson 4</a></p>
+
+<h2>The question</h2>
+<p>You have <code>backend</code> (Spring Boot) and <code>frontend</code> (Angular), separate repos, one OpenAPI contract between them. A feature spec describes behavior that spans both. So where does Spec Kit get initialized — backend repo, frontend repo, or somewhere else?</p>
+
+<h2>The decision rule</h2>
+<p>From the maintainers, in the discussion that asked exactly your question (<a href="https://github.com/github/spec-kit/discussions/1743">spec-kit #1743</a>):</p>
+<div class="callout">
+<span class="label">The constitution heuristic</span>
+<strong>Would backend and frontend share one constitution?</strong> Same product, same team, same quality rules, features spanning both → one project: specs live <em>above</em> both repos. Different constitutions (different teams, release cadences, standards) → genuinely separate projects, each with its own specs.
+</div>
+<p>Your case answers itself: every feature flows through the shared OpenAPI contract, so the two repos are one product wearing two runtimes. One constitution, one spec tree — above both repos.</p>
+
+<h2>Why not backend? Why not frontend?</h2>
+<p>Lesson 4 gave you the structural reason. A spec is deliberately technology-free — it describes behavior, not Spring or Angular. Putting it inside one implementation repo:</p>
+<ul>
+<li><strong>Breaks the symmetry.</strong> The spec would be versioned, branched, and PR-reviewed under one repo's lifecycle while governing both. The other repo becomes a second-class citizen that can't even see the requirements it implements.</li>
+<li><strong>Blinds the agent.</strong> When Copilot plans or implements from a spec in <code>backend/</code>, the Angular code doesn't exist as far as it's concerned. Cross-repo features need the agent to see both codebases.</li>
+<li><strong>Inverts the ownership.</strong> The spec sits <em>above</em> even the OpenAPI contract (spec → plan → <code>contracts/</code>). Storing it in the backend implies the backend owns the product's requirements. It doesn't — it implements half of them.</li>
+</ul>
+
+<h2>The two workable layouts</h2>
+<table>
+<tr><th>Layout</th><th>What it is</th><th>Strengths</th><th>Costs</th></tr>
+<tr><td><strong>A. Umbrella workspace</strong> (recommended start)</td><td>A local folder with both repos cloned inside and Spec Kit initialized at the top, <em>outside</em> either repo's git.</td><td>Agent sees both codebases when planning and implementing; zero new infrastructure; one <code>specs/</code> tree.</td><td>The workspace top isn't itself a repo (unless you make it one) — sharing specs with the team needs layout B or committing the umbrella.</td></tr>
+<tr><td><strong>B. Dedicated specs repo</strong></td><td>A third repository holding <code>constitution.md</code> + <code>specs/</code>, cloned into the umbrella alongside the code repos.</td><td>Specs are versioned, reviewable, and shared like code; the single source of truth is explicit; survives any one repo's history rewrites.</td><td>Three repos to keep in sync; agents still need the umbrella locally to see code + specs together.</td></tr>
+</table>
+<p>These compose: <strong>start with A, graduate to B</strong> by turning the umbrella's <code>specs/</code> + <code>.specify/</code> into the third repo once the team needs shared access. B-without-A (specs repo alone) is the weakest option — the agent can read requirements but not the code they govern.</p>
+
+<h3>The umbrella, concretely</h3>
+<pre>
+product-workspace/            ← specify init here, --no-git
+├── .github/prompts/          ← /speckit.* commands available when VS Code opens THIS folder
+├── .specify/                 ← templates, scripts, constitution memory, feature.json
+├── specs/
+│   └── 001-bookmark-customers/
+│       ├── spec.md  plan.md  tasks.md
+│       └── contracts/openapi.yaml   ← the hand-off point between the two repos
+├── backend/                  ← git repo #1 (Spring Boot)
+└── frontend/                 ← git repo #2 (Angular)
+</pre>
+
+<h3>The catch that used to bite — and its fix</h3>
+<p>Spec Kit historically used the <strong>git branch name</strong> as its feature state (<code>001-bookmark-customers</code>), which is why monorepo and multi-repo users struggled (<a href="https://github.com/github/spec-kit/discussions/769">#769</a>, <a href="https://github.com/github/spec-kit/issues/1095">#1095</a>). That's fixed in current Spec Kit: git support moved to an optional extension, and with <code>--no-git</code> the feature state lives in <code>.specify/feature.json</code> (or the <code>SPECIFY_FEATURE</code> env var) — verified directly in <a href="https://github.com/github/spec-kit/blob/main/scripts/bash/common.sh">the helper scripts</a>. Consequence: the umbrella needs no git of its own, and Spec Kit won't fight the two inner repos' branch management. Feature branches in <code>backend</code>/<code>frontend</code> remain entirely yours to manage.</p>
+<p class="sidenote">This area is still evolving — the maintainer acknowledged multi-repo support as a known gap being worked on (#1743). Re-check the discussions before you cement team conventions.</p>
+
+<h2>Do it — build the umbrella</h2>
+<ol>
+<li>Create the workspace and clone (or for practice, <code>git init</code> two stub folders):
+<pre><code>mkdir -p ~/work/product-workspace && cd ~/work/product-workspace
+git clone &lt;backend-url&gt; backend
+git clone &lt;frontend-url&gt; frontend</code></pre></li>
+<li>Initialize Spec Kit at the top, gitless:
+<pre><code>uvx --from git+https://github.com/github/spec-kit.git \
+  specify init . --ai copilot --script sh --no-git</code></pre></li>
+<li><strong>Verify:</strong> <code>ls .github/prompts .specify</code> at the workspace root; <code>backend/.git</code> and <code>frontend/.git</code> untouched; no <code>.git</code> at the top.</li>
+<li>Open <strong>the workspace folder</strong> in VS Code (<code>code ~/work/product-workspace</code>) — not a single repo. Type <code>/speckit.</code> in Copilot Chat: the commands are there, and the agent's file context now spans both repos.</li>
+<li>Port your Lesson 3 constitution into <code>.specify/memory/constitution.md</code> — it was written for exactly this two-repo product.</li>
+</ol>
+
+<h2>Check yourself</h2>
+<div class="quiz" data-answer="2" data-explain="One constitution → one project → specs above both repos. Different constitutions would mean genuinely separate projects.">
+  <div class="quiz-q">1. What single question decides whether two repos share one spec tree?</div>
+  <button class="quiz-opt">Do the two repos share a deployment pipeline?</button>
+  <button class="quiz-opt">Do both repos consume one OpenAPI contract?</button>
+  <button class="quiz-opt">Would both repos live under one constitution?</button>
+  <button class="quiz-opt">Do the two repos share the same reviewers?</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="0" data-explain="Feature state without git lives in .specify/feature.json (or SPECIFY_FEATURE) — git became an optional extension, so the umbrella needs no repo of its own.">
+  <div class="quiz-q">2. With --no-git, how does Spec Kit know which feature is active?</div>
+  <button class="quiz-opt">A feature.json file inside the .specify folder</button>
+  <button class="quiz-opt">The branch name of the backend repository</button>
+  <button class="quiz-opt">The newest folder inside the specs directory</button>
+  <button class="quiz-opt">A feature flag in the constitution memory file</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="1" data-explain="A specs repo alone gives the agent requirements without the code they govern; cloned into an umbrella, you get sharing AND cross-repo visibility.">
+  <div class="quiz-q">3. Why is a dedicated specs repo alone weaker than specs-repo-inside-umbrella?</div>
+  <button class="quiz-opt">Specs repos cannot store the OpenAPI contracts</button>
+  <button class="quiz-opt">The agent sees requirements but neither codebase</button>
+  <button class="quiz-opt">Spec Kit refuses to initialize in a bare repository</button>
+  <button class="quiz-opt">Constitution files must live next to source code</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<h2>Primary source</h2>
+<p><a href="https://github.com/github/spec-kit/discussions/1743">Spec Kit discussion #1743 — "Multi-Repository Setup"</a>: your exact scenario, answered by the maintainer. Short read, and worth watching for updates since this is the fastest-moving corner of the tool. (No high-trust video exists yet for the multi-repo topic specifically — the discussions are the best source.)</p>
+
+<h2>Next</h2>
+<p><a href="0006-tasks-analyze-implement.html">Lesson 6</a> closes the workflow loop: <code>tasks → analyze → implement</code>, then wiring OpenAPI Generator so Spring stubs and the Angular client are generated from the contract your plan produced.</p>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · ← Previous: <a href="0004-specify-clarify-plan.html">Lesson 4: Specify → Clarify → Plan</a> · Next: <a href="0006-tasks-analyze-implement.html">Lesson 6: Tasks → Analyze → Implement</a> →<br>
+References: <a href="../reference/speckit-workflow.html">Workflow cheat sheet</a> · <a href="../reference/artifact-quality-checklist.html">Artifact quality checklist</a> · <a href="../reference/glossary.html">Glossary</a><br>
+Planning to pitch this layout to your team? Ask your teacher (the agent) to help you draft the argument — or take it straight to <a href="https://github.com/github/spec-kit/discussions">the Spec Kit discussions</a>.
+</div>
+</body>
+</html>

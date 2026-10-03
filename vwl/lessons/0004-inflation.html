@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inflation</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/rechner.js"></script>
+</head>
+<body>
+<main>
+
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Lektion 0004 · Preise</p>
+  <h1>Inflation</h1>
+  <p class="subtitle">Wie die 3,3 % aus den Nachrichten gemessen werden, woher Inflation kommt und warum sie Geld von Gläubigern zu Schuldnern umverteilt.</p>
+  <p class="meta">ca. 25 Minuten · Aufwärmen + zwei Rechner + 9 Quizfragen</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="aufwaermen">Aufwärmen</h2>
+
+<div class="quiz-score"></div>
+
+<div class="quiz">
+  <p class="q">Die EZB erhöht den Einlagesatz. Was steigt unmittelbar mit?</p>
+  <ul>
+    <li data-correct data-feedback="Der Einlagesatz ist der Boden des Geldmarkts. Bauzinsen und Preise reagieren dagegen erst über Erwartungen und mit Verzögerung (Lektion 0003).">Die kurzfristigen Zinsen, zu denen Banken untereinander leihen.</li>
+    <li data-feedback="Den Ölpreis bildet der Weltmarkt. Genau das kann der Leitzins nicht direkt beeinflussen (Lektion 0003).">Die Preise für Öl und Gas auf dem gesamten Weltmarkt.</li>
+    <li data-feedback="Der Mindestreservesatz liegt unverändert bei 1 % und ist kein Leitzins.">Die Mindestreserve, die jede Bank bei der Zentralbank hält.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Eine Familie tilgt 20.000 € ihres Kredits vom Girokonto. Was passiert mit der Geldmenge?</p>
+  <ul>
+    <li data-correct data-feedback="Bilanzverkürzung: Kredit und Guthaben verschwinden gemeinsam (Lektion 0001).">Sie sinkt, weil bei der Tilgung Buchgeld verschwindet.</li>
+    <li data-feedback="Die Bank „verleiht“ kein Guthaben weiter. Das Buchgeld der Familie ist schlicht weg.">Sie bleibt gleich, weil die Bank es weiterverleiht.</li>
+    <li data-feedback="Getilgtes Geld ist kein Gewinn der Bank. Gewinn wären höchstens die Zinsen.">Sie steigt, weil die Bank damit Gewinn verbucht.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Die EZB senkt den Einlagesatz um einen Prozentpunkt. Die Zinsen für zehnjährige Immobilienkredite bleiben fast gleich. Wie passt das zusammen?</p>
+  <ul>
+    <li data-correct data-feedback="Genau: Ein langfristiger Zins enthält, was Märkte für die nächsten zehn Jahre an Leitzinsen und Inflation erwarten. 2024 bis 2026 fiel der Einlagesatz von 4,00 % auf 2,25 %, die Bauzinsen blieben bei etwa 4 % (Lektion 0003).">Langfristige Zinsen folgen erwarteten Leitzinsen und erwarteter Inflation.</li>
+    <li data-feedback="Banken müssen Senkungen nicht weitergeben, ein Gesetz gibt es dafür nicht. Der Grund liegt in den Erwartungen: Langfristige Zinsen spiegeln die erwarteten Leitzinsen und die erwartete Inflation über die ganze Laufzeit.">Banken dürfen Senkungen gesetzlich erst nach zehn Jahren weitergeben.</li>
+    <li data-feedback="Die EZB legt Bauzinsen nicht fest. Diese entstehen am Markt und spiegeln die Erwartungen für die nächsten zehn Jahre.">Die EZB legt Bauzinsen getrennt fest und hat sie nicht gesenkt.</li>
+  </ul>
+</div>
+
+<h2 id="einstieg">Eine Frage vorab</h2>
+
+<div class="predict">
+  <span class="label">Schätzen, dann aufklappen</span>
+  <p>Du hattest Anfang 2021 10.000 € auf einem Konto ohne Zinsen. Die Inflationsraten in Deutschland betrugen 2021 bis 2025: 3,1 %, 6,9 %, 5,9 %, 2,2 % und 2,2 %. <strong>Was schätzt du: Wie viel waren die 10.000 € Ende 2025 noch wert, gemessen an dem, was du dafür kaufen konntest?</strong></p>
+  <details>
+    <summary>Auflösung</summary>
+    <p><strong>Rund 8.200 €.</strong> Die Preise stiegen nicht um 3,1 + 6,9 + 5,9 + 2,2 + 2,2 = 20,3 %, sondern um 21,9 %, weil jede Rate auf das schon gestiegene Preisniveau aufsetzt: 1,031 × 1,069 × 1,059 × 1,022 × 1,022 ≈ 1,219. Und 10.000 € ÷ 1,219 ≈ 8.203 €.<span class="sidenote-ref"></span><span class="sidenote">Jahresraten: <a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/01/PD26_019_611.html">Destatis, Pressemitteilung vom 16.01.2026</a>, Verbraucherpreisindex, Basis 2020.</span> Auf dem Konto stehen weiterhin 10.000 €. Weg ist knapp ein Fünftel der <em>Kaufkraft</em>, ohne dass jemand etwas abgebucht hätte.</p>
+  </details>
+</div>
+
+<h2 id="messen">1 · Wie Inflation gemessen wird</h2>
+
+<p>Inflation ist laut EZB ein „allgemeiner Preisanstieg, d. h. es werden nicht nur einzelne Produkte teurer“.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_inflation.de.html">EZB: Was ist Inflation?</a></span> Um das zu messen, stellt die Statistik einen <strong>Warenkorb</strong> zusammen: alles, was Haushalte im Durchschnitt kaufen, von Miete und Strom bis zu Brot und Friseur. Das Statistische Bundesamt erfasst dafür jeden Monat über 300.000 Einzelpreise für rund 600 Güterarten.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.bundesbank.de/de/aufgaben/themen/durchblick-bei-der-inflation-664846">Bundesbank: Durchblick bei der Inflation</a>.</span></p>
+
+<p>Entscheidend ist die <strong>Gewichtung</strong>. Ein Gut zählt umso mehr, je mehr Geld die Haushalte dafür ausgeben. Die größten Posten im deutschen Warenkorb:</p>
+
+<table class="facts">
+  <tr><th>Ausgabenbereich</th><th class="num">Gewicht</th></tr>
+  <tr><td>Wohnung, Wasser, Strom, Gas und andere Brennstoffe</td><td class="num">25,9 %</td></tr>
+  <tr><td>Verkehr (Auto, Kraftstoff, Tickets)</td><td class="num">13,8 %</td></tr>
+  <tr><td>Nahrungsmittel und alkoholfreie Getränke</td><td class="num">11,9 %</td></tr>
+  <tr><td>Freizeit, Unterhaltung und Kultur</td><td class="num">10,4 %</td></tr>
+  <tr><td>… acht weitere Bereiche, z. B. Bildung</td><td class="num">… 0,9 %</td></tr>
+  <tr><td><em>quer dazu:</em> Energie (Haushaltsenergie und Kraftstoffe)</td><td class="num">7,4 %</td></tr>
+</table>
+<p style="font-size:.75rem;color:var(--muted);margin-top:-.6rem">Quelle: <a href="https://www.destatis.de/DE/Themen/Wirtschaft/Preise/Verbraucherpreisindex/Methoden/Downloads/waegungsschema-2020.pdf?__blob=publicationFile">Destatis, Wägungsschema Basisjahr 2020</a> (in Promille, hier gerundet).</p>
+
+<p>Die <strong>Inflationsrate</strong> ist dann die Veränderung des Preises für diesen ganzen Korb gegenüber dem <em>Vorjahresmonat</em>. Für September 2026 meldet Destatis vorläufig:<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/09/PD26_348_611.html">Destatis, Pressemitteilung vom 30.09.2026</a>. Endgültige Zahlen am 13.10.2026.</span></p>
+
+<table class="facts">
+  <tr><th>September 2026, gegenüber Vorjahresmonat</th><th class="num">Veränderung</th></tr>
+  <tr><td><strong>Inflationsrate (Verbraucherpreisindex)</strong></td><td class="num"><strong>+3,3 %</strong></td></tr>
+  <tr><td>Energie</td><td class="num">+14,9 %</td></tr>
+  <tr><td>Nahrungsmittel</td><td class="num">+0,4 %</td></tr>
+  <tr><td>Kerninflation (ohne Energie und Nahrungsmittel)</td><td class="num">+2,4 %</td></tr>
+</table>
+
+<p>Zwei Begriffe aus der Tabelle brauchst du, um Nachrichten zu lesen:</p>
+<ul>
+  <li><strong>VPI und HVPI.</strong> Der Verbraucherpreisindex (VPI) ist der deutsche Index. Der <em>Harmonisierte</em> Verbraucherpreisindex (HVPI) wird in allen Euroländern nach gleichen Regeln berechnet, und an ihm misst die EZB ihr Ziel. Im September 2026 lagen beide bei 3,3 %, oft weichen sie um einige Zehntel voneinander ab.</li>
+  <li><strong>Kerninflation.</strong> Energie und Nahrungsmittel schwanken stark, etwa durch Kriege oder Ernten. Ohne sie sieht man besser, wie breit der Preisauftrieb ist. Im September 2026 heißt das: Die 3,3 % sind vor allem Energie, der Rest liegt bei 2,4 %.</li>
+</ul>
+
+<h3>Deine persönliche Inflationsrate</h3>
+
+<p>Der Warenkorb ist ein Durchschnitt. Wer pendelt und mit Öl heizt, gibt viel mehr für Energie aus als jemand mit Monatsticket in einer gut gedämmten Wohnung. Die Bundesbank sagt dazu: „Wie stark sich eine Preisänderung auf den eigenen Geldbeutel auswirkt, hängt von den individuellen Vorlieben und Gewohnheiten ab.“ Der Rechner teilt den Warenkorb vereinfacht in zwei Teile: Energie (+14,9 %) und alles andere (+2,4 %).<span class="sidenote-ref"></span><span class="sidenote">Die 2,4 % für „alles andere“ sind nachgerechnet: (3,3 − 0,074 × 14,9) ÷ 0,926 ≈ 2,4. Das passt zur gemeldeten Kerninflation, weil Nahrungsmittel kaum teurer wurden.</span></p>
+
+<div class="panel wide">
+  <p class="panel-title">Persönliche Inflation im September 2026 (vereinfacht)</p>
+  <div id="rechner-persoenlich"></div>
+</div>
+
+<script>
+Rechner.mount(document.getElementById("rechner-persoenlich"), {
+  inputs: [
+    { id: "energie", label: "Anteil Energie an deinen Ausgaben", min: 2, max: 25, step: 0.1, value: 7.4, fmt: (v) => v.toLocaleString("de-DE", { maximumFractionDigits: 1 }) + " %" },
+  ],
+  presets: [
+    { label: "Stadt, Monatsticket: 4 %", set: { energie: 4 } },
+    { label: "Durchschnitt: 7,4 %", set: { energie: 7.4 } },
+    { label: "Pendler, Ölheizung: 20 %", set: { energie: 20 } },
+  ],
+  compute: (v) => {
+    const w = v.energie / 100;
+    const rest = (3.3 - 0.0739 * 14.9) / 0.9261;
+    const p = w * 14.9 + (1 - w) * rest;
+    const pct = (x) => x.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " %";
+    return [
+      { label: "Deine Inflationsrate", value: pct(p), big: true },
+      { label: "davon durch Energie", value: pct(w * 14.9) + "-Punkte" },
+      { label: "amtlich gemessen", value: "3,3 %" },
+    ];
+  },
+});
+</script>
+
+<p>Bei einem Energieanteil von 20 % kommst du auf rund 4,9 %, bei 4 % auf 2,8 %. Beides ist „richtig“. Die amtliche Zahl beschreibt den Durchschnittshaushalt, nicht dich. Auch das <em>Gefühl</em> weicht ab: Verbraucher im Euroraum schätzten die Inflation der vergangenen zwölf Monate im August 2026 auf 3,5 %.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260918~295b3ab978.en.html">EZB: Consumer Expectations Survey, August 2026</a> (Median). Haushalte mit niedrigem Einkommen nehmen höhere Inflation wahr.</span> Preise, die man täglich sieht, wie Benzin und Butter, prägen den Eindruck stärker als die Miete, die nur einmal im Jahr steigt.</p>
+
+<div class="keyidea"><span class="label">Kernidee 1</span>
+Die Inflationsrate misst, wie viel <strong>teurer ein gewichteter Durchschnitts-Warenkorb</strong> gegenüber dem Vorjahresmonat ist. Wer anders einkauft als der Durchschnitt, hat eine andere persönliche Rate.</div>
+
+<h2 id="ursachen">2 · Woher Inflation kommt</h2>
+
+<p>Ein Preis steigt, wenn die Nachfrage das Angebot übersteigt oder wenn die Herstellung teurer wird. Für das allgemeine Preisniveau ergeben sich daraus vier Ursachen, die du in Nachrichten auseinanderhalten solltest:</p>
+
+<table class="facts">
+  <tr><th>Ursache</th><th>Mechanismus</th><th>Beispiel</th></tr>
+  <tr><td><strong>Nachfrage</strong></td><td>Haushalte, Firmen und Staat wollen mehr kaufen, als produziert werden kann.</td><td>Erholung nach der Pandemie 2021, gestützt durch staatliche Hilfen</td></tr>
+  <tr><td><strong>Angebot / Kosten</strong></td><td>Ein wichtiger Rohstoff wird knapp. Energie steckt in fast allem, also wird „vieles nach und nach teurer“.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.bundesbank.de/de/aufgaben/geldpolitik/fragen-und-antworten-zur-inflation-802760">Bundesbank: Fragen und Antworten zur Inflation</a>.</span></td><td>Gas 2022: Erdgas für Haushalte +64,8 % gegenüber 2021;<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/01/PD23_022_611.html">Destatis, Januar 2023</a> (damals noch Basis 2015).</span> Energie 2026: +14,9 %</td></tr>
+  <tr><td><strong>Erwartungen</strong></td><td>Wer höhere Preise erwartet, fordert höhere Löhne und erhöht selbst die Preise. Das nennt man <em>Zweitrundeneffekt</em>, im Extremfall eine Lohn-Preis-Spirale.</td><td>Die Sorge der EZB 2022 und 2026</td></tr>
+  <tr><td><strong>Geldmenge</strong></td><td>Wächst die Geldmenge auf Dauer viel schneller als die Wirtschaft, steigen auf Dauer die Preise.</td><td>Hyperinflation 1923 (Lektion 0005)</td></tr>
+</table>
+
+<p><strong>Zur Geldmenge</strong> lohnt ein genauer Blick, denn hier kursiert viel Halbwissen. Die Bundesbank hat 2023 die Daten des Euroraums von 1970 bis 2022 untersucht. Über lange Zeiträume von 24 bis 40 Jahren fand sie einen „starke[n] und stabile[n]“ Gleichlauf von Geldmengenwachstum und Inflation, nahe an einer 1:1-Beziehung. Zwischen den „kurz- bis mittelfristigen Veränderungen“ gibt es dagegen „keinen stabilen Zusammenhang“.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.bundesbank.de/resource/blob/903314/8080f3e8eacb602143769da5de2c378c/mL/2023-01-monatsbericht-data.pdf">Bundesbank, Monatsbericht Januar 2023</a>, Aufsatz „Von der monetären Säule zur monetären und finanziellen Analyse“, S. 15–20.</span> Den starken Anstieg der Geldmenge im Jahr 2020 erklärt sie in der ersten Phase vor allem mit dem „Aufbau von Liquiditätsreserven“ in der Pandemie, der „für sich genommen nicht inflationär wirkt“. Geld, das nur auf dem Konto liegt, treibt keine Preise.</p>
+
+<p><strong>Und wo bleibt die EZB?</strong> Aus Lektion 0003 weißt du: Der Leitzins dämpft die <em>Nachfrage</em>, und eine glaubwürdige EZB hält die <em>Erwartungen</em> stabil. Gegen teures Öl hilft er nicht direkt. Deshalb beobachtet die EZB so genau, was die Menschen erwarten: Im August 2026 rechneten Verbraucher im Median mit 3,0 % Inflation in den nächsten zwölf Monaten, aber nur mit 2,5 % in fünf Jahren. Solange die langfristige Erwartung nahe 2 % bleibt, gilt die Inflationserwartung als „verankert“.</p>
+
+<div class="keyidea"><span class="label">Kernidee 2</span>
+Kurzfristig wird Inflation von <strong>Nachfrage</strong> und <strong>Kosten</strong> (vor allem Energie) getrieben, festgesetzt wird sie durch <strong>Erwartungen</strong>. Die <strong>Geldmenge</strong> bestimmt die Richtung über Jahrzehnte, ist aber kein Frühwarnsignal für das nächste Jahr.</div>
+
+<h3>Warum 2 % und nicht 0 %?</h3>
+
+<p>Die EZB strebt „2 % Inflation über die mittlere Frist“ an, symmetrisch: Zu wenig ist genauso unerwünscht wie zu viel.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/mopo/strategy/pricestab/html/index.de.html">EZB: Definition von Preisstabilität</a>.</span> Sie begründet den Abstand zu null so: Er ist ein Sicherheitspuffer gegen <em>Deflation</em>, also dauerhaft fallende Preise, und lässt Raum für Zinssenkungen, weil Zinsen nicht beliebig unter null fallen können. Löhne werden zudem selten gesenkt, mit etwas Inflation passen sich die realen Löhne trotzdem an. Und die Statistik überschätzt die Inflation leicht, zum Beispiel weil Qualitätsverbesserungen schwer zu messen sind.</p>
+
+<h2 id="verteilung">3 · Wer gewinnt, wer verliert</h2>
+
+<p>Inflation trifft nicht alle gleich. Den Schlüssel liefert die Unterscheidung zwischen <strong>nominal</strong> (der Betrag in Euro) und <strong>real</strong> (was du dafür kaufen kannst). Für Zinsen gilt die Faustformel:</p>
+
+<p style="text-align:center;font-size:1.05rem">Realzins ≈ Nominalzins − Inflationsrate</p>
+
+<p>Bekommst du 2 % Zinsen bei 3,3 % Inflation, ist dein Realzins etwa −1,3 %. Dein Kontostand wächst, deine Kaufkraft schrumpft. Probier es aus:</p>
+
+<div class="panel wide">
+  <p class="panel-title">Kaufkraft-Rechner: Guthaben (oder Schuld) mit festem Zins</p>
+  <div id="rechner-kaufkraft"></div>
+</div>
+
+<script>
+Rechner.mount(document.getElementById("rechner-kaufkraft"), {
+  inputs: [
+    { id: "betrag", label: "Betrag heute", min: 1000, max: 200000, step: 1000, value: 10000, fmt: (v) => Rechner.eur(v) },
+    { id: "zins", label: "Nominalzins p. a.", min: 0, max: 6, step: 0.1, value: 2, fmt: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 1 }) + " %" },
+    { id: "infl", label: "Inflation p. a.", min: 0, max: 12, step: 0.1, value: 3.3, fmt: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 1 }) + " %" },
+    { id: "jahre", label: "Jahre", min: 1, max: 30, step: 1, value: 10, fmt: (v) => v + " J." },
+  ],
+  presets: [
+    { label: "EZB-Ziel: 2 % Zins, 2 % Inflation", set: { zins: 2, infl: 2 } },
+    { label: "0 % Zins, 2 % Inflation, 35 J.", set: { zins: 0, infl: 2, jahre: 35 } },
+    { label: "0 % Zins, 2021–25 (Ø 4,0 %), 5 J.", set: { zins: 0, infl: 4.0, jahre: 5 } },
+  ],
+  compute: (v) => {
+    const nom = v.betrag * Math.pow(1 + v.zins / 100, v.jahre);
+    const real = nom / Math.pow(1 + v.infl / 100, v.jahre);
+    const rz = ((1 + v.zins / 100) / (1 + v.infl / 100) - 1) * 100;
+    return [
+      { label: "Kaufkraft am Ende, in heutigen Euro", value: Rechner.eur(real), big: true },
+      { label: "Kontostand am Ende (nominal)", value: Rechner.eur(nom) },
+      { label: "Realzins p. a.", value: rz.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " %" },
+    ];
+  },
+});
+</script>
+
+<p><strong>Was du sehen solltest:</strong> Schon das EZB-Ziel von 2 % halbiert die Kaufkraft eines unverzinsten Guthabens in 35 Jahren. Mit dem Durchschnitt von 2021 bis 2025 landest du wieder bei gut 8.200 €, wie in der Frage vorab.</p>
+
+<p>Jetzt dreh die Perspektive um. Stell dir dieselbe Zahl als <strong>Schuld</strong> vor, etwa 200.000 € Restschuld eines Immobilienkredits mit festem Zins. Nominal bleibt die Schuld gleich. Real wird sie bei 3 % Inflation in zehn Jahren auf rund 149.000 € heutiger Kaufkraft entwertet. Steigen Lohn oder Mieteinnahmen mit den Preisen, fällt die feste Rate immer leichter. Was der Sparer an Kaufkraft verliert, gewinnt der Schuldner. Inflation <strong>verteilt um</strong>:</p>
+
+<table class="facts">
+  <tr><th>Wer</th><th>Bei unerwartet hoher Inflation</th></tr>
+  <tr><td>Gläubiger mit festem Zins: Kontoguthaben, Sparbriefe, Anleihen</td><td>verlieren real</td></tr>
+  <tr><td>Schuldner mit festem Zins: Immobilienkredite, und der Staat als größter Schuldner</td><td>gewinnen real</td></tr>
+  <tr><td>Bezieher fester Einkommen: Renten und Löhne, die erst später angepasst werden</td><td>verlieren, bis nachverhandelt ist</td></tr>
+  <tr><td>Eigentümer von Sachwerten: Immobilien, Unternehmen (Aktien)</td><td>abhängig vom Fall, siehe unten</td></tr>
+</table>
+
+<p>Das Wort „unerwartet“ ist wichtig. Erwartet man 5 % Inflation, verlangen Banken und Sparer von vornherein höhere Zinsen, und die Umverteilung fällt kleiner aus. Teuer wird es für Gläubiger, wenn die Inflation sie überrascht, nachdem der Zins festgeschrieben ist.</p>
+
+<p><strong>Sind Sachwerte also ein Schutz?</strong> Teilweise. Ein Haus wird nicht in Euro gemessen, darum wird es von Inflation nicht entwertet wie ein Guthaben. Sein <em>Preis</em> hängt aber am Zins: 2023 lag die Inflation bei 5,9 %, und trotzdem fielen die Preise für Wohnimmobilien um 8,4 %, weil die Bauzinsen gestiegen waren (Lektion 0003). In extremen Fällen kommt noch etwas dazu: Als Sachwertbesitzer nach 1923 und 1948 vergleichsweise gut dastanden, holte der Staat sich einen Teil zurück, mit Hauszinssteuer und Lastenausgleich. Das sind die Lektionen 0005 und 0006.</p>
+
+<div class="keyidea"><span class="label">Kernidee 3</span>
+Inflation ist eine <strong>Umverteilung von Gläubigern zu Schuldnern</strong>, sofern sie unerwartet kommt. Entscheidend ist der <strong>Realzins</strong>: Nominalzins minus Inflation.</div>
+
+<h2 id="quiz">4 · Abruf</h2>
+
+<div class="quiz">
+  <p class="q">Destatis meldet für September 2026 eine Inflationsrate von 3,3 %. Was bedeutet das genau?</p>
+  <ul>
+    <li data-correct data-feedback="Vergleich mit dem Vorjahresmonat, gewichteter Warenkorb. Energie stieg um 14,9 %, Nahrungsmittel nur um 0,4 %.">Der Warenkorb kostet 3,3 % mehr als im September 2025.</li>
+    <li data-feedback="Es ist ein gewichteter Durchschnitt. Energie stieg um 14,9 %, Nahrungsmittel nur um 0,4 %.">Jedes einzelne Produkt kostet 3,3 % mehr als vor einem Jahr.</li>
+    <li data-feedback="Verglichen wird mit dem Vorjahresmonat. Gegenüber August 2026 betrug das Plus 0,6 %.">Die Preise sind seit August 2026 um genau 3,3 % gestiegen.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Warum hat Energie im Warenkorb ein größeres Gewicht als Bildung?</p>
+  <ul>
+    <li data-correct data-feedback="Die Gewichte spiegeln die Ausgaben: Energie 7,4 %, Bildungswesen 0,9 %.">Haushalte geben im Durchschnitt viel mehr Geld dafür aus.</li>
+    <li data-feedback="Schwankungen spielen für das Gewicht keine Rolle, nur die Ausgabenanteile.">Energiepreise schwanken stärker und zählen deshalb doppelt.</li>
+    <li data-feedback="Den Warenkorb stellt das Statistische Bundesamt aus den Ausgaben der Haushalte zusammen, nicht die EZB.">Die EZB legt fest, welche Güter politisch wichtiger sind.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Jana pendelt mit dem Auto und heizt mit Öl. Energie macht 20 % ihrer Ausgaben aus. Wie hoch war ihre persönliche Inflationsrate im September 2026 ungefähr?</p>
+  <ul>
+    <li data-correct data-feedback="0,2 × 14,9 % + 0,8 × 2,4 % ≈ 3,0 + 1,9 = 4,9 %.">Etwa 4,9 %, deutlich mehr als amtlich.</li>
+    <li data-feedback="Die amtliche Zahl gilt für den Durchschnittshaushalt mit 7,4 % Energieanteil. Jana: 0,2 × 14,9 + 0,8 × 2,4 ≈ 4,9 %.">Genau 3,3 %, wie für alle Haushalte.</li>
+    <li data-feedback="Umgekehrt: Je mehr Energie, desto höher, weil Energie um 14,9 % stieg. Jana: ≈ 4,9 %.">Etwa 2,4 %, weniger als amtlich.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">2022 stieg der Gaspreis nach dem russischen Überfall auf die Ukraine stark. Welche Ursache von Inflation ist das?</p>
+  <ul>
+    <li data-correct data-feedback="Ein Angebots- oder Kostenschock: Gas wurde knapp, und Energie steckt in fast allen Produkten.">Ein Angebotsschock, denn Energie wurde knapp und teuer.</li>
+    <li data-feedback="Der Auslöser war nicht mehr Nachfrage, sondern ein knapperes Angebot.">Ein Nachfrageschock, denn alle Haushalte wollten mehr Gas.</li>
+    <li data-feedback="Die EZB hat 2022 die Zinsen erhöht, nicht Banknoten gedruckt. Der Preissprung kam aus der Knappheit.">Ein Geldmengenschock, denn die EZB druckte massenhaft Geld.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Was meint die EZB, wenn sie vor „Zweitrundeneffekten“ warnt?</p>
+  <ul>
+    <li data-correct data-feedback="Aus einem einmaligen Energieschock wird so eine dauerhafte Inflation. Deshalb achtet die EZB auf Erwartungen und Löhne.">Höhere Preise lösen höhere Löhne und weitere Preiserhöhungen aus.</li>
+    <li data-feedback="Es geht nicht um andere Länder, sondern um die Reaktion von Lohn- und Preissetzern auf eine schon gestiegene Inflation.">Die Preise steigen nach dem ersten auch in einem zweiten Land.</li>
+    <li data-feedback="Ein Statistikbegriff ist das nicht. Gemeint ist die Reaktion von Löhnen und Preisen auf die erste Preiswelle.">Die Statistik misst alle Preise zur Kontrolle ein zweites Mal.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Was fand die Bundesbank 2023 über den Zusammenhang von Geldmenge und Inflation?</p>
+  <ul>
+    <li data-correct data-feedback="Über Jahrzehnte nahe 1:1, aber ohne Vorlauf und ohne stabilen Zusammenhang über kürzere Zeiträume. Als Prognose für nächstes Jahr taugt die Geldmenge daher kaum.">Langfristig enger Gleichlauf, kurzfristig kein stabiler Zusammenhang.</li>
+    <li data-feedback="Genau umgekehrt: Der Gleichlauf zeigt sich über 24 bis 40 Jahre, kurzfristig nicht.">Kurzfristig enger Gleichlauf, langfristig kein stabiler Zusammenhang.</li>
+    <li data-feedback="Langfristig fand sie sehr wohl einen starken und stabilen Gleichlauf, nahe 1:1.">Weder kurzfristig noch langfristig irgendein messbarer Zusammenhang.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Du legst 10.000 € für ein Jahr zu 2 % fest an. Die Inflation beträgt in diesem Jahr 5 %. Wie hoch ist dein Realzins ungefähr?</p>
+  <ul>
+    <li data-correct data-feedback="2 % − 5 % = −3 %. Genau gerechnet: 1,02 ÷ 1,05 − 1 ≈ −2,9 %. Dein Kontostand wächst, deine Kaufkraft schrumpft.">Etwa −3 %, du verlierst Kaufkraft.</li>
+    <li data-feedback="Das ist der Nominalzins. Real zählt, was du dafür kaufen kannst: 2 % − 5 % ≈ −3 %.">Etwa +2 %, du gewinnst Kaufkraft.</li>
+    <li data-feedback="Zinsen und Inflation werden voneinander abgezogen, nicht addiert: 2 % − 5 % ≈ −3 %.">Etwa +7 %, du gewinnst Kaufkraft.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Die Inflation fällt unerwartet hoch aus. Wer profitiert davon real?</p>
+  <ul>
+    <li data-correct data-feedback="Die Schuld bleibt nominal gleich, wird aber real entwertet, vor allem wenn das eigene Einkommen mit den Preisen steigt.">Wer einen Kredit mit festem Zins abbezahlt.</li>
+    <li data-feedback="Gläubiger verlieren: Ihr fester Zins liegt plötzlich unter der Inflation.">Wer ein Guthaben mit festem Zins anlegt.</li>
+    <li data-feedback="Eine Anleihe ist ein Kredit an den Staat oder ein Unternehmen. Ihr Käufer ist Gläubiger und verliert real.">Wer eine Anleihe mit festem Zins kauft.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Warum strebt die EZB 2 % Inflation an und nicht 0 %?</p>
+  <ul>
+    <li data-correct data-feedback="Sicherheitsabstand zur Deflation und Spielraum für Zinssenkungen. Dazu kommen starre Löhne und eine leichte Überschätzung durch die Messung.">Als Puffer gegen Deflation und für Spielraum bei Zinssenkungen.</li>
+    <li data-feedback="Die Staatsfinanzierung ist der EZB verboten und spielt in ihrer Begründung keine Rolle.">Damit die Staaten ihre Schulden schneller und billiger loswerden.</li>
+    <li data-feedback="Die Größe des Warenkorbs ist für die Inflationsrate egal. Gemessen werden Preisänderungen.">Weil der Warenkorb jedes Jahr um etwa 2 % größer wird.</li>
+  </ul>
+</div>
+
+<h2 id="weiter">Weiterlesen & nachfragen</h2>
+
+<div class="source-box">
+  <span class="label">Primärquelle zum Vertiefen (ca. 10 Min.)</span>
+  <p><a href="https://www.bundesbank.de/de/aufgaben/themen/durchblick-bei-der-inflation-664846"><strong>Bundesbank: „Durchblick bei der Inflation“</strong></a>: kurz und verständlich zu Warenkorb, Messung und gefühlter Inflation. Wer tiefer will: die <a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/09/PD26_348_611.html">Destatis-Meldung vom 30. September 2026</a>. Achte darauf, welche Teilindizes die 3,3 % treiben, das kannst du jetzt selbst lesen.</p>
+</div>
+
+<div class="ask-box">
+  <span class="label">Etwas unklar?</span>
+  <p>Frag mich im Chat, zum Beispiel: „Warum ist Deflation so gefährlich?“, „Wie wird die Qualität eines Smartphones im Warenkorb berücksichtigt?“ oder „Profitiert der Staat wirklich von Inflation?“. Und sag mir, wie das Quiz lief, auch das von Lektion 0003, falls du es noch nicht erzählt hast.</p>
+</div>
+
+<p>Kompakt zum Nachschlagen: <a href="../reference/inflation.html">Spickzettel: Inflation</a>. Davor: <a href="../reference/leitzins.html">Leitzins & Transmission</a>.</p>
+
+<nav class="lesson-nav" data-current="0004"></nav>
+
+</main>
+</body>
+</html>

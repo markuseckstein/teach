@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>PowerToys Run als Startzentrale</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lektion 5 &middot; Windows Multi-Monitor Desktop Management</p>
+<h1>PowerToys Run als Startzentrale</h1>
+<p class="lede">Ein Tastendruck statt Taskleiste durchsuchen: Apps starten, zwischen deinen VS-Code-Fenstern springen, Ordner öffnen, rechnen &mdash; alles ohne Maus.</p>
+
+<nav class="toc">
+  <span class="toc-label">Inhalt</span>
+  <ol>
+    <li><a href="#grundidee">Grundidee: Tastatur statt Taskleiste</a></li>
+    <li><a href="#plugins">Die für dich nützlichsten Plugins</a></li>
+    <li><a href="#shortcuts">Shortcuts innerhalb von Run</a></li>
+    <li><a href="#kombo">Kombo: Workspaces per Run starten</a></li>
+    <li><a href="#ausblick">Ausblick: Command Palette</a></li>
+    <li><a href="#ueben">Üben</a></li>
+  </ol>
+</nav>
+
+<h2 id="grundidee">Grundidee: Tastatur statt Taskleiste</h2>
+<p><kbd>Alt</kbd>+<kbd>Space</kbd> öffnet PowerToys Run &mdash; ein Suchfeld, das je nach Eingabe Apps, Dateien, offene Fenster, Windows-Einstellungen oder einen Taschenrechner durchsucht. <kbd>Esc</kbd> schließt es wieder. Der Sinn für dich: bei 4 Monitoren und vielen offenen Fenstern ist "kurz mit der Maus zur Taskleiste fahren und suchen" spürbar langsamer als tippen.</p>
+
+<h2 id="plugins">Die für dich nützlichsten Plugins</h2>
+<table class="shortcuts">
+  <thead><tr><th>Präfix</th><th>Plugin</th><th>Warum für dich relevant</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><code>&lt;</code></td><td>Window Walker</td><td>Zwischen offenen Fenstern springen &mdash; z. B. <code>&lt; backend</code> findet direkt dein Backend-VS-Code-Fenster unter mehreren offenen Instanzen</td></tr>
+    <tr><td class="combo-cell"><code>.</code></td><td>Program</td><td>App starten, optional mit Argumenten (z. B. VS Code direkt mit einem Projektordner öffnen)</td></tr>
+    <tr><td class="combo-cell">(kein Präfix)</td><td>Folder / Windows Search</td><td>Pfad eintippen &rarr; Ordner/Datei direkt öffnen, ohne Explorer-Fenster zu durchklicken</td></tr>
+    <tr><td class="combo-cell"><code>&gt;</code></td><td>Shell</td><td>Befehl direkt ausführen, z. B. <code>&gt; ping localhost</code></td></tr>
+    <tr><td class="combo-cell"><code>=</code></td><td>Calculator</td><td>Schnelle Rechnung ohne Taschenrechner-App zu öffnen</td></tr>
+    <tr><td class="combo-cell"><code>$</code></td><td>Windows Settings</td><td>Direkt zur passenden Einstellungsseite springen (z. B. bei Monitor-Problemen zu Anzeigeeinstellungen)</td></tr>
+    <tr><td class="combo-cell"><code>#</code></td><td>Value Generator</td><td>GUIDs, Hashes, Base64 &mdash; nützlich beim Entwickeln, ohne ein externes Tool/Website zu öffnen</td></tr>
+  </tbody>
+</table>
+<div class="callout">
+  <span class="label">Größter Alltagsnutzen</span>
+  Window Walker (<code>&lt;</code>) ist bei deinem Setup vermutlich das wertvollste Plugin: Bei 2&times; VS Code + mehreren Terminals über 4 Monitore verteilt ist Tippen des Fenstertitels oft schneller als visuell zu suchen oder <kbd>Alt</kbd>+<kbd>Tab</kbd> mehrfach durchzuklicken.
+</div>
+
+<h2 id="shortcuts">Shortcuts innerhalb von Run</h2>
+<table class="shortcuts">
+  <thead><tr><th>Shortcut</th><th>Aktion</th></tr></thead>
+  <tbody>
+    <tr><td class="combo-cell"><kbd>Alt</kbd>+<kbd>Space</kbd></td><td>PowerToys Run öffnen/schließen</td></tr>
+    <tr><td class="combo-cell"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></td><td>Ausgewählte App als Administrator öffnen</td></tr>
+    <tr><td class="combo-cell"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd></td><td>Enthaltenden Ordner im Explorer öffnen</td></tr>
+    <tr><td class="combo-cell"><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td>Pfad des Ergebnisses kopieren (Ordner/Dateien)</td></tr>
+    <tr><td class="combo-cell"><kbd>Tab</kbd></td><td>Durch Ergebnisse und Kontext-Buttons navigieren</td></tr>
+  </tbody>
+</table>
+
+<h2 id="kombo">Kombo: Workspaces per Run starten</h2>
+<p>Die Desktop-Verknüpfungen für deine Workspaces aus <a href="0001-powertoys-workspaces-daily-reset.html">Lektion 1</a> sind ganz normale Programme aus Sicht des Program-Plugins. Statt sie an die Taskleiste zu pinnen und anzuklicken (<a href="0004-workspaces-plus-virtuelle-desktops.html">Lektion 4</a>), reicht:</p>
+<ol class="steps">
+  <li><kbd>Alt</kbd>+<kbd>Space</kbd></li>
+  <li>Namen tippen, z. B. "Frontend"</li>
+  <li><kbd>Enter</kbd></li>
+</ol>
+<p>Für die komplette Morgen-Routine aus Lektion 4 bedeutet das: Desktop wechseln, <kbd>Alt</kbd>+<kbd>Space</kbd> + Name + <kbd>Enter</kbd>, wiederholen &mdash; ganz ohne die Taskleiste anzufassen.</p>
+
+<h2 id="ausblick">Ausblick: Command Palette</h2>
+<div class="callout">
+  <span class="label">Für später, nicht jetzt</span>
+  Microsoft baut mit der <strong>Command Palette</strong> einen offiziellen Nachfolger für PowerToys Run (in den PowerToys-Dokus als "PowerToys Run v2" bezeichnet). Für den Einstieg reicht Run vollkommen &mdash; falls dich der Umstieg interessiert, machen wir dazu bei Bedarf eine eigene Lektion, statt jetzt beides parallel zu lernen.
+</div>
+
+<h2 id="ueben">Üben</h2>
+<div class="quiz" data-quiz>
+  <p class="q">1. Du hast mehrere VS-Code-Fenster offen und willst gezielt zum Backend-Fenster springen. Was ist am schnellsten?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Window-Walker-Plugin mit Präfix &lt;</button>
+    <button class="opt">Rechner-Plugin mit Präfix =</button>
+    <button class="opt">Shell-Plugin mit Präfix &gt;</button>
+    <button class="opt">Registry-Plugin mit Präfix :</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<div class="quiz" data-quiz>
+  <p class="q">2. Wie startest du eine gespeicherte Workspace-Verknüpfung, ohne die Maus zu benutzen?</p>
+  <div class="options">
+    <button class="opt" data-correct="true">Alt+Leertaste, Namen tippen, Enter</button>
+    <button class="opt">Strg+Leertaste, Namen tippen, Enter</button>
+    <button class="opt">Win+R, Namen tippen, Enter</button>
+    <button class="opt">Alt+Tab, Namen tippen, Enter</button>
+  </div>
+  <p class="feedback"></p>
+</div>
+
+<p class="ask-agent">Ein Plugin verhält sich anders als beschrieben, oder ein Präfix kollidiert mit einem anderen (z. B. bei eigenen Aktivierungsbefehlen)? Frag im Chat nach.</p>
+
+<p class="source">Primärquelle: <a href="https://learn.microsoft.com/en-us/windows/powertoys/run">PowerToys Run Quick Launcher for Windows &mdash; Microsoft Learn</a></p>
+
+<div class="lesson-nav">
+  <span><a href="0004-workspaces-plus-virtuelle-desktops.html">&larr; Lektion 4: Workspaces + Desktops</a></span>
+  <span><a href="../index.html">&uarr; Übersicht</a></span>
+  <span><a href="../reference/shortcuts-cheatsheet.html">Shortcuts-Referenz &rarr;</a></span>
+</div>
+
+<script>
+document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
+  var feedback = quiz.querySelector('.feedback');
+  quiz.querySelectorAll('.opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var correct = btn.dataset.correct === 'true';
+      quiz.querySelectorAll('.opt').forEach(function (b) {
+        b.classList.remove('correct', 'wrong');
+        b.disabled = true;
+      });
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        quiz.querySelector('[data-correct="true"]').classList.add('correct');
+      }
+      feedback.textContent = correct ? 'Richtig.' : 'Nicht ganz — die richtige Antwort ist jetzt markiert.';
+      quiz.querySelectorAll('.opt').forEach(function (b) { b.disabled = false; });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zentralbankgeld</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/bilanz.js"></script>
+</head>
+<body>
+<main>
+
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Lektion 0002 · Zentralbank</p>
+  <h1>Zentralbankgeld</h1>
+  <p class="subtitle">Du bezahlst mit dem Geld deiner Bank. Banken bezahlen untereinander mit dem Geld der Zentralbank. Deshalb braucht es eine.</p>
+  <p class="meta">ca. 25 Minuten · Aufwärmen + Simulator + 7 Quizfragen</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="aufwaermen">Aufwärmen: Was weißt du noch?</h2>
+
+<p>Zwei Fragen zu Lektion 0001. Wissen, das man nach ein paar Tagen wieder hervorholt, sitzt danach fester als Wissen, das man einmal am Stück gelernt hat.</p>
+
+<div class="quiz-score"></div>
+
+<div class="quiz">
+  <p class="q">Anna tilgt 300 € ihres Bankkredits. Was passiert mit diesen 300 €?</p>
+  <ul>
+    <li data-correct data-feedback="Guthaben und Kreditschuld werden gegeneinander ausgebucht, das ist eine Bilanzverkürzung. Die Geldmenge sinkt um 300 €.">Sie werden ausgebucht und existieren danach nicht mehr.</li>
+    <li data-feedback="Für die Bank war Annas Guthaben eine Schuld. Mit der Tilgung verschwinden Schuld und Forderung, Eigenkapital entsteht dabei nicht.">Sie gehen an die Bank und bilden dort Eigenkapital.</li>
+    <li data-feedback="Banken verleihen keine vorhandenen Guthaben weiter. Neue Kredite entstehen durch neue Buchungen.">Sie werden an andere Kreditnehmer der Bank weiterverliehen.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Wer schafft den größten Teil des Geldes im Euroraum?</p>
+  <ul>
+    <li data-correct data-feedback="Über 90 % der Geldmenge M3 ist Buchgeld, und es entsteht vor allem durch Bankkredite an Haushalte, Unternehmen und Staat.">Geschäftsbanken, indem sie Kredite an Nichtbanken vergeben.</li>
+    <li data-feedback="Bargeld macht nur gut 9 % von M3 aus. Und auch das wird nur ausgegeben, wenn Kunden Buchgeld in Bargeld umtauschen.">Die EZB, die laufend neue Banknoten drucken lässt.</li>
+    <li data-feedback="Staatsdefizite können Geld schaffen, wenn Banken dem Staat Kredit geben. Aber der Hauptweg sind Kredite an Unternehmen und Haushalte.">Der Staat, der seine Haushaltsdefizite einfach finanziert.</li>
+  </ul>
+</div>
+
+<h2 id="einstieg">Das Problem vom letzten Mal</h2>
+
+<div class="predict">
+  <span class="label">Erst überlegen, dann aufklappen</span>
+  <p>Anna (Konto bei Bank A) kauft bei Bernd (Konto bei Bank B) ein Fahrrad und überweist 1.000 €. Annas Guthaben ist eine Schuld von Bank A, Bernds Guthaben eine Schuld von Bank B. <strong>Bank B soll Bernd also 1.000 € mehr schulden. Was bekommt Bank B dafür von Bank A?</strong></p>
+  <details>
+    <summary>Auflösung</summary>
+    <p>Bank B würde sich ungern mit einem Schuldschein von Bank A zufriedengeben: Was, wenn Bank A pleitegeht? Stattdessen überträgt Bank A 1.000 € <strong>Zentralbankguthaben</strong> auf das Konto von Bank B. So steht es auch bei der Bundesbank: Die Verrechnung erfolgt „über Zentralbankkonten“.<span class="sidenote-ref"></span><span class="sidenote">Bundesbank, <a href="https://www.bundesbank.de/resource/blob/665284/c0eeb9d1460e0489c7b5f55cf98c98c6/mL/2017-04-monatsbericht-data.pdf">Monatsbericht April 2017</a>, S. 19, Buchungsbeispiel 1b. Dort kauft Kunde X eine Maschine bei Kunde Y.</span></p>
+  </details>
+</div>
+
+<h2 id="zwei-ebenen">1 · Geld auf zwei Ebenen</h2>
+
+<p>Was du in Lektion 0001 über dich und deine Bank gelernt hast, wiederholt sich eine Ebene höher. Deine Bank hat selbst ein Konto, und zwar bei der Zentralbank (in Deutschland bei der Bundesbank als Teil des Eurosystems).</p>
+
+<table class="facts">
+  <tr><th></th><th>Ebene 1: Nichtbanken</th><th>Ebene 2: Banken</th></tr>
+  <tr><td>Wer hat das Konto?</td><td>du, Unternehmen, Staat</td><td>Geschäftsbanken</td></tr>
+  <tr><td>Bei wem?</td><td>bei einer Geschäftsbank</td><td>bei der Zentralbank</td></tr>
+  <tr><td>Wie heißt das Geld?</td><td>Buchgeld (Sichteinlage)</td><td>Zentralbankguthaben</td></tr>
+  <tr><td>Wessen Schuld ist es?</td><td>der Geschäftsbank</td><td>der Zentralbank</td></tr>
+  <tr><td>Wer kann es schaffen?</td><td>jede Geschäftsbank, durch Kredit</td><td>nur die Zentralbank</td></tr>
+</table>
+
+<p><strong>Zentralbankgeld</strong> sind die Zentralbankguthaben der Banken und das Bargeld. Denn Banknoten sind ebenfalls Zentralbankgeld: Nur die EZB darf ihre Ausgabe genehmigen, und nur diese Banknoten sind gesetzliches Zahlungsmittel.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://lxgesetze.de/aeuv/128">Art. 128 Abs. 1 AEUV</a>: „Die Europäische Zentralbank hat das ausschließliche Recht, die Ausgabe von Euro-Banknoten innerhalb der Union zu genehmigen.“</span> Wenn du am Automaten Geld abhebst, tauschst du also eine Forderung gegen deine Bank gegen eine Forderung gegen die Zentralbank.</p>
+
+<div class="keyidea"><span class="label">Kernidee 1</span>
+Es gibt zwei Arten von Geld: <strong>Buchgeld</strong> (Schuld einer Geschäftsbank, für uns alle) und <strong>Zentralbankgeld</strong> (Schuld der Zentralbank: Guthaben der Banken + Bargeld). Geschäftsbanken können nur das erste selbst schaffen.</div>
+
+<h2 id="simulator">2 · Selbst buchen: Geld wechselt die Bank</h2>
+
+<p>Fünf Bilanzen: Anna und Bank A, Bernd und Bank B, darüber die Zentralbank. Beide Banken haben sich vorab je 300 € Zentralbankguthaben bei der Zentralbank geliehen. Oben laufen zwei Zähler: die <strong>Geldmenge</strong> (was Nichtbanken halten) und das <strong>Zentralbankgeld</strong> (was die Zentralbank schuldet).<span class="sidenote-ref"></span><span class="sidenote">„Eigenkapital“ bei Bernd und Anna heißt hier einfach: Reinvermögen, also was übrig bleibt, wenn man alle Schulden abzieht.</span></p>
+
+<p><strong>Auftrag:</strong> Lass Anna einen Kredit aufnehmen und das Fahrrad kaufen. Wenn es hakt: Finde selbst heraus, was Bank A tun muss. Achte bei jedem Klick darauf, <em>welcher</em> der beiden Zähler sich bewegt.</p>
+
+<div class="panel wide">
+  <p class="panel-title">Bilanz-Simulator: zwei Banken und eine Zentralbank</p>
+  <div id="sim"></div>
+</div>
+
+<script>
+const G = (s, id, side, k) => s[id][side][k] || 0;
+Bilanz.mount(document.getElementById("sim"), {
+  actors: [
+    { id: "anna", name: "Anna", aktiva: { "Guthaben bei Bank A": 0, "Bargeld": 0, "Fahrrad": 0 }, passiva: { "Kreditschuld bei Bank A": 0, "Eigenkapital": 0 } },
+    { id: "bernd", name: "Bernd (Fahrradladen)", aktiva: { "Guthaben bei Bank B": 0, "Fahrräder": 3000 }, passiva: { "Eigenkapital": 3000 } },
+    { id: "zb", name: "Zentralbank", kind: "bank", aktiva: { "Kredite an Banken": 600 }, passiva: { "Guthaben Bank A": 300, "Guthaben Bank B": 300, "Banknotenumlauf": 0 } },
+    { id: "bankA", name: "Bank A", kind: "bank", aktiva: { "Zentralbankguthaben": 300, "Kasse (Banknoten)": 0, "Kredit an Anna": 0 }, passiva: { "Kredit von Zentralbank": 300, "Einlage Anna": 0 } },
+    { id: "bankB", name: "Bank B", kind: "bank", aktiva: { "Zentralbankguthaben": 300 }, passiva: { "Kredit von Zentralbank": 300, "Einlage Bernd": 0 } },
+  ],
+  counters: [
+    { label: "Geldmenge (Bargeld + Guthaben von Anna und Bernd)", fn: (s) => G(s,"anna","aktiva","Guthaben bei Bank A") + G(s,"anna","aktiva","Bargeld") + G(s,"bernd","aktiva","Guthaben bei Bank B") },
+    { label: "Zentralbankgeld (Guthaben der Banken + Banknoten)", fn: (s) => Object.values(s.zb.passiva).reduce((a, b) => a + b, 0) },
+  ],
+  intro: "Ausgangslage: Niemand hat Buchgeld, die Banken haben je 300 € Zentralbankguthaben. Anna möchte ein Fahrrad für 1.000 € kaufen.",
+  actions: [
+    { label: "Anna nimmt 1.000 € Kredit bei Bank A",
+      enabled: (s) => G(s,"anna","passiva","Kreditschuld bei Bank A") < 2000,
+      run: (s, book) => {
+        book("bankA","aktiva","Kredit an Anna",1000); book("bankA","passiva","Einlage Anna",1000);
+        book("anna","aktiva","Guthaben bei Bank A",1000); book("anna","passiva","Kreditschuld bei Bank A",1000);
+        return "Wie in Lektion 0001: <strong>Bank A schafft 1.000 € Buchgeld.</strong> Die Geldmenge steigt. Die Zentralbank merkt davon nichts: Ihre Bilanz und das Zentralbankgeld bleiben unverändert.";
+      } },
+    { label: "Anna kauft bei Bernd ein Rad für 1.000 €",
+      enabled: (s) => G(s,"anna","aktiva","Guthaben bei Bank A") >= 1000 && G(s,"bernd","aktiva","Fahrräder") >= 1000,
+      run: (s, book) => {
+        if (G(s,"bankA","aktiva","Zentralbankguthaben") < 1000)
+          return "<strong>Überweisung hängt!</strong> Bank A müsste Bank B 1.000 € Zentralbankguthaben übertragen, hat aber nur " + Bilanz.fmt(G(s,"bankA","aktiva","Zentralbankguthaben")) + ". Ihr eigenes Buchgeld nimmt Bank B nicht. Was kann Bank A tun?";
+        book("anna","aktiva","Guthaben bei Bank A",-1000); book("anna","aktiva","Fahrrad",1000);
+        book("bernd","aktiva","Fahrräder",-1000); book("bernd","aktiva","Guthaben bei Bank B",1000);
+        book("bankA","passiva","Einlage Anna",-1000); book("bankA","aktiva","Zentralbankguthaben",-1000);
+        book("bankB","passiva","Einlage Bernd",1000); book("bankB","aktiva","Zentralbankguthaben",1000);
+        book("zb","passiva","Guthaben Bank A",-1000); book("zb","passiva","Guthaben Bank B",1000);
+        return "<strong>Überweisung durch.</strong> Annas Guthaben bei A verschwindet, Bernds Guthaben bei B entsteht. Gleichzeitig wandern 1.000 € Zentralbankguthaben von A nach B. Die Zentralbank schuldet jetzt Bank B mehr und Bank A weniger. <em>Beide Zähler bleiben gleich:</em> Geld hat nur den Besitzer gewechselt.";
+      } },
+    { label: "Bank A leiht sich 1.000 € bei der Zentralbank",
+      enabled: (s) => G(s,"bankA","passiva","Kredit von Zentralbank") < 3300,
+      run: (s, book) => {
+        book("zb","aktiva","Kredite an Banken",1000); book("zb","passiva","Guthaben Bank A",1000);
+        book("bankA","aktiva","Zentralbankguthaben",1000); book("bankA","passiva","Kredit von Zentralbank",1000);
+        return "<strong>Die Zentralbank schafft Zentralbankgeld</strong>, genau wie Bank A vorhin Buchgeld geschaffen hat: durch einen Kredit, also eine Bilanzverlängerung. Im echten Leben verlangt sie dafür <em>Sicherheiten</em> (z. B. Wertpapiere) und einen <em>Zins</em>. Die Geldmenge ändert sich dadurch nicht, nur das Zentralbankgeld.";
+      } },
+    { label: "Bernd zahlt Anna 400 € für Webdesign",
+      enabled: (s) => G(s,"bernd","aktiva","Guthaben bei Bank B") >= 400 && G(s,"bankB","aktiva","Zentralbankguthaben") >= 400,
+      run: (s, book) => {
+        book("bernd","aktiva","Guthaben bei Bank B",-400); book("bernd","passiva","Eigenkapital",-400);
+        book("anna","aktiva","Guthaben bei Bank A",400); book("anna","passiva","Eigenkapital",400);
+        book("bankB","passiva","Einlage Bernd",-400); book("bankB","aktiva","Zentralbankguthaben",-400);
+        book("bankA","passiva","Einlage Anna",400); book("bankA","aktiva","Zentralbankguthaben",400);
+        book("zb","passiva","Guthaben Bank B",-400); book("zb","passiva","Guthaben Bank A",400);
+        return "<strong>Rückfluss.</strong> Jetzt fließt Zentralbankguthaben von B zurück zu A. Im Alltag laufen täglich Millionen Zahlungen in beide Richtungen. Eine Bank braucht Zentralbankgeld deshalb vor allem für den <em>Saldo</em> ihrer Zu- und Abflüsse.";
+      } },
+    { label: "Bank A holt 200 € Banknoten bei der Zentralbank",
+      enabled: (s) => G(s,"bankA","aktiva","Zentralbankguthaben") >= 200,
+      run: (s, book) => {
+        book("bankA","aktiva","Zentralbankguthaben",-200); book("bankA","aktiva","Kasse (Banknoten)",200);
+        book("zb","passiva","Guthaben Bank A",-200); book("zb","passiva","Banknotenumlauf",200);
+        return "<strong>Zentralbankgeld wechselt die Form:</strong> Guthaben wird zu Banknoten. Beides ist eine Schuld der Zentralbank, das Zentralbankgeld bleibt gleich. Banknoten bekommt eine Bank also nur, wenn sie Zentralbankguthaben hat.";
+      } },
+    { label: "Anna hebt 200 € bar ab",
+      enabled: (s) => G(s,"anna","aktiva","Guthaben bei Bank A") >= 200 && G(s,"bankA","aktiva","Kasse (Banknoten)") >= 200,
+      run: (s, book) => {
+        book("anna","aktiva","Guthaben bei Bank A",-200); book("anna","aktiva","Bargeld",200);
+        book("bankA","passiva","Einlage Anna",-200); book("bankA","aktiva","Kasse (Banknoten)",-200);
+        return "Anna tauscht eine Forderung gegen Bank A gegen eine Forderung gegen die Zentralbank, denn eine Banknote ist genau das. Die Geldmenge bleibt gleich, nur die Form ändert sich.";
+      } },
+  ],
+});
+</script>
+
+<p><strong>Zum Nachdenken:</strong> Spiel diese Reihenfolge durch: Kredit, Bank A leiht sich Zentralbankgeld, Radkauf, Webdesign. Wie viel Zentralbankguthaben hat Bank A am Ende, und wie viel hätte sie wirklich gebraucht, wenn beide Zahlungen am selben Tag verrechnet worden wären?</p>
+
+<h2 id="beschaffen">3 · Woher Banken Zentralbankgeld bekommen</h2>
+
+<p>Laut Bundesbank hat eine Bank, der Zentralbankguthaben fehlt, drei Wege:<span class="sidenote-ref"></span><span class="sidenote">Monatsbericht April 2017, S. 19 mit Fußnote 13.</span></p>
+
+<ol>
+  <li><strong>Von anderen Banken leihen</strong>, auf dem <em>Interbankenmarkt</em>.</li>
+  <li><strong>Von der Zentralbank leihen</strong>. Dafür muss sie anerkannte <em>Sicherheiten</em> hinterlegen, etwa Wertpapiere oder Kreditforderungen.</li>
+  <li><strong>Einlagen von Kunden anderer Banken anwerben</strong>. Wechselt ein Kunde mit seinem Guthaben zu ihr, kommt Zentralbankguthaben mit.</li>
+</ol>
+
+<p>Zusätzlich müssen Banken eine <strong>Mindestreserve</strong> auf ihrem Zentralbankkonto halten: seit 2012 1 % ihrer Einlagen.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.bundesbank.de/de/aufgaben/geldpolitik/mindestreserven/mindestreserven-602268">Bundesbank: Mindestreserven</a>. Sie soll „die Geldmarktsätze stabilisieren und einen Bedarf nach Zentralbankgeld seitens des Bankensektors schaffen“. Seit September 2023 wird sie nicht mehr verzinst.</span> Auch dafür brauchen sie Zentralbankgeld.</p>
+
+<p>Alle drei Wege kosten einen <strong>Zins</strong>, und dessen Niveau bestimmt letztlich die Zentralbank. Das ist ihr wichtigster Hebel: Wird Zentralbankgeld teurer, werden auch Bankkredite teurer, und die Banken schaffen weniger Buchgeld. Wie das genau funktioniert, ist Thema von Lektion 0003.</p>
+
+<div class="keyidea"><span class="label">Kernidee 2</span>
+Kredite schaffen Banken frei per Buchung. Aber jede Zahlung an eine andere Bank und jede Barabhebung kostet sie <strong>Zentralbankgeld</strong>, und das bekommen sie nur zu einem Preis, den die Zentralbank setzt.</div>
+
+<h2 id="warum">4 · Warum braucht es eine Zentralbank?</h2>
+
+<p>Ganz ohne Zentralbank ginge es theoretisch auch: Banken könnten Konten beieinander führen und Zahlungen darüber verrechnen. Das gibt es sogar.<span class="sidenote-ref"></span><span class="sidenote">„Korrespondenzkonten“, Monatsbericht April 2017, S. 19, Fußnote 12.</span> Vier Gründe sprechen aber für eine Zentralbank:</p>
+
+<h3>1. Ein Geld ohne Ausfallrisiko</h3>
+<p>Wer eine Zahlung von einer anderen Bank annimmt, übernimmt deren Risiko, solange er nur einen Schuldschein dieser Bank hält. Bei der Zentralbank fällt das weg: Sie kann ihr eigenes Geld immer liefern, denn sie schafft es selbst. Deshalb laufen gerade große Zahlungen über Zentralbankkonten, weil „bei Zentralbanken praktisch keine Kredit- und Liquiditätsrisiken bestehen“.<span class="sidenote-ref"></span><span class="sidenote">Monatsbericht April 2017, S. 18, Fußnote 11.</span></p>
+
+<h3>2. Bargeld, dem alle trauen</h3>
+<p>Früher gaben oft viele Banken eigene Banknoten aus. Selbst im Deutschen Reich druckten neben der Reichsbank noch regionale Notenbanken eigenes Geld, die letzten verloren dieses Recht erst in den 1930er-Jahren.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://de.wikipedia.org/wiki/Notenprivileg">Wikipedia: Notenprivileg</a>.</span> Heute hat im Euroraum allein das Eurosystem dieses Recht (Art. 128 AEUV, siehe oben). Ein Zwanziger ist überall gleich viel wert, egal welche Bank ihn ausgezahlt hat.</p>
+
+<h3>3. Retter in der Not beim Bank Run</h3>
+<p>Eine Bank hat ihr Geld in Krediten stecken, die erst in Jahren zurückkommen. Ihre Einleger können aber <em>heute</em> abheben. Wollen das plötzlich alle, droht selbst einer gesunden Bank die Pleite. Das ist ein <strong>Bank Run</strong>. Nur eine Zentralbank kann dann sofort Zentralbankgeld in beliebiger Menge bereitstellen.</p>
+<p>Ein Lehrstück ist die <strong>Panik von 1907</strong> in New York. Im Oktober 1907 kam es zu einem Ansturm auf die Knickerbocker Trust Company, die nach Abhebungen von fast 8 Millionen Dollar schließen musste. Die Zinsen für Tagesgeld schossen auf 100 %. Die USA hatten damals als einzige große Finanzmacht keine Zentralbank, und so musste der Bankier J. P. Morgan mit privatem Geld einspringen. Die Panik gab den Anstoß zur Gründung der Federal Reserve, deren Gesetz Präsident Wilson am 23. Dezember 1913 unterzeichnete.<span class="sidenote-ref"></span><span class="sidenote">Federal Reserve History: <a href="https://www.federalreservehistory.org/essays/panic-of-1907">The Panic of 1907</a> und <a href="https://www.federalreservehistory.org/essays/federal-reserve-act-signed">Federal Reserve Act Signed into Law</a>.</span></p>
+
+<h3>4. Jemand muss auf den Wert des Geldes achten</h3>
+<p>Wer den Preis des Zentralbankgeldes setzt, beeinflusst, wie viel Kredit und damit wie viel Buchgeld entsteht, und damit am Ende auch die Preise. Deshalb hat das Eurosystem einen klaren Auftrag: „Das vorrangige Ziel des Europäischen Systems der Zentralbanken […] ist es, die Preisstabilität zu gewährleisten.“<span class="sidenote-ref"></span><span class="sidenote"><a href="https://lxgesetze.de/aeuv/127">Art. 127 Abs. 1 AEUV</a>. Zu den Aufgaben gehört laut Abs. 2 ausdrücklich auch, „das reibungslose Funktionieren der Zahlungssysteme zu fördern“.</span></p>
+
+<p><strong>Die Kehrseite</strong>, und damit sind wir bei deinen Fragen zu 1923 und 1948: Eine Zentralbank kann Zentralbankgeld in beliebiger Menge schaffen. Wenn sie das nicht für Banken in Not tut, sondern um einem Staat im Krieg die Ausgaben zu bezahlen, verliert das Geld seinen Wert. Genau das ist im Ersten Weltkrieg und danach in Deutschland passiert. Dazu kommen wir in Lektion 0005.</p>
+
+<h2 id="quiz">5 · Abruf</h2>
+
+<div class="quiz">
+  <p class="q">Anna (Bank A) überweist Bernd (Bank B) 1.000 €. Was überträgt Bank A an Bank B?</p>
+  <ul>
+    <li data-correct data-feedback="Die Verrechnung läuft über die Konten der Banken bei der Zentralbank. Die Zentralbank schuldet danach Bank B 1.000 € mehr und Bank A 1.000 € weniger.">1.000 € Zentralbankguthaben über ihr Konto bei der Zentralbank.</li>
+    <li data-feedback="Bargeld spielt bei Überweisungen keine Rolle. Die Verrechnung läuft über Zentralbankkonten.">1.000 € Bargeld, das per Geldtransporter hinübergebracht wird.</li>
+    <li data-feedback="Bank B übernimmt eine Schuld gegenüber Bernd. Dafür will sie einen Gegenwert, dem sie sicher trauen kann: Zentralbankguthaben.">Nichts, Bank B bucht Bernd einfach neues Geld gut.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Wie verändert diese Überweisung die Geldmenge?</p>
+  <ul>
+    <li data-correct data-feedback="Annas Guthaben sinkt, Bernds steigt um denselben Betrag. Zentralbankguthaben zählt ohnehin nicht zur Geldmenge, denn die umfasst nur, was Nichtbanken halten.">Gar nicht, das Guthaben wechselt nur seinen Besitzer.</li>
+    <li data-feedback="Zentralbankguthaben gehört nicht zur Geldmenge (M1–M3). Die umfasst nur Bargeld und Einlagen der Nichtbanken.">Sie sinkt, weil Bank A dabei Zentralbankguthaben verliert.</li>
+    <li data-feedback="Bank B schafft hier kein neues Geld. Sie übernimmt Bernds Guthaben, das bei Bank A verschwindet.">Sie steigt, weil Bank B neues Buchgeld für Bernd schafft.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Bank A vergibt Anna einen Kredit über 1.000 €. Was passiert dabei sofort mit dem Zentralbankguthaben von Bank A?</p>
+  <ul>
+    <li data-correct data-feedback="Die Kreditvergabe ist eine reine Buchung bei Bank A. Zentralbankgeld braucht sie erst, wenn Anna an eine andere Bank überweist oder Bargeld abhebt.">Nichts, sie braucht es erst beim Abfluss.</li>
+    <li data-feedback="Bank A zahlt nichts aus. Sie schreibt Anna ein Guthaben gut, das ist ihre eigene Schuld.">Es sinkt um 1.000 €, weil sie auszahlt.</li>
+    <li data-feedback="Ihre Mindestreserve-<em>Pflicht</em> steigt zwar um 1 % der neuen Einlage, also 10 €. Ihr Guthaben ändert sich durch die Buchung aber nicht.">Es sinkt um 10 € wegen der Mindestreserve.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Woher kann sich Bank A fehlendes Zentralbankguthaben besorgen?</p>
+  <ul>
+    <li data-correct data-feedback="Interbankenmarkt oder Zentralbank (gegen anerkannte Sicherheiten). Außerdem kann sie Einlagen von Kunden anderer Banken anwerben.">Von anderen Banken oder von der Zentralbank gegen Sicherheiten.</li>
+    <li data-feedback="Zentralbankguthaben kann nur die Zentralbank schaffen. Das ist der ganze Punkt der zweiten Ebene.">Sie bucht es sich einfach selbst auf ihr Zentralbankkonto.</li>
+    <li data-feedback="Einlagen der eigenen Kunden sind Buchgeld von Bank A selbst. Daraus wird kein Zentralbankgeld. Hilfreich sind nur Einlagen, die von <em>anderen</em> Banken zu ihr wechseln.">Sie wandelt Spareinlagen ihrer Kunden in Zentralbankgeld um.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Warum laufen Zahlungen zwischen Banken meist über Konten bei der Zentralbank?</p>
+  <ul>
+    <li data-correct data-feedback="Die Zentralbank kann ihr eigenes Geld immer liefern. Wer Zentralbankguthaben erhält, trägt kein Ausfallrisiko (Monatsbericht April 2017, S. 18).">Bei ihr besteht praktisch kein Kredit- und Liquiditätsrisiko.</li>
+    <li data-feedback="Korrespondenzkonten zwischen Banken sind erlaubt und üblich. Dann tragen die Banken aber gegenseitig ihr Ausfallrisiko.">Das Gesetz verbietet Banken jegliche Konten bei anderen Banken.</li>
+    <li data-feedback="Mit Technik hat das nichts zu tun, sondern mit Vertrauen: Zentralbankgeld kann nicht ausfallen.">Nur die Zentralbank besitzt die nötige Rechentechnik dafür.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Was lehrt die Panik von 1907 in den USA?</p>
+  <ul>
+    <li data-correct data-feedback="Ohne Zentralbank musste J. P. Morgan privat einspringen. Die Krise gab den Anstoß zum Federal Reserve Act von 1913.">Ohne Zentralbank fehlt beim Bank Run ein Retter.</li>
+    <li data-feedback="Umgekehrt: Die USA hatten 1907 gar keine Zentralbank. Gerade das machte die Panik so schwer zu stoppen.">Zentralbanken verursachen Bank Runs durch zu viel Geld.</li>
+    <li data-feedback="Betroffen waren große New Yorker Trust Companies wie die Knickerbocker Trust. Ein Run kann jede Bank treffen.">Bank Runs treffen nur sehr kleine, unbekannte Banken.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Was ist laut EU-Vertrag das vorrangige Ziel des Eurosystems?</p>
+  <ul>
+    <li data-correct data-feedback="Art. 127 Abs. 1 AEUV. Was „Preisstabilität“ konkret heißt (die EZB strebt 2 % Inflation an), klären wir in Lektion 0004.">Preisstabilität</li>
+    <li data-feedback="Vollbeschäftigung ist im Mandat der US-Fed ausdrücklich genannt, beim Eurosystem steht Preisstabilität an erster Stelle (Art. 127 AEUV).">Vollbeschäftigung</li>
+    <li data-feedback="Die Stabilität der Zahlungssysteme ist eine Aufgabe, aber das vorrangige Ziel ist Preisstabilität (Art. 127 Abs. 1 AEUV).">Bankenrettung</li>
+  </ul>
+</div>
+
+<h2 id="weiter">Weiterlesen & nachfragen</h2>
+
+<div class="source-box">
+  <span class="label">Primärquelle zum Vertiefen (ca. 10 Min.)</span>
+  <p><a href="https://www.bundesbank.de/resource/blob/665284/c0eeb9d1460e0489c7b5f55cf98c98c6/mL/2017-04-monatsbericht-data.pdf"><strong>Bundesbank, Monatsbericht April 2017, S. 18–19</strong></a>: Buchungsbeispiele 1a und 1b sind genau das, was du gerade im Simulator gemacht hast, inklusive der Fußnoten zu Sicherheiten und Mindestreserve. Für die Geschichte: das Essay <a href="https://www.federalreservehistory.org/essays/panic-of-1907">„The Panic of 1907“</a> der Federal Reserve (Englisch, gut lesbar).</p>
+</div>
+
+<div class="ask-box">
+  <span class="label">Etwas unklar?</span>
+  <p>Frag mich im Chat, zum Beispiel: „Wie viel Zentralbankgeld gibt es eigentlich im Euroraum?“, „Was ist TARGET?“ oder „Warum hat die Zentralbank selbst keine Bank, bei der sie ihr Konto führt?“. Und sag mir, wie das Quiz gelaufen ist.</p>
+</div>
+
+<p>Kompakt zum Nachschlagen: <a href="../reference/geldschoepfung-buchungen.html">Spickzettel: Geldschöpfung in Buchungen</a> (jetzt mit der Überweisung zwischen Banken).</p>
+
+<nav class="lesson-nav" data-current="0002"></nav>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inhaltsverzeichnis · Ausleuchtung einer Hubschrauberlandung</title>
+<link rel="stylesheet" href="assets/course.css">
+</head>
+<body>
+<main>
+  <p class="kicker">Kurs · FF Pattenhofen</p>
+  <h1>Ausleuchtung einer Hubschrauberlandung</h1>
+  <p class="lead">Vom Regelwissen zur Übung: einen Nachtlandeplatz mit TSF-Beladung einrichten und dabei den Gruppenwechsel am Handfunkgerät trainieren.</p>
+
+  <div class="box goal">
+    <h3>Für die Übung am Donnerstag, 1.10., 20:00 Uhr</h3>
+    <p><a href="reference/uebung-2026-10-01-drehbuch.html"><strong>Übungsdrehbuch</strong></a> · <a href="reference/melden-lagemeldung.html"><strong>Meldekarte MELDEN</strong></a> · <a href="reference/nachtlandeplatz-taschenkarte.html"><strong>Taschenkarte</strong></a> · <a href="reference/briefing-leitfaden.html"><strong>Briefing-Leitfaden</strong></a> · <a href="reference/handout-mannschaft.html"><strong>Handout</strong></a> (8× drucken) · <a href="reference/uebungsleiter-funk-cheatsheet.html"><strong>Funk-Cheat-Sheet Übungsleiter</strong></a> · <a href="reference/heli-sound.html"><strong>Hubschrauber-Sound</strong></a> (Handy)</p>
+  </div>
+
+  <h2>Inhaltsverzeichnis</h2>
+  <ol class="toc" id="toc"></ol>
+
+  <h2>Arbeitsdateien</h2>
+  <p class="meta">MISSION.md (Ziel des Kurses) · RESOURCES.md (geprüfte Quellen) · NOTES.md (Notizen) · learning-records/ (Lernstand)</p>
+
+  <div class="box ask">
+    <h3>Fragen?</h3>
+    <p>Frag mich (Claude) im Terminal. Nach der Übung erzählst du mir, wie es lief, und wir machen daraus Lektion 3.</p>
+  </div>
+</main>
+<script src="assets/nav.js"></script>
+<script>
+  // Inhaltsverzeichnis aus derselben Liste wie die Navigation erzeugen
+  var desc = {
+    "lessons/0001-der-nachtlandeplatz.html": "Auswahl, Absicherung, Ausleuchtung, Funk, Landung, Start – mit Quiz und Aufbauskizze für TSF + Pkw.",
+    "reference/nachtlandeplatz-taschenkarte.html": "Die sechs Schritte, Skizze und Funktabelle auf einen Blick.",
+    "lessons/0002-die-uebung-als-drehbuch.html": "Anmeldung, zwei Funkgruppen, Einspielungen, Blendungs-Check – mit Quiz.",
+    "reference/uebung-2026-10-01-drehbuch.html": "Checkliste, Rollen, Funkplan 324/322/320, Zeitplan, Einspielkarten, Beobachtungsbogen.",
+    "reference/melden-lagemeldung.html": "Lagemeldung und Vollzugsmeldung im Wortlaut, Ausfüllvorlage.",
+    "reference/briefing-leitfaden.html": "Stichpunkte und Fragen für die 15 Minuten Einweisung vor Übungsbeginn.",
+    "reference/handout-mannschaft.html": "Eine A4-Seite zum Austeilen: sechs Schritte, Skizze, Funk, Sicherheit."
+  };
+  var toc = document.getElementById("toc");
+  CourseNav.pages.slice(1).forEach(function (p) {
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="kind"></span><a></a><span class="desc"></span>';
+    li.querySelector(".kind").textContent = p.kind;
+    var a = li.querySelector("a"); a.href = p.href; a.textContent = p.title;
+    li.querySelector(".desc").textContent = desc[p.href] || "";
+    toc.appendChild(li);
+  });
+</script>
+</body>
+</html>

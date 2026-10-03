@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Leitzins</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/linechart.js"></script>
+<script src="../assets/rechner.js"></script>
+</head>
+<body>
+<main>
+
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Lektion 0003 · Geldpolitik</p>
+  <h1>Der Leitzins</h1>
+  <p class="subtitle">Die EZB legt fest, was Zentralbankgeld kostet. Daraus wird, über einige Zwischenstationen und mit Verzögerung, der Zins für deinen Immobilienkredit.</p>
+  <p class="meta">ca. 25 Minuten · Aufwärmen + Diagramm + Rechner + 8 Quizfragen</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="aufwaermen">Aufwärmen</h2>
+
+<div class="quiz-score"></div>
+
+<div class="quiz">
+  <p class="q">Bernd hebt bei Bank B 500 € bar ab. Was braucht Bank B dafür?</p>
+  <ul>
+    <li data-correct data-feedback="Banknoten sind Zentralbankgeld. Bank B bekommt sie nur gegen ihr Zentralbankguthaben (Lektion 0002).">Banknoten, die sie gegen Zentralbankguthaben bei der Zentralbank holt.</li>
+    <li data-feedback="Nur das Eurosystem darf Euro-Banknoten ausgeben (Art. 128 AEUV).">Nichts weiter, sie druckt die Banknoten einfach selbst nach.</li>
+    <li data-feedback="Banken zahlen keine „Spareinlagen anderer“ aus. Bernds Guthaben ist eine Schuld von Bank B, und Bargeld muss sie bei der Zentralbank holen.">Spareinlagen anderer Kunden, die sie bar an Bernd auszahlt.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Ein Unternehmen nimmt 50.000 € Bankkredit auf. Was passiert mit der Geldmenge?</p>
+  <ul>
+    <li data-correct data-feedback="Kreditvergabe ist eine Bilanzverlängerung: 50.000 € neues Buchgeld (Lektion 0001).">Sie steigt, denn neues Buchgeld entsteht durch den Kredit.</li>
+    <li data-feedback="Kein Sparer hat danach weniger. Die Einlage des Unternehmens entsteht neu.">Sie bleibt gleich, denn Geld anderer Sparer wird umverteilt.</li>
+    <li data-feedback="Die Kreditvergabe selbst kostet die Bank kein Zentralbankguthaben, und das gehört ohnehin nicht zur Geldmenge.">Sie sinkt, denn die Bank muss dafür Reserven abgeben.</li>
+  </ul>
+</div>
+
+<h2 id="einstieg">Eine Frage vorab</h2>
+
+<div class="predict">
+  <span class="label">Schätzen, dann aufklappen</span>
+  <p>Zwischen Juli 2022 und September 2023 hat die EZB ihren wichtigsten Zins in zehn Schritten von −0,50 % auf 4,00 % angehoben. <strong>Was schätzt du: Wie hoch war der durchschnittliche Zins für einen neuen Immobilienkredit in Deutschland im Dezember 2021, und wie hoch im November 2023?</strong></p>
+  <details>
+    <summary>Auflösung</summary>
+    <p><strong>1,37 % im Dezember 2021, 4,27 % im November 2023</strong>, jeweils effektiver Jahreszins einschließlich Kosten.<span class="sidenote-ref"></span><span class="sidenote">Bundesbank, <a href="https://www.bundesbank.de/resource/blob/615036/aa09ce060a03d2ed87adc856473c54eb/472B63F073F071307366337C94F8C870/s510athyp-data.pdf">Zinsstatistik: Wohnungsbaukredite an private Haushalte, Neugeschäft</a>, Stand 01.10.2026.</span> Die Bauzinsen haben sich also mehr als verdreifacht. Was das für Hauskäufer bedeutet, rechnest du gleich selbst aus.</p>
+  </details>
+</div>
+
+<h2 id="korridor">1 · Drei Leitzinsen, und einer zählt</h2>
+
+<p>In Lektion 0002 hast du gesehen: Banken brauchen Zentralbankgeld. Die EZB setzt dafür drei Zinssätze, die „Leitzinsen“:<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.de.html">EZB: Leitzinsen</a>, gültig ab 16. September 2026.</span></p>
+
+<table class="facts">
+  <tr><th>Leitzins</th><th>Was er ist</th><th class="num">seit 16.09.2026</th></tr>
+  <tr><td><strong>Einlagefazilität</strong></td><td>Zins, den eine Bank bekommt, wenn sie überschüssiges Zentralbankguthaben über Nacht bei der Zentralbank parkt</td><td class="num"><strong>2,50 %</strong></td></tr>
+  <tr><td>Hauptrefinanzierung</td><td>Zins für die regulären wöchentlichen Kredite der Zentralbank an Banken, gegen Sicherheiten</td><td class="num">2,65 %</td></tr>
+  <tr><td>Spitzenrefinanzierung</td><td>Notfall-Kredit über Nacht, teuerste Variante</td><td class="num">2,90 %</td></tr>
+</table>
+
+<p>Wenn in den Nachrichten vom „Leitzins“ die Rede ist, ist heute meist der <strong>Einlagesatz</strong> gemeint. Die EZB sagt das ausdrücklich: Sie werde „den geldpolitischen Kurs weiterhin über den Zinssatz für die Einlagefazilität steuern“.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/ecb-and-you/explainers/html/operational_framework.de.html">EZB-Erklärseite zum operativen Handlungsrahmen</a> (Beschluss vom März 2024). Seit 18.09.2024 liegt der Hauptrefinanzierungssatz nur noch 0,15 Prozentpunkte über dem Einlagesatz, vorher waren es 0,50.</span></p>
+
+<p><strong>Warum gerade dieser?</strong> Seit den Krisenjahren nach 2008 haben Banken insgesamt viel mehr Zentralbankguthaben, als sie brauchen. Das nennt man Überschussliquidität. Keine Bank verleiht ihr überschüssiges Guthaben an eine andere Bank für weniger, als sie risikolos bei der Zentralbank bekommt. Der Einlagesatz bildet damit einen <strong>Boden</strong> für alle kurzfristigen Zinsen am Geldmarkt. Hebt die EZB den Boden an, steigt alles darüber mit.</p>
+
+<div class="keyidea"><span class="label">Kernidee 1</span>
+Der <strong>Einlagesatz</strong> ist der Preis-Boden für Zentralbankgeld. Über ihn legt die EZB fest, was kurzfristiges Geld unter Banken kostet, und damit den Ausgangspunkt für alle anderen Zinsen.</div>
+
+<h2 id="kette">2 · Vom Leitzins zu deinem Kredit</h2>
+
+<p>Was passiert, wenn die EZB den Einlagesatz erhöht? Die EZB beschreibt eine Kette, den <em>Transmissionsmechanismus</em>:<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/mopo/intro/transmission/html/index.de.html">EZB: Transmissionsmechanismus der Geldpolitik</a>.</span></p>
+
+<ol>
+  <li><strong>Geldmarkt:</strong> Kurzfristige Zinsen zwischen Banken steigen sofort mit.</li>
+  <li><strong>Bankzinsen:</strong> Banken verlangen mehr für Kredite und zahlen mehr für Einlagen, denn ihr eigenes Zentralbankgeld ist teurer und das Parken bei der EZB lohnt mehr.</li>
+  <li><strong>Kreditnachfrage:</strong> Weniger Unternehmen und Haushalte nehmen Kredite auf. Sparen wird attraktiver.</li>
+  <li><strong>Geldschöpfung:</strong> Weniger neue Kredite heißt weniger neues Buchgeld (Lektion 0001).</li>
+  <li><strong>Nachfrage und Preise:</strong> Es wird weniger gebaut, investiert und gekauft. Unternehmen können Preise schwerer erhöhen, und die Inflation lässt nach.</li>
+</ol>
+
+<p>Parallel wirken weitere Kanäle: <strong>Erwartungen</strong> („Erwartungen von zukünftigen Zinsänderungen beeinflussen mittelfristige und langfristige Zinssätze“), <strong>Vermögenspreise</strong> wie Aktien und Immobilien sowie der <strong>Wechselkurs</strong>. Und das Ganze dauert: Die Kette ist laut EZB „durch lange, variable und unsichere Zeitverzögerungen gekennzeichnet“.</p>
+
+<h3>Die Daten: Einlagesatz und Bauzins seit 2021</h3>
+
+<p>Fahr mit der Maus über das Diagramm. Achte auf zwei Dinge: <em>Wann</em> beginnen die Bauzinsen zu steigen? Und was passiert mit ihnen, als die EZB ab Juni 2024 wieder senkt?</p>
+
+<div class="panel wide">
+  <p class="panel-title">EZB-Einlagesatz und Zins für neue Wohnungsbaukredite in Deutschland, in % p. a.</p>
+  <div id="chart"></div>
+  <p style="font-size:.75rem;color:var(--muted);margin:.6rem 0 0">Quellen: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.de.html">EZB, Leitzinsen</a> (Stand am Monatsende); <a href="https://www.bundesbank.de/resource/blob/615036/aa09ce060a03d2ed87adc856473c54eb/472B63F073F071307366337C94F8C870/s510athyp-data.pdf">Bundesbank, Zinsstatistik</a>, effektiver Jahreszins inkl. Kosten, alle Zinsbindungen.</p>
+</div>
+
+<script>
+(function () {
+  const labels = [];
+  for (let y = 2021, mo = 11; y < 2026 || mo <= 9; mo++) { if (mo > 12) { mo = 1; y++; } labels.push(y + "-" + String(mo).padStart(2, "0")); if (y === 2026 && mo === 9) break; }
+  // Einlagesatz am Monatsende, aus den Änderungsdaten der EZB
+  const changes = [["2022-07",0.00],["2022-09",0.75],["2022-11",1.50],["2022-12",2.00],["2023-02",2.50],["2023-03",3.00],["2023-05",3.25],["2023-06",3.50],["2023-08",3.75],["2023-09",4.00],["2024-06",3.75],["2024-09",3.50],["2024-10",3.25],["2024-12",3.00],["2025-02",2.75],["2025-03",2.50],["2025-04",2.25],["2025-06",2.00],["2026-06",2.25],["2026-09",2.50]];
+  let cur = -0.50;
+  const dfr = labels.map((l) => { const c = changes.find((x) => x[0] === l); if (c) cur = c[1]; return cur; });
+  const bau = [1.36,1.37, 1.39,1.49,1.69,1.98,2.29,2.62,2.85,2.89,3.08,3.31,3.67,3.60, 3.73,3.85,3.95,3.98,3.99,4.12,4.08,4.19,4.17,4.22,4.27,4.12, 3.90,3.92,3.88,3.91,3.96,3.99,3.97,3.87,3.78,3.69,3.65,3.59, 3.56,3.63,3.64,3.73,3.70,3.72,3.72,3.76,3.78,3.75,3.75,3.80, 3.87,3.85,3.79,3.89,3.99,4.00,3.98,4.05, null];
+  const mon = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  LineChart.mount(document.getElementById("chart"), {
+    labels,
+    series: [
+      { name: "Bauzins (neue Kredite, DE)", values: bau, color: 1 },
+      { name: "EZB-Einlagesatz", values: dfr, color: 2, step: true },
+    ],
+    unit: " %", yMin: -1, yMax: 5, yStep: 1,
+    xTick: (l) => l.endsWith("-01") ? l.slice(0, 4) : null,
+    fmtX: (l) => mon[+l.slice(5) - 1] + " " + l.slice(0, 4),
+    annotations: [{ at: "2022-07", text: "1. Erhöhung" }, { at: "2024-06", text: "1. Senkung" }],
+  });
+})();
+</script>
+
+<p>Zwei Beobachtungen, die du dir merken solltest:</p>
+<ul>
+  <li><strong>Die Bauzinsen liefen der EZB voraus.</strong> Schon von Januar bis Juni 2022 stiegen sie von 1,39 % auf 2,62 %, als der Einlagesatz noch bei −0,50 % lag. Die Märkte <em>erwarteten</em> die Zinswende, und langfristige Zinsen preisen erwartete künftige Leitzinsen ein. Das ist der Erwartungskanal.</li>
+  <li><strong>Die Senkungen kamen kaum an.</strong> Von Juni 2024 bis Juni 2025 halbierte die EZB den Einlagesatz von 4,00 % auf 2,00 %. Die Bauzinsen fielen dagegen nur von etwa 4 % auf gut 3,5 % und stiegen danach wieder. Langfristige Zinsen hängen nicht direkt am Leitzins, sondern an den Erwartungen für die nächsten zehn, zwanzig Jahre.</li>
+</ul>
+
+<div class="keyidea"><span class="label">Kernidee 2</span>
+Der Leitzins steuert direkt nur die <strong>kurzfristigen</strong> Zinsen. Langfristige Zinsen wie Bauzinsen folgen den <strong>Erwartungen</strong> über künftige Leitzinsen und Inflation, manchmal vorauseilend, manchmal kaum.</div>
+
+<h2 id="rechner">3 · Selbst rechnen: Was kann ich mir leisten?</h2>
+
+<p>Was hat das mit Immobilien zu tun? Sehr viel. In Deutschland wird ein Immobilienkredit meist als <em>Annuitätendarlehen</em> vereinbart: eine feste Monatsrate aus Zins und Tilgung. Die Faustformel für die Rate lautet:</p>
+
+<p style="text-align:center;font-size:1.05rem">Monatsrate = Darlehen × (Zins + anfängliche Tilgung) ÷ 12</p>
+
+<p>Dreh es um: Ein Haushalt kann sich eine bestimmte Rate leisten. Wie viel Kredit bekommt er dafür? Nimm die beiden Knöpfe für Dezember 2021 und November 2023 und vergleiche.</p>
+
+<div class="panel wide">
+  <p class="panel-title">Kreditrechner: Annuitätendarlehen</p>
+  <div id="rechner-box"></div>
+</div>
+
+<script>
+Rechner.mount(document.getElementById("rechner-box"), {
+  inputs: [
+    { id: "rate", label: "Monatsrate, die du zahlen kannst", min: 500, max: 4000, step: 50, value: 1500, fmt: (v) => Rechner.eur(v) },
+    { id: "zins", label: "Zins p. a.", min: 0.5, max: 7, step: 0.01, value: 4.27, fmt: (v) => v.toLocaleString("de-DE", { minimumFractionDigits: 2 }) + " %" },
+    { id: "tilg", label: "Anfängliche Tilgung p. a.", min: 1, max: 5, step: 0.5, value: 2, fmt: (v) => v.toLocaleString("de-DE") + " %" },
+  ],
+  presets: [
+    { label: "Dez. 2021: 1,37 %", set: { zins: 1.37 } },
+    { label: "Nov. 2023: 4,27 %", set: { zins: 4.27 } },
+    { label: "Aug. 2026: 4,05 %", set: { zins: 4.05 } },
+  ],
+  compute: (v) => {
+    const darlehen = v.rate * 12 / ((v.zins + v.tilg) / 100);
+    const i = v.zins / 1200;
+    const monate = Math.log((v.zins + v.tilg) / v.tilg) / Math.log(1 + i);
+    const zinsen1 = darlehen * v.zins / 100;
+    return [
+      { label: "Möglicher Kredit", value: Rechner.eur(darlehen), big: true },
+      { label: "davon Zinsen im 1. Jahr", value: Rechner.eur(zinsen1) },
+      { label: "Laufzeit bis schuldenfrei", value: (monate / 12).toLocaleString("de-DE", { maximumFractionDigits: 1 }) + " Jahre" },
+    ];
+  },
+});
+</script>
+
+<p><strong>Was du gerade gesehen hast:</strong> Bei gleicher Rate von 1.500 € und 2 % Tilgung sinkt der mögliche Kredit von gut 534.000 € auf rund 287.000 €, also um fast die Hälfte. Viele Käufer konnten die Preise von 2021 schlicht nicht mehr bezahlen. Im Jahresdurchschnitt 2023 sanken die Preise für Wohnimmobilien in Deutschland um 8,4 %. Laut Statistischem Bundesamt war das der stärkste Rückgang seit Beginn der Zeitreihe im Jahr 2000.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/03/PD24_114_61262.html">Destatis, Pressemitteilung vom März 2024</a>. Destatis nennt selbst keine Ursache. Dass höhere Zinsen die Zahlungsfähigkeit der Käufer senken, zeigt aber dein Rechner.</span> Das ist der Vermögenspreis-Kanal, und er ist eine erste Teilantwort auf deine Frage, ob Immobilien „sicherer“ sind: Ihr Preis hängt stark am Zins.</p>
+
+<p><strong>Kleine Aufgabe:</strong> Stell 1,37 % ein und schau auf die Laufzeit. Warum dauert die Entschuldung bei <em>niedrigem</em> Zins länger, obwohl der Kredit billiger ist?</p>
+<details><summary>Auflösung</summary><p>Bei einer Annuität bleibt die Rate gleich. Mit jeder Zahlung sinkt die Restschuld, also auch der Zinsanteil, und der frei werdende Betrag fließt in die Tilgung. Bei hohem Zins wird dabei mehr frei, die Tilgung beschleunigt sich stärker.</p></details>
+
+<h2 id="aktuell">4 · Fallbeispiele: 2022 und 2026</h2>
+
+<p><strong>2022/23:</strong> Nach Pandemie und russischem Überfall auf die Ukraine erreichte die Inflation im Euroraum im Oktober 2022 10,6 %. Den größten Beitrag lieferte Energie.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/-/2-17112022-ap">Eurostat: Annual inflation up to 10.6% in the euro area</a>.</span> Die EZB erhöhte die Zinsen in nur 14 Monaten von −0,50 % auf 4,00 %, so schnell wie nie seit Gründung des Euro.<span class="sidenote-ref"></span><span class="sidenote">EZB-Blog <a href="https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog240608~aa46b5f2a0.en.html">„Why we adjusted interest rates“</a> (Juni 2024): „the fastest pace ever, by 4.5 percentage points in a little over a year“.</span></p>
+
+<p><strong>2026:</strong> Im Juni und September 2026 erhöhte die EZB erneut, zuletzt auf 2,50 %. Ihre Begründung: Der Konflikt im Nahen Osten erzeuge weiter Inflationsdruck, und die Inflation werde „für längere Zeit deutlich über dem Zielwert bleiben“. Die Fachleute der EZB erwarten 3,0 % Inflation für 2026, 2,5 % für 2027 und 2,1 % für 2028.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html">EZB: Monetary policy decisions, 10. September 2026</a>: „inflation is set to remain well above target for an extended period“.</span></p>
+
+<p>Beachte, was ein Leitzins <em>nicht</em> kann: Öl billiger machen. Die EZB will verhindern, dass aus einem Energiepreisschock eine dauerhafte Inflation wird, bei der alle höhere Preise erwarten, höhere Löhne fordern und so neue Preiserhöhungen auslösen. Warum Erwartungen bei der Inflation so mächtig sind, ist Thema von Lektion 0004.</p>
+
+<h2 id="quiz">5 · Abruf</h2>
+
+<div class="quiz">
+  <p class="q">Über welchen Zinssatz steuert die EZB ihre Geldpolitik heute hauptsächlich?</p>
+  <ul>
+    <li data-correct data-feedback="Er ist der Boden für die Geldmarktzinsen, weil Banken viel überschüssiges Zentralbankguthaben haben und dieses dort parken.">Über den Satz für die Einlagefazilität</li>
+    <li data-feedback="Früher war das der zentrale Leitzins. Heute liegt er nur 0,15 Prozentpunkte über dem Einlagesatz, und die EZB steuert ausdrücklich über den Einlagesatz.">Über den Satz für die Hauptrefinanzierung</li>
+    <li data-feedback="Das ist die teure Obergrenze für Notfall-Kredite über Nacht, nicht das Steuerungsinstrument.">Über den Satz für die Spitzenrefinanzierung</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Warum verleiht kaum eine Bank Zentralbankguthaben an andere Banken für weniger als den Einlagesatz?</p>
+  <ul>
+    <li data-correct data-feedback="Genau deshalb wirkt der Einlagesatz als Boden für die kurzfristigen Zinsen.">Sie kann es risikolos zum Einlagesatz bei der Zentralbank parken.</li>
+    <li data-feedback="Es gibt kein solches Verbot. Der Boden entsteht aus Eigeninteresse, nicht per Gesetz.">Ein Gesetz verbietet Banken ausdrücklich Zinsen unter dem Einlagesatz.</li>
+    <li data-feedback="Mit der Banklizenz hat das nichts zu tun. Es ist ein Rechenvorteil: Die EZB zahlt den Einlagesatz ohne Risiko.">Die Zentralbank würde ihr sonst sofort die Banklizenz entziehen.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Die EZB erhöht den Leitzins. Welche Wirkung beabsichtigt sie?</p>
+  <ul>
+    <li data-correct data-feedback="Teurere Kredite heißt weniger Kreditnachfrage, weniger neues Buchgeld und weniger Ausgaben. Die Preise steigen langsamer.">Kredite werden teurer, Nachfrage und Preisauftrieb lassen nach.</li>
+    <li data-feedback="Umgekehrt: Teureres Zentralbankgeld macht Kredite teurer, also werden eher weniger vergeben.">Banken bekommen mehr Geld und vergeben dadurch mehr Kredite.</li>
+    <li data-feedback="Höhere Sparzinsen machen Sparen attraktiver, die Leute geben also eher <em>weniger</em> aus. Genau das ist gewollt.">Sparer erhalten mehr Zinsen und kaufen deshalb mehr ein.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Wie schnell wirkt eine Zinsänderung voll auf die Inflation?</p>
+  <ul>
+    <li data-correct data-feedback="So formuliert es die EZB selbst. Deshalb muss sie vorausschauend handeln, also auf die erwartete Inflation reagieren, nicht auf die heutige.">Mit langen, variablen und unsicheren Verzögerungen</li>
+    <li data-feedback="Die Bankzinsen reagieren zwar rasch, aber bis Nachfrage und Preise nachgeben, vergehen Monate bis Jahre.">Innerhalb weniger Tage über die Bankzinsen</li>
+    <li data-feedback="Am Tag der Entscheidung reagieren höchstens die Finanzmärkte. Die Wirkung auf Preise braucht viel länger.">Sofort am Tag der EZB-Entscheidung selbst</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Du kannst 1.500 € im Monat zahlen und tilgst anfänglich 2 %. Wie viel Kredit bekommst du bei 4 % Zins, wie viel bei 1 %?</p>
+  <ul>
+    <li data-correct data-feedback="18.000 € pro Jahr ÷ 6 % = 300.000 €, und 18.000 € ÷ 3 % = 600.000 €. Drei Prozentpunkte mehr Zins halbieren hier den Kreditrahmen.">300.000 € statt 600.000 €</li>
+    <li data-feedback="Rechne: 1.500 € × 12 = 18.000 € pro Jahr. Geteilt durch (4 % + 2 %) = 300.000 €, geteilt durch (1 % + 2 %) = 600.000 €.">450.000 € statt 600.000 €</li>
+    <li data-feedback="Bei 1 % Zins: 18.000 € ÷ (1 % + 2 %) = 600.000 €, nicht 400.000 €.">300.000 € statt 400.000 €</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Die Bauzinsen stiegen schon Anfang 2022, Monate vor der ersten EZB-Erhöhung im Juli. Warum?</p>
+  <ul>
+    <li data-correct data-feedback="Erwartungskanal: Langfristige Zinsen enthalten die erwarteten künftigen Leitzinsen. Die Märkte sahen die Inflation und rechneten mit der Wende.">Märkte erwarteten Erhöhungen, das trieb langfristige Zinsen hoch.</li>
+    <li data-feedback="Der Mindestreservesatz lag unverändert bei 1 %.">Banken mussten höhere Mindestreserven bei der EZB halten.</li>
+    <li data-feedback="Die EZB kündigt keine Kredite. Bis Juli 2022 blieben ihre Zinsen sogar unverändert.">Die EZB hatte Banken ihre Kredite bereits gekündigt.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Dezember 2023: Einlagesatz 4,00 %. August 2026: Einlagesatz 2,25 %. Was machten die Bauzinsen?</p>
+  <ul>
+    <li data-correct data-feedback="4,12 % im Dezember 2023, 4,05 % im August 2026. Langfristige Zinsen hängen an Erwartungen, nicht direkt am Leitzins.">Fast gleich: etwa 4,1 % und 4,05 %</li>
+    <li data-feedback="Schön wär's für Käufer. Tatsächlich: 4,12 % (Dez. 2023) und 4,05 % (Aug. 2026).">Halbiert: von etwa 4,1 % auf 2 %</li>
+    <li data-feedback="Ende 2023 lagen sie schon bei 4,12 %, im August 2026 bei 4,05 %, also fast gleich.">Verdoppelt: von etwa 2 % auf 4,1 %</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Womit begründete die EZB ihre Zinserhöhung im September 2026?</p>
+  <ul>
+    <li data-correct data-feedback="Pressemitteilung vom 10.09.2026: Der Nahost-Konflikt erzeugt Inflationsdruck, die Inflation bleibe „well above target for an extended period“.">Inflation bleibt wegen des Nahost-Konflikts länger über dem Ziel.</li>
+    <li data-feedback="Die EZB erwartet nur 0,9 % Wachstum für 2026, von Überhitzung keine Rede. Grund ist der Inflationsdruck.">Die Wirtschaft wuchs zu stark und überhitzte am Arbeitsmarkt.</li>
+    <li data-feedback="Banken haben eher zu viel Zentralbankguthaben (Überschussliquidität). Grund ist der Inflationsdruck.">Banken hatten zu wenig Zentralbankguthaben für ihre Zahlungen.</li>
+  </ul>
+</div>
+
+<h2 id="weiter">Weiterlesen & nachfragen</h2>
+
+<div class="source-box">
+  <span class="label">Primärquelle zum Vertiefen (ca. 10 Min.)</span>
+  <p><a href="https://www.ecb.europa.eu/mopo/intro/transmission/html/index.de.html"><strong>EZB: „Transmissionsmechanismus der Geldpolitik“</strong></a>: die offizielle Darstellung der Kette, mit Schaubild. Danach lohnt die <a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html">Pressemitteilung vom 10. September 2026</a> (Englisch, eine Seite). Du wirst merken, dass du sie jetzt verstehst.</p>
+</div>
+
+<div class="ask-box">
+  <span class="label">Etwas unklar?</span>
+  <p>Frag mich im Chat, zum Beispiel: „Was ist Quantitative Easing, und warum gab es die Überschussliquidität?“, „Warum gab es Negativzinsen?“ oder „Woher kommen die Zinsen für 10-jährige Bundesanleihen?“. Und sag mir, wie das Quiz lief.</p>
+</div>
+
+<p>Kompakt zum Nachschlagen: <a href="../reference/leitzins.html">Spickzettel: Leitzins & Transmission</a>.</p>
+
+<nav class="lesson-nav" data-current="0003"></nav>
+
+</main>
+</body>
+</html>

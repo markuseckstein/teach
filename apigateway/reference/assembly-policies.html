@@ -1,0 +1,122 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: Assembly Policies &amp; the API Context</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Reference · IBM API Connect 10.0.11 · native DataPower API Gateway</p>
+  <h1>Assembly Policies &amp; the API Context</h1>
+  <p class="lede">The pipeline vocabulary: the context tree that policies read and write, and the YAML shape of the policies you'll actually use.</p>
+
+  <h2 id="skeleton">Assembly skeleton</h2>
+  <pre><code>x-ibm-configuration:
+  gateway: datapower-api-gateway
+  assembly:
+    execute:            # ← the pipeline: policies run top to bottom
+      - policy-name:
+          version: 2.0.0
+          title: human label
+          # …policy-specific fields
+    catch:              # ← error handling, per error class
+      - errors: [ ConnectionError ]
+        execute:
+          - …policies…
+      - default:        # catches everything else
+          - …policies…</code></pre>
+
+  <h2 id="context">The API context tree</h2>
+  <p>Policies don't pass values to each other directly — they read and write one shared, JSON-like tree, addressed with dot notation (<a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=aplc-using-context-variables-in-gatewayscript-xslt-policies-datapower-api-gateway">IBM Docs: context variables</a>):</p>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Subtree</th><th>Holds</th><th>Examples</th></tr>
+    <tr><td><code>request.*</code></td><td>The original inbound request — treat as read-only.</td><td><code>request.verb</code>, <code>request.headers.host</code>, <code>request.parameters.zip</code>, <code>request.body</code></td></tr>
+    <tr><td><code>message.*</code></td><td>The payload flowing through the pipeline; what remains at the end becomes the client response. Policies mutate this.</td><td><code>message.body</code>, <code>message.headers.content-type</code>, <code>message.status.code</code></td></tr>
+    <tr><td><code>api.*</code></td><td>Metadata about the API and the matched operation, plus your properties.</td><td><code>api.operation.path</code>, <code>api.properties.target-url</code></td></tr>
+    <tr><td><code>plan.*</code> / <code>client.*</code></td><td>The subscribing plan and calling application.</td><td><code>plan.name</code>, <code>client.app.name</code></td></tr>
+    <tr><td><code>error.*</code></td><td>Populated inside <code>catch</code> blocks.</td><td><code>error.status.code</code>, <code>error.message</code></td></tr>
+    <tr><td><em>your own</em></td><td>Anything you invent — e.g. an invoke's <code>output</code> or a <code>set-variable</code> target.</td><td><code>geo.body</code>, <code>myflag</code></td></tr>
+  </table>
+  </div>
+  <p>Access from YAML fields: <code>$(api.properties.target-url)</code> — the same <code>$(…)</code> you saw for properties. Access from GatewayScript: <code>context.get('request.headers.x-zip')</code> / <code>context.set('myflag', true)</code>. Older samples use the v5-era <code>apim.getvariable()</code> API, which still works on the native gateway but <code>context.*</code> is the current idiom.</p>
+
+  <h2 id="policies">The policies you'll actually use</h2>
+
+  <h3>invoke — call a backend</h3>
+  <pre><code>- invoke:
+    version: 2.0.0
+    title: call-backend
+    target-url: $(target-url)/branches
+    verb: keep              # keep = same verb as inbound; or GET/POST/…
+    output: backend_rsp     # optional: park response in a variable
+                            # (omit → response becomes message.*)</code></pre>
+  <p>The <code>output</code> trick is what makes orchestration possible: park the first backend's response, call a second backend, then merge — the pipeline keeps flowing instead of being overwritten.</p>
+
+  <h3>set-variable — set/add/clear context values</h3>
+  <pre><code>- set-variable:
+    version: 2.0.0
+    title: defaults
+    actions:
+      - set: message.headers.x-frame-options   # overwrite or create
+        value: DENY
+      - add: message.headers.x-audit           # append
+        value: $(client.app.name)
+      - clear: message.headers.authorization   # remove</code></pre>
+
+  <h3>switch — branch the pipeline</h3>
+  <pre><code>- switch:
+    version: 2.0.0
+    title: route-by-operation
+    case:
+      - condition: ((request.verb==='GET')&amp;&amp;(api.operation.path==='/details'))
+        execute:
+          - …policies for this branch…
+      - otherwise:
+          - …fallback policies…</code></pre>
+
+  <h3>gatewayscript — arbitrary JavaScript on the gateway</h3>
+  <pre><code>- gatewayscript:
+    version: 2.0.0
+    title: reshape-response
+    source: |
+      var rsp = context.get('backend_rsp.body');
+      context.message.body.write({
+        id:   rsp.branchId,
+        link: 'https://www.google.com/maps?q=' + rsp.lat + ',' + rsp.lng
+      });</code></pre>
+  <p>Node-style JS, synchronous-looking API, no filesystem. <code>context.message.body.write(obj)</code> sets the outgoing payload; <code>context.get/set</code> reads/writes the tree. Reference: <a href="https://www.ibm.com/docs/en/api-connect/software/10.0.1?topic=gatewayscript-code-examples">IBM GatewayScript code examples</a>.</p>
+
+  <h3>The rest of the toolbox (recognize on sight)</h3>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Policy</th><th>Use</th></tr>
+    <tr><td><code>map</code></td><td>Declarative field-to-field transformation between schemas. Powerful, verbose, best authored in the UI editor once and version-controlled forever after.</td></tr>
+    <tr><td><code>validate</code></td><td>Validate <code>message.body</code> against a schema from your OpenAPI.</td></tr>
+    <tr><td><code>parse</code></td><td>Explicitly parse the payload (JSON/XML) with limits — DoS protection knob.</td></tr>
+    <tr><td><code>operation-switch</code></td><td>Like <code>switch</code>, but keyed directly on operation IDs.</td></tr>
+    <tr><td><code>xslt</code></td><td>XSLT transform, for the XML-shaped corners of your estate.</td></tr>
+    <tr><td><code>ratelimit</code>, <code>throw</code>, <code>log</code>, <code>redact</code>, <code>jwt-validate</code>, <code>oauth</code></td><td>What the names say; look them up when needed in the <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">API Explorer</a> / IBM docs.</td></tr>
+  </table>
+  </div>
+
+  <h2 id="rules">Rules of thumb</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Situation</th><th>Reach for</th></tr>
+    <tr><td>Plain proxy</td><td>single <code>invoke</code>, done</td></tr>
+    <tr><td>Set/strip headers, static values</td><td><code>set-variable</code> — cheaper and clearer than a script</td></tr>
+    <tr><td>Reshape a JSON payload</td><td><code>gatewayscript</code> (or <code>map</code> if the mapping is large and schema-to-schema)</td></tr>
+    <tr><td>Different logic per operation</td><td><code>operation-switch</code> / <code>switch</code></td></tr>
+    <tr><td>Two backends, one response</td><td><code>invoke</code> with <code>output:</code> twice, then <code>gatewayscript</code> to merge</td></tr>
+    <tr><td>Backend down → friendly error</td><td><code>catch</code> on <code>ConnectionError</code> + <code>set-variable</code>/<code>gatewayscript</code></td></tr>
+    <tr><td>Same custom steps in many APIs</td><td>user-defined policy (Lesson 6)</td></tr>
+  </table>
+  </div>
+
+  <footer class="lesson-footer">
+    <p>Sources: <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=aplc-using-context-variables-in-gatewayscript-xslt-policies-datapower-api-gateway">IBM Docs: context variables (DataPower API Gateway)</a> · <a href="https://www.ibm.com/docs/en/api-connect/software/10.0.1?topic=gatewayscript-code-examples">IBM Docs: GatewayScript code examples</a> · <a href="https://raw.githubusercontent.com/ibm-apiconnect/openid/master/utility/utility_1.0.0.yaml">IBM example: utility_1.0.0.yaml</a> (set-variable/switch/gatewayscript syntax) · <a href="https://ibm-apiconnect.github.io/pot/lab5_logistics_gws.html">IBM PoT Lab 5: GatewayScript in an assembly</a></p>
+    <div class="nav-links">
+      <a href="../index.html">Course home</a>
+      <a href="object-model.html">Reference: object model</a>
+      <a href="../lessons/0004-the-assembly-custom-pipelines.html">Lesson 4: The assembly →</a>
+    </div>
+  </footer>
+</main>

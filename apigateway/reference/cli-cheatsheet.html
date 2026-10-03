@@ -1,0 +1,79 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: apic CLI &amp; REST Cheat Sheet</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Reference · IBM API Connect 10.0.11 · verified against IBM's example-toolkit-scripts</p>
+  <h1>apic CLI &amp; REST Cheat Sheet</h1>
+  <p class="lede">The publish / inspect / download / lifecycle commands, plus the raw REST bootstrap. Print me.</p>
+
+  <h2 id="session">Session</h2>
+  <pre><code>apic identity-providers:list --scope provider --server $MGMT   # find your realm
+apic login  --server $MGMT --realm provider/default-idp-2 --username $USER
+apic logout --server $MGMT</code></pre>
+
+  <h2 id="orientation">Orientation (read-only, always safe)</h2>
+  <pre><code>apic orgs:list           --server $MGMT
+apic catalogs:list       --server $MGMT --org $ORG
+apic draft-apis:list-all      --server $MGMT --org $ORG
+apic draft-products:list-all  --server $MGMT --org $ORG
+apic products:list-all   --server $MGMT --org $ORG --scope catalog --catalog $CAT
+
+# Output shaping — works on almost every command:
+#   --format yaml | json      --fields name,title,state      --output -   (stdout)
+# JSON + jq is the automation workhorse:
+apic orgs:list -s $MGMT --format json | jq '.results[] | {name, id}'</code></pre>
+
+  <h2 id="publish">Publish (Lesson 2)</h2>
+  <pre><code>apic validate product.yaml                                  # lint product + APIs
+apic products:publish product.yaml --server $MGMT --org $ORG --catalog $CAT
+apic products:publish --stage product.yaml …                # staged, not live
+apic draft-products:create --server $MGMT --org $ORG product.yaml   # draft only</code></pre>
+
+  <h2 id="download">Download / export (Lesson 3)</h2>
+  <pre><code>apic products:clone --server $MGMT --org $ORG --scope catalog --catalog $CAT   # everything
+apic products:get NAME:VERSION --server $MGMT --org $ORG --scope catalog --catalog $CAT
+apic apis:get     NAME:VERSION --server $MGMT --org $ORG --scope catalog --catalog $CAT
+apic draft-apis:get NAME:VERSION --server $MGMT --org $ORG      # dev copy from pOrg</code></pre>
+
+  <h2 id="lifecycle">Lifecycle (preview — CI/CD lesson)</h2>
+  <pre><code># staged → published, moving subscriptions from the old version:
+apic products:replace --server $MGMT --org $ORG --scope catalog --catalog $CAT \
+     OLDNAME:OLDVERSION mapping.txt        # mapping.txt: product_url + plan mapping
+apic products:delete  --server $MGMT --org $ORG --scope catalog --catalog $CAT NAME:VERSION</code></pre>
+
+  <h2 id="rest">Raw REST bootstrap</h2>
+  <pre><code># realm names — no auth required
+curl -sk https://$MGMT/api/cloud/provider/identity-providers
+
+# token (~8h): needs client_id/client_secret (toolkit creds or apic registrations:create)
+curl -sk -X POST https://$MGMT/api/token \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"$USER","password":"…","realm":"provider/default-idp-2",
+       "client_id":"…","client_secret":"…","grant_type":"password"}'
+
+# then: Authorization: Bearer $TOKEN against the Provider API, e.g.
+curl -sk https://$MGMT/api/catalogs/$ORG/$CAT/products -H "Authorization: Bearer $TOKEN"
+
+# endpoint discovery: append --debug to any apic command and read the requests</code></pre>
+
+  <h2 id="rules">Rules of thumb</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Situation</th><th>Reach for</th></tr>
+    <tr><td>"What's deployed in env X?"</td><td><code>products:list-all --scope catalog</code>, or <code>products:clone</code> for the full YAML snapshot</td></tr>
+    <tr><td>Ship a new API/version</td><td><code>apic validate</code> → <code>products:publish</code> (add <code>--stage</code> for controlled go-live)</td></tr>
+    <tr><td>Zero-downtime version swap</td><td><code>products:publish --stage</code> new, then <code>products:replace</code> old</td></tr>
+    <tr><td>CI job, no toolkit binary</td><td><code>/api/token</code> + Provider API with curl</td></tr>
+    <tr><td>Unknown endpoint or flag</td><td><code>--debug</code>, <code>apic &lt;noun&gt; --help</code>, <a href="https://apic-api.apiconnect.ibmcloud.com/v10/">API Explorer</a></td></tr>
+  </table>
+  </div>
+
+  <footer class="lesson-footer">
+    <p>Sources: <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts/blob/master/bash/doapic-prod.bash">IBM doapic-prod.bash</a> · <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts/blob/master/docs/CommandLine-Intro.md">IBM v10 Command Line Intro</a> · <a href="https://github.com/ibm-apiconnect/example-toolkit-scripts/blob/master/docs/REST-API-FirstSteps.md">IBM v10 REST API First Steps</a> · <a href="https://www.ibm.com/docs/en/api-connect/10.0.x_cd?topic=cli-working-toolkit">IBM Docs: Working with the toolkit</a></p>
+    <div class="nav-links">
+      <a href="object-model.html">← Reference: object model</a>
+      <a href="../index.html">Course home</a>
+    </div>
+  </footer>
+</main>

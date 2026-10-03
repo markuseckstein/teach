@@ -1,0 +1,289 @@
+/* Shared stylesheet for the PopOS/COSMIC teaching workspace.
+   Tufte-ish: quiet serif reading column, sparse rules, generous space. */
+
+:root {
+  --bg: #fbf9f4;
+  --bg-raised: #f2efe6;
+  --text: #1d1b16;
+  --text-dim: #5c584c;
+  --rule: #d9d3c4;
+  --accent: #a34a28;
+  --accent-dim: #c98a68;
+  --code-bg: #efe9da;
+  --success: #3c6e47;
+  --error: #a3342a;
+  --key-bg: #ffffff;
+  --key-shadow: #b8b2a0;
+  --max-width: 42em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171613;
+    --bg-raised: #211f1a;
+    --text: #e8e4d8;
+    --text-dim: #a7a08c;
+    --rule: #3a362c;
+    --accent: #e08a5e;
+    --accent-dim: #b56a45;
+    --code-bg: #262319;
+    --success: #6fae7c;
+    --error: #d97367;
+    --key-bg: #2a2720;
+    --key-shadow: #0c0b09;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  padding: 4rem 1.5rem 6rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-family: "Iowan Old Style", Palatino, Georgia, serif;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.2em;
+}
+
+.subtitle {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-top: 1.8em;
+}
+
+p, li { color: var(--text); }
+
+a { color: var(--accent); text-decoration-color: var(--accent-dim); }
+a:hover { text-decoration-thickness: 2px; }
+
+.citation {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85em;
+  color: var(--text-dim);
+}
+
+/* Keyboard keys */
+kbd {
+  display: inline-block;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.15em 0.55em;
+  border-radius: 5px;
+  background: var(--key-bg);
+  color: var(--text);
+  box-shadow: 0 2px 0 var(--key-shadow);
+  border: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.keys { white-space: nowrap; }
+.keys .plus {
+  margin: 0 0.25em;
+  color: var(--text-dim);
+}
+
+/* Callouts */
+.callout {
+  background: var(--bg-raised);
+  border-left: 3px solid var(--accent);
+  padding: 0.9em 1.2em;
+  margin: 1.6em 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout-title {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 0.4em;
+}
+
+.windows-analogy {
+  background: var(--bg-raised);
+  border-left: 3px solid #4a7dbd;
+  padding: 0.9em 1.2em;
+  margin: 1.6em 0;
+  border-radius: 0 6px 6px 0;
+}
+.windows-analogy .callout-title { color: #4a7dbd; }
+
+/* Shortcut table */
+table.shortcuts {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95rem;
+}
+table.shortcuts th {
+  text-align: left;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5em 0.6em;
+}
+table.shortcuts td {
+  padding: 0.55em 0.6em;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.shortcuts tr:last-child td { border-bottom: none; }
+
+/* Quiz widgets */
+.quiz {
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.2em 1.4em;
+  margin: 1.8em 0;
+}
+.quiz-question { font-weight: 600; margin-top: 0; }
+.quiz-input {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 1em;
+  padding: 0.5em 0.7em;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  width: 100%;
+  max-width: 20em;
+}
+.quiz-check, .quiz-option {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95em;
+  padding: 0.5em 1.1em;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  background: var(--key-bg);
+  color: var(--text);
+  cursor: pointer;
+  margin: 0.3em 0.5em 0.3em 0;
+}
+.quiz-check:hover, .quiz-option:hover { border-color: var(--accent); }
+.quiz-options { display: flex; flex-wrap: wrap; margin-top: 0.6em; }
+.quiz-feedback {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9em;
+  margin-top: 0.6em;
+  min-height: 1.2em;
+}
+.quiz-feedback.correct { color: var(--success); font-weight: 600; }
+.quiz-feedback.incorrect { color: var(--error); font-weight: 600; }
+.quiz-option.correct { border-color: var(--success); background: color-mix(in srgb, var(--success) 15%, var(--bg-raised)); }
+.quiz-option.incorrect { border-color: var(--error); background: color-mix(in srgb, var(--error) 15%, var(--bg-raised)); }
+
+/* Nav footer between lessons/reference */
+.lesson-nav {
+  margin-top: 3.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--rule);
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+  color: var(--text-dim);
+}
+.lesson-nav .center { text-align: center; flex: 1; }
+
+/* Table of contents (index.html) */
+.toc-list {
+  list-style: none;
+  margin: 1.8em 0;
+  padding: 0;
+}
+.toc-item {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  padding: 0.9em 0;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-num {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85em;
+  color: var(--text-dim);
+  min-width: 1.6em;
+}
+.toc-body a {
+  font-size: 1.05em;
+  font-weight: 600;
+  text-decoration: none;
+}
+.toc-body a:hover { text-decoration: underline; }
+.toc-desc {
+  display: block;
+  font-size: 0.9em;
+  color: var(--text-dim);
+  margin-top: 0.15em;
+}
+.toc-status {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  margin-left: auto;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.ask-reminder {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85em;
+  color: var(--text-dim);
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 1px dashed var(--rule);
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}

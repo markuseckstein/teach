@@ -1,0 +1,143 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4: The Assembly — Your Custom Pipeline</title>
+<link rel="stylesheet" href="../assets/course.css">
+<main>
+  <p class="kicker">Lesson 0004 · IBM API Connect 10.0.11 · native DataPower API Gateway · ~25 minutes</p>
+  <h1>The Assembly — Your Custom Pipeline</h1>
+  <p class="lede">The "custom pipeline" you asked about on day one is the <code>assembly</code>: an ordered list of policies plus one shared context tree. Learn the tree, and every policy becomes obvious.</p>
+
+  <p>In <a href="0002-publish-your-first-api.html">Lesson 2</a> your assembly was a single <code>invoke</code> — a plain proxy. Real APIs need more: set headers, branch per operation, reshape a backend response, survive a backend outage. All of that happens in <code>x-ibm-configuration.assembly</code>, in YAML, in git — no UI required.</p>
+
+  <h2>The mental model: one tree, many readers</h2>
+  <p>Policies don't pipe values into each other. They all read and write a shared, JSON-like <strong>context tree</strong> (<a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=aplc-using-context-variables-in-gatewayscript-xslt-policies-datapower-api-gateway">IBM Docs</a>):</p>
+
+  <div class="tree">request.*    the inbound request, frozen     request.verb, request.parameters.zip
+message.*    the payload flowing through ──►  whatever is here at the end
+             policies mutate this             is the client's response
+api.*        API metadata + properties        api.operation.path, api.properties.target-url
+plan.* client.*  who is calling, on which plan
+error.*      filled inside catch blocks
+&lt;yours&gt;      anything you invent              e.g. an invoke's output: geo</div>
+
+  <p>Three access idioms, one tree: <code>$(api.properties.target-url)</code> in YAML fields, <code>context.get('request.verb')</code> / <code>context.set(…)</code> in GatewayScript, and condition expressions like <code>request.verb==='GET'</code> in a <code>switch</code>. (Older samples use <code>apim.getvariable()</code> — v5-era API, still works, but write <code>context.*</code>.)</p>
+
+  <div class="callout">
+    <p class="kicker">The one rule of assemblies</p>
+    <p><strong><code>message</code> is the pipeline.</strong> An <code>invoke</code> without <code>output:</code> overwrites <code>message</code> with the backend response; whatever sits in <code>message.body</code> after the last policy is what the client receives. Every non-trivial assembly is just controlled mutation of <code>message</code>.</p>
+  </div>
+
+  <h2>Worked example: enrich a response</h2>
+  <p>FindBranch, upgraded: call the backend, keep its response <em>out</em> of the pipeline, then build a custom payload with a Google-Maps link. (Pattern from <a href="https://ibm-apiconnect.github.io/pot/lab5_logistics_gws.html">IBM's PoT Lab 5</a>, modernized to the <code>context.*</code> API.)</p>
+
+  <pre><code>assembly:
+  execute:
+    - invoke:                          # 1. call backend…
+        version: 2.0.0
+        title: get-branch
+        target-url: $(target-url)/details?zip=$(request.parameters.zip)
+        verb: GET
+        output: branch                 # …but park response in 'branch',
+                                       #    don't overwrite message
+    - gatewayscript:                   # 2. build our own response payload
+        version: 2.0.0
+        title: build-response
+        source: |
+          var b = context.get('branch.body');
+          context.message.body.write({
+            id:        b.id,
+            type:      b.type,
+            maps_link: 'https://www.google.com/maps?q='
+                       + b.address.lat + ',' + b.address.lng
+          });
+    - set-variable:                    # 3. polish headers
+        version: 2.0.0
+        title: response-headers
+        actions:
+          - set: message.headers.content-type
+            value: application/json
+          - clear: message.headers.x-backend-secret
+
+  catch:                               # 4. backend down ≠ ugly 500
+    - errors: [ ConnectionError ]
+      execute:
+        - set-variable:
+            version: 2.0.0
+            title: friendly-error
+            actions:
+              - set: message.status.code
+                value: 503
+              - set: message.body
+                value: '{"error":"branch service unavailable, try later"}'</code></pre>
+
+  <p>Four ideas in one assembly: <code>output:</code> keeps the pipeline clean, GatewayScript reads the tree and writes <code>message.body</code>, <code>set-variable</code> handles the mechanical bits cheaper than a script, and <code>catch</code> turns gateway errors into designed responses. Branching per operation is the same trick with <code>switch</code>/<code>operation-switch</code> — every policy's YAML shape is in the new <a href="../reference/assembly-policies.html">assembly reference</a>, including the rules of thumb for <em>which</em> policy to reach for.</p>
+
+  <h2>Hands-on: read a real pipeline</h2>
+  <p>The fastest way to learn assembly idioms is to read the ones already running at work:</p>
+  <pre><code># 1. Pull a colleague's deployed API (Lesson 3 skill)
+apic apis:get some-api:1.0.0 --server $MGMT --org $ORG \
+     --scope catalog --catalog sandbox
+
+# 2. Read its x-ibm-configuration.assembly with fresh eyes:
+#    - Where does message get overwritten? (invokes without output:)
+#    - Any catch block, or do errors leak raw?
+#    - Could any gatewayscript be a set-variable instead?
+
+# 3. Edit locally, then lint — validate catches assembly errors too
+apic validate the-file.yaml</code></pre>
+
+  <div class="callout">
+    <p class="kicker">Test without publishing</p>
+    <p>The API Designer (<code>apic-designer</code>, part of the toolkit download) has a local <em>Explorer/Test</em> mode, and <code>testable: true</code> APIs can be invoked in the Sandbox via the automatic test application. For quick iterations: publish to Sandbox, curl the gateway endpoint, watch <code>message</code> take shape — a <code>log</code> policy or <code>console.error(context.get('…'))</code> in GatewayScript shows up in DataPower logs (see <a href="https://chrisphillips-cminion.github.io/apiconnect/2019/10/01/APIDevelopment-103.html">Chris Phillips: Debugging an API</a>).</p>
+  </div>
+
+  <h2>Check yourself</h2>
+  <div class="quiz" id="quiz"><noscript><p>Enable JavaScript for the quiz.</p></noscript></div>
+
+  <h2>Primary source</h2>
+  <p>Read <a href="https://www.ibm.com/docs/en/api-connect/10.0.x?topic=aplc-using-context-variables-in-gatewayscript-xslt-policies-datapower-api-gateway">IBM Docs: Using context variables in GatewayScript and XSLT policies (DataPower API Gateway)</a> — the context tree is the load-bearing concept, and this is its authoritative description. Keep <a href="https://www.ibm.com/docs/en/api-connect/software/10.0.1?topic=gatewayscript-code-examples">IBM's GatewayScript code examples</a> next to it when writing scripts.</p>
+
+  <footer class="lesson-footer">
+    <p><strong>Homework:</strong> (1) Pull two real APIs from your Sandbox and sketch their pipelines on paper — just policy names and where <code>message</code> changes. (2) Take your Lesson 2 FindBranch, add the <code>catch</code> block from this lesson, republish to Sandbox, and force the error by pointing <code>target-url</code> at a dead host. Report back what you find — especially any policy in your colleagues' assemblies that this lesson didn't cover; that's exactly the input I need for Lessons 5 and 6.</p>
+    <div class="nav-links">
+      <a href="0003-download-specs-cli-and-rest.html">← Lesson 3: Download specs</a>
+      <a href="../index.html">Course home</a>
+      <a href="../reference/assembly-policies.html">Reference: assembly policies →</a>
+    </div>
+  </footer>
+</main>
+<script src="../assets/quiz.js"></script>
+<script>
+renderQuiz(document.getElementById('quiz'), [
+  {
+    stem: "What does the client ultimately receive as the response body?",
+    options: ["whatever message.body holds after the last policy", "whatever the final invoke policy returned", "whatever request.body held when it arrived", "whatever the catch block decides to return"],
+    answer: 0,
+    explain: "message.* is the pipeline. Policies mutate it; its state after the final policy is serialized back to the client."
+  },
+  {
+    stem: "What does adding output: branch to an invoke policy change?",
+    options: ["the response is parked in 'branch' instead of message", "the response is streamed directly back to the client", "the response is validated against the schema named branch", "the response is logged to a variable for analytics"],
+    answer: 0,
+    explain: "Without output:, an invoke overwrites message with the backend response. With output:, the response lands in your named variable and message flows on untouched — the key to multi-backend orchestration."
+  },
+  {
+    stem: "In GatewayScript on the native API Gateway, the current idiom to read the inbound zip parameter is…",
+    options: ["context.get('request.parameters.zip')", "apim.getvariable('request.parameters.zip')", "session.input.read('request.parameters.zip')", "request.getParameter('zip') from the global scope"],
+    answer: 0,
+    explain: "context.get/set is the native API Gateway idiom. apim.getvariable is the v5-era compatibility API — you'll see it in older samples and it still works, but write context.*."
+  },
+  {
+    stem: "The backend is down and you want a designed 503 instead of a raw gateway error. Where does that logic live?",
+    options: ["in assembly.catch, keyed on the error class", "in assembly.execute, after the invoke policy", "in the product YAML, under the default plan", "in the catalog settings, under error handling"],
+    answer: 0,
+    explain: "assembly.catch runs when a policy throws — match ConnectionError (or default), then set message.status.code and message.body to your designed error."
+  },
+  {
+    stem: "You only need to add one static header to every response. Cheapest correct policy?",
+    options: ["set-variable", "gatewayscript", "map", "invoke"],
+    answer: 0,
+    explain: "set-variable's set/add/clear actions are made for mechanical header and variable work — reach for gatewayscript only when there's actual logic."
+  }
+]);
+</script>

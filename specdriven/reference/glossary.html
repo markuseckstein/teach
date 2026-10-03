@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: SDD Glossary</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<h1>SDD Glossary</h1>
+<p class="lesson-meta">Reference · the course's fixed vocabulary — lessons adhere to these meanings</p>
+
+<table>
+<tr><th>Term</th><th>Meaning in this course</th></tr>
+<tr><td><strong>Spec-Driven Development (SDD)</strong></td><td>Methodology where a written specification is the primary artifact; code is derived from it by an AI agent. Contrast: "vibe coding" (prompt → code, no durable artifact).</td></tr>
+<tr><td><strong>Spec Kit</strong></td><td>GitHub's open-source toolkit for SDD: templates, helper scripts, and slash commands installed into a repo. Agent-agnostic (30+ integrations).</td></tr>
+<tr><td><strong><code>specify</code> CLI</strong></td><td>The Python bootstrap tool (run via <code>uvx</code>/<code>pipx</code>) that installs Spec Kit scaffolding into a project. You run it once per project — it is <em>not</em> the thing that writes specs.</td></tr>
+<tr><td><strong><code>/speckit.specify</code></strong></td><td>The slash command (inside Copilot) that creates a feature spec. Easily confused with the CLI above; they are different tools.</td></tr>
+<tr><td><strong>Feature spec (<code>spec.md</code>)</strong></td><td>Markdown document describing <em>what</em> a feature does and <em>why</em> — user journeys, requirements, acceptance criteria. Deliberately technology-free.</td></tr>
+<tr><td><strong>OpenAPI spec</strong></td><td>Machine-readable REST API contract (YAML/JSON). <span class="sidenote">⚠ Both are called "spec" — in SDD conversation, "spec" means the feature spec. The OpenAPI spec is a <em>contract artifact</em> produced during the <code>plan</code> phase.</span></td></tr>
+<tr><td><strong>Constitution</strong></td><td><code>constitution.md</code>: the project's immutable principles (stack, testing policy, conventions). Checked by every phase; the highest-authority artifact.</td></tr>
+<tr><td><strong>Plan (<code>plan.md</code>)</strong></td><td>The <em>how</em>: architecture and tech decisions that satisfy the spec under the constitution. Where Spring Boot, Angular, and OpenAPI Generator get named.</td></tr>
+<tr><td><strong>Tasks (<code>tasks.md</code>)</strong></td><td>Ordered, dependency-aware breakdown of the plan into implementable steps.</td></tr>
+<tr><td><strong>Agent</strong></td><td>The AI doing the work — for this course, GitHub Copilot (VS Code agent mode or Copilot CLI).</td></tr>
+<tr><td><strong>Copilot CLI</strong></td><td>GitHub's terminal-based Copilot agent (<code>copilot</code> command). Distinct from both the <code>gh</code> CLI and the <code>specify</code> CLI.</td></tr>
+<tr><td><strong>Vibe coding</strong></td><td>Conversational prompt-to-code with no durable specification. The failure mode SDD exists to fix: intent lives in chat scrollback, not in the repo.</td></tr>
+</table>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · Related: <a href="speckit-workflow.html">Spec Kit workflow cheat sheet</a> · <a href="../lessons/0001-the-sdd-loop.html">Lesson 1: The SDD loop</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handout Nachtlandeplatz</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  /* Handout: kompakt, eine A4-Seite */
+  html { font-size: 15px; }
+  main { max-width: 50rem; }
+  h1 { font-size: 1.55rem; margin-bottom: .2rem; }
+  .motto { font-family: var(--sans); font-weight: 700; font-size: 1rem; border-left: 4px solid var(--accent);
+    padding: .4rem .8rem; margin: .6rem 0 .8rem; background: var(--accent-soft); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: .2rem 1.4rem; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+  .step { font-family: var(--sans); font-size: .82rem; line-height: 1.4; }
+  .step h3 { margin: .5rem 0 .15rem; font-size: .9rem; color: var(--accent); }
+  .step ul { margin: 0; padding-left: 1.1rem; }
+  .step li { margin: .08rem 0; }
+  .row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1rem; align-items: start; margin-top: .6rem; }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+  .row figure { margin: 0; }
+  .me { font-family: var(--sans); font-size: .82rem; border: 1px solid var(--rule); border-radius: 6px; padding: .5rem .8rem; background: var(--card); }
+  .me p { margin: .25rem 0; }
+  .blank { display: inline-block; min-width: 7rem; border-bottom: 1px solid var(--fg); }
+  .src { font-family: var(--sans); font-size: .68rem; color: var(--muted); margin-top: .6rem; }
+  @media print {
+    @page { size: A4; margin: 11mm 12mm; }
+    html { font-size: 10pt; }
+    .cols, .row { grid-template-columns: 1fr 1fr; }
+    .row { grid-template-columns: 1.15fr 1fr; }
+    .motto { background: #f3f3f3; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav class="topnav" data-course-top></nav>
+  <p class="kicker">FF Pattenhofen · Übung Do 1.10.2026, 20:00 Uhr</p>
+  <h1>Landeplatz für den Rettungshubschrauber bei Nacht</h1>
+  <div class="motto">Licht, das blendet, schadet mehr, als es nützt. Ohne Funkkontakt landet kein Hubschrauber. Ob gelandet wird, entscheidet der Pilot.</div>
+
+  <div class="cols">
+    <div class="step">
+      <h3>1 · Platz</h3>
+      <ul>
+        <li>mind. <strong>35 × 70 m</strong>, eben, fest, befahrbar</li>
+        <li>keine Leitungen über oder neben dem Platz, <strong>auch keine kleinen Stromleitungen</strong>; Umkreis 300 m prüfen</li>
+        <li>keine hohen Hindernisse im Anflug · Zufahrt für den RTW</li>
+      </ul>
+      <h3>2 · Absichern</h3>
+      <ul>
+        <li>Fläche ablaufen, <strong>lose Gegenstände entfernen</strong> (der Rotorabwind wirbelt alles auf)</li>
+        <li>absperren mit Posten, <strong>kein Flatterband</strong>, <strong>nichts auf den Boden legen</strong></li>
+      </ul>
+      <h3>3 · Licht</h3>
+      <ul>
+        <li>Fahrzeuge an die <strong>Ecken</strong>, <strong>Abblendlicht</strong>, nie Fernlicht</li>
+        <li>Licht <strong>flach und in Anflugrichtung</strong>, Kegel kreuzen sich am Landepunkt</li>
+        <li>Stativ <strong>nicht ausfahren</strong>, sichern, steil nach unten</li>
+        <li><strong>Blaulicht ≥ 5 min vor der Landung</strong> an und anlassen</li>
+        <li>Hindernisse und <strong>Masten anleuchten</strong></li>
+      </ul>
+    </div>
+    <div class="step">
+      <h3>4 · Funk</h3>
+      <ul>
+        <li>Mit dem Hubschrauber spricht <strong>nur der Staffelführer</strong> (im Einsatz über die Rettungsdienst-Gruppe der ILS)</li>
+        <li>Er meldet Platz, Hindernisse und Leitungen und muss dafür die Gruppe wechseln</li>
+        <li>Der Pilot kann „Licht reduzieren“ verlangen (Nachtsichtbrille)</li>
+      </ul>
+      <h3>5 · Nach der Landung</h3>
+      <ul>
+        <li>erst hingehen, wenn der <strong>Rotor steht</strong> oder die Besatzung winkt</li>
+        <li>von vorn, gebückt, im Blickfeld des Piloten</li>
+        <li><strong>nie von hinten: Heckrotor, Lebensgefahr</strong> · am Hang von der Talseite</li>
+        <li>absolutes Rauchverbot</li>
+      </ul>
+      <h3>6 · Vor dem Start</h3>
+      <ul>
+        <li>Licht für den Start mit dem Piloten absprechen</li>
+        <li>wieder komplett absperren, <strong>auch für Polizei und Rettungsdienst</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <figure>
+      <img src="../assets/landeplatz-skizze.svg" alt="Skizze: TSF und Pkw an den anflugseitigen Ecken, Lichtkegel kreuzen sich am Landepunkt, Stativ seitlich, Akkuleuchte am Hindernis.">
+    </figure>
+    <div class="me">
+      <p><strong>Heute bin ich:</strong> <span class="blank"></span></p>
+      <p><strong>Funk:</strong> Einsatzstelle = <strong>324 (DMO)</strong> für alle.<br>Pilot = <strong>322 (DMO)</strong>, nur Staffelführer. <strong>320</strong> = „ILS“, nur beim Alarm.</p>
+      <p><strong>Rufname TSF:</strong> Florian Pattenhofen 136/44/1</p>
+      <p><strong>Betriebsworte:</strong> „… von …, kommen“ · „verstanden“ · „wiederholen Sie“ · „ich rufe zurück“ · „Ende“</p>
+      <p><strong>Sicherheit:</strong> Warnweste, Helm mit Visier · Stolpergefahr im Dunkeln · Leuchten werden heiß · Privat-Pkw bewegt sich nicht</p>
+      <p><strong>„Übung Halt“</strong> = alle bleiben sofort stehen.</p>
+    </div>
+  </div>
+
+  <p class="src">Quellen: DRF Luftrettung, Checkliste „Vorbereitung einer Nachtlandung“ · DRF/LFV Schleswig-Holstein, Unterrichtung der Feuerwehren zur Vorbereitung von Nachtlandungen (2022) · Feuerwehr-Lernbar Bayern: Übung „Hubschrauberlandeplatz“, Fachinformation „Sprechfunk“.</p>
+
+  <nav class="course" data-course-nav></nav>
+</main>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

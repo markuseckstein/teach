@@ -1,0 +1,201 @@
+/* Shared stylesheet for the API Connect course. Every lesson and reference links this. */
+
+:root {
+  --bg: #fdfcf9;
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #0f62fe;      /* IBM blue */
+  --accent-ink: #0043ce;
+  --rule: #e0ddd5;
+  --code-bg: #f2f0ea;
+  --good: #1a7f37;
+  --bad: #b3261e;
+  --callout-bg: #eef4ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181d;
+    --ink: #e6e4df;
+    --muted: #9a9a94;
+    --accent: #78a9ff;
+    --accent-ink: #a6c8ff;
+    --rule: #33363d;
+    --code-bg: #22252c;
+    --good: #57ab5a;
+    --bad: #e5534b;
+    --callout-bg: #1d2635;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+h1, h2, h3 {
+  font-family: 'Gill Sans', 'Segoe UI', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2.2rem 0 0.7rem;
+}
+
+h1 { font-size: 1.9rem; margin-top: 0.5rem; }
+h2 { font-size: 1.35rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.3rem; }
+h3 { font-size: 1.1rem; }
+
+.kicker {
+  font-family: 'Gill Sans', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.lede { font-size: 1.15rem; color: var(--muted); margin-top: 0.2rem; }
+
+a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--accent); }
+
+p { margin: 0.9rem 0; }
+
+code, pre {
+  font-family: 'SF Mono', 'Cascadia Code', Consolas, Menlo, monospace;
+  font-size: 0.88em;
+}
+
+code { background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px; }
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+pre code { background: none; padding: 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+}
+th, td {
+  text-align: left;
+  padding: 0.45rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  font-family: 'Gill Sans', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.table-scroll { overflow-x: auto; }
+
+.callout {
+  background: var(--callout-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1.1rem;
+  margin: 1.4rem 0;
+}
+.callout .kicker { color: var(--accent-ink); }
+
+figure { margin: 1.6rem 0; }
+figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.4rem; }
+
+.tree {
+  font-family: 'SF Mono', 'Cascadia Code', Consolas, Menlo, monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+footer.lesson-footer {
+  margin-top: 3.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: 'Gill Sans', 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* ---- Quiz component (used by quiz.js) ---- */
+
+.quiz { margin: 1.6rem 0; }
+
+.quiz-q {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+
+.quiz-q p.stem {
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+
+.quiz-q button.opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.97rem;
+  color: var(--ink);
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.4rem 0;
+  cursor: pointer;
+}
+.quiz-q button.opt:hover { border-color: var(--accent); }
+.quiz-q button.opt.correct { border-color: var(--good); outline: 2px solid var(--good); }
+.quiz-q button.opt.wrong { border-color: var(--bad); outline: 2px solid var(--bad); }
+.quiz-q button.opt:disabled { cursor: default; opacity: 0.85; }
+
+.quiz-q .explain {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0.6rem 0 0;
+  display: none;
+}
+.quiz-q .explain.show { display: block; }
+
+@media print {
+  body { background: #fff; color: #000; }
+  .quiz, .nav-links { display: none; }
+  main { max-width: 100%; padding: 0; }
+}

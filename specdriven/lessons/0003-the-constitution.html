@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3: The Constitution</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+<h1>Lesson 3: The Constitution</h1>
+<p class="lesson-meta">≈20 minutes, hands-on in <code>~/sdd-playground</code> · builds on <a href="0002-toolchain-behind-the-proxy.html">Lesson 2</a></p>
+
+<h2>The one idea</h2>
+<p>The constitution is the only artifact that outlives features. Spec, plan, and tasks are written per feature and consumed; <code>constitution.md</code> is written once and then <strong>enforced as a gate</strong> — the plan template literally contains a "Constitution Check: <em>GATE: Must pass before Phase 0 research. Re-check after Phase 1 design</em>" section (<a href="https://github.com/github/spec-kit/blob/main/templates/plan-template.md">plan-template.md</a>). Anything you write there gets re-read by the agent on <em>every</em> feature, forever. That's the power and the danger: it's the one place where a vague sentence taxes every future feature.</p>
+
+<div class="callout">
+<span class="label">The enforceability test</span>
+An article belongs in the constitution only if a reviewer could objectively point at a PR and say "this violates it." <em>"Code should be maintainable"</em> fails — nobody can rule on it. <em>"Generated API code is never edited by hand; fix the contract and regenerate"</em> passes — a diff either violates it or it doesn't. Un-enforceable articles aren't harmless filler: they teach the agent that the constitution is decorative.
+</div>
+
+<h2>What goes in — for <em>your</em> project</h2>
+<p>The <a href="https://github.com/github/spec-kit/blob/main/templates/constitution-template.md">official template</a> wants: numbered Core Principles (non-negotiables marked), additional constraints, a workflow/quality-gates section, and a Governance footer with a version and ratification date. For a Spring Boot + Angular product with an OpenAPI contract in the middle, the articles that earn their place are the ones an agent would otherwise get wrong:</p>
+<table>
+<tr><th>Article (draft)</th><th>What it prevents</th></tr>
+<tr><td><strong>I. Contract-First (NON-NEGOTIABLE)</strong> — the OpenAPI document is the single source of truth for the API. Server stubs and clients are generated from it; generated code is never hand-edited.</td><td>The agent "helpfully" hand-writing a controller or Angular service that drifts from the contract — the exact failure your whole architecture exists to prevent.</td></tr>
+<tr><td><strong>II. Backward Compatibility</strong> — breaking API changes require a new endpoint version; removing/renaming a field in a released schema is a breaking change.</td><td>Plans that casually mutate the contract the <em>other</em> repo depends on.</td></tr>
+<tr><td><strong>III. Test Evidence</strong> — every functional requirement (FR-NNN) maps to at least one test; contract changes require contract tests on both sides.</td><td>"Implemented" meaning "compiles."</td></tr>
+<tr><td><strong>IV. Simplicity</strong> — no new library, layer, or pattern without a stated reason tied to a requirement.</td><td>Agent-invented abstractions and dependency sprawl.</td></tr>
+</table>
+<p class="sidenote">Notice what's <em>absent</em>: code style, formatting, folder naming — linters enforce those cheaper. Constitution articles are for decisions an agent could plausibly get wrong at planning level.</p>
+
+<h2>Do it</h2>
+<h3>Step 1 — Generate</h3>
+<p>In VS Code, open <code>~/sdd-playground</code>, Copilot Chat in agent mode, and run:</p>
+<pre><code>/speckit.constitution Create a constitution for a web product with a Spring Boot
+backend and an Angular frontend in separate repositories, communicating only
+through a versioned OpenAPI contract. Principles: contract-first API development
+(OpenAPI is the source of truth, generated code never hand-edited), backward
+compatibility for released endpoints, test evidence for every functional
+requirement, simplicity (no unjustified dependencies or layers).</code></pre>
+
+<h3>Step 2 — Audit what came back (this is the actual exercise)</h3>
+<p>Open <code>.specify/memory/constitution.md</code> and grade every article against the <a href="../reference/artifact-quality-checklist.html">quality checklist</a>:</p>
+<ol>
+<li>Apply the <strong>enforceability test</strong> to each article. Expect at least one platitude — agents love "code should be well-documented." Delete or sharpen it.</li>
+<li>Check the non-negotiable marking survived on contract-first.</li>
+<li>Check the Governance footer has a version and today's date.</li>
+<li>Ask the agent to fix what you found: <em>"Article N isn't enforceable — rewrite it so a reviewer could objectively rule a PR in violation."</em></li>
+</ol>
+<p><strong>Feedback loop:</strong> when you think it's clean, ask Copilot: <em>"Here is a hypothetical PR: it hand-edits a generated Angular API client to add a missing field. Which constitution articles does it violate?"</em> — a good constitution yields an immediate, specific answer (Article I, probably II). A mushy one yields a mushy answer. That round-trip is your test harness for constitutions.</p>
+
+<h2>Check yourself</h2>
+<div class="quiz" data-answer="1" data-explain="The plan phase runs a Constitution Check gate before research and re-checks after design — spec and tasks reference it indirectly, but the gate lives in the plan.">
+  <div class="quiz-q">1. Where is the constitution formally enforced as a gate?</div>
+  <button class="quiz-opt">During specify, before the branch is made</button>
+  <button class="quiz-opt">During plan, before research and after design</button>
+  <button class="quiz-opt">During implement, before each task executes</button>
+  <button class="quiz-opt">During analyze, after the tasks are written</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="2" data-explain="Enforceability is the bar: a reviewer must be able to objectively rule a PR in violation. The others are style/tooling concerns or feature content.">
+  <div class="quiz-q">2. Which article belongs in a constitution?</div>
+  <button class="quiz-opt">Methods should stay short and very readable</button>
+  <button class="quiz-opt">The bookmark feature must ship this quarter</button>
+  <button class="quiz-opt">Generated client code is never edited manually</button>
+  <button class="quiz-opt">Prefer meaningful names over abbreviated ones</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<h2>Watch</h2>
+<p>📺 <a href="https://www.youtube.com/watch?v=a9eR1xsfvHg">"The ONLY guide you'll need for GitHub Spec Kit" — Den Delimarsky (40 min)</a> — by the Spec Kit maintainer at GitHub. The constitution segment shows the command live; the rest of the video previews everything through Lesson 4 and beyond. Worth the full watch this week.</p>
+
+<h2>Next</h2>
+<p><a href="0004-specify-clarify-plan.html">Lesson 4</a>: run <code>specify → clarify → plan</code> on a real feature and watch your OpenAPI contract get born in the <code>contracts/</code> directory.</p>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · ← Previous: <a href="0002-toolchain-behind-the-proxy.html">Lesson 2: The Toolchain, Behind the Proxy</a> · Next: <a href="0004-specify-clarify-plan.html">Lesson 4: Specify → Clarify → Plan</a> →<br>
+References: <a href="../reference/artifact-quality-checklist.html">Artifact quality checklist</a> · <a href="../reference/speckit-workflow.html">Workflow cheat sheet</a> · <a href="../reference/glossary.html">Glossary</a><br>
+Questions about what belongs in <em>your</em> team's constitution? Ask your teacher (the agent) — that's a design conversation worth having.
+</div>
+</body>
+</html>

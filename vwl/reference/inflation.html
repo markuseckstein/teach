@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inflation</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<style>
+  .formula { font-size: 1.05rem; background: var(--panel); border: 1px solid var(--rule); padding: .7rem 1rem; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Referenz · zu Lektion 0004</p>
+  <h1>Inflation</h1>
+  <p class="subtitle">Messung, vier Ursachen, Realzins und wer bei Inflation gewinnt oder verliert.</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="messung">Messung</h2>
+<ul>
+  <li><strong>Inflationsrate</strong> = Preisänderung eines gewichteten Warenkorbs gegenüber dem <em>Vorjahresmonat</em>.</li>
+  <li>Gewicht = Ausgabenanteil der Haushalte. Destatis erfasst über 300.000 Preise pro Monat.</li>
+  <li><strong>VPI</strong>: deutscher Index. <strong>HVPI</strong>: EU-weit einheitlich, Maßstab der EZB.</li>
+  <li><strong>Kerninflation</strong>: ohne Energie und Nahrungsmittel. Zeigt, wie breit der Preisauftrieb ist.</li>
+  <li><strong>Persönliche Inflation</strong> = Σ (eigener Ausgabenanteil × Preisänderung). Weicht je nach Konsum ab.</li>
+</ul>
+<table class="facts">
+  <tr><th>Gewichte im VPI (Basis 2020)</th><th class="num">Anteil</th></tr>
+  <tr><td>Wohnung, Wasser, Strom, Gas, Brennstoffe</td><td class="num">25,9 %</td></tr>
+  <tr><td>Verkehr</td><td class="num">13,8 %</td></tr>
+  <tr><td>Nahrungsmittel, alkoholfreie Getränke</td><td class="num">11,9 %</td></tr>
+  <tr><td>Freizeit, Unterhaltung, Kultur</td><td class="num">10,4 %</td></tr>
+  <tr><td>Energie (Haushaltsenergie + Kraftstoffe, quer dazu)</td><td class="num">7,4 %</td></tr>
+</table>
+
+<h2 id="ursachen">Vier Ursachen</h2>
+<table class="facts">
+  <tr><th>Ursache</th><th>Kurz</th><th>Hebel der EZB</th></tr>
+  <tr><td>Nachfrage</td><td>mehr Kaufwunsch als Produktion</td><td>Leitzins wirkt direkt</td></tr>
+  <tr><td>Angebot / Kosten</td><td>Energie, Rohstoffe, Lieferketten</td><td>kaum direkt, nur gegen Folgeeffekte</td></tr>
+  <tr><td>Erwartungen</td><td>Zweitrundeneffekte, Lohn-Preis-Spirale</td><td>Glaubwürdigkeit, „Verankerung“ bei 2 %</td></tr>
+  <tr><td>Geldmenge</td><td>langfristig ≈ 1:1 mit Inflation, kurzfristig instabil</td><td>Richtung über Jahrzehnte</td></tr>
+</table>
+
+<h2 id="ziel">Das EZB-Ziel</h2>
+<p><strong>2 % HVPI-Inflation mittelfristig, symmetrisch.</strong> Nicht 0 %, weil: Puffer gegen Deflation, Spielraum für Zinssenkungen, starre Nominallöhne, leichte Überschätzung durch die Messung.</p>
+
+<h2 id="realzins">Realzins und Kaufkraft</h2>
+<p class="formula">Realzins ≈ Nominalzins − Inflation &nbsp;·&nbsp; genau: (1 + i) ÷ (1 + π) − 1<br>
+Kaufkraft nach n Jahren = Betrag × (1 + i)<sup>n</sup> ÷ (1 + π)<sup>n</sup></p>
+<table class="facts">
+  <tr><th>Beispiel</th><th class="num">Ergebnis</th></tr>
+  <tr><td>10.000 €, 0 % Zins, Inflation 2021–2025 (Preise +21,9 %)</td><td class="num">≈ 8.200 €</td></tr>
+  <tr><td>Halbierung der Kaufkraft bei 2 % Inflation</td><td class="num">≈ 35 Jahre</td></tr>
+  <tr><td>200.000 € feste Schuld, 3 % Inflation, 10 Jahre</td><td class="num">real ≈ 149.000 €</td></tr>
+</table>
+
+<h2 id="verteilung">Wer gewinnt, wer verliert (bei <em>unerwarteter</em> Inflation)</h2>
+<table class="facts">
+  <tr><th>Gruppe</th><th>Wirkung</th></tr>
+  <tr><td>Gläubiger mit festem Zins (Konto, Sparbrief, Anleihe)</td><td>verlieren real</td></tr>
+  <tr><td>Schuldner mit festem Zins (Immobilienkredit, Staat)</td><td>gewinnen real</td></tr>
+  <tr><td>Feste Einkommen (Renten, Löhne vor Anpassung)</td><td>verlieren bis zur Anpassung</td></tr>
+  <tr><td>Sachwerte (Immobilie, Aktie)</td><td>nicht entwertet wie Guthaben, Preis hängt aber am Zins (2023: Inflation 5,9 %, Wohnimmobilien −8,4 %)</td></tr>
+</table>
+
+<h2 id="daten">Eckdaten Deutschland (VPI)</h2>
+<table class="facts">
+  <tr><th>Zeitraum</th><th class="num">Inflationsrate</th></tr>
+  <tr><td>2021 · 2022 · 2023</td><td class="num">3,1 % · 6,9 % · 5,9 %</td></tr>
+  <tr><td>2024 · 2025</td><td class="num">2,2 % · 2,2 %</td></tr>
+  <tr><td>September 2026 (vorläufig): gesamt · Energie · Kern</td><td class="num">3,3 % · 14,9 % · 2,4 %</td></tr>
+  <tr><td>Erwartung Verbraucher Euroraum, Aug. 2026: 12 Monate · 5 Jahre</td><td class="num">3,0 % · 2,5 %</td></tr>
+</table>
+
+<h2 id="quellen">Quellen</h2>
+<ol class="sources">
+  <li><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/09/PD26_348_611.html">Destatis: Inflationsrate September 2026</a></li>
+  <li><a href="https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/01/PD26_019_611.html">Destatis: Inflationsrate 2025 (mit Vorjahren)</a></li>
+  <li><a href="https://www.destatis.de/DE/Themen/Wirtschaft/Preise/Verbraucherpreisindex/Methoden/Downloads/waegungsschema-2020.pdf?__blob=publicationFile">Destatis: Wägungsschema 2020</a></li>
+  <li><a href="https://www.ecb.europa.eu/mopo/strategy/pricestab/html/index.de.html">EZB: Definition von Preisstabilität</a></li>
+  <li><a href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260918~295b3ab978.en.html">EZB: Consumer Expectations Survey, August 2026</a></li>
+  <li><a href="https://www.bundesbank.de/resource/blob/903314/8080f3e8eacb602143769da5de2c378c/mL/2023-01-monatsbericht-data.pdf">Bundesbank: Monatsbericht Januar 2023, S. 15–20 (Geldmenge und Inflation)</a></li>
+  <li><a href="https://www.bundesbank.de/de/aufgaben/themen/durchblick-bei-der-inflation-664846">Bundesbank: Durchblick bei der Inflation</a></li>
+</ol>
+</main>
+</body>
+</html>

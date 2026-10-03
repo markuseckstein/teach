@@ -1,0 +1,172 @@
+/* Gemeinsames Stylesheet für alle Lektionen und Referenzen.
+   Tufte-inspiriert: ruhige Serifenschrift, schmale Textspalte, Randnotizen. */
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;600&display=swap");
+
+:root {
+  --bg: #fffff8;
+  --fg: #1d1d1b;
+  --muted: #6b6b66;
+  --rule: #d9d6c8;
+  --accent: #8a2c1d;        /* Ziegelrot: Hervorhebungen */
+  --accent-soft: #f4e7e1;
+  --good: #2f6b3a;
+  --good-soft: #e3f0e3;
+  --bad: #9b2a1f;
+  --bad-soft: #f7e1de;
+  --panel: #f6f4ea;
+  --serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1a17; --fg: #e9e6dc; --muted: #a29f94; --rule: #3a3832;
+    --accent: #e08a6e; --accent-soft: #3a2a24; --good: #8fcf97; --good-soft: #233426;
+    --bad: #f0958a; --bad-soft: #3d2522; --panel: #24231f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1b1a17; --fg: #e9e6dc; --muted: #a29f94; --rule: #3a3832;
+  --accent: #e08a6e; --accent-soft: #3a2a24; --good: #8fcf97; --good-soft: #233426;
+  --bad: #f0958a; --bad-soft: #3d2522; --panel: #24231f;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 18px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  line-height: 1.55;
+  counter-reset: sidenote;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 16px 5rem;
+}
+
+/* Textspalte links, Rand rechts frei für Randnotizen */
+main > * { max-width: 36rem; }
+main > .wide { max-width: 100%; }
+
+header.lesson-head { margin-bottom: 2.5rem; }
+.kicker {
+  font-family: var(--sans); font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 .4rem;
+}
+h1 { font-weight: 400; font-size: 2.3rem; line-height: 1.15; margin: 0 0 .6rem; }
+h2 { font-weight: 400; font-style: italic; font-size: 1.5rem; margin: 2.8rem 0 .6rem; }
+h3 { font-weight: 600; font-size: 1.05rem; margin: 1.8rem 0 .4rem; }
+.subtitle { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0; }
+.meta { font-family: var(--sans); font-size: .75rem; color: var(--muted); margin-top: .8rem; }
+
+p { margin: 0 0 1rem; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+strong { font-weight: 600; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; max-width: 36rem; }
+
+blockquote {
+  margin: 1.2rem 0; padding: 0 0 0 1rem; border-left: 2px solid var(--rule);
+  font-style: italic; color: var(--fg);
+}
+blockquote cite { display: block; font-style: normal; font-family: var(--sans); font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+/* Randnotizen (Tufte): auf breiten Bildschirmen im Rand, schmal inline */
+.sidenote {
+  float: right; clear: right;
+  width: 15rem; margin-right: -18rem; margin-top: .2rem;
+  font-size: .78rem; line-height: 1.4; color: var(--muted);
+  font-family: var(--serif);
+}
+.sidenote-ref { counter-increment: sidenote; }
+.sidenote-ref::after { content: counter(sidenote); font-size: .65em; vertical-align: super; color: var(--accent); }
+.sidenote::before { content: counter(sidenote) " "; color: var(--accent); }
+p, li { position: relative; }
+
+@media (max-width: 900px) {
+  .sidenote {
+    float: none; display: block; width: auto; margin: .4rem 0 .8rem;
+    padding-left: .8rem; border-left: 2px solid var(--rule);
+  }
+}
+
+/* Kernsatz-Kasten */
+.keyidea {
+  background: var(--accent-soft); border-left: 3px solid var(--accent);
+  padding: .9rem 1.1rem; margin: 1.4rem 0; font-size: 1.05rem;
+}
+.keyidea .label {
+  display: block; font-family: var(--sans); font-size: .68rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: .25rem;
+}
+
+/* Vorhersage-Frage am Anfang */
+.predict {
+  border: 1px dashed var(--rule); padding: 1rem 1.1rem; margin: 1.4rem 0;
+}
+.predict .label {
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+}
+details summary { cursor: pointer; font-family: var(--sans); font-size: .85rem; color: var(--accent); margin-top: .5rem; }
+
+/* Panels (Simulator, Quiz) */
+.panel {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+  padding: 1.2rem; margin: 1.6rem 0;
+}
+.panel > .panel-title {
+  font-family: var(--sans); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 .8rem;
+}
+
+button, .btn {
+  font-family: var(--sans); font-size: .82rem;
+  background: var(--bg); color: var(--fg);
+  border: 1px solid var(--rule); border-radius: 3px;
+  padding: .5rem .8rem; cursor: pointer; text-align: left;
+}
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+/* Zahlen in Tabellen */
+.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+
+table.facts { border-collapse: collapse; width: 100%; font-size: .9rem; margin: 1rem 0; }
+table.facts th, table.facts td { padding: .35rem .5rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+table.facts th { font-family: var(--sans); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+/* Quelle & Nachfragen */
+.source-box, .ask-box {
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  padding: 1rem 0; margin: 2rem 0;
+}
+.source-box .label, .ask-box .label {
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  display: block; margin-bottom: .3rem;
+}
+
+nav.lesson-nav {
+  font-family: var(--sans); font-size: .8rem; display: flex; justify-content: space-between; gap: 1rem;
+  border-top: 1px solid var(--rule); padding-top: 1rem; margin-top: 3rem;
+}
+nav.lesson-nav .disabled { color: var(--muted); }
+
+ol.sources { font-size: .8rem; color: var(--muted); padding-left: 1.2rem; }
+
+@media print {
+  html { font-size: 11pt; }
+  body { background: #fff; color: #000; }
+  main { padding: 0; }
+  main > * { max-width: 100%; }
+  .sidenote { float: none; display: block; width: auto; margin: .2rem 0 .6rem; padding-left: .6rem; border-left: 1px solid #999; }
+  .no-print, button, nav.lesson-nav { display: none !important; }
+  .panel { break-inside: avoid; }
+  a { color: #000; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .75em; color: #555; word-break: break-all; }
+}

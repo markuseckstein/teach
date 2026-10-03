@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Woher kommt das Geld?</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/course.js"></script>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/bilanz.js"></script>
+</head>
+<body>
+<main>
+
+<div class="topbar" data-auto></div>
+
+<header class="lesson-head">
+  <p class="kicker">Lektion 0001 · Geldschöpfung</p>
+  <h1>Woher kommt das Geld?</h1>
+  <p class="subtitle">Dein Kontoguthaben ist ein Schuldschein deiner Bank, und fast alles Geld entsteht, wenn jemand einen Kredit aufnimmt.</p>
+  <p class="meta">ca. 20 Minuten · Simulator + 6 Quizfragen</p>
+</header>
+
+<nav class="toc" data-auto></nav>
+
+<h2 id="einstieg">Eine Frage vorab</h2>
+
+<div class="predict">
+  <span class="label">Erst tippen, dann aufklappen</span>
+  <p>Du zahlst fünf 20-€-Scheine am Schalter auf dein Girokonto ein. <strong>Wem gehören die Scheine danach?</strong> Und was genau ist die Zahl „+100 €“, die jetzt auf deinem Kontoauszug steht?</p>
+  <details>
+    <summary>Auflösung</summary>
+    <p>Die Scheine gehören jetzt <strong>der Bank</strong>. Sie kann damit machen, was sie will. Du hast dafür etwas anderes bekommen: einen <strong>Anspruch</strong> gegen die Bank, dir jederzeit 100 € auszuzahlen. Die „+100 €“ sind also kein verwahrter Geldhaufen, sondern ein Versprechen der Bank. Wenn du das intuitiv anders gesehen hast: So geht es den meisten. Genau darum geht es in dieser Lektion.</p>
+  </details>
+</div>
+
+<p>Es lohnt sich, vorher kurz zu raten, auch wenn du danebenliegst: Eine Vermutung, die korrigiert wird, bleibt besser hängen als eine Antwort, die man nur liest.</p>
+
+<h2 id="forderung">1 · Dein Guthaben ist ein Schuldschein</h2>
+
+<p>Ökonomen beschreiben Geld gern als <em>IOU</em> („I owe you“, ich schulde dir), also als Schuldschein. Die Bank of England formuliert es so:</p>
+
+<blockquote>„Money today is a type of IOU, but one that is special because everyone in the economy trusts that it will be accepted by other people in exchange for goods and services.“
+<cite>McLeay, Radia, Thomas: <a href="https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-in-the-modern-economy-an-introduction">Money in the modern economy: an introduction</a>, Bank of England Quarterly Bulletin 2014 Q1</cite></blockquote>
+
+<p>Dein Girokontoguthaben ist so ein Schuldschein. In der <strong>Bilanz</strong> der Bank steht es auf der rechten Seite, den <strong>Passiva</strong>, also bei dem, was die Bank anderen schuldet. In deiner eigenen Bilanz steht es links, bei den <strong>Aktiva</strong>, also bei dem, was du besitzt: als <strong>Forderung</strong> gegen die Bank.<span class="sidenote-ref"></span><span class="sidenote">Die Bundesbank beschreibt genau diese Spiegelung: Das Guthaben „erscheint in der Bilanz des Kunden X als Forderung gegenüber der Bank“. <a href="https://www.bundesbank.de/resource/blob/665284/c0eeb9d1460e0489c7b5f55cf98c98c6/mL/2017-04-monatsbericht-data.pdf">Monatsbericht April 2017</a>, S. 18.</span></p>
+
+<div class="keyidea"><span class="label">Kernidee 1</span>
+Ein Bankguthaben ist eine <strong>Forderung gegen die Bank</strong>. Was dem einen als Vermögen gehört, schuldet der andere: Jede Forderung hat eine spiegelbildliche Verbindlichkeit.</div>
+
+<p><strong>Warum das für deine Ausgangsfragen wichtig ist:</strong> Wenn eine Bank pleitegeht, hast du kein Eigentum, das du einfach abholen kannst. Du bist ein <em>Gläubiger</em> unter vielen. Deshalb gibt es die gesetzliche Einlagensicherung: bis 100.000 € pro Kunde und Bank.<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.bafin.de/DE/verbraucherinnen-verbraucher/themen-finanzprodukte/geldanlage/einlagensicherung-anlegerentschaedigung/einlagensicherung-anlegerentschaedigung_node.html">BaFin: Einlagensicherung und Anlegerentschädigung</a>. Aktien im Depot sind dagegen <em>dein Eigentum</em>, das die Bank nur verwahrt. Dieser Unterschied kommt in Lektion 0007 groß raus.</span> Den Unterschied zwischen Forderung und Eigentum brauchst du später bei jeder Krisenfrage.</p>
+
+<h2 id="kredit">2 · Ein Kredit schafft neues Geld</h2>
+
+<p>Die verbreitete Vorstellung: Sparer bringen Geld zur Bank, und die Bank verleiht dieses Geld an Kreditnehmer weiter. Das ist <strong>falsch</strong>, und das sagen ausgerechnet die Zentralbanken selbst:</p>
+
+<blockquote>„Banks do not act simply as intermediaries, lending out deposits that savers place with them, and nor do they ‚multiply up‘ central bank money to create new loans and deposits.“
+<cite><a href="https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy">Money creation in the modern economy</a>, Bank of England 2014</cite></blockquote>
+
+<p>Was stattdessen passiert: Wenn die Bank dir einen Kredit über 1.000 € gibt, bucht sie zwei Dinge gleichzeitig.</p>
+
+<ul>
+  <li>Links bei ihr, in den Aktiva: <strong>Kredit an dich, 1.000 €</strong>. Das ist ihre Forderung: Du schuldest ihr das Geld.</li>
+  <li>Rechts bei ihr, in den Passiva: <strong>Einlage von dir, 1.000 €</strong>. Das ist dein neues Guthaben, ihre Schuld dir gegenüber.</li>
+</ul>
+
+<p>Beide Seiten der Bilanz wachsen um denselben Betrag. Das heißt <strong>Bilanzverlängerung</strong>. Niemandem wurde etwas weggenommen. Kein Sparer hat weniger auf dem Konto. Die 1.000 € auf deinem Konto sind <em>neu entstanden</em>.</p>
+
+<blockquote>„Im Ergebnis kommt es in beiden Fällen zu einer Bilanzverlängerung; zugleich wurden durch diese Buchungsvorgänge 1 000 € Buch- oder Giralgeld geschaffen.“
+<cite>Deutsche Bundesbank, <a href="https://www.bundesbank.de/resource/blob/665284/c0eeb9d1460e0489c7b5f55cf98c98c6/mL/2017-04-monatsbericht-data.pdf">Monatsbericht April 2017</a>, S. 18</cite></blockquote>
+
+<p>Umgekehrt gilt: Zahlst du den Kredit zurück, werden beide Posten wieder ausgebucht. Das Geld <strong>verschwindet</strong>.<span class="sidenote-ref"></span><span class="sidenote">„Buchgeld kann nicht nur geschaffen, sondern auch vernichtet werden.“ Als erstes Beispiel nennt die Bundesbank „die Tilgung von Bankkrediten“ (Monatsbericht April 2017, S. 23). Die Bank of England schreibt: „the repayment of bank loans destroys money.“</span></p>
+
+<div class="keyidea"><span class="label">Kernidee 2</span>
+<strong>Kreditvergabe schafft Geld, Tilgung vernichtet Geld.</strong> Die Geldmenge wächst, wenn insgesamt mehr neue Kredite vergeben als alte zurückgezahlt werden.</div>
+
+<h3>Wie groß ist das in der Wirklichkeit?</h3>
+
+<p>Wie viel des Geldes im Euroraum ist Bargeld und wie viel Buchgeld, also Guthaben bei Banken?</p>
+
+<table class="facts">
+  <tr><th>Euroraum, August 2026</th><th class="num">Mrd. €</th><th class="num">Anteil</th></tr>
+  <tr><td>Geldmenge M3 (alles, was als Geld zählt)</td><td class="num">17.646</td><td class="num">100 %</td></tr>
+  <tr><td>davon Bargeld (Scheine und Münzen bei Nichtbanken)</td><td class="num">1.617</td><td class="num">≈ 9 %</td></tr>
+  <tr><td>davon Buchgeld (Einlagen u. Ä.)</td><td class="num">16.029</td><td class="num">≈ 91 %</td></tr>
+</table>
+<p style="font-size:.8rem;color:var(--muted)">Quelle: <a href="https://www.bundesbank.de/resource/blob/964882/36093646501ca8b86b0664129e2efc20/472B63F073F071307366337C94F8C870/2026-09-25-geldmenge-download.pdf">Bundesbank/EZB, Geldmengenentwicklung im Euroraum: August 2026</a>, Tabelle 1. Buchgeld = M3 minus Bargeldumlauf.</p>
+
+<p>Gut neun von zehn Euro existieren also nur als Buchungen in Bankbilanzen, und fast alle sind durch Kreditvergabe entstanden. Bargeld wird nur noch auf Wunsch der Kunden in Scheine „umgetauscht“, wie du gleich im Simulator siehst.</p>
+
+<h2 id="simulator">3 · Selbst buchen</h2>
+
+<p>Anna hat ein Konto bei Bank A. Bank A startet mit 500 € Bargeld in der Kasse, finanziert durch das Geld ihrer Eigentümer (Eigenkapital). Der Zähler oben zeigt die <strong>Geldmenge</strong>: das Bargeld und die Guthaben, die Nichtbanken wie Anna halten.<span class="sidenote-ref"></span><span class="sidenote">Bargeld in der Kasse einer Bank zählt <em>nicht</em> zur Geldmenge. Gezählt wird nur Geld, das Haushalte und Unternehmen halten. So definieren es EZB und Bundesbank für M1 bis M3.</span></p>
+
+<p><strong>Auftrag:</strong> Sag vor jedem Klick laut voraus, ob die Geldmenge steigt, fällt oder gleich bleibt. Dann prüf es.</p>
+
+<div class="panel wide">
+  <p class="panel-title">Bilanz-Simulator</p>
+  <div id="sim"></div>
+</div>
+
+<script>
+Bilanz.mount(document.getElementById("sim"), {
+  actors: [
+    { id: "anna", name: "Anna (Haushalt)", aktiva: { "Guthaben bei Bank A": 0, "Bargeld": 0 }, passiva: { "Kreditschuld bei Bank A": 0 } },
+    { id: "bank", name: "Bank A", kind: "bank", aktiva: { "Bargeld (Kasse)": 500, "Kredit an Anna": 0 }, passiva: { "Eigenkapital": 500, "Einlage von Anna": 0 } },
+  ],
+  geldmenge: (s) => s.anna.aktiva["Guthaben bei Bank A"] + s.anna.aktiva["Bargeld"],
+  geldmengeLabel: "Geldmenge: Bargeld + Guthaben der Nichtbanken",
+  intro: "Anna hat noch nichts. Bank A hat nur ihr Startkapital. Was passiert, wenn Anna einen Kredit aufnimmt?",
+  actions: [
+    { label: "Anna nimmt 1.000 € Kredit auf",
+      enabled: (s) => s.anna.passiva["Kreditschuld bei Bank A"] < 3000,
+      run: (s, book) => {
+        book("bank", "aktiva", "Kredit an Anna", 1000);
+        book("bank", "passiva", "Einlage von Anna", 1000);
+        book("anna", "aktiva", "Guthaben bei Bank A", 1000);
+        book("anna", "passiva", "Kreditschuld bei Bank A", 1000);
+        return "<strong>Bilanzverlängerung.</strong> Bank A bucht eine Forderung (Kredit) und eine Verbindlichkeit (Annas Einlage), beide über 1.000 €. Annas Bilanz spiegelt das genau. Das Bargeld in der Kasse hat sich nicht bewegt: Die 1.000 € sind <em>neu</em>.";
+      } },
+    { label: "Anna hebt 200 € bar ab",
+      enabled: (s) => s.anna.aktiva["Guthaben bei Bank A"] >= 200 && s.bank.aktiva["Bargeld (Kasse)"] >= 200,
+      run: (s, book) => {
+        book("anna", "aktiva", "Guthaben bei Bank A", -200);
+        book("anna", "aktiva", "Bargeld", 200);
+        book("bank", "passiva", "Einlage von Anna", -200);
+        book("bank", "aktiva", "Bargeld (Kasse)", -200);
+        return "<strong>Nur ein Formwechsel.</strong> Annas Forderung gegen die Bank wird zu Bargeld in ihrer Tasche. Die Geldmenge bleibt gleich: 200 € Buchgeld werden zu 200 € Bargeld. Die Bank verliert dabei echte Scheine aus ihrer Kasse, und die muss sie sich irgendwo besorgen. Dazu mehr in Lektion 0002.";
+      } },
+    { label: "Anna zahlt 200 € bar ein",
+      enabled: (s) => s.anna.aktiva["Bargeld"] >= 200,
+      run: (s, book) => {
+        book("anna", "aktiva", "Bargeld", -200);
+        book("anna", "aktiva", "Guthaben bei Bank A", 200);
+        book("bank", "aktiva", "Bargeld (Kasse)", 200);
+        book("bank", "passiva", "Einlage von Anna", 200);
+        return "<strong>Wieder nur ein Formwechsel</strong>, diesmal umgekehrt. Die Scheine gehören jetzt der Bank, Anna hat dafür eine Forderung. Erinnerst du dich an die Frage vom Anfang?";
+      } },
+    { label: "Anna tilgt 500 € Kredit",
+      enabled: (s) => s.anna.aktiva["Guthaben bei Bank A"] >= 500 && s.anna.passiva["Kreditschuld bei Bank A"] >= 500,
+      run: (s, book) => {
+        book("anna", "aktiva", "Guthaben bei Bank A", -500);
+        book("anna", "passiva", "Kreditschuld bei Bank A", -500);
+        book("bank", "passiva", "Einlage von Anna", -500);
+        book("bank", "aktiva", "Kredit an Anna", -500);
+        return "<strong>Bilanzverkürzung: Geld wird vernichtet.</strong> Annas Guthaben und ihre Schuld werden gegeneinander ausgebucht. Die 500 € gehen nicht an die Bank, sie hören auf zu existieren.";
+      } },
+  ],
+});
+</script>
+
+<p><strong>Kleine Aufgabe zum Nachdenken:</strong> Klick dich zu dem Zustand, in dem Anna 1.000 € Kredit hat und 200 € bar in der Tasche. Kann sie den Kredit jetzt vollständig tilgen? Was müsste sie vorher tun? (Tipp: Tilgen geht nur vom Konto.)</p>
+
+<h2 id="grenzen">4 · Warum Banken nicht beliebig Geld schaffen</h2>
+
+<p>Wenn ein Buchungssatz genügt, warum vergibt dann nicht jede Bank Kredite in unbegrenzter Höhe? Die Bundesbank nennt mehrere Grenzen:<span class="sidenote-ref"></span><span class="sidenote"><a href="https://www.bundesbank.de/de/aufgaben/themen/wie-geld-entsteht-665288">Bundesbank: Wie Geld entsteht</a> und Monatsbericht April 2017, Zusammenfassung S. 15.</span></p>
+
+<ol>
+  <li><strong>Nachfrage:</strong> Es muss jemand einen Kredit <em>wollen</em>, also Haushalte und Unternehmen, die sich zu den angebotenen Zinsen verschulden möchten.</li>
+  <li><strong>Rentabilität und Risiko:</strong> Fällt ein Kredit aus, trägt die Bank den Verlust. Sie verleiht also nur, wo sie Rückzahlung erwartet.</li>
+  <li><strong>Regulierung:</strong> Banken müssen Kredite zu einem Teil mit eigenem Kapital unterlegen (Eigenkapitalvorschriften).</li>
+  <li><strong>Die Zentralbank:</strong> Sie setzt über den Zins den Preis für Zentralbankgeld. Das braucht eine Bank immer dann, wenn Geld sie verlässt.</li>
+</ol>
+
+<p>Der letzte Punkt ist der Cliffhanger für die nächste Lektion. Im Simulator haben wir geschummelt: Anna hat ihr Geld nur abgehoben oder getilgt. <strong>Was passiert, wenn Anna mit ihrem Kredit Bernd bezahlt, und Bernd hat sein Konto bei Bank B?</strong> Bank A kann Bank B schlecht mit einem eigenen Schuldschein bezahlen. Dafür braucht es ein Geld, dem <em>alle Banken</em> vertrauen: das Geld der Zentralbank.</p>
+
+<h2 id="quiz">5 · Abruf: Was ist hängen geblieben?</h2>
+
+<p>Beantworte die Fragen, ohne nach oben zu scrollen. Das Zurückholen aus dem Gedächtnis ist anstrengend, aber genau das lässt Wissen haften.</p>
+
+<div class="quiz-score"></div>
+
+<div class="quiz">
+  <p class="q">Deine Bank gewährt dir 10.000 € Kredit. Woher stammt das Geld, das auf deinem Konto erscheint?</p>
+  <ul>
+    <li data-correct data-feedback="Die Bank bucht gleichzeitig eine Forderung (Kredit) und eine Verbindlichkeit (deine Einlage). Das Geld entsteht durch die Buchung selbst.">Die Bank schafft es durch eine neue Buchung.</li>
+    <li data-feedback="Das ist der verbreitete Mythos. Kein anderer Kunde hat nach deinem Kredit weniger auf dem Konto. Die Einlage entsteht neu.">Die Bank nimmt es aus Spareinlagen anderer.</li>
+    <li data-feedback="Zentralbankgeld braucht die Bank erst, wenn das Geld sie verlässt, z. B. bei einer Überweisung an eine andere Bank. Für die Kreditvergabe selbst ist es keine Voraussetzung.">Die Bank leiht es sich bei der Zentralbank.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Ein Unternehmen zahlt einen Bankkredit vollständig zurück. Was passiert mit der Geldmenge?</p>
+  <ul>
+    <li data-correct data-feedback="Guthaben und Kreditschuld werden gegeneinander ausgebucht. Das Buchgeld hört auf zu existieren (Bundesbank, Monatsbericht April 2017, S. 23).">Sie sinkt, weil Buchgeld dabei vernichtet wird.</li>
+    <li data-feedback="Das Geld „wandert“ nicht zur Bank. Für die Bank ist dein Guthaben eine Schuld. Wird die getilgt, bleibt nichts übrig, was man Geld nennen könnte.">Sie bleibt gleich, weil Geld zur Bank wandert.</li>
+    <li data-feedback="Zinsen sind Ertrag der Bank, aber die Tilgung selbst vernichtet Geld. Die Geldmenge steigt dadurch nicht.">Sie steigt, weil die Bank dabei Zinsen kassiert.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Anna hebt 200 € von ihrem Girokonto ab. Was passiert mit der Geldmenge?</p>
+  <ul>
+    <li data-correct data-feedback="Buchgeld wird zu Bargeld, die Summe bleibt gleich. Die Scheine kamen aus der Bankkasse, und die zählt nicht zur Geldmenge.">Nichts, es wechselt nur die Form zu Bargeld.</li>
+    <li data-feedback="Das Buchgeld sinkt zwar um 200 €, aber Annas Bargeld steigt um genau 200 €. Beides zählt zur Geldmenge.">Sie sinkt, weil Buchgeld die Bank verlässt.</li>
+    <li data-feedback="Nichts wird doppelt gezählt: Das Guthaben sinkt im selben Moment, in dem das Bargeld steigt.">Sie steigt, weil Bargeld zusätzlich hinzukommt.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Welcher Anteil der Geldmenge M3 im Euroraum war im August 2026 ungefähr Bargeld?</p>
+  <ul>
+    <li data-correct data-feedback="1.617 von 17.646 Mrd. € sind gut 9 %. Über 90 % des Geldes sind Buchgeld.">Etwa neun Prozent</li>
+    <li data-feedback="Viel weniger: 1.617 von 17.646 Mrd. €, also gut 9 %.">Etwa vierzig Prozent</li>
+    <li data-feedback="Viel weniger: 1.617 von 17.646 Mrd. €, also gut 9 %.">Etwa siebzig Prozent</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Warum kann eine Bank trotzdem nicht unbegrenzt Kredite vergeben?</p>
+  <ul>
+    <li data-correct data-feedback="Genau: Es braucht Kreditnehmer, die Bank trägt das Ausfallrisiko, Eigenkapitalregeln begrenzen sie, und die Zentralbank steuert über den Zins.">Nachfrage, Risiko und Regulierung setzen ihr Grenzen.</li>
+    <li data-feedback="Das wäre das Modell der Bank als reiner Vermittler, und das widerlegen Bundesbank und Bank of England ausdrücklich.">Sie darf nur vorhandene Spareinlagen weiterverleihen.</li>
+    <li data-feedback="Zentralbankgeld ist keine Voraussetzung für die Kreditvergabe selbst (Bundesbank). Es wird erst gebraucht, wenn Geld die Bank verlässt.">Jeder Kredit braucht vorher passendes Zentralbankgeld.</li>
+  </ul>
+</div>
+
+<div class="quiz">
+  <p class="q">Deine Bank geht pleite. Was ist dein Girokontoguthaben in diesem Moment rechtlich und ökonomisch?</p>
+  <ul>
+    <li data-correct data-feedback="Du bist Gläubiger der Bank. Deshalb gibt es die Einlagensicherung (bis 100.000 € pro Kunde und Bank). Bei einem Aktiendepot ist das anders: Die Papiere bleiben dein Eigentum. Mehr dazu in Lektion 0007.">Eine Forderung, du bist Gläubiger der Bank.</li>
+    <li data-feedback="Das gilt für Wertpapiere im Depot, aber nicht für Kontoguthaben. Die eingezahlten Scheine gehören der Bank, du hast nur einen Anspruch.">Dein Eigentum, die Bank verwahrt es nur.</li>
+    <li data-feedback="Eigentümer sind die Aktionäre, deren Kapital steht als Eigenkapital in der Bilanz. Einleger sind Gläubiger, keine Eigentümer.">Ein Anteil, du bist Miteigentümer der Bank.</li>
+  </ul>
+</div>
+
+<h2 id="weiter">Weiterlesen & nachfragen</h2>
+
+<div class="source-box">
+  <span class="label">Primärquelle zum Vertiefen (ca. 15 Min.)</span>
+  <p><a href="https://www.bundesbank.de/de/aufgaben/themen/wie-geld-entsteht-665288"><strong>Deutsche Bundesbank: „Wie Geld entsteht“</strong></a>: kurz und offiziell. Wenn du tiefer willst, lies im <a href="https://www.bundesbank.de/resource/blob/665284/c0eeb9d1460e0489c7b5f55cf98c98c6/mL/2017-04-monatsbericht-data.pdf">Monatsbericht April 2017</a> ab Seite 15 (Buchungen S. 18–23). Dort stehen die Buchungen, die du gerade im Simulator gemacht hast, Schritt für Schritt. Auf Englisch ist der Klassiker <a href="https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy">„Money creation in the modern economy“</a> der Bank of England.</p>
+</div>
+
+<div class="ask-box">
+  <span class="label">Etwas unklar?</span>
+  <p>Frag mich, deinen Tutor, im Chat. Zum Beispiel: „Wenn Banken Geld schaffen, warum zahlen sie mir dann Zinsen auf Einlagen?“ oder „Was ist mit Bausparkassen?“. Erzähl mir auch, welche Quizfragen du beim ersten Versuch falsch hattest. Daran richte ich die nächste Lektion aus.</p>
+</div>
+
+<p>Kompakt zum Nachschlagen: <a href="../reference/geldschoepfung-buchungen.html">Spickzettel: Geldschöpfung in Buchungen</a>.</p>
+
+<nav class="lesson-nav" data-current="0001"></nav>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,139 @@
+/* Bord-Spickzettel — A4 hoch, eine Seite pro Zettel, zum Laminieren */
+:root {
+  --ink: #111;
+  --muted: #555;
+  --line: #999;
+  --navy: #12325a;
+  --mayday: #b3121c;
+  --pan: #c25a00;
+  --secu: #1557a0;
+  --ok: #1d6b3a;
+  --tint-mayday: #fbe9ea;
+  --tint-pan: #fdf0e3;
+  --tint-secu: #e8f0fa;
+  --tint-grey: #f1f1f1;
+}
+
+@page { size: A4 portrait; margin: 9mm; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: Arial, Helvetica, "Nimbus Sans", "Liberation Sans", sans-serif;
+  color: var(--ink);
+  background: #d9dde3;
+  font-size: 9.1pt;
+  line-height: 1.24;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Auf dem Bildschirm: Blatt mit Schatten; im Druck: randlos auf die Seite */
+.sheet {
+  width: 210mm;
+  height: 297mm;
+  margin: 12mm auto;
+  padding: 9mm;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0,0,0,.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8mm;
+}
+@media print {
+  body { background: #fff; }
+  .sheet { width: auto; height: 279mm; margin: 0; padding: 0; box-shadow: none; }
+  .screen-only { display: none !important; }
+}
+.screen-only {
+  max-width: 210mm; margin: 10mm auto -4mm; font-size: 11pt; color: #333;
+}
+.screen-only a { color: var(--navy); }
+
+/* Kopf */
+.head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  border-bottom: 2.4pt solid var(--navy);
+  padding-bottom: 1.4mm;
+}
+.head h1 { margin: 0; font-size: 21pt; letter-spacing: .02em; color: var(--navy); line-height: 1; }
+.head h1 small { font-size: 12pt; color: var(--muted); font-weight: normal; letter-spacing: 0; }
+.head .tag { font-size: 8pt; color: var(--muted); text-align: right; }
+
+/* Ausfüllfelder */
+.fields { display: grid; gap: 1.2mm 4mm; }
+.field { display: flex; align-items: flex-end; gap: 2mm; white-space: nowrap; }
+.field b { font-size: 8.5pt; }
+.field i { flex: 1; border-bottom: 0.8pt solid var(--ink); height: 5.5mm; font-style: normal; }
+.field i.filled { border-bottom-style: dotted; font-weight: bold; font-size: 11pt; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; }
+.col { display: flex; flex-direction: column; gap: 2.2mm; }
+
+/* Kästen */
+.box { border: 1pt solid var(--line); border-radius: 1.6mm; padding: 1.6mm 2.2mm 1.8mm; break-inside: avoid; }
+.box h2 {
+  margin: -1.6mm -2.2mm 1.1mm; padding: .8mm 2.2mm;
+  font-size: 10.5pt; color: #fff; background: var(--navy);
+  border-radius: 1.4mm 1.4mm 0 0; letter-spacing: .02em;
+}
+.box h2 span { font-weight: normal; font-size: 8.5pt; opacity: .9; }
+.box.mayday { border-color: var(--mayday); background: var(--tint-mayday); }
+.box.mayday h2 { background: var(--mayday); }
+.box.pan { border-color: var(--pan); background: var(--tint-pan); }
+.box.pan h2 { background: var(--pan); }
+.box.secu { border-color: var(--secu); background: var(--tint-secu); }
+.box.secu h2 { background: var(--secu); }
+.box.grey { background: var(--tint-grey); }
+.box.ok h2 { background: var(--ok); }
+
+h3 { margin: 1.2mm 0 .6mm; font-size: 9.4pt; color: var(--navy); }
+p { margin: .6mm 0; }
+ol, ul { margin: .4mm 0; padding-left: 4.6mm; }
+li { margin: .25mm 0; }
+.small { font-size: 8pt; color: var(--muted); }
+.warn { font-weight: bold; color: var(--mayday); }
+
+/* Sprechtext */
+.script {
+  font-family: "Arial Narrow", "Nimbus Sans Narrow", "Liberation Sans Narrow", Arial, sans-serif;
+  background: #fff; border-left: 2.2pt solid currentColor;
+  padding: 1mm 2mm; margin: .8mm 0; font-size: 9.6pt; line-height: 1.32;
+}
+.mayday .script { color: var(--mayday); }
+.pan .script { color: var(--pan); }
+.secu .script { color: var(--secu); }
+.script b { color: var(--ink); }
+.script em { color: var(--muted); font-style: normal; font-weight: normal; }
+.script .say { color: var(--ink); font-weight: bold; }
+
+/* Tabellen */
+table { border-collapse: collapse; width: 100%; }
+th, td { border-bottom: .6pt solid #c7c7c7; padding: .7mm 1.2mm; text-align: left; vertical-align: top; }
+th { font-size: 8.4pt; color: var(--muted); font-weight: bold; }
+td.k { font-weight: bold; font-size: 11pt; white-space: nowrap; color: var(--navy); }
+tr:last-child td { border-bottom: 0; }
+
+.foot { margin-top: auto; font-size: 7.2pt; color: var(--muted); border-top: .6pt solid #ccc; padding-top: 1mm; }
+
+/* Checkbox */
+.cb { list-style: none; padding-left: 0; }
+.cb li { padding-left: 5.4mm; position: relative; }
+.cb li::before {
+  content: ""; position: absolute; left: 0; top: .5mm;
+  width: 3.2mm; height: 3.2mm; border: .9pt solid var(--ink); border-radius: .5mm; background: #fff;
+}
+
+/* Schritte mit großer Nummer */
+.steps { counter-reset: s; list-style: none; padding-left: 0; }
+.steps li { counter-increment: s; padding-left: 5.6mm; position: relative; }
+.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: .1mm;
+  width: 4.2mm; height: 4.2mm; border-radius: 50%;
+  background: var(--navy); color: #fff; font-size: 7.4pt; font-weight: bold;
+  display: flex; align-items: center; justify-content: center;
+}
+.mayday .steps li::before { background: var(--mayday); }
+.pan .steps li::before { background: var(--pan); }

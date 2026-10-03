@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4: Specify → Clarify → Plan</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js"></script>
+</head>
+<body>
+<h1>Lesson 4: Specify → Clarify → Plan</h1>
+<p class="lesson-meta">≈35 minutes, hands-on in <code>~/sdd-playground</code> · builds on <a href="0003-the-constitution.html">Lesson 3</a> — your constitution must exist first</p>
+
+<h2>The win you're after</h2>
+<p>One practice feature taken from an English sentence to a reviewed <code>spec.md</code>, a clarified set of requirements, and a <code>plan.md</code> whose <code>contracts/</code> directory holds a generated <strong>OpenAPI contract</strong>. That last artifact is the payoff for your stack: the plan phase is where your two repos' shared contract is born.</p>
+
+<h2>The one idea: ambiguity is load-bearing</h2>
+<p>The spec template treats unknowns as first-class: requirements the agent can't pin down get marked <code>[NEEDS CLARIFICATION: …]</code> instead of silently guessed (<a href="https://github.com/github/spec-kit/blob/main/templates/spec-template.md">spec-template.md</a>). <code>/speckit.clarify</code> then turns those markers into an interview — <em>the agent asks you</em>. This inverts your agent-mode habit: instead of you prompting harder, the workflow extracts the requirements you didn't know you hadn't stated. A first-pass spec with zero markers isn't impressive, it's suspicious — it means the agent guessed.</p>
+
+<h2>Do it</h2>
+<h3>Step 1 — Specify (what/why only)</h3>
+<p>The practice feature is deliberately API-shaped, like your day job. In Copilot Chat, agent mode:</p>
+<pre><code>/speckit.specify Team members can bookmark customer records and see their
+bookmarks in a list. A bookmark can carry an optional short note. Bookmarks
+are private to the team member who created them. The list shows the most
+recently bookmarked customers first and lets the user jump to the customer
+or remove the bookmark.</code></pre>
+<p>Note what the prompt does <em>not</em> say: no endpoints, no tables, no Angular components. Spec Kit creates a branch like <code>001-bookmark-customers</code> and <code>specs/001-…/spec.md</code>.</p>
+<p><strong>Verify against the <a href="../reference/artifact-quality-checklist.html">checklist</a>:</strong> prioritized user stories (P1 must stand alone as an MVP), Given/When/Then acceptance scenarios, numbered <code>FR-NNN</code> requirements, measurable success criteria — and grep the file for stack words: <code>grep -inE 'spring|angular|rest|http|sql' specs/001-*/spec.md</code> should come back empty.</p>
+
+<h3>Step 2 — Clarify (answer like a product owner)</h3>
+<pre><code>/speckit.clarify</code></pre>
+<p>Expect questions like: maximum note length? What happens when the bookmarked customer is deleted? Is there a bookmark limit? <strong>Answer decisively</strong> — invented-but-consistent answers beat "whatever you think." This is deliberate practice for the skill that matters at work: you'll be the one answering these for real features.</p>
+<p><strong>Verify:</strong> the <code>[NEEDS CLARIFICATION]</code> markers are gone from <code>spec.md</code> and your answers appear as a Clarifications section / sharpened requirements. Any marker still standing → run clarify again.</p>
+
+<h3>Step 3 — Plan (now, and only now, the tech)</h3>
+<pre><code>/speckit.plan The backend is Spring Boot 3 (Java 21, Maven), the frontend
+Angular with the OpenAPI Generator toolchain. Backend and frontend live in
+separate repositories and communicate exclusively through a versioned
+OpenAPI 3.1 contract; server stubs and the Angular client are generated
+from it. Persistence: PostgreSQL via Spring Data JPA.</code></pre>
+<p><strong>Verify — three gates, in order:</strong></p>
+<ol>
+<li><strong>Constitution Check passed?</strong> Open <code>plan.md</code> — the gate section must exist and pass. If the plan proposes hand-written API DTOs, your Lesson 3 constitution should have flagged it. If it didn't, your constitution has a hole: go sharpen Article I and re-plan. <em>That loop — plan violates, constitution catches, you tighten — is SDD working as designed.</em></li>
+<li><strong>Contract born?</strong> <code>ls specs/001-*/contracts/</code> — expect an OpenAPI YAML. Audit it like a PR from a colleague: every user story reachable through some endpoint, bookmarks filtered to the current user, the note's max length from your clarify answer encoded as a schema constraint.</li>
+<li><strong>Entities faithful?</strong> <code>data-model.md</code> entities match the spec's Key Entities — same names, nothing invented.</li>
+</ol>
+
+<div class="callout info">
+<span class="label">Why this matters for your two repos</span>
+Everything above <code>contracts/</code> is repo-neutral — which is exactly why the specs shouldn't live in the backend or frontend repo (the Lesson 1 discussion). The contract is the hand-off point: one spec, one plan, one OpenAPI file — then two repos generate their halves from it.
+</div>
+
+<h2>Check yourself</h2>
+<div class="quiz" data-answer="0" data-explain="Markers make unknowns explicit so clarify can interview you; silent guessing is the failure mode SDD exists to prevent.">
+  <div class="quiz-q">1. A first-pass spec has zero [NEEDS CLARIFICATION] markers. Why is that a warning sign?</div>
+  <button class="quiz-opt">The agent likely guessed on unstated requirements</button>
+  <button class="quiz-opt">The clarify command now has nothing left to do</button>
+  <button class="quiz-opt">The plan phase requires at least a few markers</button>
+  <button class="quiz-opt">The branch cannot be created without any markers</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="3" data-explain="Contracts (your OpenAPI file) are a plan-phase output, alongside research.md and data-model.md — the spec stays technology-free.">
+  <div class="quiz-q">2. Which phase produces the OpenAPI contract file?</div>
+  <button class="quiz-opt">specify, as part of the acceptance scenarios</button>
+  <button class="quiz-opt">clarify, once the open questions get answered</button>
+  <button class="quiz-opt">tasks, right before implementation is started</button>
+  <button class="quiz-opt">plan, in the contracts directory it generates</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz" data-answer="1" data-explain="P1 must be independently testable and shippable as a minimal viable slice — that's the template's explicit rule for prioritized user stories.">
+  <div class="quiz-q">3. What must be true of the P1 user story on its own?</div>
+  <button class="quiz-opt">It covers every functional requirement listed</button>
+  <button class="quiz-opt">It works as an independently testable MVP slice</button>
+  <button class="quiz-opt">It names the primary entities and their fields</button>
+  <button class="quiz-opt">It defines the API surface the frontend needs</button>
+  <div class="quiz-feedback"></div>
+</div>
+
+<h2>Watch &amp; read</h2>
+<p>📺 <a href="https://www.youtube.com/watch?v=a9eR1xsfvHg">Den Delimarsky's full walkthrough (40 min)</a> — the specify/clarify/plan segments show exactly the loop you just ran, driven by the tool's maintainer. For structured extra reps, the free official <a href="https://learn.microsoft.com/en-us/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/">Microsoft Learn module</a> runs a greenfield scenario with built-in checks.</p>
+
+<h2>Next</h2>
+<p><a href="0005-where-do-specs-live.html">Lesson 5</a> settles the architecture question you've been carrying since session 1: where the specs live in your two-repo setup. After that, Lesson 6 closes the loop — <code>tasks → analyze → implement</code> — and wires OpenAPI Generator to the contract.</p>
+
+<div class="footer-nav">
+<a href="../index.html">⌂ Course home</a> · ← Previous: <a href="0003-the-constitution.html">Lesson 3: The Constitution</a> · Next: <a href="0005-where-do-specs-live.html">Lesson 5: Where Do the Specs Live?</a> →<br>
+References: <a href="../reference/artifact-quality-checklist.html">Artifact quality checklist</a> · <a href="../reference/speckit-workflow.html">Workflow cheat sheet</a> · <a href="../reference/glossary.html">Glossary</a><br>
+Paste your generated spec or contract here anytime — reviewing your artifacts is the most useful thing your teacher (the agent) can do.
+</div>
+</body>
+</html>
